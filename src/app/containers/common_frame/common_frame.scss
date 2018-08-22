@@ -1,0 +1,91 @@
+@import '../../common/colors';
+
+#common-frame {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+
+  .common-frame-header-menu-button {
+    height: 24px;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+
+    span {
+      margin-left: 4px;
+    }
+  }
+
+  #common-frame-menu {
+    background-color: $white;
+    border-left: 1px solid $gray;
+    bottom: 32px;
+    max-width: 320px;
+    opacity: 0.9;
+    overflow-y: scroll;
+    padding: 42px 16px 8px 16px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+
+    & > a {
+      display: block;
+      padding: 4px 8px;
+
+      &.level1 {
+        font-size: 16px;
+        margin-top: 8px;
+      }
+
+      &.level2 {
+        font-size: 12px;
+        padding-left: 24px;
+      }
+
+      &.marked {
+        background-color: $orange;
+        border-width: 0;
+        color: $white;
+      }
+    }
+  }
+
+  #common-frame-content {
+    bottom: 32px;
+    left: 0;
+    margin: 16px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: calc(100% - 32px);
+
+    #common-frame-content-inner {
+      margin: 0 auto;
+      font-size: 16px;
+      max-width: 50em;
+      width: 100%;
+    }
+  }
+
+  #common-frame-footer {
+    background-color: $gray-dark;
+    bottom: 0;
+    display: flex;
+    height: 32px;
+    justify-content: space-between;
+    left: 0;
+    padding: 0 16px;
+    position: absolute;
+    right: 0;
+
+    div {
+      font-size: 12px;
+      color: $white;
+      line-height: 32px;
+    }
+  }
+}
+

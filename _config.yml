@@ -13,19 +13,27 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: "hyiromori"
-description: >-
-  このサイトは hyiromori がスキルの実践と公開のために運営しています。
-email: "hyiromori@gmail.com"
-twitter_username: "hyiromori"
-github_username:  "hyiromori"
 
-lang: ja-JP
-markdown: kramdown
-theme: jekyll-theme-cayman
-google_analytics: UA-124358962-1
+#title: "hyiromori"
+#description: >-
+#  このサイトは hyiromori がスキルの実践と公開のために運営しています。
+#email: "hyiromori@gmail.com"
+#twitter_username: "hyiromori"
+#github_username:  "hyiromori"
+#lang: ja-JP
+#markdown: kramdown
+#theme: jekyll-theme-cayman
+
+
+description: >-
+  Portfolio
 exclude:
+- src
+- .gitignore
+- .tool-versions
 - Gemfile
-- Gemfile.lock
-- app/
+- Gemfile.log
 - README.md
+timezone: Asia/Tokyo
+envoding: utf-8
+google_analytics: UA-124358962-1

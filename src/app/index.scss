@@ -1,0 +1,85 @@
+@import './common/colors';
+
+*, *:before, *:after {
+  background-color: transparent;
+  border: 0 solid $gray;
+  box-sizing: border-box;
+  color: $black;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  word-wrap: break-word;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol {
+  margin-top: 8px;
+}
+
+h1 {
+  font-weight: 600;
+  font-size: 32px;
+  text-align: center;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+h4 {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+h5 {
+  font-weight: 800;
+  font-size: 12px;
+}
+
+h6 {
+  font-weight: 800;
+  font-size: 10px;
+}
+
+p {
+  padding-left: 1em;
+}
+
+strong {
+  background-color: $silver;
+  display: inline-block;
+  font-weight: 800;
+  padding: 1px 8px;
+}
+
+button:focus {
+  outline: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+
+  th, td {
+    padding: 4px 8px;
+    border: 1px solid $gray;
+  }
+}
+
+ul, ol {
+  padding-left: 48px;
+  width: 100%;
+
+  li {
+    margin-top: 4px;
+  }
+}

@@ -1,0 +1,48 @@
+@import '../../common/colors';
+
+.common-frame-menu-item {
+  a {
+    display: block;
+    padding: 8px 16px;
+
+    %title-line-height {
+      line-height: calc(1em + 4px);
+    }
+
+    &.level1 {
+      padding-left: 8px;
+
+      .title-jp {
+        @extend %title-line-height;
+        font-size: 20px;
+      }
+
+      .title-en {
+        @extend %title-line-height;
+        font-size: 14px;
+      }
+    }
+
+    &.level2 {
+      padding-left: 24px;
+
+      .title-jp {
+        @extend %title-line-height;
+        font-size: 18px;
+      }
+
+      .title-en {
+        @extend %title-line-height;
+        font-size: 12px;
+      }
+    }
+
+    &.marked {
+      background-color: $orange;
+
+      div {
+        color: $white;
+      }
+    }
+  }
+}

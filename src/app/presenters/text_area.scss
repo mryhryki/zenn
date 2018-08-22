@@ -1,0 +1,10 @@
+@import '../common/colors';
+
+.text-area-presenter {
+  textarea {
+    border: 1px solid $gray;
+    resize: vertical;
+    padding: 4px 8px;
+    width: 100%;
+  }
+}
