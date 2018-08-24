@@ -1,7 +1,10 @@
 import * as React from 'react';
 import {
   CloseIcon,
+  EnvelopeIcon,
+  GitHubIcon,
   MenuIcon,
+  TwitterIcon,
 } from '../../presenters/icon';
 import { CommonFrameMenuItem } from './common_frame_menu_item';
 import './common_frame.scss';
@@ -71,7 +74,25 @@ class CommonFrame extends React.Component<Props, State> {
           </div>
         )}
         <div id="common-frame-footer">
-          <div>(C) 2018 hyiromori</div>
+          <div className="left-content">
+            {/*<TwitterIcon />*/}
+            <a href="mailto:hyiromori@gmail.com">
+              <EnvelopeIcon />
+            </a>
+            <a
+              href="https://twitter.com/hyiromori"
+              target="_blank"
+            >
+              <TwitterIcon />
+            </a>
+            <a
+              href="https://github.com/hyiromori"
+              target="_blank"
+            >
+              <GitHubIcon />
+            </a>
+          </div>
+          <div className="right-content">(C) 2018 hyiromori</div>
         </div>
       </div>
     );

@@ -5,7 +5,7 @@
   border: 0 solid $gray;
   box-sizing: border-box;
   color: $black;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: normal;
   line-height: 1.5;
   margin: 0;
@@ -14,29 +14,33 @@
   word-wrap: break-word;
 }
 
-h1, h2, h3, h4, h5, h6, p, ul, ol {
+h1, h2, h3, h4, h5, h6, ul, ol {
+  margin-top: 16px;
+}
+
+p {
   margin-top: 8px;
 }
 
 h1 {
   font-weight: 600;
-  font-size: 32px;
+  font-size: 24px;
   text-align: center;
 }
 
 h2 {
   font-weight: 600;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 h3 {
   font-weight: 700;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 h4 {
   font-weight: 700;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 h5 {
@@ -53,11 +57,17 @@ p {
   padding-left: 1em;
 }
 
+a {
+  color: $green;
+  text-decoration: underline;
+}
+
 strong {
   background-color: $silver;
   display: inline-block;
   font-weight: 800;
-  padding: 1px 8px;
+  margin: 1px 4px;
+  padding: 1px 4px;
 }
 
 button:focus {
@@ -82,4 +92,11 @@ ul, ol {
   li {
     margin-top: 4px;
   }
+}
+
+.frame {
+  border: 1px solid $gray-light;
+  margin: 16px;
+  padding: 16px;
+  width: calc(100% - 32px);
 }

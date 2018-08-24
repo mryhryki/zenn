@@ -1,12 +1,17 @@
 @import '../../common/colors';
 
 .common-frame-menu-item {
-  a {
+  .menu-button {
     display: block;
-    padding: 8px 16px;
+    padding: 6px 16px;
+    text-decoration: none;
 
     %title-line-height {
-      line-height: calc(1em + 4px);
+      line-height: calc(1em + 2px);
+    }
+
+    .title-en {
+      color: $gray;
     }
 
     &.level1 {
@@ -37,10 +42,28 @@
       }
     }
 
+    &.level3 {
+      padding-left: 42px;
+
+      .title-jp {
+        @extend %title-line-height;
+        font-size: 16px;
+      }
+
+      .title-en {
+        @extend %title-line-height;
+        font-size: 10px;
+      }
+    }
+
     &.marked {
       background-color: $orange;
 
-      div {
+      .title-jp {
+        color: $white;
+      }
+
+      .title-en {
         color: $white;
       }
     }

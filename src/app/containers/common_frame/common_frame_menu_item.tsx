@@ -19,18 +19,34 @@ const CommonFrameMenuItem = (props: Props) => {
     titleEn,
   } = props;
 
+  const content = (
+    <div>
+      <div className="title-jp">
+        {titleJp}
+      </div>
+      <div className="title-en">
+        {titleEn}
+      </div>
+    </div>
+  );
+
+  if (selected) {
+    return (
+      <div className="common-frame-menu-item">
+        <div className={`menu-button level${level} marked`}>
+          {content}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="common-frame-menu-item">
       <Link
         to={path}
-        className={[`level${level}`, selected ? 'marked' : ''].join(' ')}
+        className={`menu-button level${level}`}
       >
-        <div className="title-jp">
-          {titleJp}
-        </div>
-        <div className="title-en">
-          {titleEn}
-        </div>
+        {content}
       </Link>
     </div>
   );

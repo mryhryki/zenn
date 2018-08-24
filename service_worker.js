@@ -1,19 +1,32 @@
-const CacheName = 'v1.0.0';
+const CacheName = 'v0.1.3';
 const UrlsToCache = ['/', '/index.js', '/common.js', '/favicon.ico'];
 
 self.addEventListener('install', (event) => {
   console.log('ServiceWorker installing.');
   event.waitUntil(
-    caches.open(CacheName)
-          .then((cache) => {
-            console.log('Opened cache');
-            return cache.addAll(UrlsToCache);
-          }),
+    caches
+      .open(CacheName)
+      .then((cache) => {
+        console.log('Opened cache');
+        return cache.addAll(UrlsToCache);
+      }),
   );
 });
 
-self.addEventListener('activate', () => {
+self.addEventListener('activate', (event) => {
   console.log('ServiceWorker activating.');
+  event.waitUntil(
+    caches
+      .keys()
+      .then((keyList) => {
+        keyList.forEach((key) => {
+          if (CacheName !== key) {
+            console.log('Cache delete:', key);
+            caches.delete(key);
+          }
+        });
+      }),
+  );
 });
 
 self.addEventListener('message', (event) => {
@@ -22,37 +35,30 @@ self.addEventListener('message', (event) => {
 
 self.addEventListener('fetch', (event) => {
   event.respondWith(new Promise((resolve) => {
-      // キャッシュがあった場合は、キャッシュの内容を返す。
-      caches.match(event.request)
-            .then((cacheResponse) => {
-              if (cacheResponse) {
-                resolve(cacheResponse);
-                return;
-              }
-
-              // 重要：リクエストを clone する。
-              // リクエストは Stream なので一度しか処理できない。
-              // ここではキャッシュ用、fetch 用と２回必要なので、リクエストは clone しないといけない。
-              const fetchRequest = event.request.clone();
-              fetch(fetchRequest).then((fetchResponse) => {
-                // レスポンスが正しくない場合はそのまま返却
-                if (!fetchResponse ||
-                    fetchResponse.status !== 200 ||
-                    fetchResponse.type !== 'basic') {
-                  resolve(fetchResponse);
-                  return;
-                }
-
-                // 重要：レスポンスを clone する。
-                // レスポンスは Stream でブラウザ用とキャッシュ用の２回必要。
-                // なので clone して２つの Stream があるようにする。
-                const responseToCache = fetchResponse.clone();
-                caches.open(CacheName).then((cache) => {
-                  cache.put(event.request, responseToCache);
-                  resolve(fetchResponse);
-                });
-              });
-            });
+      caches
+        .match(event.request)
+        .then((cacheResponse) => {
+          if (cacheResponse) {
+            resolve(cacheResponse);
+            return;
+          }
+          // const fetchRequest = event.request.clone();
+          fetch(event.request).then((fetchResponse) => {
+            resolve(fetchResponse);
+            // if (!fetchResponse ||
+            //     fetchResponse.status !== 200 ||
+            //     fetchResponse.type !== 'basic') {
+            //   resolve(fetchResponse);
+            //   return;
+            // }
+            //
+            // const responseToCache = fetchResponse.clone();
+            // caches.open(CacheName).then((cache) => {
+            //   cache.put(event.request, responseToCache);
+            resolve(fetchResponse);
+            // });
+          });
+        });
     },
   ));
 });
@@ -65,8 +71,8 @@ self.addEventListener('push', (event) => {
   const title = 'Push Test';
   const options = {
     body: dataText,
-    // icon: 'images/icon.png',
-    // badge: 'images/badge.png', // Android only
+    icon: '/favicon.ico',
+    // badge: 'badge.png', // Android only
   };
   event.waitUntil(self.registration.showNotification(title, options));
 });

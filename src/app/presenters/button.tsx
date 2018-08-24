@@ -23,12 +23,12 @@ class Button extends React.Component<Props> {
     } = this.props;
 
     return (
-      <a
-        className={`button-presenter ${className}`}
+      <button
+        className={`button-presenter ${className} ${active ? '' : 'disable'}`}
         onClick={active ? onClick : null}
       >
         {children}
-      </a>
+      </button>
     );
   };
 }

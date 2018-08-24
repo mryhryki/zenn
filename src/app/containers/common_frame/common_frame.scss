@@ -8,10 +8,14 @@
   top: 0;
 
   .common-frame-header-menu-button {
-    height: 24px;
+    background-color: $white;
+    border-radius: 4px;
+    box-shadow: -8px 8px 8px 0 $white;
+    height: 28px;
+    padding: 8px 12px 0 0;
     position: absolute;
-    right: 12px;
-    top: 12px;
+    right: 0;
+    top: 0;
 
     span {
       margin-left: 4px;
@@ -23,7 +27,7 @@
     border-left: 1px solid $gray;
     bottom: 32px;
     max-width: 320px;
-    opacity: 0.9;
+    opacity: 0.95;
     overflow-y: scroll;
     padding: 42px 16px 8px 16px;
     position: absolute;
@@ -54,13 +58,14 @@
   }
 
   #common-frame-content {
-    bottom: 32px;
+    bottom: 48px;
     left: 0;
-    margin: 16px;
+    padding: 24px 16px 16px 16px;
+    overflow-x: hidden;
+    overflow-y: scroll;
     position: absolute;
     right: 0;
     top: 0;
-    width: calc(100% - 32px);
 
     #common-frame-content-inner {
       margin: 0 auto;
@@ -73,18 +78,34 @@
   #common-frame-footer {
     background-color: $gray-dark;
     bottom: 0;
-    display: flex;
-    height: 32px;
-    justify-content: space-between;
+    height: 48px;
     left: 0;
     padding: 0 16px;
     position: absolute;
     right: 0;
 
-    div {
+    .left-content {
+      float: left;
+
+      a {
+        background-color: $white;
+        border-radius: 50%;
+        color: $white;
+        display: inline-block;
+        font-size: 22px;
+        height: 32px;
+        line-height: 32px;
+        margin: 8px 8px 8px 0;
+        text-align: center;
+        width: 32px;
+      }
+    }
+
+    .right-content {
+      float: right;
       font-size: 12px;
       color: $white;
-      line-height: 32px;
+      line-height: 48px;
     }
   }
 }

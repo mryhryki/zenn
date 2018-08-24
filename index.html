@@ -1,15 +1,38 @@
 <!doctype html>
 <html>
 <head>
-  <title>Web</title>
-  <meta
-    name="viewport"
-    content="width=device-width,initial-scale=1"
-  >
+  <title>hyiromori</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124358962-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-124358962-1');
+  </script>
+  <style type="text/css">
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
 <body>
   <div id="app">
-    <div>Loading...</div>
+    <div style="height:100%;width:100%;">
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div style="animation:spin 1.25s infinite linear;box-sizing:border-box;height:50px;width:50px;
+                      border-radius:50%;border:2px solid #ff7701;border-bottom-width:0;">
+          </div>
+          <div style="margin-top:8px">Loading...</div>
+        </div>
+      </div>
+    </div>
   </div>
   <script src="./index.js"></script>
   <script src="./common.js"></script>
