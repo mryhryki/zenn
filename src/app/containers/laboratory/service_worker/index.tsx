@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { AbstractContainer } from '../../abstract_container';
 import {
   ServiceWorkerCachePath,
-  ServiceWorkerPushPath,
-  ServiceWorkerSyncPath,
+  ServiceWorkerPushNotificationPath,
+  ServiceWorkerBackgroundSyncPath,
 } from '../../../routes';
 import './style.scss';
 
@@ -16,18 +16,18 @@ class ServiceWorkerContainer extends AbstractContainer<Props, State> {
   render() {
     return (
       <div id="service-worker-container">
-        <h1>Service Worker</h1>
-        <h2>Service Worker とは？</h2>
+        <h1>サービスワーカー</h1>
+        <h2>サービスワーカーとは？</h2>
         <p>
           ブラウザのバックグランドで実行される JavaScript の実行環境です。
           ページのライフサイクルとは「別」のライフサイクルを持ちます。
         </p>
-        <h2>Service Worker の機能</h2>
+        <h2>サービスワーカーの機能</h2>
         <p>以下のAPIが提供されています。</p>
         <ul>
-          <li><Link to={ServiceWorkerCachePath}>Cache API</Link></li>
-          <li><Link to={ServiceWorkerPushPath}>Push API</Link></li>
-          <li><Link to={ServiceWorkerSyncPath}>Background Sync API</Link></li>
+          <li><Link to={ServiceWorkerCachePath}>キャッシュAPI</Link></li>
+          <li><Link to={ServiceWorkerPushNotificationPath}>プッシュ通知API</Link></li>
+          <li><Link to={ServiceWorkerBackgroundSyncPath}>バックグラウンド同期API</Link></li>
         </ul>
         <h2>もっと詳しく知りたい場合</h2>{' '}
         <p>以下の Qiita の記事をご覧ください。</p>

@@ -10,7 +10,7 @@ import { LaboratoryContainer } from './containers/laboratory';
 import { QrCodeContainer } from './containers/laboratory/qr_code';
 import { ServiceWorkerContainer } from './containers/laboratory/service_worker';
 import { ServiceWorkerCacheContainer } from './containers/laboratory/service_worker/cache';
-import { ServiceWorkerPushContainer } from './containers/laboratory/service_worker/push';
+import { ServiceWorkerPushNotificationContainer } from './containers/laboratory/service_worker/push_notification';
 import { ServiceWorkerBackgroundSyncContainer } from './containers/laboratory/service_worker/background_sync';
 
 const Views: Array<{
@@ -56,23 +56,23 @@ const Views: Array<{
   {
     key: 'service_worker_cache',
     path: '/laboratory/service_worker/cache',
-    titleJp: 'キャッシュ',
+    titleJp: 'キャッシュAPI',
     titleEn: 'Cache API',
     component: ServiceWorkerCacheContainer,
     level: 3,
   },
   {
-    key: 'service_worker_push',
-    path: '/laboratory/service_worker/push',
-    titleJp: 'プッシュ通知',
-    titleEn: 'Push API',
-    component: ServiceWorkerPushContainer,
+    key: 'service_worker_push_notification',
+    path: '/laboratory/service_worker/push_notification',
+    titleJp: 'プッシュ通知API',
+    titleEn: 'Push Notification API',
+    component: ServiceWorkerPushNotificationContainer,
     level: 3,
   },
   {
-    key: 'service_worker_sync',
+    key: 'service_worker_background_sync',
     path: '/laboratory/service_worker/background_sync',
-    titleJp: 'バックグラウンド同期',
+    titleJp: 'バックグラウンド同期API',
     titleEn: 'Background Sync API',
     component: ServiceWorkerBackgroundSyncContainer,
     level: 3,
@@ -119,8 +119,8 @@ const extractPath = (key: string): string => {
 };
 const ServiceWorkerPath: string = extractPath('service_worker');
 const ServiceWorkerCachePath: string = extractPath('service_worker_cache');
-const ServiceWorkerPushPath: string = extractPath('service_worker_push');
-const ServiceWorkerSyncPath: string = extractPath('service_worker_sync');
+const ServiceWorkerPushNotificationPath: string = extractPath('service_worker_push_notification');
+const ServiceWorkerBackgroundSyncPath: string = extractPath('service_worker_background_sync');
 const QrCodePath: string = extractPath('qr_code');
 
 export {
@@ -128,6 +128,6 @@ export {
   QrCodePath,
   ServiceWorkerCachePath,
   ServiceWorkerPath,
-  ServiceWorkerPushPath,
-  ServiceWorkerSyncPath,
+  ServiceWorkerPushNotificationPath,
+  ServiceWorkerBackgroundSyncPath,
 };

@@ -1,4 +1,4 @@
-const CacheName = 'v0.1.4';
+const CacheName = 'v0.1.0';
 const UrlsToCache = ['/', '/index.js', '/common.js', '/favicon.ico'];
 
 self.addEventListener('install', (event) => {
@@ -80,16 +80,40 @@ self.addEventListener('push', (event) => {
 self.addEventListener('sync', (event) => new Promise(() => {
   if (event != null && typeof event.tag === 'string') {
     const tag = event.tag;
+    console.log('sync:', tag);
+
     if (tag.match(/^background-sync:\d+$/)) {
       const id = parseInt(tag.substr(16), 10);
-      console.log('sync:', id);
-      //       const syncData = await getBackgroundSyncRow(id);
-      // const { path, body, result } = syncData;
-      //   if (result === '') {
-      //     const response = await fetch(path, { method: 'POST', body });
-      //     syncData.result = await response.text();
-      //     await updateBackgroundSyncRow(id, syncData);
-      //   }
+      const dbOpenRequest = indexedDB.open('service_worker', 1);
+      dbOpenRequest.onerror = (error) => console.error('Fail open DB:', error);
+
+      dbOpenRequest.onsuccess = (dbOpenEvent) => {
+        const db = dbOpenEvent.target.result;
+        const transaction = db.transaction(['background_sync'], 'readonly');
+        transaction.onerror = (error) => console.error('Failed:', error);
+
+        const getRequest = transaction.objectStore('background_sync').get(id);
+        getRequest.onerror = (error) => console.error('Failed:', error);
+
+        getRequest.onsuccess = (event) => {
+          console.log('Success request:', event);
+          const syncData = event.target.result;
+          const { path, result } = syncData;
+          if (result === '') {
+            fetch(path, { method: 'GET' })
+              .then(response => response.text())
+              .then((text) => {
+                const transaction = db.transaction(['background_sync'], 'readwrite');
+                transaction.onerror = (error) => console.error('Failed:', error);
+
+                syncData.result = text;
+                const putRequest = transaction.objectStore('background_sync').put(syncData);
+                putRequest.onerror = (error) => console.error('Failed:', error);
+                putRequest.onsuccess = () => console.log('Complete sync:', syncData);
+              });
+          }
+        };
+      };
     }
   }
 }));

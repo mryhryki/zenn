@@ -15,7 +15,7 @@ class ServiceWorkerCacheContainer extends AbstractContainer<Props, State> {
         <h1>キャッシュAPI</h1>
 
         <h2>キャッシュAPIとは？</h2>
-        <p>Service Worker で提供されている API の一つで、fetch に介入し、キャッシュされたリソースを返却することができます。</p>
+        <p>サービスワーカーで提供されている API の一つで、fetch に介入し、キャッシュされたリソースを返却することができます。</p>
         <p>キャッシュを使用するかどうかは、コントロール可能です。</p>
 
         <h2>お使いのブラウザの対応状況</h2>

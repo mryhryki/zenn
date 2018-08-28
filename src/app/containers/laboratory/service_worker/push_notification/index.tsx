@@ -32,7 +32,7 @@ const urlB64ToUint8Array = (base64String: string) => {
   return outputArray;
 };
 
-class ServiceWorkerPushContainer extends AbstractContainer<Props, State> {
+class ServiceWorkerPushNotificationContainer extends AbstractContainer<Props, State> {
   state: State = {
     publicKey: '',
     subscriptionInfo: '',
@@ -65,10 +65,10 @@ class ServiceWorkerPushContainer extends AbstractContainer<Props, State> {
 
     return (
       <div id="service-worker-push-container">
-        <h1>Service Worker - Push API</h1>
+        <h1>プッシュ通知API</h1>
 
-        <h2>機能概要</h2>
-        <p>名前の通り、ブラウザでプッシュ通知が行える機能になります。</p>
+        <h2>プッシュ通知APIとは？</h2>
+        <p>サービスワーカーで提供されている API の一つで、名前の通り、ブラウザにプッシュ通知が行える機能になります。</p>
 
         <h2>お使いのブラウザの対応状況</h2>
         <p>お使いのブラウザは
@@ -131,4 +131,4 @@ class ServiceWorkerPushContainer extends AbstractContainer<Props, State> {
   }
 }
 
-export { ServiceWorkerPushContainer };
+export { ServiceWorkerPushNotificationContainer };
