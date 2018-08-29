@@ -40,13 +40,11 @@ class ServiceWorkerBackgroundSyncContainer extends AbstractContainer<Props, Stat
     dbOepnRequest.onupgradeneeded = (event: IDBVersionChangeEvent) => {
       const db: IDBDatabase = (event.target as IDBOpenDBRequest).result;
       const options = { keyPath: 'id', autoIncrement: true };
-      const store: IDBObjectStore = db.createObjectStore('background_sync', options);
-      console.log('Success create store:', store);
+      db.createObjectStore('background_sync', options);
       this.db = db;
     };
-    dbOepnRequest.onerror = (error) => console.error('Fail open DB:', error);
+    dbOepnRequest.onerror = (error) => console.error('Failed:', error);
     dbOepnRequest.onsuccess = (event) => {
-      console.log('Success open DB:', event);
       this.db = (event.target as IDBOpenDBRequest).result;
     };
   }
@@ -85,9 +83,9 @@ class ServiceWorkerBackgroundSyncContainer extends AbstractContainer<Props, Stat
 
       const differentLength: boolean = syncList.length !== newSyncList.length;
       const diffElement: (undefined | SyncInfo) = differentLength ? undefined :
-        newSyncList.find((element, index: number) => (
-          element.id !== syncList[index].id || element.result !== syncList[index].result
-        ));
+                                                  newSyncList.find((element, index: number) => (
+                                                    element.id !== syncList[index].id || element.result !== syncList[index].result
+                                                  ));
 
       if (differentLength || diffElement != null) {
         this.setState({ syncList: newSyncList });
@@ -129,9 +127,7 @@ class ServiceWorkerBackgroundSyncContainer extends AbstractContainer<Props, Stat
         <p>IndexedDB も使用して実現します。</p>
 
         <h2>お使いのブラウザの対応状況</h2>
-        <p>お使いのブラウザは
-          <strong>{supportBackgroundSync ? '対応しています' : '対応していません'}</strong>
-        </p>
+        <p>{supportBackgroundSync ? '○ 対応しています' : '× 非対応です'}</p>
 
         {supportBackgroundSync && (
           <div>

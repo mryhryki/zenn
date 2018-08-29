@@ -19,9 +19,7 @@ class ServiceWorkerCacheContainer extends AbstractContainer<Props, State> {
         <p>キャッシュを使用するかどうかは、コントロール可能です。</p>
 
         <h2>お使いのブラウザの対応状況</h2>
-        <p>お使いのブラウザは
-          <strong>{supportServiceWorker ? '対応しています' : '対応していません'}</strong>
-        </p>
+        <p>{supportServiceWorker ? '○ 対応しています' : '× 非対応です'}</p>
 
         {supportServiceWorker && (
           <div>

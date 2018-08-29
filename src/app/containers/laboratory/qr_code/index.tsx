@@ -62,6 +62,10 @@ class QrCodeContainer extends AbstractContainer<Props, State> {
             {qrText}
           </TextArea>
         </div>
+
+        <h2>このページについて</h2>
+        <p>QRコードをただ生成するだけのページです。サービスワーカーと組み合わせることでオフラインアプリ的に使えるかな、と思って作成してみました。</p>
+        <p>いずれは、自分で生成するところまでやってみたい。</p>
       </div>
     );
   }

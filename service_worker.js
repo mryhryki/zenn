@@ -1,11 +1,11 @@
-const CacheName = 'v0.1.0';
+const CacheVersion = 'v1.0.0';
 const UrlsToCache = ['/', '/index.js', '/common.js', '/favicon.ico'];
 
 self.addEventListener('install', (event) => {
   console.log('ServiceWorker installing.');
   event.waitUntil(
     caches
-      .open(CacheName)
+      .open(CacheVersion)
       .then((cache) => {
         console.log('Opened cache');
         return cache.addAll(UrlsToCache);
@@ -20,7 +20,7 @@ self.addEventListener('activate', (event) => {
       .keys()
       .then((keyList) => {
         keyList.forEach((key) => {
-          if (CacheName !== key) {
+          if (CacheVersion !== key) {
             console.log('Cache delete:', key);
             caches.delete(key);
           }
@@ -42,22 +42,26 @@ self.addEventListener('fetch', (event) => {
             resolve(cacheResponse);
             return;
           }
-          // const fetchRequest = event.request.clone();
           fetch(event.request).then((fetchResponse) => {
             resolve(fetchResponse);
-            // if (!fetchResponse ||
-            //     fetchResponse.status !== 200 ||
-            //     fetchResponse.type !== 'basic') {
-            //   resolve(fetchResponse);
-            //   return;
-            // }
-            //
-            // const responseToCache = fetchResponse.clone();
-            // caches.open(CacheName).then((cache) => {
-            //   cache.put(event.request, responseToCache);
-            resolve(fetchResponse);
-            // });
           });
+
+          // const fetchRequest = event.request.clone();
+          // fetch(event.request).then((fetchResponse) => {
+          //   resolve(fetchResponse);
+          //   if (!fetchResponse ||
+          //       fetchResponse.status !== 200 ||
+          //       fetchResponse.type !== 'basic') {
+          //     resolve(fetchResponse);
+          //     return;
+          //   }
+          //
+          //   const responseToCache = fetchResponse.clone();
+          //   caches.open(CacheVersion).then((cache) => {
+          //     cache.put(event.request, responseToCache);
+          //     resolve(fetchResponse);
+          //   });
+          // });
         });
     },
   ));
@@ -77,43 +81,42 @@ self.addEventListener('push', (event) => {
   event.waitUntil(self.registration.showNotification(title, options));
 });
 
-self.addEventListener('sync', (event) => new Promise(() => {
-  if (event != null && typeof event.tag === 'string') {
-    const tag = event.tag;
-    console.log('sync:', tag);
-
-    if (tag.match(/^background-sync:\d+$/)) {
-      const id = parseInt(tag.substr(16), 10);
-      const dbOpenRequest = indexedDB.open('service_worker', 1);
-      dbOpenRequest.onerror = (error) => console.error('Fail open DB:', error);
-
-      dbOpenRequest.onsuccess = (dbOpenEvent) => {
-        const db = dbOpenEvent.target.result;
-        const transaction = db.transaction(['background_sync'], 'readonly');
-        transaction.onerror = (error) => console.error('Failed:', error);
-
-        const getRequest = transaction.objectStore('background_sync').get(id);
-        getRequest.onerror = (error) => console.error('Failed:', error);
-
-        getRequest.onsuccess = (event) => {
-          console.log('Success request:', event);
-          const syncData = event.target.result;
-          const { path, result } = syncData;
-          if (result === '') {
-            fetch(path, { method: 'GET' })
-              .then(response => response.text())
-              .then((text) => {
-                const transaction = db.transaction(['background_sync'], 'readwrite');
-                transaction.onerror = (error) => console.error('Failed:', error);
-
-                syncData.result = text;
-                const putRequest = transaction.objectStore('background_sync').put(syncData);
-                putRequest.onerror = (error) => console.error('Failed:', error);
-                putRequest.onsuccess = () => console.log('Complete sync:', syncData);
-              });
-          }
-        };
-      };
-    }
+self.addEventListener('sync', (event) => {
+  console.log('sync:', event);
+  if (event == null || typeof event.tag !== 'string' || !event.tag.match(/^background-sync:\d+$/)) {
+    return;
   }
-}));
+
+  const id = parseInt(event.tag.substr(16), 10);
+  const dbOpenRequest = indexedDB.open('service_worker', 1);
+  dbOpenRequest.onerror = (error) => console.error('Fail open DB:', error);
+
+  dbOpenRequest.onsuccess = (dbOpenEvent) => {
+    const db = dbOpenEvent.target.result;
+    const transaction = db.transaction(['background_sync'], 'readonly');
+    transaction.onerror = (error) => console.error('Failed:', error);
+
+    const getRequest = transaction.objectStore('background_sync').get(id);
+    getRequest.onerror = (error) => console.error('Failed:', error);
+
+    getRequest.onsuccess = (event) => {
+      const syncData = event.target.result;
+      const { path, result } = syncData;
+      if (result !== '') {
+        return;
+      }
+
+      fetch(path, { method: 'GET' })
+        .then(response => response.text())
+        .then((text) => {
+          const transaction = db.transaction(['background_sync'], 'readwrite');
+          transaction.onerror = (error) => console.error('Failed:', error);
+
+          syncData.result = text;
+          const putRequest = transaction.objectStore('background_sync').put(syncData);
+          putRequest.onerror = (error) => console.error('Failed:', error);
+          putRequest.onsuccess = () => console.log('Complete sync:', syncData);
+        });
+    };
+  };
+});

@@ -8,6 +8,7 @@ import { AboutThisContainer } from './containers/about_this';
 import { AboutAuthorContainer } from './containers/about_author';
 import { LaboratoryContainer } from './containers/laboratory';
 import { QrCodeContainer } from './containers/laboratory/qr_code';
+import { WebRtcContainer } from './containers/laboratory/web_rtc';
 import { ServiceWorkerContainer } from './containers/laboratory/service_worker';
 import { ServiceWorkerCacheContainer } from './containers/laboratory/service_worker/cache';
 import { ServiceWorkerPushNotificationContainer } from './containers/laboratory/service_worker/push_notification';
@@ -76,6 +77,14 @@ const Views: Array<{
     titleEn: 'Background Sync API',
     component: ServiceWorkerBackgroundSyncContainer,
     level: 3,
+  },
+  {
+    key: 'web_rtc',
+    path: '/laboratory/web_rtc',
+    titleJp: 'WebRTC',
+    titleEn: 'WebRTC',
+    component: WebRtcContainer,
+    level: 2,
   },
   {
     key: 'qr_code',

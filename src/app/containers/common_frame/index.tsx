@@ -90,6 +90,7 @@ class CommonFrame extends React.Component<Props, State> {
         </div>
         {showMenu ?
          (
+
            <div id="common-frame-menu">
              <button
                className="common-frame-header-menu-button"

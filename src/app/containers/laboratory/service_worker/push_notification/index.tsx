@@ -71,9 +71,7 @@ class ServiceWorkerPushNotificationContainer extends AbstractContainer<Props, St
         <p>サービスワーカーで提供されている API の一つで、名前の通り、ブラウザにプッシュ通知が行える機能になります。</p>
 
         <h2>お使いのブラウザの対応状況</h2>
-        <p>お使いのブラウザは
-          <strong>{supportPushNotification ? '対応しています' : '対応していません'}</strong>
-        </p>
+        <p>{supportPushNotification ? '○ 対応しています' : '× 非対応です'}</p>
 
         {supportPushNotification && (
           <div>
