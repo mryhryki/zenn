@@ -3,7 +3,7 @@ import {
   HashRouter as Router,
   Route,
 } from 'react-router-dom';
-import { CommonFrame } from './containers/common_frame/common_frame';
+import { CommonFrame } from './containers/common_frame';
 import { AboutThisContainer } from './containers/about_this';
 import { AboutAuthorContainer } from './containers/about_author';
 import { LaboratoryContainer } from './containers/laboratory';
