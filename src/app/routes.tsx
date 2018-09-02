@@ -3,16 +3,17 @@ import {
   HashRouter as Router,
   Route,
 } from 'react-router-dom';
-import { CommonFrame } from './containers/common_frame';
-import { AboutThisContainer } from './containers/about_this';
-import { AboutAuthorContainer } from './containers/about_author';
-import { LaboratoryContainer } from './containers/laboratory';
-import { QrCodeContainer } from './containers/laboratory/qr_code';
-import { WebRtcContainer } from './containers/laboratory/web_rtc';
-import { ServiceWorkerContainer } from './containers/laboratory/service_worker';
-import { ServiceWorkerCacheContainer } from './containers/laboratory/service_worker/cache';
-import { ServiceWorkerPushNotificationContainer } from './containers/laboratory/service_worker/push_notification';
-import { ServiceWorkerBackgroundSyncContainer } from './containers/laboratory/service_worker/background_sync';
+import {CommonFrame} from './containers/common_frame';
+import {AboutThisContainer} from './containers/about_this';
+import {AboutAuthorContainer} from './containers/about_author';
+import {LaboratoryContainer} from './containers/laboratory';
+import {QrCodeContainer} from './containers/laboratory/qr_code';
+import {WebRtcContainer} from './containers/laboratory/web_rtc';
+import {SkyWayContainer} from './containers/laboratory/web_rtc/skyway';
+import {ServiceWorkerContainer} from './containers/laboratory/service_worker';
+import {ServiceWorkerCacheContainer} from './containers/laboratory/service_worker/cache';
+import {ServiceWorkerPushNotificationContainer} from './containers/laboratory/service_worker/push_notification';
+import {ServiceWorkerBackgroundSyncContainer} from './containers/laboratory/service_worker/background_sync';
 
 const Views: Array<{
   key: string,
@@ -85,6 +86,14 @@ const Views: Array<{
     titleEn: 'WebRTC',
     component: WebRtcContainer,
     level: 2,
+  },
+  {
+    key: 'skyway',
+    path: '/laboratory/skyway',
+    titleJp: 'SkyWayを使ったサンプル',
+    titleEn: 'SkyWay',
+    component: SkyWayContainer,
+    level: 3,
   },
   {
     key: 'qr_code',

@@ -35,6 +35,7 @@
     "react-hot-loader": "^4.3.3",
     "react-router-dom": "^4.3.1",
     "sass-loader": "^7.0.3",
+    "skyway-js": "^1.1.16",
     "style-loader": "^0.22.1",
     "stylelint": "^9.3.0",
     "ts-jest": "^23.0.0",
