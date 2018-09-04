@@ -5,6 +5,8 @@
   border: 0 solid $gray;
   box-sizing: border-box;
   color: $black;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-feature-settings : "palt";
   font-size: 16px;
   font-weight: normal;
   line-height: 1.5;
@@ -65,7 +67,7 @@ a {
 strong {
   background-color: $silver;
   display: inline-block;
-  font-weight: 800;
+  font-weight: 600;
   margin: 1px 4px;
   padding: 1px 4px;
 }
