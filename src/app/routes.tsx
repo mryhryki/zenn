@@ -4,8 +4,7 @@ import {
   Route,
 } from 'react-router-dom';
 import { CommonFrame } from './containers/common_frame';
-import { AboutThisContainer } from './containers/about_this';
-import { AboutAuthorContainer } from './containers/about_author';
+import { HomeContainer } from './containers/home';
 import { LaboratoryContainer } from './containers/laboratory';
 import { WebRtcContainer } from './containers/laboratory/web_rtc';
 // import {SkyWayContainer} from './containers/laboratory/web_rtc/skyway';
@@ -25,19 +24,11 @@ const Views: Array<{
   level: number
 }> = [
   {
-    key: 'about_this',
+    key: 'home',
     path: '/',
-    titleJp: 'このサイトについて',
-    titleEn: 'About this',
-    component: AboutThisContainer,
-    level: 1,
-  },
-  {
-    key: 'about_author',
-    path: '/author',
-    titleJp: '運営者について',
-    titleEn: 'About author',
-    component: AboutAuthorContainer,
+    titleJp: 'ホーム',
+    titleEn: 'Home',
+    component: HomeContainer,
     level: 1,
   },
   {

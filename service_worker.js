@@ -1,4 +1,4 @@
-const CacheVersion = 'v1.0.0';
+const CacheVersion = 'v1.0.1';
 const UrlsToCache = ['/', '/index.js', '/common.js', '/favicon.ico'];
 
 self.addEventListener('install', (event) => {
