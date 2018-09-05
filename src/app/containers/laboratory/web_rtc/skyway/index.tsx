@@ -36,8 +36,7 @@ class Skyway {
     }
   }
 
-
-  connect(props) {
+  connect(props: any) {
     const {
       audioOnly,
       room: roomName,

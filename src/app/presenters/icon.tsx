@@ -3,12 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faBars,
-  faTimes,
   faEnvelope,
+  faTimes,
 } from '@fortawesome/free-solid-svg-icons';
-import {
-  fab,
-} from '@fortawesome/free-brands-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 
 library.add(faTimes);
 const CloseIcon = () => (<FontAwesomeIcon icon="times" />);

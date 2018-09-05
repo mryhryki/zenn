@@ -46,26 +46,21 @@ class QrCodeContainer extends AbstractContainer<Props, State> {
     return (
       <div id="qr-code-container">
         <h1>QR Code</h1>
-        <div className="frame">
-          {qrImage !== '' && (
-            <div id="qr-code-image-wrapper">
-              <img
-                src={qrImage}
-                alt="QR Code"
-              />
-            </div>
-          )}
-          <TextArea
-            label="QRコードに変換する文字列"
-            onChange={this.onChangeText}
-          >
+        {qrImage !== '' && (
+          <div id="qr-code-image-wrapper">
+            <img
+              id="qr-code-image"
+              src={qrImage}
+              alt="QR Code"
+            />
+          </div>
+        )}
+        <TextArea
+          label="QRコードに変換する文字列"
+          onChange={this.onChangeText}
+        >
             {qrText}
           </TextArea>
-        </div>
-
-        <h2>このページについて</h2>
-        <p>QRコードをただ生成するだけのページです。サービスワーカーと組み合わせることでオフラインアプリ的に使えるかな、と思って作成してみました。</p>
-        <p>いずれは、自分で生成するところまでやってみたい。</p>
       </div>
     );
   }

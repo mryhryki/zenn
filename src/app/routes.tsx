@@ -3,17 +3,18 @@ import {
   HashRouter as Router,
   Route,
 } from 'react-router-dom';
-import {CommonFrame} from './containers/common_frame';
-import {AboutThisContainer} from './containers/about_this';
-import {AboutAuthorContainer} from './containers/about_author';
-import {LaboratoryContainer} from './containers/laboratory';
-import {QrCodeContainer} from './containers/laboratory/qr_code';
-import {WebRtcContainer} from './containers/laboratory/web_rtc';
+import { CommonFrame } from './containers/common_frame';
+import { AboutThisContainer } from './containers/about_this';
+import { AboutAuthorContainer } from './containers/about_author';
+import { LaboratoryContainer } from './containers/laboratory';
+import { WebRtcContainer } from './containers/laboratory/web_rtc';
 // import {SkyWayContainer} from './containers/laboratory/web_rtc/skyway';
-import {ServiceWorkerContainer} from './containers/laboratory/service_worker';
-import {ServiceWorkerCacheContainer} from './containers/laboratory/service_worker/cache';
-import {ServiceWorkerPushNotificationContainer} from './containers/laboratory/service_worker/push_notification';
-import {ServiceWorkerBackgroundSyncContainer} from './containers/laboratory/service_worker/background_sync';
+import { ServiceWorkerContainer } from './containers/laboratory/service_worker';
+import { ServiceWorkerCacheContainer } from './containers/laboratory/service_worker/cache';
+import { ServiceWorkerPushNotificationContainer } from './containers/laboratory/service_worker/push_notification';
+import { ServiceWorkerBackgroundSyncContainer } from './containers/laboratory/service_worker/background_sync';
+import { UtilityContainer } from './containers/utility';
+import { QrCodeContainer } from './containers/utility/qr_code';
 
 const Views: Array<{
   key: string,
@@ -96,8 +97,16 @@ const Views: Array<{
   //   level: 3,
   // },
   {
+    key: 'utility',
+    path: '/utility',
+    titleJp: 'ユーティリティ',
+    titleEn: 'Utility',
+    component: UtilityContainer,
+    level: 1,
+  },
+  {
     key: 'qr_code',
-    path: '/laboratory/qr_code',
+    path: '/utility/qr_code',
     titleJp: 'QRコード',
     titleEn: 'QR Code',
     component: QrCodeContainer,
