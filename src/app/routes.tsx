@@ -9,7 +9,7 @@ import {AboutAuthorContainer} from './containers/about_author';
 import {LaboratoryContainer} from './containers/laboratory';
 import {QrCodeContainer} from './containers/laboratory/qr_code';
 import {WebRtcContainer} from './containers/laboratory/web_rtc';
-import {SkyWayContainer} from './containers/laboratory/web_rtc/skyway';
+// import {SkyWayContainer} from './containers/laboratory/web_rtc/skyway';
 import {ServiceWorkerContainer} from './containers/laboratory/service_worker';
 import {ServiceWorkerCacheContainer} from './containers/laboratory/service_worker/cache';
 import {ServiceWorkerPushNotificationContainer} from './containers/laboratory/service_worker/push_notification';
@@ -87,14 +87,14 @@ const Views: Array<{
     component: WebRtcContainer,
     level: 2,
   },
-  {
-    key: 'skyway',
-    path: '/laboratory/skyway',
-    titleJp: 'SkyWayを使ったサンプル',
-    titleEn: 'SkyWay',
-    component: SkyWayContainer,
-    level: 3,
-  },
+  // {
+  //   key: 'skyway',
+  //   path: '/laboratory/skyway',
+  //   titleJp: 'SkyWayを使ったサンプル',
+  //   titleEn: 'SkyWay',
+  //   component: SkyWayContainer,
+  //   level: 3,
+  // },
   {
     key: 'qr_code',
     path: '/laboratory/qr_code',
