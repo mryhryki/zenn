@@ -1,12 +1,3 @@
-#title: "hyiromori"
-#description: >-
-#  Portfolio
-#email: "hyiromori@gmail.com"
-#lang: ja-JP
-#markdown: kramdown
-#theme: jekyll-theme-cayman
-#timezone: Asia/Tokyo
-#envoding: utf-8
 exclude:
 - src
 - .gitignore
@@ -14,3 +5,4 @@ exclude:
 - Gemfile
 - Gemfile.log
 - README.md
+- build.sh
