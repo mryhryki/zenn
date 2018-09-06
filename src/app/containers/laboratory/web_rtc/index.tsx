@@ -12,7 +12,7 @@ class WebRtcContainer extends AbstractContainer<Props, State> {
       <div id="web-rtc-container">
         <h1>WebRTC</h1>
         <h2>WebRTCとは？</h2>
-        <p><strong>RTC = Real Time Communication</strong>の略</p>
+        <p><strong>作成中</strong></p>
       </div>
     );
   }

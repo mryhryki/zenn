@@ -13,7 +13,7 @@ class UtilityContainer extends AbstractContainer<Props, State> {
     return (
       <div id="utility-container">
         <h1>ユーティリティ</h1>
-        <p>個人的に作った、あると便利なツールを置いたページです。</p>
+        <p>個人的にあると便利なツールを置いたページです。</p>
         <h2>ユーティリティ一覧</h2>
         <ul>
           <li><Link to={QrCodePath}>QR Code</Link></li>

@@ -88,27 +88,25 @@ class CommonFrame extends React.Component<Props, State> {
             {children}
           </div>
         </div>
-        {showMenu ?
-         (
-
-           <div id="common-frame-menu">
-             <button
-               className="common-frame-header-menu-button"
-               onClick={() => this.setState({ showMenu: false })}
-             >
-               <CloseIcon />
-               <span>Close</span>
-             </button>
-             {menuList.map((menu: Menu) => (
-               <div
-                 key={menu.path}
-                 className="menu-item"
-               >
-                 {this.renderMenuItem(menu, currentPath === menu.path)}
-               </div>
-             ))}
-           </div>
-         ) : (
+        {showMenu ? (
+          <div id="common-frame-menu">
+            <button
+              className="common-frame-header-menu-button"
+              onClick={() => this.setState({ showMenu: false })}
+            >
+              <CloseIcon />
+              <span>Close</span>
+            </button>
+            {menuList.map((menu: Menu) => (
+              <div
+                key={menu.path}
+                className="menu-item"
+              >
+                {this.renderMenuItem(menu, currentPath === menu.path)}
+              </div>
+            ))}
+          </div>
+        ) : (
            <button
              className="common-frame-header-menu-button"
              onClick={() => this.setState({ showMenu: true })}
@@ -118,7 +116,6 @@ class CommonFrame extends React.Component<Props, State> {
            </button>
          )
         }
-
         <div id="common-frame-footer">
           <div className="left-content">
             <a href="mailto:hyiromori@gmail.com">

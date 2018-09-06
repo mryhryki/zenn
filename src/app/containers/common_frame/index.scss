@@ -24,8 +24,9 @@
 
   #common-frame-menu {
     background-color: $white;
-    border-left: 1px solid $gray;
+    border-left: 1px solid $gray-light;
     bottom: 32px;
+    box-shadow: -8px 0 8px 0 rgba($white, 0.95);
     max-width: 320px;
     opacity: 0.95;
     overflow-y: scroll;
@@ -143,7 +144,7 @@
         display: inline-block;
         font-size: 22px;
         height: 32px;
-        line-height: 32px;
+        line-height: 30px;
         margin: 8px 8px 8px 0;
         text-align: center;
         width: 32px;

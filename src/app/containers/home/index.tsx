@@ -16,24 +16,31 @@ const skill = (name: string, stars: (1 | 2 | 3), comment: string) => (
 );
 
 class HomeContainer extends AbstractContainer<Props, State> {
-
   render() {
     return (
       <div>
         <h1>Portfolio</h1>
 
         <h2>自己紹介</h2>
-        <p><strong>hyiromori</strong> という名前で活動している、フルスタックエンジニアです。</p>
+        <p><strong>hyiromori</strong>という名前で活動している、フルスタックエンジニアです。</p>
+        <p>
+          <a
+            href="https://qiita.com/hyiromori"
+            target="_blank"
+          >
+            Qiita
+          </a> にも少しだけ記事を投稿しています。
+        </p>
 
         <h2>スキル</h2>
-        <p>主だったものだけ。勉強がてらちょこっと触ったようなものは、見づらくなるので除外しています。</p>
-        <p>フロントエンド周りが強い＆好きな分野です。</p>
+        <p>主だったものだけ。勉強でちょっと触ったようなものは、見づらくなるので除外しています。</p>
+        <p>フロントエンドが得意＆好きな分野です。</p>
 
-        <h4>判例</h4>
+        <h3>判例</h3>
         <ul>
-          <li>{skill('バッチリ使える！：', 3, '')}</li>
-          <li>{skill('まあまあ使える　：', 2, '')}</li>
-          <li>{skill('とりあえず使える：', 1, '')}</li>
+          <li>{skill('バッチリ使える! :', 3, '')}</li>
+          <li>{skill('まあまあ使える :', 2, '')}</li>
+          <li>{skill('とりあえず使える :', 1, '')}</li>
         </ul>
 
         <h3>プログラミング言語</h3>
@@ -78,8 +85,14 @@ class HomeContainer extends AbstractContainer<Props, State> {
         </ul>
 
         <h2>このサイトのソース</h2>
-        <p><a href="https://github.com/hyiromori/hyiromori.github.io">GitHub</a> にあります。</p>
-        <p>技術的な特徴としては、以下のとおりです。</p>
+        <p>
+          <a
+            href="https://github.com/hyiromori/hyiromori.github.io"
+            target="_blank"
+          >
+            GitHub
+          </a>
+          にあります。以下の技術的な特徴があります。</p>
         <ul>
           <li><strong>SPA</strong>で作られているので、読み込み完了後はページ遷移が早いです。</li>
           <li>
@@ -87,28 +100,19 @@ class HomeContainer extends AbstractContainer<Props, State> {
             を使用しており、必要なリソースをキャッシュしているので、対応しているブラウザの場合はオフラインでも閲覧できます。
           </li>
           <li>
-            自分の技術力向上のために
-            <strong>TypeScript</strong>
-            <strong>React</strong>
-            <strong>Webpack</strong>
-            などのベースとなるもの以外は、ライブラリやフレームワークなどほぼ使用していません。
+            技術力向上のために、ライブラリはほぼ使用していません。
+          </li>
+          <li>
+            同じく、技術力向上のために、CSS フレームワークも使用していません。
+            このサイトは自力でレスポンシブ対応しています。
           </li>
         </ul>
 
-        <h2>動作確認について</h2>
+        <h3>動作確認について</h3>
         <p>以下の環境で動作確認を行っています。</p>
         <ul>
           <li>Mac OS X + Chrome 最新版</li>
           <li>iPhone SE + Safari 最新版</li>
-        </ul>
-        <p>もし不具合などありましたら、左下のメール、または Twitter でご報告いただけるとありがたいです。</p>
-
-        <h2>ブログとかSNSとか</h2>
-        <p>フッターの左にもリンクがあります。</p>
-        <ul>
-          <li><a href="https://qiita.com/hyiromori">Qiita</a></li>
-          <li><a href="https://twitter.com/hyiromori">Twitter</a></li>
-          <li><a href="https://github.com/hyiromori">GitHub</a></li>
         </ul>
       </div>
     );
