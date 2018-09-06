@@ -2,14 +2,17 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { AbstractContainer } from '../abstract_container';
 import { ServiceWorkerPath } from '../../routes';
-import { HomeImage } from './image';
+import { InitialScreen } from './initial_screen';
+import { Storage } from '../../common/storage';
 import './style.scss';
 
 interface Props {}
 
 interface State {
-  showHomeImage: boolean,
+  showInitialScreen: boolean,
 }
+
+const SHOWED_INITIAL_SCREEN_KEY = 'home.showed_initial_screen';
 
 const skill = (name: string, stars: (1 | 2 | 3), comment: string) => (
   <span>
@@ -20,25 +23,25 @@ const skill = (name: string, stars: (1 | 2 | 3), comment: string) => (
 
 class HomeContainer extends AbstractContainer<Props, State> {
   state: State = {
-    showHomeImage: true,
+    showInitialScreen: (Storage.get(SHOWED_INITIAL_SCREEN_KEY) !== 'true'),
   };
 
-  hideHomeImage = (): void => {
-    this.setState({ showHomeImage: false });
+  hideInitialScreen = (): void => {
+    Storage.set(SHOWED_INITIAL_SCREEN_KEY, 'true');
+    this.setState({ showInitialScreen: false });
   };
 
   render() {
-    const { showHomeImage } = this.state;
-    if (showHomeImage) {
-      return (
-        <div id="home-container">
-          <HomeImage onAnimationFinish={this.hideHomeImage} />
-        </div>
-      );
-    }
+    const { showInitialScreen } = this.state;
 
     return (
       <div id="home-container">
+        {showInitialScreen && (
+          <InitialScreen onAnimationFinish={this.hideInitialScreen} />
+        )}
+
+        <h1>Portfolio <span id="by-name">by hyiromori</span></h1>
+
         <h2>自己紹介</h2>
         <p><strong>hyiromori</strong>という名前で活動している、フルスタックエンジニアです。</p>
         <p>

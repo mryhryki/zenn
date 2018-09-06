@@ -1,8 +1,14 @@
 exclude:
-- src
 - .gitignore
-- .tool-versions
+- .node-version
+- .ruby-version
 - Gemfile
-- Gemfile.log
+- Gemfile.lock
 - README.md
+- app
+- node_modules
 - build.sh
+- package-lock.json
+- package.json
+- tsconfig.json
+- webpack.config.js

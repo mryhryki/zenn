@@ -1,0 +1,55 @@
+@import '../../common/colors';
+
+#home-container {
+  #by-name {
+    font-size: 12px;
+    font-weight: 300;
+  }
+
+  #home-image-wrapper {
+    background-color: $orange;
+    bottom: 0;
+    color: $white;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1;
+
+    #home-image {
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+
+      #title {
+        border-bottom: 1px solid $white;
+        color: $white;
+        display: inline-block;
+        font-size: 48px;
+        height: 64px;
+        line-height: 64px;
+        min-width: 1px;
+        padding-right: 2px;
+        text-align: center;
+      }
+
+      #by {
+        color: $white;
+        display: inline-block;
+        font-size: 18px;
+        height: 28px;
+        line-height: 28px;
+        margin-top: 8px;
+        min-width: 1px;
+        padding-right: 2px;
+        text-align: center;
+      }
+
+      .cursor {
+        border-right: 8px solid $gray-light;
+      }
+    }
+  }
+}
