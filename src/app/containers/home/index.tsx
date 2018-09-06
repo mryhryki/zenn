@@ -7,7 +7,9 @@ import './style.scss';
 
 interface Props {}
 
-interface State {}
+interface State {
+  showHomeImage: boolean,
+}
 
 const skill = (name: string, stars: (1 | 2 | 3), comment: string) => (
   <span>
@@ -17,11 +19,26 @@ const skill = (name: string, stars: (1 | 2 | 3), comment: string) => (
 );
 
 class HomeContainer extends AbstractContainer<Props, State> {
+  state: State = {
+    showHomeImage: true,
+  };
+
+  hideHomeImage = (): void => {
+    this.setState({ showHomeImage: false });
+  };
+
   render() {
+    const { showHomeImage } = this.state;
+    if (showHomeImage) {
+      return (
+        <div id="home-container">
+          <HomeImage onAnimationFinish={this.hideHomeImage} />
+        </div>
+      );
+    }
+
     return (
       <div id="home-container">
-        <HomeImage />
-
         <h2>自己紹介</h2>
         <p><strong>hyiromori</strong>という名前で活動している、フルスタックエンジニアです。</p>
         <p>

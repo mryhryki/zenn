@@ -3,7 +3,9 @@ import * as React from 'react';
 const TITLE = 'Portfolio';
 const BY = 'by hyiromori';
 
-type Props = {};
+type Props = {
+  onAnimationFinish: () => void,
+};
 type State = {
   title: string,
   by: string,
@@ -16,6 +18,7 @@ class HomeImage extends React.Component<Props, State> {
   };
 
   componentDidMount(): void {
+    const { onAnimationFinish } = this.props;
     let title: string = '';
     let by: string = '';
     const intervalId = setInterval(() => {
@@ -27,6 +30,7 @@ class HomeImage extends React.Component<Props, State> {
       this.setState({ title, by });
       if (title === TITLE && by === BY) {
         clearInterval(intervalId);
+        setTimeout(onAnimationFinish, 3000);
       }
     }, 100);
   }
@@ -35,9 +39,11 @@ class HomeImage extends React.Component<Props, State> {
     const { title, by } = this.state;
 
     return (
-      <div id="home-image">
-        <p>{title}</p>
-        <p>{by}</p>
+      <div id="home-image-wrapper">
+        <div id="home-image">
+          <h1>{title}</h1>
+          <h2>{by}</h2>
+        </div>
       </div>
     );
   }
