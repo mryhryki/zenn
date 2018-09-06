@@ -10,12 +10,12 @@
   .common-frame-header-menu-button {
     background-color: $white;
     border-radius: 4px;
-    box-shadow: -8px 8px 8px 0 $white;
-    height: 28px;
-    padding: 8px 12px 0 0;
+    box-shadow: 0 0 8px 8px $white;
+    height: 24px;
     position: absolute;
-    right: 0;
-    top: 0;
+    padding: 0 4px;
+    right: 8px;
+    top: 8px;
 
     span {
       margin-left: 4px;

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { AbstractContainer } from '../abstract_container';
 import { ServiceWorkerPath } from '../../routes';
+import { HomeImage } from './image';
 import './style.scss';
 
 interface Props {}
@@ -18,8 +19,8 @@ const skill = (name: string, stars: (1 | 2 | 3), comment: string) => (
 class HomeContainer extends AbstractContainer<Props, State> {
   render() {
     return (
-      <div>
-        <h1>Portfolio</h1>
+      <div id="home-container">
+        <HomeImage />
 
         <h2>自己紹介</h2>
         <p><strong>hyiromori</strong>という名前で活動している、フルスタックエンジニアです。</p>
