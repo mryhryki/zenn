@@ -1,54 +1,78 @@
 @import '../../common/colors';
 
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 #home-container {
   #by-name {
     font-size: 12px;
     font-weight: 300;
   }
 
-  #home-image-wrapper {
-    background-color: $orange;
+  #skill-example {
+    opacity: 0.5;
+  }
+
+  #initial-screen-wrapper {
+    background: linear-gradient($orange, $orange, $white);
     bottom: 0;
-    color: $white;
     left: 0;
     position: fixed;
     right: 0;
     top: 0;
     z-index: 1;
 
-    #home-image {
+    &.hide {
+      animation: fade-out 1s linear 0s 1;
+      opacity: 0;
+    }
+
+    #initial-screen {
       left: 50%;
       position: absolute;
       top: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
 
-      #title {
+      #initial-screen-title {
         border-bottom: 1px solid $white;
         color: $white;
         display: inline-block;
-        font-size: 48px;
-        height: 64px;
-        line-height: 64px;
-        min-width: 1px;
-        padding-right: 2px;
+        font-size: 64px;
+        height: 80px;
+        line-height: 80px;
+        padding: 0 4px;
         text-align: center;
+
+        &.no-text {
+          border-bottom: none;
+          padding: 0;
+        }
       }
 
-      #by {
+      #initial-screen-by-name {
         color: $white;
         display: inline-block;
-        font-size: 18px;
-        height: 28px;
-        line-height: 28px;
-        margin-top: 8px;
-        min-width: 1px;
-        padding-right: 2px;
+        font-size: 28px;
+        height: 44px;
+        margin-top: 4px;
+        padding: 0 4px;
         text-align: center;
+
+        &.no-text {
+          padding: 0;
+        }
       }
 
-      .cursor {
-        border-right: 8px solid $gray-light;
+      .initial-screen-cursor {
+        border-right: 8px solid $gray;
+        border-left: 8px solid $transparent;
       }
     }
   }

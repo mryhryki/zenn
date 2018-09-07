@@ -3,9 +3,9 @@ import * as QrCode from 'qrcode';
 import { AbstractContainer } from '../../abstract_container';
 import './style.scss';
 import { TextArea } from '../../../presenters/text_area';
-import { Storage } from '../../../common/storage';
+import { LocalStorage } from '../../../common/storage';
 
-const StorageKey: string = 'qr_code/qrText';
+const LocalStorageKey: string = 'qr_code/qrText';
 
 interface Props {}
 
@@ -21,12 +21,12 @@ class QrCodeContainer extends AbstractContainer<Props, State> {
   };
 
   componentDidMount(): void {
-    const qrText: string = Storage.get(StorageKey) || window.location.href;
+    const qrText: string = LocalStorage.get(LocalStorageKey) || window.location.href;
     this.onChangeText(qrText);
   }
 
   onChangeText = (qrText: string): void => {
-    Storage.set(StorageKey, qrText);
+    LocalStorage.set(LocalStorageKey, qrText);
     this.setState({ qrText });
     if (qrText !== '') {
       QrCode

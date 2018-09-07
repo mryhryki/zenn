@@ -49,7 +49,7 @@
   },
   "scripts": {
     "build": "NODE_ENV=production ./node_modules/.bin/webpack",
-    "serve": "NODE_ENV=development ./node_modules/.bin/webpack-serve --port 4000 --content ../",
+    "serve": "NODE_ENV=development ./node_modules/.bin/webpack-serve --port 4000 --content ./",
     "watch": "./node_modules/.bin/nodemon --watch ./app/ --ext js,jsx,ts,tsx,scss --exec \"npm run build\""
   }
 }

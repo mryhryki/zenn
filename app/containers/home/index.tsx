@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AbstractContainer } from '../abstract_container';
 import { ServiceWorkerPath } from '../../routes';
 import { InitialScreen } from './initial_screen';
-import { Storage } from '../../common/storage';
+import { SessionStorage } from '../../common/storage';
 import './style.scss';
 
 interface Props {}
@@ -23,11 +23,11 @@ const skill = (name: string, stars: (1 | 2 | 3), comment: string) => (
 
 class HomeContainer extends AbstractContainer<Props, State> {
   state: State = {
-    showInitialScreen: (Storage.get(SHOWED_INITIAL_SCREEN_KEY) !== 'true'),
+    showInitialScreen: (SessionStorage.get(SHOWED_INITIAL_SCREEN_KEY) !== 'true'),
   };
 
   hideInitialScreen = (): void => {
-    Storage.set(SHOWED_INITIAL_SCREEN_KEY, 'true');
+    SessionStorage.set(SHOWED_INITIAL_SCREEN_KEY, 'true');
     this.setState({ showInitialScreen: false });
   };
 
@@ -57,12 +57,14 @@ class HomeContainer extends AbstractContainer<Props, State> {
         <p>主だったものだけ。勉強でちょっと触ったようなものは、見づらくなるので除外しています。</p>
         <p>フロントエンドが得意＆好きな分野です。</p>
 
-        <h3>判例</h3>
-        <ul>
-          <li>{skill('バッチリ使える! :', 3, '')}</li>
-          <li>{skill('まあまあ使える :', 2, '')}</li>
-          <li>{skill('とりあえず使える :', 1, '')}</li>
-        </ul>
+        <div id="skill-example">
+          <h3>記載例</h3>
+          <ul>
+            <li>{skill('バッチリ使える! :', 3, '')}</li>
+            <li>{skill('まあまあ使える :', 2, '')}</li>
+            <li>{skill('とりあえず使える :', 1, '')}</li>
+          </ul>
+        </div>
 
         <h3>プログラミング言語</h3>
         <ul>

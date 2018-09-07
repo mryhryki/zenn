@@ -54,7 +54,7 @@ module.exports = (/* args, env */) => {
     ],
     output: {
       filename: '[name].js',
-      path: path.resolve(__dirname, '..'),
+      path: path.resolve(__dirname),
     },
     optimization: {
       splitChunks: {

@@ -2,7 +2,7 @@ import * as React from 'react';
 // import Peer from 'skyway-js';
 import { AbstractContainer } from '../../../abstract_container';
 import { TextInput } from '../../../../presenters/text_input';
-import { Storage } from '../../../../common/storage';
+import { LocalStorage } from '../../../../common/storage';
 import './style.scss';
 
 // const SkyWayApiKey: string = '45ab99db-396c-403b-b90d-a97933da6404';
@@ -89,12 +89,12 @@ interface State {
 class SkyWayContainer extends AbstractContainer<Props, State> {
   state: State = {
     localStream: null,
-    room: Storage.get(StorageKey),
+    room: LocalStorage.get(StorageKey),
     streams: [],
   };
 
   onChangeRoom = (room: string): void => {
-    Storage.set(StorageKey, room);
+    LocalStorage.set(StorageKey, room);
     this.setState({ room });
   };
 
