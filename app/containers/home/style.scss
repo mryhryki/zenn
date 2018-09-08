@@ -10,13 +10,26 @@
 }
 
 #home-container {
-  #by-name {
-    font-size: 12px;
-    font-weight: 300;
+  #header {
+    text-align: center;
+
+    #title {
+      border-bottom: 1px solid $gray;
+      display: inline-block;
+      font-size: 48px;
+      line-height: 64px;
+      padding: 0 8px;
+    }
+
+    #by-name {
+      font-size: 14px;
+      font-weight: 200;
+      margin-top: 4px;
+    }
   }
 
   #skill-example {
-    opacity: 0.5;
+    opacity: 0.3;
   }
 
   #initial-screen-wrapper {
@@ -34,11 +47,12 @@
     }
 
     #initial-screen {
-      left: 50%;
+      left: 0;
       position: absolute;
-      top: 50%;
-      transform: translate(-50%, -50%);
+      right: 0;
       text-align: center;
+      top: 50%;
+      transform: translate(0, -50%);
 
       #initial-screen-title {
         border-bottom: 1px solid $white;
@@ -46,33 +60,44 @@
         display: inline-block;
         font-size: 64px;
         height: 80px;
+        margin: 0 4px;
         line-height: 80px;
-        padding: 0 4px;
         text-align: center;
+        vertical-align: bottom;
+      }
 
-        &.no-text {
-          border-bottom: none;
-          padding: 0;
+      #initial-screen-title-cursor {
+        background-color: $transparent;
+        display: inline-block;
+        height: 80px;
+        width: 8px;
+        vertical-align: bottom;
+
+        &.show {
+          background-color: $gray;
         }
       }
 
       #initial-screen-by-name {
         color: $white;
         display: inline-block;
+        margin: 4px 4px 0 4px;
         font-size: 28px;
         height: 44px;
-        margin-top: 4px;
-        padding: 0 4px;
         text-align: center;
-
-        &.no-text {
-          padding: 0;
-        }
+        vertical-align: bottom;
       }
 
-      .initial-screen-cursor {
-        border-right: 8px solid $gray;
-        border-left: 8px solid $transparent;
+      #initial-screen-by-name-cursor {
+        background-color: $transparent;
+        display: inline-block;
+        height: 44px;
+        width: 8px;
+        vertical-align: bottom;
+
+        &.show {
+          background-color: $gray;
+        }
       }
     }
   }

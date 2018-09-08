@@ -40,7 +40,11 @@ class HomeContainer extends AbstractContainer<Props, State> {
           <InitialScreen onAnimationFinish={this.hideInitialScreen} />
         )}
 
-        <h1>Portfolio <span id="by-name">by hyiromori</span></h1>
+        <div id="header">
+          <span id="title">Portfolio</span>
+          <br />
+          <span id="by-name">by hyiromori</span>
+        </div>
 
         <h2>自己紹介</h2>
         <p><strong>hyiromori</strong>という名前で活動している、フルスタックエンジニアです。</p>

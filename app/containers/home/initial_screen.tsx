@@ -64,24 +64,34 @@ const ANIMATION_TIME_LINE: { [FrameKey: string]: AnimationDefinition } = {
 };
 
 class InitialScreen extends React.Component<Props, State> {
+  intervalId: (NodeJS.Timer | null);
   state: State = INITIAL_STATE;
 
   componentDidMount(): void {
-    const { onAnimationFinish } = this.props;
     let count: number = 0;
-
-    const intervalId = setInterval(() => {
+    this.intervalId = setInterval(() => {
       const animation: AnimationDefinition = ANIMATION_TIME_LINE[`Frame${count}`];
       if (animation === 'finish') {
-        clearInterval(intervalId);
-        this.setState((prev) => ({ ...prev, fadeOut: true }));
-        setTimeout(onAnimationFinish, 1000);
+        this.onClose();
       } else if (animation != null) {
         this.setState(animation);
       }
       count += 1;
     }, 100);
   }
+
+  onClose = (): void => {
+    const { onAnimationFinish } = this.props;
+    const { fadeOut } = this.state;
+
+    if (this.intervalId != null) {
+      clearInterval(this.intervalId);
+    }
+    if (!fadeOut) {
+      this.setState((prev) => ({ ...prev, fadeOut: true }));
+      setTimeout(onAnimationFinish, 1000);
+    }
+  };
 
   render() {
     const {
@@ -96,26 +106,29 @@ class InitialScreen extends React.Component<Props, State> {
       <div
         id="initial-screen-wrapper"
         className={fadeOut ? 'hide' : ''}
+        onClick={this.onClose}
       >
         <div id="initial-screen">
-          <div
-            id="initial-screen-title"
-            className={[
-              showTitleCursor ? 'initial-screen-cursor' : '',
-              title === '' ? 'no-text' : '',
-            ].join(' ')}
-          >
-            {title}
+          <div>
+            <div
+              id="initial-screen-title"
+              className={title === '' ? 'show' : ''}
+            >
+              {title}
+            </div>
+            <div
+              id="initial-screen-title-cursor"
+              className={showTitleCursor ? 'show' : ''}
+            />
           </div>
-          <br />
-          <div
-            id="initial-screen-by-name"
-            className={[
-              showByCursor ? 'initial-screen-cursor' : '',
-              by === '' ? 'no-text' : '',
-            ].join(' ')}
-          >
-            {by}
+          <div>
+            <div id="initial-screen-by-name">
+              {by}
+            </div>
+            <div
+              id="initial-screen-by-name-cursor"
+              className={showByCursor ? 'show' : ''}
+            />
           </div>
         </div>
       </div>
