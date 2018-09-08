@@ -15,6 +15,16 @@ import { ServiceWorkerBackgroundSyncContainer } from './containers/laboratory/se
 import { UtilityContainer } from './containers/utility';
 import { QrCodeContainer } from './containers/utility/qr_code';
 
+const HomePath = '/';
+const LaboratoryPath = '/laboratory';
+const ServiceWorkerPath = '/laboratory/service_worker';
+const ServiceWorkerCachePath = '/laboratory/service_worker/cache';
+const ServiceWorkerPushNotificationPath = '/laboratory/service_worker/push_notification';
+const ServiceWorkerBackgroundSyncPath = '/laboratory/service_worker/background_sync';
+const WebRtcPath = '/laboratory/web_rtc';
+const UtilityPath = '/utility';
+const QrCodePath = '/utility/qr_code';
+
 const Views: Array<{
   key: string,
   path: string,
@@ -25,7 +35,7 @@ const Views: Array<{
 }> = [
   {
     key: 'home',
-    path: '/',
+    path: HomePath,
     titleJp: 'ホーム',
     titleEn: 'Home',
     component: HomeContainer,
@@ -33,7 +43,7 @@ const Views: Array<{
   },
   {
     key: 'laboratory',
-    path: '/laboratory',
+    path: LaboratoryPath,
     titleJp: '実験室',
     titleEn: 'Laboratory',
     component: LaboratoryContainer,
@@ -41,7 +51,7 @@ const Views: Array<{
   },
   {
     key: 'service_worker',
-    path: '/laboratory/service_worker',
+    path: ServiceWorkerPath,
     titleJp: 'サービスワーカー',
     titleEn: 'Service Worker',
     component: ServiceWorkerContainer,
@@ -49,7 +59,7 @@ const Views: Array<{
   },
   {
     key: 'service_worker_cache',
-    path: '/laboratory/service_worker/cache',
+    path: ServiceWorkerCachePath,
     titleJp: 'キャッシュAPI',
     titleEn: 'Cache API',
     component: ServiceWorkerCacheContainer,
@@ -57,7 +67,7 @@ const Views: Array<{
   },
   {
     key: 'service_worker_push_notification',
-    path: '/laboratory/service_worker/push_notification',
+    path: ServiceWorkerPushNotificationPath,
     titleJp: 'プッシュ通知API',
     titleEn: 'Push Notification API',
     component: ServiceWorkerPushNotificationContainer,
@@ -65,7 +75,7 @@ const Views: Array<{
   },
   {
     key: 'service_worker_background_sync',
-    path: '/laboratory/service_worker/background_sync',
+    path: ServiceWorkerBackgroundSyncPath,
     titleJp: 'バックグラウンド同期API',
     titleEn: 'Background Sync API',
     component: ServiceWorkerBackgroundSyncContainer,
@@ -73,7 +83,7 @@ const Views: Array<{
   },
   {
     key: 'web_rtc',
-    path: '/laboratory/web_rtc',
+    path: WebRtcPath,
     titleJp: 'WebRTC',
     titleEn: 'WebRTC',
     component: WebRtcContainer,
@@ -89,7 +99,7 @@ const Views: Array<{
   // },
   {
     key: 'utility',
-    path: '/utility',
+    path: UtilityPath,
     titleJp: 'ユーティリティ',
     titleEn: 'Utility',
     component: UtilityContainer,
@@ -97,7 +107,7 @@ const Views: Array<{
   },
   {
     key: 'qr_code',
-    path: '/utility/qr_code',
+    path: QrCodePath,
     titleJp: 'QRコード',
     titleEn: 'QR Code',
     component: QrCodeContainer,
@@ -128,24 +138,13 @@ const Routes = (
   </Router>
 );
 
-const extractPath = (key: string): string => {
-  const view = Views.find((view) => view.key === key);
-  if (view == null) {
-    throw new Error(`Not found: ${key}`);
-  }
-  return `${view.path}`;
-};
-const ServiceWorkerPath: string = extractPath('service_worker');
-const ServiceWorkerCachePath: string = extractPath('service_worker_cache');
-const ServiceWorkerPushNotificationPath: string = extractPath('service_worker_push_notification');
-const ServiceWorkerBackgroundSyncPath: string = extractPath('service_worker_background_sync');
-const QrCodePath: string = extractPath('qr_code');
-
 export {
   Routes,
-  QrCodePath,
+  HomePath,
   ServiceWorkerCachePath,
   ServiceWorkerPath,
   ServiceWorkerPushNotificationPath,
   ServiceWorkerBackgroundSyncPath,
+  WebRtcPath,
+  QrCodePath,
 };
