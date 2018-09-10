@@ -70,11 +70,11 @@
         background-color: $transparent;
         display: inline-block;
         height: 80px;
-        width: 8px;
+        width: 4px;
         vertical-align: bottom;
 
         &.show {
-          background-color: $gray;
+          background-color: $white;
         }
       }
 
@@ -92,11 +92,11 @@
         background-color: $transparent;
         display: inline-block;
         height: 44px;
-        width: 8px;
+        width: 4px;
         vertical-align: bottom;
 
         &.show {
-          background-color: $gray;
+          background-color: $white;
         }
       }
     }
