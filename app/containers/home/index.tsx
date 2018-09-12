@@ -48,18 +48,36 @@ class HomeContainer extends AbstractContainer<Props, State> {
 
         <h2>自己紹介</h2>
         <p><strong>hyiromori</strong>という名前で活動している、フルスタックエンジニアです。</p>
+
+        <h2>このサイトのソース</h2>
         <p>
+          <a
+            href="https://github.com/hyiromori/hyiromori.github.io"
+            target="_blank"
+          >
+            GitHub
+          </a>
+          にあります。
+        </p>
+        <p>
+          <a
+            href="https://qiita.com/hyiromori/items/ba099c401b281d64d1e1"
+            target="_blank"
+          >
+            エンジニアなりにポートフォリオサイトを作ってみた話
+          </a>
+          という記事を
           <a
             href="https://qiita.com/hyiromori"
             target="_blank"
           >
             Qiita
-          </a> にも少しだけ記事を投稿しています。
+          </a>
+          に投稿したので、よろしければご覧ください。
         </p>
 
-        <h2>スキル</h2>
-        <p>主だったものだけ。勉強でちょっと触ったようなものは、見づらくなるので除外しています。</p>
-        <p>フロントエンドが得意＆好きな分野です。</p>
+        <h2>主なスキル</h2>
+        <p>勉強でちょっと触ったようなものは、見づらくなるので除外しています。</p>
 
         <div id="skill-example">
           <h3>記載例</h3>
@@ -81,7 +99,7 @@ class HomeContainer extends AbstractContainer<Props, State> {
         <h3>フロントエンド</h3>
         <ul>
           <li>{skill('React', 3, '')}</li>
-          <li>{skill('React+Redux', 3, '')}</li>
+          <li>{skill('Redux', 3, '')}</li>
           <li>{skill('Webpack', 3, '')}</li>
           <li>{skill('CSS (SCSS)', 3, '')}</li>
         </ul>
@@ -109,37 +127,6 @@ class HomeContainer extends AbstractContainer<Props, State> {
           <li>{skill('PosgreSQL', 3, '')}</li>
           <li>{skill('MySQL', 2, '')}</li>
           <li>{skill('Oracle 11c', 1, '')}</li>
-        </ul>
-
-        <h2>このサイトのソース</h2>
-        <p>
-          <a
-            href="https://github.com/hyiromori/hyiromori.github.io"
-            target="_blank"
-          >
-            GitHub
-          </a>
-          にあります。以下の技術的な特徴があります。</p>
-        <ul>
-          <li><strong>SPA</strong>で作られているので、読み込み完了後はページ遷移が早いです。</li>
-          <li>
-            <Link to={ServiceWorkerPath}>Service Worker</Link>
-            を使用しており、必要なリソースをキャッシュしているので、対応しているブラウザの場合はオフラインでも閲覧できます。
-          </li>
-          <li>
-            技術力向上のために、ライブラリはほぼ使用していません。
-          </li>
-          <li>
-            同じく、技術力向上のために、CSS フレームワークも使用していません。
-            このサイトは自力でレスポンシブ対応しています。
-          </li>
-        </ul>
-
-        <h3>動作確認について</h3>
-        <p>以下の環境で動作確認を行っています。</p>
-        <ul>
-          <li>Mac OS X + Chrome 最新版</li>
-          <li>iPhone SE + Safari 最新版</li>
         </ul>
       </div>
     );

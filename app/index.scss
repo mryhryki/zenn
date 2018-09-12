@@ -18,26 +18,33 @@
 
 h1, h2, h3, h4, h5, h6, ul, ol {
   margin-top: 16px;
+  padding: 0 4px;
 }
 
-p {
-  margin-top: 8px;
+h2, h3, h4, h5, h6 {
+  border-bottom: 1px solid $gray;
+  display: inline-block;
+
+  &:after {
+    content: "\000A";
+    white-space: pre-wrap;
+  }
 }
 
 h1 {
-  font-weight: 600;
   font-size: 28px;
+  font-weight: 600;
   text-align: center;
 }
 
 h2 {
-  font-weight: 600;
   font-size: 20px;
+  font-weight: 500;
 }
 
 h3 {
-  font-weight: 700;
   font-size: 16px;
+  font-weight: 500;
 }
 
 h4 {
@@ -56,18 +63,21 @@ h6 {
 }
 
 p {
+  margin-top: 8px;
   padding-left: 1em;
 }
 
 a {
   color: $green;
+  display: inline-block;
+  margin: 0 2px;
   text-decoration: underline;
 }
 
 strong {
   background-color: $silver;
   display: inline-block;
-  font-weight: 600;
+  font-weight: 500;
   margin: 1px;
   padding: 1px 8px;
 }

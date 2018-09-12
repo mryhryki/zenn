@@ -45,7 +45,7 @@ class QrCodeContainer extends AbstractContainer<Props, State> {
 
     return (
       <div id="qr-code-container">
-        <h1>QR Code</h1>
+        <h1>QRコード</h1>
         {qrImage !== '' && (
           <div id="qr-code-image-wrapper">
             <img

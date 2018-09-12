@@ -55,6 +55,7 @@
 
           .title-jp {
             @extend %title-line-height;
+            font-weight: 500;
             font-size: 18px;
           }
 
@@ -83,6 +84,7 @@
 
           .title-jp {
             @extend %title-line-height;
+            color: $gray-dark;
             font-size: 14px;
           }
 
