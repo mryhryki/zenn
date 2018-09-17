@@ -118,16 +118,24 @@ class CommonFrame extends React.Component<Props, State> {
         }
         <div id="common-frame-footer">
           <div className="left-content">
-            <a href="mailto:hyiromori@gmail.com">
+            <a
+              className="tooltip"
+              data-tooltip="Mail"
+              href="mailto:hyiromori@gmail.com"
+            >
               <EnvelopeIcon />
             </a>
             <a
+              className="tooltip"
+              data-tooltip="Twitter"
               href="https://twitter.com/hyiromori"
               target="_blank"
             >
               <TwitterIcon />
             </a>
             <a
+              className="tooltip"
+              data-tooltip="GitHub"
               href="https://github.com/hyiromori"
               target="_blank"
             >

@@ -112,3 +112,51 @@ ul, ol {
   padding: 16px;
   width: calc(100% - 32px);
 }
+
+
+
+@media (pointer: fine) {
+  %tooltip-triangle-base {
+    border: 5px solid;
+    content: ' ';
+    height: 0;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%);
+    width: 0;
+    z-index: 100;
+  }
+
+  %tooltip-base {
+    background: $orange;
+    color: $white;
+    content: attr(data-tooltip);
+    display: block;
+    font-size: 16px;
+    padding: 3px 9px;
+    position: absolute;
+    white-space: nowrap;
+    z-index: 100;
+  }
+
+  .tooltip {
+    position: relative;
+
+    &:hover {
+      &::before {
+        @extend %tooltip-base;
+
+        left: 50%;
+        top: -10px;
+        transform: translate(-50%, -100%);
+      }
+
+      &::after {
+        @extend %tooltip-triangle-base;
+
+        border-color: $orange transparent transparent transparent;
+        top: -10px;
+      }
+    }
+  }
+}
