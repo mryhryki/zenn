@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  CloseIcon,
-  EnvelopeIcon,
-  GitHubIcon,
-  MenuIcon,
-  TwitterIcon,
-} from '../../presenters/icon';
 import { isMobileDevice } from '../../common/platform';
 import './index.scss';
+
+import IconClose from '../../icon/close.png';
+import IconGitHub from '../../icon/github.png';
+import IconMail from '../../icon/mail.png';
+import IconMenu from '../../icon/menu.png';
+import IconTwitter from '../../icon/twitter.png';
 
 interface Menu {
   path: string,
@@ -77,7 +76,6 @@ class CommonFrame extends React.Component<Props, State> {
     const { children, menuList } = this.props;
     const { showMenu } = this.state;
     const currentPath: string = `/${window.location.hash.substr(1)}`;
-    console.debug('#####', currentPath)
 
     return (
       <div id="common-frame">
@@ -95,7 +93,7 @@ class CommonFrame extends React.Component<Props, State> {
               className="common-frame-header-menu-button"
               onClick={() => this.setState({ showMenu: false })}
             >
-              <CloseIcon />
+              <img src={IconClose} />
               <span>Close</span>
             </button>
             {menuList.map((menu: Menu) => (
@@ -112,7 +110,7 @@ class CommonFrame extends React.Component<Props, State> {
              className="common-frame-header-menu-button"
              onClick={() => this.setState({ showMenu: true })}
            >
-             <MenuIcon />
+             <img src={IconMenu} />
              <span>Menu</span>
            </button>
          )
@@ -124,7 +122,7 @@ class CommonFrame extends React.Component<Props, State> {
               data-tooltip="Mail"
               href="mailto:hyiromori@gmail.com"
             >
-              <EnvelopeIcon />
+              <img src={IconMail} />
             </a>
             <a
               className="tooltip"
@@ -132,7 +130,7 @@ class CommonFrame extends React.Component<Props, State> {
               href="https://twitter.com/hyiromori"
               target="_blank"
             >
-              <TwitterIcon />
+              <img src={IconTwitter} />
             </a>
             <a
               className="tooltip"
@@ -140,7 +138,7 @@ class CommonFrame extends React.Component<Props, State> {
               href="https://github.com/hyiromori"
               target="_blank"
             >
-              <GitHubIcon />
+              <img src={IconGitHub} />
             </a>
           </div>
           <div className="right-content">(C) 2018 hyiromori</div>

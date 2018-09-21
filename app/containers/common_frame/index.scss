@@ -17,8 +17,14 @@
     right: 8px;
     top: 8px;
 
+    img {
+      height: 24px;
+      width: 24px;
+      margin-right: 2px;
+    }
+
     span {
-      margin-left: 4px;
+      vertical-align: 6px;
     }
   }
 
@@ -144,12 +150,17 @@
         border-radius: 50%;
         color: $white;
         display: inline-block;
-        font-size: 22px;
         height: 32px;
         line-height: 30px;
         margin: 8px 8px 8px 0;
+        padding: 4px;
         text-align: center;
         width: 32px;
+
+        img {
+          height: 24px;
+          width: 24px;
+        }
       }
     }
 
