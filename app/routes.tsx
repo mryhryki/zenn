@@ -6,8 +6,8 @@ import {
 import { CommonFrame } from './containers/common_frame';
 import { HomeContainer } from './containers/home';
 import { LaboratoryContainer } from './containers/laboratory';
-import { WebRtcContainer } from './containers/laboratory/web_rtc';
-import { SkyWayContainer } from './containers/laboratory/web_rtc/sky_way';
+// import { WebRtcContainer } from './containers/laboratory/web_rtc';
+// import { SkyWayContainer } from './containers/laboratory/web_rtc/sky_way';
 import { ServiceWorkerContainer } from './containers/laboratory/service_worker';
 import { ServiceWorkerCacheContainer } from './containers/laboratory/service_worker/cache';
 import { ServiceWorkerPushNotificationContainer } from './containers/laboratory/service_worker/push_notification';
@@ -82,22 +82,22 @@ const Views: Array<{
     component: ServiceWorkerBackgroundSyncContainer,
     level: 3,
   },
-  {
-    key: 'web_rtc',
-    path: WebRtcPath,
-    titleJp: 'WebRTC',
-    titleEn: 'WebRTC',
-    component: WebRtcContainer,
-    level: 2,
-  },
-  {
-    key: 'skyway',
-    path: WebRtcSkyWayPath,
-    titleJp: 'SkyWayを使ったサンプル',
-    titleEn: 'SkyWay',
-    component: SkyWayContainer,
-    level: 3,
-  },
+  // {
+  //   key: 'web_rtc',
+  //   path: WebRtcPath,
+  //   titleJp: 'WebRTC',
+  //   titleEn: 'WebRTC',
+  //   component: WebRtcContainer,
+  //   level: 2,
+  // },
+  // {
+  //   key: 'skyway',
+  //   path: WebRtcSkyWayPath,
+  //   titleJp: 'SkyWayを使ったサンプル',
+  //   titleEn: 'SkyWay',
+  //   component: SkyWayContainer,
+  //   level: 3,
+  // },
   {
     key: 'utility',
     path: UtilityPath,
