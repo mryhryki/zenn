@@ -76,7 +76,8 @@ class CommonFrame extends React.Component<Props, State> {
   render() {
     const { children, menuList } = this.props;
     const { showMenu } = this.state;
-    const currentPath: string = window.location.hash.substr(1);
+    const currentPath: string = `/${window.location.hash.substr(1)}`;
+    console.debug('#####', currentPath)
 
     return (
       <div id="common-frame">

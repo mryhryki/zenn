@@ -124,7 +124,7 @@ const menuList = Views.map((view) => ({
 }));
 
 const Routes = (
-  <Router>
+  <Router hashType="noslash">
     <CommonFrame menuList={menuList}>
       {Views.map((view) => (
         <Route
