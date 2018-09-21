@@ -8,7 +8,7 @@ module.exports = (/* args, env */) => {
   return {
     mode,
     entry: { index: './app/index.ts' },
-    devtool: 'inline-source-map',
+    devtool: (mode === 'development' ? 'inline-source-map' : undefined),
     module: {
       rules: [
         {
