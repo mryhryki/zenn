@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { isMobileDevice } from '../../common/platform';
 import './index.scss';
 
 import IconClose from '../../icon/close.png';
@@ -28,10 +27,8 @@ interface State {
 class CommonFrame extends React.Component<Props, State> {
   state: State = { showMenu: false };
 
-  closeMenuIfMobileDevice = (): void => {
-    if (isMobileDevice()) {
-      this.setState({ showMenu: false });
-    }
+  closeMenu = (): void => {
+    this.setState({ showMenu: false });
   };
 
   renderMenuItem(menu: Menu, selected: boolean) {
@@ -65,7 +62,7 @@ class CommonFrame extends React.Component<Props, State> {
       <Link
         to={path}
         className={`menu-button level${level}`}
-        onClick={this.closeMenuIfMobileDevice}
+        onClick={this.closeMenu}
       >
         {content}
       </Link>
