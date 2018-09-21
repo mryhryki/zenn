@@ -1,0 +1,32 @@
+@import '../../../../common/colors';
+
+#sky-way-container {
+  #sky-way-video-modal {
+    background-color: $black;
+    height: 84vh;
+    width: 92vw;
+    overflow-y: scroll;
+
+    .sky-way-remote-view {
+      border: 1px solid $gray;
+      float: left;
+      max-height: 50%;
+      max-width: 50%;
+      object-fit: contain;
+    }
+
+    #sky-way-self-view {
+      bottom: 0;
+      max-height: 25%;
+      max-width: 50%;
+      object-fit: contain;
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  #sky-way-control-buttons {
+    margin-top: 16px;
+    text-align: center;
+  }
+}
