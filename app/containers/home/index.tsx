@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 import { AbstractContainer } from '../abstract_container';
-import { ServiceWorkerPath } from '../../routes';
+import { AccordionPanel } from '../../presenters/accordion_panel';
 import { InitialScreen } from './initial_screen';
 import { SessionStorage } from '../../common/storage';
 import './style.scss';
@@ -79,55 +78,59 @@ class HomeContainer extends AbstractContainer<Props, State> {
         <h2>主なスキル</h2>
         <p>勉強でちょっと触ったようなものは、見づらくなるので除外しています。</p>
 
-        <div id="skill-example">
-          <h3>記載例</h3>
+        <AccordionPanel title="記載例" initialDisplay={true}>
           <ul>
             <li>{skill('バッチリ使える! :', 3, '')}</li>
             <li>{skill('まあまあ使える :', 2, '')}</li>
             <li>{skill('とりあえず使える :', 1, '')}</li>
           </ul>
-        </div>
+        </AccordionPanel>
 
-        <h3>プログラミング言語</h3>
-        <ul>
-          <li>{skill('JavaScript(ES2015)', 3, '')}</li>
-          <li>{skill('Ruby', 3, '')}</li>
-          <li>{skill('TypeScript', 2, '')}</li>
-          <li>{skill('Java', 1, '最近あまり使ってない')}</li>
-        </ul>
+        <AccordionPanel title="プログラミング言語">
+          <ul>
+            <li>{skill('JavaScript(ES2015)', 3, '')}</li>
+            <li>{skill('Ruby', 3, '')}</li>
+            <li>{skill('TypeScript', 2, '')}</li>
+            <li>{skill('Java', 1, '最近あまり使ってない')}</li>
+          </ul>
+        </AccordionPanel>
 
-        <h3>フロントエンド</h3>
-        <ul>
-          <li>{skill('React', 3, '')}</li>
-          <li>{skill('Redux', 3, '')}</li>
-          <li>{skill('Webpack', 3, '')}</li>
-          <li>{skill('CSS (SCSS)', 3, '')}</li>
-        </ul>
+        <AccordionPanel title="フロントエンド">
+          <ul>
+            <li>{skill('React', 3, '')}</li>
+            <li>{skill('Redux', 3, '')}</li>
+            <li>{skill('Webpack', 3, '')}</li>
+            <li>{skill('CSS (SCSS)', 3, '')}</li>
+          </ul>
+        </AccordionPanel>
 
-        <h3>バックエンド</h3>
-        <ul>
-          <li>{skill('Ruby on Rails', 3, '')}</li>
-          <li>{skill('Rspec', 2, '')}</li>
-          <li>{skill('Express', 3, '')}</li>
-        </ul>
+        <AccordionPanel title="バックエンド">
+          <ul>
+            <li>{skill('Ruby on Rails', 3, '')}</li>
+            <li>{skill('Rspec', 2, '')}</li>
+            <li>{skill('Express', 3, '')}</li>
+          </ul>
+        </AccordionPanel>
 
-        <h3>インフラ関係</h3>
-        <ul>
-          <li>{skill('AWS (Lambda)', 3, '')}</li>
-          <li>{skill('AWS (EC2)', 2, '')}</li>
-          <li>{skill('AWS (Route53)', 2, '')}</li>
-          <li>{skill('AWS (S3)', 2, '')}</li>
-          <li>{skill('AWS (IAM)', 2, '')}</li>
-          <li>{skill('AWS (DynamoDB)', 1, '')}</li>
-          <li>{skill('Docker', 2, '')}</li>
-        </ul>
+        <AccordionPanel title="インフラ関係">
+          <ul>
+            <li>{skill('AWS (Lambda)', 3, '')}</li>
+            <li>{skill('AWS (EC2)', 2, '')}</li>
+            <li>{skill('AWS (Route53)', 2, '')}</li>
+            <li>{skill('AWS (S3)', 2, '')}</li>
+            <li>{skill('AWS (IAM)', 2, '')}</li>
+            <li>{skill('AWS (DynamoDB)', 1, '')}</li>
+            <li>{skill('Docker', 2, '')}</li>
+          </ul>
+        </AccordionPanel>
 
-        <h3>データベース</h3>
-        <ul>
-          <li>{skill('PosgreSQL', 3, '')}</li>
-          <li>{skill('MySQL', 2, '')}</li>
-          <li>{skill('Oracle 11c', 1, '')}</li>
-        </ul>
+        <AccordionPanel title="データベース">
+          <ul>
+            <li>{skill('PosgreSQL', 3, '')}</li>
+            <li>{skill('MySQL', 2, '')}</li>
+            <li>{skill('Oracle 11c', 1, '')}</li>
+          </ul>
+        </AccordionPanel>
       </div>
     );
   }
