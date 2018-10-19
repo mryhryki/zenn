@@ -52,7 +52,7 @@ module.exports = (/* args, env */) => {
     },
     plugins: [
       new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) }),
-      new BundleAnalyzerPlugin(),
+      // new BundleAnalyzerPlugin(),
     ],
     output: {
       filename: '[name].js',

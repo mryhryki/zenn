@@ -11,3 +11,5 @@ if ('serviceWorker' in navigator) {
 }
 
 render(Routes, document.getElementById('app'));
+
+import './common/web_socket';
