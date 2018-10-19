@@ -97,7 +97,11 @@ class ServiceWorkerBackgroundSyncContainer extends AbstractContainer<Props, Stat
     if (serviceWorker == null || this.db == null) {
       return;
     }
-    const syncData = { path: '/example.json', result: '', createdAt: (new Date()).getTime() };
+    const syncData = {
+      path: 'https://api.hyiromori.com/v1/uuid',
+      result: '',
+      createdAt: (new Date()).getTime(),
+    };
     const transaction: IDBTransaction = this.db.transaction(['background_sync'], 'readwrite');
     transaction.onerror = (error) => console.error('Failed:', error);
 
