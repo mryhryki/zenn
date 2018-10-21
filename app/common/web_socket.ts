@@ -4,31 +4,50 @@ const WS_URL = 'wss://web-socket.arukascloud.io/ws';
 
 type WebSocketStatus = 'Connecting' | 'Open' | 'Closing' | 'Closed' | 'Disconnected'
 
-type SendConnectivityType = {
-  type: 'connectivity',
-  data: {
-    id: string,
-    message: 'ping',
-  }
+type PingType = {
+  requestId: string,
+  type: 'ping',
 };
 
-type ReceiveConnectivityType = {
-  type: 'connectivity',
-  data: {
-    id: string,
-    message: 'pong',
-  }
+type PongType = {
+  requestId: string,
+  type: 'pong',
 };
 
-type ReceiveInfoType = {
+type JoinType = {
+  requestId: string,
+  type: 'join',
+  group: string,
+};
+
+type LeaveType = {
+  requestId: string,
+  type: 'leave',
+  group: string,
+};
+
+type InfoType = {
   type: 'info',
-  id: 'e1d8147e-39c8-421a-b106-3d79930063f3'
+  id: string,
 }
 
-type SendMessageType = SendConnectivityType;
-type ReceiveMessageType =
-  ReceiveConnectivityType |
-  ReceiveInfoType;
+type SendMessageType = {
+  requestId: string,
+  type: 'message',
+  group: string,
+  message: any,
+}
+
+type ReceiveMessageType = {
+  requestId: string,
+  type: 'message',
+  group: string,
+  from: string,
+  message: any,
+}
+
+type SendType = PingType | JoinType | LeaveType | SendMessageType;
+type ReceiveType = InfoType | PongType | ReceiveMessageType;
 
 class Ws {
   connectionId: (string | null) = null;
@@ -102,14 +121,7 @@ class Ws {
 
   checkConnectivity(): void {
     const waitConnectivityId = uuid();
-    const message: SendConnectivityType = {
-      type: 'connectivity',
-      data: {
-        id: waitConnectivityId,
-        message: 'ping',
-      },
-    };
-    this.send(message);
+    this.send({ requestId: waitConnectivityId, type: 'ping' });
     this.waitConnectivityId = waitConnectivityId;
 
     setTimeout(() => {
@@ -120,7 +132,7 @@ class Ws {
     }, 3000);
   }
 
-  send(message: SendMessageType): void {
+  send(message: SendType): void {
     if (this.webSocket == null) {
       return;
     }
@@ -128,13 +140,18 @@ class Ws {
   }
 
   onMessage(event: MessageEvent): void {
-    const response: ReceiveMessageType = JSON.parse(event.data);
+    const response: ReceiveType = JSON.parse(event.data);
     switch (response.type) {
       case 'info':
         this.connectionId = response.id;
         break;
-      case 'connectivity':
-        if (this.waitConnectivityId === response.data.id) {
+      case 'pong':
+        if (this.waitConnectivityId === response.requestId) {
+          this.waitConnectivityId = null;
+        }
+        break;
+      case 'message':
+        if (this.waitConnectivityId === response.requestId) {
           this.waitConnectivityId = null;
         }
         break;
@@ -143,5 +160,4 @@ class Ws {
 }
 
 const ws = new Ws();
-// (window as any).ws = ws;
 export { ws };
