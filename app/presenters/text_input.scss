@@ -3,6 +3,10 @@
 .text-input {
   width: 100%;
 
+  &.inactive {
+    opacity: 0.5;
+  }
+
   .text-input-label, input {
     width: 100%;
   }

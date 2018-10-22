@@ -1,0 +1,34 @@
+@import '../../../common/colors';
+
+#simple-chat-container {
+  #simple-chat-description {
+    text-align: center;
+  }
+
+  .row {
+    margin-top: 8px;
+
+    .full-width {
+      display: inline-block;
+      margin-right: 4px;
+      width: calc(100% - 68px);
+    }
+
+    .half-width {
+      display: inline-block;
+      margin-right: 4px;
+      width: calc((100% - 72px) / 2);
+    }
+
+    button {
+      vertical-align: text-top;
+      width: 64px;
+    }
+  }
+
+  .chat-message {
+    padding: 0;
+    line-height: 1.2em;
+    margin-top: 16px;
+  }
+}

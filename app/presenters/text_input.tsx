@@ -30,7 +30,7 @@ class TextInput extends React.Component<Props> {
     } = this.props;
 
     return (
-      <div className={`text-input ${className}`}>
+      <div className={`text-input ${active ? '' : 'inactive'} ${className}`}>
         {label && (<div className="text-input-label">{label}</div>)}
         <input
           placeholder={placeHolder}

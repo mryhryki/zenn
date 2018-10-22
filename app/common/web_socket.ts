@@ -49,13 +49,15 @@ type ReceiveMessageType = {
 type SendType = PingType | JoinType | LeaveType | SendMessageType;
 type ReceiveType = InfoType | PongType | ReceiveMessageType;
 
-class Ws {
+class WebSocketWrapper {
   connectionId: (string | null) = null;
   intervalId: (NodeJS.Timer | null) = null;
+  listener: (((message: ReceiveMessageType) => void) | null) = null;
   waitConnectivityId: (string | null) = null;
   webSocket: (WebSocket | null) = null;
 
   constructor() {
+    this.reconnect();
     this.intervalId = setInterval(() => {
       if (this.webSocket == null) {
         this.reconnect();
@@ -65,25 +67,29 @@ class Ws {
     }, 5000);
   }
 
-  closeWebSocket(): void {
+  setListener = (listener: (message: ReceiveMessageType) => void | null) => {
+    this.listener = listener;
+  };
+
+  closeWebSocket = (): void => {
     if (this.webSocket != null) {
       this.webSocket.close();
       this.webSocket = null;
     }
-  }
+  };
 
-  close(): void {
+  close = (): void => {
     if (this.intervalId != null) {
       clearInterval(this.intervalId);
     }
     this.closeWebSocket();
-  }
+  };
 
-  getId(): (string | null) {
+  getId = (): (string | null) => {
     return this.connectionId;
-  }
+  };
 
-  getState(): WebSocketStatus {
+  getState = (): WebSocketStatus => {
     if (this.webSocket != null) {
       switch (this.webSocket.readyState) {
         case 0:
@@ -97,9 +103,9 @@ class Ws {
       }
     }
     return 'Disconnected';
-  }
+  };
 
-  reconnect(): void {
+  reconnect = (): void => {
     if (this.webSocket != null) {
       return;
     }
@@ -117,9 +123,9 @@ class Ws {
       console.error('WebSocket Closed:', event);
       this.closeWebSocket();
     };
-  }
+  };
 
-  checkConnectivity(): void {
+  checkConnectivity = (): void => {
     const waitConnectivityId = uuid();
     this.send({ requestId: waitConnectivityId, type: 'ping' });
     this.waitConnectivityId = waitConnectivityId;
@@ -130,34 +136,41 @@ class Ws {
         this.webSocket = null;
       }
     }, 3000);
-  }
+  };
 
-  send(message: SendType): void {
+  send = (message: SendType): void => {
     if (this.webSocket == null) {
       return;
     }
     this.webSocket.send(JSON.stringify(message));
-  }
+  };
 
-  onMessage(event: MessageEvent): void {
+  onMessage = (event: MessageEvent): void => {
     const response: ReceiveType = JSON.parse(event.data);
     switch (response.type) {
       case 'info':
         this.connectionId = response.id;
         break;
+
       case 'pong':
         if (this.waitConnectivityId === response.requestId) {
           this.waitConnectivityId = null;
         }
         break;
+
       case 'message':
-        if (this.waitConnectivityId === response.requestId) {
-          this.waitConnectivityId = null;
+        if (this.listener != null) {
+          this.listener(response);
         }
         break;
+
+      default:
     }
-  }
+  };
 }
 
-const ws = new Ws();
-export { ws };
+const webSocket = new WebSocketWrapper();
+export {
+  ReceiveMessageType,
+  webSocket,
+};

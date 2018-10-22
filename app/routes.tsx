@@ -8,6 +8,7 @@ import { HomeContainer } from './containers/home';
 import { LaboratoryContainer } from './containers/laboratory';
 // import { WebRtcContainer } from './containers/laboratory/web_rtc';
 // import { SkyWayContainer } from './containers/laboratory/web_rtc/sky_way';
+import { SimpleChatContainer } from './containers/laboratory/simple_chat';
 import { ServiceWorkerContainer } from './containers/laboratory/service_worker';
 import { ServiceWorkerCacheContainer } from './containers/laboratory/service_worker/cache';
 import { ServiceWorkerPushNotificationContainer } from './containers/laboratory/service_worker/push_notification';
@@ -23,11 +24,11 @@ const ServiceWorkerPushNotificationPath = '/laboratory/service_worker/push_notif
 const ServiceWorkerBackgroundSyncPath = '/laboratory/service_worker/background_sync';
 const WebRtcPath = '/laboratory/web_rtc';
 const WebRtcSkyWayPath = '/laboratory/web_rtc/sky_way';
+const SimpleChatPath = '/laboratory/simple_chat';
 const UtilityPath = '/utility';
 const QrCodePath = '/utility/qr_code';
 
 const Views: Array<{
-  key: string,
   path: string,
   titleJp: string,
   titleEn: string,
@@ -35,7 +36,6 @@ const Views: Array<{
   level: number
 }> = [
   {
-    key: 'home',
     path: HomePath,
     titleJp: 'ホーム',
     titleEn: 'Home',
@@ -43,7 +43,6 @@ const Views: Array<{
     level: 1,
   },
   {
-    key: 'laboratory',
     path: LaboratoryPath,
     titleJp: '実験室',
     titleEn: 'Laboratory',
@@ -51,7 +50,6 @@ const Views: Array<{
     level: 1,
   },
   {
-    key: 'service_worker',
     path: ServiceWorkerPath,
     titleJp: 'サービスワーカー',
     titleEn: 'Service Worker',
@@ -59,7 +57,6 @@ const Views: Array<{
     level: 2,
   },
   {
-    key: 'service_worker_cache',
     path: ServiceWorkerCachePath,
     titleJp: 'キャッシュAPI',
     titleEn: 'Cache API',
@@ -67,7 +64,6 @@ const Views: Array<{
     level: 3,
   },
   {
-    key: 'service_worker_push_notification',
     path: ServiceWorkerPushNotificationPath,
     titleJp: 'プッシュ通知API',
     titleEn: 'Push Notification API',
@@ -75,7 +71,6 @@ const Views: Array<{
     level: 3,
   },
   {
-    key: 'service_worker_background_sync',
     path: ServiceWorkerBackgroundSyncPath,
     titleJp: 'バックグラウンド同期API',
     titleEn: 'Background Sync API',
@@ -83,7 +78,6 @@ const Views: Array<{
     level: 3,
   },
   // {
-  //   key: 'web_rtc',
   //   path: WebRtcPath,
   //   titleJp: 'WebRTC',
   //   titleEn: 'WebRTC',
@@ -91,7 +85,6 @@ const Views: Array<{
   //   level: 2,
   // },
   // {
-  //   key: 'skyway',
   //   path: WebRtcSkyWayPath,
   //   titleJp: 'SkyWayを使ったサンプル',
   //   titleEn: 'SkyWay',
@@ -99,7 +92,13 @@ const Views: Array<{
   //   level: 3,
   // },
   {
-    key: 'utility',
+    path: SimpleChatPath,
+    titleJp: '簡易チャット',
+    titleEn: 'Simple Chat',
+    component: SimpleChatContainer,
+    level: 2,
+  },
+  {
     path: UtilityPath,
     titleJp: 'ユーティリティ',
     titleEn: 'Utility',
@@ -107,7 +106,6 @@ const Views: Array<{
     level: 1,
   },
   {
-    key: 'qr_code',
     path: QrCodePath,
     titleJp: 'QRコード',
     titleEn: 'QR Code',
@@ -146,6 +144,7 @@ export {
   ServiceWorkerPath,
   ServiceWorkerPushNotificationPath,
   ServiceWorkerBackgroundSyncPath,
+  SimpleChatPath,
   WebRtcPath,
   QrCodePath,
 };
