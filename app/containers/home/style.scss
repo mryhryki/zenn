@@ -28,73 +28,62 @@
     }
   }
 
-  #initial-screen-wrapper {
-    background: linear-gradient($orange, $orange, $white);
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 1;
+  #initial-screen {
+    margin-top: 16px;
+    text-align: center;
 
-    &.hide {
-      animation: fade-out 1s linear 0s 1;
-      opacity: 0;
+    #initial-screen-title {
+      border-bottom: 1px solid $gray-dark;
+      display: inline-block;
+      color: $gray-dark;
+      font-size: 48px;
+      height: 64px;
+      margin: 0 4px;
+      line-height: 64px;
+      text-align: center;
+      vertical-align: bottom;
     }
 
-    #initial-screen {
-      left: 0;
-      position: absolute;
-      right: 0;
+    #initial-screen-title-cursor {
+      background-color: $transparent;
+      display: inline-block;
+      height: 64px;
+      width: 2px;
+      vertical-align: bottom;
+
+      &.show {
+        background-color: $gray-dark;
+      }
+    }
+
+    #initial-screen-by-name {
+      color: $gray-dark;
+      display: inline-block;
+      font-size: 16px;
+      height: 24px;
+      line-height: 24px;
+      margin: 4px 4px 0 4px;
       text-align: center;
-      top: 50%;
-      transform: translate(0, -50%);
+      vertical-align: bottom;
+    }
 
-      #initial-screen-title {
-        border-bottom: 1px solid $white;
-        color: $white;
-        display: inline-block;
-        font-size: 64px;
-        height: 80px;
-        margin: 0 4px;
-        line-height: 80px;
-        text-align: center;
-        vertical-align: bottom;
+    #initial-screen-by-name-cursor {
+      background-color: $transparent;
+      display: inline-block;
+      height: 24px;
+      width: 2px;
+      vertical-align: bottom;
+
+      &.show {
+        background-color: $gray-dark;
       }
+    }
+  }
 
-      #initial-screen-title-cursor {
-        background-color: $transparent;
-        display: inline-block;
-        height: 80px;
-        width: 4px;
-        vertical-align: bottom;
-
-        &.show {
-          background-color: $white;
-        }
-      }
-
-      #initial-screen-by-name {
-        color: $white;
-        display: inline-block;
-        margin: 4px 4px 0 4px;
-        font-size: 28px;
-        height: 44px;
-        text-align: center;
-        vertical-align: bottom;
-      }
-
-      #initial-screen-by-name-cursor {
-        background-color: $transparent;
-        display: inline-block;
-        height: 44px;
-        width: 4px;
-        vertical-align: bottom;
-
-        &.show {
-          background-color: $white;
-        }
-      }
+  .skill-item {
+    .comment {
+      margin-left: 8px;
+      font-size: 12px;
     }
   }
 }

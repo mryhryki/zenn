@@ -1,11 +1,8 @@
 import * as React from 'react';
 
-type Props = {
-  onAnimationFinish: () => void,
-};
+type Props = {};
 type State = {
   by: string,
-  fadeOut: boolean,
   showByCursor: boolean,
   showTitleCursor: boolean,
   title: string,
@@ -13,7 +10,6 @@ type State = {
 
 const INITIAL_STATE: State = {
   by: '',
-  fadeOut: false,
   showByCursor: false,
   showTitleCursor: false,
   title: '',
@@ -56,11 +52,7 @@ const ANIMATION_TIME_LINE: { [FrameKey: string]: AnimationDefinition } = {
   Frame58: generateFrame({ title: 'Portfolio', by: 'by hyiromor', showByCursor: true }),
   Frame59: generateFrame({ title: 'Portfolio', by: 'by hyiromori', showByCursor: true }),
   Frame64: generateFrame({ title: 'Portfolio', by: 'by hyiromori', showByCursor: false }),
-  Frame69: generateFrame({ title: 'Portfolio', by: 'by hyiromori', showByCursor: true }),
-  Frame74: generateFrame({ title: 'Portfolio', by: 'by hyiromori', showByCursor: false }),
-  Frame79: generateFrame({ title: 'Portfolio', by: 'by hyiromori', showByCursor: true }),
-  Frame84: generateFrame({ title: 'Portfolio', by: 'by hyiromori', showByCursor: false }),
-  Frame85: 'finish',
+  Frame69: 'finish',
 };
 
 class InitialScreen extends React.Component<Props, State> {
@@ -72,7 +64,7 @@ class InitialScreen extends React.Component<Props, State> {
     this.intervalId = setInterval(() => {
       const animation: AnimationDefinition = ANIMATION_TIME_LINE[`Frame${count}`];
       if (animation === 'finish') {
-        this.onClose();
+        this.stopInterval();
       } else if (animation != null) {
         this.setState(animation);
       }
@@ -80,56 +72,46 @@ class InitialScreen extends React.Component<Props, State> {
     }, 100);
   }
 
-  onClose = (): void => {
-    const { onAnimationFinish } = this.props;
-    const { fadeOut } = this.state;
+  componentWillUnmount() {
+    this.stopInterval();
+  }
 
+  stopInterval() {
     if (this.intervalId != null) {
       clearInterval(this.intervalId);
     }
-    if (!fadeOut) {
-      this.setState((prev) => ({ ...prev, fadeOut: true }));
-      setTimeout(onAnimationFinish, 1000);
-    }
-  };
+  }
 
   render() {
     const {
       by,
-      fadeOut,
       showByCursor,
       showTitleCursor,
       title,
     } = this.state;
 
     return (
-      <div
-        id="initial-screen-wrapper"
-        className={fadeOut ? 'hide' : ''}
-        onClick={this.onClose}
-      >
-        <div id="initial-screen">
-          <div>
-            <div
-              id="initial-screen-title"
-              className={title === '' ? 'show' : ''}
-            >
-              {title}
-            </div>
-            <div
-              id="initial-screen-title-cursor"
-              className={showTitleCursor ? 'show' : ''}
-            />
+      <div id="initial-screen">
+        <div>
+          <div
+            id="initial-screen-title"
+            className={title === '' ? 'show' : ''}
+          >
+            {title}
           </div>
-          <div>
-            <div id="initial-screen-by-name">
-              {by}
-            </div>
-            <div
-              id="initial-screen-by-name-cursor"
-              className={showByCursor ? 'show' : ''}
-            />
+          <div
+            id="initial-screen-title-cursor"
+            className={showTitleCursor ? 'show' : ''}
+          />
+        </div>
+        <div>
+          <div id="initial-screen-by-name">
+            {by}
           </div>
+          <div
+            id="initial-screen-by-name-cursor"
+            className={showByCursor ? 'show' : ''}
+          />
         </div>
       </div>
     );
