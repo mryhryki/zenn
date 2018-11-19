@@ -45,7 +45,7 @@ class ServiceWorkerPushNotificationContainer extends AbstractContainer<Props, St
     }
     console.log('ServiceWorker and Push is Supported');
     try {
-      const swRegistration = await serviceWorker.register('/service_worker.js');
+      const swRegistration = await serviceWorker.register('./service_worker.js');
       console.log('ServiceWorker is registered', swRegistration);
       const applicationServerKey = urlB64ToUint8Array(publicKey);
       await swRegistration.pushManager.getSubscription();

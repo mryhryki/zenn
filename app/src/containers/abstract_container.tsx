@@ -9,10 +9,12 @@ class AbstractContainer<P, S> extends React.Component<P, S> {
       (Pick<S, K> | S | null),
     callback?: () => void,
   ): void {
-    if (typeof(state) === 'function') {
-      console.log('Update state:', state(this.state, this.props));
-    } else {
-      console.log('Update state:', state);
+    if (process.env.NODE_ENV !== 'production') {
+      if (typeof(state) === 'function') {
+        console.log('Update state:', state(this.state, this.props));
+      } else {
+        console.log('Update state:', state);
+      }
     }
     super.setState(state, callback);
   }

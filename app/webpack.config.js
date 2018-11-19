@@ -7,7 +7,7 @@ module.exports = (/* args, env */) => {
 
   return {
     mode,
-    entry: { index: './app/index.ts' },
+    entry: { index: './src/index.ts' },
     devtool: (mode === 'development' ? 'inline-source-map' : undefined),
     module: {
       rules: [
@@ -56,7 +56,7 @@ module.exports = (/* args, env */) => {
     ],
     output: {
       filename: '[name].js',
-      path: path.resolve(__dirname),
+      path: path.resolve(__dirname, '../labo'),
     },
     optimization: {
       splitChunks: {

@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { AbstractContainer } from '../abstract_container';
 import {
   ServiceWorkerPath,
-  WebRtcPath,
+  SimpleChatPath,
+  QrCodePath,
 } from '../../routes';
 import './style.scss';
 
@@ -20,7 +21,8 @@ class LaboratoryContainer extends AbstractContainer<Props, State> {
         <h2>実験一覧</h2>
         <ul>
           <li><Link to={ServiceWorkerPath}>Service Worker</Link></li>
-          <li><Link to={WebRtcPath}>WebRTC (作成中)</Link></li>
+          <li><Link to={SimpleChatPath}>簡易チャット</Link></li>
+          <li><Link to={QrCodePath}>QRコード</Link></li>
         </ul>
       </div>
     );

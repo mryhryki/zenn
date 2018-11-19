@@ -1,14 +1,22 @@
+lang: ja-JP
+permalink: /blog/:year-:month/:title
+timezone: Asia/Tokyo
+encoding: utf-8
+
+theme: jekyll-theme-cayman
+title: hyiromori's portfolio
+description: フルスタックエンジニア hyiromori のポートフォリオサイトです。
+show_downloads: false
+github:
+  is_project_page: false
+google_analytics: UA-124358962-1
+
+#sass:
+#  style: compressed
 exclude:
 - .gitignore
-- .node-version
 - .ruby-version
 - Gemfile
 - Gemfile.lock
 - README.md
 - app
-- node_modules
-- build.sh
-- package-lock.json
-- package.json
-- tsconfig.json
-- webpack.config.js

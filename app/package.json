@@ -1,13 +1,9 @@
 {
   "author": "hyiromori",
   "license": "MIT",
-  "main": "app/inde.ts",
+  "main": "./index.ts",
   "name": "hyiromori.github.io",
-  "version": "0.1.0",
-  "engines": {
-    "node": "v8.11.3",
-    "npm": "6.3.0"
-  },
+  "version": "1.0.0",
   "dependencies": {
     "@types/jest": "^23.1.1",
     "@types/node": "^10.5.1",
@@ -43,8 +39,9 @@
     "webpack-serve": "^2.0.2"
   },
   "scripts": {
-    "build": "NODE_ENV=production ./node_modules/.bin/webpack",
-    "serve": "NODE_ENV=development ./node_modules/.bin/webpack-serve --port 4000 --content ./",
-    "watch": "./node_modules/.bin/nodemon --watch ./app/ --ext js,jsx,ts,tsx,scss --exec \"npm run build\""
+    "build": "NODE_ENV=production ./node_modules/.bin/webpack && npm run update:service_worker",
+    "update:service_worker": "echo \"const CacheVersion = '$(date +%Y%m%d%H%M%S)';\n$(tail -n +2 ./src/service_worker.js)\" >../labo/service_worker.js",
+    "serve": "NODE_ENV=development ./node_modules/.bin/webpack-serve --port 4000 --content ./src/",
+    "watch": "./node_modules/.bin/nodemon --watch ./src/ --ext js,jsx,ts,tsx,scss --exec \"npm run build\""
   }
 }
