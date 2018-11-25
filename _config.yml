@@ -1,7 +1,9 @@
 lang: ja-JP
-permalink: /blog/:year-:month/:title
+permalink: /article/:year-:month/:title
 timezone: Asia/Tokyo
 encoding: utf-8
+sass:
+  style: compressed
 
 theme: jekyll-theme-cayman
 title: hyiromori's portfolio
@@ -11,8 +13,6 @@ github:
   is_project_page: false
 google_analytics: UA-124358962-1
 
-#sass:
-#  style: compressed
 exclude:
 - .gitignore
 - .ruby-version
