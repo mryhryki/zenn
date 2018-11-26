@@ -1,5 +1,5 @@
 ---
-title: ブログ一覧
+title: 技術記事一覧
 ---
 
 # {{ page.title }}
