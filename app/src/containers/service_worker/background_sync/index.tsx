@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { AbstractContainer } from '../../../abstract_container';
-import { Button } from '../../../../presenters/button';
+import { AbstractContainer } from '../../abstract_container';
+import { Button } from '../../../presenters/button';
 import './style.scss';
 
 const serviceWorker = ('serviceWorker' in navigator ? navigator.serviceWorker : null);

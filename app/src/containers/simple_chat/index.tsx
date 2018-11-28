@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { v4 as uuid } from 'uuid';
-import { AbstractContainer } from '../../abstract_container';
-import { TextInput } from '../../../presenters/text_input';
-import { Button } from '../../../presenters/button';
-import { LocalStorage } from '../../../common/storage';
+import { AbstractContainer } from '../abstract_container';
+import { TextInput } from '../../presenters/text_input';
+import { Button } from '../../presenters/button';
+import { LocalStorage } from '../../common/storage';
 import {
   webSocket,
   ReceiveMessageType,
-} from '../../../common/web_socket';
+} from '../../common/web_socket';
 import './style.scss';
 
 interface Props {}

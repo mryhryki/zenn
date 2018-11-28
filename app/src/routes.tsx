@@ -5,23 +5,22 @@ import {
 } from 'react-router-dom';
 import { CommonFrame } from './containers/common_frame';
 import { HomeContainer } from './containers/home';
-import { LaboratoryContainer } from './containers/laboratory';
-// import { WebRtcContainer } from './containers/laboratory/web_rtc';
-// import { SkyWayContainer } from './containers/laboratory/web_rtc/sky_way';
-import { SimpleChatContainer } from './containers/laboratory/simple_chat';
-import { ServiceWorkerContainer } from './containers/laboratory/service_worker';
-import { ServiceWorkerCacheContainer } from './containers/laboratory/service_worker/cache';
-import { ServiceWorkerPushNotificationContainer } from './containers/laboratory/service_worker/push_notification';
-import { ServiceWorkerBackgroundSyncContainer } from './containers/laboratory/service_worker/background_sync';
-import { QrCodeContainer } from './containers/utility/qr_code';
+import { WebRtcContainer } from './containers/web_rtc';
+import { SkyWayContainer } from './containers/web_rtc/sky_way';
+import { SimpleChatContainer } from './containers/simple_chat';
+import { ServiceWorkerContainer } from './containers/service_worker';
+import { ServiceWorkerCacheContainer } from './containers/service_worker/cache';
+import { ServiceWorkerPushNotificationContainer } from './containers/service_worker/push_notification';
+import { ServiceWorkerBackgroundSyncContainer } from './containers/service_worker/background_sync';
+import { QrCodeContainer } from './containers/qr_code';
 
 const HomePath = '/';
 const ServiceWorkerPath = '/service_worker';
 const ServiceWorkerCachePath = '/service_worker/cache';
 const ServiceWorkerPushNotificationPath = '/service_worker/push_notification';
 const ServiceWorkerBackgroundSyncPath = '/service_worker/background_sync';
-// const WebRtcPath = '/web_rtc';
-// const WebRtcSkyWayPath = '/web_rtc/sky_way';
+const WebRtcPath = '/web_rtc';
+const WebRtcSkyWayPath = '/web_rtc/sky_way';
 const SimpleChatPath = '/simple_chat';
 const QrCodePath = '/qr_code';
 
@@ -36,7 +35,7 @@ const Views: Array<{
     path: HomePath,
     titleJp: 'ホーム',
     titleEn: 'Home',
-    component: LaboratoryContainer,
+    component: HomeContainer,
     level: 1,
   },
   {
@@ -67,20 +66,20 @@ const Views: Array<{
     component: ServiceWorkerBackgroundSyncContainer,
     level: 2,
   },
-  // {
-  //   path: WebRtcPath,
-  //   titleJp: 'WebRTC',
-  //   titleEn: 'WebRTC',
-  //   component: WebRtcContainer,
-  //   level: 1,
-  // },
-  // {
-  //   path: WebRtcSkyWayPath,
-  //   titleJp: 'SkyWayを使ったサンプル',
-  //   titleEn: 'SkyWay',
-  //   component: SkyWayContainer,
-  //   level: 2,
-  // },
+  {
+    path: WebRtcPath,
+    titleJp: 'WebRTC',
+    titleEn: 'WebRTC',
+    component: WebRtcContainer,
+    level: 1,
+  },
+  {
+    path: WebRtcSkyWayPath,
+    titleJp: 'SkyWayを使ったサンプル',
+    titleEn: 'SkyWay',
+    component: SkyWayContainer,
+    level: 2,
+  },
   {
     path: SimpleChatPath,
     titleJp: '簡易チャット',

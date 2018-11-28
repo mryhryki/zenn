@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as QrCode from 'qrcode';
-import { AbstractContainer } from '../../abstract_container';
+import { AbstractContainer } from '../abstract_container';
 import './style.scss';
-import { TextArea } from '../../../presenters/text_area';
-import { LocalStorage } from '../../../common/storage';
+import { TextArea } from '../../presenters/text_area';
+import { LocalStorage } from '../../common/storage';
 
 const LocalStorageKey: string = 'qr_code/qrText';
 

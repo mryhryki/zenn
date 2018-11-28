@@ -64,5 +64,10 @@ module.exports = (/* args, env */) => {
         chunks: 'all',
       },
     },
+    devServer: {
+      contentBase: path.resolve(__dirname, '../labo'),
+      // hot: true,
+      port: 4000,
+    },
   };
 };

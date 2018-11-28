@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { AbstractContainer } from '../../abstract_container';
+import { AbstractContainer } from '../abstract_container';
 import {
   ServiceWorkerCachePath,
   ServiceWorkerPushNotificationPath,
   ServiceWorkerBackgroundSyncPath,
-} from '../../../routes';
+} from '../../routes';
 import './style.scss';
 
 interface Props {}

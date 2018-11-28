@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AbstractContainer } from '../../../abstract_container';
+import { AbstractContainer } from '../../abstract_container';
 import './style.scss';
 
 const supportServiceWorker: boolean = ('serviceWorker' in navigator);

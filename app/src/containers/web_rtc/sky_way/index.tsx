@@ -1,11 +1,11 @@
 import * as React from 'react';
 import Peer from 'skyway-js';
-import { AbstractContainer } from '../../../abstract_container';
-import { TextInput } from '../../../../presenters/text_input';
-import { Button } from '../../../../presenters/button';
-import { LocalStorage } from '../../../../common/storage';
+import { AbstractContainer } from '../../abstract_container';
+import { TextInput } from '../../../presenters/text_input';
+import { Button } from '../../../presenters/button';
+import { LocalStorage } from '../../../common/storage';
+import { Modal } from '../../../presenters/modal';
 import './style.scss';
-import { Modal } from '../../../../presenters/modal';
 
 const SkyWayApiKey: string = 'fcd26ea9-7208-4668-b4b5-456be1b3090e';
 const RoomPrefix: string = `${window.location.host}/`;
