@@ -14,45 +14,59 @@ type PongType = {
   type: 'pong',
 };
 
-type JoinType = {
-  requestId: string,
-  type: 'join',
-  group: string,
-};
-
-type LeaveType = {
-  requestId: string,
-  type: 'leave',
-  group: string,
-};
-
 type InfoType = {
   type: 'info',
   id: string,
 }
 
+type SendJoinType = {
+  requestId: string,
+  type: 'join',
+  group: string,
+};
+
+type ReceiveJoinType = {
+  requestId: string,
+  type: 'join',
+  group: string,
+  from: string,
+};
+
+type SendLeaveType = {
+  requestId: string,
+  type: 'leave',
+  group: string,
+};
+
+type ReceiveLeaveType = {
+  requestId: string,
+  type: 'leave',
+  group: string,
+  from: string,
+};
+
 type SendMessageType = {
   requestId: string,
   type: 'message',
   group: string,
+  to?: string,
   message: any,
 }
 
 type ReceiveMessageType = {
   requestId: string,
   type: 'message',
-  group: string,
   from: string,
   message: any,
 }
 
-type SendType = PingType | JoinType | LeaveType | SendMessageType;
-type ReceiveType = InfoType | PongType | ReceiveMessageType;
+type SendType = PingType | SendJoinType | SendLeaveType | SendMessageType;
+type ReceiveType = InfoType | PongType | ReceiveJoinType | ReceiveLeaveType | ReceiveMessageType;
 
 class WebSocketWrapper {
   connectionId: (string | null) = null;
   intervalId: (NodeJS.Timer | null) = null;
-  listener: (((message: ReceiveMessageType) => void) | null) = null;
+  listener: (((message: ReceiveType) => void) | null) = null;
   waitConnectivityId: (string | null) = null;
   webSocket: (WebSocket | null) = null;
 
@@ -62,12 +76,12 @@ class WebSocketWrapper {
       if (this.webSocket == null) {
         this.reconnect();
       } else {
-        this.checkConnectivity();
+        // this.checkConnectivity();
       }
     }, 5000);
   }
 
-  setListener = (listener: (message: ReceiveMessageType) => void | null) => {
+  setListener = (listener: (message: ReceiveType) => void | null) => {
     this.listener = listener;
   };
 
@@ -113,7 +127,7 @@ class WebSocketWrapper {
     this.webSocket.onmessage = (event: MessageEvent) => this.onMessage(event);
     this.webSocket.onopen = (event: Event) => {
       console.debug('WebSocket Open:', event);
-      this.checkConnectivity();
+      // this.checkConnectivity();
     };
     this.webSocket.onerror = (event: Event) => {
       console.error('WebSocket Error:', event);
@@ -150,6 +164,7 @@ class WebSocketWrapper {
     switch (response.type) {
       case 'info':
         this.connectionId = response.id;
+        console.info('WebSocket Connection ID:', response.id);
         break;
 
       case 'pong':
@@ -158,7 +173,9 @@ class WebSocketWrapper {
         }
         break;
 
+      case 'join':
       case 'message':
+      case 'leave':
         if (this.listener != null) {
           this.listener(response);
         }
@@ -171,6 +188,6 @@ class WebSocketWrapper {
 
 const webSocket = new WebSocketWrapper();
 export {
-  ReceiveMessageType,
+  ReceiveType,
   webSocket,
 };

@@ -6,7 +6,7 @@ import { Button } from '../../presenters/button';
 import { LocalStorage } from '../../common/storage';
 import {
   webSocket,
-  ReceiveMessageType,
+  ReceiveType,
 } from '../../common/web_socket';
 import './style.scss';
 
@@ -42,11 +42,13 @@ class SimpleChatContainer extends AbstractContainer<Props, State> {
     this.leave();
   }
 
-  onMessage = (receiveMessage: ReceiveMessageType): void => {
-    const { requestId, message } = receiveMessage;
-    this.setState((prevState) => ({
-      messages: [{ ...message, id: requestId }, ...prevState.messages],
-    }));
+  onMessage = (receiveMessage: ReceiveType): void => {
+    if (receiveMessage.type === 'message') {
+      const { requestId, message } = receiveMessage;
+      this.setState((prevState) => ({
+        messages: [{ ...message, id: requestId }, ...prevState.messages],
+      }));
+    }
   };
 
   join = () => {

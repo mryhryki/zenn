@@ -3,6 +3,7 @@ import Peer from 'skyway-js';
 import { AbstractContainer } from '../../abstract_container';
 import { TextInput } from '../../../presenters/text_input';
 import { Button } from '../../../presenters/button';
+import { Video } from '../../../presenters/video';
 import { LocalStorage } from '../../../common/storage';
 import { Modal } from '../../../presenters/modal';
 import './style.scss';
@@ -147,7 +148,7 @@ class SkyWayContainer extends AbstractContainer<Props, State> {
     Object.keys(streams)
           .forEach((peerId) => {
             if (streams[peerId] != null) {
-              streams[peerId].stop();
+              streams[peerId].getVideoTracks()[0].stop();
             }
           });
     this.setState({ selfPeerId: null, remotePeerIds: [], streams: {} });
@@ -188,21 +189,21 @@ class SkyWayContainer extends AbstractContainer<Props, State> {
 
     return (
       <Modal onWrapperClick={this.onClose}>
-        <div id="sky-way-video-modal">
-          <video
-            id="sky-way-self-view"
+        <div className="video-modal">
+          <Video
+            className="self-view"
             autoPlay
             muted
             playsInline
-            src={streams[selfPeerId].url}
+            srcObject={streams[selfPeerId]}
           />
           {remotePeerIds.map((remotePeerId) => (
-            <video
-              className="sky-way-remote-view"
+            <Video
+              className="remote-view"
               key={remotePeerId}
               autoPlay
               playsInline
-              src={streams[remotePeerId].url}
+              srcObject={streams[remotePeerId]}
             />
           ))}
         </div>
@@ -224,7 +225,7 @@ class SkyWayContainer extends AbstractContainer<Props, State> {
             value={room}
             maxLength={255}
           />
-          <div id="sky-way-control-buttons">
+          <div className="control-buttons">
             <Button onClick={this.connect}>
               Connect
             </Button>

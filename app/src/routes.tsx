@@ -6,6 +6,7 @@ import {
 import { CommonFrame } from './containers/common_frame';
 import { HomeContainer } from './containers/home';
 import { WebRtcContainer } from './containers/web_rtc';
+import { BrowserApiContainer } from './containers/web_rtc/browser_api';
 import { SkyWayContainer } from './containers/web_rtc/sky_way';
 import { SimpleChatContainer } from './containers/simple_chat';
 import { ServiceWorkerContainer } from './containers/service_worker';
@@ -20,6 +21,7 @@ const ServiceWorkerCachePath = '/service_worker/cache';
 const ServiceWorkerPushNotificationPath = '/service_worker/push_notification';
 const ServiceWorkerBackgroundSyncPath = '/service_worker/background_sync';
 const WebRtcPath = '/web_rtc';
+const WebRtcBrowserApiPath = '/web_rtc/browser_api';
 const WebRtcSkyWayPath = '/web_rtc/sky_way';
 const SimpleChatPath = '/simple_chat';
 const QrCodePath = '/qr_code';
@@ -72,6 +74,13 @@ const Views: Array<{
     titleEn: 'WebRTC',
     component: WebRtcContainer,
     level: 1,
+  },
+  {
+    path: WebRtcBrowserApiPath,
+    titleJp: 'ブラウザ API を使ったサンプル',
+    titleEn: 'Browser API',
+    component: BrowserApiContainer,
+    level: 2,
   },
   {
     path: WebRtcSkyWayPath,
@@ -128,4 +137,7 @@ export {
   ServiceWorkerBackgroundSyncPath,
   SimpleChatPath,
   QrCodePath,
+  WebRtcPath,
+  WebRtcBrowserApiPath,
+  WebRtcSkyWayPath,
 };
