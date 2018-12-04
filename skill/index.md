@@ -1,5 +1,6 @@
 ---
 title: Skill
+layout: default
 ---
 
 # スキル一覧

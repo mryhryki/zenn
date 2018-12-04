@@ -1,6 +1,9 @@
 ---
 title: Service Worker メモ
+layout: default
 ---
+
+# {{ page.title }}
 
 随時アップデートしていきます。
 

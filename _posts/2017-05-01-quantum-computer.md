@@ -1,6 +1,9 @@
 ---
 title: 量子コンピューターについて調べてみた
+layout: default
 ---
+
+# {{ page.title }}
 
 ## はじめに
 

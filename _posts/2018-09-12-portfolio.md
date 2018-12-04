@@ -1,6 +1,9 @@
 ---
 title: エンジニアなりにポートフォリオサイトを作ってみた話
+layout: default
 ---
+
+# {{ page.title }}
 
 ## あらすじ
 

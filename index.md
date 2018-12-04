@@ -1,5 +1,6 @@
 ---
 title: HOME
+layout: default
 ---
 
 ## 自己紹介

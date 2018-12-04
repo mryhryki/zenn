@@ -1,5 +1,6 @@
 ---
 title: 技術記事一覧
+layout: default
 ---
 
 # {{ page.title }}

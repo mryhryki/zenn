@@ -5,7 +5,7 @@ encoding: utf-8
 sass:
   style: compressed
 
-theme: jekyll-theme-cayman
+#theme: jekyll-theme-cayman
 title: hyiromori's portfolio
 description: Web系フルスタックエンジニア hyiromori のポートフォリオサイトです。
 show_downloads: false
