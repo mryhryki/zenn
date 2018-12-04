@@ -1,12 +1,24 @@
 <!doctype html>
 <html>
 <head>
-  <title>{{ page.title }}</title>
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <meta content="{{ page.title }} | {{ site.title }}" name="title">
+  <meta content="{{ site.description}}" name="description">
+  <meta content='{{ page.keywords }}' name='keywords'>
+  <meta property="og:type" content="{% if page.og_type %}{{ page.og_type }}{% else %}{{ 'article' }}{% endif %}"/>
+  <meta property="og:title" content="{{ page.title }} - {{ site.title }}"/>
+  <meta property="og:description" content="{{ site.description}}" />
+  <meta property="og:image" content="/assets/logo.png" />
+  <meta property="og:url" content="{{ site.url }}" />
+  <meta property="og:site_name" content="{{ site.title }}"/>
+  <meta property="og:locale" content="{{ site.lang }}" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@hyiromori" />
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta charset="UTF-8">
+  <meta charset="{{ site.encoding }}">
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
   <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosansjp.css" />
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/assets/style.css" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124358962-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -16,6 +28,9 @@
   </script>
 </head>
 <body>
+  {% unless page.no_title %}
+    <h1>{{ page.title }}</h1>
+  {% endunless %}
   {{ content }}
 </body>
 </html>

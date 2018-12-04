@@ -3,10 +3,6 @@ title: Service Worker メモ
 layout: default
 ---
 
-# {{ page.title }}
-
-随時アップデートしていきます。
-
 ## Service Worker とは？
 
 - ブラウザの仕様

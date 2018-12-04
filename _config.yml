@@ -1,22 +1,17 @@
 lang: ja-JP
-permalink: /article/:year-:month/:title
+title: Portfolio by hyiromori
+description: Web系フルスタックエンジニア hyiromori のポートフォリオサイトです。
 timezone: Asia/Tokyo
 encoding: utf-8
+
+permalink: /article/:year-:month/:title
 sass:
   style: compressed
-
-#theme: jekyll-theme-cayman
-title: hyiromori's portfolio
-description: Web系フルスタックエンジニア hyiromori のポートフォリオサイトです。
-show_downloads: false
-github:
-  is_project_page: false
-google_analytics: UA-124358962-1
-
 exclude:
 - .gitignore
 - .ruby-version
 - Gemfile
 - Gemfile.lock
 - README.md
+- LICENSE
 - app

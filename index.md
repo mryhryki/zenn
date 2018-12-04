@@ -1,7 +1,14 @@
 ---
-title: HOME
+title: Home
+no_title: true
 layout: default
+keywords: Portfolio, hyiromori
+og_type: website
 ---
+
+# Portfolio by hyiromori
+
+<p style="text-align: center;">{{ site.description }}</p>
 
 ## 自己紹介
 
