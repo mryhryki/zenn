@@ -1,6 +1,5 @@
 import { render } from 'react-dom';
 import { Routes } from './routes';
-import './index.scss';
 
 if ('serviceWorker' in navigator) {
   navigator

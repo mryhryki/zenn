@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { WebRTC } from './web_rtc';
-import { AbstractContainer } from '../../abstract_container';
 import { TextInput } from '../../../presenters/text_input';
 import { Button } from '../../../presenters/button';
 import { Video } from '../../../presenters/video';
@@ -19,7 +18,7 @@ interface State {
   remoteStreams: Array<MediaStream>,
 }
 
-class BrowserApiContainer extends AbstractContainer<Props, State> {
+class BrowserApiContainer extends React.Component<Props, State> {
   state: State = {
     room: LocalStorage.get(StorageKey),
     localStream: null,

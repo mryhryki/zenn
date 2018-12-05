@@ -3,7 +3,7 @@
 #common-frame {
   bottom: 0;
   left: 0;
-  position: fixed;
+  position: absolute;
   right: 0;
   top: 0;
 
@@ -31,7 +31,7 @@
   #common-frame-menu {
     background-color: $white;
     border-left: 1px solid $gray-light;
-    bottom: 48px;
+    bottom: 0;
     box-shadow: -8px 0 8px 0 rgba($white, 0.95);
     max-width: 320px;
     opacity: 0.95;
@@ -116,7 +116,7 @@
   }
 
   #common-frame-content {
-    bottom: 48px;
+    bottom: 0;
     left: 0;
     padding: 24px 16px 16px 16px;
     overflow-x: hidden;
@@ -130,45 +130,6 @@
       font-size: 16px;
       max-width: 50em;
       width: 100%;
-    }
-  }
-
-  #common-frame-footer {
-    background-color: $gray-dark;
-    bottom: 0;
-    height: 48px;
-    left: 0;
-    padding: 0 16px;
-    position: absolute;
-    right: 0;
-
-    .left-content {
-      float: left;
-
-      a {
-        background-color: $white;
-        border-radius: 50%;
-        color: $white;
-        display: inline-block;
-        height: 32px;
-        line-height: 30px;
-        margin: 8px 8px 8px 0;
-        padding: 4px;
-        text-align: center;
-        width: 32px;
-
-        img {
-          height: 24px;
-          width: 24px;
-        }
-      }
-    }
-
-    .right-content {
-      float: right;
-      font-size: 12px;
-      color: $white;
-      line-height: 48px;
     }
   }
 }

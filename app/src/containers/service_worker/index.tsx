@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { AbstractContainer } from '../abstract_container';
 import {
   ServiceWorkerCachePath,
   ServiceWorkerPushNotificationPath,
@@ -12,7 +11,7 @@ interface Props {}
 
 interface State {}
 
-class ServiceWorkerContainer extends AbstractContainer<Props, State> {
+class ServiceWorkerContainer extends React.Component<Props, State> {
   render() {
     return (
       <div id="service-worker-container">

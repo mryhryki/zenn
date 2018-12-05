@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Peer from 'skyway-js';
-import { AbstractContainer } from '../../abstract_container';
 import { TextInput } from '../../../presenters/text_input';
 import { Button } from '../../../presenters/button';
 import { Video } from '../../../presenters/video';
@@ -108,7 +107,7 @@ const convertStream = (stream: any): SkyWayStreamWithUrl => {
   return stream;
 };
 
-class SkyWayContainer extends AbstractContainer<Props, State> {
+class SkyWayContainer extends React.Component<Props, State> {
   state: State = {
     remotePeerIds: [],
     room: LocalStorage.get(StorageKey),

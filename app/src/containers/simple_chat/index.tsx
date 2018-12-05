@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { v4 as uuid } from 'uuid';
-import { AbstractContainer } from '../abstract_container';
 import { TextInput } from '../../presenters/text_input';
 import { Button } from '../../presenters/button';
 import { LocalStorage } from '../../common/storage';
@@ -24,7 +23,7 @@ const RoomKey: string = 'simple_chat.room';
 const NameKey: string = 'simple_chat.name';
 const InputKey: string = 'simple_chat.input';
 
-class SimpleChatContainer extends AbstractContainer<Props, State> {
+class SimpleChatContainer extends React.Component<Props, State> {
   state: State = {
     joined: false,
     room: LocalStorage.get(RoomKey) || '',

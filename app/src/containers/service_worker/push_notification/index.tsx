@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { AbstractContainer } from '../../abstract_container';
 import { Button } from '../../../presenters/button';
 import { TextInput } from '../../../presenters/text_input';
 import { TextArea } from '../../../presenters/text_area';
@@ -32,7 +31,7 @@ const urlB64ToUint8Array = (base64String: string) => {
   return outputArray;
 };
 
-class ServiceWorkerPushNotificationContainer extends AbstractContainer<Props, State> {
+class ServiceWorkerPushNotificationContainer extends React.Component<Props, State> {
   state: State = {
     publicKey: '',
     subscriptionInfo: '',

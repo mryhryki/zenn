@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { AbstractContainer } from '../abstract_container';
 import {
   WebRtcBrowserApiPath,
   WebRtcSkyWayPath,
@@ -11,7 +10,7 @@ interface Props {}
 
 interface State {}
 
-class WebRtcContainer extends AbstractContainer<Props, State> {
+class WebRtcContainer extends React.Component<Props, State> {
   render() {
     return (
       <div id="web-rtc-container">

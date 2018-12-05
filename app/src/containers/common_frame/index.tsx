@@ -112,34 +112,6 @@ class CommonFrame extends React.Component<Props, State> {
            </button>
          )
         }
-        <div id="common-frame-footer">
-          <div className="left-content">
-            <a
-              className="tooltip"
-              data-tooltip="Mail"
-              href="mailto:hyiromori@gmail.com"
-            >
-              <img src={IconMail} />
-            </a>
-            <a
-              className="tooltip"
-              data-tooltip="Twitter"
-              href="https://twitter.com/hyiromori"
-              target="_blank"
-            >
-              <img src={IconTwitter} />
-            </a>
-            <a
-              className="tooltip"
-              data-tooltip="GitHub"
-              href="https://github.com/hyiromori"
-              target="_blank"
-            >
-              <img src={IconGitHub} />
-            </a>
-          </div>
-          <div className="right-content">(C) 2018 hyiromori</div>
-        </div>
       </div>
     );
   };

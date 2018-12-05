@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { AbstractContainer } from '../../abstract_container';
 import { Button } from '../../../presenters/button';
 import './style.scss';
 
@@ -15,7 +14,7 @@ interface State {
   syncList: Array<SyncInfo>
 }
 
-class ServiceWorkerBackgroundSyncContainer extends AbstractContainer<Props, State> {
+class ServiceWorkerBackgroundSyncContainer extends React.Component<Props, State> {
   intervalId: (null | NodeJS.Timer) = null;
   db: (null | IDBDatabase) = null;
   state: State = {
@@ -74,9 +73,8 @@ class ServiceWorkerBackgroundSyncContainer extends AbstractContainer<Props, Stat
                                            .getAll();
     request.onerror = (error) => console.error('Failed:', error);
     request.onsuccess = (event: Event) => {
-      const newSyncList: Array<SyncInfo> = (event.target as IDBOpenDBRequest).result
-                                                                             .reverse()
-                                                                             .slice(0, 30);
+      console.debug('#####', event);
+      const newSyncList: Array<SyncInfo> = (event.target as any).result.reverse().slice(0, 30);
       if (newSyncList.length === 0) {
         return;
       }
@@ -111,7 +109,7 @@ class ServiceWorkerBackgroundSyncContainer extends AbstractContainer<Props, Stat
     request.onsuccess = async (event: Event) => {
       const swRegistration = await serviceWorker.ready;
       if ('sync' in swRegistration) {
-        const id: number = (event.target as IDBOpenDBRequest).result;
+        const id: any = (event.target as IDBOpenDBRequest).result;
         const tag: string = `background-sync:${id}`;
         swRegistration.sync.register(tag);
         this.reloadSyncList();
