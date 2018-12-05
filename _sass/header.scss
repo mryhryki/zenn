@@ -1,0 +1,53 @@
+@import './colors';
+
+#header {
+  border-top: 2px solid $orange;
+  border-bottom: 1px solid $gray-light;
+  height: 56px;
+  padding: 5px 8px 8px 8px;
+
+  #header-logo {
+    float: left;
+    height: 40px;
+    margin: 0;
+    text-decoration: none;
+
+    #logo-image {
+      height: 40px;
+      width: 40px;
+    }
+
+    #logo-text {
+      display: inline-block;
+      height: 40px;
+      width: 80px;
+      overflow: hidden;
+
+      #logo-text-upper {
+        border-bottom: 1px solid $gray;
+        font-size: 18px;
+        height: 26px;
+        line-height: 25px;
+        text-align: center;
+      }
+
+      #logo-text-lower {
+        font-size: 10px;
+        height: 14px;
+        line-height: 14px;
+        text-align: center;
+      }
+    }
+  }
+
+  #header-navigation {
+    float: right;
+
+    a {
+      display: inline-block;
+      height: 40px;
+      line-height: 40px;
+      margin-left: 4px;
+    }
+  }
+}

@@ -4,7 +4,7 @@ description: Web系フルスタックエンジニア hyiromori のポートフ�
 timezone: Asia/Tokyo
 encoding: utf-8
 
-permalink: /article/:year-:month/:title
+permalink: /blog/:year-:month/:title
 sass:
   style: compressed
 exclude:

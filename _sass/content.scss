@@ -1,0 +1,20 @@
+@import './colors';
+
+#content-wrapper {
+  bottom: 48px;
+  left: 0;
+  padding: 0 16px 16px 16px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: absolute;
+  right: 0;
+  top: 56px;
+
+  #content {
+    margin: 0 auto;
+    font-size: 16px;
+    max-width: 45em;
+    width: 100%;
+  }
+}
+
