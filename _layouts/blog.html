@@ -10,12 +10,15 @@
 <body>
   {% include header.html %}
   <div id="content-area">
+    <nav id="left-content"></nav>
     <div id="main-content">
       <h1>{{ page.title }}</h1>
       {{ content }}
     </div>
   </div>
-
   {% include footer.html %}
+  <script type="text/javascript">
+    {% include left_menu.js %}
+  </script>
 </body>
 </html>

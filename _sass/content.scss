@@ -1,19 +1,49 @@
 @import './colors';
 
-#content-wrapper {
+#content-area {
   bottom: 48px;
   left: 0;
-  padding: 0 16px 16px 16px;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 56px;
 
-  #content {
-    margin: 0 auto;
-    font-size: 16px;
-    max-width: 45em;
+  #main-content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    padding: 0 24px 24px 24px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-width: 720px;
+    left: calc(50%);
+    transform: translate(-50%, 0);
     width: 100%;
+  }
+
+  #left-content {
+    border-right: 1px solid $gray-light;
+    bottom: 16px;
+    display: none;
+    min-height: 24px;
+    position: absolute;
+    right: calc(50% + 240px);
+    top: 16px;
+    width: 240px;
+  }
+
+  @media screen and (min-width: 961px) {
+    #main-content {
+      position: absolute;
+      left: calc(50% + 120px);
+      top: 0;
+    }
+
+    #left-content {
+      display: block;
+    }
+
+    #right-content {
+      display: block;
+    }
   }
 }

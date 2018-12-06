@@ -1,6 +1,6 @@
 ---
 title: Service Worker メモ
-layout: default
+layout: blog 
 ---
 
 ## Service Worker とは？

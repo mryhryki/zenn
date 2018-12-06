@@ -2,20 +2,15 @@
 <html>
 <head>
   {% include head.html %}
-  <meta
-    property="og:type"
-    content="{% if page.og_type %}{{ page.og_type }}{% else %}{{ 'article' }}{% endif %}"
-  />
+  <meta property="og:type" content="website" />
 </head>
 <body>
   {% include header.html %}
   <div id="content-area">
     <div id="main-content">
-      <h1>{{ page.title }}</h1>
       {{ content }}
     </div>
   </div>
-
   {% include footer.html %}
 </body>
 </html>

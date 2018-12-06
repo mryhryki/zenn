@@ -3,7 +3,7 @@ title: Blog
 layout: default
 ---
 
-技術ネタを投稿しています。  
+技術ネタを投稿しています。
 [Qiita](https://qiita.com/hyiromori) にも同じ内容を投稿しています。
 
 ## 記事一覧

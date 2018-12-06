@@ -1,9 +1,7 @@
 ---
 title: Home
-no_title: true
-layout: default
+layout: home
 keywords: Portfolio, hyiromori
-og_type: website
 ---
 
 # Portfolio by hyiromori

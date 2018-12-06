@@ -1,4 +1,4 @@
 ---
 title: WebRTC 入門
-layout: default
+layout: blog 
 ---
