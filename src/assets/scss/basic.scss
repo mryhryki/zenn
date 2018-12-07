@@ -23,12 +23,7 @@ h1, h2, h3, h4, h5, h6, ul, ol {
 
 h2, h3, h4, h5, h6 {
   border-bottom: 1px solid $gray;
-  display: inline-block;
-
-  &:after {
-    content: "\000A";
-    white-space: pre-wrap;
-  }
+  white-space: pre-wrap;
 }
 
 h1 {
@@ -69,9 +64,15 @@ p {
 
 a {
   color: $green;
+  border-radius: 4px;
   display: inline-block;
+  padding: 0 4px;
   margin: 0 2px;
-  text-decoration: underline;
+
+  &:hover {
+    text-decoration: underline;
+    transition-duration: 0.2s;
+  }
 }
 
 hr {
