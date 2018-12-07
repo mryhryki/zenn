@@ -1,6 +1,6 @@
----
 title: Blog
-layout: default
+template: default
+keywords: blog, hyiromori
 ---
 
 技術ネタを投稿しています。
@@ -9,7 +9,5 @@ layout: default
 ## 記事一覧
 
 <ul>
-  {% for post in site.posts %}
-  <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-  {% endfor %}
+  <li><a href=".}">TITLE</a></li>
 </ul>

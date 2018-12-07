@@ -14,6 +14,9 @@
     "@types/react-router-dom": "^4.3.1",
     "@types/uuid": "^3.4.4",
     "css-loader": "^1.0.1",
+    "ejs": "^2.6.1",
+    "js-yaml": "^3.12.0",
+    "marked": "^0.5.2",
     "node-sass": "^4.10.0",
     "nodemon": "^1.18.7",
     "platform": "^1.3.5",
@@ -39,10 +42,6 @@
     "webpack-dev-server": "^3.1.10"
   },
   "scripts": {
-    "build": "NODE_ENV=production ./node_modules/.bin/webpack",
-    "deploy": "npm run build && npm run update:sw",
-    "serve": "NODE_ENV=development ./node_modules/.bin/webpack-dev-server",
-    "update:sw": "echo \"const CacheVersion = '$(date +%Y%m%d%H%M%S)';\n$(tail -n +2 ../labo/service_worker.js)\" >../labo/service_worker.js",
-    "watch": "./node_modules/.bin/nodemon --watch ./src/ --ext js,jsx,ts,tsx,scss --exec \"npm run build\""
+    "build:md": "node ./scripts/markdown.js"
   }
 }

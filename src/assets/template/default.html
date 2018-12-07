@@ -1,21 +1,21 @@
 <!doctype html>
 <html>
 <head>
-  {% include head.html %}
+  <%- include('./component/head.html') %>
   <meta
     property="og:type"
-    content="{% if page.og_type %}{{ page.og_type }}{% else %}{{ 'article' }}{% endif %}"
+    content="article"
   />
 </head>
 <body>
-  {% include header.html %}
+  <%- include('./component/header.html') %>
   <div id="content-area">
     <div id="main-content">
-      <h1>{{ page.title }}</h1>
-      {{ content }}
+      <h1><%- title %></h1>
+      <%- content %>
     </div>
   </div>
 
-  {% include footer.html %}
+  <%- include('./component/footer.html') %>
 </body>
 </html>

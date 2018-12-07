@@ -1,12 +1,7 @@
----
+template: home
 title: Home
-layout: home
-keywords: Portfolio, hyiromori
+keywords: portfolio, hyiromori
 ---
-
-# Portfolio by hyiromori
-
-<p style="text-align: center;">{{ site.description }}</p>
 
 ## 自己紹介
 
