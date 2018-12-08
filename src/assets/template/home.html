@@ -6,11 +6,13 @@
 </head>
 <body>
   <%- include('./component/header.html') %>
-  <div id="content-area">
-    <div id="main-content">
-      <h1>Portfolio by hyiromori</h1>
-      <p style="text-align: center;">Web系フルスタックエンジニア hyiromori のポートフォリオサイトです。</p>
-      <%- content %>
+  <div id="content-wrapper">
+    <div id="main-content-wrapper">
+      <div id="main-content">
+        <h1>Portfolio by hyiromori</h1>
+        <p style="text-align: center;">Web系フルスタックエンジニア hyiromori のポートフォリオサイトです。</p>
+        <%- content %>
+      </div>
     </div>
   </div>
   <%- include('./component/footer.html') %>

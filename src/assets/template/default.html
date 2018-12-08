@@ -6,10 +6,12 @@
 </head>
 <body>
   <%- include('./component/header.html') %>
-  <div id="content-area">
-    <div id="main-content">
-      <h1><%- title %></h1>
-      <%- content %>
+  <div id="content-wrapper">
+    <div id="main-content-wrapper">
+      <div id="main-content">
+        <h1><%- title %></h1>
+        <%- content %>
+      </div>
     </div>
   </div>
   <%- include('./component/footer.html') %>

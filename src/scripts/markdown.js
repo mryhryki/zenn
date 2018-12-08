@@ -52,12 +52,12 @@ const convert = (from, to, data) => {
     fs.mkdirSync(dir);
   }
 
-  const splitData = fs.readFileSync(from, 'utf-8').split('---', 2);
-  if (splitData.length !== 2) {
+  const splitData = fs.readFileSync(from, 'utf-8').split('---');
+  if (splitData.length < 2) {
     throw new Error('Undefined page info.');
   }
   const pageData = getData(Object.assign({}, yaml.safeLoad(splitData[0]), data));
-  const content = marked(ejs.render(splitData[1], pageData), { renderer });
+  const content = marked(ejs.render(splitData.slice(1).join('---'), pageData), { renderer });
   const { template } = pageData;
 
   const templatePath = path.join(templateDirPath, `${template}.html`);

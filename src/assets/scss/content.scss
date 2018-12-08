@@ -1,13 +1,13 @@
 @import './colors';
 
-#content-area {
+#content-wrapper {
   bottom: 48px;
   left: 0;
   position: fixed;
   right: 0;
   top: 56px;
 
-  #main-content-with-menu {
+  #main-content-wrapper {
     left: 0;
     bottom: 0;
     overflow-x: hidden;
@@ -15,7 +15,6 @@
     position: absolute;
     right: 0;
     top: 0;
-  }
 
     #main-content {
       position: relative;
@@ -25,6 +24,7 @@
       transform: translate(-50%, 0);
       width: 100%;
     }
+  }
 
   #left-content {
     border-right: 1px solid $gray-light;
@@ -46,11 +46,9 @@
   }
 
   @media screen and (min-width: 961px) {
-    #main-content-with-menu {
+    #main-content-wrapper.with-menu {
       #main-content {
-        position: absolute;
         left: calc(50% + 120px);
-        top: 0;
       }
     }
 
