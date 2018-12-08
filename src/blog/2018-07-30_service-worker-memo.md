@@ -1,6 +1,5 @@
----
 title: Service Worker メモ
-layout: blog 
+template: blog
 ---
 
 ## Service Worker とは？
@@ -200,7 +199,6 @@ self.addEventListener('push', (event: any) => {
 とりあえず、こんな感じで `IndexedDB` の登録＆取得処理を書いているんだな、という雰囲気だけ感じ取ればよいかと思います。
 
 ```typescript
-
 import Dexie from 'dexie';
 
 const DB_VERSION: number = 1;

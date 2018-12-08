@@ -4,37 +4,74 @@ const ejs = require('ejs');
 const marked = require('marked');
 const yaml = require('js-yaml');
 
+const root = path.join(__dirname, '..');
+
+const DefaultData = {
+  template: 'default',
+  title: 'No Title',
+  description: 'Web系フルスタックエンジニア hyiromori のポートフォリオサイトです。',
+  keywords: 'portfolio, hyiromori',
+};
+const getData = (pageData) => {
+  const data = Object.assign({}, DefaultData, pageData);
+  data.metaTitle = `${data.title} | Portfolio by hyiromori`;
+  return data;
+};
+
 const ConvertDefinition = [
   { from: 'assets/markdown/404.md', to: '../404.html' },
   { from: 'assets/markdown/index.md', to: '../index.html' },
   { from: 'assets/markdown/blog.md', to: '../blog/index.html' },
+  { from: 'assets/markdown/labo.md', to: '../labo/index.html' },
 ];
 
-const templateDirPath = path.join(__dirname, '../assets/template');
-ConvertDefinition.forEach((definition) => {
-  const { from, to } = definition;
-  const fromPath = path.join(__dirname, '..', from);
-  const toPath = path.join(__dirname, '..', to);
+const BlogFileRegexp = /^20\d\d-\d\d-\d\d_[A-Za-z0-9-]+\.md$/;
+const blogDirPath = path.join(__dirname, '../blog');
+const blogList = fs.readdirSync(blogDirPath)
+                   .filter(file => file.match(BlogFileRegexp))
+                   .sort().reverse()
+                   .map((blog) => {
+                     const splited = blog.split('_');
+                     const absolutePath = `/blog/${splited[0].substring(0, 7)}/${splited[1].split('.')[0]}.html`;
+                     return {
+                       from: path.join(root, 'blog', blog),
+                       to: path.join(root, `..${absolutePath}`),
+                       absolutePath,
+                       date: splited[0],
+                     };
+                   });
 
-  const data = fs.readFileSync(fromPath, 'utf-8');
-  const splitData = data.split('---', 2);
+const templateDirPath = path.join(__dirname, '../assets/template');
+const convert = (from, to, data) => {
+  const dir = path.dirname(to);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+  }
+
+  const splitData = fs.readFileSync(from, 'utf-8').split('---', 2);
   if (splitData.length !== 2) {
     throw new Error('Undefined page info.');
   }
-
-  const pageInfo = yaml.safeLoad(splitData[0]);
-  const content = marked(splitData[1]);
-
-  const { template } = pageInfo;
-  if (template == null) {
-    throw new Error('Template undefined.');
-  }
+  const pageData = getData(Object.assign({}, yaml.safeLoad(splitData[0]), data));
+  const content = marked(ejs.render(splitData[1], pageData));
+  const { template } = pageData;
 
   const templatePath = path.join(templateDirPath, `${template}.html`);
-  ejs.renderFile(templatePath, Object.assign({ content }, pageInfo), {}, (error, html) => {
+  ejs.renderFile(templatePath, Object.assign({ content }, pageData), {}, (error, html) => {
     if (error) {
       throw new Error(error);
     }
-    fs.writeFileSync(toPath, html);
+    fs.writeFileSync(to, html);
   });
+  return pageData;
+};
+
+const blogs = blogList.map((blog) => {
+  const { from, to, absolutePath, date } = blog;
+  return convert(from, to, { absolutePath, createdAt: date });
+});
+
+ConvertDefinition.forEach((definition) => {
+  const { from, to } = definition;
+  return convert(from, to, { blogs });
 });

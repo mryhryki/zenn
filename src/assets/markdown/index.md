@@ -1,6 +1,5 @@
-template: home
 title: Home
-keywords: portfolio, hyiromori
+template: home
 ---
 
 ## 自己紹介

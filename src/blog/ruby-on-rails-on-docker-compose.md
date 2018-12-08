@@ -1,7 +1,6 @@
----
 title: Ruby on Rails on Docker (Compose) で手軽に開発環境構築
 keywords: Ruby, Rails, Docker, Docker-Compose
-layout: blog 
+template: blog
 ---
 
 ## 目的

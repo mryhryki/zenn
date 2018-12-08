@@ -1,6 +1,5 @@
----
 title: エンジニアなりにポートフォリオサイトを作ってみた話
-layout: blog
+template: blog
 ---
 
 ## あらすじ

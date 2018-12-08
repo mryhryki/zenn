@@ -3,7 +3,7 @@ const path = require('path');
 const sass = require('node-sass');
 
 const entryFilePath = path.join(__dirname, '../assets/scss/index.scss');
-const toFilePath = path.join(__dirname, '../../assets/style.css');
+const toFilePath = path.join(__dirname, '../../assets/styles/index.css');
 
 sass.render({
   file: entryFilePath,

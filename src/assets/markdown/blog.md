@@ -1,5 +1,4 @@
 title: Blog
-template: default
 keywords: blog, hyiromori
 ---
 
@@ -8,6 +7,4 @@ keywords: blog, hyiromori
 
 ## 記事一覧
 
-<ul>
-  <li><a href=".}">TITLE</a></li>
-</ul>
+<%- blogs.map((blog) => ('- [' + blog.title +'](' + blog.absolutePath + ')')).join('\n') %>

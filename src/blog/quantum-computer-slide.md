@@ -1,6 +1,5 @@
----
 title: 量子コンピューター入門（勉強会用）
-layout: blog 
+template: blog
 ---
 
 ## この勉強会の目標

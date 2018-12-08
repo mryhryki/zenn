@@ -36,19 +36,21 @@
     }
   }
 
-  @media screen and (min-width: 961px) {
-    #main-content {
-      position: absolute;
-      left: calc(50% + 120px);
-      top: 0;
-    }
+  #main-content-with-menu {
+    @media screen and (min-width: 961px) {
+      #main-content {
+        position: absolute;
+        left: calc(50% + 120px);
+        top: 0;
+      }
 
-    #left-content {
-      display: block;
-    }
+      #left-content {
+        display: block;
+      }
 
-    #right-content {
-      display: block;
+      #right-content {
+        display: block;
+      }
     }
   }
 }

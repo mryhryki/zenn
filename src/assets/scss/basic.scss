@@ -4,7 +4,7 @@
   background-color: transparent;
   border: 0 solid $gray;
   box-sizing: border-box;
-  color: $black;
+  //color: $black;
   font-family: 'Noto Sans JP', sans-serif;
   font-feature-settings: "palt";
   font-size: 16px;
@@ -22,7 +22,6 @@ h1, h2, h3, h4, h5, h6, ul, ol {
 }
 
 h2, h3, h4, h5, h6 {
-  border-bottom: 1px solid $gray;
   white-space: pre-wrap;
 }
 
@@ -33,6 +32,7 @@ h1 {
 }
 
 h2 {
+  border-bottom: 1px solid $gray;
   font-size: 20px;
   font-weight: 500;
 }
@@ -87,6 +87,10 @@ strong {
   font-weight: 500;
   margin: 1px;
   padding: 1px 8px;
+}
+
+pre {
+  margin: 8px 0;
 }
 
 button:focus {

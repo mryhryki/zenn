@@ -1,6 +1,5 @@
----
 title: 量子コンピューターについて調べてみた
-layout: blog 
+template: blog
 ---
 
 ## はじめに
