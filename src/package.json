@@ -44,6 +44,8 @@
   "scripts": {
     "build": "npm run build:md && npm run build:css",
     "build:md": "node ./scripts/markdown.js",
-    "build:css": "node ./scripts/scss.js"
+    "build:css": "node ./scripts/scss.js",
+    "build:labo": "./node_modules/.bin/webpack",
+    "serve:labo": "./node_modules/.bin/webpack-dev-server"
   }
 }

@@ -7,7 +7,7 @@ module.exports = (/* args, env */) => {
 
   return {
     mode,
-    entry: { index: './src/index.ts' },
+    entry: { index: './labo/index.ts' },
     devtool: (mode === 'development' ? 'inline-source-map' : undefined),
     module: {
       rules: [
@@ -66,7 +66,7 @@ module.exports = (/* args, env */) => {
     },
     devServer: {
       contentBase: path.resolve(__dirname, '../labo'),
-      // hot: true,
+      hot: true,
       port: 4000,
     },
   };
