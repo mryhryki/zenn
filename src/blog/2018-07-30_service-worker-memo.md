@@ -5,7 +5,7 @@ template: blog
 ## Service Worker とは？
 
 - ブラウザの仕様
-- Web ページとは「別」のライフサイクルを持つ JavaScript の実行環境。
+- Web ページとは「別」のライフサイクルを持つ typescript の実行環境。
 - `https` or `localhost` でしか動作しない
 
 ## Service Worker でできること
@@ -88,7 +88,7 @@ template: blog
 ### `index.html` とかの記述例
 
 ```html
-<script type="text/javascript">
+<script type="text/typescript">
   if (navigator.serviceWorker) {
     navigator.serviceWorker
              .register('/service_worker.js')
@@ -104,7 +104,7 @@ template: blog
 
 ### `/service_worker.js` の記述例（抜粋）
 
-```javascript
+```typescript
 self.addEventListener('install', (event: any) => {
   event.waitUntil(
     // インストール処理後に実行したい処理
@@ -120,7 +120,7 @@ self.addEventListener('fetch', (event: any) => {
 
 １度 `fetch` に成功したものはキャッシュし、２度目以降はキャッシュを返す例
 
-```javascript
+```typescript
 self.addEventListener('fetch', (event: any) => {
   event.respondWith(
     async () => {
@@ -157,7 +157,7 @@ self.addEventListener('fetch', (event: any) => {
 
 #### Webページ側（プッシュ通知の登録処理）
 
-```javascript
+```typescript
 const registerPushNotification = async () => {
   if (navigator.serviceWorker && window.PushManager) {
     const swRegistration = await navigator.serviceWorker.register('/service_worker.js');
@@ -176,7 +176,7 @@ const registerPushNotification = async () => {
 
 #### Service Worker 側
 
-```javascript
+```typescript
 self.addEventListener('push', (event: any) => {
   const dataText = event.data.text();
   const title = 'Push Test';
@@ -265,7 +265,7 @@ export {
 
 #### Webページ側（バックグラウンド同期の登録処理）
 
-```javascript
+```typescript
 const backgroundSyncTest = async () => {
   const syncData = {
     path: '/api/v1/echo/test',
@@ -281,7 +281,7 @@ const backgroundSyncTest = async () => {
 
 #### Service Worker 側
 
-```javascript
+```typescript
 self.addEventListener('sync', async (event: any) => {
   if (event != null && typeof event.tag === 'string') {
     if (event.tag.match(/^background-sync:\d+$/)) {

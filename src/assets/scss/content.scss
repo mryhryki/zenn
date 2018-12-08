@@ -7,24 +7,33 @@
   right: 0;
   top: 56px;
 
-  #main-content {
-    position: absolute;
-    top: 0;
+  #main-content-with-menu {
+    left: 0;
     bottom: 0;
-    padding: 0 24px 24px 24px;
     overflow-x: hidden;
     overflow-y: scroll;
-    max-width: 720px;
-    left: calc(50%);
-    transform: translate(-50%, 0);
-    width: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
   }
+
+    #main-content {
+      position: relative;
+      padding: 0 24px 24px 24px;
+      max-width: 720px;
+      left: 50%;
+      transform: translate(-50%, 0);
+      width: 100%;
+    }
 
   #left-content {
     border-right: 1px solid $gray-light;
     bottom: 16px;
     display: none;
     min-height: 24px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-right: 8px;
     position: absolute;
     right: calc(50% + 240px);
     top: 16px;
@@ -32,25 +41,21 @@
 
     a {
       line-height: 1;
-      margin-bottom: 16px;
+      margin-bottom: 8px;
     }
   }
 
-  #main-content-with-menu {
-    @media screen and (min-width: 961px) {
+  @media screen and (min-width: 961px) {
+    #main-content-with-menu {
       #main-content {
         position: absolute;
         left: calc(50% + 120px);
         top: 0;
       }
+    }
 
-      #left-content {
-        display: block;
-      }
-
-      #right-content {
-        display: block;
-      }
+    #left-content {
+      display: block;
     }
   }
 }

@@ -7,11 +7,13 @@
 <body>
   <%- include('./component/header.html') %>
   <div id="content-area">
-    <nav id="left-content"></nav>
-    <div id="main-content">
-      <h1><%- title %></h1>
-      <%- content %>
+    <div id="main-content-with-menu">
+      <div id="main-content">
+        <h1><%- title %></h1>
+        <%- content %>
+      </div>
     </div>
+    <nav id="left-content"></nav>
   </div>
   <%- include('./component/footer.html') %>
   <script type="text/javascript">

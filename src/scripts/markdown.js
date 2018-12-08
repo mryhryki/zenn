@@ -32,7 +32,8 @@ const blogList = fs.readdirSync(blogDirPath)
                    .sort().reverse()
                    .map((blog) => {
                      const splited = blog.split('_');
-                     const absolutePath = `/blog/${splited[0].substring(0, 7)}/${splited[1].split('.')[0]}.html`;
+                     const absolutePath =
+                       `/blog/${splited[0].substring(0, 7)}/${splited[1].split('.')[0]}.html`;
                      return {
                        from: path.join(root, 'blog', blog),
                        to: path.join(root, `..${absolutePath}`),
@@ -40,6 +41,9 @@ const blogList = fs.readdirSync(blogDirPath)
                        date: splited[0],
                      };
                    });
+
+const renderer = new marked.Renderer();
+renderer.heading = (text, level, raw) => (`<h${level} id="${raw}">${text}</h${level}>\n`);
 
 const templateDirPath = path.join(__dirname, '../assets/template');
 const convert = (from, to, data) => {
@@ -53,7 +57,7 @@ const convert = (from, to, data) => {
     throw new Error('Undefined page info.');
   }
   const pageData = getData(Object.assign({}, yaml.safeLoad(splitData[0]), data));
-  const content = marked(ejs.render(splitData[1], pageData));
+  const content = marked(ejs.render(splitData[1], pageData), { renderer });
   const { template } = pageData;
 
   const templatePath = path.join(templateDirPath, `${template}.html`);

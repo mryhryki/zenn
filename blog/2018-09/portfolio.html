@@ -49,10 +49,10 @@
   </nav>
 </div>
   <div id="content-area">
-    <nav id="left-content"></nav>
-    <div id="main-content">
-      <h1>エンジニアなりにポートフォリオサイトを作ってみた話</h1>
-      <h2 id="-">あらすじ</h2>
+    <div id="main-content-with-menu">
+      <div id="main-content">
+        <h1>エンジニアなりにポートフォリオサイトを作ってみた話</h1>
+        <h2 id="あらすじ">あらすじ</h2>
 <ul>
 <li>エンジニアやってるけど、自分の技術を伝える手段を持ってないことに気付いた</li>
 <li>手軽に公開できるので <code>GitHub Pages</code> を採用した</li>
@@ -60,16 +60,16 @@
 <li>できあがったポートフォリオサイト: <a href="https://hyiromori.github.io/">https://hyiromori.github.io/</a></li>
 <li>ソースコード: <a href="https://github.com/hyiromori/hyiromori.github.io">https://github.com/hyiromori/hyiromori.github.io</a></li>
 </ul>
-<h2 id="-">作ろうと思ったきっかけ</h2>
+<h2 id="作ろうと思ったきっかけ">作ろうと思ったきっかけ</h2>
 <ol>
 <li>今後もエンジニアとして飯を食っていこうと思った時何が必要か、的なことをふと考えた。</li>
 <li>勉強してできることを増やしていくことも大事だけど、自分ができるを伝えることも同じぐらい大事で、でもその努力を今のところしていないな〜、と思った。</li>
 <li>パッと見てこんなことができる人なんだ〜、と理解してもらえるようなサイトを作れば良さそうだと思った。</li>
 </ol>
 <p>という感じで思いたち、じゃあ作ろうと決めた感じです。<br>ちなみに、調べてみるとこういうのをポートフォリオサイトと言うらしいです。  </p>
-<h2 id="-">どうやって公開しようか考えた</h2>
+<h2 id="どうやって公開しようか考えた">どうやって公開しようか考えた</h2>
 <p>お金がかかったり、公開やメンテナンスに手間がかかる方法だと怠惰な自分には続かないので、公開が容易な方法を調べました。<br>その中で <a href="https://pages.github.com/">GitHub Pages</a> は、無料で使える上に、 <code>GitHub</code> にプッシュするだけで公開できるので、採用しました。  </p>
-<h2 id="-">どうやって作るか考えた</h2>
+<h2 id="どうやって作るか考えた">どうやって作るか考えた</h2>
 <p>今回の目的は、自分の技術を公開するものなので、なるべく自分で作るのが良いと思いました。<br>よって、以下のような方針で作ることに決めました。  </p>
 <ul>
 <li><code>SPA</code> が得意なので、 <code>SPA</code> で作る</li>
@@ -77,7 +77,7 @@
 <li><a href="https://qiita.com/hyiromori/items/7986a725541c97da878d">ServiceWorker</a> の記事も書いたので、実践してみる</li>
 <li>なるべくフレームワークとかを使わない（<a href="https://github.com/hyiromori/hyiromori.github.io/blob/master/package.json">package.json</a>）</li>
 </ul>
-<h2 id="-">デザインやレイアウトはどうしようか考えた</h2>
+<h2 id="デザインやレイアウトはどうしようか考えた">デザインやレイアウトはどうしようか考えた</h2>
 <p>デザイナーじゃないので凝ったことはしたくないけど、 <code>Bootstrap</code> とかのCSSフレームワークを使うのは「自分の技術の公開」とはなにか違う気がするし、何より面白味がない😏<br>基本は自分で全部作り、以下のような方針でやることに決めました。  </p>
 <ul>
 <li>基本的なHTMLタグを書くだけである程度デザインが整ったページを作れるような構成にする（ <code>GitHub</code> のMarkdownプレビューのようなイメージ）<ul>
@@ -87,7 +87,7 @@
 </li>
 <li>レスポンシブにする（とりあえず自分の <code>Macbook</code> と <code>iPhone</code> の両方でちゃんと表示できることを目標）</li>
 </ul>
-<h2 id="-">サイトの構成を考えた</h2>
+<h2 id="サイトの構成を考えた">サイトの構成を考えた</h2>
 <p>そんなにコンテンツはないですが、ちょっとだけ考えました。  </p>
 <ul>
 <li>とりあえず自己紹介は必須なので、ホーム画面は主に自己紹介を書く</li>
@@ -102,14 +102,16 @@
 </ul>
 </li>
 </ul>
-<h2 id="-">実装</h2>
+<h2 id="実装">実装</h2>
 <p>いつか別記事で書こう。  </p>
-<h2 id="-">公開</h2>
+<h2 id="公開">公開</h2>
 <p>レポジトリにプッシュするだけなので、特に何も要らない(笑)<br><a href="https://hyiromori.github.io/">https://hyiromori.github.io/</a> に公開しています。  </p>
-<h2 id="-">まとめ</h2>
+<h2 id="まとめ">まとめ</h2>
 <p>自分で考えて実装して公開するのは、やっぱり楽しいですね！<br>実際に公開してみて「どんなものが作れるか」と聞かれたらこれを見せれば良い、という安心感が凄いありますね。<br>とはいえ、今は積極的に転職活動をしているわけではないので、今のところは単なる自己満足😓  </p>
 
+      </div>
     </div>
+    <nav id="left-content"></nav>
   </div>
   <div id="footer">
   <nav id="footer-links">
@@ -127,17 +129,11 @@
 </div>
 
   <script type="text/javascript">
-    var headers = document.querySelectorAll('h2');
-
-var menuList = [];
-headers.forEach((header) => {
-  menuList.push({ id: header.id, title: header.textContent });
+    var headers = [];
+document.querySelectorAll('h2').forEach(function(header) {
+  headers.push('<div><a href="#' + header.id + '">' + header.textContent + '</a></div>');
 });
-var listItems = menuList.map(function(menu) {
-  return ('<div><a href="#' + menu.id + '">' + menu.title + '</a></div>');
-});
-
-document.getElementById('left-content').innerHTML = ('<ul>' + listItems.join('') + '</ul>');
+document.getElementById('left-content').innerHTML = headers.join('');
 
   </script>
 </body>

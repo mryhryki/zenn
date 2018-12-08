@@ -1,11 +1,5 @@
-var headers = document.querySelectorAll('h2');
-
-var menuList = [];
-headers.forEach((header) => {
-  menuList.push({ id: header.id, title: header.textContent });
+var headers = [];
+document.querySelectorAll('h2').forEach(function(header) {
+  headers.push('<div><a href="#' + header.id + '">' + header.textContent + '</a></div>');
 });
-var listItems = menuList.map(function(menu) {
-  return ('<div><a href="#' + menu.id + '">' + menu.title + '</a></div>');
-});
-
-document.getElementById('left-content').innerHTML = ('<ul>' + listItems.join('') + '</ul>');
+document.getElementById('left-content').innerHTML = headers.join('');

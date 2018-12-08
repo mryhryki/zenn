@@ -49,16 +49,16 @@
   </nav>
 </div>
   <div id="content-area">
-    <nav id="left-content"></nav>
-    <div id="main-content">
-      <h1>Service Worker メモ</h1>
-      <h2 id="service-worker-">Service Worker とは？</h2>
+    <div id="main-content-with-menu">
+      <div id="main-content">
+        <h1>Service Worker メモ</h1>
+        <h2 id="Service Worker とは？">Service Worker とは？</h2>
 <ul>
 <li>ブラウザの仕様</li>
-<li>Web ページとは「別」のライフサイクルを持つ JavaScript の実行環境。</li>
+<li>Web ページとは「別」のライフサイクルを持つ typescript の実行環境。</li>
 <li><code>https</code> or <code>localhost</code> でしか動作しない</li>
 </ul>
-<h2 id="service-worker-">Service Worker でできること</h2>
+<h2 id="Service Worker でできること">Service Worker でできること</h2>
 <ul>
 <li><code>fetch</code> イベントに介入（キャッシュなどのコントロールが出来る）</li>
 <li>プッシュ通知</li>
@@ -66,7 +66,7 @@
 </ul>
 <p>ネイティブアプリでないと難しかったことが、Webアプリでも出来るようになってきた印象ですね！
 まだ、機能によっては対応しているブラウザが少ないですが、この流れが進むと、Webアプリでもネイティブアプリとほぼ同等のことが出来るようになってくると思います。</p>
-<h2 id="service-worker-">Service Worker でできないこと</h2>
+<h2 id="Service Worker でできないこと">Service Worker でできないこと</h2>
 <ul>
 <li>DOMアクセス<ul>
 <li><code>window</code> にはアクセスできません</li>
@@ -74,30 +74,30 @@
 </ul>
 </li>
 </ul>
-<h2 id="service-worker-">Service Worker のライフサイクル</h2>
-<h3 id="installing">INSTALLING</h3>
+<h2 id="Service Worker のライフサイクル">Service Worker のライフサイクル</h2>
+<h3 id="INSTALLING">INSTALLING</h3>
 <ul>
 <li>Service Worker の登録が開始された状態</li>
 </ul>
-<h3 id="installed">INSTALLED</h3>
+<h3 id="INSTALLED">INSTALLED</h3>
 <ul>
 <li>Service Worker の登録が完了した状態</li>
 </ul>
-<h3 id="activating">ACTIVATING</h3>
+<h3 id="ACTIVATING">ACTIVATING</h3>
 <ul>
 <li>インストールされた Service Worker が有効になる段階</li>
 </ul>
-<h3 id="activated">ACTIVATED</h3>
+<h3 id="ACTIVATED">ACTIVATED</h3>
 <ul>
 <li>Service Worker が有効に機能している状態</li>
 <li>この段階から <code>fetch</code> イベントなどへの介入が出来るようになる</li>
 </ul>
-<h3 id="redundant">REDUNDANT</h3>
+<h3 id="REDUNDANT">REDUNDANT</h3>
 <ul>
 <li>Service Worker が無効になった状態</li>
 <li>通常、新しい Service Worker に置き換えられた時ぐらい？</li>
 </ul>
-<h2 id="service-worker-">Service Worker で使用できるイベント</h2>
+<h2 id="Service Worker で使用できるイベント">Service Worker で使用できるイベント</h2>
 <h3 id="install">install</h3>
 <ul>
 <li><code>INSTALL</code> 時に呼び出される</li>
@@ -132,10 +132,10 @@
 <li>通知メッセージの表示とかはカスタマイズできる</li>
 <li>メッセージを表示させず、バックグランドで何らかの処理を走らせることもできそう（未検証）</li>
 </ul>
-<h2 id="-">サンプルソース</h2>
+<h2 id="サンプルソース">サンプルソース</h2>
 <p><code>TypeScript</code> チャレンジ中！（要するに、あまり慣れていないです😓）</p>
-<h3 id="index-html-"><code>index.html</code> とかの記述例</h3>
-<pre><code class="language-html">&lt;script type=&quot;text/javascript&quot;&gt;
+<h3 id="index.html とかの記述例"><code>index.html</code> とかの記述例</h3>
+<pre><code class="language-html">&lt;script type=&quot;text/typescript&quot;&gt;
   if (navigator.serviceWorker) {
     navigator.serviceWorker
              .register(&#39;/service_worker.js&#39;)
@@ -147,8 +147,8 @@
              });
   }
 &lt;/script&gt;</code></pre>
-<h3 id="-service_worker-js-"><code>/service_worker.js</code> の記述例（抜粋）</h3>
-<pre><code class="language-javascript">self.addEventListener(&#39;install&#39;, (event: any) =&gt; {
+<h3 id="/service_worker.js の記述例（抜粋）"><code>/service_worker.js</code> の記述例（抜粋）</h3>
+<pre><code class="language-typescript">self.addEventListener(&#39;install&#39;, (event: any) =&gt; {
   event.waitUntil(
     // インストール処理後に実行したい処理
   );
@@ -157,9 +157,9 @@
 self.addEventListener(&#39;fetch&#39;, (event: any) =&gt; {
   // fetch イベント時に介入したい処理
 });</code></pre>
-<h2 id="cache-api-">Cache API (<a href="https://caniuse.com/#feat=serviceworkers">利用できるブラウザ</a>)</h2>
+<h2 id="Cache API (利用できるブラウザ)">Cache API (<a href="https://caniuse.com/#feat=serviceworkers">利用できるブラウザ</a>)</h2>
 <p>１度 <code>fetch</code> に成功したものはキャッシュし、２度目以降はキャッシュを返す例</p>
-<pre><code class="language-javascript">self.addEventListener(&#39;fetch&#39;, (event: any) =&gt; {
+<pre><code class="language-typescript">self.addEventListener(&#39;fetch&#39;, (event: any) =&gt; {
   event.respondWith(
     async () =&gt; {
       // キャッシュがあった場合は、キャッシュの内容を返す。
@@ -188,9 +188,9 @@ self.addEventListener(&#39;fetch&#39;, (event: any) =&gt; {
   );
 });</code></pre>
 <p><a href="https://jakearchibald.com/2014/offline-cookbook/">The offline cookbook</a> というサイトに様々なパターンの例があり、とても参考になる。</p>
-<h3 id="push-api-">Push API (<a href="https://caniuse.com/#feat=push-api">利用できるブラウザ</a>）</h3>
-<h4 id="web-">Webページ側（プッシュ通知の登録処理）</h4>
-<pre><code class="language-javascript">const registerPushNotification = async () =&gt; {
+<h3 id="Push API (利用できるブラウザ）">Push API (<a href="https://caniuse.com/#feat=push-api">利用できるブラウザ</a>）</h3>
+<h4 id="Webページ側（プッシュ通知の登録処理）">Webページ側（プッシュ通知の登録処理）</h4>
+<pre><code class="language-typescript">const registerPushNotification = async () =&gt; {
   if (navigator.serviceWorker &amp;&amp; window.PushManager) {
     const swRegistration = await navigator.serviceWorker.register(&#39;/service_worker.js&#39;);
     console.log(&#39;ServiceWorker is registered&#39;, swRegistration);
@@ -204,14 +204,14 @@ self.addEventListener(&#39;fetch&#39;, (event: any) =&gt; {
     console.log(&#39;User is subscribed:&#39;, subscription);
   }
 };</code></pre>
-<h4 id="service-worker-">Service Worker 側</h4>
-<pre><code class="language-javascript">self.addEventListener(&#39;push&#39;, (event: any) =&gt; {
+<h4 id="Service Worker 側">Service Worker 側</h4>
+<pre><code class="language-typescript">self.addEventListener(&#39;push&#39;, (event: any) =&gt; {
   const dataText = event.data.text();
   const title = &#39;Push Test&#39;;
   const options = { body: dataText };
   event.waitUntil(self.registration.showNotification(title, options));
 });</code></pre>
-<h3 id="background-sync-api-">Background Sync API (<a href="https://caniuse.com/#feat=background-sync">利用できるブラウザ</a>)</h3>
+<h3 id="Background Sync API (利用できるブラウザ)">Background Sync API (<a href="https://caniuse.com/#feat=background-sync">利用できるブラウザ</a>)</h3>
 <ul>
 <li>使えるブラウザが少ない（今のところChromeのみ）</li>
 <li>登録しておけば勝手に同期してくれる訳ではない（ハマった・・・）</li>
@@ -221,7 +221,7 @@ self.addEventListener(&#39;fetch&#39;, (event: any) =&gt; {
 </li>
 <li>同期に限らず、オフラインからオンラインになった時にやりたい処理なども登録しておくことも出来ます。</li>
 </ul>
-<h4 id="indexeddb-dexie-">IndexedDB の定義（<a href="http://dexie.org/">Dexie</a> というライブラリを使用しています）</h4>
+<h4 id="IndexedDB の定義（Dexie というライブラリを使用しています）">IndexedDB の定義（<a href="http://dexie.org/">Dexie</a> というライブラリを使用しています）</h4>
 <p>結構ソースが大きくなってしまった。
 とりあえず、こんな感じで <code>IndexedDB</code> の登録＆取得処理を書いているんだな、という雰囲気だけ感じ取ればよいかと思います。</p>
 <pre><code class="language-typescript">import Dexie from &#39;dexie&#39;;
@@ -286,8 +286,8 @@ export {
   getBackgroundSyncRows,
   updateBackgroundSyncRow,
 };</code></pre>
-<h4 id="web-">Webページ側（バックグラウンド同期の登録処理）</h4>
-<pre><code class="language-javascript">const backgroundSyncTest = async () =&gt; {
+<h4 id="Webページ側（バックグラウンド同期の登録処理）">Webページ側（バックグラウンド同期の登録処理）</h4>
+<pre><code class="language-typescript">const backgroundSyncTest = async () =&gt; {
   const syncData = {
     path: &#39;/api/v1/echo/test&#39;,
     body: JSON.stringify({ test: &#39;OK&#39; }),
@@ -298,8 +298,8 @@ export {
   const swRegistration = await navigator.serviceWorker.ready;
   swRegistration.sync.register(tag);
 };</code></pre>
-<h4 id="service-worker-">Service Worker 側</h4>
-<pre><code class="language-javascript">self.addEventListener(&#39;sync&#39;, async (event: any) =&gt; {
+<h4 id="Service Worker 側">Service Worker 側</h4>
+<pre><code class="language-typescript">self.addEventListener(&#39;sync&#39;, async (event: any) =&gt; {
   if (event != null &amp;&amp; typeof event.tag === &#39;string&#39;) {
     if (event.tag.match(/^background-sync:\d+$/)) {
       const id: number = parseInt(event.tag.substr(16), 10);
@@ -313,13 +313,13 @@ export {
     }
   }
 });</code></pre>
-<h2 id="app-cache-">App Cache（参考）</h2>
+<h2 id="App Cache（参考）">App Cache（参考）</h2>
 <p>これまでにあった、キャッシュの仕組みらしい。（使ったことは無いのであまり知らない）</p>
-<h3 id="-">機能</h3>
+<h3 id="機能">機能</h3>
 <ul>
 <li>ブラウザがキャッシュするファイルを指定して、キャッシュが出来る</li>
 </ul>
-<h3 id="-">問題点</h3>
+<h3 id="問題点">問題点</h3>
 <ul>
 <li>キャッシュの仕組みに問題がある<ul>
 <li>動的に生成されるインデックスページ自体も必ずキャッシュされてしまうため、いろいろ厄介</li>
@@ -331,12 +331,12 @@ export {
 </ul>
 </li>
 </ul>
-<h3 id="app-cache-service-worker-">App Cache と Service Worker との違い</h3>
+<h3 id="App Cache と Service Worker との違い">App Cache と Service Worker との違い</h3>
 <ul>
 <li>Service Worker はキャッシュ用のAPIが存在するが、キャッシュの方法については実装者に依存</li>
 <li>Service Worker の方がキャッシュの自由度が高く、また様々な介入が出来る</li>
 </ul>
-<h2 id="-">参考文献</h2>
+<h2 id="参考文献">参考文献</h2>
 <ul>
 <li><a href="https://developers.google.com/web/fundamentals/primers/service-workers/?hl=ja">Service Worker の紹介</a></li>
 <li><a href="https://developers.google.com/web/fundamentals/codelabs/debugging-service-workers/?hl=ja">Service Worker のデバッグ</a></li>
@@ -353,7 +353,9 @@ Introducing Background Sync</a></li>
 <li><a href="https://html5experts.jp/kyo_ago/5153/">攻撃シナリオを使って解説するApplicationCacheのキャッシュポイズニング</a></li>
 </ul>
 
+      </div>
     </div>
+    <nav id="left-content"></nav>
   </div>
   <div id="footer">
   <nav id="footer-links">
@@ -371,17 +373,11 @@ Introducing Background Sync</a></li>
 </div>
 
   <script type="text/javascript">
-    var headers = document.querySelectorAll('h2');
-
-var menuList = [];
-headers.forEach((header) => {
-  menuList.push({ id: header.id, title: header.textContent });
+    var headers = [];
+document.querySelectorAll('h2').forEach(function(header) {
+  headers.push('<div><a href="#' + header.id + '">' + header.textContent + '</a></div>');
 });
-var listItems = menuList.map(function(menu) {
-  return ('<div><a href="#' + menu.id + '">' + menu.title + '</a></div>');
-});
-
-document.getElementById('left-content').innerHTML = ('<ul>' + listItems.join('') + '</ul>');
+document.getElementById('left-content').innerHTML = headers.join('');
 
   </script>
 </body>
