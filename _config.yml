@@ -1,14 +1,5 @@
-#lang: ja-JP
-#title: Portfolio by hyiromori
-#description: Web系フルスタックエンジニア hyiromori のポートフォリオサイトです。
-#timezone: Asia/Tokyo
-#encoding: utf-8
-#
-#permalink: /blog/:year-:month/:title
-#highlighter: rouge
-#sass:
-#  style: compressed
 exclude:
+- CNAME
 - LICENSE
 - README.md
 - src
