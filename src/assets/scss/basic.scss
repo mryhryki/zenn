@@ -4,7 +4,6 @@
   background-color: transparent;
   border: 0 solid $gray;
   box-sizing: border-box;
-  //color: $black;
   font-family: 'Noto Sans JP', sans-serif;
   font-feature-settings: "palt";
   font-size: 16px;
@@ -32,38 +31,34 @@ h1 {
 }
 
 h2 {
-  border-bottom: 1px solid $gray;
-  font-size: 20px;
+  border-bottom: 1px solid $gray-light;
+  font-size: 24px;
   font-weight: 500;
 }
 
 h3 {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
 }
 
 h4 {
   font-weight: 700;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 h5 {
   font-weight: 800;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 h6 {
   font-weight: 800;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 p {
   margin-top: 8px;
   padding-left: 1em;
-}
-
-code {
-  border-radius: 4px;
 }
 
 a {
@@ -85,16 +80,32 @@ hr {
   margin-top: 16px;
 }
 
+em {
+  font-style: italic;
+}
+
 strong {
-  background-color: $silver;
-  display: inline-block;
-  font-weight: 500;
-  margin: 1px;
-  padding: 1px 8px;
+  font-weight: 600;
+
+  & > em, code {
+    font-weight: 600;
+  }
+
+  & > code {
+    background-color: $silver;
+    display: inline-block;
+    font-weight: 600;
+    margin: 1px;
+    padding: 1px 8px;
+  }
 }
 
 pre {
   margin: 8px 0;
+
+  code {
+    border-radius: 4px;
+  }
 }
 
 button:focus {
@@ -118,6 +129,14 @@ ul, ol {
 
   li {
     margin-top: 4px;
+
+    p {
+      padding-left: 0;
+    }
+  }
+
+  ul {
+    margin-top: 0;
   }
 }
 
@@ -141,7 +160,9 @@ ul, ol {
   }
 
   %tooltip-base {
+    background-color: $white;
     box-shadow: 0 2px 4px 0 $gray;
+    color: $black;
     content: attr(data-tooltip);
     display: block;
     font-size: 16px;
@@ -167,7 +188,6 @@ ul, ol {
         @extend %tooltip-triangle-base;
 
         border-color: $white transparent transparent transparent;
-        box-shadow: 0 2px 4px 0 $gray;
         top: -10px;
       }
     }

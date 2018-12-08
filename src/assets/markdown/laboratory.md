@@ -1,6 +1,6 @@
-title: Labo
-template: default
-keywords: labo, hyiromori
+title: laboratory
+template: laboratory
+keywords: laboratory, hyiromori
 ---
 
 <div id="app"></div>

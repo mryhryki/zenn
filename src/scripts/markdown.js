@@ -22,7 +22,7 @@ const ConvertDefinition = [
   { from: 'assets/markdown/404.md', to: '../404.html' },
   { from: 'assets/markdown/index.md', to: '../index.html' },
   { from: 'assets/markdown/blog.md', to: '../blog/index.html' },
-  { from: 'assets/markdown/labo.md', to: '../labo/index.html' },
+  { from: 'assets/markdown/laboratory.md', to: '../laboratory/index.html' },
 ];
 
 const BlogFileRegexp = /^20\d\d-\d\d-\d\d_[A-Za-z0-9-]+\.md$/;

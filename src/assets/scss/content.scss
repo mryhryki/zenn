@@ -23,6 +23,31 @@
       left: 50%;
       transform: translate(-50%, 0);
       width: 100%;
+
+      #home-title-wrapper {
+        text-align: center;
+        margin: 16px 0;
+
+        #home-title {
+          display: inline-block;
+          text-align: center;
+
+          #home-title-upper {
+            border-bottom: 1px solid $gray;
+            font-size: 40px;
+            font-weight: 500;
+            line-height: 48px;
+            text-align: center;
+          }
+
+          #home-title-lower {
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 20px;
+            text-align: center;
+          }
+        }
+      }
     }
   }
 
