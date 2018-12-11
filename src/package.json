@@ -45,7 +45,7 @@
   },
   "scripts": {
     "start": "./node_modules/.bin/nf start",
-    "watch:md": "./node_modules/.bin/nodemon --watch ./ --ext md --exec 'npm run build:md'",
+    "watch:md": "./node_modules/.bin/nodemon --watch ./ --ext md,html --exec 'npm run build:md'",
     "watch:css": "./node_modules/.bin/nodemon --watch ./ --ext scss --exec 'npm run build:css'",
     "watch:labo": "./node_modules/.bin/nodemon --watch ./laboratory --exec 'npm run build:labo'",
     "express": "node ./scripts/express.js",
