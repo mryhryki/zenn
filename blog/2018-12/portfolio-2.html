@@ -7,7 +7,7 @@
 <meta content="ポートフォリオ,静的サイト,JavaScript" name="keywords">
 <meta property="og:title" content="エンジニアなりにポートフォリオサイトを作ってみた話２ | Portfolio by hyiromori" />
 <meta property="og:description" content="Web系フルスタックエンジニア hyiromori のポートフォリオサイトです。" />
-<meta property="og:image" content="/assets/images/logo.png" />
+<meta property="og:image" content="/assets/images/logo.jpg" />
 <meta property="og:url" content="https://portfolio.hyiromori.com/" />
 <meta property="og:site_name" content="エンジニアなりにポートフォリオサイトを作ってみた話２ | Portfolio by hyiromori" />
 <meta property="og:locale" content="ja-JP" />
@@ -18,7 +18,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 <!--<link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosansjp.css" />-->
 <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
-<link rel="stylesheet" href="/assets/styles/index.css?v=1544645049777" />
+<link rel="stylesheet" href="/assets/styles/index.css?v=1544645745703" />
 <script src="/assets/scripts/highlight.pack.js"></script>
 <link rel="stylesheet" href="/assets/styles/monokai-sublime.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124358962-1"></script>
@@ -36,7 +36,7 @@
     <div id="header-left"></div>
 <div id="header">
   <a href="/" id="header-logo">
-    <img id="logo-image" alt="Logo image" src="/assets/images/logo.png" />
+    <img id="logo-image" alt="Logo image" src="/assets/images/logo.jpg" />
     <div id="logo-text">
       <div id="logo-text-upper">Portfolio</div>
       <div id="logo-text-lower">by hyiromori</div>
@@ -84,12 +84,12 @@
 <h2 id="GitHub Pages の独自ドメインの設定">GitHub Pages の独自ドメインの設定</h2>
 <h3 id="DNS の設定">DNS の設定</h3>
 <p>IP アドレスと CNAME で設定する２つの方法があるようですが、 CNAME の方が管理が楽そうなので、そちらを採用しました。<br>AWS Route53 での設定は以下のようになります。  </p>
-<p><img src="/assets/images/blog/2018-12/portfolio-2/aws-route53.png" alt="aws-route53"></p>
+<p><img src="/assets/images/blog/2018-12/portfolio-2/aws-route53.jpg" alt="aws-route53"></p>
 <h3 id="GitHub の設定">GitHub の設定</h3>
 <p>設定ページで以下の箇所に独自ドメインを設定するだけで OK です。  </p>
-<p><img src="/assets/images/blog/2018-12/portfolio-2/github.png" alt="github"></p>
+<p><img src="/assets/images/blog/2018-12/portfolio-2/github.jpg" alt="github"></p>
 <p><code>Let&#39;s Encrypt</code> で生成された証明書が使われるようです。  </p>
-<p><img src="/assets/images/blog/2018-12/portfolio-2/lets-encrypt.png" alt="lets-encrypt"></p>
+<p><img src="/assets/images/blog/2018-12/portfolio-2/lets-encrypt.jpg" alt="lets-encrypt"></p>
 <p>あと <code>CNAME</code> というファイルが自動的に追加され、独自ドメインの設定が保存されるているようです。<br>間違ってこのファイルを消したら、アクセスできなくなって焦った・・。</p>
 <h2 id="静的サイトジェネレーターの選定">静的サイトジェネレーターの選定</h2>
 <p>とりあえず <code>GitHub Pages</code> で採用されている <a href="https://jekyllrb.com/">Jekyll</a> を使おうと思いました。<br>最初は問題なかったのですが、使っている内に細かい不満が出てきて（テンプレートの書き方とか、思ったことが上手くできる方法がなさそうとか）、 <code>Jekyll</code> の採用はやめました。  </p>
