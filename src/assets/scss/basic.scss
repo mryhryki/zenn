@@ -4,7 +4,8 @@
   background-color: transparent;
   border: 0 solid $gray;
   box-sizing: border-box;
-  font-family: 'Noto Sans JP', sans-serif;
+  //font-family: 'Noto Sans JP', sans-serif;
+  font-family:'M+ Type-1 (general-j) Regular', sans-serif;
   font-feature-settings: "palt";
   font-size: 16px;
   font-weight: normal;
@@ -26,33 +27,33 @@ h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 28px;
-  font-weight: 600;
+  font-weight: bold;
   text-align: center;
 }
 
 h2 {
   border-bottom: 1px solid $gray-light;
   font-size: 24px;
-  font-weight: 500;
+  font-weight: bold;
 }
 
 h3 {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: bold;
 }
 
 h4 {
-  font-weight: 700;
+  font-weight: bold;
   font-size: 16px;
 }
 
 h5 {
-  font-weight: 800;
+  font-weight: bold;
   font-size: 14px;
 }
 
 h6 {
-  font-weight: 800;
+  font-weight: bold;
   font-size: 12px;
 }
 
@@ -84,17 +85,17 @@ em {
 }
 
 strong {
-  font-weight: 600;
+  font-weight: bold;
 
   & > em, code {
-    font-weight: 600;
+    font-weight: bold;
   }
 }
 
 code {
   background-color: $silver;
   display: inline-block;
-  font-weight: 600;
+  font-weight: bold;
   margin: 1px;
   padding: 1px 6px;
 }
