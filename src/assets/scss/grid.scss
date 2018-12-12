@@ -7,11 +7,13 @@ $footer-height: 48px;
   bottom: 0;
   display: grid;
   grid-template-rows: $header-height 1fr $footer-height;
+  height: 100%;
   left: 0;
-  position: fixed;
   overflow: hidden;
+  position: fixed;
   right: 0;
   top: 0;
+  width: 100%;
 
   #header,
   #header-left,
