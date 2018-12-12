@@ -17,7 +17,7 @@
 <meta charset="UTF-8">
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosansjp.css" />
-<link rel="stylesheet" href="/assets/styles/index.css" />
+<link rel="stylesheet" href="/assets/styles/index.css?v=1544594187436" />
 <script src="/assets/scripts/highlight.pack.js"></script>
 <link rel="stylesheet" href="/assets/styles/monokai-sublime.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124358962-1"></script>
@@ -35,7 +35,9 @@
   <meta property="og:type" content="article" />
 </head>
 <body>
-  <div id="header">
+  <div id="screen-wrapper">
+    <div id="header-left"></div>
+<div id="header">
   <a href="/" id="header-logo">
     <img id="logo-image" src="/assets/images/logo.png" />
     <div id="logo-text">
@@ -48,11 +50,12 @@
     <a href="/laboratory/">LABO</a>
   </nav>
 </div>
-  <div id="content-wrapper">
-    <div id="main-content-wrapper" class="with-menu">
-      <div id="main-content">
-        <h1>量子コンピューターについて調べてみた</h1>
-        <h2 id="はじめに">はじめに</h2>
+<div id="header-right"></div>
+    <div id="content">
+      <div id="content-container">
+        <div id="left-content"></div>
+        <div id="main-content">
+          <h2 id="はじめに">はじめに</h2>
 <p>最近ちょいちょい量子コンピューターのニュースとか出ていますね。<br>ただ、そもそも量子コンピューターって何？って感じですし、思っている人も多いハズ。<br>なので、量子コンピューターについて調べてみました。<br>なお、書いている私は量子コンピューターとかその辺の理論については全くの無知から調べていますので、あしからず。  </p>
 <h2 id="この記事の目的">この記事の目的</h2>
 <p>量子コンピューターってどんなものかを大雑把に知りたくて書いた記事です。<br>詳しい理論が知りたい方や、正確な情報が知りたい方は別の記事や論文を探してください。<br>ここが違うというご意見は大歓迎です。  </p>
@@ -83,11 +86,11 @@
 <li><a href="http://koto-science.hatenablog.com/entry/%E9%87%8F%E5%AD%90%E8%AB%96-%E7%8A%B6%E6%85%8B%E3%81%AE%E9%87%8D%E3%81%AD%E5%90%88%E3%82%8F%E3%81%9B">量子論の「状態の重ね合わせ」ってどんな話？～わかりやすく解説してみたよ～ - KOTOの理科的つぶやき</a></li>
 </ul>
 
+        </div>
       </div>
     </div>
-    <nav id="left-content"></nav>
-  </div>
-  <div id="footer">
+    <div id="footer-left"></div>
+<div id="footer">
   <nav id="footer-links">
     <a class="tooltip" data-tooltip="Mail" href="mailto:hyiromori@gmail.com">
       <img src="/assets/images/mail.png" />
@@ -101,13 +104,17 @@
   </nav>
   <div id="footer-copyright">&copy 2018 hyiromori</div>
 </div>
-
+<div id="footer-right"></div>
+  </div>
   <script type="text/javascript">
-    var headers = [];
-document.querySelectorAll('h2').forEach(function(header) {
-  headers.push('<div><a href="#' + header.id + '">' + header.textContent + '</a></div>');
-});
-document.getElementById('left-content').innerHTML = headers.join('');
+    var leftContent = document.getElementById('left-content');
+if (leftContent != null) {
+  var headers = [];
+  document.querySelectorAll('h2').forEach(function(header) {
+    headers.push('<div><a href="#' + header.id + '">' + header.textContent + '</a></div>');
+  });
+  leftContent.innerHTML = headers.join('');
+}
 
   </script>
 </body>

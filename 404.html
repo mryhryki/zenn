@@ -17,7 +17,7 @@
 <meta charset="UTF-8">
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosansjp.css" />
-<link rel="stylesheet" href="/assets/styles/index.css" />
+<link rel="stylesheet" href="/assets/styles/index.css?v=1544594187436" />
 <script src="/assets/scripts/highlight.pack.js"></script>
 <link rel="stylesheet" href="/assets/styles/monokai-sublime.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124358962-1"></script>
@@ -35,7 +35,9 @@
   <meta property="og:type" content="article" />
 </head>
 <body>
-  <div id="header">
+  <div id="screen-wrapper">
+    <div id="header-left"></div>
+<div id="header">
   <a href="/" id="header-logo">
     <img id="logo-image" src="/assets/images/logo.png" />
     <div id="logo-text">
@@ -48,16 +50,26 @@
     <a href="/laboratory/">LABO</a>
   </nav>
 </div>
-  <div id="content-wrapper">
-    <div id="main-content-wrapper">
-      <div id="main-content">
-        <h1>404 Not Found</h1>
-        <h1 id="404 Not Found">404 Not Found</h1>
+<div id="header-right"></div>
+    <div id="content">
+      <div id="content-container">
+        <div id="content-header">
+          <img id="content-header-image" src="/assets/images/blog.png" />
+          <div id="content-header-title">
+            404 Not Found
+          </div>
+          <div id="content-header-description">
+            Web系フルスタックエンジニア hyiromori のポートフォリオサイトです。
+          </div>
+        </div>
+        <div id="main-content">
+          <h1 id="404 Not Found">404 Not Found</h1>
 
+        </div>
       </div>
     </div>
-  </div>
-  <div id="footer">
+    <div id="footer-left"></div>
+<div id="footer">
   <nav id="footer-links">
     <a class="tooltip" data-tooltip="Mail" href="mailto:hyiromori@gmail.com">
       <img src="/assets/images/mail.png" />
@@ -71,6 +83,7 @@
   </nav>
   <div id="footer-copyright">&copy 2018 hyiromori</div>
 </div>
-
+<div id="footer-right"></div>
+  </div>
 </body>
 </html>

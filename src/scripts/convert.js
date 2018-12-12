@@ -1,10 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 const ejs = require('ejs');
+const sass = require('node-sass');
 const marked = require('marked');
 const yaml = require('js-yaml');
 
+const version = (new Date()).getTime();
 const root = path.join(__dirname, '..');
+
+// ----- Markdown -----
 
 const DefaultData = {
   template: 'default',
@@ -13,7 +17,7 @@ const DefaultData = {
   keywords: 'portfolio, hyiromori',
 };
 const getData = (pageData) => {
-  const data = Object.assign({}, DefaultData, pageData);
+  const data = Object.assign({ version }, DefaultData, pageData);
   data.metaTitle = `${data.title} | Portfolio by hyiromori`;
   return data;
 };
@@ -78,4 +82,20 @@ const blogs = blogList.map((blog) => {
 ConvertDefinition.forEach((definition) => {
   const { from, to } = definition;
   return convert(from, to, { blogs });
+});
+
+
+// ----- SCSS -----
+
+const entryFilePath = path.join(__dirname, '../assets/scss/index.scss');
+const toFilePath = path.join(__dirname, '../../assets/styles/index.css');
+
+sass.render({
+  file: entryFilePath,
+  outputStyle: 'compressed',
+}, (error, result) => {
+  if (error) {
+    throw new Error(error);
+  }
+  fs.writeFileSync(toFilePath, result.css.toString());
 });

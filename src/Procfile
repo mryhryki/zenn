@@ -1,4 +1,3 @@
-markdown: npm run watch:md
-css: npm run watch:css
+asset: npm run watch:asset
 labo: npm run watch:labo
 express: npm run express

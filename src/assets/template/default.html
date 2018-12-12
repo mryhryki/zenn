@@ -5,15 +5,25 @@
   <meta property="og:type" content="article" />
 </head>
 <body>
-  <%- include('./component/header.html') %>
-  <div id="content-wrapper">
-    <div id="main-content-wrapper">
-      <div id="main-content">
-        <h1><%- title %></h1>
-        <%- content %>
+  <div id="screen-wrapper">
+    <%- include('./component/header.html') %>
+    <div id="content">
+      <div id="content-container">
+        <div id="content-header">
+          <img id="content-header-image" src="/assets/images/blog.png" />
+          <div id="content-header-title">
+            <%- title %>
+          </div>
+          <div id="content-header-description">
+            <%- description %>
+          </div>
+        </div>
+        <div id="main-content">
+          <%- content %>
+        </div>
       </div>
     </div>
+    <%- include('./component/footer.html') %>
   </div>
-  <%- include('./component/footer.html') %>
 </body>
 </html>

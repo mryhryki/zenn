@@ -5,10 +5,14 @@
   <meta property="og:type" content="article" />
 </head>
 <body>
-  <%- include('./component/header.html') %>
-  <div id="content-wrapper">
-    <%- content %>
+  <div id="screen-wrapper">
+    <%- include('./component/header.html') %>
+    <div id="content">
+      <div id="main-content">
+        <%- content %>
+      </div>
+    </div>
+    <%- include('./component/footer.html') %>
   </div>
-  <%- include('./component/footer.html') %>
 </body>
 </html>

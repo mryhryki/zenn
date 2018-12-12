@@ -45,13 +45,11 @@
   },
   "scripts": {
     "start": "./node_modules/.bin/nf start",
-    "watch:md": "./node_modules/.bin/nodemon --watch ./ --ext md,html --exec 'npm run build:md'",
-    "watch:css": "./node_modules/.bin/nodemon --watch ./ --ext scss --exec 'npm run build:css'",
+    "watch:asset": "./node_modules/.bin/nodemon --watch ./ --ext md,html,scss --exec 'npm run build:asset'",
     "watch:labo": "./node_modules/.bin/nodemon --watch ./laboratory --exec 'npm run build:labo'",
     "express": "node ./scripts/express.js",
-    "build": "npm run build:md && npm run build:css && npm run build:labo",
-    "build:md": "node ./scripts/markdown.js",
-    "build:css": "node ./scripts/scss.js",
+    "build": "npm run build:asset && npm run build:labo",
+    "build:asset": "node ./scripts/convert.js",
     "build:labo": "./node_modules/.bin/webpack"
   }
 }
