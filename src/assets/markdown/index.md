@@ -1,6 +1,6 @@
 title: Portfolio
 description: Web系フルスタックエンジニア hyiromori のポートフォリオサイトです。
-header_image: home.png
+header_image: home.jpg
 ---
 
 ## 自己紹介
