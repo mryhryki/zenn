@@ -9,15 +9,7 @@
     <%- include('./component/header.html') %>
     <div id="content">
       <div id="content-container">
-        <div id="content-header">
-          <img id="content-header-image" src="/assets/images/blog.png" />
-          <div id="content-header-title">
-            <%- title %>
-          </div>
-          <div id="content-header-description">
-            <%- description %>
-          </div>
-        </div>
+        <%- include('./component/title.html') %>
         <div id="main-content">
           <%- content %>
         </div>

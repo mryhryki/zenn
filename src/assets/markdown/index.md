@@ -1,5 +1,6 @@
-title: Home
-template: home
+title: Portfolio
+description: Web系フルスタックエンジニア hyiromori のポートフォリオサイトです。
+header_image: home.png
 ---
 
 ## 自己紹介
