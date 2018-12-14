@@ -3,10 +3,7 @@ import { Link } from 'react-router-dom';
 import './index.scss';
 
 import IconClose from '../../icon/close.png';
-import IconGitHub from '../../icon/github.png';
-import IconMail from '../../icon/mail.png';
 import IconMenu from '../../icon/menu.png';
-import IconTwitter from '../../icon/twitter.png';
 
 interface Menu {
   path: string,
@@ -75,43 +72,62 @@ class CommonFrame extends React.Component<Props, State> {
     const currentPath: string = `/${window.location.hash.substr(1)}`;
 
     return (
-      <div id="common-frame">
-        <div
-          id="common-frame-content"
-          className={showMenu ? 'show-menu' : ''}
-        >
-          <div id="common-frame-content-inner">
-            {children}
+      <div>
+        <div id="content-header">
+          <img
+            id="content-header-image"
+            alt="Page symbol image"
+            src="/assets/images/header_images/laboratory.jpg"
+          />
+          <div id="content-header-title">
+            <div id="home-title-upper">Laboratory</div>
+            <div id="home-title-lower">by hyiromori</div>
+          </div>
+          <div id="content-header-description">
+            個人的に作成しているプロダクト集です。
           </div>
         </div>
-        {showMenu ? (
-          <div id="common-frame-menu">
-            <button
-              className="common-frame-header-menu-button"
-              onClick={() => this.setState({ showMenu: false })}
-            >
-              <img src={IconClose} />
-              <span>Close</span>
-            </button>
-            {menuList.map((menu: Menu) => (
-              <div
-                key={menu.path}
-                className="menu-item"
-              >
-                {this.renderMenuItem(menu, currentPath === menu.path)}
-              </div>
-            ))}
+        <div id="main-content">
+          {children}
+          {/*
+          <div
+            id="common-frame-content"
+            className={showMenu ? 'show-menu' : ''}
+          >
+            <div id="common-frame-content-inner">
+              {children}
+            </div>
           </div>
-        ) : (
-           <button
-             className="common-frame-header-menu-button"
-             onClick={() => this.setState({ showMenu: true })}
-           >
-             <img src={IconMenu} />
-             <span>Menu</span>
-           </button>
-         )
-        }
+          {showMenu ? (
+            <div id="common-frame-menu">
+              <button
+                className="common-frame-header-menu-button"
+                onClick={() => this.setState({ showMenu: false })}
+              >
+                <img src={IconClose} />
+                <span>Close</span>
+              </button>
+              {menuList.map((menu: Menu) => (
+                <div
+                  key={menu.path}
+                  className="menu-item"
+                >
+                  {this.renderMenuItem(menu, currentPath === menu.path)}
+                </div>
+              ))}
+            </div>
+          ) : (
+             <button
+               className="common-frame-header-menu-button"
+               onClick={() => this.setState({ showMenu: true })}
+             >
+               <img src={IconMenu} />
+               <span>Menu</span>
+             </button>
+           )
+          }
+        */}
+        </div>
       </div>
     );
   };

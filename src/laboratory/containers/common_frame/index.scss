@@ -1,136 +1,127 @@
 @import '../../common/colors';
 
-#common-frame {
+.common-frame-header-menu-button {
+  background-color: $white;
+  border-radius: 4px;
+  box-shadow: 0 0 8px 8px $white;
+  height: 24px;
+  position: absolute;
+  padding: 0 4px;
+  right: 8px;
+  top: 8px;
+
+  img {
+    height: 24px;
+    width: 24px;
+    margin-right: 2px;
+  }
+
+  span {
+    vertical-align: 6px;
+  }
+}
+
+#common-frame-menu {
+  background-color: $white;
+  border-left: 1px solid $gray-light;
   bottom: 0;
-  left: 0;
+  box-shadow: -8px 0 8px 0 rgba($white, 0.95);
+  max-width: 320px;
+  opacity: 0.95;
+  overflow-y: scroll;
+  padding: 42px 16px 8px 16px;
   position: absolute;
   right: 0;
   top: 0;
+  width: 100%;
 
-  .common-frame-header-menu-button {
-    background-color: $white;
-    border-radius: 4px;
-    box-shadow: 0 0 8px 8px $white;
-    height: 24px;
-    position: absolute;
-    padding: 0 4px;
-    right: 8px;
-    top: 8px;
+  .menu-item {
+    .menu-button {
+      display: block;
+      padding: 6px 16px;
+      text-decoration: none;
 
-    img {
-      height: 24px;
-      width: 24px;
-      margin-right: 2px;
-    }
+      %title-line-height {
+        line-height: calc(1em + 2px);
+      }
 
-    span {
-      vertical-align: 6px;
-    }
-  }
+      .title-en {
+        color: $gray;
+      }
 
-  #common-frame-menu {
-    background-color: $white;
-    border-left: 1px solid $gray-light;
-    bottom: 0;
-    box-shadow: -8px 0 8px 0 rgba($white, 0.95);
-    max-width: 320px;
-    opacity: 0.95;
-    overflow-y: scroll;
-    padding: 42px 16px 8px 16px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 100%;
+      &.level1 {
+        padding-left: 8px;
 
-    .menu-item {
-      .menu-button {
-        display: block;
-        padding: 6px 16px;
-        text-decoration: none;
-
-        %title-line-height {
-          line-height: calc(1em + 2px);
+        .title-jp {
+          @extend %title-line-height;
+          font-weight: 500;
+          font-size: 18px;
         }
 
         .title-en {
-          color: $gray;
+          @extend %title-line-height;
+          font-size: 14px;
+        }
+      }
+
+      &.level2 {
+        padding-left: 24px;
+
+        .title-jp {
+          @extend %title-line-height;
+          font-size: 16px;
         }
 
-        &.level1 {
-          padding-left: 8px;
+        .title-en {
+          @extend %title-line-height;
+          font-size: 12px;
+        }
+      }
 
-          .title-jp {
-            @extend %title-line-height;
-            font-weight: 500;
-            font-size: 18px;
-          }
+      &.level3 {
+        padding-left: 42px;
 
-          .title-en {
-            @extend %title-line-height;
-            font-size: 14px;
-          }
+        .title-jp {
+          @extend %title-line-height;
+          color: $gray-dark;
+          font-size: 14px;
         }
 
-        &.level2 {
-          padding-left: 24px;
+        .title-en {
+          @extend %title-line-height;
+          font-size: 10px;
+        }
+      }
 
-          .title-jp {
-            @extend %title-line-height;
-            font-size: 16px;
-          }
+      &.marked {
+        background-color: $orange;
 
-          .title-en {
-            @extend %title-line-height;
-            font-size: 12px;
-          }
+        .title-jp {
+          color: $white;
         }
 
-        &.level3 {
-          padding-left: 42px;
-
-          .title-jp {
-            @extend %title-line-height;
-            color: $gray-dark;
-            font-size: 14px;
-          }
-
-          .title-en {
-            @extend %title-line-height;
-            font-size: 10px;
-          }
-        }
-
-        &.marked {
-          background-color: $orange;
-
-          .title-jp {
-            color: $white;
-          }
-
-          .title-en {
-            color: $white;
-          }
+        .title-en {
+          color: $white;
         }
       }
     }
   }
-
-  #common-frame-content {
-    bottom: 0;
-    left: 0;
-    padding: 24px 16px 16px 16px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    position: absolute;
-    right: 0;
-    top: 0;
-
-    #common-frame-content-inner {
-      margin: 0 auto;
-      font-size: 16px;
-      max-width: 50em;
-      width: 100%;
-    }
-  }
 }
 
+//#common-frame-content {
+//  bottom: 0;
+//  left: 0;
+//  padding: 24px 16px 16px 16px;
+//  overflow-x: hidden;
+//  overflow-y: scroll;
+//  position: absolute;
+//  right: 0;
+//  top: 0;
+//
+//  #common-frame-content-inner {
+//    margin: 0 auto;
+//    font-size: 16px;
+//    max-width: 50em;
+//    width: 100%;
+//  }
+//}

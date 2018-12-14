@@ -1,14 +1,6 @@
 @import './colors';
 
-#content-container {
-  left: 0;
-  bottom: 0;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  position: absolute;
-  right: 0;
-  top: 0;
-
+#content-wrapper {
   #content-header {
     height: 320px;
     position: relative;
@@ -62,43 +54,10 @@
     }
   }
 
-  #main-content {
-    position: relative;
-    padding: 0 24px 24px 24px;
-    max-width: 720px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: 100%;
-  }
-
   #left-content {
-    border-right: 1px solid $gray-light;
-    bottom: 16px;
-    display: none;
-    min-height: 24px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    padding-right: 8px;
-    position: absolute;
-    right: calc(50% + 240px);
-    top: 16px;
-    width: 240px;
-
     a {
       line-height: 1;
       margin-bottom: 8px;
-    }
-  }
-
-  @media screen and (min-width: 961px) {
-    #main-content-wrapper.with-menu {
-      #main-content {
-        left: calc(50% + 120px);
-      }
-    }
-
-    #left-content {
-      display: block;
     }
   }
 }

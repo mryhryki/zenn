@@ -16,9 +16,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta charset="UTF-8">
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-<!--<link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosansjp.css" />-->
-<link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
-<link rel="stylesheet" href="/assets/styles/index.css?v=1544645745703" />
+<link href="https://fonts.googleapis.com/css?family=Ubuntu|M+PLUS+1p" rel="stylesheet">
+<link rel="stylesheet" href="/assets/styles/index.css?v=1544745713043" />
 <script src="/assets/scripts/highlight.pack.js"></script>
 <link rel="stylesheet" href="/assets/styles/monokai-sublime.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124358962-1"></script>
@@ -32,27 +31,27 @@
   <meta property="og:type" content="article" />
 </head>
 <body>
-  <div id="screen-wrapper">
-    <div id="header-left"></div>
-<div id="header">
-  <a href="/" id="header-logo">
-    <img id="logo-image" alt="Logo image" src="/assets/images/logo.jpg" />
-    <div id="logo-text">
-      <div id="logo-text-upper">Portfolio</div>
-      <div id="logo-text-lower">by hyiromori</div>
+  <div id="header">
+    <div id="header-container">
+      <a href="/" id="header-logo">
+  <img id="logo-image" alt="Logo image" src="/assets/images/logo.jpg" />
+  <div id="logo-text">
+    <div id="logo-text-upper">Portfolio</div>
+    <div id="logo-text-lower">by hyiromori</div>
+  </div>
+</a>
+<nav id="header-navigation">
+  <a href="/blog/">BLOG</a>
+  <a href="/laboratory/">LABO</a>
+</nav>
+
     </div>
-  </a>
-  <nav id="header-navigation">
-    <a href="/blog/">BLOG</a>
-    <a href="/laboratory/">LABO</a>
-  </nav>
-</div>
-<div id="header-right"></div>
-    <div id="content">
-      <div id="content-container">
-        <div id="left-content"></div>
-        <div id="main-content">
-          <h2 id="あらすじ">あらすじ</h2>
+  </div>
+  <div id="content-wrapper">
+    <div id="left-content"></div>
+    <div id="main-content">
+      <h1>エンジニアなりにポートフォリオサイトを作ってみた話２</h1>
+      <h2 id="あらすじ">あらすじ</h2>
 <ul>
 <li><a href="/blog/2018-09/portfolio.html">前回</a> の続き</li>
 <li>やりたいことが増えたので、静的サイトジェネレーターもどきを作った</li>
@@ -142,32 +141,43 @@ sass.render({ file: &#39;変換元の SCSS ファイルパス&#39; }, (error, re
 <h2 id="あとがき">あとがき</h2>
 <p>自分で構築するより、静的サイトジェネレーターを選んでいる時間のほうが長かった・・・。<br>まだまだ細かい改善点はあるので、少しずつ解消していきたいなぁ。</p>
 
-        </div>
-      </div>
     </div>
-    <div id="footer-left"></div>
-<div id="footer">
-  <nav id="footer-links">
-    <a class="tooltip" data-tooltip="Mail" href="mailto:hyiromori@gmail.com">
-      <img src="/assets/images/mail.png" alt="Mail Logo" />
-    </a>
-    <a class="tooltip" data-tooltip="Twitter" href="https://twitter.com/hyiromori">
-      <img src="/assets/images/twitter.png" alt="Twitter Logo" />
-    </a>
-    <a class="tooltip" data-tooltip="GitHub" href="https://github.com/hyiromori">
-      <img src="/assets/images/github.png" alt="GitHub Logo" />
-    </a>
-  </nav>
-  <div id="footer-copyright">&copy 2018 hyiromori</div>
-</div>
-<div id="footer-right"></div>
+    <div id="right-content"></div>
+  </div>
+  <div id="footer">
+    <div id="footer-container">
+      <nav id="footer-links">
+  <a class="tooltip" data-tooltip="Mail" href="mailto:hyiromori@gmail.com">
+    <img src="/assets/images/mail.png" alt="Mail Logo" />
+  </a>
+  <a class="tooltip" data-tooltip="Twitter" href="https://twitter.com/hyiromori">
+    <img src="/assets/images/twitter.png" alt="Twitter Logo" />
+  </a>
+  <a class="tooltip" data-tooltip="GitHub" href="https://github.com/hyiromori">
+    <img src="/assets/images/github.png" alt="GitHub Logo" />
+  </a>
+</nav>
+<div id="footer-copyright">&copy 2018 hyiromori</div>
+
+    </div>
   </div>
   <script type="text/javascript">
-    var leftContent = document.getElementById('left-content');
+    function scrollToElement(id) {
+  var position = document.getElementById(id).offsetTop - 16;
+  window.scroll(0, position);
+}
+
+var leftContent = document.getElementById('left-content');
 if (leftContent != null) {
   var headers = [];
   document.querySelectorAll('h2').forEach(function(header) {
-    headers.push('<div><a href="#' + header.id + '">' + header.textContent + '</a></div>');
+    headers.push(
+      '<div>' +
+      '<button onclick="scrollToElement(\'' + header.id + '\')">' +
+      header.textContent +
+      '</button>' +
+      '</div>',
+    );
   });
   leftContent.innerHTML = headers.join('');
 }

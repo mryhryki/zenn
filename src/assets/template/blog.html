@@ -5,17 +5,23 @@
   <meta property="og:type" content="article" />
 </head>
 <body>
-  <div id="screen-wrapper">
-    <%- include('./component/header.html') %>
-    <div id="content">
-      <div id="content-container">
-        <div id="left-content"></div>
-        <div id="main-content">
-          <%- content %>
-        </div>
-      </div>
+  <div id="header">
+    <div id="header-container">
+      <%- include('./component/header.html') %>
     </div>
-    <%- include('./component/footer.html') %>
+  </div>
+  <div id="content-wrapper">
+    <div id="left-content"></div>
+    <div id="main-content">
+      <h1><%- title %></h1>
+      <%- content %>
+    </div>
+    <div id="right-content"></div>
+  </div>
+  <div id="footer">
+    <div id="footer-container">
+      <%- include('./component/footer.html') %>
+    </div>
   </div>
   <script type="text/javascript">
     <%- include('./component/left_menu.js') %>

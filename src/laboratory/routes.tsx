@@ -129,6 +129,7 @@ const Routes = (
 );
 
 export {
+  Views,
   Routes,
   HomePath,
   ServiceWorkerCachePath,

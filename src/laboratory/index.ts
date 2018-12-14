@@ -9,6 +9,6 @@ if ('serviceWorker' in navigator) {
     .catch((error: any) => console.log('ServiceWorker registration failed: ', error));
 }
 
-render(Routes, document.getElementById('app'));
+render(Routes, document.getElementById('content-wrapper'));
 
 import './common/web_socket';
