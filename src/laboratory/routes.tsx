@@ -82,13 +82,13 @@ const Views: Array<{
     component: BrowserApiContainer,
     level: 2,
   },
-  {
-    path: WebRtcSkyWayPath,
-    titleJp: 'SkyWayを使ったサンプル',
-    titleEn: 'SkyWay',
-    component: SkyWayContainer,
-    level: 2,
-  },
+  // {
+  //   path: WebRtcSkyWayPath,
+  //   titleJp: 'SkyWayを使ったサンプル',
+  //   titleEn: 'SkyWay',
+  //   component: SkyWayContainer,
+  //   level: 2,
+  // },
   {
     path: SimpleChatPath,
     titleJp: '簡易チャット',

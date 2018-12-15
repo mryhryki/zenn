@@ -58,12 +58,12 @@ module.exports = (/* args, env */) => {
       filename: '[name].js',
       path: path.resolve(__dirname, '../laboratory'),
     },
-    optimization: {
-      splitChunks: {
-        name: 'common',
-        chunks: 'all',
-      },
-    },
+    // optimization: {
+    //   splitChunks: {
+    //     name: 'common',
+    //     chunks: 'all',
+    //   },
+    // },
     devServer: {
       contentBase: path.resolve(__dirname, '../laboratory'),
       hot: true,
