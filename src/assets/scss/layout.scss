@@ -44,22 +44,11 @@ $max-content-width: 720px;
 
 #content-wrapper {
   min-height: calc(100% - #{$header-height} - #{$footer-height});
-  height: calc(100% - #{$header-height} - #{$footer-height});
-  margin-bottom: $footer-height;
+  overflow-x: hidden;
+  overflow-y: scroll;
   position: relative;
-  top: $header-height;
+  padding: $header-height 0 $footer-height;
   width: 100%;
-
-  #main-content {
-    left: 50%;
-    margin-bottom: $footer-height;
-    max-width: 720px;
-    min-height: 100%;
-    padding: 24px;
-    position: relative;
-    transform: translate(-50%, 0);
-    width: 100%;
-  }
 }
 
 #left-content {
