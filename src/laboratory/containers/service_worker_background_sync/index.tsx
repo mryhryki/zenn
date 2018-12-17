@@ -15,7 +15,7 @@ interface State {
 }
 
 class ServiceWorkerBackgroundSyncContainer extends React.Component<Props, State> {
-  intervalId: (null | NodeJS.Timer) = null;
+  intervalId: (null | number) = null;
   db: (null | IDBDatabase) = null;
   state: State = {
     syncList: [],
@@ -50,7 +50,7 @@ class ServiceWorkerBackgroundSyncContainer extends React.Component<Props, State>
 
   componentDidMount(): void {
     this.reloadSyncList();
-    this.intervalId = setInterval(this.reloadSyncList, 1000);
+    this.intervalId = setInterval(this.reloadSyncList, 500);
   }
 
   componentWillUnmount(): void {
@@ -73,7 +73,6 @@ class ServiceWorkerBackgroundSyncContainer extends React.Component<Props, State>
                                            .getAll();
     request.onerror = (error) => console.error('Failed:', error);
     request.onsuccess = (event: Event) => {
-      console.debug('#####', event);
       const newSyncList: Array<SyncInfo> = (event.target as any).result.reverse().slice(0, 30);
       if (newSyncList.length === 0) {
         return;
@@ -122,57 +121,81 @@ class ServiceWorkerBackgroundSyncContainer extends React.Component<Props, State>
 
     return (
       <div id="service-worker-background-sync-container">
-        <h1>バックグランド同期API</h1>
+        <h1>Service Worker - Background Sync API</h1>
+        <div id="product-summary">
+          <h2>プロダクト概要</h2>
+          <p>
+            <strong>Service Worker</strong>の<strong>Background Sync API</strong>を使用して、
+            ネットワーク切断時に待機し、ネットワーク再接続時に自動で同期処理が行われることを確認できます。
+          </p>
+        </div>
 
-        <h2>バックグランド同期APIとは？</h2>
-        <p>サービスワーカーで提供されている API の一つで、ネットワークがオフラインの場合、オンラインになった時点で通信を行えるようにできる機能です。</p>
-        <p>IndexedDB も使用して実現します。</p>
+        <div id="experimental-product">
+          <h2>動作確認の手順</h2>
+          {supportBackgroundSync ? (
+            <div>
+              <ol>
+                <li>インターネットから切り離します。（例：機内モードにする、Wi-FiをOffにする、LANケーブルを抜くなど）</li>
+                <li>下の<strong>操作パネル</strong>の<strong>Background Sync Test</strong>をクリックします。</li>
+                <li>下の<strong>操作パネル</strong>の<strong>同期結果</strong>に１行追加され<strong>Result</strong>欄が空であることを確認します。
+                </li>
+                <li>インターネットに接続します。</li>
+                <li>下の<strong>操作パネル</strong>の<strong>同期結果</strong>の<strong>Result</strong>欄に同期結果が表示されることを確認します。
+                </li>
+              </ol>
 
-        <h2>お使いのブラウザの対応状況</h2>
-        <p>{supportBackgroundSync ? '○ 対応しています' : '× 非対応です'}</p>
-
-        {supportBackgroundSync && (
-          <div>
-            <h2>動作確認の方法</h2>
-            <ol>
-              <li>インターネットから切り離します。（例：機内モードにする、Wi-FiをOffにする、LANケーブルを抜くなど）</li>
-              <li>下の<strong>操作パネル</strong>の<strong>Background Sync Test</strong>をクリックします。</li>
-              <li>下の<strong>操作パネル</strong>の<strong>同期結果</strong>に１行追加され<strong>Result</strong>欄が空であることを確認します。
-              </li>
-              <li>インターネットに接続します。</li>
-              <li>下の<strong>操作パネル</strong>の<strong>同期結果</strong>の<strong>Result</strong>欄に同期結果が表示されることを確認します。
-              </li>
-            </ol>
-
-            <h2>操作パネル</h2>
-            <div className="frame">
-              <Button onClick={() => this.backgroundSyncTest()}>
-                Background Sync Test
-              </Button>
-              <p>同期結果</p>
-              <table>
-                <thead>
-                  <tr>
-                    <th className="table-id-column">ID</th>
-                    <th>Path</th>
-                    <th>Result</th>
-                    <th>CreatedAt</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {syncList.map(syncData => (
-                    <tr key={syncData.id}>
-                      <td>{syncData.id}</td>
-                      <td>{syncData.path}</td>
-                      <td>{syncData.result || '-'}</td>
-                      <td>{syncData.createdAt || '-'}</td>
+              <h3>操作パネル</h3>
+              <div className="frame">
+                <Button onClick={() => this.backgroundSyncTest()}>
+                  Background Sync Test
+                </Button>
+                <p>同期結果</p>
+                <table>
+                  <thead>
+                    <tr>
+                      <th className="table-id-column">ID</th>
+                      <th>Path</th>
+                      <th>Result</th>
+                      <th>CreatedAt</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {syncList.map(syncData => (
+                      <tr key={syncData.id}>
+                        <td>{syncData.id}</td>
+                        <td>{syncData.path}</td>
+                        <td>{syncData.result || '-'}</td>
+                        <td>{syncData.createdAt || '-'}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </div>
-        )}
+          ) : (
+             <p>お使いのブラウザは対応していないため、動作確認はできません。</p>
+           )}
+        </div>
+
+        <div id="product-explanation">
+          <h2>技術解説</h2>
+          <h3>Background Sync API</h3>
+          <p>
+            <strong>Service Worker</strong>で提供されている<strong>API</strong>の一つで、
+            ネットワークが有効な場合のみに発火するイベントが提供されます。
+            ネットワークが無効な場合は、次に有効になった時点で発火されます。
+          </p>
+          <p>
+            イベントが提供されるだけで、自動で同期を行う処理まで提供されているわけではないため、同期処理を実装する必要があります。
+            タグという文字列情報しか受け渡しできないため、 `IndexedDB` に同期に必要な情報を保存して受け渡すのが一般的です。
+          </p>
+
+          <h3>IndexedDB</h3>
+          <p>
+            ブラウザに実装された<strong>RDBMS</strong>に似たデータベースシステムです。
+            詳細は<a href="https://developer.mozilla.org/ja/docs/Web/API/IndexedDB_API">MDN</a>の解説が理解しやすいと思いますので、こちらをご覧ください。
+          </p>
+        </div>
       </div>
     );
   }
