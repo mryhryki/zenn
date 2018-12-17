@@ -50,7 +50,7 @@ class ServiceWorkerBackgroundSyncContainer extends React.Component<Props, State>
 
   componentDidMount(): void {
     this.reloadSyncList();
-    this.intervalId = setInterval(this.reloadSyncList, 500);
+    this.intervalId = window.setInterval(this.reloadSyncList, 500);
   }
 
   componentWillUnmount(): void {

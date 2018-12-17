@@ -87,6 +87,13 @@ em, strong, code {
   display: inline-block;
   margin: 1px;
   padding: 1px 6px;
+
+  & > em, strong, code {
+    background-color: $transparent;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 em {
@@ -97,10 +104,6 @@ em {
 strong {
   font-weight: bold;
   background-color: rgba($silver, 0.5);
-
-  & > em, code {
-    font-weight: bold;
-  }
 }
 
 code {
