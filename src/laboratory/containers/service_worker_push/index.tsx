@@ -64,65 +64,78 @@ class ServiceWorkerPushNotificationContainer extends React.Component<Props, Stat
 
     return (
       <div id="service-worker-push-container">
-        <h1>プッシュ通知API</h1>
+        <h1>Service Worker - Push API</h1>
 
-        <h2>プッシュ通知APIとは？</h2>
-        <p>サービスワーカーで提供されている API の一つで、名前の通り、ブラウザにプッシュ通知が行える機能になります。</p>
+        <div id="product-summary">
+          <h2>プロダクト概要</h2>
+          <p>
+            <strong>Service Worker</strong>の<strong>Push API</strong>を使用して、
+            ブラウザのみでプッシュ通知を行います。
+          </p>
+        </div>
 
-        <h2>お使いのブラウザの対応状況</h2>
-        <p>{supportPushNotification ? '○ 対応しています' : '× 非対応です'}</p>
+        <div id="experimental-product">
+          <h2>動作確認の手順</h2>
+          {supportPushNotification ? (
+            <div>
+              <ol>
+                <li>
+                  <a href="https://web-push-codelab.glitch.me/" target="_blank">
+                    Push Companion (外部サイト)
+                  </a>
+                  (※)を開きます。
+                </li>
+                <li>(※)のページ内にある<strong>Public Key</strong>をコピーします。</li>
+                <li>下の<strong>操作パネル</strong>の<strong>Public Key</strong>にペーストします。</li>
+                <li><strong>操作パネル</strong>の<strong>Request Permission</strong>をクリックします。</li>
+                <li>ブラウザから通知を許可するか尋ねられるので、許可します。</li>
+                <li><strong>操作パネル</strong>の<strong>Subscription Info</strong>にJSON文字列が表示されるので、全てコピーします。
+                </li>
+                <li>(※)のページの<strong>Subscription to Send To</strong>にペーストします。</li>
+                <li>(※)のページの<strong>Text to Send</strong>に通知したいメッセージを適当に入れます。</li>
+                <li>(※)のページの<strong>SEND PUSH MESSAGE</strong>をクリックします。</li>
+                <li>プッシュ通知が届くことを確認します。</li>
+              </ol>
 
-        {supportPushNotification && (
-          <div>
-            <h2>動作確認の方法</h2>
-            <ol>
-              <li>
-                <a
-                  href="https://web-push-codelab.glitch.me/"
-                  target="_blank"
+              <h3>操作パネル</h3>
+              <div className="frame">
+                <TextInput
+                  label="Public Key"
+                  maxLength={100}
+                  onChangeText={(inputValue: string) => this.setState({ publicKey: inputValue })}
+                  placeHolder="Public Key"
+                  value={publicKey}
+                />
+                <Button
+                  active={publicKey !== ''}
+                  className="request-permission-button"
+                  onClick={() => this.requestPushNotification()}
                 >
-                  Push Companion (外部サイト)
-                </a>
-                (※)を開きます。
-              </li>
-              <li>(※)のページ内にある<strong>Public Key</strong>をコピーします。</li>
-              <li>下の<strong>操作パネル</strong>の<strong>Public Key</strong>にペーストします。</li>
-              <li><strong>操作パネル</strong>の<strong>Request Permission</strong>をクリックします。</li>
-              <li>ブラウザから通知を許可するか尋ねられるので、許可します。</li>
-              <li><strong>操作パネル</strong>の<strong>Subscription Info</strong>にJSON文字列が表示されるので、全てコピーします。
-              </li>
-              <li>(※)のページの<strong>Subscription to Send To</strong>にペーストします。</li>
-              <li>(※)のページの<strong>Text to Send</strong>に通知したいメッセージを適当に入れます。</li>
-              <li>(※)のページの<strong>SEND PUSH MESSAGE</strong>をクリックします。</li>
-              <li>プッシュ通知が届くことを確認します。</li>
-            </ol>
-
-            <h2>操作パネル</h2>
-            <div className="frame">
-              <TextInput
-                label="Public Key"
-                maxLength={100}
-                onChangeText={(inputValue: string) => this.setState({ publicKey: inputValue })}
-                placeHolder="Public Key"
-                value={publicKey}
-              />
-              <Button
-                active={publicKey !== ''}
-                className="request-permission-button"
-                onClick={() => this.requestPushNotification()}
-              >
-                Request Permission
-              </Button>
-              <TextArea
-                className="subscription-info"
-                label="Subscription Info"
-                onChange={() => undefined}
-              >
+                  Request Permission
+                </Button>
+                <TextArea
+                  className="subscription-info"
+                  label="Subscription Info"
+                  onChange={() => undefined}
+                >
                 {subscriptionInfo}
               </TextArea>
+              </div>
             </div>
-          </div>
-        )}
+          ) : (
+             <p>お使いのブラウザは対応していないため、動作確認はできません。</p>
+           )}
+        </div>
+
+        <div id="product-explanation">
+          <h2>技術解説</h2>
+          <h3>Push API</h3>
+          <p>
+            <strong>Service Worker</strong>で提供されている<strong>API</strong>の一つで、
+            ブラウザでのみでプッシュ通知はできます。
+          </p>
+          <p><strong>iOS</strong>は今のところ非対応ですが、ネイティブアプリに近い体験ができるようになります。</p>
+        </div>
       </div>
     );
   }
