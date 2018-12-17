@@ -1,5 +1,4 @@
 import * as React from 'react';
-import IconArrow from '../icon/arrow.png';
 import './accordion_panel.scss';
 
 type Props = {

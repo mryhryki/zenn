@@ -1,10 +1,10 @@
 import * as React from 'react';
 import Peer from 'skyway-js';
-import { TextInput } from '../../../presenters/text_input';
-import { Button } from '../../../presenters/button';
-import { Video } from '../../../presenters/video';
-import { LocalStorage } from '../../../common/storage';
-import { Modal } from '../../../presenters/modal';
+import { TextInput } from '../../presenters/text_input';
+import { Button } from '../../presenters/button';
+import { Video } from '../../presenters/video';
+import { LocalStorage } from '../../common/storage';
+import { Modal } from '../../presenters/modal';
 import './style.scss';
 
 const SkyWayApiKey: string = 'fcd26ea9-7208-4668-b4b5-456be1b3090e';

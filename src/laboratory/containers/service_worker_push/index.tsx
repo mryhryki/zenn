@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Button } from '../../../presenters/button';
-import { TextInput } from '../../../presenters/text_input';
-import { TextArea } from '../../../presenters/text_area';
+import { Button } from '../../presenters/button';
+import { TextInput } from '../../presenters/text_input';
+import { TextArea } from '../../presenters/text_area';
 import './style.scss';
 
 const supportPushNotification: boolean = ('serviceWorker' in navigator && 'PushManager' in window);

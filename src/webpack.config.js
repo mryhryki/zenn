@@ -3,7 +3,7 @@ const path = require('path');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = (/* args, env */) => {
-  const mode = process.env.NODE_ENV;
+  const mode = process.env.NODE_ENV === 'development' ? 'development' : 'production';
 
   return {
     mode,

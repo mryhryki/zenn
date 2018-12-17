@@ -1,5 +1,8 @@
 import { v4 as uuid } from 'uuid';
-import { webSocket } from '../../../common/web_socket';
+import {
+  ReceiveType,
+  webSocket,
+} from '../../common/web_socket';
 
 const CONFIG = {
   sdpSemantics: 'unified-plan',
@@ -42,7 +45,7 @@ class WebRTC {
     this.room = room;
     this.onChangeRemoteStreams = onChangeRemoteStreams;
 
-    webSocket.setListener((message) => {
+    webSocket.setListener((message: ReceiveType) => {
       switch (message.type) {
         case 'join':
           this.getPeerInfo(message.from, true);

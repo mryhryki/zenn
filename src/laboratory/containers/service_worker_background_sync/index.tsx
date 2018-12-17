@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from '../../../presenters/button';
+import { Button } from '../../presenters/button';
 import './style.scss';
 
 const serviceWorker = ('serviceWorker' in navigator ? navigator.serviceWorker : null);
