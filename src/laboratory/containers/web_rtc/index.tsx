@@ -4,7 +4,6 @@ import { TextInput } from '../../presenters/text_input';
 import { Button } from '../../presenters/button';
 import { Video } from '../../presenters/video';
 import { LocalStorage } from '../../common/storage';
-import { Modal } from '../../presenters/modal';
 import './style.scss';
 
 const RoomPrefix: string = `${window.location.host}/`;
@@ -60,27 +59,33 @@ class WebRtcContainer extends React.Component<Props, State> {
 
   render() {
     const { room, localStream, remoteStreams } = this.state;
-    const showModal: boolean = (localStream != null);
 
     return (
       <div id="browser-api-container">
-        <h1>ブラウザ API を使ったサンプル</h1>
-        <div className="frame">
-          <TextInput
-            active={!showModal}
-            label="Room"
-            onChangeText={this.onChangeRoom}
-            value={room}
-            maxLength={255}
-          />
-          <div className="control-buttons">
-            <Button onClick={this.connect}>
-              Connect
-            </Button>
-          </div>
+        <h1>WebRTC (Real Time Communication)</h1>
+
+        <div id="product-summary">
+          <h2>プロダクト概要</h2>
+          <p><strong>WebRTC</strong>を使ったビデオチャットアプリです。</p>
         </div>
-        {showModal && (
-          <Modal onWrapperClick={this.disconnect}>
+
+        <div id="experimental-product">
+          <h2>実験プロダクト</h2>
+          <div className="frame">
+            <TextInput
+              active={localStream == null}
+              label="Room"
+              onChangeText={this.onChangeRoom}
+              value={room}
+              maxLength={255}
+            />
+            <div className="control-buttons">
+              <Button onClick={this.connect}>
+                Connect
+              </Button>
+            </div>
+          </div>
+          {localStream != null && (
             <div className="video-modal">
               <Video
                 className="self-view"
@@ -101,8 +106,14 @@ class WebRtcContainer extends React.Component<Props, State> {
                 );
               })}
             </div>
-          </Modal>
-        )}
+          )}
+        </div>
+
+        <div id="product-explanation">
+          <h2>技術解説</h2>
+          <h3>WebRTC</h3>
+          <p>ブラウザが提供しているリアルタイムコミュニケーションのAPIで、プラグイン等の追加なく、ビデオチャットやデータのやり取りができます。</p>
+        </div>
       </div>
     );
   }

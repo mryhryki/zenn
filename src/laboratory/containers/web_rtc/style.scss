@@ -3,22 +3,20 @@
 #browser-api-container {
   .video-modal {
     background-color: $black;
-    height: 84vh;
-    width: 92vw;
-    overflow-y: scroll;
+    width: 100%;
+    position: relative;
+    min-height: 160px;
 
     .remote-view {
       border: 1px solid $gray;
-      float: left;
-      max-height: 50%;
-      max-width: 50%;
+      width: 50%;
       object-fit: contain;
     }
 
     .self-view {
       bottom: 0;
-      max-height: 25%;
-      max-width: 50%;
+      max-height: 50%;
+      max-width: 25%;
       object-fit: contain;
       position: absolute;
       right: 0;
