@@ -11,7 +11,7 @@ class HomeContainer extends React.Component<Props, State> {
   render() {
     return (
       <div>
-        <h2>実験プロダクト一覧（整備中...）</h2>
+        <h2>実験プロダクト一覧</h2>
         <ul>
           {Views.map((view) => (
             <li key={view.path}>

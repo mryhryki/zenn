@@ -1,7 +1,7 @@
 import { render } from 'react-dom';
 import { Routes } from './routes';
 
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && process.env.NODE_ENV !== 'development') {
   navigator
     .serviceWorker
     .register('./service_worker.js')

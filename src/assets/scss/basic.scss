@@ -4,7 +4,7 @@
   background-color: transparent;
   border: 0 solid $gray;
   box-sizing: border-box;
-  font-family: 'Ubuntu','M PLUS 1p', sans-serif;
+  font-family: 'Ubuntu', 'M PLUS 1p', sans-serif;
   font-feature-settings: "palt";
   font-size: 16px;
   font-weight: normal;
@@ -38,6 +38,8 @@ h2 {
 }
 
 h3 {
+  border-left: 4px solid $silver;
+  padding-left: 8px;
   font-size: 20px;
   font-weight: bold;
 }
@@ -80,12 +82,21 @@ hr {
   margin-top: 16px;
 }
 
+em, strong, code {
+  border-radius: 2px;
+  display: inline-block;
+  margin: 1px;
+  padding: 1px 6px;
+}
+
 em {
+  background-color: rgba($silver, 0.5);
   font-style: italic;
 }
 
 strong {
   font-weight: bold;
+  background-color: rgba($silver, 0.5);
 
   & > em, code {
     font-weight: bold;
@@ -94,10 +105,7 @@ strong {
 
 code {
   background-color: $silver;
-  display: inline-block;
   font-weight: bold;
-  margin: 1px;
-  padding: 1px 6px;
 }
 
 img {

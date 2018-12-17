@@ -6,7 +6,6 @@ import {
 } from 'react-router-dom';
 import { HomeContainer } from './containers/home';
 import { WebRtcContainer } from './containers/web_rtc';
-// import { SkyWayContainer } from './containers/web_rtc/sky_way';
 import { ServiceWorkerCacheContainer } from './containers/service_worker_cache';
 import { ServiceWorkerPushNotificationContainer } from './containers/service_worker_push';
 import { ServiceWorkerBackgroundSyncContainer } from './containers/service_worker_background_sync';
@@ -64,7 +63,7 @@ const Routes = (
         <div id="home-title-lower">by hyiromori</div>
       </div>
       <div id="content-header-description">
-        個人的に作成しているプロダクト集です。
+        個人的に作成している実験プロダクト集です。
       </div>
     </div>
     <div id="main-content">
