@@ -1,6 +1,10 @@
 @import './colors';
 
-*, *:before, *:after {
+body, div, span, p, button, hr,
+h1, h2, h3, h4, h5, h6,
+em, strong, code, img, pre, input,
+ul, ol, li,
+table, thead, tbody, tfoot, tr, th, td {
   background-color: transparent;
   border: 0 solid $gray;
   box-sizing: border-box;
