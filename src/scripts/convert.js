@@ -105,7 +105,7 @@ sass.render({
 // ----- Service Worker -----
 
 const swEntryFilePath = path.join(__dirname, '../assets/service_worker.js');
-const swToFilePath = path.join(outputBasePath, '/laboratory/service_worker.js');
+const swToFilePath = path.join(outputBasePath, '/service_worker.js');
 fs.mkdirsSync(path.dirname(swToFilePath));
 
 ejs.renderFile(swEntryFilePath, { version }, (error, html) => {
