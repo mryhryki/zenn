@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 const ejs = require('ejs');
 const sass = require('node-sass');
@@ -7,6 +7,8 @@ const yaml = require('js-yaml');
 
 const version = (new Date()).getTime();
 const root = path.join(__dirname, '..');
+const isDevelopment = process.env.NODE_ENV === 'development';
+const outputBasePath = path.join(root, isDevelopment ? '.temp' : '..');
 
 // ----- Markdown -----
 
@@ -23,10 +25,10 @@ const getData = (pageData) => {
 };
 
 const ConvertDefinition = [
-  { from: 'assets/markdown/404.md', to: '../404.html' },
-  { from: 'assets/markdown/index.md', to: '../index.html' },
-  { from: 'assets/markdown/blog.md', to: '../blog/index.html' },
-  { from: 'assets/markdown/laboratory.md', to: '../laboratory/index.html' },
+  { from: 'assets/markdown/404.md', to: `${outputBasePath}/404.html` },
+  { from: 'assets/markdown/index.md', to: `${outputBasePath}/index.html` },
+  { from: 'assets/markdown/blog.md', to: `${outputBasePath}/blog/index.html` },
+  { from: 'assets/markdown/laboratory.md', to: `${outputBasePath}/laboratory/index.html` },
 ];
 
 const BlogFileRegexp = /^20\d\d-\d\d-\d\d_[A-Za-z0-9-]+\.md$/;
@@ -40,7 +42,7 @@ const blogList = fs.readdirSync(blogDirPath)
                        `/blog/${splited[0].substring(0, 7)}/${splited[1].split('.')[0]}.html`;
                      return {
                        from: path.join(root, 'blog', blog),
-                       to: path.join(root, `..${absolutePath}`),
+                       to: path.join(outputBasePath, absolutePath),
                        absolutePath,
                        date: splited[0],
                      };
@@ -53,7 +55,7 @@ const templateDirPath = path.join(__dirname, '../assets/template');
 const convert = (from, to, data) => {
   const dir = path.dirname(to);
   if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir);
+    fs.mkdirsSync(dir);
   }
 
   const splitData = fs.readFileSync(from, 'utf-8').split('---');
@@ -84,18 +86,32 @@ ConvertDefinition.forEach((definition) => {
   return convert(from, to, { blogs });
 });
 
-
 // ----- SCSS -----
 
-const entryFilePath = path.join(__dirname, '../assets/scss/index.scss');
-const toFilePath = path.join(__dirname, '../../assets/styles/index.css');
+const scssEntryFilePath = path.join(__dirname, '../assets/scss/index.scss');
+const scssToFilePath = path.join(outputBasePath, '/assets/styles/index.css');
+fs.mkdirsSync(path.dirname(scssToFilePath));
 
 sass.render({
-  file: entryFilePath,
+  file: scssEntryFilePath,
   outputStyle: 'compressed',
 }, (error, result) => {
   if (error) {
     throw new Error(error);
   }
-  fs.writeFileSync(toFilePath, result.css.toString());
+  fs.writeFileSync(scssToFilePath, result.css.toString());
+});
+
+// ----- Service Worker -----
+
+const swEntryFilePath = path.join(__dirname, '../assets/service_worker.js');
+const swToFilePath = path.join(outputBasePath, '/laboratory/service_worker.js');
+fs.mkdirsSync(path.dirname(swToFilePath));
+console.debug('#####', swToFilePath)
+
+ejs.renderFile(swEntryFilePath, { version }, (error, html) => {
+  if (error) {
+    throw new Error(error);
+  }
+  fs.writeFileSync(swToFilePath, html);
 });

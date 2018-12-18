@@ -3,7 +3,9 @@ const path = require('path');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = (/* args, env */) => {
-  const mode = process.env.NODE_ENV === 'development' ? 'development' : 'production';
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  const mode = isDevelopment ? 'development' : 'production';
+  const outputPath = path.resolve(__dirname, (isDevelopment ? '.temp' : '..'), 'laboratory');
 
   return {
     mode,
@@ -56,7 +58,7 @@ module.exports = (/* args, env */) => {
     ],
     output: {
       filename: '[name].js',
-      path: path.resolve(__dirname, '../laboratory'),
+      path: outputPath,
     },
     // optimization: {
     //   splitChunks: {
