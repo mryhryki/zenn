@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <%- include('../template/head.html') %>
+  <meta property="og:type" content="article" />
+</head>
+<body>
+  <div id="header">
+    <div id="header-container">
+      <%- include('../template/header.html') %>
+    </div>
+  </div>
+  <div id="content-wrapper">
+    <%- include('../template/title.html') %>
+    <div id="main-content">
+      <%- content %>
+    </div>
+    <div id="left-content"></div>
+  </div>
+  <div id="footer">
+    <div id="footer-container">
+      <%- include('../template/footer.html') %>
+    </div>
+  </div>
+</body>
+</html>

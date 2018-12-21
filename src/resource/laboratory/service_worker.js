@@ -1,5 +1,5 @@
 const CacheVersion = '<%- version %>';
-const UrlsToCache = ['./', './index.js', './common.js'];
+const UrlsToCache = ['./', './index.js', './index.css'];
 
 self.addEventListener('install', (event) => {
   console.log('ServiceWorker installing.');
@@ -43,26 +43,22 @@ self.addEventListener('fetch', (event) => {
             resolve(cacheResponse);
             return;
           }
-          fetch(event.request).then((fetchResponse) => {
-            resolve(fetchResponse);
-          });
 
-          // const fetchRequest = event.request.clone();
-          // fetch(event.request).then((fetchResponse) => {
-          //   resolve(fetchResponse);
-          //   if (!fetchResponse ||
-          //       fetchResponse.status !== 200 ||
-          //       fetchResponse.type !== 'basic') {
-          //     resolve(fetchResponse);
-          //     return;
-          //   }
-          //
-          //   const responseToCache = fetchResponse.clone();
-          //   caches.open(CacheVersion).then((cache) => {
-          //     cache.put(event.request, responseToCache);
-          //     resolve(fetchResponse);
-          //   });
-          // });
+          const fetchRequest = event.request.clone();
+          fetch(fetchRequest).then((fetchResponse) => {
+            if (!fetchResponse || fetchResponse.status !== 200 || fetchResponse.type !== 'basic') {
+              resolve(fetchResponse);
+              return;
+            }
+
+            const responseToCache = fetchResponse.clone();
+            caches.open(CacheVersion).then((cache) => {
+              cache.put(event.request, responseToCache);
+              resolve(fetchResponse);
+            });
+          }).catch(() => {
+            resolve();
+          });
         });
     },
   ));

@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = (/* args, env */) => {
   const isDevelopment = process.env.NODE_ENV === 'development';
@@ -9,7 +9,7 @@ module.exports = (/* args, env */) => {
 
   return {
     mode,
-    entry: { index: './laboratory/index.ts' },
+    entry: { index: './resource/laboratory/index.ts' },
     devtool: (mode === 'development' ? 'inline-source-map' : undefined),
     module: {
       rules: [
