@@ -17,6 +17,7 @@ table, thead, tbody, tfoot, tr, th, td {
   margin: 0;
   padding: 0;
   text-decoration: none;
+  word-break: break-all;
   word-wrap: break-word;
 }
 
@@ -111,8 +112,13 @@ strong {
 }
 
 code {
+  font-family: 'Source Code Pro', 'Ubuntu', 'M PLUS 1p', sans-serif;
   background-color: $silver;
   font-weight: bold;
+
+  * {
+    font-family: 'Source Code Pro', 'Ubuntu', 'M PLUS 1p', sans-serif;
+  }
 }
 
 img {
@@ -122,10 +128,6 @@ img {
 
 pre {
   margin: 8px 0;
-
-  code {
-    border-radius: 4px;
-  }
 }
 
 button:focus {

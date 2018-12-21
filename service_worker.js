@@ -1,5 +1,8 @@
-const CacheVersion = '1545137114286';
-const UrlsToCache = ['./', './index.js', './common.js'];
+const CacheVersion = '2018-12-21T09:56:17.159Z';
+const UrlsToCache = [
+  '/',
+  '/blog/',
+].concat(JSON.parse('["/assets/images/blog/2018-12/portfolio-2/aws-route53.jpg","/assets/images/blog/2018-12/portfolio-2/github.jpg","/assets/images/blog/2018-12/portfolio-2/lets-encrypt.jpg","/assets/images/github.png","/assets/images/header_images/blog.jpg","/assets/images/header_images/home.jpg","/assets/images/header_images/laboratory.jpg","/assets/images/logo.jpg","/assets/images/mail.png","/assets/images/twitter.png","/assets/scripts/highlight.pack.js","/assets/styles/monokai-sublime.css"]'));
 
 self.addEventListener('install', (event) => {
   console.log('ServiceWorker installing.');
@@ -30,10 +33,6 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-self.addEventListener('message', (event) => {
-  console.log('Message Received:', event);
-});
-
 self.addEventListener('fetch', (event) => {
   event.respondWith(new Promise((resolve) => {
       caches
@@ -43,81 +42,23 @@ self.addEventListener('fetch', (event) => {
             resolve(cacheResponse);
             return;
           }
-          fetch(event.request).then((fetchResponse) => {
-            resolve(fetchResponse);
-          });
 
-          // const fetchRequest = event.request.clone();
-          // fetch(event.request).then((fetchResponse) => {
-          //   resolve(fetchResponse);
-          //   if (!fetchResponse ||
-          //       fetchResponse.status !== 200 ||
-          //       fetchResponse.type !== 'basic') {
-          //     resolve(fetchResponse);
-          //     return;
-          //   }
-          //
-          //   const responseToCache = fetchResponse.clone();
-          //   caches.open(CacheVersion).then((cache) => {
-          //     cache.put(event.request, responseToCache);
-          //     resolve(fetchResponse);
-          //   });
-          // });
+          const fetchRequest = event.request.clone();
+          fetch(fetchRequest).then((fetchResponse) => {
+            if (!fetchResponse || fetchResponse.status !== 200 || fetchResponse.type !== 'basic') {
+              resolve(fetchResponse);
+              return;
+            }
+
+            const responseToCache = fetchResponse.clone();
+            caches.open(CacheVersion).then((cache) => {
+              cache.put(event.request, responseToCache);
+              resolve(fetchResponse);
+            });
+          }).catch(() => {
+            resolve();
+          });
         });
     },
   ));
-});
-
-self.addEventListener('push', (event) => {
-  const dataText = event.data.text();
-  console.log('[ServiceWorker] Push Received.');
-  console.log(`[ServiceWorker] Push had this data: "${dataText}"`);
-
-  const title = 'Push Test';
-  const options = {
-    body: dataText,
-    icon: '/favicon.ico',
-    // badge: 'badge.png', // Android only
-  };
-  event.waitUntil(self.registration.showNotification(title, options));
-});
-
-self.addEventListener('sync', (event) => {
-  console.log('sync:', event);
-  if (event == null || typeof event.tag !== 'string' || !event.tag.match(/^background-sync:\d+$/)) {
-    return;
-  }
-
-  const id = parseInt(event.tag.substr(16), 10);
-  const dbOpenRequest = indexedDB.open('service_worker', 1);
-  dbOpenRequest.onerror = (error) => console.error('Fail open DB:', error);
-
-  dbOpenRequest.onsuccess = (dbOpenEvent) => {
-    const db = dbOpenEvent.target.result;
-    const transaction = db.transaction(['background_sync'], 'readonly');
-    transaction.onerror = (error) => console.error('Failed:', error);
-
-    const getRequest = transaction.objectStore('background_sync').get(id);
-    getRequest.onerror = (error) => console.error('Failed:', error);
-
-    getRequest.onsuccess = (event) => {
-      const syncData = event.target.result;
-      const { path, result } = syncData;
-      if (result !== '') {
-        return;
-      }
-
-      fetch(path, { method: 'GET' })
-        .then(response => response.text())
-        .then((text) => {
-          const transaction = db.transaction(['background_sync'], 'readwrite');
-          transaction.onerror = (error) => console.error('Failed:', error);
-
-          syncData.result = text;
-          const putRequest = transaction.objectStore('background_sync').put(syncData);
-          putRequest.onerror = (error) => console.error('Failed:', error);
-          putRequest.onsuccess = () => console.log('Complete sync:', syncData);
-        });
-    };
-  };
 });
