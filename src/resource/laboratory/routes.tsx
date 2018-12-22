@@ -57,6 +57,7 @@ const Routes = (
         id="content-header-image"
         alt="Page symbol image"
         src="/assets/images/header_images/laboratory.jpg"
+        decoding="async"
       />
       <div id="content-header-title-wrapper">
         <div id="content-header-title">
