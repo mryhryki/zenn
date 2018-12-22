@@ -1,6 +1,7 @@
+<!--
 title: Portfolio
 header_image: home.jpg
----
+-->
 
 ## 自己紹介
 

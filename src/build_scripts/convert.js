@@ -33,22 +33,21 @@ const getData = (customData) => {
   return data;
 };
 
-
 // ----- Converter -----
 
+const yamlExtracter = new RegExp('<!--\n[\\s\\S]+\n-->', 'm');
 const convertMarkdown = (
   markdownFilePath,
   templateHtmlPath,
   customData = {},
 ) => new Promise((resolve, reject) => {
-  const splitData = fs.readFileSync(markdownFilePath, 'utf-8').split('---');
-  if (splitData.length < 2) {
-    throw new Error('Undefined page info.');
-  }
+  const html = fs.readFileSync(markdownFilePath, 'utf-8');
+  const headerComment = html.match(yamlExtracter)[0] || ''
+  const yamlText = headerComment.substring(5, headerComment.length - 4);
 
-  const variables = yaml.safeLoad(splitData[0]);
+  const variables = yaml.safeLoad(yamlText);
   const pageData = getData(Object.assign({}, variables, customData));
-  const content = marked(ejs.render(splitData.slice(1).join('---'), pageData), { renderer });
+  const content = marked(ejs.render(html, pageData), { renderer });
 
   ejs.renderFile(templateHtmlPath, Object.assign({ content }, pageData), {}, (error, html) => {
     if (error) {
