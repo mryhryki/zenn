@@ -58,9 +58,10 @@ const Routes = (
         alt="Page symbol image"
         src="/assets/images/header_images/laboratory.jpg"
       />
-      <div id="content-header-title">
-        <div id="home-title-upper">Laboratory</div>
-        <div id="home-title-lower">by hyiromori</div>
+      <div id="content-header-title-wrapper">
+        <div id="content-header-title">
+          hyiromori's Laboratory
+        </div>
       </div>
       <div id="content-header-description">
         個人的に作成している実験プロダクト集です。

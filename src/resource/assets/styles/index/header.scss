@@ -10,9 +10,12 @@
     height: 40px;
     margin: 0;
     text-decoration: none;
+    display: flex;
+    align-items: center;
 
     #logo-image {
       height: 40px;
+      margin-right: 4px;
       width: 40px;
     }
 
@@ -22,19 +25,20 @@
       overflow: hidden;
 
       #logo-text-upper {
-        border-bottom: 1px solid $gray;
-        font-size: 18px;
-        font-weight: bold;
-        height: 26px;
-        line-height: 25px;
+        border-bottom: 1px solid $gray-light;
+        font-size: 13px;
+        font-weight: lighter;
+        height: 20px;
+        padding-top: 1px;
+        line-height: 17px;
         text-align: center;
       }
 
       #logo-text-lower {
-        font-size: 10px;
-        font-weight: lighter;
-        height: 14px;
-        line-height: 14px;
+        font-size: 15px;
+        font-weight: bold;
+        height: 20px;
+        line-height: 20px;
         text-align: center;
       }
     }
