@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <title>Ruby on Rails on Docker(-Compose) で手軽に開発環境構築 | Portfolio by hyiromori</title>
+<meta content="Ruby on Rails on Docker(-Compose) で手軽に開発環境構築 | Portfolio by hyiromori" name="title">
+<meta content="Web系フルスタックエンジニア hyiromori のポートフォリオサイトです。" name="description">
+<meta content="Ruby,Rails,Docker,Docker-Compose,開発環境" name="keywords">
+<meta name="theme-color" content="#ff7701"/>
+<meta property="og:title" content="Ruby on Rails on Docker(-Compose) で手軽に開発環境構築 | Portfolio by hyiromori" />
+<meta property="og:description" content="Web系フルスタックエンジニア hyiromori のポートフォリオサイトです。" />
+<meta property="og:image" content="/assets/images/logo.jpg" />
+<meta property="og:url" content="https://portfolio.hyiromori.com/" />
+<meta property="og:site_name" content="Ruby on Rails on Docker(-Compose) で手軽に開発環境構築 | Portfolio by hyiromori" />
+<meta property="og:locale" content="ja-JP" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@hyiromori" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu|Source+Code+Pro|M+PLUS+1p" rel="stylesheet">
+<link rel="stylesheet" href="/assets/styles/index.css" />
+<link rel="stylesheet" href="/assets/styles/monokai-sublime.css">
+<script src="/assets/scripts/highlight.pack.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-124358962-1"></script>
+<script type="text/javascript">
+  hljs.initHighlightingOnLoad();
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'UA-124358962-1');
+</script>
+  <link rel="stylesheet" href="/assets/styles/monokai-sublime.css">
+<script src="/assets/scripts/highlight.pack.js"></script>
+<script type="text/javascript">
+  hljs.initHighlightingOnLoad();
+</script>
+  <meta property="og:type" content="article" />
+</head>
+<body>
+  <div id="header">
+    <div id="header-container">
+      <a href="/" id="header-logo">
+  <img id="logo-image" alt="Logo image" src="/assets/images/logo.jpg" />
+  <div id="logo-text">
+    <div id="logo-text-upper">hyiromori's</div>
+    <div id="logo-text-lower">Portfolio</div>
+  </div>
+</a>
+<nav id="header-navigation">
+  <a href="/blog/">BLOG</a>
+  <a href="/laboratory/">LABO</a>
+</nav>
+
+    </div>
+  </div>
+  <div id="content-wrapper">
+    <div id="main-content">
+      <h1>Ruby on Rails on Docker(-Compose) で手軽に開発環境構築</h1>
+      <!--
+title: Ruby on Rails on Docker(-Compose) で手軽に開発環境構築
+keywords: Ruby,Rails,Docker,Docker-Compose,開発環境
+-->
+
+<h2 id="目的">目的</h2>
+<p>色々インストールする手間を省いたり、開発者ごとに微妙に異なる環境の差異をなくすために <code>docker-compose</code> を使って一発で開発できるようにしたい！</p>
+<h2 id="ディレクトリ構成">ディレクトリ構成</h2>
+<pre><code>&lt;Rails Directory&gt;
+  + docker
+  | + Dockerfile
+  | + docker-compose.yml
+  | + mariadb_initdb.d
+  |  + initialize.sql
+  + (後は `rails new` で作成されたディレクトリ＆ファイルたち)</code></pre><h2 id="Dockerfile">Dockerfile</h2>
+<pre><code class="language-dockerfile">FROM ruby:2.5.1-alpine
+
+RUN apk update
+RUN apk add --no-cache build-base libxml2-dev libxslt-dev tzdata mariadb-dev nodejs
+
+WORKDIR &quot;/var/rails&quot;
+
+RUN gem install bundler
+# これを指定しておかないと nokogiri のインストールに失敗しちゃいます
+RUN bundle config build.nokogiri --use-system-libraries</code></pre>
+<h2 id="docker-compose.yml">docker-compose.yml</h2>
+<pre><code class="language-yaml">version: &quot;3&quot;
+services:
+  rails:
+    build:
+      context: &quot;.&quot;
+      dockerfile: &quot;./Dockerfile&quot;
+    command: &gt;
+      sh -c &#39;
+        rm -f tmp/pids/server.pid &amp;&amp;
+        bundle install &amp;&amp;
+        bundle exec rails server
+      &#39;
+    ports:
+    - &quot;3000:3000&quot;
+    volumes:
+    # ローカルのディレクトリをマウントすることで変更をすぐに反映させられます
+    - &quot;../:/var/rails&quot;
+    environment:
+      DATABASE_HOST: &quot;mariadb&quot;
+      RAILS_ENV: &quot;development&quot;
+    depends_on:
+    - &quot;mariadb&quot;
+
+  mariadb:
+    image: &quot;mariadb:10.3.8&quot;
+    environment:
+      MYSQL_ROOT_PASSWORD: &quot;root_password&quot;
+    volumes:
+    - &quot;./mariadb_initdb.d:/docker-entrypoint-initdb.d&quot; # 初期化のための SQL ファイルを配置するディレクトリ</code></pre>
+<h2 id="initialize.sql">initialize.sql</h2>
+<p><code>MYSQL_DATABASE</code> とかの環境変数を使う方法もありますが、開発用とテスト用の両方を作らないと何かと面倒なので、初期化用の SQL ファイルを実行してもらっています。</p>
+<pre><code class="language-sql">CREATE USER &#39;rails_server&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39;;
+GRANT ALL PRIVILEGES ON rails_development.* TO &#39;rails_server&#39;@&#39;%&#39;;
+GRANT ALL PRIVILEGES ON rails_test.* TO &#39;rails_server&#39;@&#39;%&#39;;</code></pre>
+<h2 id="使い方">使い方</h2>
+<pre><code class="language-bash"># 起動
+docker-compose up -d
+
+# 停止
+docker-compose stop
+
+# ログの確認
+docker-compose logs -f
+
+# Rails のコンテナに入る
+docker-compose exec rails sh
+
+# 初回起動後に以下のコマンドでデータベースを初期化する必要があります
+&gt; bundle exec rails db:create db:migrate</code></pre>
+<h2 id="まとめ">まとめ</h2>
+<p>どこでもコマンド一発で起動できるので、とても便利！<br>あと、チーム開発の場合でもバージョン固定とかが簡単なのでその点でも良いですね。  </p>
+
+    </div>
+    <div id="left-content"></div>
+  </div>
+  <div id="footer">
+    <div id="footer-container">
+      <nav id="footer-links">
+  <a class="tooltip" data-tooltip="Mail" href="mailto:hyiromori@gmail.com">
+    <img src="/assets/images/mail.png" alt="Mail Logo" />
+  </a>
+  <a class="tooltip" data-tooltip="Twitter" href="https://twitter.com/hyiromori">
+    <img src="/assets/images/twitter.png" alt="Twitter Logo" />
+  </a>
+  <a class="tooltip" data-tooltip="GitHub" href="https://github.com/hyiromori">
+    <img src="/assets/images/github.png" alt="GitHub Logo" />
+  </a>
+</nav>
+<div id="footer-copyright">&copy 2018 hyiromori</div>
+    </div>
+  </div>
+  <script type="text/javascript">
+  function scrollToElement(id) {
+    var position = document.getElementById(id).offsetTop - 16;
+    window.scroll(0, position);
+  }
+
+  var leftContent = document.getElementById('left-content');
+  if (leftContent != null) {
+    var headers = [];
+    document.querySelectorAll('h2').forEach(function(header) {
+      headers.push(
+        '<div>' +
+        '<button onclick="scrollToElement(\'' + header.id + '\')">' +
+        header.textContent +
+        '</button>' +
+        '</div>',
+      );
+    });
+    leftContent.innerHTML = headers.join('');
+  }
+</script>
+</body>
+</html>

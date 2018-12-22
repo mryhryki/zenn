@@ -52,7 +52,7 @@
     "watch:laboratory": "./node_modules/.bin/webpack --watch",
     "express": "node ./build_scripts/express.js",
     "build": "npm run build:resources && npm run build:laboratory",
-    "build:resources": "node ./build_scripts/convert.js",
+    "build:resource": "node ./build_scripts/convert.js",
     "build:laboratory": "./node_modules/.bin/webpack --json | ./node_modules/.bin/webpack-bundle-size-analyzer"
   }
 }

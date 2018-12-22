@@ -1,7 +1,6 @@
 <!--
-title: Ruby on Rails on Docker (Compose) で手軽に開発環境構築
-keywords: Ruby, Rails, Docker, Docker-Compose
-template: blog
+title: Ruby on Rails on Docker(-Compose) で手軽に開発環境構築
+keywords: Ruby,Rails,Docker,Docker-Compose,開発環境
 -->
 
 ## 目的
@@ -12,9 +11,10 @@ template: blog
 
 ```
 <Rails Directory>
-  + Dockerfile
-  + docker-compose.yml
-  + mariadb_initdb.d
+  + docker
+  | + Dockerfile
+  | + docker-compose.yml
+  | + mariadb_initdb.d
   |  + initialize.sql
   + (後は `rails new` で作成されたディレクトリ＆ファイルたち)
 ```
@@ -30,7 +30,7 @@ RUN apk add --no-cache build-base libxml2-dev libxslt-dev tzdata mariadb-dev nod
 WORKDIR "/var/rails"
 
 RUN gem install bundler
-# これを指定しないと nokogiri のインストールに失敗しちゃいます
+# これを指定しておかないと nokogiri のインストールに失敗しちゃいます
 RUN bundle config build.nokogiri --use-system-libraries
 ```
 
@@ -52,7 +52,8 @@ services:
     ports:
     - "3000:3000"
     volumes:
-    - "./:/var/rails"
+    # ローカルのディレクトリをマウントすることで変更をすぐに反映させられます
+    - "../:/var/rails"
     environment:
       DATABASE_HOST: "mariadb"
       RAILS_ENV: "development"
@@ -95,3 +96,8 @@ docker-compose exec rails sh
 # 初回起動後に以下のコマンドでデータベースを初期化する必要があります
 > bundle exec rails db:create db:migrate
 ```
+
+## まとめ
+
+どこでもコマンド一発で起動できるので、とても便利！  
+あと、チーム開発の場合でもバージョン固定とかが簡単なのでその点でも良いですね。  

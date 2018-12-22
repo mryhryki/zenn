@@ -1,6 +1,5 @@
 <!--
 title: 量子コンピューターについて調べてみた
-template: blog
 keywords: 量子コンピューター
 -->
 
