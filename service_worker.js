@@ -1,8 +1,8 @@
-const CacheVersion = '2018-12-24T22:57:22.691Z';
+const CacheVersion = '2019-01-07T12:53:02.514Z';
 const UrlsToCache = [
   '/',
   '/blog/',
-].concat(JSON.parse('["/assets/images/blog/2018-12/portfolio-2/aws-route53.jpg","/assets/images/blog/2018-12/portfolio-2/github.jpg","/assets/images/blog/2018-12/portfolio-2/lets-encrypt.jpg","/assets/images/github.png","/assets/images/header_images/blog.jpg","/assets/images/header_images/home.jpg","/assets/images/header_images/laboratory.jpg","/assets/images/logo.jpg","/assets/images/mail.png","/assets/images/twitter.png","/assets/scripts/highlight.pack.js","/assets/styles/monokai-sublime.css"]'));
+].concat(JSON.parse('["/assets/images/blog/portfolio/aws-route53.jpg","/assets/images/blog/portfolio/github.jpg","/assets/images/blog/portfolio/lets-encrypt.jpg","/assets/images/github.png","/assets/images/header_images/blog.jpg","/assets/images/header_images/home.jpg","/assets/images/header_images/laboratory.jpg","/assets/images/logo.jpg","/assets/images/mail.png","/assets/images/twitter.png","/assets/scripts/highlight.pack.js","/assets/styles/monokai-sublime.css"]'));
 
 self.addEventListener('install', (event) => {
   console.log('ServiceWorker installing.');
