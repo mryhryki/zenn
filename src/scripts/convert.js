@@ -9,9 +9,9 @@ const sass = require('node-sass');
 const version = (new Date()).toISOString();
 const isDevelopment = process.env.NODE_ENV === 'development';
 
-const root = path.join(__dirname, '..');
-const resourceDir = path.join(root, 'resource');
-const outputDir = path.join(root, isDevelopment ? '.temp' : '..');
+const rootDir = path.join(__dirname, '..');
+const resourceDir = path.join(rootDir, 'resource');
+const outputDir = path.join(rootDir, isDevelopment ? '.temp' : '..');
 
 const renderer = new marked.Renderer();
 renderer.heading = (text, level, raw) => (`<h${level} id="${raw}">${text}</h${level}>\n`);
@@ -24,6 +24,7 @@ const DefaultData = {
   keywords: 'portfolio, hyiromori',
 };
 
+const root = (relativePath) => path.join(rootDir, relativePath);
 const resource = (relativePath) => path.join(resourceDir, relativePath);
 const output = (relativePath) => path.join(outputDir, relativePath);
 
@@ -42,7 +43,7 @@ const convertMarkdown = (
   customData = {},
 ) => new Promise((resolve, reject) => {
   const html = fs.readFileSync(markdownFilePath, 'utf-8');
-  const headerComment = html.match(yamlExtracter)[0] || ''
+  const headerComment = html.match(yamlExtracter)[0] || '';
   const yamlText = headerComment.substring(5, headerComment.length - 4);
 
   const variables = yaml.safeLoad(yamlText);
@@ -91,13 +92,13 @@ const convert404 = () => {
 const convertBlog = () => {
   const BlogFileRegexp = /^20\d\d-\d\d-\d\d_[A-Za-z0-9-]+\.md$/;
   Promise.all(fs
-    .readdirSync(resource('blog/article'))
+    .readdirSync(root('blog/publish'))
     .filter(file => file.match(BlogFileRegexp))
     .sort().reverse()
     .map((blog) => {
       const splited = blog.split('_');
       const absolutePath = `/blog/${splited[0]}/${splited[1].split('.')[0]}.html`;
-      return convertMarkdown(resource(`blog/article/${blog}`), resource('blog/article.html'))
+      return convertMarkdown(root(`blog/publish/${blog}`), resource('blog/article.html'))
         .then((result) => {
           fs.mkdirsSync(path.dirname(output(absolutePath)));
           fs.writeFileSync(output(absolutePath), result.html);
