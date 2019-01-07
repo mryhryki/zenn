@@ -96,7 +96,7 @@ const convertBlog = () => {
     .sort().reverse()
     .map((blog) => {
       const splited = blog.split('_');
-      const absolutePath = `/blog/${splited[0].substring(0, 7)}/${splited[1].split('.')[0]}.html`;
+      const absolutePath = `/blog/${splited[0]}/${splited[1].split('.')[0]}.html`;
       return convertMarkdown(resource(`blog/article/${blog}`), resource('blog/article.html'))
         .then((result) => {
           fs.mkdirsSync(path.dirname(output(absolutePath)));

@@ -35,8 +35,7 @@ update: 2019-01-07
 
 - 基本的な部分は `Markdown` で手軽に書けるようにする
 - `SPA` が得意なので、動的なページは `SPA` で作る
-    - `TypeScript + React + Webpack` の（多分）ベーシックな構成にする。
-    - [ServiceWorker](https://qiita.com/hyiromori/items/7986a725541c97da878d) の記事も書いたので、実践してみる
+- `TypeScript + React + Webpack` の（多分）ベーシックな構成にする。
 
 ## デザインやレイアウトはどうしようか考えた
 
