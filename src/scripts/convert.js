@@ -16,18 +16,41 @@ const outputDir = path.join(rootDir, isDevelopment ? '.temp' : '..');
 const renderer = new marked.Renderer();
 renderer.heading = (text, level, raw) => (`<h${level} id="${raw}">${text}</h${level}>\n`);
 
+const root = (relativePath) => path.join(rootDir, relativePath);
+const resource = (relativePath) => path.join(resourceDir, relativePath);
+const output = (relativePath) => path.join(outputDir, relativePath);
+
+// ----- Embedded Files -----
+
+const css = sass.renderSync({
+  file: resource('assets/styles/index/index.scss'),
+  outputStyle: 'compressed',
+}).css.toString().trim();
+
+const highlight = fs.readFileSync(resource('assets/scripts/highlight.pack.js'), 'utf-8');
+
+const imageFileBase64 = (relativePath) => {
+  const filePath = resource(`assets/images/${relativePath}`);
+  const rawExtension = path.extname(filePath);
+  const ext = rawExtension === 'jpg' ? 'jpeg' : rawExtension;
+  const base64Data = fs.readFileSync(filePath, 'base64');
+  return `data:image/${ext};base64,${base64Data}`;
+};
+
+// ----- Data -----
+
 const DefaultData = {
+  file: {
+    css,
+    highlight,
+  },
+  imageFileBase64,
   version,
   template: 'default',
   title: 'No Title',
   description: 'Web系フルスタックエンジニア hyiromori のポートフォリオサイトです。',
   keywords: 'portfolio, hyiromori',
 };
-
-const root = (relativePath) => path.join(rootDir, relativePath);
-const resource = (relativePath) => path.join(resourceDir, relativePath);
-const output = (relativePath) => path.join(outputDir, relativePath);
-
 const getData = (customData) => {
   const data = Object.assign({}, DefaultData, customData);
   data.metaTitle = `${data.title} | Portfolio by hyiromori`;
@@ -66,12 +89,7 @@ const convertHome = () => {
   });
 
   const EXCLUDE = new RegExp('.*assets/styles/index/.*');
-  const cacheFiles = JSON.stringify(
-    read(resource('assets'))
-      .map(path => `/assets/${path}`)
-      .filter(src => !src.match(EXCLUDE)),
-  );
-  ejs.renderFile(resource('service_worker.js'), { version, cacheFiles }, (error, html) => {
+  ejs.renderFile(resource('service_worker.js'), { version }, (error, html) => {
     if (error) {
       throw new Error(error);
     }
@@ -122,37 +140,24 @@ const convertLaboratory = () => {
     if (error) {
       throw new Error(error);
     }
-    fs.writeFileSync(output('laboratory/service_worker.js'), html);
+    const outputPath = output('laboratory/service_worker.js');
+    fs.mkdirsSync(path.dirname(outputPath));
+    fs.writeFileSync(outputPath, html);
   });
 };
 
 // ----- Assets -----
 
 const copyAssets = () => {
-  const EXCLUDE = new RegExp('.*assets/styles/index/.*');
-  const filter = (src/*, dist*/) => !src.match(EXCLUDE);
-  fs.copySync(resource('assets'), output('assets'), { filter });
-};
-
-// ----- SCSS -----
-
-convertScss = () => {
-  sass.render({
-    file: resource('assets/styles/index/index.scss'),
-    outputStyle: 'compressed',
-  }, (error, result) => {
-    if (error) {
-      throw new Error(error);
-    }
-    fs.writeFileSync(output('assets/styles/index.css'), result.css.toString());
-    fs.writeFileSync(output('laboratory/index.css'), result.css.toString());
-  });
+  // const EXCLUDE = new RegExp('.*assets/styles/index/.*');
+  // const filter = (src/*, dist*/) => !src.match(EXCLUDE);
+  fs.copySync(resource('assets/fonts'), output('assets/fonts'));
+  fs.copySync(resource('assets/images'), output('assets/images'));
 };
 
 // ----- Execute -----
+copyAssets();
 convertHome();
 convert404();
 convertBlog();
 convertLaboratory();
-copyAssets();
-convertScss();

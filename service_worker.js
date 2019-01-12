@@ -1,8 +1,11 @@
-const CacheVersion = '2019-01-07T13:04:15.227Z';
+const CacheVersion = '2019-01-13T09:28:59.530Z';
 const UrlsToCache = [
   '/',
   '/blog/',
-].concat(JSON.parse('["/assets/images/blog/portfolio/aws-route53.jpg","/assets/images/blog/portfolio/github.jpg","/assets/images/blog/portfolio/lets-encrypt.jpg","/assets/images/github.png","/assets/images/header_images/blog.jpg","/assets/images/header_images/home.jpg","/assets/images/header_images/laboratory.jpg","/assets/images/logo.jpg","/assets/images/mail.png","/assets/images/twitter.png","/assets/scripts/highlight.pack.js","/assets/styles/monokai-sublime.css"]'));
+  '/assets/fonts/MPLUS1p-Regular.woff',
+  '/assets/fonts/SourceCodePro-Regular.woff',
+  '/assets/fonts/Ubuntu-Regular.woff',
+];
 
 self.addEventListener('install', (event) => {
   console.log('ServiceWorker installing.');

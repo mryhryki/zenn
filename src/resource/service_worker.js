@@ -2,7 +2,10 @@ const CacheVersion = '<%- version %>';
 const UrlsToCache = [
   '/',
   '/blog/',
-].concat(JSON.parse('<%- cacheFiles %>'));
+  '/assets/fonts/MPLUS1p-Regular.woff',
+  '/assets/fonts/SourceCodePro-Regular.woff',
+  '/assets/fonts/Ubuntu-Regular.woff',
+];
 
 self.addEventListener('install', (event) => {
   console.log('ServiceWorker installing.');

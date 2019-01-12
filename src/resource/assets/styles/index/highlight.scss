@@ -1,14 +1,10 @@
-/*
-
-Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-license.org/
-
-*/
+@import './colors';
 
 .hljs {
   display: block;
   overflow-x: auto;
-  padding: 0.5em;
-  background: #23241f;
+  padding: 16px;
+  background: $gray-dark;
 }
 
 .hljs,
@@ -50,17 +46,17 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 .hljs-selector-tag,
 .hljs-name,
 .hljs-attr {
-  color: #f92672;
+  color: $orange;
 }
 
 .hljs-symbol,
 .hljs-attribute {
-  color: #66d9ef;
+  color: $orange;
 }
 
 .hljs-params,
 .hljs-class .hljs-title {
-  color: #f8f8f2;
+  color: $orange;
 }
 
 .hljs-string,
@@ -73,11 +69,11 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 .hljs-addition,
 .hljs-variable,
 .hljs-template-variable {
-  color: #e6db74;
+  color: $orange;
 }
 
 .hljs-comment,
 .hljs-deletion,
 .hljs-meta {
-  color: #75715e;
+  color: $orange;
 }

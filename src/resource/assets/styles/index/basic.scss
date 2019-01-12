@@ -8,7 +8,7 @@ table, thead, tbody, tfoot, tr, th, td {
   background-color: transparent;
   border: 0 solid $gray;
   box-sizing: border-box;
-  font-family: 'Ubuntu', 'M PLUS 1p', sans-serif;
+  font-family: 'ubuntu', 'mplus1p', sans-serif;
   font-feature-settings: "palt";
   font-size: 16px;
   font-weight: normal;
@@ -108,13 +108,20 @@ strong {
   background-color: rgba($silver, 0.5);
 }
 
+%code-base {
+  font-size: 14px;
+  font-family: 'sourcecodepro', sans-serif;
+  line-height: 18px;
+}
+
 code {
-  font-family: 'Source Code Pro', 'Ubuntu', 'M PLUS 1p', sans-serif;
+  @extend %code-base;
   background-color: $silver;
+  font-family: 'sourcecodepro', sans-serif;
   font-weight: bold;
 
   * {
-    font-family: 'Source Code Pro', 'Ubuntu', 'M PLUS 1p', sans-serif;
+    @extend %code-base;
   }
 }
 

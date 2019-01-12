@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
   <%- include('../template/head.html') %>
-  <%- include('../template/head_service_worker.html') %>
   <meta property="og:type" content="article" />
 </head>
 <body>
@@ -14,11 +13,12 @@
   <div id="content-wrapper"></div>
   <%- content %>
   <script src="./index.js"></script>
-  <!--<script src="./common.js"></script>-->
   <div id="footer">
     <div id="footer-container">
       <%- include('../template/footer.html') %>
     </div>
   </div>
+  <%- include('../template/google_analytics.html') %>
+  <%- include('../template/service_worker.html') %>
 </body>
 </html>
