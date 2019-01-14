@@ -156,7 +156,6 @@ class ServiceWorkerBackgroundSyncContainer extends React.Component<Props, State>
                       <th className="table-id-column">ID</th>
                       <th>Path</th>
                       <th>Result</th>
-                      <th>CreatedAt</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -165,7 +164,6 @@ class ServiceWorkerBackgroundSyncContainer extends React.Component<Props, State>
                         <td>{syncData.id}</td>
                         <td>{syncData.path}</td>
                         <td>{syncData.result || '-'}</td>
-                        <td>{syncData.createdAt || '-'}</td>
                       </tr>
                     ))}
                   </tbody>

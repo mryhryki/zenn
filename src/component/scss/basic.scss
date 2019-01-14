@@ -17,6 +17,8 @@ table, thead, tbody, tfoot, tr, th, td {
   margin: 0;
   padding: 0;
   text-decoration: none;
+  word-break : break-word;
+  overflow-wrap : break-word;
 }
 
 h1, h2, h3, h4, h5, h6, ul, ol {
@@ -86,7 +88,6 @@ hr {
 
 em, strong, code {
   border-radius: 2px;
-  display: inline-block;
   margin: 1px;
   padding: 1px 6px;
 

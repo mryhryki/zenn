@@ -85,7 +85,6 @@ const convertLaboratory = () => {
 
 const copyAssets = () => {
   if (process.env.NODE_ENV !== 'development') return;
-  fs.removeSync(outputDir(''));
   fs.copySync(rootDir('assets'), outputDir('assets'));
 };
 
