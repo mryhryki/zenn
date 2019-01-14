@@ -1,21 +1,20 @@
-@import './colors';
-
 .hljs {
+  background: #000;
   display: block;
+  font-weight: 400;
   overflow-x: auto;
   padding: 16px;
-  background: $gray-dark;
 }
 
 .hljs,
 .hljs-tag,
 .hljs-subst {
-  color: $white;
+  color: #fff;
 }
 
 .hljs-strong,
 .hljs-emphasis {
-  color: $gray-light;
+  color: #ccc;
 }
 
 .hljs-bullet,
@@ -24,18 +23,18 @@
 .hljs-regexp,
 .hljs-literal,
 .hljs-link {
-  color: $orange;
+  color: #36c;
 }
 
 .hljs-code,
 .hljs-title,
 .hljs-section,
 .hljs-selector-class {
-  color: $orange;
+  color: #2e4;
 }
 
 .hljs-strong {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .hljs-emphasis {
@@ -46,17 +45,17 @@
 .hljs-selector-tag,
 .hljs-name,
 .hljs-attr {
-  color: $orange;
+  color: #8bf;
 }
 
 .hljs-symbol,
 .hljs-attribute {
-  color: $orange;
+  color: #6de;
 }
 
 .hljs-params,
 .hljs-class .hljs-title {
-  color: $orange;
+  color: #fff;
 }
 
 .hljs-string,
@@ -69,11 +68,11 @@
 .hljs-addition,
 .hljs-variable,
 .hljs-template-variable {
-  color: $gray;
+  color: #2e6;
 }
 
 .hljs-comment,
 .hljs-deletion,
 .hljs-meta {
-  color: $gray-dark;
+  color: #d9e;
 }
