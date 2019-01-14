@@ -1,29 +1,29 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <%- include('../template/head.html') %>
+  <%- include('../../component/template/head.html') %>
   <meta property="og:type" content="article" />
 </head>
 <body>
   <div id="header">
     <div id="header-container">
-      <%- include('../template/header.html') %>
+      <%- include('../../component/template/header.html') %>
     </div>
   </div>
   <div id="content-wrapper">
     <div id="main-content">
-      <h1><%- title %></h1>
-      <%- content %>
+      <h1><%- page.title %></h1>
+      <%- page.html %>
     </div>
     <div id="left-content"></div>
   </div>
   <div id="footer">
     <div id="footer-container">
-      <%- include('../template/footer.html') %>
+      <%- include('../../component/template/footer.html') %>
     </div>
   </div>
-  <%- include('../template/left_menu.html') %>
-  <%- include('../template/highlight.html') %>
-  <%- include('../template/google_analytics.html') %>
+  <%- include('../../component/template/left_menu.html') %>
+  <%- include('../../component/template/highlight.html') %>
+  <%- include('../../component/template/google_analytics.html') %>
 </body>
 </html>

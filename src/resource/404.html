@@ -1,24 +1,24 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <%- include('./template/head.html') %>
+  <%- include('../component/template/head.html') %>
   <meta property="og:type" content="article" />
 </head>
 <body>
   <div id="header">
     <div id="header-container">
-      <%- include('./template/header.html') %>
+      <%- include('../component/template/header.html') %>
     </div>
   </div>
   <div id="content-wrapper">
-    <%- include('./template/title.html') %>
+    <%- include('../component/template/title.html') %>
     <div id="main-content">
-      <%- content %>
+      <%- page.html %>
     </div>
   </div>
   <div id="footer">
     <div id="footer-container">
-      <%- include('./template/footer.html') %>
+      <%- include('../component/template/footer.html') %>
     </div>
   </div>
 </body>

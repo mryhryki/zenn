@@ -10,6 +10,7 @@ import { ServiceWorkerCacheContainer } from './containers/service_worker_cache';
 import { ServiceWorkerPushNotificationContainer } from './containers/service_worker_push';
 import { ServiceWorkerBackgroundSyncContainer } from './containers/service_worker_background_sync';
 import { QrCodeContainer } from './containers/qr_code';
+import * as HeaderImage from '../../component/image/header_images/laboratory.jpg';
 
 const HomePath = '/';
 const ServiceWorkerCachePath = '/service_worker/cache';
@@ -56,7 +57,7 @@ const Routes = (
       <img
         id="content-header-image"
         alt="Page symbol image"
-        src="/assets/images/header_images/laboratory.jpg"
+        src={HeaderImage}
         decoding="async"
       />
       <div id="content-header-title-wrapper">

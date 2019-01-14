@@ -1,4 +1,4 @@
-const CacheVersion = '<%- version %>';
+const CacheVersion = '<%- site.version %>';
 const UrlsToCache = [
   '/',
   '/blog/',
