@@ -61,7 +61,6 @@ keywords: 量子コンピューター
 
 ## 量子コンピューターの動向
 
-私は基本IT Proの記事をよく読んでいます。  
 [カナダD-Wave Systems](http://itpro.nikkeibp.co.jp/atcl/news/17/012500220/?itp_list_ranking)という会社が作っているみたいですね。  
 また、[IBM](http://itpro.nikkeibp.co.jp/atcl/news/17/030600715/?itp_list_ranking)も頑張っているみたいです。  
 我らが[日本勢](http://itpro.nikkeibp.co.jp/atcl/column/17/042400160/042600003/?itp_list_ranking)も、研究グループを作って量子コンピューターに挑んでいるみたいです。  
