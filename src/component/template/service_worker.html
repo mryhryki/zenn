@@ -1,7 +1,0 @@
-<script type="text/javascript">
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./service_worker.js', { scope: './' })
-             .then((registration) => console.log('ServiceWorker scope:', registration.scope))
-             .catch((error) => console.log('ServiceWorker registration failed: ', error));
-  }
-</script>
