@@ -1,5 +1,5 @@
-const CacheVersion = '2019-01-14T05:54:18.027Z';
-const UrlsToCache = ['./', './index.js'];
+const CacheVersion = '2019-01-18T04:36:40.138Z';
+const UrlsToCache = ['./'];
 
 self.addEventListener('install', (event) => {
   console.log('ServiceWorker installing.');
