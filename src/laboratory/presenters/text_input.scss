@@ -1,0 +1,24 @@
+@import '../common/colors';
+
+.text-input {
+  width: 100%;
+
+  &.inactive {
+    opacity: 0.5;
+  }
+
+  .text-input-label, input {
+    width: 100%;
+  }
+
+  .text-input-label {
+    padding: 0 4px 2px 4px;
+  }
+
+  input {
+    border-radius: 4px;
+    border: 1px solid $gray-light;
+    font-size: 14px;
+    padding: 4px 8px;
+  }
+}

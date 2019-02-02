@@ -1,0 +1,16 @@
+@import '../common/colors';
+
+.text-area-presenter {
+  .text-area-label {
+    height: 24px;
+  }
+
+  textarea {
+    background-color: $white;
+    border: 1px solid $gray;
+    min-height: calc(100% - 24px);
+    padding: 4px 8px;
+    resize: vertical;
+    width: 100%;
+  }
+}

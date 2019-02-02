@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "alwaysStrict": true,
+    "jsx": "react",
+    "jsxFactory": "React.createElement",
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "locale": "ja",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "sourceMap": true,
+    "target": "es5",
+    "typeRoots": [
+      "app/@types"
+    ]
+  }
+}

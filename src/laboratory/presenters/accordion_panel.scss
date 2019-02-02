@@ -1,0 +1,46 @@
+@import '../common/colors';
+
+.accordion-panel-presenter {
+  border-radius: 4px;
+  border: 1px solid $gray;
+  margin: 16px;
+  position: relative;
+
+  .title {
+    color: $navy;
+    cursor: pointer;
+    padding: 8px 16px 16px 16px;
+    text-decoration: underline;
+
+    &.open {
+      padding-bottom: 8px;
+    }
+  }
+
+  .content-wrapper {
+    border-top: 1px solid $gray;
+    padding: 16px 16px 24px 16px;
+
+    & > * {
+      margin: 0;
+    }
+  }
+
+  .icon-arrow {
+    background-color: $white;
+    border-radius: 12px;
+    border: 1px solid $gray;
+    bottom: 0;
+    color: $gray;
+    font-weight: 500;
+    font-size: 12px;
+    cursor: pointer;
+    height: 24px;
+    left: 50%;
+    line-height: 22px;
+    padding: 0 16px;
+    position: absolute;
+    text-align: center;
+    transform: translate(-50%, 50%);
+  }
+}

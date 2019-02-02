@@ -1,0 +1,3 @@
+asset: npm run watch:resource
+labo: npm run watch:laboratory
+express: npm run express:dev

@@ -1,0 +1,12 @@
+@import '../../common/colors';
+
+#qr-code-container {
+  #qr-code-image-wrapper {
+    text-align: center;
+    width: 100%;
+  }
+
+  #qr-code-image {
+    max-width: 100%;
+  }
+}

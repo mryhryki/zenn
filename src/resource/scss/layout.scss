@@ -1,0 +1,72 @@
+@import './colors';
+
+$header-height: 56px;
+$footer-height: 48px;
+$max-content-width: 720px;
+
+#header {
+  background-color: $white;
+  border-bottom: 1px solid $gray-light;
+  border-top: 2px solid $orange;
+  height: $header-height;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1;
+
+  #header-container {
+    left: 50%;
+    max-width: $max-content-width;
+    position: absolute;
+    transform: translate(-50%);
+    width: 100%;
+  }
+}
+
+#footer {
+  background-color: $gray-dark;
+  bottom: 0;
+  height: $footer-height;
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: 1;
+
+  #footer-container {
+    height: 100%;
+    left: 50%;
+    max-width: $max-content-width;
+    position: absolute;
+    transform: translate(-50%);
+    width: 100%;
+  }
+}
+
+#content-wrapper {
+  min-height: calc(100% - #{$header-height} - #{$footer-height});
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: relative;
+  padding: $header-height 0 $footer-height;
+  width: 100%;
+}
+
+#left-content {
+  border-right: 1px solid $gray-light;
+  bottom: 64px;
+  display: none;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 0 8px;
+  position: fixed;
+  right: calc(50% + 360px);
+  top: 72px;
+  width: 240px;
+}
+
+@media screen and (min-width: 1200px) {
+  #left-content {
+    display: block;
+  }
+}
