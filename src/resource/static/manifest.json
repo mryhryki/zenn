@@ -1,0 +1,12 @@
+{
+  "short_name": "hyiromori",
+  "name": "hyiromori's Portfolio",
+  "start_url": "https://portfolio.hyiromori.com/",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "type": "image/icon",
+      "sizes": "192x192"
+    }
+  ]
+}
