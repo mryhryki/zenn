@@ -41,7 +41,7 @@
   },
   "scripts": {
     "watch": "NODE_ENV=development ./node_modules/.bin/webpack --watch",
-    "build": "./node_modules/.bin/webpack",
-    "build:analyze": "./node_modules/.bin/webpack --json | ./node_modules/.bin/webpack-bundle-size-analyzer"
+    "build": "webpack",
+    "build:analyze": "webpack --json | ./node_modules/.bin/webpack-bundle-size-analyzer"
   }
 }

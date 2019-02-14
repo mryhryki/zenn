@@ -13,8 +13,7 @@
     "xml2js": "^0.4.19"
   },
   "scripts": {
-    "start": "./node_modules/.bin/nf start",
-    "publish": "cd ./.publish && git add -A && git commit -m \"$(date +%Y-%m-%dT%H:%M:%S)+09:00\" && git push",
+    "start": "nf start",
     "build": "NODE_ENV=production npm run build:laboratory && npm run build:resource",
     "build:laboratory": "cd ./laboratory && npm run build",
     "build:resource": "node ./scripts/convert.js",
@@ -22,6 +21,6 @@
     "express:prod": "NODE_ENV=production node ./scripts/express.js",
     "hatena": "node ./scripts/publish.js",
     "watch:laboratory": "NODE_ENV=development cd ./laboratory && npm run watch",
-    "watch:resource": "NODE_ENV=development ./node_modules/.bin/nodemon --watch ./ --ext md,html,scss,js --exec 'npm run build:resource'"
+    "watch:resource": "NODE_ENV=development nodemon --watch ./ --ext md,html,scss,js --exec 'npm run build:resource'"
   }
 }
