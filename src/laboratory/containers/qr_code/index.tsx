@@ -2,45 +2,62 @@ import * as React from 'react';
 import * as QrCode from 'qrcode';
 import './style.scss';
 import { TextArea } from '../../presenters/text_area';
+import { RadioButton } from '../../presenters/radio_button';
 import { LocalStorage } from '../../common/storage';
 
-const LocalStorageKey: string = 'qr_code/qrText';
+const QrTextStorageKey: string = 'qr_code/qrText';
+const QrErrorCorrectionLevel: string = 'qr_code/qrErrorCorrectionLevel';
+
+type ErrorCorrectionLevel = 'L' | 'M' | 'Q' | 'H'
 
 interface Props {}
 
 interface State {
   qrText: string,
   qrImage: string,
+  errorCorrectionLevel: ErrorCorrectionLevel,
 }
 
 class QrCodeContainer extends React.Component<Props, State> {
   state: State = {
     qrImage: '',
     qrText: '',
+    errorCorrectionLevel: 'L',
   };
 
   componentDidMount(): void {
-    const qrText: string = LocalStorage.get(LocalStorageKey) || window.location.href;
-    this.onChangeText(qrText);
+    const qrText: string = LocalStorage.get(QrTextStorageKey) || window.location.href;
+    const errorCorrectionLevel: any = LocalStorage.get(QrErrorCorrectionLevel) || 'L';
+    this.setState({ qrText, errorCorrectionLevel });
+    this.generateQrCode(qrText, errorCorrectionLevel);
   }
 
-  onChangeText = (qrText: string): void => {
-    LocalStorage.set(LocalStorageKey, qrText);
-    this.setState({ qrText });
+  generateQrCode = (qrText: string, errorCorrectionLevel: ErrorCorrectionLevel): void => {
     if (qrText !== '') {
       QrCode
-        .toDataURL(qrText)
-        .then((qrImage) => {
-          this.setState({ qrImage });
-        })
-        .catch((error) => {
-          console.error('QrCode generate error:', error);
-        });
+        .toDataURL(qrText, { errorCorrectionLevel })
+        .then((qrImage) => this.setState({ qrImage }))
+        .catch((error) => console.error('QrCode generate error:', error));
     }
   };
 
+  onChangeText = (qrText: string): void => {
+    LocalStorage.set(QrTextStorageKey, qrText);
+    this.setState({ qrText });
+    const { errorCorrectionLevel } = this.state;
+    this.generateQrCode(qrText, errorCorrectionLevel);
+  };
+
+  onChangeErrorCorrectionLevel = (errorCorrectionLevel: ErrorCorrectionLevel): void => {
+    LocalStorage.set(QrErrorCorrectionLevel, errorCorrectionLevel);
+    this.setState({ errorCorrectionLevel });
+    const { qrText } = this.state;
+    this.generateQrCode(qrText, errorCorrectionLevel);
+
+  };
+
   render() {
-    const { qrImage, qrText } = this.state;
+    const { qrImage, qrText, errorCorrectionLevel } = this.state;
 
     return (
       <div id="qr-code-container">
@@ -72,6 +89,33 @@ class QrCodeContainer extends React.Component<Props, State> {
             >
               {qrText}
             </TextArea>
+            <span>エラー訂正レベル</span>
+            <div>
+              <RadioButton
+                checked={errorCorrectionLevel === 'L'}
+                onClick={() => this.onChangeErrorCorrectionLevel('L')}
+              >
+                L (Low - 7% の破損まで読み取り可能)
+              </RadioButton>
+              <RadioButton
+                checked={errorCorrectionLevel === 'M'}
+                onClick={() => this.onChangeErrorCorrectionLevel('M')}
+              >
+                M (Medium - 15% の破損まで読み取り可能)
+              </RadioButton>
+              <RadioButton
+                checked={errorCorrectionLevel === 'Q'}
+                onClick={() => this.onChangeErrorCorrectionLevel('Q')}
+              >
+                Q (Quartile - 25% の破損まで読み取り可能)
+              </RadioButton>
+              <RadioButton
+                checked={errorCorrectionLevel === 'H'}
+                onClick={() => this.onChangeErrorCorrectionLevel('H')}
+              >
+                H (High - 30% の破損まで読み取り可能)
+              </RadioButton>
+            </div>
           </div>
 
           <div id="product-explanation">
