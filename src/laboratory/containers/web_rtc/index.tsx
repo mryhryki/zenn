@@ -66,7 +66,11 @@ class WebRtcContainer extends React.Component<Props, State> {
 
         <div id="product-summary">
           <h2>プロダクト概要</h2>
-          <p><strong>WebRTC</strong>を使ったビデオチャットアプリです。</p>
+          <p>
+            <strong>WebRTC</strong>を使ったビデオチャットアプリです。
+            <strong>Room</strong> に入力した文字列を元にチャットルームを判別し、接続した相手とビデオチャットができます。
+          </p>
+          <p><strong>Connect</strong> を押すと、最初にカメラとマイクの使用してよいか聞かれるので許可してください。</p>
         </div>
 
         <div id="experimental-product">
@@ -112,7 +116,27 @@ class WebRtcContainer extends React.Component<Props, State> {
         <div id="product-explanation">
           <h2>技術解説</h2>
           <h3>WebRTC</h3>
-          <p>ブラウザが提供しているリアルタイムコミュニケーションのAPIで、プラグイン等の追加なく、ビデオチャットやデータのやり取りができます。</p>
+          <p>ブラウザが提供しているリアルタイムコミュニケーションのAPIで、プラグイン等の追加なく、P2Pでビデオチャットやデータのやり取りができます。</p>
+          <h3>シグナリング</h3>
+          <p>
+            P2P で接続するための情報をやり取りする方法です。
+            RFC には規定されておらず、各々実装する必要があります。
+            <strong>WebSocket</strong> を利用するのが一般的だと思います。
+            このプロダクトでも <a href="https://arukas.io/">Arukas</a> というサービスで
+            WebSocket サーバーのコンテナを立ち上げて使用してます。
+          </p>
+          <h3>TURN</h3>
+          <p>
+            P2P 通信ができない場合に通信を中継するサーバーです。
+            この実験プロダクトでは使用していないので、特殊な NAT を使用している場合は動作しない可能性があります。
+            ちなみに携帯電話のキャリアは繋がります。
+          </p>
+          <h3>SFU</h3>
+          <p>
+            複数人でビデオチャットを行う場合に効率よくデータを中継するための方式です。
+            こちらの <a href="https://gist.github.com/voluntas/4d2bd3e878965bdd747a">Gist</a> は詳しく書かれています。
+            こちらを書かれた方の記事はよくお世話になりました。
+          </p>
         </div>
       </div>
     );
