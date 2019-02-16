@@ -6,7 +6,7 @@ update: 2019-02-02
 
 ## モチベーション
 
-LGTM 画像を作るサイトはあるけれど、著作権や肖像権とか気になるし、プライベートリポジトリで使うだけなので、自分の好きな ~~乃木坂46の~~ 画像で LGTM 画像を作りたかった！
+LGTM 画像を作るサイトはあるけれど、著作権や肖像権とか気になるし、プライベートリポジトリで使うだけなので、自分の好きな <span style="color: #eee;">~~乃木坂46の~~</span> 画像で LGTM 画像を作りたかった！
 
 ## 使うもの
 
@@ -73,8 +73,8 @@ Command
 EOS
 }
 
-INPUT_DIR="${HOME}/.lgtm"
-OUTPUT_DIR="${HOME}/.temp"
+INPUT_DIR="${HOME}/.temp"
+OUTPUT_DIR="${HOME}/.lgtm"
 
 mkdir -p "${INPUT_DIR}"
 mkdir -p "${OUTPUT_DIR}"

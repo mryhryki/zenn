@@ -14,7 +14,6 @@ const {
   convertMarkdown,
   convertScss,
   convertTemplate,
-  readFile,
   writeFile,
 } = require('./lib/file');
 const { getEmbeddedData } = require('./lib/embedded_data');
