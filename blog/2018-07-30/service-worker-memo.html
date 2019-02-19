@@ -1,16 +1,18 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <title>Service Worker メモ | hyiromori</title>
-<meta content="Service Worker メモ | hyiromori" name="title">
-<meta content="Web系エンジニア hyiromori のポートフォリオサイトです。" name="description">
-<meta content="JavaScript,TypeScript,ServiceWorker" name="keywords">
+  <title>Service Worker メモ</title>
+<meta content="Service Worker メモ" name="title">
+<meta content="ネイティブアプリでないと難しかったことが、Webアプリでも出来るようになってきた印象ですね！
+  まだ、機能によっては対応しているブラウザが少ないですが、この流れが進むと、Webアプリでもネイティブアプリとほぼ同等のことが出来るようになってくると思います。" name="description">
+<meta content="JavaScript,TypeScript,ServiceWorker,hyiromori,blog" name="keywords">
 <meta name="theme-color" content="#ff7701"/>
-<meta property="og:title" content="Service Worker メモ | hyiromori" />
-<meta property="og:description" content="Web系エンジニア hyiromori のポートフォリオサイトです。" />
+<meta property="og:title" content="Service Worker メモ" />
+<meta property="og:description" content="ネイティブアプリでないと難しかったことが、Webアプリでも出来るようになってきた印象ですね！
+  まだ、機能によっては対応しているブラウザが少ないですが、この流れが進むと、Webアプリでもネイティブアプリとほぼ同等のことが出来るようになってくると思います。" />
 <meta property="og:image" content="/assets/images/logo.jpg" />
 <meta property="og:url" content="https://portfolio.hyiromori.com/" />
-<meta property="og:site_name" content="Service Worker メモ | hyiromori" />
+<meta property="og:site_name" content="Service Worker メモ" />
 <meta property="og:locale" content="ja-JP" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@hyiromori" />
@@ -26,7 +28,7 @@
   gtag('config', 'UA-124358962-1');
 </script>
 <style type="text/css">
-  @font-face{font-family:'mplus1p';font-style:normal;font-weight:400;font-display:swap;src:url("/assets/fonts/MPLUS1p-Regular.woff")}@font-face{font-family:'ubuntu';font-style:normal;font-weight:400;font-display:swap;src:url("/assets/fonts/Ubuntu-Regular.woff")}@font-face{font-family:'sourcecodepro';font-style:normal;font-weight:400;font-display:swap;src:url("/assets/fonts/SourceCodePro-Regular.woff")}body,div,span,p,button,hr,h1,h2,h3,h4,h5,h6,em,strong,code,img,pre,input,ul,ol,li,table,thead,tbody,tfoot,tr,th,td{background-color:transparent;border:0 solid #888;box-sizing:border-box;font-family:'ubuntu', 'mplus1p', sans-serif;font-feature-settings:"palt";font-size:16px;font-weight:normal;letter-spacing:0.3px;line-height:1.5;margin:0;padding:0;text-decoration:none;word-break:break-word;overflow-wrap:break-word}h1,h2,h3,h4,h5,h6,ul,ol{margin-top:24px;padding:0 4px}h2,h3,h4,h5,h6{white-space:pre-wrap}h1{font-size:28px;font-weight:bold;text-align:center}h2{border-bottom:1px solid #ccc;font-size:24px;font-weight:bold}h3{border-left:4px solid #eee;padding-left:8px;font-size:20px;font-weight:bold}h4{font-weight:bold;font-size:16px}h5{font-weight:bold;font-size:14px}h6{font-weight:bold;font-size:12px}p{margin-top:8px;padding-left:1em}a{color:navy;border-radius:4px;margin:0 2px}a:hover{text-decoration:underline;transition-duration:0.2s}hr{background-color:#eee;height:2px;margin-top:16px}em,strong,code{border-radius:2px;margin:1px;padding:1px 6px}em>em,em strong,em code,strong>em,strong strong,strong code,code>em,code strong,code code{background-color:#0000;font-weight:bold;margin:0;padding:0}em{background-color:rgba(238,238,238,0.5);font-style:italic}strong{font-weight:bold;background-color:rgba(238,238,238,0.5)}code,code *{font-size:14px;font-family:'sourcecodepro', sans-serif;line-height:18px}code{background-color:#eee;font-family:'sourcecodepro', sans-serif;font-weight:bold}img{max-width:100%;object-fit:scale-down}pre{margin:8px 0}button:focus{outline:none}table{border-collapse:collapse;border-spacing:0;table-layout:fixed}table th,table td{padding:4px 8px;border:1px solid #888}ul,ol{padding-left:24px;width:100%}ul li,ol li{margin-top:4px}ul li p,ol li p{padding-left:0}ul ul,ol ul{margin-top:0}.frame{border:1px solid #ccc;margin:16px;padding:16px;width:calc(100% - 32px)}@media (pointer: fine){.tooltip:hover::after{border:5px solid;content:' ';height:0;left:50%;position:absolute;transform:translate(-50%);width:0;z-index:100}.tooltip:hover::before{background-color:#fff;box-shadow:0 2px 4px 0 #888;color:#000;content:attr(data-tooltip);display:block;font-size:16px;padding:3px 9px;position:absolute;white-space:nowrap;z-index:100}.tooltip{position:relative}.tooltip:hover::before{left:50%;top:-10px;transform:translate(-50%, -100%)}.tooltip:hover::after{border-color:#fff transparent transparent transparent;top:-10px}}#header{background-color:#fff;border-bottom:1px solid #ccc;border-top:2px solid #ff7701;height:56px;left:0;position:fixed;right:0;top:0;z-index:1}#header #header-container{left:50%;max-width:720px;position:absolute;transform:translate(-50%);width:100%}#footer{background-color:#333;bottom:0;height:48px;left:0;position:fixed;right:0;z-index:1}#footer #footer-container{height:100%;left:50%;max-width:720px;position:absolute;transform:translate(-50%);width:100%}#content-wrapper{min-height:calc(100% - 56px - 48px);overflow-x:hidden;overflow-y:scroll;position:relative;padding:56px 0 48px;width:100%}#left-content{border-right:1px solid #ccc;bottom:64px;display:none;overflow-x:hidden;overflow-y:scroll;padding:0 8px;position:fixed;right:calc(50% + 360px);top:72px;width:240px}@media screen and (min-width: 1200px){#left-content{display:block}}#header{height:56px;padding:5px 8px 8px 8px}#header #header-logo{color:#000;float:left;height:40px;margin:0;text-decoration:none;display:flex;align-items:center}#header #header-logo #logo-image{height:40px;margin-right:4px;width:40px}#header #header-logo #logo-text{display:inline-block;height:40px;overflow:hidden}#header #header-logo #logo-text #logo-text-upper{border-bottom:1px solid #ccc;font-size:13px;font-weight:lighter;height:20px;padding-top:1px;line-height:17px;text-align:center}#header #header-logo #logo-text #logo-text-lower{font-size:15px;font-weight:bold;height:20px;line-height:20px;text-align:center}#header #header-navigation{float:right}#header #header-navigation a{display:inline-block;height:40px;line-height:40px;margin-left:4px;padding:0 4px}#content-header{height:320px;position:relative;width:100%}#content-header #content-header-image{height:100%;object-fit:cover;width:100%}#content-header #content-header-title-wrapper{bottom:160px;color:#fff;left:50%;max-width:720px;padding:0 16px;position:absolute;text-align:center;transform:translate(-50%);width:100%}#content-header #content-header-title-wrapper #content-header-title{border-bottom:1px solid #fff;color:#fff;display:inline-block;font-size:36px;font-weight:bold;line-height:40px;padding:4px 8px;text-align:center}#content-header #content-header-description{color:#fff;left:50%;font-size:14px;max-width:720px;padding:0 16px;position:absolute;text-align:center;top:186px;transform:translate(-50%);width:100%}#main-content{left:50%;max-width:720px;min-height:100%;padding:24px;position:relative;transform:translate(-50%, 0);width:100%}#right-content,#left-content{bottom:64px;display:none;overflow-x:hidden;overflow-y:scroll;padding:0 8px;position:fixed;top:72px;width:240px}#left-content{border-right:1px solid #ccc;right:calc(50% + 360px)}#left-content button{line-height:1;margin-bottom:8px;text-align:left;cursor:pointer}#right-content{border-left:1px solid #ccc;left:calc(50% + 360px)}@media screen and (min-width: 1200px){#left-content,#right-content{display:block}}#footer-container{align-items:center;display:flex;justify-content:space-between;padding:0 16px;width:100%}#footer-container #footer-links{display:flex;flex-direction:row;align-items:center}#footer-container #footer-links a{align-items:center;background-color:#fff;border-radius:50%;color:#fff;display:flex;height:32px;justify-content:center;line-height:30px;margin:4px;text-align:center;width:32px}#footer-container #footer-links a img{height:24px;width:24px}#footer-container #footer-copyright{font-size:12px;color:#fff}.hljs{background:#000;display:block;font-weight:400;overflow-x:auto;padding:16px}.hljs,.hljs-tag,.hljs-subst{color:#fff}.hljs-strong,.hljs-emphasis{color:#ccc}.hljs-bullet,.hljs-quote,.hljs-number,.hljs-regexp,.hljs-literal,.hljs-link{color:#36c}.hljs-code,.hljs-title,.hljs-section,.hljs-selector-class{color:#2e4}.hljs-strong{font-weight:600}.hljs-emphasis{font-style:italic}.hljs-keyword,.hljs-selector-tag,.hljs-name,.hljs-attr{color:#8bf}.hljs-symbol,.hljs-attribute{color:#6de}.hljs-params,.hljs-class .hljs-title{color:#fff}.hljs-string,.hljs-type,.hljs-built_in,.hljs-builtin-name,.hljs-selector-id,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-addition,.hljs-variable,.hljs-template-variable{color:#2e6}.hljs-comment,.hljs-deletion,.hljs-meta{color:#d9e}
+  @font-face{font-family:'mplus1p';font-style:normal;font-weight:400;font-display:swap;src:url("/assets/fonts/MPLUS1p-Regular.woff")}@font-face{font-family:'ubuntu';font-style:normal;font-weight:400;font-display:swap;src:url("/assets/fonts/Ubuntu-Regular.woff")}@font-face{font-family:'sourcecodepro';font-style:normal;font-weight:400;font-display:swap;src:url("/assets/fonts/SourceCodePro-Regular.woff")}body,div,span,p,button,hr,h1,h2,h3,h4,h5,h6,em,strong,code,img,pre,input,ul,ol,li,table,thead,tbody,tfoot,tr,th,td{background-color:transparent;border:0 solid #888;box-sizing:border-box;font-family:'ubuntu', 'mplus1p', sans-serif;font-feature-settings:"palt";font-size:16px;font-weight:normal;letter-spacing:0.3px;line-height:1.5;margin:0;padding:0;text-decoration:none;word-break:break-word;overflow-wrap:break-word}h1,h2,h3,h4,h5,h6,ul,ol{margin-top:24px;padding:0 4px}h2,h3,h4,h5,h6{white-space:pre-wrap}h1{font-size:28px;font-weight:bold;text-align:center}h2{border-bottom:1px solid #ccc;font-size:24px;font-weight:bold}h3{border-left:4px solid #eee;padding-left:8px;font-size:20px;font-weight:bold}h4{font-weight:bold;font-size:16px}h5{font-weight:bold;font-size:14px}h6{font-weight:bold;font-size:12px}p{margin-top:8px;padding-left:1em}a{color:navy;border-radius:4px;margin:0 2px}a:hover{text-decoration:underline;transition-duration:0.2s}hr{background-color:#eee;height:2px;margin-top:16px}em,strong,code{border-radius:2px;margin:1px;padding:1px 6px}em>em,em strong,em code,strong>em,strong strong,strong code,code>em,code strong,code code{background-color:#0000;font-weight:bold;margin:0;padding:0}em{background-color:rgba(238,238,238,0.5);font-style:italic}strong{font-weight:bold;background-color:rgba(238,238,238,0.5)}code,code *{font-size:14px;font-family:'sourcecodepro', sans-serif;line-height:18px}code{background-color:#eee;font-family:'sourcecodepro', sans-serif;font-weight:bold}img{max-width:100%;object-fit:scale-down}pre{margin:8px 0}button:focus{outline:none}table{border-collapse:collapse;border-spacing:0;table-layout:fixed}table th,table td{padding:4px 8px;border:1px solid #888}ul,ol{padding-left:24px;width:100%}ul li,ol li{margin-top:4px}ul li p,ol li p{padding-left:0}ul ul,ol ul{margin-top:0}.frame{border:1px solid #ccc;margin:16px;padding:16px;width:calc(100% - 32px)}@media (pointer: fine){.tooltip:hover::after{border:5px solid;content:' ';height:0;left:50%;position:absolute;transform:translate(-50%);width:0;z-index:100}.tooltip:hover::before{background-color:#fff;box-shadow:0 2px 4px 0 #888;color:#000;content:attr(data-tooltip);display:block;font-size:16px;padding:3px 9px;position:absolute;white-space:nowrap;z-index:100}.tooltip{position:relative}.tooltip:hover::before{left:50%;top:-10px;transform:translate(-50%, -100%)}.tooltip:hover::after{border-color:#fff transparent transparent transparent;top:-10px}}#header{background-color:#fff;border-bottom:1px solid #ccc;border-top:2px solid #ff7701;height:56px;left:0;position:fixed;right:0;top:0;z-index:1}#header #header-container{left:50%;max-width:720px;position:absolute;transform:translate(-50%);width:100%}#footer{background-color:#333;bottom:0;height:48px;left:0;position:fixed;right:0;z-index:1}#footer #footer-container{height:100%;left:50%;max-width:720px;position:absolute;transform:translate(-50%);width:100%}#content-wrapper{min-height:calc(100% - 56px - 48px);overflow-x:hidden;overflow-y:scroll;position:relative;padding:56px 0 48px;width:100%}#left-content{border-right:1px solid #ccc;bottom:64px;display:none;overflow-x:hidden;overflow-y:scroll;padding:0 8px;position:fixed;right:calc(50% + 360px);top:72px;width:240px}@media screen and (min-width: 1200px){#left-content{display:block}}#header{height:56px;padding:5px 8px 8px 8px}#header #header-logo{color:#000;float:left;height:40px;margin:0;text-decoration:none;display:flex;align-items:center}#header #header-logo #logo-image{height:40px;margin-right:4px;width:40px}#header #header-logo #logo-text{display:inline-block;height:40px;overflow:hidden}#header #header-logo #logo-text #logo-text-upper{border-bottom:1px solid #ccc;font-size:13px;font-weight:lighter;height:20px;padding-top:1px;line-height:17px;text-align:center}#header #header-logo #logo-text #logo-text-lower{font-size:15px;font-weight:bold;height:20px;line-height:20px;text-align:center}#header #header-navigation{float:right}#header #header-navigation a{display:inline-block;height:40px;line-height:40px;margin-left:4px;padding:0 4px}#content-header{height:320px;position:relative;width:100%}#content-header #content-header-image{height:100%;object-fit:cover;width:100%}#content-header #content-header-title-wrapper{bottom:160px;color:#fff;left:50%;max-width:720px;padding:0 16px;position:absolute;text-align:center;transform:translate(-50%);width:100%}#content-header #content-header-title-wrapper #content-header-title{border-bottom:1px solid #fff;color:#fff;display:inline-block;font-size:36px;font-weight:bold;line-height:40px;padding:4px 8px;text-align:center}#content-header #content-header-description{color:#fff;left:50%;font-size:14px;max-width:720px;padding:0 16px;position:absolute;text-align:center;top:186px;transform:translate(-50%);width:100%}#main-content{left:50%;max-width:720px;min-height:100%;padding:24px;position:relative;transform:translate(-50%, 0);width:100%}#right-content,#left-content{bottom:64px;display:none;overflow-x:hidden;overflow-y:scroll;padding:0 8px;position:fixed;top:72px;width:240px}#left-content{border-right:1px solid #ccc;right:calc(50% + 360px)}#left-content button{line-height:1;margin-bottom:8px;text-align:left;cursor:pointer}#right-content{border-left:1px solid #ccc;left:calc(50% + 360px)}@media screen and (min-width: 1200px){#left-content,#right-content{display:block}}#footer-container{align-items:center;display:flex;justify-content:space-between;padding:0 16px;width:100%}#footer-container #footer-links{display:flex;flex-direction:row;align-items:center}#footer-container #footer-links a{align-items:center;background-color:#fff;border-radius:50%;color:#fff;display:flex;height:32px;justify-content:center;line-height:30px;margin:4px;text-align:center;width:32px}#footer-container #footer-links a img{height:24px;width:24px}#footer-container #footer-copyright{font-size:12px;color:#fff}#article-info #date-info #created-at,#article-info #date-info #updated-at,#article-info #article-keywords li{background-color:#eee;border-radius:4px;display:inline-block;font-size:12px;margin-left:4px;padding:2px 8px}#article-info #date-info{display:inline}#article-info #date-info #created-at::before{content:"作成："}#article-info #date-info #updated-at::before{content:"更新："}#article-info #article-keywords{display:inline;margin:0;padding:0}.hljs{background:#000;display:block;font-weight:400;overflow-x:auto;padding:16px}.hljs,.hljs-tag,.hljs-subst{color:#fff}.hljs-strong,.hljs-emphasis{color:#ccc}.hljs-bullet,.hljs-quote,.hljs-number,.hljs-regexp,.hljs-literal,.hljs-link{color:#36c}.hljs-code,.hljs-title,.hljs-section,.hljs-selector-class{color:#2e4}.hljs-strong{font-weight:600}.hljs-emphasis{font-style:italic}.hljs-keyword,.hljs-selector-tag,.hljs-name,.hljs-attr{color:#8bf}.hljs-symbol,.hljs-attribute{color:#6de}.hljs-params,.hljs-class .hljs-title{color:#fff}.hljs-string,.hljs-type,.hljs-built_in,.hljs-builtin-name,.hljs-selector-id,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-addition,.hljs-variable,.hljs-template-variable{color:#2e6}.hljs-comment,.hljs-deletion,.hljs-meta{color:#d9e}
 </style>
   <meta property="og:type" content="article" />
 </head>
@@ -50,90 +52,99 @@
   <div id="content-wrapper">
     <div id="main-content">
       <h1>Service Worker メモ</h1>
-      <!--
-title: Service Worker メモ
-keywords: JavaScript,TypeScript,ServiceWorker
--->
+<div id="article-info">
+  <div id="date-info">
+    <div id="created-at">2018-09-12</div>
+    <div id="updated-at">2019-01-07</div>
+  </div>
+  <ul id="article-keywords">
+    <li>JavaScript</li>
+    <li>TypeScript</li>
+    <li>ServiceWorker</li>
+  </ul>
+</div>
 
 <h2 id="Service Worker とは？">Service Worker とは？</h2>
 <ul>
-<li>ブラウザの仕様</li>
-<li>Web ページとは「別」のライフサイクルを持つ typescript の実行環境。</li>
-<li><code>https</code> or <code>localhost</code> でしか動作しない</li>
+  <li>ブラウザの仕様</li>
+  <li>Web ページとは「別」のライフサイクルを持つ typescript の実行環境。</li>
+  <li><code>https</code> or <code>localhost</code> でしか動作しない</li>
 </ul>
 <h2 id="Service Worker でできること">Service Worker でできること</h2>
 <ul>
-<li><code>fetch</code> イベントに介入（キャッシュなどのコントロールが出来る）</li>
-<li>プッシュ通知</li>
-<li>バックグランド同期</li>
+  <li><code>fetch</code> イベントに介入（キャッシュなどのコントロールが出来る）</li>
+  <li>プッシュ通知</li>
+  <li>バックグランド同期</li>
 </ul>
 <p>ネイティブアプリでないと難しかったことが、Webアプリでも出来るようになってきた印象ですね！
-まだ、機能によっては対応しているブラウザが少ないですが、この流れが進むと、Webアプリでもネイティブアプリとほぼ同等のことが出来るようになってくると思います。</p>
+  まだ、機能によっては対応しているブラウザが少ないですが、この流れが進むと、Webアプリでもネイティブアプリとほぼ同等のことが出来るようになってくると思います。</p>
 <h2 id="Service Worker でできないこと">Service Worker でできないこと</h2>
 <ul>
-<li>DOMアクセス<ul>
-<li><code>window</code> にはアクセスできません</li>
-<li>Service Worker のソース内では <code>self</code> が Service Worker 自身を指すようです。 </li>
-</ul>
-</li>
+  <li>DOMアクセス
+    <ul>
+      <li><code>window</code> にはアクセスできません</li>
+      <li>Service Worker のソース内では <code>self</code> が Service Worker 自身を指すようです。</li>
+    </ul>
+  </li>
 </ul>
 <h2 id="Service Worker のライフサイクル">Service Worker のライフサイクル</h2>
 <h3 id="INSTALLING">INSTALLING</h3>
 <ul>
-<li>Service Worker の登録が開始された状態</li>
+  <li>Service Worker の登録が開始された状態</li>
 </ul>
 <h3 id="INSTALLED">INSTALLED</h3>
 <ul>
-<li>Service Worker の登録が完了した状態</li>
+  <li>Service Worker の登録が完了した状態</li>
 </ul>
 <h3 id="ACTIVATING">ACTIVATING</h3>
 <ul>
-<li>インストールされた Service Worker が有効になる段階</li>
+  <li>インストールされた Service Worker が有効になる段階</li>
 </ul>
 <h3 id="ACTIVATED">ACTIVATED</h3>
 <ul>
-<li>Service Worker が有効に機能している状態</li>
-<li>この段階から <code>fetch</code> イベントなどへの介入が出来るようになる</li>
+  <li>Service Worker が有効に機能している状態</li>
+  <li>この段階から <code>fetch</code> イベントなどへの介入が出来るようになる</li>
 </ul>
 <h3 id="REDUNDANT">REDUNDANT</h3>
 <ul>
-<li>Service Worker が無効になった状態</li>
-<li>通常、新しい Service Worker に置き換えられた時ぐらい？</li>
+  <li>Service Worker が無効になった状態</li>
+  <li>通常、新しい Service Worker に置き換えられた時ぐらい？</li>
 </ul>
 <h2 id="Service Worker で使用できるイベント">Service Worker で使用できるイベント</h2>
 <h3 id="install">install</h3>
 <ul>
-<li><code>INSTALL</code> 時に呼び出される</li>
-<li>試してみたところ、このコールバックでの戻り値、例外は Service Worker のライフサイクルには影響しないっぽい？</li>
+  <li><code>INSTALL</code> 時に呼び出される</li>
+  <li>試してみたところ、このコールバックでの戻り値、例外は Service Worker のライフサイクルには影響しないっぽい？</li>
 </ul>
 <h3 id="activate">activate</h3>
 <ul>
-<li><code>ACTIVATED</code> 時に呼び出される</li>
-<li>試してみたところ、このコールバックでの戻り値、例外は Service Worker のライフサイクルには影響しないっぽい？</li>
+  <li><code>ACTIVATED</code> 時に呼び出される</li>
+  <li>試してみたところ、このコールバックでの戻り値、例外は Service Worker のライフサイクルには影響しないっぽい？</li>
 </ul>
 <h3 id="message">message</h3>
 <ul>
-<li>不明（未調査）</li>
+  <li>不明（未調査）</li>
 </ul>
 <h4 id="fetch">fetch</h4>
 <ul>
-<li>何らかのリクエストが飛んだ時に介入するためのイベント</li>
-<li><code>Cache API</code> を使用して、コントロールすることが出来るようになる。 </li>
+  <li>何らかのリクエストが飛んだ時に介入するためのイベント</li>
+  <li><code>Cache API</code> を使用して、コントロールすることが出来るようになる。</li>
 </ul>
 <h4 id="sync">sync</h4>
 <ul>
-<li>バックグラウンド同期用のイベント</li>
-<li>Webページ側で登録しておくと、オンラインになった時点で発火する<ul>
-<li>オンライン状態で登録すればすぐに発火する</li>
-<li>逆にいえば、オフライン状態だと永遠に発火しない</li>
-</ul>
-</li>
+  <li>バックグラウンド同期用のイベント</li>
+  <li>Webページ側で登録しておくと、オンラインになった時点で発火する
+    <ul>
+      <li>オンライン状態で登録すればすぐに発火する</li>
+      <li>逆にいえば、オフライン状態だと永遠に発火しない</li>
+    </ul>
+  </li>
 </ul>
 <h4 id="push">push</h4>
 <ul>
-<li>プッシュ通知が飛んできた時のイベント</li>
-<li>通知メッセージの表示とかはカスタマイズできる</li>
-<li>メッセージを表示させず、バックグランドで何らかの処理を走らせることもできそう（未検証）</li>
+  <li>プッシュ通知が飛んできた時のイベント</li>
+  <li>通知メッセージの表示とかはカスタマイズできる</li>
+  <li>メッセージを表示させず、バックグランドで何らかの処理を走らせることもできそう（未検証）</li>
 </ul>
 <h2 id="サンプルソース">サンプルソース</h2>
 <p><code>TypeScript</code> チャレンジ中！（要するに、あまり慣れていないです😓）</p>
@@ -160,7 +171,8 @@ keywords: JavaScript,TypeScript,ServiceWorker
 self.addEventListener(&#39;fetch&#39;, (event: any) =&gt; {
   // fetch イベント時に介入したい処理
 });</code></pre>
-<h2 id="Cache API (利用できるブラウザ)">Cache API (<a href="https://caniuse.com/#feat=serviceworkers">利用できるブラウザ</a>)</h2>
+<h2 id="Cache API (利用できるブラウザ)">Cache API (<a href="https://caniuse.com/#feat=serviceworkers">利用できるブラウザ</a>)
+</h2>
 <p>１度 <code>fetch</code> に成功したものはキャッシュし、２度目以降はキャッシュを返す例</p>
 <pre><code class="language-typescript">self.addEventListener(&#39;fetch&#39;, (event: any) =&gt; {
   event.respondWith(
@@ -190,8 +202,10 @@ self.addEventListener(&#39;fetch&#39;, (event: any) =&gt; {
     }
   );
 });</code></pre>
-<p><a href="https://jakearchibald.com/2014/offline-cookbook/">The offline cookbook</a> というサイトに様々なパターンの例があり、とても参考になる。</p>
-<h3 id="Push API (利用できるブラウザ）">Push API (<a href="https://caniuse.com/#feat=push-api">利用できるブラウザ</a>）</h3>
+<p><a href="https://jakearchibald.com/2014/offline-cookbook/">The offline cookbook</a>
+  というサイトに様々なパターンの例があり、とても参考になる。</p>
+<h3 id="Push API (利用できるブラウザ）">Push API (<a href="https://caniuse.com/#feat=push-api">利用できるブラウザ</a>）
+</h3>
 <h4 id="Webページ側（プッシュ通知の登録処理）">Webページ側（プッシュ通知の登録処理）</h4>
 <pre><code class="language-typescript">const registerPushNotification = async () =&gt; {
   if (navigator.serviceWorker &amp;&amp; window.PushManager) {
@@ -214,19 +228,27 @@ self.addEventListener(&#39;fetch&#39;, (event: any) =&gt; {
   const options = { body: dataText };
   event.waitUntil(self.registration.showNotification(title, options));
 });</code></pre>
-<h3 id="Background Sync API (利用できるブラウザ)">Background Sync API (<a href="https://caniuse.com/#feat=background-sync">利用できるブラウザ</a>)</h3>
+<h3 id="Background Sync API (利用できるブラウザ)">Background Sync API (<a
+  href="https://caniuse.com/#feat=background-sync"
+>利用できるブラウザ</a>)</h3>
 <ul>
-<li>使えるブラウザが少ない（今のところChromeのみ）</li>
-<li>登録しておけば勝手に同期してくれる訳ではない（ハマった・・・）</li>
-<li>同期に必要な情報（HTTPメソッド、パス、パラメータなど）は <code>IndexedDB</code> と使って渡す必要がある（結構面倒だった）<ul>
-<li><code>LocalStorage</code> は使用できない（<a href="https://developer.mozilla.org/ja/docs/Web/API/ServiceWorker_API/Using_Service_Workers">MDN - サービスワーカーの使用</a> にも「メモ: localStorageはサービスワーカーキャッシュと同じように動作しますが、同期処理のため、サービスワーカー内では許可されていません。」と記述があった)</li>
+  <li>使えるブラウザが少ない（今のところChromeのみ）</li>
+  <li>登録しておけば勝手に同期してくれる訳ではない（ハマった・・・）</li>
+  <li>同期に必要な情報（HTTPメソッド、パス、パラメータなど）は <code>IndexedDB</code> と使って渡す必要がある（結構面倒だった）
+    <ul>
+      <li><code>LocalStorage</code> は使用できない（<a
+        href="https://developer.mozilla.org/ja/docs/Web/API/ServiceWorker_API/Using_Service_Workers"
+      >MDN - サービスワーカーの使用</a> にも「メモ:
+        localStorageはサービスワーカーキャッシュと同じように動作しますが、同期処理のため、サービスワーカー内では許可されていません。」と記述があった)
+      </li>
+    </ul>
+  </li>
+  <li>同期に限らず、オフラインからオンラインになった時にやりたい処理なども登録しておくことも出来ます。</li>
 </ul>
-</li>
-<li>同期に限らず、オフラインからオンラインになった時にやりたい処理なども登録しておくことも出来ます。</li>
-</ul>
-<h4 id="IndexedDB の定義（Dexie というライブラリを使用しています）">IndexedDB の定義（<a href="http://dexie.org/">Dexie</a> というライブラリを使用しています）</h4>
+<h4 id="IndexedDB の定義（Dexie というライブラリを使用しています）">IndexedDB の定義（<a href="http://dexie.org/">Dexie</a>
+  というライブラリを使用しています）</h4>
 <p>結構ソースが大きくなってしまった。
-とりあえず、こんな感じで <code>IndexedDB</code> の登録＆取得処理を書いているんだな、という雰囲気だけ感じ取ればよいかと思います。</p>
+  とりあえず、こんな感じで <code>IndexedDB</code> の登録＆取得処理を書いているんだな、という雰囲気だけ感じ取ればよいかと思います。</p>
 <pre><code class="language-typescript">import Dexie from &#39;dexie&#39;;
 
 const DB_VERSION: number = 1;
@@ -320,40 +342,54 @@ export {
 <p>これまでにあった、キャッシュの仕組みらしい。（使ったことは無いのであまり知らない）</p>
 <h3 id="機能">機能</h3>
 <ul>
-<li>ブラウザがキャッシュするファイルを指定して、キャッシュが出来る</li>
+  <li>ブラウザがキャッシュするファイルを指定して、キャッシュが出来る</li>
 </ul>
 <h3 id="問題点">問題点</h3>
 <ul>
-<li>キャッシュの仕組みに問題がある<ul>
-<li>動的に生成されるインデックスページ自体も必ずキャッシュされてしまうため、いろいろ厄介</li>
-<li>「こっちの方が便利だよね」という感じで入れたのが仇となったのか？（個人の意見です）</li>
-</ul>
-</li>
-<li>セキュリティ的な問題がある<ul>
-<li><code>HTTPS</code> じゃない場合に問題らしい</li>
-</ul>
-</li>
+  <li>キャッシュの仕組みに問題がある
+    <ul>
+      <li>動的に生成されるインデックスページ自体も必ずキャッシュされてしまうため、いろいろ厄介</li>
+      <li>「こっちの方が便利だよね」という感じで入れたのが仇となったのか？（個人の意見です）</li>
+    </ul>
+  </li>
+  <li>セキュリティ的な問題がある
+    <ul>
+      <li><code>HTTPS</code> じゃない場合に問題らしい</li>
+    </ul>
+  </li>
 </ul>
 <h3 id="App Cache と Service Worker との違い">App Cache と Service Worker との違い</h3>
 <ul>
-<li>Service Worker はキャッシュ用のAPIが存在するが、キャッシュの方法については実装者に依存</li>
-<li>Service Worker の方がキャッシュの自由度が高く、また様々な介入が出来る</li>
+  <li>Service Worker はキャッシュ用のAPIが存在するが、キャッシュの方法については実装者に依存</li>
+  <li>Service Worker の方がキャッシュの自由度が高く、また様々な介入が出来る</li>
 </ul>
 <h2 id="参考文献">参考文献</h2>
 <ul>
-<li><a href="https://developers.google.com/web/fundamentals/primers/service-workers/?hl=ja">Service Worker の紹介</a></li>
-<li><a href="https://developers.google.com/web/fundamentals/codelabs/debugging-service-workers/?hl=ja">Service Worker のデバッグ</a></li>
-<li><a href="https://developers.google.com/web/updates/2015/12/background-sync">
-Introducing Background Sync</a></li>
-<li><a href="https://developer.mozilla.org/ja/docs/Web/API/ServiceWorker_API">MDN - サービスワーカー API</a></li>
-<li><a href="https://developer.mozilla.org/ja/docs/Web/API/ServiceWorker_API/Using_Service_Workers">MDN - サービスワーカーの使用</a></li>
-<li><a href="https://qiita.com/y_fujieda/items/f9e765ac9d89ba241154">Qiita - Service Workerの基本とそれを使ってできること</a></li>
-<li><a href="https://qiita.com/kosamari/items/5e2235d26eb339a33660">Qiita - Service Workerってなんなのよ (Service Workerのえほん)</a></li>
-<li><a href="https://qiita.com/horo/items/175c8fd7513138308930">Qiita - ServiceWorkerとCache APIを使ってオフラインでも動くWebアプリを作る</a></li>
-<li><a href="https://app.codegrid.net/entry/2016-service-worker-1">Service Worker、はじめの一歩 - 第1回 Service Workerとは</a></li>
-<li><a href="https://jakearchibald.com/2014/offline-cookbook/">The offline cookbook</a></li>
-<li><a href="https://www.html5rocks.com/ja/tutorials/appcache/beginner/">アプリケーション キャッシュを初めて使う</a></li>
-<li><a href="https://html5experts.jp/kyo_ago/5153/">攻撃シナリオを使って解説するApplicationCacheのキャッシュポイズニング</a></li>
+  <li><a href="https://developers.google.com/web/fundamentals/primers/service-workers/?hl=ja">Service
+    Worker の紹介</a></li>
+  <li><a
+    href="https://developers.google.com/web/fundamentals/codelabs/debugging-service-workers/?hl=ja"
+  >Service Worker のデバッグ</a></li>
+  <li><a href="https://developers.google.com/web/updates/2015/12/background-sync">
+    Introducing Background Sync</a></li>
+  <li><a href="https://developer.mozilla.org/ja/docs/Web/API/ServiceWorker_API">MDN - サービスワーカー
+    API</a></li>
+  <li><a
+    href="https://developer.mozilla.org/ja/docs/Web/API/ServiceWorker_API/Using_Service_Workers"
+  >MDN - サービスワーカーの使用</a></li>
+  <li><a href="https://qiita.com/y_fujieda/items/f9e765ac9d89ba241154">Qiita - Service
+    Workerの基本とそれを使ってできること</a></li>
+  <li><a href="https://qiita.com/kosamari/items/5e2235d26eb339a33660">Qiita - Service Workerってなんなのよ
+    (Service Workerのえほん)</a></li>
+  <li><a href="https://qiita.com/horo/items/175c8fd7513138308930">Qiita - ServiceWorkerとCache
+    APIを使ってオフラインでも動くWebアプリを作る</a></li>
+  <li><a href="https://app.codegrid.net/entry/2016-service-worker-1">Service Worker、はじめの一歩 - 第1回
+    Service Workerとは</a></li>
+  <li><a href="https://jakearchibald.com/2014/offline-cookbook/">The offline cookbook</a></li>
+  <li><a href="https://www.html5rocks.com/ja/tutorials/appcache/beginner/">アプリケーション キャッシュを初めて使う</a>
+  </li>
+  <li><a href="https://html5experts.jp/kyo_ago/5153/">攻撃シナリオを使って解説するApplicationCacheのキャッシュポイズニング</a>
+  </li>
 </ul>
 
     </div>

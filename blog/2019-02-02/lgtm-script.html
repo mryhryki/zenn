@@ -1,16 +1,18 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <title>ImageMagick を使って LGTM 画像をターミナルで作成する | hyiromori</title>
-<meta content="ImageMagick を使って LGTM 画像をターミナルで作成する | hyiromori" name="title">
-<meta content="Web系エンジニア hyiromori のポートフォリオサイトです。" name="description">
-<meta content="ImageMagick,LGTM" name="keywords">
+  <title>ImageMagick を使って LGTM 画像をターミナルで作成する</title>
+<meta content="ImageMagick を使って LGTM 画像をターミナルで作成する" name="title">
+<meta content="LGTM 画像を作るサイトはあるけれど、著作権や肖像権とか気になるし、プライベートリポジトリで使うだけなので、自分の好きな 乃木坂46の
+  画像で LGTM 画像を作りたかった！" name="description">
+<meta content="ImageMagic,LGTM,hyiromori,blog" name="keywords">
 <meta name="theme-color" content="#ff7701"/>
-<meta property="og:title" content="ImageMagick を使って LGTM 画像をターミナルで作成する | hyiromori" />
-<meta property="og:description" content="Web系エンジニア hyiromori のポートフォリオサイトです。" />
+<meta property="og:title" content="ImageMagick を使って LGTM 画像をターミナルで作成する" />
+<meta property="og:description" content="LGTM 画像を作るサイトはあるけれど、著作権や肖像権とか気になるし、プライベートリポジトリで使うだけなので、自分の好きな 乃木坂46の
+  画像で LGTM 画像を作りたかった！" />
 <meta property="og:image" content="/assets/images/logo.jpg" />
 <meta property="og:url" content="https://portfolio.hyiromori.com/" />
-<meta property="og:site_name" content="ImageMagick を使って LGTM 画像をターミナルで作成する | hyiromori" />
+<meta property="og:site_name" content="ImageMagick を使って LGTM 画像をターミナルで作成する" />
 <meta property="og:locale" content="ja-JP" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@hyiromori" />
@@ -26,7 +28,7 @@
   gtag('config', 'UA-124358962-1');
 </script>
 <style type="text/css">
-  @font-face{font-family:'mplus1p';font-style:normal;font-weight:400;font-display:swap;src:url("/assets/fonts/MPLUS1p-Regular.woff")}@font-face{font-family:'ubuntu';font-style:normal;font-weight:400;font-display:swap;src:url("/assets/fonts/Ubuntu-Regular.woff")}@font-face{font-family:'sourcecodepro';font-style:normal;font-weight:400;font-display:swap;src:url("/assets/fonts/SourceCodePro-Regular.woff")}body,div,span,p,button,hr,h1,h2,h3,h4,h5,h6,em,strong,code,img,pre,input,ul,ol,li,table,thead,tbody,tfoot,tr,th,td{background-color:transparent;border:0 solid #888;box-sizing:border-box;font-family:'ubuntu', 'mplus1p', sans-serif;font-feature-settings:"palt";font-size:16px;font-weight:normal;letter-spacing:0.3px;line-height:1.5;margin:0;padding:0;text-decoration:none;word-break:break-word;overflow-wrap:break-word}h1,h2,h3,h4,h5,h6,ul,ol{margin-top:24px;padding:0 4px}h2,h3,h4,h5,h6{white-space:pre-wrap}h1{font-size:28px;font-weight:bold;text-align:center}h2{border-bottom:1px solid #ccc;font-size:24px;font-weight:bold}h3{border-left:4px solid #eee;padding-left:8px;font-size:20px;font-weight:bold}h4{font-weight:bold;font-size:16px}h5{font-weight:bold;font-size:14px}h6{font-weight:bold;font-size:12px}p{margin-top:8px;padding-left:1em}a{color:navy;border-radius:4px;margin:0 2px}a:hover{text-decoration:underline;transition-duration:0.2s}hr{background-color:#eee;height:2px;margin-top:16px}em,strong,code{border-radius:2px;margin:1px;padding:1px 6px}em>em,em strong,em code,strong>em,strong strong,strong code,code>em,code strong,code code{background-color:#0000;font-weight:bold;margin:0;padding:0}em{background-color:rgba(238,238,238,0.5);font-style:italic}strong{font-weight:bold;background-color:rgba(238,238,238,0.5)}code,code *{font-size:14px;font-family:'sourcecodepro', sans-serif;line-height:18px}code{background-color:#eee;font-family:'sourcecodepro', sans-serif;font-weight:bold}img{max-width:100%;object-fit:scale-down}pre{margin:8px 0}button:focus{outline:none}table{border-collapse:collapse;border-spacing:0;table-layout:fixed}table th,table td{padding:4px 8px;border:1px solid #888}ul,ol{padding-left:24px;width:100%}ul li,ol li{margin-top:4px}ul li p,ol li p{padding-left:0}ul ul,ol ul{margin-top:0}.frame{border:1px solid #ccc;margin:16px;padding:16px;width:calc(100% - 32px)}@media (pointer: fine){.tooltip:hover::after{border:5px solid;content:' ';height:0;left:50%;position:absolute;transform:translate(-50%);width:0;z-index:100}.tooltip:hover::before{background-color:#fff;box-shadow:0 2px 4px 0 #888;color:#000;content:attr(data-tooltip);display:block;font-size:16px;padding:3px 9px;position:absolute;white-space:nowrap;z-index:100}.tooltip{position:relative}.tooltip:hover::before{left:50%;top:-10px;transform:translate(-50%, -100%)}.tooltip:hover::after{border-color:#fff transparent transparent transparent;top:-10px}}#header{background-color:#fff;border-bottom:1px solid #ccc;border-top:2px solid #ff7701;height:56px;left:0;position:fixed;right:0;top:0;z-index:1}#header #header-container{left:50%;max-width:720px;position:absolute;transform:translate(-50%);width:100%}#footer{background-color:#333;bottom:0;height:48px;left:0;position:fixed;right:0;z-index:1}#footer #footer-container{height:100%;left:50%;max-width:720px;position:absolute;transform:translate(-50%);width:100%}#content-wrapper{min-height:calc(100% - 56px - 48px);overflow-x:hidden;overflow-y:scroll;position:relative;padding:56px 0 48px;width:100%}#left-content{border-right:1px solid #ccc;bottom:64px;display:none;overflow-x:hidden;overflow-y:scroll;padding:0 8px;position:fixed;right:calc(50% + 360px);top:72px;width:240px}@media screen and (min-width: 1200px){#left-content{display:block}}#header{height:56px;padding:5px 8px 8px 8px}#header #header-logo{color:#000;float:left;height:40px;margin:0;text-decoration:none;display:flex;align-items:center}#header #header-logo #logo-image{height:40px;margin-right:4px;width:40px}#header #header-logo #logo-text{display:inline-block;height:40px;overflow:hidden}#header #header-logo #logo-text #logo-text-upper{border-bottom:1px solid #ccc;font-size:13px;font-weight:lighter;height:20px;padding-top:1px;line-height:17px;text-align:center}#header #header-logo #logo-text #logo-text-lower{font-size:15px;font-weight:bold;height:20px;line-height:20px;text-align:center}#header #header-navigation{float:right}#header #header-navigation a{display:inline-block;height:40px;line-height:40px;margin-left:4px;padding:0 4px}#content-header{height:320px;position:relative;width:100%}#content-header #content-header-image{height:100%;object-fit:cover;width:100%}#content-header #content-header-title-wrapper{bottom:160px;color:#fff;left:50%;max-width:720px;padding:0 16px;position:absolute;text-align:center;transform:translate(-50%);width:100%}#content-header #content-header-title-wrapper #content-header-title{border-bottom:1px solid #fff;color:#fff;display:inline-block;font-size:36px;font-weight:bold;line-height:40px;padding:4px 8px;text-align:center}#content-header #content-header-description{color:#fff;left:50%;font-size:14px;max-width:720px;padding:0 16px;position:absolute;text-align:center;top:186px;transform:translate(-50%);width:100%}#main-content{left:50%;max-width:720px;min-height:100%;padding:24px;position:relative;transform:translate(-50%, 0);width:100%}#right-content,#left-content{bottom:64px;display:none;overflow-x:hidden;overflow-y:scroll;padding:0 8px;position:fixed;top:72px;width:240px}#left-content{border-right:1px solid #ccc;right:calc(50% + 360px)}#left-content button{line-height:1;margin-bottom:8px;text-align:left;cursor:pointer}#right-content{border-left:1px solid #ccc;left:calc(50% + 360px)}@media screen and (min-width: 1200px){#left-content,#right-content{display:block}}#footer-container{align-items:center;display:flex;justify-content:space-between;padding:0 16px;width:100%}#footer-container #footer-links{display:flex;flex-direction:row;align-items:center}#footer-container #footer-links a{align-items:center;background-color:#fff;border-radius:50%;color:#fff;display:flex;height:32px;justify-content:center;line-height:30px;margin:4px;text-align:center;width:32px}#footer-container #footer-links a img{height:24px;width:24px}#footer-container #footer-copyright{font-size:12px;color:#fff}.hljs{background:#000;display:block;font-weight:400;overflow-x:auto;padding:16px}.hljs,.hljs-tag,.hljs-subst{color:#fff}.hljs-strong,.hljs-emphasis{color:#ccc}.hljs-bullet,.hljs-quote,.hljs-number,.hljs-regexp,.hljs-literal,.hljs-link{color:#36c}.hljs-code,.hljs-title,.hljs-section,.hljs-selector-class{color:#2e4}.hljs-strong{font-weight:600}.hljs-emphasis{font-style:italic}.hljs-keyword,.hljs-selector-tag,.hljs-name,.hljs-attr{color:#8bf}.hljs-symbol,.hljs-attribute{color:#6de}.hljs-params,.hljs-class .hljs-title{color:#fff}.hljs-string,.hljs-type,.hljs-built_in,.hljs-builtin-name,.hljs-selector-id,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-addition,.hljs-variable,.hljs-template-variable{color:#2e6}.hljs-comment,.hljs-deletion,.hljs-meta{color:#d9e}
+  @font-face{font-family:'mplus1p';font-style:normal;font-weight:400;font-display:swap;src:url("/assets/fonts/MPLUS1p-Regular.woff")}@font-face{font-family:'ubuntu';font-style:normal;font-weight:400;font-display:swap;src:url("/assets/fonts/Ubuntu-Regular.woff")}@font-face{font-family:'sourcecodepro';font-style:normal;font-weight:400;font-display:swap;src:url("/assets/fonts/SourceCodePro-Regular.woff")}body,div,span,p,button,hr,h1,h2,h3,h4,h5,h6,em,strong,code,img,pre,input,ul,ol,li,table,thead,tbody,tfoot,tr,th,td{background-color:transparent;border:0 solid #888;box-sizing:border-box;font-family:'ubuntu', 'mplus1p', sans-serif;font-feature-settings:"palt";font-size:16px;font-weight:normal;letter-spacing:0.3px;line-height:1.5;margin:0;padding:0;text-decoration:none;word-break:break-word;overflow-wrap:break-word}h1,h2,h3,h4,h5,h6,ul,ol{margin-top:24px;padding:0 4px}h2,h3,h4,h5,h6{white-space:pre-wrap}h1{font-size:28px;font-weight:bold;text-align:center}h2{border-bottom:1px solid #ccc;font-size:24px;font-weight:bold}h3{border-left:4px solid #eee;padding-left:8px;font-size:20px;font-weight:bold}h4{font-weight:bold;font-size:16px}h5{font-weight:bold;font-size:14px}h6{font-weight:bold;font-size:12px}p{margin-top:8px;padding-left:1em}a{color:navy;border-radius:4px;margin:0 2px}a:hover{text-decoration:underline;transition-duration:0.2s}hr{background-color:#eee;height:2px;margin-top:16px}em,strong,code{border-radius:2px;margin:1px;padding:1px 6px}em>em,em strong,em code,strong>em,strong strong,strong code,code>em,code strong,code code{background-color:#0000;font-weight:bold;margin:0;padding:0}em{background-color:rgba(238,238,238,0.5);font-style:italic}strong{font-weight:bold;background-color:rgba(238,238,238,0.5)}code,code *{font-size:14px;font-family:'sourcecodepro', sans-serif;line-height:18px}code{background-color:#eee;font-family:'sourcecodepro', sans-serif;font-weight:bold}img{max-width:100%;object-fit:scale-down}pre{margin:8px 0}button:focus{outline:none}table{border-collapse:collapse;border-spacing:0;table-layout:fixed}table th,table td{padding:4px 8px;border:1px solid #888}ul,ol{padding-left:24px;width:100%}ul li,ol li{margin-top:4px}ul li p,ol li p{padding-left:0}ul ul,ol ul{margin-top:0}.frame{border:1px solid #ccc;margin:16px;padding:16px;width:calc(100% - 32px)}@media (pointer: fine){.tooltip:hover::after{border:5px solid;content:' ';height:0;left:50%;position:absolute;transform:translate(-50%);width:0;z-index:100}.tooltip:hover::before{background-color:#fff;box-shadow:0 2px 4px 0 #888;color:#000;content:attr(data-tooltip);display:block;font-size:16px;padding:3px 9px;position:absolute;white-space:nowrap;z-index:100}.tooltip{position:relative}.tooltip:hover::before{left:50%;top:-10px;transform:translate(-50%, -100%)}.tooltip:hover::after{border-color:#fff transparent transparent transparent;top:-10px}}#header{background-color:#fff;border-bottom:1px solid #ccc;border-top:2px solid #ff7701;height:56px;left:0;position:fixed;right:0;top:0;z-index:1}#header #header-container{left:50%;max-width:720px;position:absolute;transform:translate(-50%);width:100%}#footer{background-color:#333;bottom:0;height:48px;left:0;position:fixed;right:0;z-index:1}#footer #footer-container{height:100%;left:50%;max-width:720px;position:absolute;transform:translate(-50%);width:100%}#content-wrapper{min-height:calc(100% - 56px - 48px);overflow-x:hidden;overflow-y:scroll;position:relative;padding:56px 0 48px;width:100%}#left-content{border-right:1px solid #ccc;bottom:64px;display:none;overflow-x:hidden;overflow-y:scroll;padding:0 8px;position:fixed;right:calc(50% + 360px);top:72px;width:240px}@media screen and (min-width: 1200px){#left-content{display:block}}#header{height:56px;padding:5px 8px 8px 8px}#header #header-logo{color:#000;float:left;height:40px;margin:0;text-decoration:none;display:flex;align-items:center}#header #header-logo #logo-image{height:40px;margin-right:4px;width:40px}#header #header-logo #logo-text{display:inline-block;height:40px;overflow:hidden}#header #header-logo #logo-text #logo-text-upper{border-bottom:1px solid #ccc;font-size:13px;font-weight:lighter;height:20px;padding-top:1px;line-height:17px;text-align:center}#header #header-logo #logo-text #logo-text-lower{font-size:15px;font-weight:bold;height:20px;line-height:20px;text-align:center}#header #header-navigation{float:right}#header #header-navigation a{display:inline-block;height:40px;line-height:40px;margin-left:4px;padding:0 4px}#content-header{height:320px;position:relative;width:100%}#content-header #content-header-image{height:100%;object-fit:cover;width:100%}#content-header #content-header-title-wrapper{bottom:160px;color:#fff;left:50%;max-width:720px;padding:0 16px;position:absolute;text-align:center;transform:translate(-50%);width:100%}#content-header #content-header-title-wrapper #content-header-title{border-bottom:1px solid #fff;color:#fff;display:inline-block;font-size:36px;font-weight:bold;line-height:40px;padding:4px 8px;text-align:center}#content-header #content-header-description{color:#fff;left:50%;font-size:14px;max-width:720px;padding:0 16px;position:absolute;text-align:center;top:186px;transform:translate(-50%);width:100%}#main-content{left:50%;max-width:720px;min-height:100%;padding:24px;position:relative;transform:translate(-50%, 0);width:100%}#right-content,#left-content{bottom:64px;display:none;overflow-x:hidden;overflow-y:scroll;padding:0 8px;position:fixed;top:72px;width:240px}#left-content{border-right:1px solid #ccc;right:calc(50% + 360px)}#left-content button{line-height:1;margin-bottom:8px;text-align:left;cursor:pointer}#right-content{border-left:1px solid #ccc;left:calc(50% + 360px)}@media screen and (min-width: 1200px){#left-content,#right-content{display:block}}#footer-container{align-items:center;display:flex;justify-content:space-between;padding:0 16px;width:100%}#footer-container #footer-links{display:flex;flex-direction:row;align-items:center}#footer-container #footer-links a{align-items:center;background-color:#fff;border-radius:50%;color:#fff;display:flex;height:32px;justify-content:center;line-height:30px;margin:4px;text-align:center;width:32px}#footer-container #footer-links a img{height:24px;width:24px}#footer-container #footer-copyright{font-size:12px;color:#fff}#article-info #date-info #created-at,#article-info #date-info #updated-at,#article-info #article-keywords li{background-color:#eee;border-radius:4px;display:inline-block;font-size:12px;margin-left:4px;padding:2px 8px}#article-info #date-info{display:inline}#article-info #date-info #created-at::before{content:"作成："}#article-info #date-info #updated-at::before{content:"更新："}#article-info #article-keywords{display:inline;margin:0;padding:0}.hljs{background:#000;display:block;font-weight:400;overflow-x:auto;padding:16px}.hljs,.hljs-tag,.hljs-subst{color:#fff}.hljs-strong,.hljs-emphasis{color:#ccc}.hljs-bullet,.hljs-quote,.hljs-number,.hljs-regexp,.hljs-literal,.hljs-link{color:#36c}.hljs-code,.hljs-title,.hljs-section,.hljs-selector-class{color:#2e4}.hljs-strong{font-weight:600}.hljs-emphasis{font-style:italic}.hljs-keyword,.hljs-selector-tag,.hljs-name,.hljs-attr{color:#8bf}.hljs-symbol,.hljs-attribute{color:#6de}.hljs-params,.hljs-class .hljs-title{color:#fff}.hljs-string,.hljs-type,.hljs-built_in,.hljs-builtin-name,.hljs-selector-id,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-addition,.hljs-variable,.hljs-template-variable{color:#2e6}.hljs-comment,.hljs-deletion,.hljs-meta{color:#d9e}
 </style>
   <meta property="og:type" content="article" />
 </head>
@@ -50,39 +52,58 @@
   <div id="content-wrapper">
     <div id="main-content">
       <h1>ImageMagick を使って LGTM 画像をターミナルで作成する</h1>
-      <!--
-title: ImageMagick を使って LGTM 画像をターミナルで作成する
-keywords: ImageMagick,LGTM
-update: 2019-02-02
--->
+<div id="article-info">
+  <div id="date-info">
+    <div id="created-at">2019-02-02</div>
+    <div id="updated-at">2019-02-02</div>
+  </div>
+  <ul id="article-keywords">
+    <li>ImageMagic</li>
+    <li>LGTM</li>
+  </ul>
+</div>
 
 <h2 id="モチベーション">モチベーション</h2>
-<p>LGTM 画像を作るサイトはあるけれど、著作権や肖像権とか気になるし、プライベートリポジトリで使うだけなので、自分の好きな <span style="color: #eee;"><del>乃木坂46の</del></span> 画像で LGTM 画像を作りたかった！</p>
+<p>LGTM 画像を作るサイトはあるけれど、著作権や肖像権とか気になるし、プライベートリポジトリで使うだけなので、自分の好きな <span style="color: #eee;"><del>乃木坂46の</del></span>
+  画像で LGTM 画像を作りたかった！
+</p>
+
 <h2 id="使うもの">使うもの</h2>
-<p><strong>ImageMagick</strong> を使うので、インストールします。  </p>
+<p><strong>ImageMagick</strong> を使うので、インストールします。 </p>
 <p><strong>Mac</strong> を使っているので <strong>Homebrew</strong> を使うと楽にインストールできます。</p>
+
 <pre><code class="language-bash">brew install imagemagick</code></pre>
+
 <h2 id="LGTM の元画像の取得">LGTM の元画像の取得</h2>
 <p>Google とかから適当に画像をダウンロードしてきます。</p>
+
 <h2 id="画像の変換">画像の変換</h2>
-<p>以下のようなコマンドで <strong>ImageMagick</strong> を使って <code>LGTM</code> の文字を左上に入れることができます。ついでに、画像サイズが大きい場合は縦横比を保ったまま 480px * 480px 以下のサイズになるように変換しています。</p>
-<pre><code class="language-bash">  INPUT_FILE=&quot;&lt;元画像のファイルパスを入力&gt;&quot;
-  OUTPUT_FILE=&quot;&lt;出力先のファイルパスを入力&gt;&quot;
-  convert \
-      -resize &quot;480x480&gt;&quot; \
-      -pointsize &quot;60&quot; \
-      -fill &quot;#ff7700&quot; \
-      -gravity &quot;NorthWest&quot; \
-      -annotate &quot;0x0+0+0&quot; \
-      &quot;LGTM&quot; \
-      &quot;${INPUT_FILE}&quot; \
-      &quot;${OUTPUT_FILE}&quot;</code></pre>
+<p>以下のようなコマンドで <strong>ImageMagick</strong> を使って <code>LGTM</code>
+  の文字を左上に入れることができます。ついでに、画像サイズが大きい場合は縦横比を保ったまま 480px * 480px 以下のサイズになるように変換しています。</p>
+
+<pre><code class="language-bash">INPUT_FILE=&quot;&lt;元画像のファイルパスを入力&gt;&quot;
+OUTPUT_FILE=&quot;&lt;出力先のファイルパスを入力&gt;&quot;
+convert \
+    -resize &quot;480x480&gt;&quot; \
+    -pointsize &quot;60&quot; \
+    -fill &quot;#ff7700&quot; \
+    -gravity &quot;NorthWest&quot; \
+    -annotate &quot;0x0+0+0&quot; \
+    &quot;LGTM&quot; \
+    &quot;${INPUT_FILE}&quot; \
+    &quot;${OUTPUT_FILE}&quot;
+</code></pre>
+
 <p>すると、こんな感じの画像が生成されます 🎉 （フリー素材を使って作成してみました）</p>
 <p><img src="/assets/images/blog/lgtm-script/example.jpg" alt="example"></p>
+
 <h2 id="あとがき">あとがき</h2>
 <p>これで自分の好きな画像を心置きなく LGTM 画像に使うことができますね！<br>著作権や肖像権を侵害しないような使い方をしましょう。</p>
+
 <h2 id="おまけ">おまけ</h2>
-<p>新しい画像を追加するときや、LGTM をする度にどれにしようかとか、そういうの面倒なんで、スクリプト化しています。<br>以下のコードを <code>lgtm</code> というファイル名でパスの通る場所に配置すれば可能になります。（Mac でしか動かない箇所があります）</p>
+<p>新しい画像を追加するときや、LGTM をする度にどれにしようかとか、そういうの面倒なんで、スクリプト化しています。</p>
+<p>以下のコードを <code>lgtm</code> というファイル名でパスの通る場所に配置すれば可能になります。（Mac でしか動かない箇所があります）</p>
+
 <pre><code class="language-bash">#!/usr/bin/env bash
 
 function usage(){
@@ -152,7 +173,8 @@ elif [[ &quot;${COMMAND}&quot; == &quot;help&quot; ]]; then
 else
   usage
   exit 1
-fi</code></pre>
+fi
+</code></pre>
 
     </div>
     <div id="left-content"></div>

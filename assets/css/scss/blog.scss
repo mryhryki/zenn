@@ -1,0 +1,42 @@
+@import './colors';
+
+%tag-info-base {
+  background-color: $silver;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 12px;
+  margin-left: 4px;
+  padding: 2px 8px;
+}
+
+#article-info {
+  #date-info {
+    display: inline;
+
+    #created-at {
+      @extend %tag-info-base;
+
+      &::before {
+        content: "作成：";
+      }
+    }
+
+    #updated-at {
+      @extend %tag-info-base;
+
+      &::before {
+        content: "更新：";
+      }
+    }
+  }
+
+  #article-keywords {
+    display: inline;
+    margin: 0;
+    padding: 0;
+
+    li {
+      @extend %tag-info-base;
+    }
+  }
+}

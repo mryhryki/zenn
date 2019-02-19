@@ -1,0 +1,124 @@
+<h1>ImageMagick を使って LGTM 画像をターミナルで作成する</h1>
+<div id="article-info">
+  <div id="date-info">
+    <div id="created-at">2019-02-02</div>
+    <div id="updated-at">2019-02-02</div>
+  </div>
+  <ul id="article-keywords">
+    <li>ImageMagic</li>
+    <li>LGTM</li>
+  </ul>
+</div>
+
+<h2 id="モチベーション">モチベーション</h2>
+<p>LGTM 画像を作るサイトはあるけれど、著作権や肖像権とか気になるし、プライベートリポジトリで使うだけなので、自分の好きな <span style="color: #eee;"><del>乃木坂46の</del></span>
+  画像で LGTM 画像を作りたかった！
+</p>
+
+<h2 id="使うもの">使うもの</h2>
+<p><strong>ImageMagick</strong> を使うので、インストールします。 </p>
+<p><strong>Mac</strong> を使っているので <strong>Homebrew</strong> を使うと楽にインストールできます。</p>
+
+<pre><code class="language-bash">brew install imagemagick</code></pre>
+
+<h2 id="LGTM の元画像の取得">LGTM の元画像の取得</h2>
+<p>Google とかから適当に画像をダウンロードしてきます。</p>
+
+<h2 id="画像の変換">画像の変換</h2>
+<p>以下のようなコマンドで <strong>ImageMagick</strong> を使って <code>LGTM</code>
+  の文字を左上に入れることができます。ついでに、画像サイズが大きい場合は縦横比を保ったまま 480px * 480px 以下のサイズになるように変換しています。</p>
+
+<pre><code class="language-bash">INPUT_FILE=&quot;&lt;元画像のファイルパスを入力&gt;&quot;
+OUTPUT_FILE=&quot;&lt;出力先のファイルパスを入力&gt;&quot;
+convert \
+    -resize &quot;480x480&gt;&quot; \
+    -pointsize &quot;60&quot; \
+    -fill &quot;#ff7700&quot; \
+    -gravity &quot;NorthWest&quot; \
+    -annotate &quot;0x0+0+0&quot; \
+    &quot;LGTM&quot; \
+    &quot;${INPUT_FILE}&quot; \
+    &quot;${OUTPUT_FILE}&quot;
+</code></pre>
+
+<p>すると、こんな感じの画像が生成されます 🎉 （フリー素材を使って作成してみました）</p>
+<p><img src="/assets/images/blog/lgtm-script/example.jpg" alt="example"></p>
+
+<h2 id="あとがき">あとがき</h2>
+<p>これで自分の好きな画像を心置きなく LGTM 画像に使うことができますね！<br>著作権や肖像権を侵害しないような使い方をしましょう。</p>
+
+<h2 id="おまけ">おまけ</h2>
+<p>新しい画像を追加するときや、LGTM をする度にどれにしようかとか、そういうの面倒なんで、スクリプト化しています。</p>
+<p>以下のコードを <code>lgtm</code> というファイル名でパスの通る場所に配置すれば可能になります。（Mac でしか動かない箇所があります）</p>
+
+<pre><code class="language-bash">#!/usr/bin/env bash
+
+function usage(){
+  cat &lt;&lt; EOS
+
+Usage
+  lgtm &lt;command&gt;
+
+Command
+  &lt;Empty&gt; -&gt; random
+  random
+  dir
+  convert
+  help
+
+EOS
+}
+
+INPUT_DIR=&quot;${HOME}/.temp&quot;
+OUTPUT_DIR=&quot;${HOME}/.lgtm&quot;
+
+mkdir -p &quot;${INPUT_DIR}&quot;
+mkdir -p &quot;${OUTPUT_DIR}&quot;
+
+function convert_image(){
+  local input=&quot;$1&quot;
+  local output=&quot;${OUTPUT_DIR}/$(uuidgen | tr &#39;[:upper:]&#39; &#39;[:lower:]&#39; | tr -d &#39;\n&#39;).${input##*.}&quot;
+
+  convert \
+      -resize &quot;480x480&gt;&quot; \
+      -pointsize &quot;60&quot; \
+      -fill &quot;#ff7700&quot; \
+      -gravity &quot;NorthWest&quot; \
+      -annotate &quot;0x0+0+0&quot; \
+      &quot;LGTM&quot; \
+      &quot;${input}&quot; \
+      &quot;${output}&quot; &amp;&amp;
+    rm &quot;${input}&quot; &amp;&amp;
+    echo &quot;Convert: ${input} -&gt; ${output}&quot; ||
+    echo &quot;Failed : ${input}&quot;
+}
+
+
+COMMAND=&quot;$1&quot;; shift
+test &quot;${COMMAND}&quot; == &quot;&quot; &amp;&amp; COMMAND=&quot;random&quot;
+
+if [[ &quot;${COMMAND}&quot; == &quot;random&quot; ]]; then
+  FILE_NUM=&quot;$(ls -F &quot;${OUTPUT_DIR}&quot; | grep -v / | wc -l)&quot;
+  LINE=$((${RANDOM} % ${FILE_NUM} + 1))
+  FILE_PATH=&quot;${OUTPUT_DIR}/$(ls -1 &quot;${OUTPUT_DIR}&quot; | head -n &quot;${LINE}&quot; | tail -n 1)&quot;
+  echo &quot;Copy: ${FILE_PATH}&quot;
+  osascript -e &quot;set the clipboard to (read (POSIX file \&quot;${FILE_PATH}\&quot;) as JPEG picture)&quot;
+
+elif [[ &quot;${COMMAND}&quot; == &quot;dir&quot; ]]; then
+  open &quot;${INPUT_DIR}&quot;
+
+elif [[ &quot;${COMMAND}&quot; == &quot;convert&quot; ]]; then
+  find &quot;${INPUT_DIR}&quot; -name &quot;*.jpg&quot; |
+    while read FILE; do
+      convert_image &quot;${FILE}&quot;
+    done
+
+elif [[ &quot;${COMMAND}&quot; == &quot;help&quot; ]]; then
+  usage
+  exit 0
+
+else
+  usage
+  exit 1
+fi
+</code></pre>

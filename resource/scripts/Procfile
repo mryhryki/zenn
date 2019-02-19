@@ -1,0 +1,5 @@
+ejs: npm run watch:ejs
+blog: npm run watch:blog
+scss: npm run watch:scss
+labo: npm run watch:laboratory
+express: npm run express

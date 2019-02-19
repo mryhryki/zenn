@@ -1,0 +1,87 @@
+<h1>Ruby on Rails on Docker(-Compose) で手軽に開発環境構築</h1>
+<div id="article-info">
+  <div id="date-info">
+    <div id="created-at">2018-12-22</div>
+    <div id="updated-at">2018-12-22</div>
+  </div>
+  <ul id="article-keywords">
+    <li>Ruby</li>
+    <li>Rails</li>
+    <li>Docker</li>
+    <li>Docker-Compose</li>
+  </ul>
+</div>
+
+<h2 id="目的">目的</h2>
+<p>色々インストールする手間を省いたり、開発者ごとに微妙に異なる環境の差異をなくすために <code>docker-compose</code> を使って一発で開発できるようにしたい！</p>
+<h2 id="ディレクトリ構成">ディレクトリ構成</h2>
+<pre><code>&lt;Rails Directory&gt;
+  + docker
+  | + Dockerfile
+  | + docker-compose.yml
+  | + mariadb_initdb.d
+  |  + initialize.sql
+  + (後は `rails new` で作成されたディレクトリ＆ファイルたち)</code></pre><h2 id="Dockerfile">Dockerfile</h2>
+<pre><code class="language-dockerfile">FROM ruby:2.5.1-alpine
+
+RUN apk update
+RUN apk add --no-cache build-base libxml2-dev libxslt-dev tzdata mariadb-dev nodejs
+
+WORKDIR &quot;/var/rails&quot;
+
+RUN gem install bundler
+# これを指定しておかないと nokogiri のインストールに失敗しちゃいます
+RUN bundle config build.nokogiri --use-system-libraries</code></pre>
+<h2 id="docker-compose.yml">docker-compose.yml</h2>
+<pre><code class="language-yaml">version: &quot;3&quot;
+services:
+  rails:
+    build:
+      context: &quot;.&quot;
+      dockerfile: &quot;./Dockerfile&quot;
+    command: &gt;
+      sh -c &#39;
+        rm -f tmp/pids/server.pid &amp;&amp;
+        bundle install &amp;&amp;
+        bundle exec rails server
+      &#39;
+    ports:
+    - &quot;3000:3000&quot;
+    volumes:
+    # ローカルのディレクトリをマウントすることで変更をすぐに反映させられます
+    - &quot;../:/var/rails&quot;
+    environment:
+      DATABASE_HOST: &quot;mariadb&quot;
+      RAILS_ENV: &quot;development&quot;
+    depends_on:
+    - &quot;mariadb&quot;
+
+  mariadb:
+    image: &quot;mariadb:10.3.8&quot;
+    environment:
+      MYSQL_ROOT_PASSWORD: &quot;root_password&quot;
+    volumes:
+    - &quot;./mariadb_initdb.d:/docker-entrypoint-initdb.d&quot; # 初期化のための SQL ファイルを配置するディレクトリ</code></pre>
+<h2 id="initialize.sql">initialize.sql</h2>
+<p><code>MYSQL_DATABASE</code> とかの環境変数を使う方法もありますが、開発用とテスト用の両方を作らないと何かと面倒なので、初期化用の SQL
+  ファイルを実行してもらっています。</p>
+<pre><code class="language-sql">CREATE USER &#39;rails_server&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39;;
+GRANT ALL PRIVILEGES ON rails_development.* TO &#39;rails_server&#39;@&#39;%&#39;;
+GRANT ALL PRIVILEGES ON rails_test.* TO &#39;rails_server&#39;@&#39;%&#39;;</code></pre>
+<h2 id="使い方">使い方</h2>
+<pre><code class="language-bash"># 起動
+docker-compose up -d
+
+# 停止
+docker-compose stop
+
+# ログの確認
+docker-compose logs -f
+
+# Rails のコンテナに入る
+docker-compose exec rails sh
+
+# 初回起動後に以下のコマンドでデータベースを初期化する必要があります
+&gt; bundle exec rails db:create db:migrate</code></pre>
+<h2 id="まとめ">まとめ</h2>
+<p>どこでもコマンド一発で起動できるので、とても便利！<br>あと、チーム開発の場合でもバージョン固定とかが簡単なのでその点でも良いですね。 </p>

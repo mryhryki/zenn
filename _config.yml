@@ -1,5 +1,13 @@
 exclude:
-- CNAME
-- LICENSE
-- README.md
-- src
+- "*.ejs.*"
+- ".gitignore"
+- ".node-version"
+- "CNAME"
+- "LICENSE"
+- "package*.json"
+- "assets/css/scss"
+- "blog/draft/draft"
+- "blog/draft/post"
+- "node_modules"
+- "resource/"
+- "laboratory/react"

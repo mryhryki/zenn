@@ -1,0 +1,131 @@
+<!doctype html><% var data = {
+title: 'hyiromori\'s Portfolio',
+description: 'Web系エンジニア hyiromori のポートフォリオサイトです',
+keywords: 'portfolio, hyiromori',
+headerImage: 'home.jpg'
+} %>
+<html lang="ja">
+<head>
+  <%- include('./resource/template/head.html', data) %>
+  <meta property="og:type" content="website" />
+</head>
+<body>
+  <div id="header">
+    <div id="header-container">
+      <%- include('./resource/template/header.html', data) %>
+    </div>
+  </div>
+  <div id="content-wrapper">
+    <%- include('./resource/template/title.html', data) %>
+    <div id="main-content">
+      <h2 id="自己紹介">自己紹介</h2>
+      <p>Web系企業で色々やってるエンジニアです。<br>サービス公開・運用までの一通りのことをやってきましたが、特にフロントエンドが得意です。<br><strong>Ruby on
+        Rails + React (SPA)</strong> 構成での経験が一番多いです。<br>自分が携わったプロダクトで、社会に貢献できれば最高だな、と思ってます。 </p>
+      <h2 id="スキル">スキル</h2>
+      <h3 id="プログラミング言語">プログラミング言語</h3>
+      <ul>
+        <li><p><strong><em>JavaScript(ES2015)</em></strong>　★★★<br>公私共に使っています。特に個人ではほとんどこれか <strong>TypeScript</strong>
+          しか使っていません。</p>
+        </li>
+        <li><p><strong><em>TypeScript</em></strong>　★★<br>個人的に最近使いたい言語 No.1。UI
+          は複雑になりがちなので、型があると本当に助かります。ただ、まだ型を使いこなせるレベルには達していないです。</p>
+        </li>
+        <li><p><strong><em>CSS (SCSS)</em></strong>　★★★<br>フロントエンド開発するなら必須ですね。</p>
+        </li>
+        <li><p><strong><em>Ruby</em></strong>　★★★<br>主に使うスクリプト言語はこれです。 <strong>Python</strong>
+          もやってみたいけど、まだやるモチベーションがないです。</p>
+        </li>
+        <li><p><strong><em>Java</em></strong>　★★★<br><strong>Reflection</strong> や
+          <strong>Unsafe</strong> を使いこなすぐらいにやっていました。ただ、最近あまり使ってないです。たぶんやれば思い出せるはず。</p>
+        </li>
+        <li><p><strong><em>Go</em></strong>　★<br><strong>Java</strong>
+          以外の静的型付け言語も身につけたいな、と思ったので最近始めました。クロスコンパイルが簡単にできるの便利。</p>
+        </li>
+      </ul>
+      <h3 id="フロントエンド">フロントエンド</h3>
+      <ul>
+        <li><p><strong><em>React</em></strong>　★★★<br>最も慣れているフロントエンドフレームワークです。
+          <strong>Angular</strong> や <strong>Vue</strong>
+          は今のところやるモチベーションが無く、ちょこっとチュートリアルを触ったことがある程度です。 <strong>React Hooks</strong> 使ってみたい。</p>
+        </li>
+        <li><p>
+          <strong><em>Redux</em></strong>　★★★<br>大規模なアプリでは役立つと思いつつも、何でもかんでも入れるべきものではないと思っています。<a
+          href="https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367"
+        >使い所が大事</a>だと思います。</p>
+        </li>
+        <li><p><strong><em>Webpack</em></strong>　★★★<br>最近はこれがないとフロントエンド開発が無理っていう気がしています。 <strong>webpack-dev-server</strong>
+          もよく使ってます。</p>
+        </li>
+      </ul>
+      <h3 id="アプリ">アプリ</h3>
+      <ul>
+        <li><strong><em>React Native</em></strong>　★★<br><strong>React</strong>
+          に似た構文で書けて便利ですが、ネイティブが絡んでくると、あまり深い知識がないので調査に時間がかかるので効率落ちます。
+          iOS アプリの審査・公開、Android アプリの公開の経験もあります。
+        </li>
+      </ul>
+      <h3 id="バックエンド">バックエンド</h3>
+      <ul>
+        <li><p><strong><em>Ruby on Rails</em></strong>　★★★<br>ちゃんとレールに乗った使い方をするなら、とても使いやすいです。</p>
+        </li>
+        <li><p><strong><em>Rspec</em></strong>　★★<br><strong>Rails</strong> のテストに使ってます。まあまあ <strong>Rspec</strong>
+          らしい書き方ができていると自認しています。</p>
+        </li>
+        <li><p><strong><em>Express</em></strong>　★★<br>個人的に使っていて、軽量で、色々自由にできるので好きなフレームワークです。</p>
+        </li>
+      </ul>
+      <h3 id="インフラ">インフラ</h3>
+      <ul>
+        <li><p><strong><em>AWS</em></strong>　★★<br>メインで使っているクラウドサービスです。
+          <strong>EC2</strong> や <strong>ECS</strong> を使った構成や、 <strong>Lambda + DynamoDB</strong>
+          を使ったサーバーレス構成とかをよく使います。
+          このサイトのドメインも <strong>Route 53</strong> で管理しています。</p>
+        </li>
+        <li><p><strong><em>Terraform</em></strong>　★★
+          インフラ構築に使っています。 <strong>AWS</strong> メインで使っているので <strong>CloudFormation</strong>
+          とどちらが良いか色々試してます。</p>
+        </li>
+        <li><p><strong><em>Docker</em></strong>　★★<br><strong>Dockerfile</strong> 書いてイメージ作成したり、開発環境を
+          <strong>docker-compose</strong> で作ったりしてます。</p>
+        </li>
+      </ul>
+      <h3 id="データベース">データベース</h3>
+      <ul>
+        <li><p><strong><em>PosgreSQL</em></strong>　★★<br>個人的になんとなく好きで、なんとなくずっと使っています。
+          <strong>MySQL</strong> よりキッチリしている印象があるためですが、そこまで違いに詳しくもないです。</p>
+        </li>
+        <li><p><strong><em>MySQL (MariaDB)</em></strong>　★★<br><strong>LAMP</strong>
+          が流行っていた時代に使っていて、今は仕事で使っています。</p>
+        </li>
+        <li><p><strong><em>Oracle 11c</em></strong>　★<br>2015年に <strong>Oracle Master Silver
+          11c</strong> を取得しましたが、実運用経験はほとんど無いです。</p>
+        </li>
+      </ul>
+      <h3 id="その他">その他</h3>
+      <ul>
+        <li><strong><em>WebRTC</em></strong> 　★★<br>自力でサービスを構築するぐらいはできます。業務での使用経験もあります。自力で実装した <a
+          href="/laboratory/#web_rtc"
+        >サンプルページ</a> も用意していますので、よろしければご覧ください。
+        </li>
+      </ul>
+      <h3 id="スキル表記について">スキル表記について</h3>
+      <p>勉強でちょっと触ったようなものは、見づらくなるので除外しています。<br>星の数の意味は、以下のような感じです。</p>
+      <ul>
+        <li>★★★：バッチリ使える！（経験が多い、理解が深い、大抵のことはできる、という感じです）</li>
+        <li>★★：まあまあ使える（そこそこ経験がある、ある程度理解していると言える、基本的なことはできる、という感じです。）</li>
+        <li>★：とりあえず使える（経験が浅い、なんとなく理解している程度、調べながらなら使える、という感じです。）</li>
+      </ul>
+      <h2 id="連絡先">連絡先</h2>
+      <p><a href="mailto:hyiromori@gmail.com">hyiromori@gmail.com</a> までご連絡ください。</p>
+
+    </div>
+  </div>
+  <div id="footer">
+    <div id="footer-container">
+      <%- include('./resource/template/footer.html', data) %>
+    </div>
+  </div>
+  <%- include('./resource/template/google_analytics.html', data) %>
+  <%- include('./resource/template/service_worker.html', data) %>
+</body>
+</html>

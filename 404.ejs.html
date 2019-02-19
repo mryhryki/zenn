@@ -1,0 +1,39 @@
+<!doctype html><% var data = {
+title: 'Page Not Found',
+description: 'ページが見つかりません',
+keywords: 'portfolio, hyiromori',
+headerImage: 'home.jpg'
+} %>
+<html lang="ja">
+<head>
+  <%- include('./resource/template/head.html', data) %>
+  <meta property="og:type" content="article" />
+</head>
+<body>
+  <div id="header">
+    <div id="header-container">
+      <%- include('./resource/template/header.html', data) %>
+    </div>
+  </div>
+  <div id="content-wrapper">
+    <%- include('./resource/template/title.html', data) %>
+    <div id="main-content">
+      <h2 id="対処方法">対処方法</h2>
+      <ul>
+        <li><code>URL</code> に打ち間違いがないかを確認してください。</li>
+        <li><a href="/">ホーム画面</a> から目的のページに移動できるか試してください。</li>
+        <li>
+          リンク切れの場合は、お手数ですが
+          <a href="mailto:hyiromori@gmail.com">hyiromori@gmail.com</a>
+          までご連絡ください。
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id="footer">
+    <div id="footer-container">
+      <%- include('./resource/template/footer.html', data) %>
+    </div>
+  </div>
+</body>
+</html>
