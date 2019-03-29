@@ -47,9 +47,13 @@ code {
 pre > code {
   background-color: whitesmoke;
   display: block;
-  padding: 16px;
   overflow-y: scroll;
   overflow-x: visible;
+}
+
+em {
+  background-color: lightcyan;
+  font-style: italic;
 }
 
 strong {
