@@ -1,7 +1,8 @@
 body {
   font-family: "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
   font-size: 16px;
-  width: 960px;
+  width: calc(100% - 64px);
+  max-width: 960px;
   margin: 0 auto;
   padding: 32px 0;
 }
