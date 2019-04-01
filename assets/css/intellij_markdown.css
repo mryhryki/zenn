@@ -42,14 +42,18 @@ p {
 }
 
 code {
+  background-color: whitesmoke;
+  display: inline-block;
   font-family: monospace;
+  padding: 0 8px;
+  vertical-align: 2px;
 }
 
 pre > code {
-  background-color: whitesmoke;
   display: block;
   overflow-y: scroll;
   overflow-x: visible;
+  padding: 16px;
 }
 
 em {
