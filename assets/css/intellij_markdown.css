@@ -93,3 +93,7 @@ tr:nth-child(2n) {
 li {
   margin: 8px;
 }
+
+input[type=checkbox] {
+  vertical-align: -5px;
+}
