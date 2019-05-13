@@ -2,7 +2,7 @@
   "short_name": "hyiromori",
   "name": "hyiromori's Portfolio",
   "description": "Web系エンジニアhyiromoriのポートフォリオサイトです。",
-  "start_url": "https://portfolio.hyiromori.com/",
+  "start_url": "https://hyiromori.com/",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#ff7701",
