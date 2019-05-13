@@ -1,4 +1,4 @@
-const CacheVersion = '2019-05-12T23:25:33.399Z';
+const CacheVersion = '2019-05-13T11:41:56.594Z';
 const UrlsToCache = ['./'];
 
 self.addEventListener('install', (event) => {
