@@ -95,6 +95,6 @@ li {
   margin: 8px;
 }
 
-input[type=checkbox] {
-  vertical-align: -5px;
+input[type="checkbox"] {
+  vertical-align: middle;
 }
