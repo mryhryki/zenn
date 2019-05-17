@@ -1,15 +1,18 @@
 {
+  "author": "hyiromori",
   "background_color": "#ff7701",
   "description": "Web系エンジニアhyiromoriのポートフォリオサイトです。",
   "display": "standalone",
-  "name": "hyiromori",
   "lang": "jp-ja",
+  "manifest_version": 2,
+  "name": "hyiromori's Portfolio",
   "orientation": "portrait",
   "scope": "/",
-  "short_name": "hyiromori",
+  "short_name": "Portfolio",
   "splash_pages": null,
   "start_url": "https://hyiromori.com/",
   "theme_color": "#ff7701",
+  "version": "1.0.0",
   "icons": [
     {
       "src": "/assets/images/logos/72.png",
