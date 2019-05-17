@@ -1,16 +1,55 @@
 {
-  "short_name": "hyiromori",
-  "name": "hyiromori's Portfolio",
+  "background_color": "#ff7701",
   "description": "Web系エンジニアhyiromoriのポートフォリオサイトです。",
-  "start_url": "https://hyiromori.com/",
   "display": "standalone",
+  "name": "hyiromori",
+  "lang": "jp-ja",
   "orientation": "portrait",
+  "scope": "/",
+  "short_name": "hyiromori",
+  "splash_pages": null,
+  "start_url": "https://hyiromori.com/",
   "theme_color": "#ff7701",
   "icons": [
     {
-      "src": "/assets/images/logo.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      "src": "/assets/logos/72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/logos/96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/logos/128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/logos/144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/logos/152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/logos/192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/logos/384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/logos/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ]
 }
