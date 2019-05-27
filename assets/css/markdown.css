@@ -9,13 +9,15 @@ body {
   width: calc(100% - 64px);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6 {
   border-bottom: 1px solid darkgray;
   font-weight: 800;
   padding: 4px 8px;
 }
 
 h1 {
+  text-align: center;
+  font-weight: 800;
   font-size: 36px;
 }
 
@@ -85,15 +87,19 @@ th {
 th, td {
   font-size: 14px;
   border: 1px solid lightgrey;
-  padding: 8px 16px;
+  padding: 8px 12px;
 }
 
 tr:nth-child(2n) {
   background-color: whitesmoke;
 }
 
+ul > li > ul {
+  padding-left: 32px;
+}
+
 li {
-  margin: 8px;
+  margin: 8px 0;
 }
 
 input[type="checkbox"] {
