@@ -1,6 +1,6 @@
 body {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #fff;
+  color: #000;
   font-family: "MigMix 1M", "Yu Gothic Medium", "游ゴシック Medium", "YuGothic", "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
   font-size: 16px;
   margin: 0 auto;
@@ -27,6 +27,7 @@ h2 {
 h3 {
   border-left: 4px solid lightgray;
   font-size: 24px;
+  padding: 4px 16px;
 }
 
 h4 {
