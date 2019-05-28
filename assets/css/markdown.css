@@ -9,23 +9,23 @@ body {
   width: calc(100% - 64px);
 }
 
-h2, h3, h4, h5, h6 {
-  border-bottom: 1px solid darkgray;
+h1, h2, h3, h4, h5, h6 {
   font-weight: 800;
   padding: 4px 8px;
 }
 
 h1 {
   text-align: center;
-  font-weight: 800;
   font-size: 36px;
 }
 
 h2 {
+  border-bottom: 1px solid darkgray;
   font-size: 28px;
 }
 
 h3 {
+  border-left: 4px solid lightgray;
   font-size: 24px;
 }
 
