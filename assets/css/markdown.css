@@ -10,42 +10,43 @@ body {
   width: calc(100% - 64px);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1 {
+  font-size: 36px;
   font-weight: 800;
   padding: 4px 8px;
-}
-
-h1 {
   text-align: center;
-  font-size: 36px;
 }
 
 h2 {
   border-bottom: 1px solid darkgray;
   font-size: 28px;
+  font-weight: 800;
+  padding: 4px 8px;
 }
 
 h3 {
   border-left: 4px solid lightgray;
   font-size: 24px;
+  font-weight: 800;
   padding: 4px 16px;
 }
 
 h4 {
   font-size: 20px;
+  font-weight: 800;
+  padding: 4px 8px;
 }
 
 h5 {
   font-size: 18px;
+  font-weight: 800;
+  padding: 4px 8px;
 }
 
 h6 {
   font-size: 16px;
+  font-weight: 800;
+  padding: 4px 8px;
 }
 
 p {
@@ -62,8 +63,8 @@ code {
 
 pre > code {
   display: block;
-  overflow-y: scroll;
   overflow-x: visible;
+  overflow-y: scroll;
   padding: 16px;
 }
 
@@ -93,8 +94,8 @@ th {
 
 th,
 td {
-  font-size: 14px;
   border: 1px solid lightgrey;
+  font-size: 14px;
   padding: 8px 12px;
 }
 
