@@ -1,7 +1,8 @@
 body {
   background-color: #fff;
   color: #000;
-  font-family: "MigMix 1M", "Yu Gothic Medium", "游ゴシック Medium", "YuGothic", "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+  font-family: "MigMix 1M", "Yu Gothic Medium", "游ゴシック Medium", "YuGothic", "游ゴシック体",
+    "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
   font-size: 16px;
   margin: 0 auto;
   max-width: 960px;
@@ -9,7 +10,12 @@ body {
   width: calc(100% - 64px);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 800;
   padding: 4px 8px;
 }
@@ -85,7 +91,8 @@ th {
   font-weight: 500;
 }
 
-th, td {
+th,
+td {
   font-size: 14px;
   border: 1px solid lightgrey;
   padding: 8px 12px;
