@@ -4,7 +4,7 @@
         <title>hyiromori's Blog feed</title>
         <link>https://hyiromori.com/</link>
         <description>hyiromori's Blog feed.</description>
-        <lastBuildDate>Tue, 25 Jun 2019 06:13:31 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 28 Jun 2019 01:10:26 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>jp</language>
@@ -15,6 +15,14 @@
         </image>
         <copyright>(c) 2018 hyiromori</copyright>
         <atom:link href="https://hyiromori.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[macOS のターミナル(CLI)で手軽に暗号化 (OpenSSL/AWS CLI)]]></title>
+            <link>https://hyiromori.com/blog/2019-06-28/cli-enctypt.html</link>
+            <guid>https://hyiromori.com/blog/2019-06-28/cli-enctypt.html</guid>
+            <pubDate>Fri, 28 Jun 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[ターミナルとかで、ファイルを暗号化/復号したいと思ったことはありませんか？私はあります。]]></description>
+            <author>hyiromori@gmail.com (hyiromori)</author>
+        </item>
         <item>
             <title><![CDATA[CSSだけでテーブルの縦横２列を固定してスクロールできるようにする]]></title>
             <link>https://hyiromori.com/blog/2019-06-01/css-scroll-table.html</link>
