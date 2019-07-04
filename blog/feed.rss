@@ -4,7 +4,7 @@
         <title>hyiromori's Blog feed</title>
         <link>https://hyiromori.com/</link>
         <description>hyiromori's Blog feed.</description>
-        <lastBuildDate>Fri, 28 Jun 2019 01:10:26 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 04 Jul 2019 03:38:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>jp</language>
@@ -28,7 +28,7 @@
             <link>https://hyiromori.com/blog/2019-06-01/css-scroll-table.html</link>
             <guid>https://hyiromori.com/blog/2019-06-01/css-scroll-table.html</guid>
             <pubDate>Sat, 01 Jun 2019 00:00:00 GMT</pubDate>
-            <description><![CDATA[CodePen で作ったサンプルです。]]></description>
+            <description><![CDATA[CodePenで作ったサンプルです。]]></description>
             <author>hyiromori@gmail.com (hyiromori)</author>
         </item>
         <item>
@@ -44,8 +44,7 @@
             <link>https://hyiromori.com/blog/2019-02-02/lgtm-script.html</link>
             <guid>https://hyiromori.com/blog/2019-02-02/lgtm-script.html</guid>
             <pubDate>Sat, 02 Feb 2019 00:00:00 GMT</pubDate>
-            <description><![CDATA[LGTM 画像を作るサイトはあるけれど、著作権や肖像権とか気になるし、プライベートリポジトリで使うだけなので、自分の好きな 乃木坂46の
-  画像で LGTM 画像を作りたかった！]]></description>
+            <description><![CDATA[LGTM 画像を作るサイトはあるけれど、著作権や肖像権とか気になるし、プライベートリポジトリで使うだけなので、自分の好きな画像で LGTM 画像を作りたかった！]]></description>
             <author>hyiromori@gmail.com (hyiromori)</author>
         </item>
         <item>
@@ -60,7 +59,7 @@
             <title><![CDATA[今更ながら HTTP/2 について調べてまとめてみた]]></title>
             <link>https://hyiromori.com/blog/2018-12-22/http2-overview.html</link>
             <guid>https://hyiromori.com/blog/2018-12-22/http2-overview.html</guid>
-            <pubDate>Sun, 23 Dec 2018 00:00:00 GMT</pubDate>
+            <pubDate>Sat, 22 Dec 2018 00:00:00 GMT</pubDate>
             <description><![CDATA[今更ながら HTTP/2 がどのようなものかを調べたくなったので、その結果をまとめた記事になります。あくまで概要をまとめたもので、今はたくさんの良記事があるので、詳細が知りたい場合は最後の参考文献のリンク先を見ると参考になると思います。]]></description>
             <author>hyiromori@gmail.com (hyiromori)</author>
         </item>
@@ -78,7 +77,7 @@
             <guid>https://hyiromori.com/blog/2018-07-30/service-worker-memo.html</guid>
             <pubDate>Mon, 07 Jan 2019 00:00:00 GMT</pubDate>
             <description><![CDATA[ネイティブアプリでないと難しかったことが、Webアプリでも出来るようになってきた印象ですね！
-  まだ、機能によっては対応しているブラウザが少ないですが、この流れが進むと、Webアプリでもネイティブアプリとほぼ同等のことが出来るようになってくると思います。]]></description>
+まだ、機能によっては対応しているブラウザが少ないですが、この流れが進むと、Webアプリでもネイティブアプリとほぼ同等のことが出来るようになってくると思います。]]></description>
             <author>hyiromori@gmail.com (hyiromori)</author>
         </item>
         <item>
@@ -86,7 +85,10 @@
             <link>https://hyiromori.com/blog/2017-05-01/quantum-computer.html</link>
             <guid>https://hyiromori.com/blog/2017-05-01/quantum-computer.html</guid>
             <pubDate>Fri, 01 Mar 2019 00:00:00 GMT</pubDate>
-            <description><![CDATA[最近ちょいちょい量子コンピューターのニュースとか出ていますね。ただ、そもそも量子コンピューターって何？って感じですし、思っている人も多いハズ。なので、量子コンピューターについて調べてみました。なお、書いている私は量子コンピューターとかその辺の理論については全くの無知から調べていますので、あしからず。]]></description>
+            <description><![CDATA[最近ちょいちょい量子コンピューターのニュースとか出ていますね。
+ただ、そもそも量子コンピューターって何？って感じですし、思っている人も多いハズ。
+なので、量子コンピューターについて調べてみました。
+なお、書いている私は量子コンピューターとかその辺の理論については全くの無知から調べていますので、あしからず。]]></description>
             <author>hyiromori@gmail.com (hyiromori)</author>
         </item>
     </channel>

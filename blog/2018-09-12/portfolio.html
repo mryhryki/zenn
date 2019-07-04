@@ -4,7 +4,7 @@
   <title>エンジニアなりにポートフォリオサイトを作ってみた話</title>
 <meta content="エンジニアなりにポートフォリオサイトを作ってみた話" name="title">
 <meta content="という感じで思いたち、じゃあ作ろうと決めた感じです。ちなみに、調べてみるとこういうのをポートフォリオサイトと言うらしいです。" name="description">
-<meta content="TypeScript,webpack,React,ServiceWorker,hyiromori,blog" name="keywords">
+<meta content="TypeScript,Webpack,React,ServiceWorker,hyiromori,blog" name="keywords">
 <meta name="theme-color" content="#ff7701"/>
 <meta property="og:title" content="エンジニアなりにポートフォリオサイトを作ってみた話" />
 <meta property="og:description" content="という感じで思いたち、じゃあ作ろうと決めた感じです。ちなみに、調べてみるとこういうのをポートフォリオサイトと言うらしいです。" />
@@ -38,7 +38,7 @@
   gtag('config', 'UA-124358962-1');
 </script>
 <style type="text/css">
-  body,div,span,p,button,hr,h1,h2,h3,h4,h5,h6,em,strong,code,img,pre,input,ul,ol,li,table,thead,tbody,tfoot,tr,th,td,textarea{background-color:transparent;border:0 solid #888;box-sizing:border-box;font-family:"Yu Gothic Medium", "游ゴシック Medium", "YuGothic", "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;font-feature-settings:"palt";font-size:16px;font-weight:normal;letter-spacing:0.3px;line-height:1.5;margin:0;overflow-wrap:break-word;padding:0;text-decoration:none;touch-action:manipulation;word-break:break-word}h1,h2,h3,h4,h5,h6,ul,ol{margin-top:24px;padding:0 4px}h2,h3,h4,h5,h6{white-space:pre-wrap}h1{font-size:28px;font-weight:bold;text-align:center}h2{border-bottom:1px solid #ccc;font-size:24px;font-weight:bold}h3{border-left:4px solid #eee;padding-left:8px;font-size:20px;font-weight:bold}h4{font-weight:bold;font-size:16px}h5{font-weight:bold;font-size:14px}h6{font-weight:bold;font-size:12px}p{margin-top:8px;padding-left:1em}a{color:navy;border-radius:4px;margin:0 2px}a:hover{text-decoration:underline;transition-duration:0.2s}hr{background-color:#eee;height:2px;margin-top:16px}em,strong,code{border-radius:2px;margin:1px;padding:1px 6px}em>em,em strong,em code,strong>em,strong strong,strong code,code>em,code strong,code code{background-color:#0000;font-weight:bold;margin:0;padding:0}em{background-color:rgba(238,238,238,0.5);font-style:italic}strong{font-weight:bold;background-color:rgba(238,238,238,0.5)}code,code *{font-size:14px;font-family:Consolas, "Courier New", Courier, Monaco, monospace, "ＭＳ ゴシック", "MS Gothic", "Osaka−等幅";line-height:18px}code{background-color:#eee;font-weight:bold}img{max-width:100%;object-fit:scale-down}pre{margin:8px 0}button:focus{outline:none}table{border-collapse:collapse;border-spacing:0;table-layout:fixed;width:100%}table th,table td{padding:4px 8px;border:1px solid #888}ul,ol{padding-left:24px;width:100%}ul li,ol li{margin-top:4px}ul li p,ol li p{padding-left:0}ul ul,ol ul{margin-top:0}blockquote{background-color:#eee;padding:8px 16px}.frame{border:1px solid #ccc;margin:16px;padding:16px;width:calc(100% - 32px)}@media (pointer: fine){.tooltip:hover::after{border:5px solid;content:" ";height:0;left:50%;position:absolute;transform:translate(-50%);width:0;z-index:100}.tooltip:hover::before{background-color:#fff;box-shadow:0 2px 4px 0 #888;color:#000;content:attr(data-tooltip);display:block;font-size:16px;padding:3px 9px;position:absolute;white-space:nowrap;z-index:100}.tooltip{position:relative}.tooltip:hover::before{left:50%;top:-10px;transform:translate(-50%, -100%)}.tooltip:hover::after{border-color:#fff transparent transparent transparent;top:-10px}}#header{background-color:#fff;border-bottom:1px solid #ccc;border-top:2px solid #ff7701;height:56px;left:0;position:fixed;right:0;top:0;z-index:1}#header #header-container{left:50%;max-width:720px;position:absolute;transform:translate(-50%);width:100%}#footer{background-color:#333;bottom:0;height:48px;left:0;position:fixed;right:0;z-index:1}#footer #footer-container{height:100%;left:50%;max-width:720px;position:absolute;transform:translate(-50%);width:100%}#content-wrapper{min-height:calc(100% - 56px - 48px);overflow:hidden;position:relative;padding:56px 0 48px;width:100%}#left-content{border-right:1px solid #ccc;bottom:64px;display:none;overflow-x:hidden;overflow-y:scroll;padding:0 8px;position:fixed;right:calc(50% + 360px);top:72px;width:240px}@media screen and (min-width: 1200px){#left-content{display:block}}#header{height:56px;padding:5px 8px 8px 8px}#header #header-logo{color:#000;float:left;height:40px;margin:0;text-decoration:none;display:flex;align-items:center}#header #header-logo #logo-image{height:40px;margin-right:4px;width:40px}#header #header-logo #logo-text{display:inline-block;height:40px;overflow:hidden}#header #header-logo #logo-text #logo-text-upper{border-bottom:1px solid #ccc;font-size:13px;font-weight:lighter;height:20px;padding-top:1px;line-height:17px;text-align:center}#header #header-logo #logo-text #logo-text-lower{font-size:15px;font-weight:bold;height:20px;line-height:20px;text-align:center}#header #header-navigation{float:right}#header #header-navigation a{display:inline-block;height:40px;line-height:40px;margin-left:4px;padding:0 4px}#content-header{height:320px;position:relative;width:100%}#content-header #content-header-image{height:100%;object-fit:cover;width:100%}#content-header #content-header-title-wrapper{bottom:160px;color:#fff;left:50%;max-width:720px;padding:0 16px;position:absolute;text-align:center;transform:translate(-50%);width:100%}#content-header #content-header-title-wrapper #content-header-title{border-bottom:1px solid #fff;color:#fff;display:inline-block;font-size:36px;font-weight:bold;line-height:40px;padding:4px 8px;text-align:center}#content-header #content-header-description{color:#fff;left:50%;font-size:14px;max-width:720px;padding:0 16px;position:absolute;text-align:center;top:186px;transform:translate(-50%);width:100%}#main-content{left:50%;max-width:720px;min-height:100%;padding:24px;position:relative;transform:translate(-50%, 0);width:100%}#main-content #disqus_thread{margin-top:48px}#right-content,#left-content{bottom:64px;display:none;overflow-x:hidden;overflow-y:scroll;padding:0 8px;position:fixed;top:72px;width:240px}#left-content{border-right:1px solid #ccc;right:calc(50% + 360px)}#left-content button{line-height:1;margin-bottom:8px;text-align:left;cursor:pointer}#right-content{border-left:1px solid #ccc;left:calc(50% + 360px)}@media screen and (min-width: 1200px){#left-content,#right-content{display:block}}#footer-container{align-items:center;display:flex;justify-content:space-between;padding:0 16px;width:100%}#footer-container #footer-links{display:flex;flex-direction:row;align-items:center}#footer-container #footer-links a{align-items:center;background-color:#fff;border-radius:50%;color:#fff;display:flex;height:32px;justify-content:center;line-height:30px;margin:4px;text-align:center;width:32px}#footer-container #footer-links a img{height:24px;width:24px}#footer-container #footer-copyright{font-size:12px;color:#fff}#article-info #date-info #created-at,#article-info #date-info #updated-at,#article-info #article-keywords li{background-color:#eee;border-radius:4px;display:inline-block;font-size:12px;margin-left:4px;padding:2px 8px}#article-info #date-info{display:inline}#article-info #date-info #created-at::before{content:"作成："}#article-info #date-info #updated-at::before{content:"更新："}#article-info #article-keywords{display:inline;margin:0;padding:0}#feed-buttons{margin-top:24px;text-align:right}#feed-buttons a{border-radius:4px;border:1px solid #ff7701;color:navy;display:inline-block;font-size:12px;height:24px;line-height:24px;padding:0 4px 0 24px;position:relative;text-decoration:none}#feed-buttons a:before{background-image:url("/assets/images/feed.png");background-size:16px 16px;content:"";height:16px;left:4px;position:absolute;top:4px;width:16px}.skills-wrapper{margin-top:8px}.skills-wrapper .skill-container{border:1px solid #eee;display:inline-block;margin:4px;cursor:pointer;text-align:center;text-decoration:none;width:120px}.skills-wrapper .skill-container .skill-image{border-radius:8px;display:block;height:104px;margin:8px;object-fit:scale-down;width:104px}.skills-wrapper .skill-container .skill-title{color:#000;font-size:16px}.skills-wrapper .skill-container .skill-level{color:navy;font-size:20px;margin-bottom:4px}.hljs{background:#000;display:block;font-weight:400;overflow-x:auto;padding:16px}.hljs,.hljs-tag,.hljs-subst{color:#fff}.hljs-strong,.hljs-emphasis{color:#ccc}.hljs-bullet,.hljs-quote,.hljs-number,.hljs-regexp,.hljs-literal,.hljs-link{color:#36c}.hljs-code,.hljs-title,.hljs-section,.hljs-selector-class{color:#2e4}.hljs-strong{font-weight:600}.hljs-emphasis{font-style:italic}.hljs-keyword,.hljs-selector-tag,.hljs-name,.hljs-attr{color:#8bf}.hljs-symbol,.hljs-attribute{color:#6de}.hljs-params,.hljs-class .hljs-title{color:#fff}.hljs-string,.hljs-type,.hljs-built_in,.hljs-builtin-name,.hljs-selector-id,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-addition,.hljs-variable,.hljs-template-variable{color:#2e6}.hljs-comment,.hljs-deletion,.hljs-meta{color:#d9e}
+  body,div,span,p,button,hr,h1,h2,h3,h4,h5,h6,em,strong,code,img,pre,input,ul,ol,li,table,thead,tbody,tfoot,tr,th,td,textarea{background-color:transparent;border:0 solid #888;box-sizing:border-box;font-family:"Yu Gothic Medium", "游ゴシック Medium", "YuGothic", "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;font-feature-settings:"palt";font-size:16px;font-weight:normal;letter-spacing:0.3px;line-height:1.5;margin:0;overflow-wrap:break-word;padding:0;text-decoration:none;touch-action:manipulation;word-break:break-word}h1,h2,h3,h4,h5,h6,ul,ol{margin-top:24px;padding:0 4px}h2,h3,h4,h5,h6{white-space:pre-wrap}h1{font-size:28px;font-weight:bold;text-align:center}h2{border-bottom:1px solid #ccc;font-size:24px;font-weight:bold}h3{border-left:4px solid #eee;padding-left:8px;font-size:20px;font-weight:bold}h4{font-weight:bold;font-size:16px}h5{font-weight:bold;font-size:14px}h6{font-weight:bold;font-size:12px}p{margin-top:8px;padding-left:1em}a{color:navy;border-radius:4px;margin:0 2px}a:hover{text-decoration:underline;transition-duration:0.2s}hr{background-color:#eee;height:2px;margin-top:16px}em{background-color:rgba(238,238,238,0.5);font-style:italic}strong{font-weight:bold;background-color:rgba(238,238,238,0.5)}code,code *{font-size:14px;font-family:Consolas, "Courier New", Courier, Monaco, monospace, "ＭＳ ゴシック", "MS Gothic", "Osaka−等幅";line-height:18px}code{background-color:#eee;font-weight:bold}em,strong,code{border-radius:2px;margin:1px;padding:1px 6px}em>em,em strong,em code,strong>em,strong strong,strong code,code>em,code strong,code code{background-color:#0000;font-weight:bold;margin:0;padding:0}img{max-width:100%;object-fit:scale-down}pre{margin:8px 0}button:focus{outline:none}table{border-collapse:collapse;border-spacing:0;table-layout:fixed;width:100%}table th,table td{padding:4px 8px;border:1px solid #888}ul,ol{padding-left:24px;width:100%}ul li,ol li{margin-top:4px}ul li p,ol li p{padding-left:0}ul ul,ol ul{margin-top:0}blockquote{background-color:#eee;padding:8px 16px}.frame{border:1px solid #ccc;margin:16px;padding:16px;width:calc(100% - 32px)}@media (pointer: fine){.tooltip:hover::after{border:5px solid;content:" ";height:0;left:50%;position:absolute;transform:translate(-50%);width:0;z-index:100}.tooltip:hover::before{background-color:#fff;box-shadow:0 2px 4px 0 #888;color:#000;content:attr(data-tooltip);display:block;font-size:16px;padding:3px 9px;position:absolute;white-space:nowrap;z-index:100}.tooltip{position:relative}.tooltip:hover::before{left:50%;top:-10px;transform:translate(-50%, -100%)}.tooltip:hover::after{border-color:#fff transparent transparent transparent;top:-10px}}#header{background-color:#fff;border-bottom:1px solid #ccc;border-top:2px solid #ff7701;height:56px;left:0;position:fixed;right:0;top:0;z-index:1}#header #header-container{left:50%;max-width:720px;position:absolute;transform:translate(-50%);width:100%}#footer{background-color:#333;bottom:0;height:48px;left:0;position:fixed;right:0;z-index:1}#footer #footer-container{height:100%;left:50%;max-width:720px;position:absolute;transform:translate(-50%);width:100%}#content-wrapper{min-height:calc(100% - 56px - 48px);overflow:hidden;position:relative;padding:56px 0 48px;width:100%}#left-content{border-right:1px solid #ccc;bottom:64px;display:none;overflow-x:hidden;overflow-y:scroll;padding:0 8px;position:fixed;right:calc(50% + 360px);top:72px;width:240px}@media screen and (min-width: 1200px){#left-content{display:block}}#header{height:56px;padding:5px 8px 8px 8px}#header #header-logo{color:#000;float:left;height:40px;margin:0;text-decoration:none;display:flex;align-items:center}#header #header-logo #logo-image{height:40px;margin-right:4px;width:40px}#header #header-logo #logo-text{display:inline-block;height:40px;overflow:hidden}#header #header-logo #logo-text #logo-text-upper{border-bottom:1px solid #ccc;font-size:13px;font-weight:lighter;height:20px;padding-top:1px;line-height:17px;text-align:center}#header #header-logo #logo-text #logo-text-lower{font-size:15px;font-weight:bold;height:20px;line-height:20px;text-align:center}#header #header-navigation{float:right}#header #header-navigation a{display:inline-block;height:40px;line-height:40px;margin-left:4px;padding:0 4px}#content-header{height:320px;position:relative;width:100%}#content-header #content-header-image{height:100%;object-fit:cover;width:100%}#content-header #content-header-title-wrapper{bottom:160px;color:#fff;left:50%;max-width:720px;padding:0 16px;position:absolute;text-align:center;transform:translate(-50%);width:100%}#content-header #content-header-title-wrapper #content-header-title{border-bottom:1px solid #fff;color:#fff;display:inline-block;font-size:36px;font-weight:bold;line-height:40px;padding:4px 8px;text-align:center}#content-header #content-header-description{color:#fff;left:50%;font-size:14px;max-width:720px;padding:0 16px;position:absolute;text-align:center;top:186px;transform:translate(-50%);width:100%}#main-content{left:50%;max-width:720px;min-height:100%;padding:24px;position:relative;transform:translate(-50%, 0);width:100%}#main-content #disqus_thread{margin-top:48px}#right-content,#left-content{bottom:64px;display:none;overflow-x:hidden;overflow-y:scroll;padding:0 8px;position:fixed;top:72px;width:240px}#left-content{border-right:1px solid #ccc;right:calc(50% + 360px)}#left-content button{line-height:1;margin-bottom:8px;text-align:left;cursor:pointer}#right-content{border-left:1px solid #ccc;left:calc(50% + 360px)}@media screen and (min-width: 1200px){#left-content,#right-content{display:block}}#footer-container{align-items:center;display:flex;justify-content:space-between;padding:0 16px;width:100%}#footer-container #footer-links{display:flex;flex-direction:row;align-items:center}#footer-container #footer-links a{align-items:center;background-color:#fff;border-radius:50%;color:#fff;display:flex;height:32px;justify-content:center;line-height:30px;margin:4px;text-align:center;width:32px}#footer-container #footer-links a img{height:24px;width:24px}#footer-container #footer-copyright{font-size:12px;color:#fff}#article-info #date-info #created-at,#article-info #date-info #updated-at,#article-info #article-keywords li{background-color:#eee;border-radius:4px;display:inline-block;font-size:12px;margin-left:4px;padding:2px 8px}#article-info #date-info{display:inline}#article-info #date-info #created-at::before{content:"作成："}#article-info #date-info #updated-at::before{content:"更新："}#article-info #article-keywords{display:inline;margin:0;padding:0}#feed-buttons{margin-top:24px;text-align:right}#feed-buttons a{border-radius:4px;border:1px solid #ff7701;color:navy;display:inline-block;font-size:12px;height:24px;line-height:24px;padding:0 4px 0 24px;position:relative;text-decoration:none}#feed-buttons a::before{background-image:url("/assets/images/feed.png");background-size:16px 16px;content:"";height:16px;left:4px;position:absolute;top:4px;width:16px}.skills-wrapper{margin-top:8px}.skills-wrapper .skill-container{border:1px solid #eee;display:inline-block;margin:4px;cursor:pointer;text-align:center;text-decoration:none;width:120px}.skills-wrapper .skill-container .skill-image{border-radius:8px;display:block;height:104px;margin:8px;object-fit:scale-down;width:104px}.skills-wrapper .skill-container .skill-title{color:#000;font-size:16px}.skills-wrapper .skill-container .skill-level{color:navy;font-size:20px;margin-bottom:4px}.hljs{background:#000;display:block;font-weight:400;overflow-x:auto;padding:16px}.hljs,.hljs-tag,.hljs-subst{color:#fff}.hljs-strong,.hljs-emphasis{color:#ccc}.hljs-bullet,.hljs-quote,.hljs-number,.hljs-regexp,.hljs-literal,.hljs-link{color:#36c}.hljs-code,.hljs-title,.hljs-section,.hljs-selector-class{color:#2e4}.hljs-strong{font-weight:600}.hljs-emphasis{font-style:italic}.hljs-keyword,.hljs-selector-tag,.hljs-name,.hljs-attr{color:#8bf}.hljs-symbol,.hljs-attribute{color:#6de}.hljs-params,.hljs-class .hljs-title{color:#fff}.hljs-string,.hljs-type,.hljs-built_in,.hljs-builtin-name,.hljs-selector-id,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-addition,.hljs-variable,.hljs-template-variable{color:#2e6}.hljs-comment,.hljs-deletion,.hljs-meta{color:#d9e}
 </style>
   <meta
     property="og:type"
@@ -64,110 +64,77 @@
   </div>
   <div id="content-wrapper">
     <div id="main-content">
-      <h1>エンジニアなりにポートフォリオサイトを作ってみた話</h1>
-<div id="article-info">
-  <div id="date-info">
-    <div id="created-at">2018-09-12</div>
-    <div id="updated-at">2019-01-07</div>
-  </div>
-  <ul id="article-keywords">
-    <li>TypeScript</li>
-    <li>webpack</li>
-    <li>React</li>
-    <li>ServiceWorker</li>
-  </ul>
-</div>
-
+      <h1 id="エンジニアなりにポートフォリオサイトを作ってみた話">エンジニアなりにポートフォリオサイトを作ってみた話</h1>
 <h2 id="あらすじ">あらすじ</h2>
 <ul>
-  <li>エンジニアやってるけど、自分の技術を伝える手段を持ってないことに気付いた</li>
-  <li>手軽に公開できるので <code>GitHub Pages</code> を採用した</li>
-  <li>可搬性を高めるために（別のホスティングとかに移動しやすいように）独自ドメインを設定した</li>
-  <li>柔軟に色々なことができるように、静的サイトジェネレーターもどきを作った</li>
-  <li>一部は <code>SPA</code> で作成し、技術スタックは <code>TypeScript + React + Webpack + ServiceWorker</code>
-    で作った
-  </li>
-  <li>できあがったポートフォリオサイトは <a href="https://portfolio.hyiromori.com/">こちら</a></li>
-  <li>ソースコードは <a href="https://github.com/hyiromori/hyiromori.github.io">GitHub</a> にあります</li>
+<li>エンジニアやってるけど、自分の技術を伝える手段を持ってないことに気付いた</li>
+<li>手軽に公開できるので <code>GitHub Pages</code> を採用した</li>
+<li>可搬性を高めるために（別のホスティングとかに移動しやすいように）独自ドメインを設定した</li>
+<li>柔軟に色々なことができるように、静的サイトジェネレーターもどきを作った</li>
+<li>一部は <code>SPA</code> で作成し、技術スタックは <code>TypeScript + React + Webpack + ServiceWorker</code> で作った</li>
+<li>できあがったポートフォリオサイトは <a href="https://portfolio.hyiromori.com/">こちら</a></li>
+<li>ソースコードは <a href="https://github.com/hyiromori/hyiromori.github.io">GitHub</a> にあります</li>
 </ul>
 <h2 id="作ろうと思ったきっかけ">作ろうと思ったきっかけ</h2>
 <ol>
-  <li>今後もエンジニアとして飯を食っていこうと思った時何が必要か、的なことをふと考えた。</li>
-  <li>勉強してできることを増やしていくことも大事だけど、自分ができるを伝えることも同じぐらい大事で、でもその努力を今のところしていないな〜、と思った。</li>
-  <li>パッと見てこんなことができる人なんだ〜、と理解してもらえるようなサイトを作れば良さそうだと思った。</li>
+<li>今後もエンジニアとして飯を食っていこうと思った時何が必要か、的なことをふと考えた。</li>
+<li>勉強してできることを増やしていくことも大事だけど、自分ができるを伝えることも同じぐらい大事で、でもその努力を今のところしていないな〜、と思った。</li>
+<li>パッと見てこんなことができる人なんだ〜、と理解してもらえるようなサイトを作れば良さそうだと思った。</li>
 </ol>
-<p>という感じで思いたち、じゃあ作ろうと決めた感じです。<br>ちなみに、調べてみるとこういうのをポートフォリオサイトと言うらしいです。 </p>
+<p>という感じで思いたち、じゃあ作ろうと決めた感じです。<br>ちなみに、調べてみるとこういうのをポートフォリオサイトと言うらしいです。  </p>
 <h2 id="どうやって公開しようか考えた">どうやって公開しようか考えた</h2>
-<p>お金がかかったり、公開やメンテナンスに手間がかかる方法だと怠惰な自分には続かないので、公開が容易な方法を調べました。<br>その中で <a
-  href="https://pages.github.com/"
->GitHub Pages</a> は、無料で使える上に、 <code>GitHub</code> にプッシュするだけで公開できるので、採用しました。 </p>
+<p>お金がかかったり、公開やメンテナンスに手間がかかる方法だと怠惰な自分には続かないので、公開が容易な方法を調べました。<br>その中で <a href="https://pages.github.com/">GitHub Pages</a> は、無料で使える上に、 <code>GitHub</code> にプッシュするだけで公開できるので、採用しました。  </p>
 <h2 id="どうやって作るか考えた">どうやって作るか考えた</h2>
-<p>今回の目的は、自分の技術を公開するものなので、なるべく自分で作るのが良いと思いました。<br>よって、以下のような方針で作ることに決めました。 </p>
+<p>今回の目的は、自分の技術を公開するものなので、なるべく自分で作るのが良いと思いました。<br>よって、以下のような方針で作ることに決めました。  </p>
 <ul>
-  <li>基本的な部分は <code>Markdown</code> で手軽に書けるようにする</li>
-  <li><code>SPA</code> が得意なので、動的なページは <code>SPA</code> で作る</li>
-  <li><code>TypeScript + React + Webpack</code> の（多分）ベーシックな構成にする。</li>
+<li>基本的な部分は <code>Markdown</code> で手軽に書けるようにする</li>
+<li><code>SPA</code> が得意なので、動的なページは <code>SPA</code> で作る</li>
+<li><code>TypeScript + React + Webpack</code> の（多分）ベーシックな構成にする。</li>
 </ul>
 <h2 id="デザインやレイアウトはどうしようか考えた">デザインやレイアウトはどうしようか考えた</h2>
-<p>デザイナーじゃないので凝ったことはしたくないけど、 <code>Bootstrap</code>
-  とかのCSSフレームワークを使うのは「自分の技術の公開」とはなにか違う気がするし、何より面白味がない😏<br>基本は自分で全部作り、以下のような方針でやることに決めました。 </p>
+<p>デザイナーじゃないので凝ったことはしたくないけど、 <code>Bootstrap</code> とかのCSSフレームワークを使うのは「自分の技術の公開」とはなにか違う気がするし、何より面白味がない😏<br>基本は自分で全部作り、以下のような方針でやることに決めました。  </p>
 <ul>
-  <li>なるべくシンプルな構造にする</li>
-  <li><code>Markdown</code> を変換するので、基本的なHTMLタグを書くだけである程度デザインが整ったページを作れるような構成にする（ <code>GitHub</code>
-    のMarkdownプレビューのようなイメージ）
-  </li>
-  <li>レスポンシブにする（とりあえず自分の <code>Macbook</code> と <code>iPhone</code> の両方でちゃんと表示できることを目標）</li>
+<li>なるべくシンプルな構造にする</li>
+<li><code>Markdown</code> を変換するので、基本的なHTMLタグを書くだけである程度デザインが整ったページを作れるような構成にする（ <code>GitHub</code> のMarkdownプレビューのようなイメージ）</li>
+<li>レスポンシブにする（とりあえず自分の <code>Macbook</code> と <code>iPhone</code> の両方でちゃんと表示できることを目標）</li>
 </ul>
 <h2 id="サイトの構成を考えた">サイトの構成を考えた</h2>
-<p>そんなにコンテンツはないですが、ちょっとだけ考えました。 </p>
+<p>そんなにコンテンツはないですが、ちょっとだけ考えました。  </p>
 <ul>
-  <li>とりあえず自己紹介は必須なので、ホーム画面は主に自己紹介を書く</li>
-  <li>主に技術記事を書くブログも併設する</li>
-  <li>自分で実験的に作ったプロダクトを公開するページを作る</li>
+<li>とりあえず自己紹介は必須なので、ホーム画面は主に自己紹介を書く</li>
+<li>主に技術記事を書くブログも併設する</li>
+<li>自分で実験的に作ったプロダクトを公開するページを作る</li>
 </ul>
 <h2 id="GitHub Pages の独自ドメインを設定した">GitHub Pages の独自ドメインを設定した</h2>
 <h3 id="DNS の設定">DNS の設定</h3>
-<p>IP アドレスと CNAME で設定する２つの方法があるようですが、 CNAME の方が管理が楽そうなので、そちらを採用しました。<br>AWS Route53 での設定は以下のようになります。
-</p>
+<p>IP アドレスと CNAME で設定する２つの方法があるようですが、 CNAME の方が管理が楽そうなので、そちらを採用しました。<br>AWS Route53 での設定は以下のようになります。  </p>
 <p><img src="/assets/images/blog/portfolio/aws-route53.jpg" alt="aws-route53"></p>
 <h3 id="GitHub の設定">GitHub の設定</h3>
-<p>設定ページで以下の箇所に独自ドメインを設定するだけで OK です。 </p>
+<p>設定ページで以下の箇所に独自ドメインを設定するだけで OK です。  </p>
 <p><img src="/assets/images/blog/portfolio/github.jpg" alt="github"></p>
-<p><code>Let&#39;s Encrypt</code> で生成された証明書が使われるようです。 </p>
+<p><code>Let&#39;s Encrypt</code> で生成された証明書が使われるようです。  </p>
 <p><img src="/assets/images/blog/portfolio/lets-encrypt.jpg" alt="lets-encrypt"></p>
-<p>あと <code>CNAME</code> というファイルが自動的に追加され、独自ドメインの設定が保存されるているようです。<br>間違ってこのファイルを消したら、アクセスできなくなって焦った・・。
-</p>
+<p>あと <code>CNAME</code> というファイルが自動的に追加され、独自ドメインの設定が保存されるているようです。<br>間違ってこのファイルを消したら、アクセスできなくなって焦った・・。</p>
 <h2 id="静的サイトジェネレーターもどきを作成した">静的サイトジェネレーターもどきを作成した</h2>
-<p>とりあえず <code>GitHub Pages</code> で採用されている <strong><a
-  href="https://jekyllrb.com/"
->Jekyll</a></strong> を当初使おうと思いました。<br>最初は問題なかったのですが、使っている内に細かい不満が出てきて <code>Jekyll</code> の採用はやめました。
-</p>
-<p>で、他の静的サイトジェネレーターを探してみたのですが、世の中にはたくさんのジェネレーターがあるんですね・・・。<br>一つ一つ試してみるのも大変ですし、やりたいことは <code>Markdown</code>
-  を <code>HTML</code> に変換することと、 <code>SCSS</code> を <code>CSS</code> にできれば大体のことができるので、自作することにしました。
-</p>
+<p>とりあえず <code>GitHub Pages</code> で採用されている <strong><a href="https://jekyllrb.com/">Jekyll</a></strong> を当初使おうと思いました。<br>最初は問題なかったのですが、使っている内に細かい不満が出てきて <code>Jekyll</code> の採用はやめました。  </p>
+<p>で、他の静的サイトジェネレーターを探してみたのですが、世の中にはたくさんのジェネレーターがあるんですね・・・。<br>一つ一つ試してみるのも大変ですし、やりたいことは <code>Markdown</code> を <code>HTML</code> に変換することと、 <code>SCSS</code> を <code>CSS</code> にできれば大体のことができるので、自作することにしました。</p>
 <h3 id="言語の選定">言語の選定</h3>
-<p><code>JavaScript</code> にしました。<br>自分の得意言語であること以外、特に理由はないです。<br><code>node</code> と
-  <code>npm</code> にガッツリ依存しますが、まぁこの２つが潰れることはないでしょう。</p>
+<p><code>JavaScript</code> にしました。<br>自分の得意言語であること以外、特に理由はないです。<br><code>node</code> と <code>npm</code> にガッツリ依存しますが、まぁこの２つが潰れることはないでしょう。</p>
 <h3 id="ライブラリの選定">ライブラリの選定</h3>
 <p>以下のライブラリを使用しました。</p>
 <ul>
-  <li><a href="https://www.npmjs.com/package/marked">marked</a> : <code>Markdown</code> -&gt; <code>HTML</code>
-    の変換
-  </li>
-  <li><a href="https://www.npmjs.com/package/ejs">ejs</a> : テンプレートエンジン</li>
-  <li><a href="https://www.npmjs.com/package/sass-loader">sass-loader</a> : <code>SCSS</code> -&gt;
-    <code>CSS</code> の変換
-  </li>
+<li><a href="https://www.npmjs.com/package/marked">marked</a> : <code>Markdown</code> -&gt; <code>HTML</code> の変換</li>
+<li><a href="https://www.npmjs.com/package/ejs">ejs</a> : テンプレートエンジン</li>
+<li><a href="https://www.npmjs.com/package/sass-loader">sass-loader</a> : <code>SCSS</code> -&gt; <code>CSS</code> の変換</li>
 </ul>
 <h3 id="Markdown の変換">Markdown の変換</h3>
 <p><code>marked</code> を使って変換します。
-  次にテンプレートエンジンに渡すので、テキストデータを受け取っておきます。</p>
+次にテンプレートエンジンに渡すので、テキストデータを受け取っておきます。</p>
 <pre><code class="language-javascript">const fs = require(&#39;fs&#39;);
 const marked = require(&#39;marked&#39;);
 const htmlText = marked(fs.readFileSync(&#39;Markdownファイルのパス&#39;))</code></pre>
 <h3 id="テンプレートの適用">テンプレートの適用</h3>
-<p>テンプレート用のHTMLファイルに、Markdown のコンテンツを埋め込みます。<br><strong>&lt;%- JSのコード %&gt;</strong>
-  というような形で埋め込みができます。<br>詳細は <a href="https://ejs.co/">公式サイト</a> を参照してください。</p>
+<p>テンプレート用のHTMLファイルに、Markdown のコンテンツを埋め込みます。<br><strong>&lt;%- JSのコード %&gt;</strong> というような形で埋め込みができます。<br>詳細は <a href="https://ejs.co/">公式サイト</a> を参照してください。</p>
 <pre><code class="language-javascript">const ejs = require(&#39;ejs&#39;);
 ejs.renderFile(&#39;テンプレートファイルのパス&#39;, { content: htmlText }, {}, (error, html) =&gt; {
   if (error) {
@@ -188,13 +155,10 @@ sass.render({ file: &#39;変換元の SCSS ファイルパス&#39; }, (error, re
   fs.writeFileSync(&#39;出力先の CSS ファイルパス&#39;, result.css.toString());
 });</code></pre>
 <h2 id="公開">公開</h2>
-<p>レポジトリにプッシュするだけなので、特に何も要らない(笑)<br><a href="https://portfolio.hyiromori.com/">https://portfolio.hyiromori.com/</a>
-  に公開しています。 </p>
+<p>レポジトリにプッシュするだけなので、特に何も要らない(笑)<br><a href="https://portfolio.hyiromori.com/">https://portfolio.hyiromori.com/</a> に公開しています。  </p>
 <h2 id="まとめ">まとめ</h2>
-<p>自分で考えて実装して公開するのは、やっぱり楽しいですね！<br>実際に公開してみて「どんなものが作れるか」と聞かれたらこれを見せれば良い、という安心感が凄いありますね。<br>とはいえ、今は積極的に転職活動をしているわけではないので、今のところは単なる自己満足😓
-</p>
+<p>自分で考えて実装して公開するのは、やっぱり楽しいですね！<br>実際に公開してみて「どんなものが作れるか」と聞かれたらこれを見せれば良い、という安心感が凄いありますね。<br>とはいえ、今は積極的に転職活動をしているわけではないので、今のところは単なる自己満足😓  </p>
 <p>あと、静的サイトジェネレーターは、作るよりも選定する時間の方が長かった・・・。<br>最初から作っとけば良かった。</p>
-
 
       <div id="disqus_thread"></div>
     </div>

@@ -25,7 +25,7 @@
             "id": "https://hyiromori.com/blog/2019-06-01/css-scroll-table.html",
             "url": "https://hyiromori.com/blog/2019-06-01/css-scroll-table.html",
             "title": "CSSだけでテーブルの縦横２列を固定してスクロールできるようにする",
-            "summary": "CodePen で作ったサンプルです。",
+            "summary": "CodePenで作ったサンプルです。",
             "date_modified": "2019-06-01T00:00:00.000Z",
             "author": {
                 "name": "hyiromori",
@@ -47,7 +47,7 @@
             "id": "https://hyiromori.com/blog/2019-02-02/lgtm-script.html",
             "url": "https://hyiromori.com/blog/2019-02-02/lgtm-script.html",
             "title": "ImageMagick を使って LGTM 画像をターミナルで作成する",
-            "summary": "LGTM 画像を作るサイトはあるけれど、著作権や肖像権とか気になるし、プライベートリポジトリで使うだけなので、自分の好きな 乃木坂46の\n  画像で LGTM 画像を作りたかった！",
+            "summary": "LGTM 画像を作るサイトはあるけれど、著作権や肖像権とか気になるし、プライベートリポジトリで使うだけなので、自分の好きな画像で LGTM 画像を作りたかった！",
             "date_modified": "2019-02-02T00:00:00.000Z",
             "author": {
                 "name": "hyiromori",
@@ -70,7 +70,7 @@
             "url": "https://hyiromori.com/blog/2018-12-22/http2-overview.html",
             "title": "今更ながら HTTP/2 について調べてまとめてみた",
             "summary": "今更ながら HTTP/2 がどのようなものかを調べたくなったので、その結果をまとめた記事になります。あくまで概要をまとめたもので、今はたくさんの良記事があるので、詳細が知りたい場合は最後の参考文献のリンク先を見ると参考になると思います。",
-            "date_modified": "2018-12-23T00:00:00.000Z",
+            "date_modified": "2018-12-22T00:00:00.000Z",
             "author": {
                 "name": "hyiromori",
                 "url": "https://hyiromori.com/"
@@ -91,7 +91,7 @@
             "id": "https://hyiromori.com/blog/2018-07-30/service-worker-memo.html",
             "url": "https://hyiromori.com/blog/2018-07-30/service-worker-memo.html",
             "title": "Service Worker メモ",
-            "summary": "ネイティブアプリでないと難しかったことが、Webアプリでも出来るようになってきた印象ですね！\n  まだ、機能によっては対応しているブラウザが少ないですが、この流れが進むと、Webアプリでもネイティブアプリとほぼ同等のことが出来るようになってくると思います。",
+            "summary": "ネイティブアプリでないと難しかったことが、Webアプリでも出来るようになってきた印象ですね！\nまだ、機能によっては対応しているブラウザが少ないですが、この流れが進むと、Webアプリでもネイティブアプリとほぼ同等のことが出来るようになってくると思います。",
             "date_modified": "2019-01-07T00:00:00.000Z",
             "author": {
                 "name": "hyiromori",
@@ -102,7 +102,7 @@
             "id": "https://hyiromori.com/blog/2017-05-01/quantum-computer.html",
             "url": "https://hyiromori.com/blog/2017-05-01/quantum-computer.html",
             "title": "量子コンピューターについて調べてみた",
-            "summary": "最近ちょいちょい量子コンピューターのニュースとか出ていますね。ただ、そもそも量子コンピューターって何？って感じですし、思っている人も多いハズ。なので、量子コンピューターについて調べてみました。なお、書いている私は量子コンピューターとかその辺の理論については全くの無知から調べていますので、あしからず。",
+            "summary": "最近ちょいちょい量子コンピューターのニュースとか出ていますね。\nただ、そもそも量子コンピューターって何？って感じですし、思っている人も多いハズ。\nなので、量子コンピューターについて調べてみました。\nなお、書いている私は量子コンピューターとかその辺の理論については全くの無知から調べていますので、あしからず。",
             "date_modified": "2019-03-01T00:00:00.000Z",
             "author": {
                 "name": "hyiromori",
