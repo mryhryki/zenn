@@ -24,8 +24,8 @@
         {
             "id": "https://hyiromori.com/blog/2019-06-28/cli-enctypt.html",
             "url": "https://hyiromori.com/blog/2019-06-28/cli-enctypt.html",
-            "title": "macOS のターミナル(CLI)で手軽に暗号化 (OpenSSL/AWS CLI)",
-            "summary": "ターミナルとかで、ファイルを暗号化/復号したいと思ったことはありませんか？私はあります。",
+            "title": "macOS のターミナル(CLI)で手軽に暗号化 (OpenSSL + AWS CLI)",
+            "summary": "ターミナルとかで、ファイルを手軽に暗号化/復号したいと思ったことはありませんか？私はあります。",
             "date_modified": "2019-06-28T00:00:00.000Z",
             "author": {
                 "name": "hyiromori",
