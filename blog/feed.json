@@ -11,6 +11,17 @@
     },
     "items": [
         {
+            "id": "https://hyiromori.com/blog/2019-07-05/homebrew-delete-all-packages.html",
+            "url": "https://hyiromori.com/blog/2019-07-05/homebrew-delete-all-packages.html",
+            "title": "Homebrew の全パッケージを削除する",
+            "summary": "Macbook が壊れて別の Macbook を使おうとしたとき、以前入れた Homebrew のパッケージと干渉して、一旦クリーンな状況に戻したいので、その手順をメモしました。",
+            "date_modified": "2019-07-05T00:00:00.000Z",
+            "author": {
+                "name": "hyiromori",
+                "url": "https://hyiromori.com/"
+            }
+        },
+        {
             "id": "https://hyiromori.com/blog/2019-06-28/cli-enctypt.html",
             "url": "https://hyiromori.com/blog/2019-06-28/cli-enctypt.html",
             "title": "macOS のターミナル(CLI)で手軽に暗号化 (OpenSSL/AWS CLI)",
