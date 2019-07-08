@@ -66,9 +66,10 @@
     <div id="main-content">
       <h1 id="Homebrew の全パッケージを削除する">Homebrew の全パッケージを削除する</h1>
 <p>Macbook が壊れて別の Macbook を使おうとしたとき、以前入れた Homebrew のパッケージと干渉して、一旦クリーンな状況に戻したいので、その手順をメモしました。</p>
-<h2 id="実行方法">実行方法</h2>
-<p>まずは Homebrew の更新をします。</p>
+<h2 id="Homebrew の更新">Homebrew の更新</h2>
+<p>とりあえず Homebrew の更新をします。</p>
 <pre><code class="language-bash">$ brew update</code></pre>
+<h2 id="実行方法">実行方法</h2>
 <p>全パッケージの消し方については、調べていたら<a href="https://darryldias.me/12/remove-all-installed-homebrew-packages/">こちらのブログ（英語）</a>に良い方法が書いてありました。</p>
 <pre><code class="language-bash"># 全パッケージの削除
 $ brew remove --force $(brew list) --ignore-dependencies

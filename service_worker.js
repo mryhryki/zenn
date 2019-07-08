@@ -1,4 +1,4 @@
-const CacheVersion = "2019-07-04T20:53:13.623Z";
+const CacheVersion = "2019-07-08T23:01:05.341Z";
 const UrlsToCache = [
   "/",
   "/blog/",
