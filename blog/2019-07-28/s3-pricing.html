@@ -1,16 +1,16 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <title>macOS のターミナル(CLI)で手軽に暗号化 (OpenSSL + AWS CLI)</title>
-<meta content="macOS のターミナル(CLI)で手軽に暗号化 (OpenSSL + AWS CLI)" name="title">
-<meta content="ターミナルとかで、ファイルを手軽に暗号化/復号したいと思ったことはありませんか？私はあります。" name="description">
-<meta content="macOS,OpenSSL,AWS KMS,hyiromori,blog" name="keywords">
+  <title>AWS S3をバックアップに使用する場合の料金を調べてみた</title>
+<meta content="AWS S3をバックアップに使用する場合の料金を調べてみた" name="title">
+<meta content="S3をGoogleフォトのバックアップ用に使うために、S3の料金を調べてみた。" name="description">
+<meta content="AWS,S3,hyiromori,blog" name="keywords">
 <meta name="theme-color" content="#ff7701"/>
-<meta property="og:title" content="macOS のターミナル(CLI)で手軽に暗号化 (OpenSSL + AWS CLI)" />
-<meta property="og:description" content="ターミナルとかで、ファイルを手軽に暗号化/復号したいと思ったことはありませんか？私はあります。" />
+<meta property="og:title" content="AWS S3をバックアップに使用する場合の料金を調べてみた" />
+<meta property="og:description" content="S3をGoogleフォトのバックアップ用に使うために、S3の料金を調べてみた。" />
 <meta property="og:image" content="/assets/images/logo.jpg" />
 <meta property="og:url" content="https://portfolio.hyiromori.com/" />
-<meta property="og:site_name" content="macOS のターミナル(CLI)で手軽に暗号化 (OpenSSL + AWS CLI)" />
+<meta property="og:site_name" content="AWS S3をバックアップに使用する場合の料金を調べてみた" />
 <meta property="og:locale" content="ja-JP" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@hyiromori" />
@@ -64,139 +64,132 @@
   </div>
   <div id="content-wrapper">
     <div id="main-content">
-      <h1 id="macOS のターミナル(CLI)で手軽に暗号化 (OpenSSL + AWS CLI)">macOS のターミナル(CLI)で手軽に暗号化 (OpenSSL + AWS CLI)</h1>
-<p>ターミナルとかで、ファイルを手軽に暗号化/復号したいと思ったことはありませんか？私はあります。</p>
-<p>そんな時に使った方法を紹介します。</p>
-<h2 id="OpenSSL を使ったファイルの暗号化/複合">OpenSSL を使ったファイルの暗号化/複合</h2>
-<p>macOS であれば、特に何も用意しなくても使えるはずです。</p>
-<h3 id="暗号化">暗号化</h3>
-<pre><code class="language-bash">$ openssl aes-256-cbc -e \
-          -in &quot;&lt;暗号化したいファイルのパス&gt;&quot; \
-          -out &quot;&lt;出力先のファイルパス&gt;&quot; \
-          -pass &quot;file:&lt;暗号化に使用するキーのファイルパス&gt;&quot;</code></pre>
-<h3 id="復号">復号</h3>
-<pre><code class="language-bash">$ openssl aes-256-cbc -d \
-          -in &quot;&lt;複合化したいファイルのパス&gt;&quot; \
-          -out &quot;&lt;出力先のファイルパス&gt;&quot; \
-          -pass &quot;file:&lt;復号に使用するキーのファイルパス&gt;&quot;</code></pre>
-<h3 id="実例">実例</h3>
-<p>実際にパスを入れるとこんな感じです。</p>
-<pre><code class="language-bash">$ openssl aes-256-cbc -e -in &quot;~/secret.txt&quot; -out &quot;~/secret.txt.enc&quot; -pass &quot;file:~/.credential&quot;
-$ openssl aes-256-cbc -d -in &quot;~/secret.txt.enc&quot; -out &quot;~/secret.txt&quot; -pass &quot;file:~/.credential&quot;</code></pre>
-<p>このサンプルの場合 <code>~/.credential</code> は暗号化/複合に必要なファイルであり、外部に漏らしてはいけない情報になります。</p>
-<h3 id="おまけ：OpenSSLを使ったランダム文字列の生成">おまけ：OpenSSLを使ったランダム文字列の生成</h3>
-<p>キーとなる情報をどうやって作るか悩んだ時は、OpenSSL を使ってランダムな文字列を生成することも可能です。</p>
-<pre><code class="language-bash">$ oppenssl rand -hex 16
-3fb0cd3b25be5d3bc9221c40f5087e45 # 出力される32文字（2倍）になります
-
-$ oppenssl rand -base64 16
-fZa/ZwJCb7cIL5O/y3CGag== # 出力される25文字（4/3倍+パディング）になります</code></pre>
-<h2 id="AWS KMS を使ったキーの管理">AWS KMS を使ったキーの管理</h2>
-<p>AWSユーザーがあることが前提ですが、キー情報の管理をAWSに任せることでローカルで管理しなくて良くなります。
-特にチームで開発する際に、Git に機密情報をコミットしたい場合などには、とても便利だと思います。</p>
-<h3 id="AWS CLI のセットアップ">AWS CLI のセットアップ</h3>
-<p><a href="https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/install-macos.html">公式ドキュメント</a> や <a href="https://qiita.com/maimai-swap/items/999eb69b7a4420d6ab64">ブログ記事</a> を参考にインストールします。</p>
-<p>設定はこちらの <a href="https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-chap-configure.html">公式ドキュメント</a> を参考にしてください。</p>
-<h3 id="KMS のカスタマー管理型のキーを作成（初回のみ）">KMS のカスタマー管理型のキーを作成（初回のみ）</h3>
-<p>AWS CLI を使えばコマンド一発で作成できます。
-<code>KeyId</code> は暗号化/復号時に使います。</p>
-<pre><code class="language-bash">$ aws kms create-key
-{
-    &quot;KeyMetadata&quot;: {
-        &quot;AWSAccountId&quot;: &quot;111111111111&quot;,
-        &quot;KeyId&quot;: &quot;11111111-2222-3333-4444-555555555555&quot;,
-        &quot;Arn&quot;: &quot;arn:aws:kms:ap-northeast-1:111111111111:key/11111111-2222-3333-4444-555555555555&quot;,
-        &quot;CreationDate&quot;: 1561636800.000,
-        &quot;Enabled&quot;: true,
-        &quot;Description&quot;: &quot;&quot;,
-        &quot;KeyUsage&quot;: &quot;ENCRYPT_DECRYPT&quot;,
-        &quot;KeyState&quot;: &quot;Enabled&quot;,
-        &quot;Origin&quot;: &quot;AWS_KMS&quot;,
-        &quot;KeyManager&quot;: &quot;CUSTOMER&quot;
-    }
-}</code></pre>
-<h3 id="暗号化（初回のみ）">暗号化（初回のみ）</h3>
-<pre><code class="language-bash">$ aws kms encrypt \
-      --key-id &quot;&lt;暗号化に使用するキーID&gt;&quot; \
-      --plaintext &quot;fileb://&lt;暗号化したいファイルのパス&gt;&quot; \
-      --query CiphertextBlob \
-      --output text |
-    base64 --decode \
-        &gt; &quot;&lt;出力先のファイルパス&gt;&quot;</code></pre>
-<h3 id="復号">復号</h3>
-<pre><code class="language-bash">$ aws kms decrypt \
-      --ciphertext-blob &quot;fileb://&lt;複合化したいファイルのパス&gt;&quot; \
-      --query Plaintext \
-      --output text |
-    base64 --decode \
-      &gt; &quot;&lt;出力先のファイルパス&gt;&quot;</code></pre>
-<p>暗号化の際に、キーの情報も含まれたデータが出力されているので、復号時には <code>--key-id</code> を指定する必要はありません。</p>
-<h3 id="実例">実例</h3>
-<p>実際にパスを入れるとこんな感じです。</p>
-<pre><code class="language-bash">$ aws kms encrypt \
-      --key-id &quot;11111111-2222-3333-4444-555555555555&quot; \
-      --plaintext &quot;fileb://~/secret.txt&quot; \
-      --query CiphertextBlob \
-      --output text |
-    base64 --decode \
-        &gt; &quot;~/secret.txt.enc&quot;
-
-$ aws kms decrypt \
-      --ciphertext-blob &quot;fileb://~/secret.txt.enc&quot; \
-      --query Plaintext \
-      --output text |
-    base64 --decode \
-      &gt; &quot;~/secret.txt&quot;</code></pre>
-<h3 id="AWS KMS の制限">AWS KMS の制限</h3>
-<p><a href="https://docs.aws.amazon.com/ja_jp/kms/latest/developerguide/overview.html">公式ドキュメント</a> によれば暗号化/復号可能なデータは最大4KB(4096)バイトまでとあります。</p>
-<p>小さめのファイルならダイレクトに暗号化することも可能ですが、暗号化に使用するキー情報の暗号化/復号に使うのが現実的だと思います。</p>
-<h3 id="AWS KMS + OpenSSL を組み合わせた例">AWS KMS + OpenSSL を組み合わせた例</h3>
-<h4 id="キー情報の作成">キー情報の作成</h4>
-<pre><code class="language-bash"># 認証情報
-$ cat ~/.credential
-c2ec8a1b-7574-4ff0-80a2-4aa2e3d7eae0
-
-# キー情報を作成
-$ aws kms encrypt \
-      --key-id &quot;11111111-2222-3333-4444-555555555555&quot; \
-      --plaintext &quot;fileb://~/.credential&quot; \
-      --query CiphertextBlob \
-      --output text
-AQICAHj5KKUSNyyCZcOF... # 長いので省略しています。どこかに記録しておいてください。
-
-# ファイルを暗号化します
-$ openssl aes-256-cbc -e -in &quot;~/secret.txt&quot; -out &quot;~/secret.txt.enc&quot; -pass &quot;file:~/.credential&quot;
-
-# この時点で暗号化するための生キーは削除して構いません
-rm ~/.credential</code></pre>
-<h4 id="復号（シェルスクリプトの例）">復号（シェルスクリプトの例）</h4>
-<p>ちょっと面倒ですが、機密情報が存在しないので、そのままコミットすることも可能なのが便利ですね。
-状況が許せば、AWS SDK を使ってプログラミング言語で書いた方がシンプルに書けると思います。</p>
-<pre><code class="language-bash">#!/usr/bin/env bash
-
-# AWS KMS の該当するキーのアクセス権がないと復号できないので、キー情報をコミットしても大丈夫です。
-ENCRYPTED_KEY=&quot;AQICAHj5KKUSNyyCZcOF...&quot;
-
-TEMP_DIR=&quot;/tmp/kms&quot;
-mkdir -p &quot;${TEMP_DIR}&quot;
-
-printf &quot;${ENCRYPTED_KEY}&quot; | base64 --decode &gt; &quot;${TEMP_DIR}/bin_key&quot;
-
-aws kms decrypt --ciphertext-blob &quot;fileb://${TEMP_DIR}/bin_key&quot; \
-    --query Plaintext \
-    --output text |
-  base64 --decode &gt; &quot;${TEMP_DIR}/credential&quot;
-
-openssl aes-256-cbc -d \
-          -in &quot;${HOME}/secret.txt.enc&quot; \
-          -out &quot;${HOME}/secret2.txt&quot; \
-          -pass &quot;file:${TEMP_DIR}/credential&quot;
-
-rm -rf &quot;${TEMP_DIR}&quot;</code></pre>
-<h2 id="まとめ">まとめ</h2>
-<p>ファイルの暗号化は <code>OpenSSL</code> で手軽に暗号化できます。
-その際に使用するキー情報を <code>AWS KMS</code> で管理すると、漏らしてはいけない情報を管理する手間がかなり省けるようになる、という感じでした。
-これらを使うと、アプリケーションの機密情報ごと Git で管理することも可能になるので、必要に応じて使っていきたいですね。</p>
+      <h1 id="AWS S3をバックアップに使用する場合の料金を調べてみた">AWS S3をバックアップに使用する場合の料金を調べてみた</h1>
+<h2 id="目的">目的</h2>
+<p>S3をGoogleフォトのバックアップ用に使うために、S3の料金を調べてみた。</p>
+<p>主に保存とダウンロードのみ考慮して計算しています。（リクエストなどの料金は今回の用途だと誤差程度にしかならないため、計算に含めていません）</p>
+<h2 id="前提">前提</h2>
+<ul>
+<li>容量/転送量の単位は10GB単位とします。</li>
+<li>$1は100円として計算します。</li>
+<li>コストを重視しているので<code>us-east-1</code>リージョン（米国東部バージニア）の場合で計算しています。</li>
+</ul>
+<h2 id="S3のストレージの種類">S3のストレージの種類</h2>
+<p>最新/詳細な情報は<a href="https://aws.amazon.com/jp/s3/storage-classes/">公式ドキュメント</a>を参照してください。</p>
+<p>この記事では、以下の５つの種類で比較します。</p>
+<ul>
+<li>Amazon S3 標準 (S3 標準)</li>
+<li>Amazon S3 Intelligent-Tiering (S3 Intelligent-Tiering)</li>
+<li>Amazon S3 標準 – 低頻度アクセス (S3 標準 – IA)</li>
+<li>Amazon S3 Glacier (S3 Glacier)</li>
+<li>Amazon S3 Glacier Deep Archive (S3 Glacier Deep Archive)</li>
+</ul>
+<h2 id="保存料金">保存料金</h2>
+<table>
+<thead>
+<tr>
+<th>ストレージ種類</th>
+<th align="right">料金</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S3 標準</td>
+<td align="right">23円</td>
+</tr>
+<tr>
+<td>S3 Intelligent-Tiering</td>
+<td align="right">12.5円</td>
+</tr>
+<tr>
+<td>S3 標準 – IA</td>
+<td align="right">10円</td>
+</tr>
+<tr>
+<td>S3 Glacier</td>
+<td align="right">4円</td>
+</tr>
+<tr>
+<td>S3 Glacier Deep Archive</td>
+<td align="right">1円</td>
+</tr>
+</tbody></table>
+<h2 id="ダウンロード料金（S3 Select によって返されたデータ）">ダウンロード料金（S3 Select によって返されたデータ）</h2>
+<table>
+<thead>
+<tr>
+<th>ストレージ種類</th>
+<th align="right">料金</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S3 標準</td>
+<td align="right">0.7円</td>
+<td></td>
+</tr>
+<tr>
+<td>S3 Intelligent-Tiering</td>
+<td align="right">0.7円</td>
+<td></td>
+</tr>
+<tr>
+<td>S3 標準 – IA</td>
+<td align="right">10円</td>
+<td></td>
+</tr>
+<tr>
+<td>S3 Glacier (迅速)</td>
+<td align="right">30円</td>
+<td>0.7円(S3標準)が別途必要</td>
+</tr>
+<tr>
+<td>S3 Glacier (スタンダード版)</td>
+<td align="right">10円</td>
+<td>0.7円(S3標準)が別途必要</td>
+</tr>
+<tr>
+<td>S3 Glacier (大容量)</td>
+<td align="right">2.5円</td>
+<td>0.7円(S3標準)が別途必要</td>
+</tr>
+<tr>
+<td>S3 Glacier Deep Archive (スタンダード版)</td>
+<td align="right">20円</td>
+<td>0.7円(S3標準)が別途必要</td>
+</tr>
+<tr>
+<td>S3 Glacier Deep Archive (大容量)</td>
+<td align="right">2.5円</td>
+<td>0.7円(S3標準)が別途必要</td>
+</tr>
+</tbody></table>
+<h2 id="データ転送料金">データ転送料金</h2>
+<p>S3 からインターネット: 90円 (9.999TB/月 まで。最初の1GBは無料)</p>
+<h2 id="計算例">計算例</h2>
+<p>20GBのファイルを<code>S3 Glacier Deep Archive</code>に2ヶ月おきに1回バックアップし、年２回１ファイルずつダウンロードする場合の年間の料金。</p>
+<ul>
+<li>保存料金：2円/月<ul>
+<li>1月にアップロードしたファイル：2円 × 12ヶ月 = 24円</li>
+<li>3月にアップロードしたファイル：2円 × 10ヶ月 = 20円</li>
+<li>5月にアップロードしたファイル：2円 × 8ヶ月 = 16円</li>
+<li>7月にアップロードしたファイル：2円 × 6ヶ月 = 12円</li>
+<li>9月にアップロードしたファイル：2円 × 4ヶ月 = 8円</li>
+<li>11月にアップロードしたファイル：2円 × 2ヶ月 = 4円</li>
+<li>合計：<code>84円</code></li>
+</ul>
+</li>
+<li>転送料金<ul>
+<li>S3 Glacier Deep Archive (大容量) での取り出し：5円/ファイル</li>
+<li>S3 標準でのダウンロード料金：1.4円/ファイル</li>
+<li>データ転送料金：180円/ファイル</li>
+<li>合計：(5円 + 1.4円 + 180円) × 2 = <code>372.8円</code></li>
+</ul>
+</li>
+<li>トータル料金年額：<code>456.8円</code></li>
+</ul>
+<p>ざっと計算してみると、このお値段でバックアップできるので、かなり安いですね！
+大雑把な計算であることと、為替レートによっても金額が変わりますので、必ずしもこの通りになるわけではないのでご注意ください。
+もし誤りがありましたら、コメント頂けますと幸いです。</p>
 
       <div id="disqus_thread"></div>
     </div>

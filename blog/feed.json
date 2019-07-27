@@ -11,6 +11,17 @@
     },
     "items": [
         {
+            "id": "https://hyiromori.com/blog/2019-07-28/s3-pricing.html",
+            "url": "https://hyiromori.com/blog/2019-07-28/s3-pricing.html",
+            "title": "AWS S3をバックアップに使用する場合の料金を調べてみた",
+            "summary": "S3をGoogleフォトのバックアップ用に使うために、S3の料金を調べてみた。",
+            "date_modified": "2019-07-28T00:00:00.000Z",
+            "author": {
+                "name": "hyiromori",
+                "url": "https://hyiromori.com/"
+            }
+        },
+        {
             "id": "https://hyiromori.com/blog/2019-07-05/homebrew-delete-all-packages.html",
             "url": "https://hyiromori.com/blog/2019-07-05/homebrew-delete-all-packages.html",
             "title": "Homebrew の全パッケージを削除する",
