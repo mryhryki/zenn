@@ -11,6 +11,17 @@
     },
     "items": [
         {
+            "id": "https://hyiromori.com/blog/2019-08-01/aws-cloudwatch-settings.html",
+            "url": "https://hyiromori.com/blog/2019-08-01/aws-cloudwatch-settings.html",
+            "title": "AWS CloudWatch Event のSNS通知を見やすく整形する",
+            "summary": "AWSのCloudWatch EventでSNSを使用して通知設定をすると、ただひたすら長文のJSONが送信され見にくいので、整形する方法を探ったときのメモ。",
+            "date_modified": "2019-08-01T00:00:00.000Z",
+            "author": {
+                "name": "hyiromori",
+                "url": "https://hyiromori.com/"
+            }
+        },
+        {
             "id": "https://hyiromori.com/blog/2019-07-28/s3-pricing.html",
             "url": "https://hyiromori.com/blog/2019-07-28/s3-pricing.html",
             "title": "AWS S3をバックアップに使用する場合の料金を調べてみた",

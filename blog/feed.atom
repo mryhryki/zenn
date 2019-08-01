@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hyiromori.com/</id>
     <title>hyiromori's Blog feed</title>
-    <updated>2019-07-27T21:09:43.324Z</updated>
+    <updated>2019-08-01T00:44:17.555Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>hyiromori</name>
@@ -15,6 +15,18 @@
     <logo>https://hyiromori.com/assets/images/logos/512.png</logo>
     <icon>https://hyiromori.com/favicon.ico</icon>
     <rights>(c) 2018 hyiromori</rights>
+    <entry>
+        <title type="html"><![CDATA[AWS CloudWatch Event のSNS通知を見やすく整形する]]></title>
+        <id>https://hyiromori.com/blog/2019-08-01/aws-cloudwatch-settings.html</id>
+        <link href="https://hyiromori.com/blog/2019-08-01/aws-cloudwatch-settings.html"/>
+        <updated>2019-08-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[AWSのCloudWatch EventでSNSを使用して通知設定をすると、ただひたすら長文のJSONが送信され見にくいので、整形する方法を探ったときのメモ。]]></summary>
+        <author>
+            <name>hyiromori</name>
+            <email>hyiromori@gmail.com</email>
+            <uri>https://hyiromori.com/</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[AWS S3をバックアップに使用する場合の料金を調べてみた]]></title>
         <id>https://hyiromori.com/blog/2019-07-28/s3-pricing.html</id>
