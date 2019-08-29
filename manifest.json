@@ -1,6 +1,6 @@
 {
   "author": "hyiromori",
-  "background_color": "#ff7701",
+  "background_color": "#fa7007",
   "description": "Web系エンジニアhyiromoriのポートフォリオサイトです。",
   "display": "standalone",
   "lang": "jp-ja",
@@ -11,7 +11,7 @@
   "short_name": "Portfolio",
   "splash_pages": null,
   "start_url": "https://hyiromori.com/",
-  "theme_color": "#ff7701",
+  "theme_color": "#fa7007",
   "version": "1.0.0",
   "icons": [
     {
