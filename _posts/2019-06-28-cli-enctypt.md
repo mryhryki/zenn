@@ -1,4 +1,9 @@
-# macOS のターミナル(CLI)で手軽に暗号化 (OpenSSL + AWS CLI)
+---
+layout: blog
+header_image: blog
+title: macOS のターミナル(CLI)で手軽に暗号化 (OpenSSL + AWS CLI)
+keyword: macOS,OpenSSL,AWS KMS
+---
 
 ターミナルとかで、ファイルを手軽に暗号化/復号したいと思ったことはありませんか？私はあります。
 

@@ -1,4 +1,10 @@
-# Service Worker メモ
+---
+layout: blog
+header_image: blog
+title: Service Worker メモ
+keyword: JavaScript,TypeScript,ServiceWorker
+update: 2019-01-07
+---
 
 ## Service Worker とは？
 
@@ -19,7 +25,7 @@
 
 - DOMアクセス
     - `window` にはアクセスできません
-    - Service Worker のソース内では `self` が Service Worker 自身を指すようです。 
+    - Service Worker のソース内では `self` が Service Worker 自身を指すようです。
 
 ## Service Worker のライフサイクル
 
@@ -64,7 +70,7 @@
 #### fetch
 
 - 何らかのリクエストが飛んだ時に介入するためのイベント
-- `Cache API` を使用して、コントロールすることが出来るようになる。 
+- `Cache API` を使用して、コントロールすることが出来るようになる。
 
 #### sync
 

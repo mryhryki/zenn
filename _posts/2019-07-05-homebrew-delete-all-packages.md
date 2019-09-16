@@ -1,4 +1,9 @@
-# Homebrew の全パッケージを削除する
+---
+layout: blog
+header_image: blog
+title: Homebrew の全パッケージを削除する
+keyword: macOS,Homebrew
+---
 
 Macbook が壊れて別の Macbook を使おうとしたとき、以前入れた Homebrew のパッケージと干渉して、一旦クリーンな状況に戻したいので、その手順をメモしました。
 

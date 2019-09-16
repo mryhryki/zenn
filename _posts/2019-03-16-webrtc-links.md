@@ -1,4 +1,9 @@
-# WebRTC の資料リンク集
+---
+layout: blog
+header_image: blog
+title: WebRTC の資料リンク集
+keyword: WebRTC
+---
 
 WebRTC を調査していた際に集めたリンク集です。
 
@@ -27,7 +32,7 @@ WebRTC を調査していた際に集めたリンク集です。
 
 ## SkyWayの中の人
 
-こちらも、貴重な日本語情報です。 
+こちらも、貴重な日本語情報です。
 
 - [WebRTCの技術解説 公開版](https://www.slideshare.net/nttwestcon/20140805-technical-descriptionofwebrtcpublicedition)
 - [WebRTCでTURN接続を試験する方法](http://iwashi.co/2016/03/13/how-to-test-turn-relay)

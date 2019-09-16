@@ -1,4 +1,9 @@
-# Ruby on Rails on Docker(-Compose) で手軽に開発環境構築
+---
+layout: blog
+header_image: blog
+title: Ruby on Rails on Docker(-Compose) で手軽に開発環境構築
+keyword: Ruby,Rails,Docker,Docker-Compose
+---
 
 ## 目的
 
@@ -96,5 +101,5 @@ docker-compose exec rails sh
 
 ## まとめ
 
-どこでもコマンド一発で起動できるので、とても便利！  
-あと、チーム開発の場合でもバージョン固定とかが簡単なのでその点でも良いですね。  
+どこでもコマンド一発で起動できるので、とても便利！
+あと、チーム開発の場合でもバージョン固定とかが簡単なのでその点でも良いですね。

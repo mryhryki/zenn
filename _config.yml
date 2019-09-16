@@ -1,1 +1,2 @@
-markdown: kramdown
+timezone: Asia/Tokyo
+permalink: /blog/:year-:month-:day/:title:output_ext

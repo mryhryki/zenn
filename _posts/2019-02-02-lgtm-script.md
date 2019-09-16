@@ -1,4 +1,9 @@
-# ImageMagick を使って LGTM 画像をターミナルで作成する
+---
+layout: blog
+header_image: blog
+title: ImageMagick を使って LGTM 画像をターミナルで作成する
+keyword: ImageMagick,LGTM
+---
 
 ## モチベーション
 LGTM 画像を作るサイトはあるけれど、著作権や肖像権とか気になるし、プライベートリポジトリで使うだけなので、自分の好きな画像で LGTM 画像を作りたかった！

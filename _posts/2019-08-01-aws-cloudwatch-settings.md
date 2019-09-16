@@ -1,4 +1,9 @@
-# AWS CloudWatch Event のSNS通知を見やすく整形する
+---
+layout: blog
+header_image: blog
+title: AWS CloudWatch Event のSNS通知を見やすく整形する
+keyword: AWS,CloudWatch
+---
 
 `AWS`の`CloudWatch Event`で`SNS`を使用して通知設定をすると、ただひたすら長文の`JSON`が送信され見にくいので、整形する方法を探ったときのメモ。
 

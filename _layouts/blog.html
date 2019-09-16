@@ -1,21 +1,21 @@
 <html lang="ja">
 <head>
   <title>{{ page.title }}</title>
-  <meta content="{{ page.title }}" name="title">
-  <meta content="{{ page.description }}" name="description">
-  <meta content="portfolio, hyiromori" name="keywords">
+  <meta content="hyiromori's Blog" name="title">
+  <meta content="{{ page.title }}" name="description">
+  <meta content="portfolio,hyiromori,{{ page.keyword }}" name="keywords">
   <meta name="theme-color" content="#fa7007"/>
-  <meta property="og:title" content="{{ page.title }}" />
-  <meta property="og:description" content="{{ page.description }}" />
+  <meta property="og:title" content="hyiromori's Blog" />
+  <meta property="og:description" content="{{ page.title }}" />
   <meta property="og:image" content="/assets/images/logo.jpg" />
   <meta property="og:url" content="https://portfolio.hyiromori.com/" />
-  <meta property="og:site_name" content="{{ page.title }}" />
+  <meta property="og:site_name" content="hyiromori's Blog" />
   <meta property="og:locale" content="ja-JP" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@hyiromori" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Portfolio">
+  <meta name="apple-mobile-web-app-title" content="Blog">
   <link rel="apple-touch-icon" href="/assets/images/logos/72.png" sizes="72x72">
   <link rel="apple-touch-icon" href="/assets/images/logos/96.png" sizes="96x96">
   <link rel="apple-touch-icon" href="/assets/images/logos/128.png" sizes="128x128">
@@ -26,13 +26,13 @@
   <link rel="apple-touch-icon" href="/assets/images/logos/512.png" sizes="512x512">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta charset="UTF-8">
-  <link rel="manifest" href="/manifest.json">
+  <base target="_blank">
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
   <link rel="stylesheet" href="/assets/css/index.css">
   <link rel="stylesheet" href="/assets/css/layout.css">
-  <link rel="stylesheet" href="/assets/css/home.css">
+  <link rel="stylesheet" href="/assets/css/blog.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124358962-1"></script>
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="article" />
 </head>
 <body>
   <div id="header">
@@ -60,14 +60,15 @@
       />
       <div id="content-header-title-wrapper">
         <div id="content-header-title">
-          {{ page.title }}
+          hyiromori's Blog
         </div>
       </div>
       <div id="content-header-description">
-        {{ page.description }}
+        Web系エンジニア hyiromori のブログです
       </div>
     </div>
     <div id="main-content">
+      <h1 id="{{ page.title }}">{{ page.title }}</h1>
       {{ content }}
     </div>
   </div>

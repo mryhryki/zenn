@@ -1,4 +1,10 @@
-# 量子コンピューターについて調べてみた
+---
+layout: blog
+header_image: blog
+title: 量子コンピューターについて調べてみた
+keyword: 量子コンピューター
+update: 2019-03-01
+---
 
 ## はじめに
 
