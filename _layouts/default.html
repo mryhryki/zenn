@@ -1,15 +1,15 @@
 <html lang="ja">
 <head>
-  <title>Page Not Found</title>
-  <meta content="Page Not Found" name="title">
+  <title>{{ page.title }}</title>
+  <meta content="{{ page.title }}" name="title">
   <meta content="{{ page.description }}" name="description">
   <meta content="portfolio, hyiromori" name="keywords">
   <meta name="theme-color" content="#fa7007"/>
-  <meta property="og:title" content="Page Not Found" />
+  <meta property="og:title" content="{{ page.title }}" />
   <meta property="og:description" content="{{ page.description }}" />
   <meta property="og:image" content="/assets/images/logo.jpg" />
   <meta property="og:url" content="https://portfolio.hyiromori.com/" />
-  <meta property="og:site_name" content="Page Not Found" />
+  <meta property="og:site_name" content="{{ page.title }}" />
   <meta property="og:locale" content="ja-JP" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@hyiromori" />
@@ -30,6 +30,9 @@
   <link rel="manifest" href="/manifest.json">
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
   <link rel="stylesheet" href="/assets/css/index.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/home.css">
+  <link rel="stylesheet" href="/assets/css/blog.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124358962-1"></script>
   <meta property="og:type" content="article" />
 </head>
@@ -60,11 +63,11 @@
       />
       <div id="content-header-title-wrapper">
         <div id="content-header-title">
-          Page Not Found
+          {{ page.title }}
         </div>
       </div>
       <div id="content-header-description">
-        ページが見つかりません
+        {{ page.description }}
       </div>
     </div>
     <div id="main-content">
