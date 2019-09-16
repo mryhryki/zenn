@@ -1,0 +1,136 @@
+- name: プログラミング言語
+  skills:
+
+    - name: Node
+      url: https://nodejs.org/ja/
+      image: nodejs
+      rank: ★ ★ ★
+
+    - name: Javascript
+      url: https://developer.mozilla.org/ja/docs/Web/JavaScript
+      image: javascript
+      rank: ★ ★ ★
+
+    - name: TypeScript
+      image: typescript
+      url: https://www.typescriptlang.org/
+      rank: ★ ★
+
+    - name: CSS
+      image: css
+      url: https://developer.mozilla.org/ja/docs/Glossary/CSS
+      rank: ★ ★ ★
+
+    - name: Ruby
+      image: ruby
+      url: https://www.ruby-lang.org/ja/
+      rank: ★ ★ ★
+
+    - name: Java
+      image: java
+      url: https://www.java.com/ja/about/whatis_java.jsp
+      rank: ★ ★ ★
+
+- name: フロントエンド
+  skills:
+
+    - name: React
+      image: react
+      url: https://reactjs.org/
+      rank: ★ ★ ★
+
+    - name: Redux
+      image: redux
+      url: https://redux.js.org/
+      rank: ★ ★ ★
+
+    - name: Webpack
+      image: webpack
+      url: https://webpack.js.org/
+      rank: ★ ★ ★
+
+- name: アプリ
+  skills:
+
+    - name: React Native
+      image: react
+      url: https://facebook.github.io/react-native/
+      rank: ★ ★
+
+- name: バックエンド
+  skills:
+
+    - name: Rails
+      image: ruby_on_rails
+      url: https://rubyonrails.org/
+      rank: ★ ★ ★
+
+    - name: RSpec
+      image: rspec
+      url: https://rspec.info/
+      rank: ★ ★
+
+    - name: express
+      image: express
+      url: http://expressjs.com/
+      rank: ★ ★
+
+    - name: Serverless
+      image: serverless
+      url: https://serverless.com/
+      rank: ★ ★
+
+- name: インフラ
+  skills:
+
+    - name: AWS
+      image: aws
+      url: https://aws.amazon.com/jp/
+      rank: ★ ★ ★
+
+    - name: Terraform
+      image: terraform
+      url: https://www.terraform.io/
+      rank: ★ ★
+
+    - name: Docker
+      image: docker
+      url: https://www.docker.com/
+      rank: ★ ★
+
+    - name: Ansible
+      image: ansible
+      url: https://www.ansible.com/
+      rank: ★
+
+- name: データベース
+  skills:
+
+    - name: PostgreSQL
+      image: postgresql
+      url: https://www.postgresql.org/
+      rank: ★ ★
+
+    - name: MySQL
+      image: mysql
+      url: https://www.mysql.com/jp/
+      rank: ★ ★
+
+    - name: Oracle 11c
+      image: oracle
+      url: https://www.oracle.com/jp/database/
+      rank: ★ ★
+
+- name: その他
+  skills:
+
+    - name: Intellij IDEA
+      image: intellij_idea
+      url: https://www.jetbrains.com/idea/
+      rank: ★ ★ ★
+
+    - name: WebRTC
+      image: webrtc
+      url: https://webrtc.org/
+      rank: ★ ★
+

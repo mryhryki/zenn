@@ -1,0 +1,89 @@
+<html lang="ja">
+<head>
+  <title>{{ page.title }}</title>
+  <meta content="hyiromori's Blog" name="title">
+  <meta content="{{ page.title }}" name="description">
+  <meta content="portfolio,hyiromori,{{ page.keyword }}" name="keywords">
+  <meta name="theme-color" content="#fa7007"/>
+  <meta property="og:title" content="hyiromori's Blog" />
+  <meta property="og:description" content="{{ page.title }}" />
+  <meta property="og:image" content="/assets/images/logo.jpg" />
+  <meta property="og:url" content="https://portfolio.hyiromori.com/" />
+  <meta property="og:site_name" content="hyiromori's Blog" />
+  <meta property="og:locale" content="ja-JP" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@hyiromori" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Blog">
+  <link rel="apple-touch-icon" href="/assets/images/logos/72.png" sizes="72x72">
+  <link rel="apple-touch-icon" href="/assets/images/logos/96.png" sizes="96x96">
+  <link rel="apple-touch-icon" href="/assets/images/logos/128.png" sizes="128x128">
+  <link rel="apple-touch-icon" href="/assets/images/logos/144.png" sizes="144x144">
+  <link rel="apple-touch-icon" href="/assets/images/logos/152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="/assets/images/logos/192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/assets/images/logos/384.png" sizes="384x384">
+  <link rel="apple-touch-icon" href="/assets/images/logos/512.png" sizes="512x512">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8">
+  <base target="_blank">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/assets/css/index.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/blog.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124358962-1"></script>
+  <meta property="og:type" content="article" />
+</head>
+<body>
+  <div id="header">
+    <div id="header-container">
+      <a href="/" id="header-logo" target="_self">
+        <img id="logo-image" alt="Logo image" src="data:image/.png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAIAAABt+uBvAAAEPElEQVR4nOydW3LTMBSGz7GdboJnNsAC2BgzZMa8wEIYNkCbpOkeYBl9hhmgl1To5hM3F8uOLrYlfZNhmiZxoo/zy5KlTirGGGTOU4z9AaZOFmQgCzKQBRnIggxkQQayIANZkIHkBbEX+H3f8XjygtYf4MfXjsfTFnT3CVafAbHjKQkLEnY+QgmAXRJSFXRXw1rZMTwxSUHCzlI0vUfr0xPE7az62oHkBKnaKQe0OyVBQ5JFJCNoYLKINAQNTxaRgKCLkkXELujSZBFRC7JIFhGvILtkEZEKsk4WEaMgF8kiohPkKFlEXILcJYuISJDTZBGxCHKdLCIKQR6SRcxfkJ9kETMX5LN2FHMWpOx4qx3FLAUxfvOcLGJ+gsSOQf/JIirv7+AUUTtbXTudy1nOmFMFKTssoB2YkSBu5+W2fpHJ6lwrdsw8BHE7O2kHZe2wLKgNt/N8W++4nUqvFGPArd1TF8RVPG3q3c2yKEWyUP4q5Nb3SQviIh439TO3U7V6ZWxMBWG6gridh7WwU1bSiCobDNpDw2QF7e2UUBSyXlpqQiqaoiBu59+qfrwWtaPsYBOrkOFSTE4Qt/OX27lZVgtpB/VNENwOTE2QtnO9rCooCyhQ3LScMezApASRncUCRNcj7QiCd8xtpjJZ5Xb+tOyUjRQqnJ6KDoZI9mInIUjb+b5cXEFV6Fjtu+R+4WKtfxUo71o6Gl+QThbZKUTsh3bMjNS0DDEX3dbIfRD1O1fSTkl25KM9O2Zhh+lZiLqpUSVzMSkZs4IOeuUSX8dqSO2g1LH/ZfMzP4hlykYTJEaDcqzMa+fgjD7IDoAWqlQx2M/4nZz7xhFEMwl9Rm+n6aK5KGNtW/qCkRolzK+C1Bx9t1pe0Vi5OWcJLrXDDt6D6U56ZmcxcfVrI64NLhbNPAusrmDoukHdJdOpHVE7sjwNBRWkr5yuxUyikB/8YDR4+ZHZ/giozmL2xSMJJ0hddWfr5vqOUgNWU1BVL6+uw1JPhG4mt4EE0YpN0azYWKoh1BEYHg15XHRAEEbQ3k7VSHE3Nd/PJ46GPE7ewrsgWgvFdu04BY9+cIj/CrqrMexaqFs8C9rWuAmxB8MfPj/41te+wZB4++yh9u/4xk/EeO3MPFmEhxZEkSzCdSNiSRbhNGIRJYtw15S4kkU4ak10ySJcRCzGZBHWbYo0WYRds+JNFmERsaiTRVzauNiTRVzUvgSSRQyPWBrJIga2MplkEUMamlKyiN4RSyxZRD9B25Frx7iLxWZVtvvlPQQFTNbh+vrQFx419GTLaasVg2Y/0fkjdwp6foDbJay/CDse/j6Cddxlp59zDjx1B8+8vC2IPUKxe+o6cte3Ivy6h5/fWhsvHHOuXiz/L07KOj66XqneAb59X7x5d/Zo+WsjuknsnDScLMhAFmQgCzKQBRnIggxkQQayIAP/AwAA//9XjoCl3G/aBAAAAABJRU5ErkJggg==" />
+        <div id="logo-text">
+          <div id="logo-text-upper">hyiromori's</div>
+          <div id="logo-text-lower">Portfolio</div>
+        </div>
+      </a>
+      <nav id="header-navigation">
+        <a href="/blog/" target="_self">BLOG</a>
+      </nav>
+
+    </div>
+  </div>
+  <div id="content-wrapper">
+    <div id="content-header">
+      <img
+        id="content-header-image"
+        alt="Page symbol image"
+        src="/assets/images/header_images/{{ page.header_image }}.jpg"
+        decoding="async"
+      />
+      <div id="content-header-title-wrapper">
+        <div id="content-header-title">
+          hyiromori's Blog
+        </div>
+      </div>
+      <div id="content-header-description">
+        Web系エンジニア hyiromori のブログです
+      </div>
+    </div>
+    <div id="main-content">
+      <h1 id="{{ page.title }}">{{ page.title }}</h1>
+      {{ content }}
+    </div>
+  </div>
+  <div id="footer">
+    <div id="footer-container">
+      <nav id="footer-links">
+        <a class="tooltip" data-tooltip="Mail" href="mailto:hyiromori@gmail.com">
+          <img src="data:image/.png;base64,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" alt="Mail Logo" decoding="async" />
+        </a>
+        <a class="tooltip" data-tooltip="GitHub" href="https://github.com/hyiromori">
+          <img src="data:image/.png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAQAAAAAYLlVAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAJcEhZcwAADdcAAA3XAUIom3gAAAAHdElNRQfiCRUOOS4lQ3iKAAADe0lEQVRo3u3YS2xVRRzH8c+1pbSWvqBFjArRJoIJKVoTxWjxFWKCBDcuDJioiQluWRiICzSGlTG6YIFsNPERTSQs1IUxRjdEXcgjDUGBqFQb2wLyKLSXclvGxT2t11vv65yDStLf2dzznzvz+845M/OfM8xpTnP6j1VX8R/PWaHeSM0tt+hzv/6kgNe7JAhO2GFhlXW67dJvSjCmISnA48LMdcrzMjMlS6zUa7U11urVHEXbbZctqLMmKcDOgsaC4DubvOozQ0XxKwZ87j0XiuKvJAX4sqjBWq+dlQyuq1A+mLADFQdvJYCBax3gTFKAloQAW81LUn2Z0YSDMHgjvn3GV4ntg+CRuADrUrEP3i1nUm4MxCYv0nr18QAeTgmgo9yCXBqg3Z0pAfBoHIDbKk7R6tUVByBxIi1QxzUJkGgFK1KZ9bQ0QDZFgDI5tTTAYSE1gB/jAIw6kRrAD3EAOPRvPIF6LNanC8GEYUNOumRCi5Mp2Y9Zo0NWJrqCnGYLjDtkJKNDi2GXC5AWWqTBpDofuz0FgH12gFFDhl0qKFkkN73NvkWXBZrkZI0YMQa67deW0P6iXsdBixst0SRn3JiLBlzJ97jNTZpKVH8ycTJ+tkTLGYu1lsuT03rJZAL711J4he51NJb5HzakYQ9NtjlSk/lZb7k5ieVab9tu2d9id3vTQZfLGk86bq+nNCbtc7NDgtPum1XS6B57/tG83x1p5tB2nwrGrZtV8oDxEv3fmJ491PtZkPVgUbz0kBys4sCjJr0gCM5bXRB7qOwYWJ8uwHy/R0Nrlyestc0ew5HVlCA4HJ0UTEXRd9IFYHOJnp7xhSB42TeC4Hu/CoL3azWotPPd7fUS8bOgzXlwwW4wlTYAL3ra0VnR3+TAfOfAuGOQTy+1qIpk4AMfWWW5pU4btMVjqDMJGmYApuI9gWoAmHLAgej3pqheHmCe0QggEw+g9q+f/KNvnQHI32ejrXfNG9naAfJ9bJsxzkXR1ppbignQCZqjTdy5GYD8y6zulSYCWApORDXPmcBfs6HnagM0uhUcsRyc8RNYEe2h76r6RDmWmn0dJZ2FBgXBKt2C4JR6+wXBt4lP1sporyDYp8cGQXAQ08e5z+j0oSD45OoBLNDjBrBfcNIqsNIvQrRadupL9cO+hOpstbngi6HVRltqnwFzmtOc/hf6E1exRo+DeZVgAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE4LTA5LTIxVDE0OjU3OjQ2KzAyOjAw5IMq1AAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxOC0wOS0yMVQxNDo1Nzo0NiswMjowMJXekmgAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwaAAAAAElFTkSuQmCC" alt="GitHub Logo" decoding="async" />
+        </a>
+      </nav>
+      <div id="footer-copyright">&copy 2018 hyiromori</div>
+    </div>
+  </div>
+</body>
+</html>
