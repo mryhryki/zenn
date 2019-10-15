@@ -2,7 +2,7 @@
 layout: default
 header_image: home
 title: hyiromori's Portfolio
-description: Web系フルスタックエンジニア hyiromori のポートフォリオサイトです。
+description: Web系エンジニア hyiromori のポートフォリオサイトです。
 ---
 
 ## 自己紹介
