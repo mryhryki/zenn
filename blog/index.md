@@ -14,7 +14,7 @@ description: Web系フルスタックエンジニア hyiromori のブログで�
     </div>
     <div class="entry-date">
       作成：{{ post.date | date: '%Y-%m-%d' }}
-      {% if (post.update)  %}
+      {% if post.update  %}
      （更新：{{ post.update }}）
       {% endif %}
     </div>
