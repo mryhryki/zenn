@@ -8,119 +8,98 @@
   >
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
-  <style type="text/css">
-    body {
-      font-family: 'Noto Sans JP', sans-serif;
-      font-size: 14px;
-      margin: 0 auto;
-      max-width: 600px;
-      padding: 0 20px;
-      width: calc(100% - 40px);
-    }
-
-    h1 {
-      font-size: 28px;
-    }
-
-    h2 {
-      font-size: 24px;
-      border-bottom: 1px solid #cccccc;
-    }
-
-    h3 {
-      font-size: 20px;
-    }
-
-    .icon {
-      width: 48px;
-      height: 48px;
-    }
-  </style>
   <title>hyiromori's portfolio</title>
 </head>
-<body>
+<!-- https://tailwindcss.com/docs/container -->
+<body class="font-serif text-gray-700 subpixel-antialiased">
   <main>
-    <header>
-      <nav>
+    <header
+      class="bg-local bg-center bg-no-repeat bg-cover flex flex-col mb-8 pb-8 px-2"
+      style="height: 80vh; background-image: url('/image/background_1920x720.jpg')"
+    >
+      <nav class="text-gray-100 flex-row-reverse leading-loose text-right">
         <a href="#about">About</a>
         <a href="#skill">Skill</a>
         <a href="#contact">Contact</a>
       </nav>
-      <h1>hyiromori's portfolio</h1>
+      <div class="flex-1"></div>
+      <h1 class="text-3xl text-gray-100 self-center text-center"> hyiromori's portfolio </h1>
+      <div class="flex-1"></div>
     </header>
 
-    <h2 id="about">自己紹介</h2>
-    <article>
-      <p>
-        Webエンジニアをやっています。
-        フロントエンド、アプリ、バックエンド、インフラの各領域での開発と運用経験がありますが、特にフロントエンドが得意です。
-        サービス開発を通じて、誰かに何らかの価値を届けられると、やりがいを感じます。
-      </p>
-      <p>
-        ５歳と１歳の息子のパパです。
-        最近は子育てや教育について興味があります。
-      </p>
-    </article>
+    <div class="container max-w-3xl mx-auto">
+      <h2 id="about" class="mb-4 text-2xl text-center text-gray-900">自己紹介</h2>
+      <article class="xl:container mx-auto mb-8 px-4">
+        <p class="tracking-tight">
+          Webエンジニアをやっています。
+          フロントエンド、アプリ、バックエンド、インフラの各領域での開発と運用経験がありますが、特にフロントエンドが得意です。
+          サービス開発を通じて、誰かに何らかの価値を届けられると、やりがいを感じます。
+        </p>
+        <p class="tracking-tight">
+          ５歳と１歳の息子のパパです。
+          最近は子育てや教育について興味があります。
+        </p>
+      </article>
 
-    <h2 id="skill">スキル</h2>
-    <article>
-      <h3>Language</h3>
-      <ul>
-        <li><i>JS</i>/<i>TS</i>/<i>Node</i></li>
-        <li><i>Ruby</i></li>
-        <li><i>CSS</i></li>
-        <li><i>Java</i></li>
-      </ul>
+      <h2 id="skill" class="mb-4 text-2xl text-center text-gray-900">スキル</h2>
+      <article class="xl:container mx-auto mb-8 px-4">
+        <h3 class="text-xl">Language</h3>
+        <ul>
+          <li><i>JS</i>/<i>TS</i>/<i>Node</i></li>
+          <li><i>Ruby</i></li>
+          <li><i>CSS</i></li>
+          <li><i>Java</i></li>
+        </ul>
 
-      <h3>Frontend/Mobile</h3>
-      <ul>
-        <li><i>React</i></li>
-        <li><i>Redux</i></li>
-        <li><i>Webpack</i></li>
-        <li><i>React Native</i></li>
-      </ul>
+        <h3 class="text-xl">Frontend/Mobile</h3>
+        <ul>
+          <li><i>React</i></li>
+          <li><i>Redux</i></li>
+          <li><i>Webpack</i></li>
+          <li><i>React Native</i></li>
+        </ul>
 
-      <h3>Backend</h3>
-      <ul>
-        <li><i>Rails</i></li>
-        <li><i>CakePHP</i></li>
-        <li><i>express</i></li>
-        <li><i>Serverless</i></li>
-      </ul>
+        <h3 class="text-xl">Backend</h3>
+        <ul>
+          <li><i>Rails</i></li>
+          <li><i>CakePHP</i></li>
+          <li><i>express</i></li>
+          <li><i>Serverless</i></li>
+        </ul>
 
-      <h3>Other</h3>
-      <ul>
-        <li><i>AWS</i></li>
-        <li><i>Terraform</i></li>
-        <li><i>Docker</i></li>
-        <li><i>WebRTC</i></li>
-      </ul>
-    </article>
+        <h3 class="text-xl">Other</h3>
+        <ul>
+          <li><i>AWS</i></li>
+          <li><i>Terraform</i></li>
+          <li><i>Docker</i></li>
+          <li><i>WebRTC</i></li>
+        </ul>
+      </article>
 
-    <h2 id="contact">Contact</h2>
-    <article>
-      <a href="mailto:hyiromori@gmail.com">hyiromori@gmail.com</a>
-    </article>
+      <h2 id="contact" class="mb-4 text-2xl text-center text-gray-900">Contact</h2>
+      <article class="xl:container mx-auto mb-8 px-4">
+        <a href="mailto:hyiromori@gmail.com">hyiromori@gmail.com</a>
 
-    <a href="https://github.com/hyiromori">
-      <img alt="GitHub" src="/image/service/github.png" class="icon">
-    </a>
-    <a href="https://twitter.com/hyiromori">
-      <img alt="Twitter" src="/image/service/twitter.png" class="icon">
-    </a>
-    <a href="https://note.mu/hyirm">
-      <img alt="note" src="/image/service/note.png" class="icon">
-    </a>
-    <a href="https://codepen.io/hyiromori">
-      <img alt="CodePen" src="/image/service/codepen.png" class="icon">
-    </a>
-    <a href="https://qiita.com/hyiromori">
-      <img alt="Qiita" src="/image/service/qiita.png" class="icon">
-    </a>
-    <a href="https://www.wantedly.com/users/18536358">
-      <img alt="Wantedly" src="/image/service/wantedly.png" class="icon">
-    </a>
+        <a href="https://github.com/hyiromori">
+          <img alt="GitHub" src="/image/service/github.png" class="object-contain h-12 w-12">
+        </a>
+        <a href="https://twitter.com/hyiromori">
+          <img alt="Twitter" src="/image/service/twitter.png" class="object-contain h-12 w-12">
+        </a>
+        <a href="https://note.mu/hyirm">
+          <img alt="note" src="/image/service/note.png" class="object-contain h-12 w-12">
+        </a>
+        <a href="https://codepen.io/hyiromori">
+          <img alt="CodePen" src="/image/service/codepen.png" class="object-contain h-12 w-12">
+        </a>
+        <a href="https://qiita.com/hyiromori">
+          <img alt="Qiita" src="/image/service/qiita.png" class="object-contain h-12 w-12">
+        </a>
+        <a href="https://www.wantedly.com/users/18536358">
+          <img alt="Wantedly" src="/image/service/wantedly.png" class="object-contain h-12 w-12">
+        </a>
+      </article>
+    </div>
   </main>
 
   <footer>
