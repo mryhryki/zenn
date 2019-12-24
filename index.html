@@ -7,21 +7,30 @@
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
   >
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://fonts.googleapis.com/css?family=Stardos+Stencil&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP|Stardos+Stencil&display=swap" rel="stylesheet">
   <link href="/css/tailwind.css" rel="stylesheet">
   <title>hyiromori's portfolio</title>
+  <style type="text/css">
+    a {
+      text-decoration: underline;
+      text-decoration-color: #cbd5e0;
+    }
+  </style>
 </head>
 <!-- https://tailwindcss.com/docs/container -->
-<body class="font-serif text-gray-700 subpixel-antialiased">
+<body
+  class="font-serif text-gray-700 subpixel-antialiased"
+  style="font-family: 'Noto Serif JP', Georgia, Cambria, 'Times New Roman', Times, serif;"
+>
   <main>
     <header
       class="bg-local bg-center bg-no-repeat bg-cover flex flex-col mb-4 pb-12 px-2"
       style="font-family: 'Stardos Stencil', cursive; height: 70vh; background-image: url('/image/background_1920x720.jpg')"
     >
       <nav class="text-xl text-gray-100 flex-row-reverse leading-loose text-right mt-4">
-        <a href="#about" class="mx-2 underline">About</a>
-        <a href="#skill" class="mx-2 underline">Skill</a>
-        <a href="#contact" class="mx-2 underline">Contact</a>
+        <a href="#about" class="mx-2">About</a>
+        <a href="#skill" class="mx-2">Skill</a>
+        <a href="#contact" class="mx-2">Contact</a>
       </nav>
       <div class="flex-1"></div>
       <h1 class="text-3xl text-gray-100 self-center text-center">
@@ -30,159 +39,225 @@
       <div class="flex-1"></div>
     </header>
 
-    <div class="container max-w-3xl mx-auto">
-      <h2 id="about" class="py-4 text-2xl text-center text-gray-900">自己紹介</h2>
-      <article class="xl:container mx-auto mb-8 px-4">
-        <p class="tracking-tight">
-          Webエンジニアをやっています。
-          フロントエンド、アプリ、バックエンド、インフラの各領域での開発と運用経験がありますが、特にフロントエンドが得意です。
-          サービス開発を通じて、誰かに何らかの価値を届けられると、やりがいを感じます。
-        </p>
-        <p class="tracking-tight">
-          ５歳と１歳の息子のパパです。
-          最近は子育てや教育について興味があります。
-        </p>
-      </article>
-
-      <h2 id="skill" class="py-4 text-2xl text-center text-gray-900">スキル</h2>
-      <article class="xl:container mx-auto mb-4 px-4">
-        <h3 class="text-xl mb-2">Language</h3>
-        <ul class="flex flex-row mb-4">
-          <li>
-            <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer">
-              <img src="/image/skill/javascript.png" alt="JavaScript" class="object-contain h-16 w-16 rounded">
-            </a>
-          </li>
-          <li>
-            <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer">
-              <img src="/image/skill/typescript.png" alt="TypeScript" class="object-contain h-16 w-16 rounded">
-            </a>
-          </li>
-          <li>
-            <a href="https://nodejs.org/ja/" target="_blank" rel="noopener noreferrer">
-              <img src="/image/skill/nodejs.png" alt="Node" class="object-contain h-16 w-16 rounded">
-            </a>
-          </li>
-          <li>
-            <a href="https://www.ruby-lang.org/ja/" target="_blank" rel="noopener noreferrer">
-              <img src="/image/skill/ruby.png" alt="Ruby" class="object-contain h-16 w-16 rounded">
-            </a>
-          </li>
-          <li>
-            <a href="https://developer.mozilla.org/ja/docs/Glossary/CSS" target="_blank" rel="noopener noreferrer">
-              <img src="/image/skill/css.png" alt="CSS" class="object-contain h-16 w-16 rounded">
-            </a>
-          </li>
-          <li>
-            <a href="https://www.java.com/ja/about/whatis_java.jsp" target="_blank" rel="noopener noreferrer">
-              <img src="/image/skill/java.png" alt="Java" class="object-contain h-16 w-16 rounded">
-            </a>
-          </li>
-        </ul>
-
-        <h3 class="text-xl mb-2">Frontend/Mobile</h3>
-        <ul class="flex flex-row mb-4">
-          <li>
-            <a href="https://reactjs.org/" target="_blank" rel="noopener noreferrer">
-              <img src="/image/skill/react.png" alt="React" class="object-contain h-16 w-16 rounded">
-            </a>
-          </li>
-          <li>
-            <a href="https://redux.js.org/" target="_blank" rel="noopener noreferrer">
-              <img src="/image/skill/redux.png" alt="Redux" class="object-contain h-16 w-16 rounded">
-            </a>
-          </li>
-          <li>
-            <a href="https://webpack.js.org/" target="_blank" rel="noopener noreferrer">
-              <img src="/image/skill/webpack.png" alt="Webpack" class="object-contain h-16 w-16 rounded">
-            </a>
-          </li>
-          <li>
-            <a href="https://facebook.github.io/react-native/" target="_blank" rel="noopener noreferrer">
-              <img src="/image/skill/react_native.png" alt="React Native" class="object-contain h-16 w-16 rounded">
-            </a>
-          </li>
-        </ul>
-
-        <h3 class="text-xl mb-2">Backend</h3>
-        <ul class="flex flex-row mb-4">
-          <li>
-            <a href="https://rubyonrails.org/" target="_blank" rel="noopener noreferrer">
-              <img src="/image/skill/ruby_on_rails.png" alt="Rails" class="object-contain h-16 w-16 rounded">
-            </a>
-          </li>
-          <li>
-            <a href="https://cakephp.org/jp" target="_blank" rel="noopener noreferrer">
-              <img src="/image/skill/cakephp.png" alt="CakePHP" class="object-contain h-16 w-16 rounded">
-            </a>
-          </li>
-          <li>
-            <a href="http://expressjs.com/" target="_blank" rel="noopener noreferrer">
-              <img src="/image/skill/express.png" alt="express" class="object-contain h-16 w-16 rounded">
-            </a>
-          </li>
-          <li>
-            <a href="https://serverless.com/" target="_blank" rel="noopener noreferrer">
-              <img src="/image/skill/serverless.png" alt="Serverless" class="object-contain h-16 w-16 rounded">
-            </a>
-          </li>
-        </ul>
-
-        <h3 class="text-xl mb-2">Other</h3>
-        <ul class="flex flex-row mb-4">
-          <li>
-            <a href="https://aws.amazon.com/jp/" target="_blank" rel="noopener noreferrer">
-              <img src="/image/skill/aws.png" alt="AWS" class="object-contain h-16 w-16 rounded">
-            </a>
-          </li>
-          <li>
-            <a href="https://www.terraform.io/" target="_blank" rel="noopener noreferrer">
-              <img src="/image/skill/terraform.png" alt="Terraform" class="object-contain h-16 w-16 rounded">
-            </a>
-          </li>
-          <li>
-            <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer">
-              <img src="/image/skill/docker.png" alt="Docker" class="object-contain h-16 w-16 rounded">
-            </a>
-          </li>
-          <li>
-            <a href="https://webrtc.org/" target="_blank" rel="noopener noreferrer">
-              <img src="/image/skill/webrtc.png" alt="WebRTC" class="object-contain h-16 w-16 rounded">
-            </a>
-          </li>
-        </ul>
-      </article>
-
-      <h2 id="contact" class="py-4 text-2xl text-center text-gray-900">Contact</h2>
-      <article class="xl:container mx-auto mb-4 px-4">
-        <a href="mailto:hyiromori@gmail.com">hyiromori@gmail.com </a>
-
-        <div class="flex">
-          <a href="https://github.com/hyiromori" target="_blank" rel="noopener noreferrer">
-            <img alt="GitHub" src="/image/service/github.png" class="object-contain h-6 w-6 rounded">
-          </a>
-          <a href="https://twitter.com/hyiromori" target="_blank" rel="noopener noreferrer">
-            <img alt="Twitter" src="/image/service/twitter.png" class="object-contain h-6 w-6 rounded">
-          </a>
-          <a href="https://note.mu/hyirm" target="_blank" rel="noopener noreferrer">
-            <img alt="note" src="/image/service/note.png" class="object-contain h-6 w-6 rounded">
-          </a>
-          <a href="https://codepen.io/hyiromori" target="_blank" rel="noopener noreferrer">
-            <img alt="CodePen" src="/image/service/codepen.png" class="object-contain h-6 w-6 rounded">
-          </a>
-          <a href="https://qiita.com/hyiromori" target="_blank" rel="noopener noreferrer">
-            <img alt="Qiita" src="/image/service/qiita.png" class="object-contain h-6 w-6 rounded">
-          </a>
-          <a href="https://www.wantedly.com/users/18536358" target="_blank" rel="noopener noreferrer">
-            <img alt="Wantedly" src="/image/service/wantedly.png" class="object-contain h-6 w-6 rounded">
-          </a>
+    <div class="container max-w-3xl mx-auto px-4">
+      <h2 id="about" class="py-4 text-2xl text-center text-gray-900">About</h2>
+      <article class="xl:container mx-auto mb-8 px-4 flex justify-center flex-col md:flex-row">
+        <div class="container md:flex-1 my-8 max-w-xs">
+          <div class="rounded-full border" style="padding: 20%;">
+            <img
+              src="/image/icon/embed.png"
+              alt="engineering-skill"
+              class="object-contain"
+            >
+          </div>
+          <h3 class="my-4 text-xl text-center text-gray-900">Webエンジニア</h3>
+          <p class="tracking-tight">
+            サービス志向。
+            Webサービスを構築するためのスキルは一通りあります。
+            詳細は<a href="#skill">Skill</a>項を参照。
+          </p>
+        </div>
+        <div class="container md:flex-1 px-4 my-8 max-w-xs">
+          <div class="rounded-full border" style="padding: 19%;">
+            <img
+              src="/image/icon/family.png"
+              alt="family"
+              class="object-contain"
+            >
+          </div>
+          <h3 class="my-4 text-xl text-center text-gray-900">２児のパパ</h3>
+          <p class="tracking-tight">
+            ５歳と１歳の息子がいます。
+            一緒にお風呂に入るために、早めの出退勤をしています。
+            育児や教育、そのための貯蓄や投資に興味があります。
+          </p>
+        </div>
+        <div class="container md:flex-1 px-4 my-8 max-w-xs">
+          <div class="rounded-full border" style="padding: 19%;">
+            <img
+              src="/image/icon/sakamichi.png"
+              alt="sakamichi"
+              class="object-contain"
+            >
+          </div>
+          <h3 class="my-4 text-xl text-center text-gray-900">
+            <a href="https://ja.wikipedia.org/wiki/%E5%9D%82%E9%81%93%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA">坂道シリーズ</a>のファン
+          </h3>
+          <p class="tracking-tight">
+            握手会やライブは緊張で楽しめなさそうなので行ってません。
+            月曜深夜を楽しみに生きています。
+            推しは今でも<a href="https://nishinonanase.com/" target="_blank" rel="noopener noreferrer">西野七瀬</a>さんです。
+          </p>
         </div>
       </article>
     </div>
+
+    <div class="container max-w-3xl mx-auto px-4">
+      <h2 id="skill" class="py-4 text-2xl text-center text-gray-900">Skill</h2>
+      <article>
+        <div class="flex flex-col md:flex-row">
+          <div class="flex-1 border rounded-lg m-2 p-4">
+            <h3 class="text-xl mb-2 text-center">Language</h3>
+            <ul class="flex flex-row flex-wrap justify-center">
+              <li>
+                <a
+                  href="https://developer.mozilla.org/ja/docs/Web/JavaScript"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img src="/image/skill/javascript.png" alt="JavaScript" class="object-contain h-16 w-16 rounded">
+                </a>
+              </li>
+              <li>
+                <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer">
+                  <img src="/image/skill/typescript.png" alt="TypeScript" class="object-contain h-16 w-16 rounded m-1">
+                </a>
+              </li>
+              <li>
+                <a href="https://nodejs.org/ja/" target="_blank" rel="noopener noreferrer">
+                  <img src="/image/skill/nodejs.png" alt="Node" class="object-contain h-16 w-16 rounded m-1">
+                </a>
+              </li>
+              <li>
+                <a href="https://www.ruby-lang.org/ja/" target="_blank" rel="noopener noreferrer">
+                  <img src="/image/skill/ruby.png" alt="Ruby" class="object-contain h-16 w-16 rounded m-1">
+                </a>
+              </li>
+              <li>
+                <a href="https://developer.mozilla.org/ja/docs/Glossary/CSS" target="_blank" rel="noopener noreferrer">
+                  <img src="/image/skill/css.png" alt="CSS" class="object-contain h-16 w-16 rounded m-1">
+                </a>
+              </li>
+              <li>
+                <a href="https://www.java.com/ja/about/whatis_java.jsp" target="_blank" rel="noopener noreferrer">
+                  <img src="/image/skill/java.png" alt="Java" class="object-contain h-16 w-16 rounded m-1">
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="flex-1 border rounded-lg m-2 p-4">
+            <h3 class="text-xl mb-2 text-center">Front/Mobile</h3>
+            <ul class="flex flex-row flex-wrap justify-center">
+              <li>
+                <a href="https://reactjs.org/" target="_blank" rel="noopener noreferrer">
+                  <img src="/image/skill/react.png" alt="React" class="object-contain h-16 w-16 rounded m-1">
+                </a>
+              </li>
+              <li>
+                <a href="https://redux.js.org/" target="_blank" rel="noopener noreferrer">
+                  <img src="/image/skill/redux.png" alt="Redux" class="object-contain h-16 w-16 rounded m-1">
+                </a>
+              </li>
+              <li>
+                <a href="https://webpack.js.org/" target="_blank" rel="noopener noreferrer">
+                  <img src="/image/skill/webpack.png" alt="Webpack" class="object-contain h-16 w-16 rounded m-1">
+                </a>
+              </li>
+              <li>
+                <a href="https://facebook.github.io/react-native/" target="_blank" rel="noopener noreferrer">
+                  <img
+                    src="/image/skill/react_native.png"
+                    alt="React Native"
+                    class="object-contain h-16 w-16 rounded m-1"
+                  >
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row">
+          <div class="flex-1 border rounded-lg m-2 p-4">
+            <h3 class="text-xl mb-2 text-center">Backend</h3>
+            <ul class="flex flex-row flex-wrap justify-center">
+              <li>
+                <a href="https://rubyonrails.org/" target="_blank" rel="noopener noreferrer">
+                  <img src="/image/skill/ruby_on_rails.png" alt="Rails" class="object-contain h-16 w-16 rounded m-1">
+                </a>
+              </li>
+              <li>
+                <a href="https://cakephp.org/jp" target="_blank" rel="noopener noreferrer">
+                  <img src="/image/skill/cakephp.png" alt="CakePHP" class="object-contain h-16 w-16 rounded m-1">
+                </a>
+              </li>
+              <li>
+                <a href="http://expressjs.com/" target="_blank" rel="noopener noreferrer">
+                  <img src="/image/skill/express.png" alt="express" class="object-contain h-16 w-16 rounded m-1">
+                </a>
+              </li>
+              <li>
+                <a href="https://serverless.com/" target="_blank" rel="noopener noreferrer">
+                  <img src="/image/skill/serverless.png" alt="Serverless" class="object-contain h-16 w-16 rounded m-1">
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="flex-1 border rounded-lg m-2 p-4">
+            <h3 class="text-xl mb-2 text-center">Other</h3>
+            <ul class="flex flex-row flex-wrap justify-center">
+              <li>
+                <a href="https://aws.amazon.com/jp/" target="_blank" rel="noopener noreferrer">
+                  <img src="/image/skill/aws.png" alt="AWS" class="object-contain h-16 w-16 rounded m-1">
+                </a>
+              </li>
+              <li>
+                <a href="https://www.terraform.io/" target="_blank" rel="noopener noreferrer">
+                  <img src="/image/skill/terraform.png" alt="Terraform" class="object-contain h-16 w-16 rounded m-1">
+                </a>
+              </li>
+              <li>
+                <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer">
+                  <img src="/image/skill/docker.png" alt="Docker" class="object-contain h-16 w-16 rounded m-1">
+                </a>
+              </li>
+              <li>
+                <a href="https://webrtc.org/" target="_blank" rel="noopener noreferrer">
+                  <img src="/image/skill/webrtc.png" alt="WebRTC" class="object-contain h-16 w-16 rounded m-1">
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <h2 id="contact" class="py-4 text-2xl text-center text-gray-900">Contact</h2>
+    <article>
+      <div class="xl:container mx-auto mb-4 px-4">
+        <p class="text-center mb-4">
+          <a href="mailto:hyiromori@gmail.com">hyiromori@gmail.com</a> までご連絡ください。
+        </p>
+
+        <div class="flex flex-row justify-center align-middle mb-4">
+          <a href="https://github.com/hyiromori" target="_blank" rel="noopener noreferrer">
+            <img alt="GitHub" src="/image/service/github.png" class="object-contain h-6 w-6 rounded m-1">
+          </a>
+          <a href="https://qiita.com/hyiromori" target="_blank" rel="noopener noreferrer">
+            <img alt="Qiita" src="/image/service/qiita.png" class="object-contain h-6 w-6 rounded m-1">
+          </a>
+          <a href="https://note.mu/hyirm" target="_blank" rel="noopener noreferrer">
+            <img alt="note" src="/image/service/note.png" class="object-contain h-6 w-6 rounded m-1">
+          </a>
+          <a href="https://twitter.com/hyiromori" target="_blank" rel="noopener noreferrer">
+            <img alt="Twitter" src="/image/service/twitter.png" class="object-contain h-6 w-6 rounded m-1">
+          </a>
+          <a href="https://codepen.io/hyiromori" target="_blank" rel="noopener noreferrer">
+            <img alt="CodePen" src="/image/service/codepen.png" class="object-contain h-6 w-6 rounded m-1">
+          </a>
+          <a href="https://www.wantedly.com/users/18536358" target="_blank" rel="noopener noreferrer">
+            <img alt="Wantedly" src="/image/service/wantedly.png" class="object-contain h-6 w-6 rounded m-1">
+          </a>
+        </div>
+      </div>
+    </article>
   </main>
 
   <footer class="text-right px-4 py-2 text-gray-400 text-sm bg-gray-800">
-    &copy 2018-2019 hyiromori
+    &copy 2018-
+    <script type="text/javascript">document.write((new Date()).getFullYear().toString(10));</script>
+    hyiromori
   </footer>
 </body>
 </html>
