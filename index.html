@@ -29,349 +29,368 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Stardos+Stencil&display=swap" rel="stylesheet">
-  <link href="/css/tailwind.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
   <title>hyiromori's portfolio</title>
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124358962-1"></script>
   <style type="text/css">
+    body {
+      box-sizing: border-box;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-size: inherit;
+      font-weight: inherit;
+    }
+
+    ol, ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    img, svg, video, canvas, audio, iframe, embed, object {
+      display: block;
+      vertical-align: middle;
+    }
+
+    *, *::before, *::after {
+      border-color: #e2e8f0;
+      border-style: solid;
+      border-width: 0;
+    }
+
+    body {
+      color: #4a5568;
+      font-family: 'Noto Serif JP', Georgia, Cambria, 'Times New Roman', Times, serif;
+    }
+
+    header {
+      background: url('/image/background_1920x720.jpg') no-repeat local center;
+      background-size: cover;
+      color: #f7fafc;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Stardos Stencil', cursive;
+      height: 70vh;
+      margin-bottom: 1rem;
+      padding: 0 3rem 2.5rem 3rem;
+    }
+
+    header a {
+      color: #f7fafc;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: right;
+      padding: 0.5rem 1rem;
+      color: #cbd5e0;
+      font-size: .875rem;
+      background-color: #2d3748;
+    }
+
+    nav {
+      font-size: 1.25rem;
+      color: #f7fafc;
+      line-height: 2;
+      text-align: right;
+      margin-top: 1rem;
+    }
+
+    nav > a {
+      margin: 0 0.5rem;
+    }
+
     a {
       text-decoration: underline;
       text-decoration-color: #cbd5e0;
     }
+
+    h1 {
+      font-size: 1.875rem;
+      text-align: center;
+    }
+
+    h2 {
+      color: #1a202c;
+      font-size: 1.5rem;
+      padding: 1rem 0;
+      text-align: center;
+    }
+
+    h3 {
+      color: #1a202c;
+      font-size: 1.25rem;
+      margin: 1rem 0;
+      text-align: center;
+    }
+
+    section {
+      margin: 0 auto;
+      max-width: 48rem;
+      padding: 0 1rem;
+    }
+
+    .about-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .about-container {
+      flex: 1 1 0%;
+      text-align: center;
+      max-width: 20rem;
+      margin-bottom: 2rem;
+    }
+
+    .about-container > img {
+      object-fit: contain;
+      display: inline-block;
+    }
+
+    .about-container > p {
+      padding: 0 1rem;
+    }
+
+    .skill-wrapper img {
+      border-radius: .25rem;
+      height: 4rem;
+      margin: 0.25rem;
+      object-fit: contain;
+      width: 4rem;
+    }
+
+    .skill-layout {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .skill-container {
+      border-radius: .5rem;
+      border-width: 1px;
+      flex: 1 1 0%;
+      margin: 0.5rem;
+      padding: 1rem;
+    }
+
+    .skill-links-layout {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .social-links {
+      display: flex;
+      flex: 1 1 0%;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .social-links img {
+      border-radius: .25rem;
+      height: 1.5rem;
+      margin: 0.25rem;
+      object-fit: contain;
+      width: 1.5rem;
+    }
+
+    @media (min-width: 800px) {
+      .about-wrapper {
+        flex-direction: row;
+      }
+
+      .skill-layout {
+        flex-direction: row;
+      }
+    }
   </style>
 </head>
-<!-- https://tailwindcss.com/docs/container -->
-<body
-  class="font-serif text-gray-700 subpixel-antialiased"
-  style="font-family: Georgia, Cambria, 'Times New Roman', Times, serif;"
->
+<body>
   <main>
-    <header
-      class="bg-local bg-center bg-no-repeat bg-cover flex flex-col mb-4 pb-12 px-2"
-      style="font-family: 'Stardos Stencil', cursive; height: 70vh; background-image: url('/image/background_1920x720.jpg')"
-    >
-      <nav class="text-xl text-gray-100 flex-row-reverse leading-loose text-right mt-4">
-        <a href="#about" class="mx-2">About</a>
-        <a href="#skill" class="mx-2">Skill</a>
-        <a href="#contact" class="mx-2">Contact</a>
+    <header>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skill">Skill</a>
+        <a href="#contact">Contact</a>
       </nav>
-      <div class="flex-1"></div>
-      <h1 class="text-3xl text-gray-100 self-center text-center">
-        hyiromori's portfolio
-      </h1>
-      <div class="flex-1"></div>
+      <div style="flex:1;"></div>
+      <h1>hyiromori's portfolio</h1>
+      <div style="flex:1;"></div>
     </header>
 
-    <div class="container max-w-3xl mx-auto px-4">
-      <h2 id="about" class="py-4 text-2xl text-center text-gray-900">About</h2>
-      <article class="mb-8 px-4 flex flex-col md:flex-row">
-        <div class="container flex flex-1 justify-center p-4">
-          <div class="max-w-xs">
-            <div class="rounded-full border" style="padding: 20%;">
-              <img
-                src="/image/icon/embed.png"
-                alt="engineering-skill"
-                class="object-contain"
-                decoding="async"
-              />
+    <section>
+      <h2 id="about">About</h2>
+      <article class="about-wrapper">
+        <div class="about-container">
+          <img src="/image/icon/embed.png" alt="エンジニアリングスキル" decoding="async" />
+          <h3>Webエンジニア</h3>
+          <p>
+            サービス志向。
+            Webサービスを構築するためのスキルは一通りあります。
+            詳細は<a href="#skill">Skill</a>項を参照。
+          </p>
+        </div>
+        <div class="about-container">
+          <img src="/image/icon/family.png" alt="家族" decoding="async" />
+          <h3>２児のパパ</h3>
+          <p>
+            ５歳と１歳の息子がいます。
+            一緒にお風呂に入るために、早めの出退勤をしています。
+            育児や教育、そのための貯蓄や投資に興味があります。
+          </p>
+        </div>
+        <div class="about-container">
+          <img src="/image/icon/sakamichi.png" alt="坂道シリーズ" decoding="async" />
+          <h3>
+            <a
+              href="https://ja.wikipedia.org/wiki/%E5%9D%82%E9%81%93%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA"
+              target="_blank"
+              rel="noopener noreferrer"
+            >坂道シリーズ</a>のファン
+          </h3>
+          <p>
+            握手会やライブは緊張で楽しめなさそうなので行ったことがありません。
+            月曜深夜を楽しみに生きています。
+            推しは今でも<a href="https://nishinonanase.com/" target="_blank" rel="noopener noreferrer">西野七瀬</a>さんです。
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <section>
+      <h2 id="skill">Skill</h2>
+      <article class="skill-wrapper">
+        <div class="skill-layout">
+          <div class="skill-container">
+            <h3>Language</h3>
+            <div class="skill-links-layout">
+              <a
+                href="https://developer.mozilla.org/ja/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer"
+              >
+                <img src="/image/skill/javascript.png" alt="JavaScript" decoding="async" />
+              </a>
+              <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer">
+                <img src="/image/skill/typescript.png" alt="TypeScript" decoding="async" />
+              </a>
+              <a href="https://nodejs.org/ja/" target="_blank" rel="noopener noreferrer">
+                <img src="/image/skill/nodejs.png" alt="Node" decoding="async" />
+              </a>
+              <a href="https://www.ruby-lang.org/ja/" target="_blank" rel="noopener noreferrer">
+                <img src="/image/skill/ruby.png" alt="Ruby" decoding="async" />
+              </a>
+              <a href="https://developer.mozilla.org/ja/docs/Glossary/CSS" target="_blank" rel="noopener noreferrer">
+                <img src="/image/skill/css.png" alt="CSS" decoding="async" />
+              </a>
+              <a href="https://www.java.com/ja/about/whatis_java.jsp" target="_blank" rel="noopener noreferrer">
+                <img src="/image/skill/java.png" alt="Java" decoding="async" />
+              </a>
             </div>
-            <h3 class="my-4 text-xl text-center text-gray-900">Webエンジニア</h3>
-            <p class="tracking-tight">
-              サービス志向で最新を追うよりも何を作るかを重視しています。
-              Webサービスを構築するためのスキルは一通りあります。
-              詳細は<a href="#skill">Skill</a>項を参照。
-            </p>
+          </div>
+
+          <div class="skill-container">
+            <h3>Frontend / Mobile</h3>
+            <div class="skill-links-layout">
+              <a href="https://reactjs.org/" target="_blank" rel="noopener noreferrer">
+                <img src="/image/skill/react.png" alt="React" decoding="async" />
+              </a>
+              <a href="https://redux.js.org/" target="_blank" rel="noopener noreferrer">
+                <img src="/image/skill/redux.png" alt="Redux" decoding="async" />
+              </a>
+              <a href="https://webpack.js.org/" target="_blank" rel="noopener noreferrer">
+                <img src="/image/skill/webpack.png" alt="Webpack" decoding="async" />
+              </a>
+              <a href="https://facebook.github.io/react-native/" target="_blank" rel="noopener noreferrer">
+                <img src="/image/skill/react_native.png" alt="React Native" decoding="async" />
+              </a>
+            </div>
           </div>
         </div>
-        <div class="container flex flex-1 justify-center p-4">
-          <div class="max-w-xs">
-            <div class="rounded-full border" style="padding: 19%;">
-              <img
-                src="/image/icon/family.png"
-                alt="family"
-                class="object-contain"
-                decoding="async"
-              />
+
+        <div class="skill-layout">
+          <div class="skill-container">
+            <h3>Backend</h3>
+            <div class="skill-links-layout">
+              <a href="https://rubyonrails.org/" target="_blank" rel="noopener noreferrer">
+                <img src="/image/skill/ruby_on_rails.png" alt="Rails" decoding="async" />
+              </a>
+              <a href="https://cakephp.org/jp" target="_blank" rel="noopener noreferrer">
+                <img src="/image/skill/cakephp.png" alt="CakePHP" decoding="async" />
+              </a>
+              <a href="http://expressjs.com/" target="_blank" rel="noopener noreferrer">
+                <img src="/image/skill/express.png" alt="express" decoding="async" />
+              </a>
+              <a href="https://serverless.com/" target="_blank" rel="noopener noreferrer">
+                <img src="/image/skill/serverless.png" alt="Serverless" decoding="async" />
+              </a>
             </div>
-            <h3 class="my-4 text-xl text-center text-gray-900">２児のパパ</h3>
-            <p class="tracking-tight">
-              ５歳と１歳の息子がいます。
-              一緒にお風呂に入るために、早めの出退勤をしています。
-              育児や教育、そのための貯蓄や投資に興味があります。
-            </p>
           </div>
-        </div>
-        <div class="container flex flex-1 justify-center p-4">
-          <div class="max-w-xs">
-            <div class="rounded-full border" style="padding: 19%;">
-              <img
-                src="/image/icon/sakamichi.png"
-                alt="sakamichi"
-                class="object-contain"
-                decoding="async"
-              />
+
+          <div class="skill-container">
+            <h3>Other</h3>
+            <div class="skill-links-layout">
+              <a href="https://aws.amazon.com/jp/" target="_blank" rel="noopener noreferrer">
+                <img src="/image/skill/aws.png" alt="AWS" decoding="async" />
+              </a>
+              <a href="https://www.terraform.io/" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="/image/skill/terraform.png"
+                  alt="Terraform"
+                  class="object-contain h-16 w-16 rounded m-1"
+                  decoding="async"
+                />
+              </a>
+              <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer">
+                <img src="/image/skill/docker.png" alt="Docker" decoding="async" />
+              </a>
+              <a href="https://webrtc.org/" target="_blank" rel="noopener noreferrer">
+                <img src="/image/skill/webrtc.png" alt="WebRTC" decoding="async" />
+              </a>
             </div>
-            <h3 class="my-4 text-xl text-center text-gray-900">
-              <a href="https://ja.wikipedia.org/wiki/%E5%9D%82%E9%81%93%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA">坂道シリーズ</a>のファン
-            </h3>
-            <p class="tracking-tight">
-              握手会やライブは緊張で楽しめなさそうなので行ったことがありません。
-              月曜深夜を楽しみに生きています。
-              推しは今でも<a href="https://nishinonanase.com/" target="_blank" rel="noopener noreferrer">西野七瀬</a>さんです。
-            </p>
           </div>
         </div>
       </article>
-    </div>
+    </section>
 
-    <div class="container max-w-3xl mx-auto px-4">
-      <h2 id="skill" class="py-4 text-2xl text-center text-gray-900">Skill</h2>
-      <article>
-        <div class="flex flex-col md:flex-row">
-          <div class="flex-1 border rounded-lg m-2 p-4">
-            <h3 class="text-xl mb-2 text-center">Language</h3>
-            <ul class="flex flex-row flex-wrap justify-center">
-              <li>
-                <a
-                  href="https://developer.mozilla.org/ja/docs/Web/JavaScript"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="/image/skill/javascript.png"
-                    alt="JavaScript"
-                    class="object-contain h-16 w-16 rounded"
-                    decoding="async"
-                  />
-                </a>
-              </li>
-              <li>
-                <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer">
-                  <img
-                    src="/image/skill/typescript.png"
-                    alt="TypeScript"
-                    class="object-contain h-16 w-16 rounded m-1"
-                    decoding="async"
-                  />
-                </a>
-              </li>
-              <li>
-                <a href="https://nodejs.org/ja/" target="_blank" rel="noopener noreferrer">
-                  <img
-                    src="/image/skill/nodejs.png"
-                    alt="Node"
-                    class="object-contain h-16 w-16 rounded m-1"
-                    decoding="async"
-                  />
-                </a>
-              </li>
-              <li>
-                <a href="https://www.ruby-lang.org/ja/" target="_blank" rel="noopener noreferrer">
-                  <img
-                    src="/image/skill/ruby.png"
-                    alt="Ruby"
-                    class="object-contain h-16 w-16 rounded m-1"
-                    decoding="async"
-                  />
-                </a>
-              </li>
-              <li>
-                <a href="https://developer.mozilla.org/ja/docs/Glossary/CSS" target="_blank" rel="noopener noreferrer">
-                  <img
-                    src="/image/skill/css.png"
-                    alt="CSS"
-                    class="object-contain h-16 w-16 rounded m-1"
-                    decoding="async"
-                  />
-                </a>
-              </li>
-              <li>
-                <a href="https://www.java.com/ja/about/whatis_java.jsp" target="_blank" rel="noopener noreferrer">
-                  <img
-                    src="/image/skill/java.png"
-                    alt="Java"
-                    class="object-contain h-16 w-16 rounded m-1"
-                    decoding="async"
-                  />
-                </a>
-              </li>
-            </ul>
-          </div>
+    <h2 id="contact">Contact</h2>
+    <section>
+      <article class="contact-wrapper">
+        <div class="mx-auto mb-4 px-4">
+          <p style="text-align: center;margin-bottom:1rem;">
+            <a href="mailto:hyiromori@gmail.com">hyiromori@gmail.com</a> までご連絡ください。
+          </p>
 
-          <div class="flex-1 border rounded-lg m-2 p-4">
-            <h3 class="text-xl mb-2 text-center">Front/Mobile</h3>
-            <ul class="flex flex-row flex-wrap justify-center">
-              <li>
-                <a href="https://reactjs.org/" target="_blank" rel="noopener noreferrer">
-                  <img
-                    src="/image/skill/react.png"
-                    alt="React"
-                    class="object-contain h-16 w-16 rounded m-1"
-                    decoding="async"
-                  />
-                </a>
-              </li>
-              <li>
-                <a href="https://redux.js.org/" target="_blank" rel="noopener noreferrer">
-                  <img
-                    src="/image/skill/redux.png"
-                    alt="Redux"
-                    class="object-contain h-16 w-16 rounded m-1"
-                    decoding="async"
-                  />
-                </a>
-              </li>
-              <li>
-                <a href="https://webpack.js.org/" target="_blank" rel="noopener noreferrer">
-                  <img
-                    src="/image/skill/webpack.png"
-                    alt="Webpack"
-                    class="object-contain h-16 w-16 rounded m-1"
-                    decoding="async"
-                  />
-                </a>
-              </li>
-              <li>
-                <a href="https://facebook.github.io/react-native/" target="_blank" rel="noopener noreferrer">
-                  <img
-                    src="/image/skill/react_native.png"
-                    alt="React Native"
-                    class="object-contain h-16 w-16 rounded m-1"
-                    decoding="async"
-                  />
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="flex flex-col md:flex-row">
-          <div class="flex-1 border rounded-lg m-2 p-4">
-            <h3 class="text-xl mb-2 text-center">Backend</h3>
-            <ul class="flex flex-row flex-wrap justify-center">
-              <li>
-                <a href="https://rubyonrails.org/" target="_blank" rel="noopener noreferrer">
-                  <img
-                    src="/image/skill/ruby_on_rails.png"
-                    alt="Rails"
-                    class="object-contain h-16 w-16 rounded m-1"
-                    decoding="async"
-                  />
-                </a>
-              </li>
-              <li>
-                <a href="https://cakephp.org/jp" target="_blank" rel="noopener noreferrer">
-                  <img
-                    src="/image/skill/cakephp.png"
-                    alt="CakePHP"
-                    class="object-contain h-16 w-16 rounded m-1"
-                    decoding="async"
-                  />
-                </a>
-              </li>
-              <li>
-                <a href="http://expressjs.com/" target="_blank" rel="noopener noreferrer">
-                  <img
-                    src="/image/skill/express.png"
-                    alt="express"
-                    class="object-contain h-16 w-16 rounded m-1"
-                    decoding="async"
-                  />
-                </a>
-              </li>
-              <li>
-                <a href="https://serverless.com/" target="_blank" rel="noopener noreferrer">
-                  <img
-                    src="/image/skill/serverless.png"
-                    alt="Serverless"
-                    class="object-contain h-16 w-16 rounded m-1"
-                    decoding="async"
-                  />
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="flex-1 border rounded-lg m-2 p-4">
-            <h3 class="text-xl mb-2 text-center">Other</h3>
-            <ul class="flex flex-row flex-wrap justify-center">
-              <li>
-                <a href="https://aws.amazon.com/jp/" target="_blank" rel="noopener noreferrer">
-                  <img
-                    src="/image/skill/aws.png"
-                    alt="AWS"
-                    class="object-contain h-16 w-16 rounded m-1"
-                    decoding="async"
-                  />
-                </a>
-              </li>
-              <li>
-                <a href="https://www.terraform.io/" target="_blank" rel="noopener noreferrer">
-                  <img
-                    src="/image/skill/terraform.png"
-                    alt="Terraform"
-                    class="object-contain h-16 w-16 rounded m-1"
-                    decoding="async"
-                  />
-                </a>
-              </li>
-              <li>
-                <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer">
-                  <img
-                    src="/image/skill/docker.png"
-                    alt="Docker"
-                    class="object-contain h-16 w-16 rounded m-1"
-                    decoding="async"
-                  />
-                </a>
-              </li>
-              <li>
-                <a href="https://webrtc.org/" target="_blank" rel="noopener noreferrer">
-                  <img
-                    src="/image/skill/webrtc.png"
-                    alt="WebRTC"
-                    class="object-contain h-16 w-16 rounded m-1"
-                    decoding="async"
-                  />
-                </a>
-              </li>
-            </ul>
+          <div class="social-links">
+            <a href="https://github.com/hyiromori" target="_blank" rel="noopener noreferrer">
+              <img alt="GitHub" src="/image/service/github.png" decoding="async" />
+            </a>
+            <a href="https://qiita.com/hyiromori" target="_blank" rel="noopener noreferrer">
+              <img alt="Qiita" src="/image/service/qiita.png" decoding="async" />
+            </a>
+            <a href="https://note.mu/hyirm" target="_blank" rel="noopener noreferrer">
+              <img alt="note" src="/image/service/note.png" decoding="async" />
+            </a>
+            <a href="https://twitter.com/hyiromori" target="_blank" rel="noopener noreferrer">
+              <img alt="Twitter" src="/image/service/twitter.png" decoding="async" />
+            </a>
+            <a href="https://codepen.io/hyiromori" target="_blank" rel="noopener noreferrer">
+              <img alt="CodePen" src="/image/service/codepen.png" decoding="async" />
+            </a>
+            <a href="https://www.wantedly.com/users/18536358" target="_blank" rel="noopener noreferrer">
+              <img alt="Wantedly" src="/image/service/wantedly.png" decoding="async" />
+            </a>
           </div>
         </div>
       </article>
-    </div>
-
-    <h2 id="contact" class="py-4 text-2xl text-center text-gray-900">Contact</h2>
-    <article>
-      <div class="xl:container mx-auto mb-4 px-4">
-        <p class="text-center mb-4">
-          <a href="mailto:hyiromori@gmail.com">hyiromori@gmail.com</a> までご連絡ください。
-        </p>
-
-        <div class="flex flex-row justify-center align-middle mb-4">
-          <a href="https://github.com/hyiromori" target="_blank" rel="noopener noreferrer">
-            <img alt="GitHub" src="/image/service/github.png" class="object-contain h-6 w-6 rounded m-1" decoding="async">
-          </a>
-          <a href="https://qiita.com/hyiromori" target="_blank" rel="noopener noreferrer">
-            <img alt="Qiita" src="/image/service/qiita.png" class="object-contain h-6 w-6 rounded m-1" decoding="async">
-          </a>
-          <a href="https://note.mu/hyirm" target="_blank" rel="noopener noreferrer">
-            <img alt="note" src="/image/service/note.png" class="object-contain h-6 w-6 rounded m-1" decoding="async">
-          </a>
-          <a href="https://twitter.com/hyiromori" target="_blank" rel="noopener noreferrer">
-            <img alt="Twitter" src="/image/service/twitter.png" class="object-contain h-6 w-6 rounded m-1" decoding="async">
-          </a>
-          <a href="https://codepen.io/hyiromori" target="_blank" rel="noopener noreferrer">
-            <img alt="CodePen" src="/image/service/codepen.png" class="object-contain h-6 w-6 rounded m-1" decoding="async">
-          </a>
-          <a href="https://www.wantedly.com/users/18536358" target="_blank" rel="noopener noreferrer">
-            <img alt="Wantedly" src="/image/service/wantedly.png" class="object-contain h-6 w-6 rounded m-1" decoding="async">
-          </a>
-        </div>
-      </div>
-    </article>
+    </section>
   </main>
 
-  <footer class="text-right px-4 py-2 text-gray-400 text-sm bg-gray-800">
+  <footer class="">
     &copy 2018-
     <script type="text/javascript">document.write((new Date()).getFullYear().toString(10));</script>
     hyiromori
