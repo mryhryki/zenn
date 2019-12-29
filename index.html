@@ -28,32 +28,29 @@
   <link href="https://fonts.googleapis.com/css?family=Stardos+Stencil&display=swap" rel="stylesheet">
   <title>hyiromori's portfolio</title>
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124358962-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-124358962-1');
+  </script>
   <style type="text/css">
     body {
       box-sizing: border-box;
       margin: 0;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      font-size: inherit;
-      font-weight: inherit;
-    }
-
-    ol, ul {
-      list-style: none;
-      margin: 0;
       padding: 0;
     }
 
-    img, svg, video, canvas, audio, iframe, embed, object {
-      display: block;
-      vertical-align: middle;
+    h1, h2, h3 {
+      font-family: 'Stardos Stencil', 'Noto Serif JP', Georgia, Cambria, 'Times New Roman', Times, serif;
+      font-size: inherit;
+      font-weight: inherit;
+      margin: 0;
+      text-align: center;
     }
 
     *, *::before, *::after {
-      border-color: #e2e8f0;
-      border-style: solid;
-      border-width: 0;
+      border: 0 solid #e2e8f0;
     }
 
     body {
@@ -67,10 +64,10 @@
       color: #f7fafc;
       display: flex;
       flex-direction: column;
-      font-family: 'Stardos Stencil', cursive;
+      font-family: 'Stardos Stencil', 'Noto Serif JP', Georgia, Cambria, 'Times New Roman', Times, serif;
       height: 70vh;
       margin-bottom: 1rem;
-      padding: 0 3rem 2.5rem 3rem;
+      padding: 0 1.5rem 2.5rem 1.5rem;
     }
 
     header a {
@@ -79,11 +76,11 @@
     }
 
     footer {
-      text-align: right;
-      padding: 0.5rem 1rem;
+      background-color: #2d3748;
       color: #cbd5e0;
       font-size: .875rem;
-      background-color: #2d3748;
+      padding: 0.5rem 1rem;
+      text-align: right;
     }
 
     nav {
@@ -105,21 +102,18 @@
 
     h1 {
       font-size: 1.875rem;
-      text-align: center;
     }
 
     h2 {
       color: #1a202c;
       font-size: 1.5rem;
       padding: 1rem 0;
-      text-align: center;
     }
 
     h3 {
       color: #1a202c;
       font-size: 1.25rem;
-      margin: 1rem 0;
-      text-align: center;
+      padding: 0.5rem 0;
     }
 
     section {
@@ -226,16 +220,16 @@
       <article class="about-wrapper">
         <div class="about-container">
           <img src="/image/icon/embed.png" alt="エンジニアリングスキル" decoding="async" />
-          <h3>Webエンジニア</h3>
+          <h3>Web Developer</h3>
           <p>
-            サービス志向。
-            Webサービスを構築するためのスキルは一通りあります。
-            詳細は<a href="#skill">Skill</a>項を参照。
+            サービス志向です。
+            技術を使って課題をどう解決していくかを考えるのが好きです。
+            詳細は<a href="#skill">Skill</a>項を参照してください。
           </p>
         </div>
         <div class="about-container">
           <img src="/image/icon/family.png" alt="家族" decoding="async" />
-          <h3>２児のパパ</h3>
+          <h3>Father</h3>
           <p>
             ５歳と１歳の息子がいます。
             一緒にお風呂に入るために、早めの出退勤をしています。
