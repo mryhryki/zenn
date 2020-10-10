@@ -5,19 +5,19 @@
   <meta content="hyiromori's portfolio" name="title">
   <meta content="Webエンジニア hyiromori のポートフォリオサイト" name="description">
   <meta content="hyiromori, portfolio" name="keywords">
-  <meta name="theme-color" content="#fa7007" />
-  <meta property="og:title" content="hyiromori's portfolio" />
-  <meta property="og:description" content="Webエンジニア hyiromori のポートフォリオサイト" />
-  <meta property="og:image" content="https://hyiromori.com/image/icon_512x512.png" />
-  <meta property="og:url" content="https://hyiromori.com/" />
-  <meta property="og:site_name" content="hyiromori's portfolio" />
-  <meta property="og:locale" content="ja-JP" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="hyiromori's portfolio" />
-  <meta name="twitter:description" content="Webエンジニア hyiromori のポートフォリオサイト" />
-  <meta name="twitter:image" content="https://hyiromori.com/image/icon_512x512.png" />
-  <meta name="twitter:site" content="@hyiromori" />
+  <meta name="theme-color" content="#fa7007"/>
+  <meta property="og:title" content="hyiromori's portfolio"/>
+  <meta property="og:description" content="Webエンジニア hyiromori のポートフォリオサイト"/>
+  <meta property="og:image" content="https://hyiromori.com/image/icon_512x512.png"/>
+  <meta property="og:url" content="https://hyiromori.com/"/>
+  <meta property="og:site_name" content="hyiromori's portfolio"/>
+  <meta property="og:locale" content="ja-JP"/>
+  <meta property="og:type" content="website"/>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="hyiromori's portfolio"/>
+  <meta name="twitter:description" content="Webエンジニア hyiromori のポートフォリオサイト"/>
+  <meta name="twitter:image" content="https://hyiromori.com/image/icon_512x512.png"/>
+  <meta name="twitter:site" content="@hyiromori"/>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="portfolio">
@@ -30,182 +30,221 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124358962-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
     gtag('js', new Date());
     gtag('config', 'UA-124358962-1');
   </script>
   <style type="text/css">
-    body {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+      body {
+          box-sizing: border-box;
+          color: #4a5568;
+          font-family: 'Noto Serif JP', Georgia, Cambria, 'Times New Roman', Times, serif;
+          margin: 0;
+          padding: 0;
+      }
 
-    h1, h2, h3 {
-      font-family: 'Stardos Stencil', 'Noto Serif JP', Georgia, Cambria, 'Times New Roman', Times, serif;
-      font-size: inherit;
-      font-weight: inherit;
-      margin: 0;
-      text-align: center;
-    }
+      h1, h2, h3 {
+          font-family: 'Stardos Stencil', 'Noto Serif JP', Georgia, Cambria, 'Times New Roman', Times, serif;
+          font-size: inherit;
+          font-weight: inherit;
+          margin: 0;
+          text-align: center;
+      }
 
-    *, *::before, *::after {
-      border: 0 solid #e2e8f0;
-    }
+      header {
+          background: url('/image/background_1920x720.jpg') no-repeat local center;
+          background-size: cover;
+          color: #f7fafc;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Stardos Stencil', 'Noto Serif JP', Georgia, Cambria, 'Times New Roman', Times, serif;
+          height: 70vh;
+          margin-bottom: 1rem;
+          padding: 0 1.5rem 1rem 1.5rem;
+      }
 
-    body {
-      color: #4a5568;
-      font-family: 'Noto Serif JP', Georgia, Cambria, 'Times New Roman', Times, serif;
-    }
+      header a {
+          color: #f7fafc;
+          text-decoration: none;
+      }
 
-    header {
-      background: url('/image/background_1920x720.jpg') no-repeat local center;
-      background-size: cover;
-      color: #f7fafc;
-      display: flex;
-      flex-direction: column;
-      font-family: 'Stardos Stencil', 'Noto Serif JP', Georgia, Cambria, 'Times New Roman', Times, serif;
-      height: 70vh;
-      margin-bottom: 1rem;
-      padding: 0 1.5rem 2.5rem 1.5rem;
-    }
+      footer {
+          background-color: #2d3748;
+          color: #cbd5e0;
+          font-size: .875rem;
+          padding: 0.5rem 1rem;
+          text-align: right;
+      }
 
-    header a {
-      color: #f7fafc;
-      text-decoration: none;
-    }
+      nav {
+          font-size: 1.25rem;
+          color: #f7fafc;
+          line-height: 2;
+          text-align: right;
+          margin-top: 1rem;
+      }
 
-    footer {
-      background-color: #2d3748;
-      color: #cbd5e0;
-      font-size: .875rem;
-      padding: 0.5rem 1rem;
-      text-align: right;
-    }
+      nav > a {
+          margin: 0 0.5rem;
+      }
 
-    nav {
-      font-size: 1.25rem;
-      color: #f7fafc;
-      line-height: 2;
-      text-align: right;
-      margin-top: 1rem;
-    }
+      a {
+          text-decoration: underline;
+          text-decoration-color: #cbd5e0;
+      }
 
-    nav > a {
-      margin: 0 0.5rem;
-    }
+      h1 {
+          font-size: 1.875rem;
+          line-height: 3rem;
+      }
 
-    a {
-      text-decoration: underline;
-      text-decoration-color: #cbd5e0;
-    }
+      h2 {
+          color: #1a202c;
+          font-size: 1.5rem;
+          padding: 1rem 0;
+      }
 
-    h1 {
-      font-size: 1.875rem;
-    }
+      h3 {
+          color: #1a202c;
+          font-size: 1.25rem;
+          padding: 0.5rem 0;
+      }
 
-    h2 {
-      color: #1a202c;
-      font-size: 1.5rem;
-      padding: 1rem 0;
-    }
+      section {
+          margin: 0 auto;
+          max-width: 48rem;
+          padding: 0 1rem;
+      }
 
-    h3 {
-      color: #1a202c;
-      font-size: 1.25rem;
-      padding: 0.5rem 0;
-    }
+      .hyiromori-icon {
+          height: 3rem;
+          width: 3rem;
+          border-radius: 50%;
+          border: 1px solid gray;
+          object-fit: cover;
+          vertical-align: bottom;
+          margin-right: 1rem;
+      }
 
-    section {
-      margin: 0 auto;
-      max-width: 48rem;
-      padding: 0 1rem;
-    }
+      .social-links {
+          align-items: flex-end;
+          display: flex;
+          flex-wrap: wrap;
+          flex: 1 1 0;
+          justify-content: flex-end;
+      }
 
-    .about-wrapper {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin: 0 auto 2rem auto;
-      padding: 0 1rem;
-    }
+      .social-links img {
+          border-radius: .25rem;
+          height: 3rem;
+          margin: 0.25rem;
+          object-fit: contain;
+          width: 3rem;
+      }
 
-    .about-container {
-      flex: 1 1 0%;
-      text-align: center;
-      max-width: 20rem;
-      margin-bottom: 2rem;
-    }
-
-    .about-container > img {
-      object-fit: contain;
-      display: inline-block;
-    }
-
-    .about-container > p {
-      padding: 0 1rem;
-    }
-
-    .output-container {
-        margin: 0 auto 2rem auto;
-        padding: 0 1rem;
-    }
-
-    .skill-wrapper img {
-      border-radius: .25rem;
-      height: 4rem;
-      margin: 0.25rem;
-      object-fit: contain;
-      width: 4rem;
-    }
-
-    .skill-layout {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .skill-container {
-      border-radius: .5rem;
-      border-width: 1px;
-      flex: 1 1 0%;
-      margin: 0.5rem;
-      padding: 1rem;
-    }
-
-    .skill-links-layout {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .social-links {
-      align-items: center;
-      display: flex;
-      flex: 1 1 0%;
-      justify-content: center;
-      margin: 4rem 0 1rem 0;
-      flex-wrap: wrap;
-    }
-
-    .social-links img {
-      border-radius: .25rem;
-      height: 3rem;
-      margin: 0.25rem;
-      object-fit: contain;
-      width: 3rem;
-    }
-
-    @media (min-width: 800px) {
       .about-wrapper {
-        flex-direction: row;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          margin: 0 auto 2rem auto;
+          padding: 0 1rem;
+      }
+
+      .about-container {
+          flex: 1 1 0;
+          text-align: center;
+          max-width: 20rem;
+          margin-bottom: 2rem;
+      }
+
+      .about-container > img {
+          object-fit: contain;
+          display: inline-block;
+      }
+
+      .about-container > p {
+          padding: 0 1rem;
       }
 
       .skill-layout {
-        flex-direction: row;
+          display: flex;
+          flex-direction: column;
       }
-    }
+
+      .skill-container {
+          border-radius: .5rem;
+          border: 1px solid #e2e8f0;
+          flex: 1 1 0;
+          margin: 0.5rem;
+          padding: 1rem;
+      }
+
+      .skill-container img {
+          border-radius: .25rem;
+          height: 4rem;
+          margin: 0.25rem;
+          object-fit: contain;
+          width: 4rem;
+      }
+
+      .skill-links-layout {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+      }
+
+      .output-wrapper {
+          display: flex;
+          flex-direction: column;
+      }
+
+      .output-container {
+          border-radius: .5rem;
+          border: 1px solid #e2e8f0;
+          display: block;
+          margin: 0.5rem;
+          overflow: hidden;
+          padding: 0;
+          text-decoration: none;
+      }
+
+      .output-image {
+          border-bottom: 1px solid #e2e8f0;
+          object-fit: cover;
+          width: 100%;
+          max-height: 12rem;
+      }
+
+      .output-description {
+          color: black;
+          font-size: 0.85rem;
+          margin: 0 1rem 1rem 1rem;
+      }
+
+      @media (min-width: 800px) {
+          .about-wrapper {
+              flex-direction: row;
+          }
+
+          .skill-layout {
+              flex-direction: row;
+          }
+
+          .output-wrapper {
+              flex-direction: row;
+          }
+
+          .output-container {
+              max-width: 50%;
+              width: 400px;
+          }
+      }
   </style>
 </head>
 <body>
@@ -216,15 +255,40 @@
         <a href="mailto:hyiromori@gmail.com" target="_blank" rel="noopener noreferrer">Contact</a>
       </nav>
       <div style="flex:1;"></div>
-      <h1>hyiromori's portfolio</h1>
-      <div style="flex:1;"></div>
+      <h1>
+        <img class="hyiromori-icon" src="/image/icon_180x180.png" alt="hyiromori icon">
+        hyiromori's portfolio
+      </h1>
+      <div class="social-links">
+        <a href="https://github.com/hyiromori" target="_blank" rel="noopener noreferrer">
+          <img alt="GitHub" src="/image/hyiromori.com/service/github.png" decoding="async"/>
+        </a>
+        <a href="https://hyiromori.hateblo.jp/" target="_blank" rel="noopener noreferrer">
+          <img alt="Hatena Blog" src="/image/hyiromori.com/service/hateblo.png" decoding="async"/>
+        </a>
+        <a href="https://b.hatena.ne.jp/hyirm/" target="_blank" rel="noopener noreferrer">
+          <img alt="note" src="/image/hyiromori.com/service/hatebu.png" decoding="async"/>
+        </a>
+        <a href="https://qiita.com/hyiromori" target="_blank" rel="noopener noreferrer">
+          <img alt="Qiita" src="/image/hyiromori.com/service/qiita.png" decoding="async"/>
+        </a>
+        <a href="https://twitter.com/hyiromori" target="_blank" rel="noopener noreferrer">
+          <img alt="Twitter" src="/image/hyiromori.com/service/twitter.png" decoding="async"/>
+        </a>
+        <a href="https://scrapbox.io/hyiromori" target="_blank" rel="noopener noreferrer">
+          <img alt="ScrapBox" src="/image/hyiromori.com/service/scrapbox.png" decoding="async"/>
+        </a>
+        <a href="https://www.wantedly.com/users/127180688" target="_blank" rel="noopener noreferrer">
+          <img alt="Wantedly" src="/image/hyiromori.com/service/wantedly.png" decoding="async"/>
+        </a>
+      </div>
     </header>
 
     <section>
       <h2 id="about">About</h2>
       <article class="about-wrapper">
         <div class="about-container">
-          <img src="/image/hyiromori.com/symbol/embed.png" alt="エンジニアリングスキル" decoding="async" />
+          <img src="/image/hyiromori.com/symbol/embed.png" alt="エンジニアリングスキル" decoding="async"/>
           <h3>Web Developer</h3>
           <p>
             最新技術も好きですが、どのように技術を使って解決するかを考えるのも同じくらい好きです。
@@ -232,16 +296,16 @@
           </p>
         </div>
         <div class="about-container">
-          <img src="/image/hyiromori.com/symbol/family.png" alt="家族" decoding="async" />
+          <img src="/image/hyiromori.com/symbol/family.png" alt="家族" decoding="async"/>
           <h3>Father</h3>
           <p>
-            ５歳と１歳の息子がいます。
+            ６歳と２歳の息子がいます。
             一緒にお風呂に入るために、早めの出退勤をしています。
             育児や教育、そのための貯蓄や投資に興味があります。
           </p>
         </div>
         <div class="about-container">
-          <img src="/image/hyiromori.com/symbol/diy.png" alt="DIY" decoding="async" />
+          <img src="/image/hyiromori.com/symbol/diy.png" alt="DIY" decoding="async"/>
           <h3>DIY</h3>
           <p>
             DIYが好きです。
@@ -260,27 +324,27 @@
             <h3>Language</h3>
             <div class="skill-links-layout">
               <a
-                href="https://developer.mozilla.org/ja/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer"
+                  href="https://developer.mozilla.org/ja/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer"
               >
-                <img src="/image/hyiromori.com/skill/javascript.png" alt="JavaScript" decoding="async" />
+                <img src="/image/hyiromori.com/skill/javascript.png" alt="JavaScript" decoding="async"/>
               </a>
               <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/typescript.png" alt="TypeScript" decoding="async" />
+                <img src="/image/hyiromori.com/skill/typescript.png" alt="TypeScript" decoding="async"/>
               </a>
               <a href="https://nodejs.org/ja/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/nodejs.png" alt="Node" decoding="async" />
+                <img src="/image/hyiromori.com/skill/nodejs.png" alt="Node" decoding="async"/>
               </a>
               <a href="https://www.ruby-lang.org/ja/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/ruby.png" alt="Ruby" decoding="async" />
+                <img src="/image/hyiromori.com/skill/ruby.png" alt="Ruby" decoding="async"/>
               </a>
               <a href="https://www.php.net/manual/ja/intro-whatis.php" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/php.png" alt="PHP" decoding="async" />
+                <img src="/image/hyiromori.com/skill/php.png" alt="PHP" decoding="async"/>
               </a>
               <a href="https://developer.mozilla.org/ja/docs/Glossary/CSS" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/css.png" alt="CSS" decoding="async" />
+                <img src="/image/hyiromori.com/skill/css.png" alt="CSS" decoding="async"/>
               </a>
               <a href="https://www.java.com/ja/about/whatis_java.jsp" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/java.png" alt="Java" decoding="async" />
+                <img src="/image/hyiromori.com/skill/java.png" alt="Java" decoding="async"/>
               </a>
             </div>
           </div>
@@ -289,16 +353,16 @@
             <h3>Frontend / Mobile</h3>
             <div class="skill-links-layout">
               <a href="https://reactjs.org/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/react.png" alt="React" decoding="async" />
+                <img src="/image/hyiromori.com/skill/react.png" alt="React" decoding="async"/>
               </a>
               <a href="https://redux.js.org/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/redux.png" alt="Redux" decoding="async" />
+                <img src="/image/hyiromori.com/skill/redux.png" alt="Redux" decoding="async"/>
               </a>
               <a href="https://webpack.js.org/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/webpack.png" alt="Webpack" decoding="async" />
+                <img src="/image/hyiromori.com/skill/webpack.png" alt="Webpack" decoding="async"/>
               </a>
               <a href="https://facebook.github.io/react-native/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/react_native.png" alt="React Native" decoding="async" />
+                <img src="/image/hyiromori.com/skill/react_native.png" alt="React Native" decoding="async"/>
               </a>
             </div>
           </div>
@@ -309,16 +373,16 @@
             <h3>Backend</h3>
             <div class="skill-links-layout">
               <a href="https://rubyonrails.org/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/ruby_on_rails.png" alt="Rails" decoding="async" />
+                <img src="/image/hyiromori.com/skill/ruby_on_rails.png" alt="Rails" decoding="async"/>
               </a>
               <a href="https://cakephp.org/jp" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/cakephp.png" alt="CakePHP" decoding="async" />
+                <img src="/image/hyiromori.com/skill/cakephp.png" alt="CakePHP" decoding="async"/>
               </a>
               <a href="http://expressjs.com/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/express.png" alt="express" decoding="async" />
+                <img src="/image/hyiromori.com/skill/express.png" alt="express" decoding="async"/>
               </a>
               <a href="https://serverless.com/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/serverless.png" alt="Serverless" decoding="async" />
+                <img src="/image/hyiromori.com/skill/serverless.png" alt="Serverless" decoding="async"/>
               </a>
             </div>
           </div>
@@ -327,21 +391,21 @@
             <h3>Other</h3>
             <div class="skill-links-layout">
               <a href="https://aws.amazon.com/jp/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/aws.png" alt="AWS" decoding="async" />
+                <img src="/image/hyiromori.com/skill/aws.png" alt="AWS" decoding="async"/>
               </a>
               <a href="https://www.terraform.io/" target="_blank" rel="noopener noreferrer">
                 <img
-                  src="/image/hyiromori.com/skill/terraform.png"
-                  alt="Terraform"
-                  class="object-contain h-16 w-16 rounded m-1"
-                  decoding="async"
+                    src="/image/hyiromori.com/skill/terraform.png"
+                    alt="Terraform"
+                    class="object-contain h-16 w-16 rounded m-1"
+                    decoding="async"
                 />
               </a>
               <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/docker.png" alt="Docker" decoding="async" />
+                <img src="/image/hyiromori.com/skill/docker.png" alt="Docker" decoding="async"/>
               </a>
               <a href="https://webrtc.org/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/webrtc.png" alt="WebRTC" decoding="async" />
+                <img src="/image/hyiromori.com/skill/webrtc.png" alt="WebRTC" decoding="async"/>
               </a>
             </div>
           </div>
@@ -351,9 +415,23 @@
 
     <section>
       <h2 id="output">Output</h2>
-      <ul class="output-container">
-        <li><a href="https://hyiromori.hateblo.jp/">hyiromori’s blog</a>: 個人ブログで、主に技術ネタを書いています。</li>
-        <li><a href="https://tech.connehito.com/archive/author/hyirm">コネヒト開発者ブログ</a>: <a href="https://connehito.com/">コネヒト</a>で書いたブログポストです。</li>
+      <div class="output-wrapper">
+        <a class="output-container" href="https://hyiromori.hateblo.jp/" target="_blank" rel="noopener noreferrer">
+          <img class="output-image" src="https://cdn.blog.st-hatena.com/images/theme/og-image-1500.png"
+               alt="hyiromori's blog" loading="lazy"/>
+          <h3 class="output-title">個人ブログ</h3>
+          <p class="output-description">個人ブログです。</p>
+        </a>
+        <a class="output-container" href="https://tech.connehito.com/archive/author/hyirm" target="_blank"
+            rel="noopener noreferrer">
+          <img class="output-image"
+               src="https://cdn.image.st-hatena.com/image/scale/e9ea607676a8c806510e97ebe732bc9a6bc60633/backend=imager;enlarge=0;height=1000;version=1;width=1200/https%3A%2F%2Fcdn.user.blog.st-hatena.com%2Fdefault_entry_og_image%2F108047865%2F1514226727422371"
+               alt="hyiromori's blog" loading="lazy"/>
+          <h3 class="output-title">コネヒト開発者ブログ</h3>
+          <p class="output-description">コネヒト社で書いたブログです。</p>
+        </a>
+      </div>
+      <ul>
         <li><a href="https://github.com/hyiromori">Qiita</a>: 最近はほとんど書いていません</li>
       </ul>
     </section>
@@ -368,31 +446,6 @@
         </p>
       </article>
     </section>
-
-    <div class="social-links">
-      <a href="https://github.com/hyiromori" target="_blank" rel="noopener noreferrer">
-        <img alt="GitHub" src="/image/hyiromori.com/service/github.png" decoding="async" />
-      </a>
-      <a href="https://hyiromori.hateblo.jp/" target="_blank" rel="noopener noreferrer">
-        <img alt="Hatena Blog" src="/image/hyiromori.com/service/hateblo.png" decoding="async" />
-      </a>
-      <a href="https://b.hatena.ne.jp/hyirm/" target="_blank" rel="noopener noreferrer">
-        <img alt="note" src="/image/hyiromori.com/service/hatebu.png" decoding="async" />
-      </a>
-      <a href="https://qiita.com/hyiromori" target="_blank" rel="noopener noreferrer">
-        <img alt="Qiita" src="/image/hyiromori.com/service/qiita.png" decoding="async" />
-      </a>
-      <a href="https://twitter.com/hyiromori" target="_blank" rel="noopener noreferrer">
-        <img alt="Twitter" src="/image/hyiromori.com/service/twitter.png" decoding="async" />
-      </a>
-      <a href="https://scrapbox.io/hyiromori" target="_blank" rel="noopener noreferrer">
-        <img alt="ScrapBox" src="/image/hyiromori.com/service/scrapbox.png" decoding="async" />
-      </a>
-      <a href="https://www.wantedly.com/users/127180688" target="_blank" rel="noopener noreferrer">
-        <img alt="Wantedly" src="/image/hyiromori.com/service/wantedly.png" decoding="async" />
-      </a>
-    </div>
-    </div>
   </main>
 
   <footer>
