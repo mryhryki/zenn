@@ -133,10 +133,6 @@
       }
 
       .card-layout {
-          align-items: stretch;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
           margin: 0 auto;
       }
 
@@ -204,7 +200,10 @@
 
       @media (min-width: 40rem) {
           .card-layout {
+              align-items: stretch;
+              display: flex;
               flex-direction: row;
+              justify-content: center;
           }
 
           .card-layout > .card {
