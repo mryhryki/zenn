@@ -126,24 +126,28 @@
           border-radius: 50%;
           border: 1px solid gray;
           object-fit: cover;
-          vertical-align: bottom;
-          margin-right: 1rem;
       }
 
       .social-links {
-          align-items: flex-end;
+          flex-direction: row-reverse;
+          flex-wrap: wrap-reverse;
           display: flex;
-          flex-wrap: wrap;
-          flex: 1 1 0;
-          justify-content: flex-end;
+      }
+
+      .social-links a {
+          display: inline-block;
+          max-height: 3rem;
+          max-width: 3rem;
+          min-height: 3rem;
+          min-width: 3rem;
+          margin: 0.25rem;
       }
 
       .social-links img {
           border-radius: .25rem;
-          height: 3rem;
-          margin: 0.25rem;
+          height: 100%;
           object-fit: contain;
-          width: 3rem;
+          width: 100%;
       }
 
       .about-wrapper {
@@ -257,29 +261,28 @@
       <div style="flex:1;"></div>
       <h1>
         <img class="hyiromori-icon" src="/image/icon_180x180.png" alt="hyiromori icon">
+        <br>
         hyiromori's portfolio
       </h1>
+      <div style="flex:1;"></div>
       <div class="social-links">
-        <a href="https://github.com/hyiromori" target="_blank" rel="noopener noreferrer">
-          <img alt="GitHub" src="/image/hyiromori.com/service/github.png" decoding="async"/>
-        </a>
-        <a href="https://hyiromori.hateblo.jp/" target="_blank" rel="noopener noreferrer">
-          <img alt="Hatena Blog" src="/image/hyiromori.com/service/hateblo.png" decoding="async"/>
-        </a>
-        <a href="https://b.hatena.ne.jp/hyirm/" target="_blank" rel="noopener noreferrer">
-          <img alt="note" src="/image/hyiromori.com/service/hatebu.png" decoding="async"/>
-        </a>
-        <a href="https://qiita.com/hyiromori" target="_blank" rel="noopener noreferrer">
-          <img alt="Qiita" src="/image/hyiromori.com/service/qiita.png" decoding="async"/>
+        <a href="https://www.wantedly.com/users/127180688" target="_blank" rel="noopener noreferrer">
+          <img alt="Wantedly" src="/image/hyiromori.com/service/wantedly.png" decoding="async"/>
         </a>
         <a href="https://twitter.com/hyiromori" target="_blank" rel="noopener noreferrer">
           <img alt="Twitter" src="/image/hyiromori.com/service/twitter.png" decoding="async"/>
         </a>
-        <a href="https://scrapbox.io/hyiromori" target="_blank" rel="noopener noreferrer">
-          <img alt="ScrapBox" src="/image/hyiromori.com/service/scrapbox.png" decoding="async"/>
+        <a href="https://qiita.com/hyiromori" target="_blank" rel="noopener noreferrer">
+          <img alt="Qiita" src="/image/hyiromori.com/service/qiita.png" decoding="async"/>
         </a>
-        <a href="https://www.wantedly.com/users/127180688" target="_blank" rel="noopener noreferrer">
-          <img alt="Wantedly" src="/image/hyiromori.com/service/wantedly.png" decoding="async"/>
+        <a href="https://b.hatena.ne.jp/hyirm/" target="_blank" rel="noopener noreferrer">
+          <img alt="note" src="/image/hyiromori.com/service/hatebu.png" decoding="async"/>
+        </a>
+        <a href="https://hyiromori.hateblo.jp/" target="_blank" rel="noopener noreferrer">
+          <img alt="Hatena Blog" src="/image/hyiromori.com/service/hateblo.png" decoding="async"/>
+        </a>
+        <a href="https://github.com/hyiromori" target="_blank" rel="noopener noreferrer">
+          <img alt="GitHub" src="/image/hyiromori.com/service/github.png" decoding="async"/>
         </a>
       </div>
     </header>
@@ -423,7 +426,7 @@
           <p class="output-description">個人ブログです。</p>
         </a>
         <a class="output-container" href="https://tech.connehito.com/archive/author/hyirm" target="_blank"
-            rel="noopener noreferrer">
+           rel="noopener noreferrer">
           <img class="output-image"
                src="https://cdn.image.st-hatena.com/image/scale/e9ea607676a8c806510e97ebe732bc9a6bc60633/backend=imager;enlarge=0;height=1000;version=1;width=1200/https%3A%2F%2Fcdn.user.blog.st-hatena.com%2Fdefault_entry_og_image%2F108047865%2F1514226727422371"
                alt="hyiromori's blog" loading="lazy"/>
