@@ -66,7 +66,7 @@
       }
 
       header {
-          background: url('/image/background_1920x720.jpg') no-repeat local center black;
+          background: url('/image/background_960x360.jpg') no-repeat local center black;
           background-size: cover;
           color: #f7fafc;
           display: flex;
@@ -104,18 +104,20 @@
 
       .social-links a {
           display: inline-block;
+          margin: 0.25rem;
           max-height: 3rem;
           max-width: 3rem;
           min-height: 3rem;
           min-width: 3rem;
-          margin: 0.25rem;
       }
 
       .social-links img {
           border-radius: .25rem;
-          height: 100%;
+          max-height: 3rem;
+          max-width: 3rem;
+          min-height: 3rem;
+          min-width: 3rem;
           object-fit: contain;
-          width: 100%;
       }
 
       footer {
@@ -150,6 +152,7 @@
       .about-card > img {
           display: inline-block;
           max-width: 16rem;
+          height: 16rem;
           object-fit: contain;
           width: 100%;
       }
@@ -190,6 +193,7 @@
           border-bottom: 1px solid #e2e8f0;
           object-fit: cover;
           width: 100%;
+          min-height: 12rem;
           max-height: 12rem;
       }
 
@@ -251,15 +255,12 @@
         <a href="https://www.wantedly.com/users/127180688" target="_blank" rel="noopener noreferrer">
           <img alt="Wantedly" src="/image/hyiromori.com/social/wantedly.png" decoding="async"/>
         </a>
-        <a href="https://hyiromori.com/memo">
-          <img alt="markdown memo" src="/image/hyiromori.com/social/memo.png" decoding="async"/>
-        </a>
       </div>
     </header>
 
     <section>
       <h2 id="about">About</h2>
-      <article class="card-layout">
+      <div class="card-layout">
         <div class="card about-card">
           <img src="/image/hyiromori.com/symbol/embed.png" alt="エンジニアリングスキル" decoding="async"/>
           <h3>Web Developer</h3>
@@ -286,7 +287,7 @@
             あと、レザークラフトで財布とかも作ってます。
           </p>
         </div>
-      </article>
+      </div>
     </section>
 
     <section>
@@ -412,12 +413,12 @@
 
     <section>
       <h2 id="contact">Contact</h2>
-      <article class="contact-wrapper">
+      <section class="contact-wrapper">
         <p style="text-align: center;margin-bottom:1rem;">
           <a href="mailto:hyiromori@gmail.com" target="_blank" rel="noopener noreferrer">hyiromori@gmail.com</a>
           までご連絡ください。
         </p>
-      </article>
+      </section>
     </section>
   </main>
   <footer>
