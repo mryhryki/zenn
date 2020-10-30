@@ -4,7 +4,9 @@ module.exports = {
       staticDistDir: "./",
     },
     upload: {
-      target: "temporary-public-storage",
+      target: "lhci",
+      serverBaseUrl: "https://lhci-server-hyiromori.herokuapp.com",
+      token: "df7210bf-1658-4cd4-9b5b-9d97dc2646aa",
     },
   },
 };

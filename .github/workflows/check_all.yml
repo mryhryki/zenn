@@ -22,4 +22,4 @@ jobs:
       - name: lighthouse-ci
         env:
           SLACK_INCOMING_WEBHOOK: ${{ secrets.SLACK_INCOMING_WEBHOOK }}
-        run: sh .github/workflows/execute_lighthouse_ci.sh
+        run: bash ./lighthouse.sh
