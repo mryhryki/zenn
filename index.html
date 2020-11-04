@@ -43,25 +43,25 @@
       }
 
       h1 {
-          font-size: 1.875rem;
-          line-height: 3rem;
+          font-size: 30px;
+          line-height: 48px;
       }
 
       h2 {
           color: #1a202c;
-          font-size: 1.5rem;
-          line-height: 2.5rem;
+          font-size: 24px;
+          line-height: 40px;
       }
 
       h3 {
           color: #1a202c;
-          font-size: 1.25rem;
-          line-height: 3rem;
+          font-size: 20px;
+          line-height: 48px;
       }
 
       p {
           padding: 0;
-          margin: 0.5rem;
+          margin: 8px;
           line-height: 1.3;
       }
 
@@ -72,30 +72,34 @@
           display: flex;
           flex-direction: column;
           height: 80vh;
-          margin-bottom: 1rem;
-          padding: 0 1.5rem 1rem 1.5rem;
+          margin-bottom: 16px;
+          padding: 0 24px 16px 24px;
+      }
+
+      header img {
+          background-color: #fff;
       }
 
       header .hyiromori-icon {
-          height: 4rem;
-          width: 4rem;
+          height: 64px;
+          width: 64px;
           border-radius: 50%;
           border: 1px solid gray;
           object-fit: cover;
       }
 
       nav {
-          font-size: 1.25rem;
+          font-size: 20px;
           color: #f7fafc;
           line-height: 2;
           text-align: right;
-          margin-top: 1rem;
+          margin-top: 16px;
       }
 
       nav > a {
           color: #f7fafc;
           text-decoration: none;
-          margin: 0 0.5rem;
+          margin: 0 8px;
       }
 
       .social-links {
@@ -104,34 +108,38 @@
 
       .social-links a {
           display: inline-block;
-          margin: 0.25rem;
-          max-height: 3rem;
-          max-width: 3rem;
-          min-height: 3rem;
-          min-width: 3rem;
+          margin: 4px;
+          max-height: 48px;
+          max-width: 48px;
+          min-height: 48px;
+          min-width: 48px;
       }
 
       .social-links img {
-          border-radius: .25rem;
-          max-height: 3rem;
-          max-width: 3rem;
-          min-height: 3rem;
-          min-width: 3rem;
+          border-radius: 8px;
+          max-height: 48px;
+          max-width: 48px;
+          min-height: 48px;
+          min-width: 48px;
           object-fit: contain;
       }
 
       footer {
           background-color: #2d3748;
           color: #cbd5e0;
-          font-size: .875rem;
-          padding: 0.5rem 1rem;
+          font-size: 14px;
+          padding: 8px 16px;
           text-align: right;
       }
 
       section {
-          margin: 2rem auto;
+          margin: 32px auto;
           max-width: 48rem;
-          padding: 0 1rem;
+          padding: 0 16px;
+      }
+
+      section img {
+          background-color: #ccc;
       }
 
       .card-layout {
@@ -141,8 +149,8 @@
       .card-layout > .card {
           display: block;
           flex: 1 1 0;
-          margin: 0.5rem;
-          max-width: calc(100% - 1rem);
+          margin: 8px;
+          max-width: calc(100% - 16px);
       }
 
       .about-card {
@@ -151,9 +159,9 @@
 
       .about-card > img {
           display: inline-block;
-          max-width: 16rem;
-          height: 16rem;
-          object-fit: contain;
+          max-width: 240px;
+          height: 240px;
+          object-fit: cover;
           width: 100%;
       }
 
@@ -162,9 +170,9 @@
       }
 
       .skill-card {
-          border-radius: .5rem;
+          border-radius: 8px;
           border: 1px solid #e2e8f0;
-          padding: 1rem;
+          padding: 16px;
       }
 
       .skill-links-layout {
@@ -175,15 +183,15 @@
       }
 
       .skill-links-layout img {
-          border-radius: .25rem;
-          height: 4rem;
-          margin: 0.25rem;
+          border-radius: 4px;
+          height: 64px;
+          margin: 4px;
           object-fit: contain;
-          width: 4rem;
+          width: 64px;
       }
 
       .output-card {
-          border-radius: .5rem;
+          border-radius: 8px;
           border: 1px solid #e2e8f0;
           overflow: hidden;
           text-decoration: none;
@@ -199,7 +207,7 @@
 
       .output-card > p {
           color: black;
-          margin: 0 1rem 1rem 1rem;
+          margin: 0 16px 16px 16px;
       }
 
       @media (min-width: 40rem) {
@@ -211,7 +219,7 @@
           }
 
           .card-layout > .card {
-              max-width: calc(50% - 1rem);
+              max-width: calc(50% - 16px);
           }
       }
   </style>
@@ -221,7 +229,6 @@
     <header>
       <nav>
         <a href="https://hyiromori.hateblo.jp/" target="_blank" rel="noopener noreferrer">Blog</a>
-        <a href="mailto:hyiromori@gmail.com" target="_blank" rel="noopener noreferrer">Contact</a>
       </nav>
       <div style="flex:1;"></div>
       <h1>
@@ -393,13 +400,13 @@
         <a class="card output-card" href="https://hyiromori.hateblo.jp/" target="_blank" rel="noopener noreferrer">
           <img src="/image/hyiromori.com/output/hatena_blog.png" alt="hyiromori's blog" decoding="async"/>
           <h3>個人ブログ</h3>
-          <p>個人ブログです。</p>
+          <p>個人で書いているブログです。主にWeb技術系の記事を書いています。</p>
         </a>
         <a class="card output-card" href="https://tech.connehito.com/archive/author/hyirm" target="_blank"
            rel="noopener noreferrer">
           <img src="/image/hyiromori.com/output/connehito_tech_blog.png" alt="Connehito Tech blog" decoding="async"/>
           <h3>コネヒト開発者ブログ</h3>
-          <p>コネヒト社で書いているブログです。</p>
+          <p>コネヒト社で書いているブログです。主にママリに関係する技術記事を書いています。</p>
         </a>
       </div>
       <div class="card-layout">
@@ -414,7 +421,7 @@
     <section>
       <h2 id="contact">Contact</h2>
       <section class="contact-wrapper">
-        <p style="text-align: center;margin-bottom:1rem;">
+        <p style="text-align: center;margin-bottom:16px;">
           <a href="mailto:hyiromori@gmail.com" target="_blank" rel="noopener noreferrer">hyiromori@gmail.com</a>
           までご連絡ください。
         </p>
