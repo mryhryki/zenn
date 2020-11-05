@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -xe
 
-readonly LHCI_SERVER_URL="https://lhci-server-hyiromori.herokuapp.com/app/projects/hyiromori.github.io/dashboard"
+readonly LHCI_SERVER_URL="https://lighthouse-hyiromori.herokuapp.com/app/projects/hyiromori.github.io/dashboard"
 
 # Set "Slack Incoming Webhook URL" to env var.
 readonly SLACK_INCOMING_WEBHOOK="${SLACK_INCOMING_WEBHOOK}"
