@@ -5,9 +5,7 @@ env:
   ACTIONS_STEP_DEBUG: "true"
 
 on:
-  push:
-    branches:
-      - "main"
+  - push
 
 jobs:
   check_branch:
