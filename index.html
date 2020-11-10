@@ -14,7 +14,7 @@
   <meta property="og:locale" content="ja-JP"/>
   <meta property="og:type" content="website"/>
   <meta name="twitter:card" content="summary"/>
-  <meta name="twitter:title" content="hyiromori's portfolio"/>
+  <meta name="twitter:title" content="hnyiromori's portfolio"/>
   <meta name="twitter:description" content="Webエンジニア hyiromori のポートフォリオサイト"/>
   <meta name="twitter:image" content="https://hyiromori.com/image/icon_512x512.png"/>
   <meta name="twitter:site" content="@hyiromori"/>
@@ -66,7 +66,8 @@
       }
 
       header {
-          background: url('/image/background_960x360.jpg') no-repeat local center black;
+          background: black no-repeat local center;
+          background-image: url('/image/background_960x360.webp'), url('/image/background_960x360.jpg');
           background-size: cover;
           color: #f7fafc;
           display: flex;
@@ -197,7 +198,7 @@
           text-decoration: none;
       }
 
-      .output-card > img {
+      .output-card > picture > img {
           border-bottom: 1px solid #e2e8f0;
           object-fit: cover;
           width: 100%;
@@ -232,35 +233,71 @@
       </nav>
       <div style="flex:1;"></div>
       <h1>
-        <img class="hyiromori-icon" src="/image/icon_180x180.png" alt="hyiromori icon">
+        <picture>
+          <source type="image/webp" srcset="/image/icon_180x180.webp">
+          <source type="image/png" srcset="/image/icon_180x180.png">
+          <img class="hyiromori-icon" src="/image/icon_180x180.png" alt="hyiromori icon">
+        </picture>
         <br>
         hyiromori's portfolio
       </h1>
       <div style="flex:1;"></div>
       <div class="social-links">
         <a href="https://github.com/hyiromori" target="_blank" rel="noopener noreferrer">
-          <img alt="GitHub" src="/image/hyiromori.com/social/github.png" decoding="async"/>
+          <picture>
+            <source type="image/webp" srcset="/image/hyiromori.com/social/github.webp">
+            <source type="image/png" srcset="/image/hyiromori.com/social/github.png">
+            <img alt="GitHub" src="/image/hyiromori.com/social/github.png" decoding="async"/>
+          </picture>
         </a>
         <a href="https://twitter.com/hyiromori" target="_blank" rel="noopener noreferrer">
-          <img alt="Twitter" src="/image/hyiromori.com/social/twitter.png" decoding="async"/>
+          <picture>
+            <source type="image/webp" srcset="/image/hyiromori.com/social/twitter.webp">
+            <source type="image/png" srcset="/image/hyiromori.com/social/twitter.png">
+            <img alt="GitHub" src="/image/hyiromori.com/social/twitter.png" decoding="async"/>
+          </picture>
         </a>
         <a href="https://scrapbox.io/hyiromori/" target="_blank" rel="noopener noreferrer">
-          <img alt="Wantedly" src="/image/hyiromori.com/social/scrapbox.png" decoding="async"/>
+          <picture>
+            <source type="image/webp" srcset="/image/hyiromori.com/social/scrapbox.webp">
+            <source type="image/png" srcset="/image/hyiromori.com/social/scrapbox.png">
+            <img alt="Twitter" src="/image/hyiromori.com/social/scrapbox.png" decoding="async"/>
+          </picture>
         </a>
         <a href="https://hyiromori.hateblo.jp/" target="_blank" rel="noopener noreferrer">
-          <img alt="Hatena Blog" src="/image/hyiromori.com/social/hateblo.png" decoding="async"/>
+          <picture>
+            <source type="image/webp" srcset="/image/hyiromori.com/social/hateblo.webp">
+            <source type="image/png" srcset="/image/hyiromori.com/social/hateblo.png">
+            <img alt="Hatena Blog" src="/image/hyiromori.com/social/hateblo.png" decoding="async"/>
+          </picture>
         </a>
         <a href="https://b.hatena.ne.jp/hyirm/" target="_blank" rel="noopener noreferrer">
-          <img alt="note" src="/image/hyiromori.com/social/hatebu.png" decoding="async"/>
+          <picture>
+            <source type="image/webp" srcset="/image/hyiromori.com/social/hatebu.webp">
+            <source type="image/png" srcset="/image/hyiromori.com/social/hatebu.png">
+            <img alt="Hatena Bookmark" src="/image/hyiromori.com/social/hatebu.png" decoding="async"/>
+          </picture>
         </a>
         <a href="https://qiita.com/hyiromori" target="_blank" rel="noopener noreferrer">
-          <img alt="Qiita" src="/image/hyiromori.com/social/qiita.png" decoding="async"/>
+          <picture>
+            <source type="image/webp" srcset="/image/hyiromori.com/social/qiita.webp">
+            <source type="image/png" srcset="/image/hyiromori.com/social/qiita.png">
+            <img alt="Qiita" src="/image/hyiromori.com/social/qiita.png" decoding="async"/>
+          </picture>
         </a>
         <a href="https://codepen.io/hyiromori" target="_blank" rel="noopener noreferrer">
-          <img alt="Wantedly" src="/image/hyiromori.com/social/codepen.png" decoding="async"/>
+          <picture>
+            <source type="image/webp" srcset="/image/hyiromori.com/social/codepen.webp">
+            <source type="image/png" srcset="/image/hyiromori.com/social/codepen.png">
+            <img alt="CodePen" src="/image/hyiromori.com/social/codepen.png" decoding="async"/>
+          </picture>
         </a>
         <a href="https://www.wantedly.com/users/127180688" target="_blank" rel="noopener noreferrer">
-          <img alt="Wantedly" src="/image/hyiromori.com/social/wantedly.png" decoding="async"/>
+          <picture>
+            <source type="image/webp" srcset="/image/hyiromori.com/social/wantedly.webp">
+            <source type="image/png" srcset="/image/hyiromori.com/social/wantedly.png">
+            <img alt="Wantedly" src="/image/hyiromori.com/social/wantedly.png" decoding="async"/>
+          </picture>
         </a>
       </div>
     </header>
@@ -269,7 +306,11 @@
       <h2 id="about">About</h2>
       <div class="card-layout">
         <div class="card about-card">
-          <img src="/image/hyiromori.com/symbol/embed.png" alt="エンジニアリングスキル" decoding="async"/>
+          <picture>
+            <source type="image/webp" srcset="/image/hyiromori.com/symbol/embed.webp">
+            <source type="image/png" srcset="/image/hyiromori.com/symbol/embed.png">
+            <img src="/image/hyiromori.com/symbol/embed.png" alt="エンジニアリングスキル" decoding="async"/>
+          </picture>
           <h3>Web Developer</h3>
           <p>
             最新技術も好きですが、どのように技術を使って解決するかを考えるのも同じくらい好きです。
@@ -277,7 +318,11 @@
           </p>
         </div>
         <div class="card about-card">
-          <img src="/image/hyiromori.com/symbol/family.png" alt="家族" decoding="async"/>
+          <picture>
+            <source type="image/webp" srcset="/image/hyiromori.com/symbol/family.webp">
+            <source type="image/png" srcset="/image/hyiromori.com/symbol/family.png">
+            <img src="/image/hyiromori.com/symbol/family.png" alt="家族" decoding="async"/>
+          </picture>
           <h3>Father</h3>
           <p>
             ６歳と２歳の息子がいます。
@@ -286,7 +331,11 @@
           </p>
         </div>
         <div class="card about-card">
-          <img src="/image/hyiromori.com/symbol/diy.png" alt="DIY" decoding="async"/>
+          <picture>
+            <source type="image/webp" srcset="/image/hyiromori.com/symbol/diy.webp">
+            <source type="image/png" srcset="/image/hyiromori.com/symbol/diy.png">
+            <img src="/image/hyiromori.com/symbol/diy.png" alt="DIY" decoding="async"/>
+          </picture>
           <h3>DIY</h3>
           <p>
             DIYが好きです。
@@ -304,28 +353,54 @@
           <div class="card skill-card">
             <h3>Language</h3>
             <div class="skill-links-layout">
-              <a
-                  href="https://developer.mozilla.org/ja/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer"
-              >
-                <img src="/image/hyiromori.com/skill/javascript.png" alt="JavaScript" decoding="async"/>
+              <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer">
+                <picture>
+                  <source type="image/webp" srcset="/image/hyiromori.com/skill/javascript.webp">
+                  <source type="image/png" srcset="/image/hyiromori.com/skill/javascript.png">
+                  <img src="/image/hyiromori.com/skill/javascript.png" alt="JavaScript" decoding="async"/>
+                </picture>
               </a>
               <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/typescript.png" alt="TypeScript" decoding="async"/>
+                <picture>
+                  <source type="image/webp" srcset="/image/hyiromori.com/skill/typescript.webp">
+                  <source type="image/png" srcset="/image/hyiromori.com/skill/typescript.png">
+                  <img src="/image/hyiromori.com/skill/typescript.png" alt="TypeScript" decoding="async"/>
+                </picture>
               </a>
               <a href="https://nodejs.org/ja/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/nodejs.png" alt="Node" decoding="async"/>
+                <picture>
+                  <source type="image/webp" srcset="/image/hyiromori.com/skill/nodejs.webp">
+                  <source type="image/png" srcset="/image/hyiromori.com/skill/nodejs.png">
+                  <img src="/image/hyiromori.com/skill/nodejs.png" alt="Node.js" decoding="async"/>
+                </picture>
               </a>
               <a href="https://www.ruby-lang.org/ja/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/ruby.png" alt="Ruby" decoding="async"/>
+                <picture>
+                  <source type="image/webp" srcset="/image/hyiromori.com/skill/ruby.webp">
+                  <source type="image/png" srcset="/image/hyiromori.com/skill/ruby.png">
+                  <img src="/image/hyiromori.com/skill/ruby.png" alt="Ruby" decoding="async"/>
+                </picture>
               </a>
               <a href="https://www.php.net/manual/ja/intro-whatis.php" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/php.png" alt="PHP" decoding="async"/>
+                <picture>
+                  <source type="image/webp" srcset="/image/hyiromori.com/skill/php.webp">
+                  <source type="image/png" srcset="/image/hyiromori.com/skill/php.png">
+                  <img src="/image/hyiromori.com/skill/php.png" alt="PHP" decoding="async"/>
+                </picture>
               </a>
               <a href="https://developer.mozilla.org/ja/docs/Glossary/CSS" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/css.png" alt="CSS" decoding="async"/>
+                <picture>
+                  <source type="image/webp" srcset="/image/hyiromori.com/skill/css.webp">
+                  <source type="image/png" srcset="/image/hyiromori.com/skill/css.png">
+                  <img src="/image/hyiromori.com/skill/css.png" alt="CSS" decoding="async"/>
+                </picture>
               </a>
               <a href="https://www.java.com/ja/about/whatis_java.jsp" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/java.png" alt="Java" decoding="async"/>
+                <picture>
+                  <source type="image/webp" srcset="/image/hyiromori.com/skill/java.webp">
+                  <source type="image/png" srcset="/image/hyiromori.com/skill/java.png">
+                  <img src="/image/hyiromori.com/skill/java.png" alt="Java" decoding="async"/>
+                </picture>
               </a>
             </div>
           </div>
@@ -334,16 +409,32 @@
             <h3>Frontend / Mobile</h3>
             <div class="skill-links-layout">
               <a href="https://reactjs.org/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/react.png" alt="React" decoding="async"/>
+                <picture>
+                  <source type="image/webp" srcset="/image/hyiromori.com/skill/react.webp">
+                  <source type="image/png" srcset="/image/hyiromori.com/skill/react.png">
+                  <img src="/image/hyiromori.com/skill/react.png" alt="React" decoding="async"/>
+                </picture>
               </a>
               <a href="https://redux.js.org/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/redux.png" alt="Redux" decoding="async"/>
+                <picture>
+                  <source type="image/webp" srcset="/image/hyiromori.com/skill/redux.webp">
+                  <source type="image/png" srcset="/image/hyiromori.com/skill/redux.png">
+                  <img src="/image/hyiromori.com/skill/redux.png" alt="Redux" decoding="async"/>
+                </picture>
               </a>
               <a href="https://webpack.js.org/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/webpack.png" alt="Webpack" decoding="async"/>
+                <picture>
+                  <source type="image/webp" srcset="/image/hyiromori.com/skill/webpack.webp">
+                  <source type="image/png" srcset="/image/hyiromori.com/skill/webpack.png">
+                  <img src="/image/hyiromori.com/skill/webpack.png" alt="Webpack" decoding="async"/>
+                </picture>
               </a>
               <a href="https://facebook.github.io/react-native/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/react_native.png" alt="React Native" decoding="async"/>
+                <picture>
+                  <source type="image/webp" srcset="/image/hyiromori.com/skill/react_native.webp">
+                  <source type="image/png" srcset="/image/hyiromori.com/skill/react_native.png">
+                  <img src="/image/hyiromori.com/skill/react_native.png" alt="React Native" decoding="async"/>
+                </picture>
               </a>
             </div>
           </div>
@@ -354,16 +445,32 @@
             <h3>Backend</h3>
             <div class="skill-links-layout">
               <a href="https://rubyonrails.org/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/ruby_on_rails.png" alt="Rails" decoding="async"/>
+                <picture>
+                  <source type="image/webp" srcset="/image/hyiromori.com/skill/ruby_on_rails.webp">
+                  <source type="image/png" srcset="/image/hyiromori.com/skill/ruby_on_rails.png">
+                  <img src="/image/hyiromori.com/skill/ruby_on_rails.png" alt="Rails" decoding="async"/>
+                </picture>
               </a>
               <a href="https://cakephp.org/jp" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/cakephp.png" alt="CakePHP" decoding="async"/>
+                <picture>
+                  <source type="image/webp" srcset="/image/hyiromori.com/skill/cakephp.webp">
+                  <source type="image/png" srcset="/image/hyiromori.com/skill/cakephp.png">
+                  <img src="/image/hyiromori.com/skill/cakephp.png" alt="CakePHP" decoding="async"/>
+                </picture>
               </a>
               <a href="http://expressjs.com/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/express.png" alt="express" decoding="async"/>
+                <picture>
+                  <source type="image/webp" srcset="/image/hyiromori.com/skill/express.webp">
+                  <source type="image/png" srcset="/image/hyiromori.com/skill/express.png">
+                  <img src="/image/hyiromori.com/skill/express.png" alt="express" decoding="async"/>
+                </picture>
               </a>
               <a href="https://serverless.com/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/serverless.png" alt="Serverless" decoding="async"/>
+                <picture>
+                  <source type="image/webp" srcset="/image/hyiromori.com/skill/serverless.webp">
+                  <source type="image/png" srcset="/image/hyiromori.com/skill/serverless.png">
+                  <img src="/image/hyiromori.com/skill/serverless.png" alt="Serverless" decoding="async"/>
+                </picture>
               </a>
             </div>
           </div>
@@ -372,21 +479,32 @@
             <h3>Other</h3>
             <div class="skill-links-layout">
               <a href="https://aws.amazon.com/jp/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/aws.png" alt="AWS" decoding="async"/>
+                <picture>
+                  <source type="image/webp" srcset="/image/hyiromori.com/skill/aws.webp">
+                  <source type="image/png" srcset="/image/hyiromori.com/skill/aws.png">
+                  <img src="/image/hyiromori.com/skill/aws.png" alt="AWS" decoding="async"/>
+                </picture>
               </a>
               <a href="https://www.terraform.io/" target="_blank" rel="noopener noreferrer">
-                <img
-                    src="/image/hyiromori.com/skill/terraform.png"
-                    alt="Terraform"
-                    class="object-contain h-16 w-16 rounded m-1"
-                    decoding="async"
-                />
+                <picture>
+                  <source type="image/webp" srcset="/image/hyiromori.com/skill/terraform.webp">
+                  <source type="image/png" srcset="/image/hyiromori.com/skill/terraform.png">
+                  <img src="/image/hyiromori.com/skill/terraform.png" alt="Terraform" decoding="async"/>
+                </picture>
               </a>
               <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/docker.png" alt="Docker" decoding="async"/>
+                <picture>
+                  <source type="image/webp" srcset="/image/hyiromori.com/skill/docker.webp">
+                  <source type="image/png" srcset="/image/hyiromori.com/skill/docker.png">
+                  <img src="/image/hyiromori.com/skill/docker.png" alt="Docker" decoding="async"/>
+                </picture>
               </a>
               <a href="https://webrtc.org/" target="_blank" rel="noopener noreferrer">
-                <img src="/image/hyiromori.com/skill/webrtc.png" alt="WebRTC" decoding="async"/>
+                <picture>
+                  <source type="image/webp" srcset="/image/hyiromori.com/skill/webrtc.webp">
+                  <source type="image/png" srcset="/image/hyiromori.com/skill/webrtc.png">
+                  <img src="/image/hyiromori.com/skill/webrtc.png" alt="WebRTC" decoding="async"/>
+                </picture>
               </a>
             </div>
           </div>
@@ -398,20 +516,32 @@
       <h2 id="output">Output</h2>
       <div class="card-layout">
         <a class="card output-card" href="https://hyiromori.hateblo.jp/" target="_blank" rel="noopener noreferrer">
-          <img src="/image/hyiromori.com/output/hatena_blog.png" alt="hyiromori's blog" decoding="async"/>
+          <picture>
+            <source type="image/webp" srcset="/image/hyiromori.com/output/hatena_blog.webp">
+            <source type="image/png" srcset="/image/hyiromori.com/output/hatena_blog.png">
+            <img src="/image/hyiromori.com/output/hatena_blog.png" alt="hyiromori's blog" decoding="async"/>
+          </picture>
           <h3>個人ブログ</h3>
           <p>個人で書いているブログです。主にWeb技術系の記事を書いています。</p>
         </a>
         <a class="card output-card" href="https://tech.connehito.com/archive/author/hyirm" target="_blank"
            rel="noopener noreferrer">
-          <img src="/image/hyiromori.com/output/connehito_tech_blog.png" alt="Connehito Tech blog" decoding="async"/>
+          <picture>
+            <source type="image/webp" srcset="/image/hyiromori.com/output/connehito_tech_blog.webp">
+            <source type="image/png" srcset="/image/hyiromori.com/output/connehito_tech_blog.png">
+            <img src="/image/hyiromori.com/output/connehito_tech_blog.png" alt="Connehito Tech blog" decoding="async"/>
+          </picture>
           <h3>コネヒト開発者ブログ</h3>
           <p>コネヒト社で書いているブログです。主にママリに関係する技術記事を書いています。</p>
         </a>
       </div>
       <div class="card-layout">
         <a class="card output-card" href="https://www.techpit.jp/courses/111" target="_blank" rel="noopener noreferrer">
-          <img src="/image/hyiromori.com/output/techpit.png" alt="Techpit" decoding="async"/>
+          <picture>
+            <source type="image/webp" srcset="/image/hyiromori.com/output/techpit.webp">
+            <source type="image/png" srcset="/image/hyiromori.com/output/techpit.png">
+            <img src="/image/hyiromori.com/output/techpit.png" alt="Techpit" decoding="async"/>
+          </picture>
           <h3>React教材</h3>
           <p>Techpitさんで書いたReact,TypeScriptの教材です。</p>
         </a>
