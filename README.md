@@ -1,1 +1,1 @@
-# zenn-content
+# zenn
