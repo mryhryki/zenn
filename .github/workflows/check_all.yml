@@ -23,4 +23,6 @@ jobs:
         env:
           SLACK_INCOMING_WEBHOOK: ${{ secrets.SLACK_INCOMING_WEBHOOK }}
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-        run: bash ./lighthouse.sh
+        run: |
+          npm i -g @lhci/cli
+          lhci autorun
