@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "add": "zenn new:article",
-    "preview": "zenn preview"
+    "start": "zenn preview"
   },
   "author": "hyiromori",
   "license": "MIT",
