@@ -1,3 +1,4 @@
+// AdminToken: fqoydkPvKyZJCy6LlbWSlsZrRhe6lhKZrbGlMzSI
 module.exports = {
   ci: {
     collect: {
@@ -7,6 +8,10 @@ module.exports = {
       target: "lhci",
       serverBaseUrl: "https://lighthouse-hyiromori.herokuapp.com",
       token: "df7210bf-1658-4cd4-9b5b-9d97dc2646aa",
+      basicAuth: {
+        username: "hyiromori",
+        password: "ZGpe6OJoZoTrrCglwGB4EogO"
+      },
     },
     assert: {
       preset: "lighthouse:no-pwa",
