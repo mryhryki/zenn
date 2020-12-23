@@ -54,7 +54,7 @@ published: true
 
 # 配置したリソース
 
-ポートフォリオサイトとして使用している [hyiromori.github.io (b18988bd)](https://github.com/hyiromori/hyiromori.github.io/tree/b18988bd089c915398ab79e154bd8087fc93142e) のソースをそのままS3にアップロードして使用。
+ポートフォリオサイトとして使用している [hyiromori.github.io (b18988bd)](https://github.com/hyiromori/hyiromori.github.io/tree/b18988bd089c915398ab79e154bd8087fc93142e) のソースをそのままS3にアップロードして使用しています。
 
 
 
@@ -80,5 +80,5 @@ Chrome DevTools の Lighthouse を使って計測しました。
 
 # まとめ
 
-1. 物理的な距離はパフォーマンススコアに大きく影響する
+1. 物理的な距離はパフォーマンススコアにも大きく影響する
 2. やはり計測する時はサーバーの場所とメインで使うユーザーの場所を意識する必要があることが分かった
