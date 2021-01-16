@@ -2,7 +2,7 @@
   "name": "zenn-content",
   "private": true,
   "scripts": {
-    "add": "zenn new:article --slug \"zenn-$(date +%Y-%m-%d)-$(openssl rand -hex 3)\"",
+    "add": "zenn new:article --slug \"$(date +%Y-%m-%d)-$(openssl rand -hex 3)\"",
     "start": "zenn preview"
   },
   "author": "hyiromori",
