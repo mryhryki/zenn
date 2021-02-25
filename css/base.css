@@ -236,6 +236,7 @@ table {
 }
 
 table th, table td {
+    border-width: 1px;
     padding: 0.25rem 0.5rem;
 }
 
@@ -285,6 +286,7 @@ button {
 .wrapper {
     max-width: 1280px;
     margin: 0 auto;
+    padding: 16px;
 }
 
 /* Tooltip Styles */
