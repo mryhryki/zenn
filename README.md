@@ -1,3 +1,3 @@
 # portfolio
 
-[ポートフォリオサイト](https://mryhryki.com/)のソースコードです。
+[ポートフォリオサイト](https://mryhryki.com/) のソースコードです。
