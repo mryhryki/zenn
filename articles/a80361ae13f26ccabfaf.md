@@ -54,7 +54,7 @@ published: true
 
 # 配置したリソース
 
-ポートフォリオサイトとして使用している [hyiromori.github.io (b18988bd)](https://github.com/hyiromori/hyiromori.github.io/tree/b18988bd089c915398ab79e154bd8087fc93142e) のソースをそのままS3にアップロードして使用しています。
+ポートフォリオサイトとして使用している [portfolio (b18988bd)](https://github.com/mryhryki/portfolio/tree/b18988bd089c915398ab79e154bd8087fc93142e) のソースをそのままS3にアップロードして使用しています。
 
 
 
