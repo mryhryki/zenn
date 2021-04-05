@@ -6,6 +6,8 @@ topics: ["Authorization", "Authentication"]
 published: true
 ---
 
+※この記事は[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/2021-03-28-auth)から引っ越しました
+
 # はじめに
 
 認証と認可の違いを自分の理解のためにまとめてみた記事です。

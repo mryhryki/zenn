@@ -6,6 +6,8 @@ topics: ["JWT", "Authorization"]
 published: true
 ---
 
+※この記事は[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/2021-03-28-jwt)から引っ越しました
+
 # はじめに
 
 OpenID Connect で出てくる JWT について調べた結果をまとめてみました。

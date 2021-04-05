@@ -6,6 +6,8 @@ topics: ["Lighthouse"]
 published: true
 ---
 
+※この記事は[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/a80361ae13f26ccabfaf)から引っ越しました
+
 # はじめに
 
 サーバーまでの物理的な距離によって Lighthouse のパフォーマンススコアがどのぐらい変わるのか気になったので、実験してみた時のメモです。

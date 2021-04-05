@@ -6,6 +6,8 @@ topics: ["OIDC", "OpenIDConnect"]
 published: true
 ---
 
+※この記事は[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/2021-01-30-oidc)から引っ越しました
+
 # はじめに
 
 最近、個人的に認証認可周りを学習していて、今回は OpenID Connect について学習したのでその内容をまとめた記事です。

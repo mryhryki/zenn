@@ -5,7 +5,8 @@ type: "tech"
 topics: ["HTTP","HTTP2"]
 published: true
 ---
-※この記事は[はてなブログ](https://hyiromori.hateblo.jp/entry/2019/12/30/205023)から引っ越しました
+
+※この記事は[はてなブログ](https://hyiromori.hateblo.jp/entry/2019/12/30/205023)、[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/hatena-20191230-205023)から引っ越しました
 
 ## この記事の目的
 

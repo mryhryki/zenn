@@ -5,7 +5,8 @@ type: "tech"
 topics: ["WebRTC"]
 published: true
 ---
-※この記事は[はてなブログ](https://hyiromori.hateblo.jp/entry/2019/12/30/231855)から引っ越しました
+
+※この記事は[はてなブログ](https://hyiromori.hateblo.jp/entry/2019/12/30/231855)、[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/hatena-20191230-231855)から引っ越しました
 
 WebRTC を調査していた際に集めたリンク集です。
 

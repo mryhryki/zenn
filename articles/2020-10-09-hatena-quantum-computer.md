@@ -5,7 +5,8 @@ type: "tech"
 topics: ["量子コンピューター"]
 published: true
 ---
-※この記事は[はてなブログ](https://hyiromori.hateblo.jp/entry/2020/10/09/181022)から引っ越しました
+
+※この記事は[はてなブログ](https://hyiromori.hateblo.jp/entry/2020/10/09/181022)、[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/hatena-20201009-181022)から引っ越しました
 ※2017年5月頃に書いていたものを発掘して再掲したものなので、情報が古い可能性があります。
 
 ## はじめに

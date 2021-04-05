@@ -6,6 +6,8 @@ topics: ["AWS", "APIGateway", "WebSocket"]
 published: true
 ---
 
+※この記事は[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/96ebdcd5e8171bcd388f)から引っ越しました
+
 これは [コネヒト Advent Calendar 2020 1日目](https://qiita.com/advent-calendar/2020/connehito) の記事です。
 
 ## はじめに

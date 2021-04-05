@@ -5,7 +5,8 @@ type: "tech"
 topics: ["CSS"]
 published: true
 ---
-※この記事は[はてなブログ](https://hyiromori.hateblo.jp/entry/2019/12/31/210920)から引っ越しました
+
+※この記事は[はてなブログ](https://hyiromori.hateblo.jp/entry/2019/12/31/210920)、[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/hatena-20191231-210920)から引っ越しました
 
 ## はじめに
 

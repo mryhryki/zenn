@@ -5,7 +5,8 @@ type: "tech"
 topics: ["AWS","S3"]
 published: true
 ---
-※この記事は[はてなブログ](https://hyiromori.hateblo.jp/entry/2020/10/09/180407)から引っ越しました
+
+※この記事は[はてなブログ](https://hyiromori.hateblo.jp/entry/2020/10/09/180407)、[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/hatena-20201009-180407)から引っ越しました
 
 ## はじめに
 

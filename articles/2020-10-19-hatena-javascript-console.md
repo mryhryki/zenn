@@ -5,7 +5,8 @@ type: "tech"
 topics: ["JavaScript","Node.js"]
 published: true
 ---
-※この記事は[はてなブログ](https://hyiromori.hateblo.jp/entry/2020/10/19/054629)から引っ越しました
+
+※この記事は[はてなブログ](https://hyiromori.hateblo.jp/entry/2020/10/19/054629)、[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/hatena-20201019-054629)から引っ越しました
 
 ## はじめに
 

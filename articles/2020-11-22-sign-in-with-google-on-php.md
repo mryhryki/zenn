@@ -6,6 +6,8 @@ topics: ["OAuth","PHP"]
 published: true
 ---
 
+※この記事は[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/b8ba9445f1e4c7282c89)から引っ越しました
+
 ## はじめに
 
 社内ツールに認証を入れる際に、Google OAuth を使った認証の仕組みをいれました。

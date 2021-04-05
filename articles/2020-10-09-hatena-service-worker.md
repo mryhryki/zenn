@@ -5,7 +5,8 @@ type: "tech"
 topics: ["Web","Service Worker"]
 published: true
 ---
-※この記事は[はてなブログ](https://hyiromori.hateblo.jp/entry/2020/10/09/181120)から引っ越しました
+
+※この記事は[はてなブログ](https://hyiromori.hateblo.jp/entry/2020/10/09/181120)、[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/hatena-20201009-181120)から引っ越しました
 ※2018年7月頃に書いていたものを発掘して再掲したものなので、情報が古い可能性があります。
 
 ## Service Worker とは？
