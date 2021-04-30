@@ -20,7 +20,7 @@ CORSなどの色々設定しているのですが、そもそも同一ドメイ�
 
 # 調査しようと思ったきっかけ
 
-いくつかの記事を見かけたのですが、早くなる、遅くなるの両方の記事が見つかったので、どちらかわからないなら自分で実際に環境を作って調べよう！と思ったのがきっかけです。
+いくつかの記事を見かけたのですが、早くなる、遅くなるの両方の記事を見かけたので、自分で実際に環境を作って調べよう！と思ったのがきっかけです。
 
 例えば、以下のような記事を見つけました。
 
@@ -40,8 +40,8 @@ https://qiita.com/horsewin/items/3209083d9fb3a8441895
 
 以下の２つのパターンでレスポンス時間を計測しています。
 
-1. 直接 API Gateway にアクセスし、Lambda からレスポンスをかえすパターン
-1. CloudFront 経由で API Gateway にアクセスし、Lambda からレスポンスをかえすパターン
+1. 直接 API Gateway にアクセスし、Lambda からレスポンスを返すパターン
+1. CloudFront 経由で API Gateway にアクセスし、Lambda からレスポンスを返すパターン
 
 ![image.png](https://i.gyazo.com/6ca3896cf1735e9f7db3a2b2428fba8b.png)
 
@@ -88,21 +88,20 @@ exports.handler = async (_event, _context, callback) => callback(null, {
 TypeScript のソースコードを [Deno](https://deno.land/) で動かして計測しています。
 計測方法としては API Gateway に直接アクセスした場合と、CloudFront 経由でアクセスした場合、それぞれ100回ずつアクセスしてレスポンス時間をとり、平均レスポンス時間を算出しています。
 
-詳しくは [ソースコード](https://github.com/mryhryki/example-api-gateway-with-cloudfront/blob/main/measure/index.ts) をご確認ください。
+詳しくは [ソースコード](https://github.com/mryhryki/example-api-gateway-with-cloudfront/blob/main/measure/index.ts) を参照してください。
 
 ## us-east-1 (バージニア) の結果
 
-私が普段個人開発では us-east-1 (バージニア) を使っているので、まずはこちらのリージョンで試してみました。
+私が普段個人開発では us-east-1 (バージニア) をメイン使っているので、まずはこちらのリージョンで試してみました。
 
-結果は以下のようにになりました。
+結果は平均すると、CloudFront 経由のほうが約 50ms 遅くなっています。
 
 ```
 API Gateway average response time: 208.8 ms
 CloudFront average response time: 253.98 ms
 ```
 
-平均すると、CloudFront 経由のほうが約 50ms 遅くなっています。
-ただ、一つ一つの結果を見てみると平均値を見るのとは違う印象です。
+ただ、一つ一つの結果を見てみると平均値とは違う印象です。
 
 :::details 詳細な結果
 
@@ -565,7 +564,7 @@ CloudFront average response time: 40.45 ms
 
 :::
 
-僅かに CloudFront 経由のほうが遅いですが、誤差の範囲と見て良いレベルかと思います。
+僅かに CloudFront 経由のほうが遅いですが、1ms 未満なので誤差の範囲と見て良いレベルかと思います。
 
 
 # まとめ
