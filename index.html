@@ -204,12 +204,20 @@
           text-decoration: none;
       }
 
-      .output-card > picture > img {
+      .output-card .output-image {
           border-bottom: 1px solid #e2e8f0;
           object-fit: cover;
           width: 100%;
           min-height: 12rem;
           max-height: 12rem;
+      }
+
+      .output-card > .output-image.typography {
+          background-color: #333;
+          color: #fff;
+          font-size: 2rem;
+          line-height: 12rem;
+          text-align: center;
       }
 
       .output-card > p {
@@ -235,7 +243,7 @@
   <main>
     <header>
       <nav>
-        <a href="https://zenn.dev/mryhryki" target="_blank" rel="noopener noreferrer">Blog</a>
+        <a href="https://app.mryhryki.com/blogs" target="_blank" rel="noopener noreferrer">Blog</a>
       </nav>
       <div style="flex:1;"></div>
       <h1>
@@ -256,13 +264,6 @@
             <img alt="GitHub" src="/image/portfolio/social/github.png" decoding="async"/>
           </picture>
         </a>
-        <a href="https://twitter.com/mryhryki" target="_blank" rel="noopener noreferrer">
-          <picture>
-            <source type="image/webp" srcset="/image/portfolio/social/twitter.webp">
-            <source type="image/png" srcset="/image/portfolio/social/twitter.png">
-            <img alt="GitHub" src="/image/portfolio/social/twitter.png" decoding="async"/>
-          </picture>
-        </a>
         <a href="https://zenn.dev/mryhryki" target="_blank" rel="noopener noreferrer">
           <picture>
             <source type="image/webp" srcset="/image/portfolio/social/zenn.webp">
@@ -277,11 +278,11 @@
             <img alt="Speaker Deck" src="/image/portfolio/social/speaker_deck.png" decoding="async"/>
           </picture>
         </a>
-        <a href="https://mryhryki.hateblo.jp/" target="_blank" rel="noopener noreferrer">
+        <a href="https://twitter.com/mryhryki" target="_blank" rel="noopener noreferrer">
           <picture>
-            <source type="image/webp" srcset="/image/portfolio/social/hateblo.webp">
-            <source type="image/png" srcset="/image/portfolio/social/hateblo.png">
-            <img alt="Speaker Deck" src="/image/portfolio/social/hateblo.png" decoding="async"/>
+            <source type="image/webp" srcset="/image/portfolio/social/twitter.webp">
+            <source type="image/png" srcset="/image/portfolio/social/twitter.png">
+            <img alt="GitHub" src="/image/portfolio/social/twitter.png" decoding="async"/>
           </picture>
         </a>
         <a href="https://www.wantedly.com/id/mryhryki" target="_blank" rel="noopener noreferrer">
@@ -503,41 +504,39 @@
           <picture>
             <source type="image/webp" srcset="/image/portfolio/output/zenn.webp">
             <source type="image/png" srcset="/image/portfolio/output/zenn.png">
-            <img src="/image/portfolio/output/zenn.png" alt="zenn" decoding="async"/>
+            <img class="output-image" src="/image/portfolio/output/zenn.png" alt="zenn" decoding="async"/>
           </picture>
-          <h3>個人ブログ</h3>
-          <p>個人で書いているブログです。主にWeb技術系の記事を書いています。</p>
+          <h3>Zenn</h3>
+          <p>個人で書いている技術ブログです。主にWeb技術系の記事を書いています。</p>
         </a>
-        <a class="card output-card" href="https://mryhryki.hateblo.jp/" target="_blank" rel="noopener noreferrer">
-          <picture>
-            <source type="image/webp" srcset="/image/portfolio/output/hatena_blog.webp">
-            <source type="image/png" srcset="/image/portfolio/output/hatena_blog.png">
-            <img src="/image/portfolio/output/hatena_blog.png" alt="zenn" decoding="async"/>
-          </picture>
-          <h3>もりやめも</h3>
-          <p>Web技術や記事、子育てなどを中心にメモ程度に書いています。</p>
+        <a class="card output-card" href="https://app.mryhryki.com/blogs" target="_blank" rel="noopener noreferrer">
+          <div class="output-image typography">
+            mryhryki's blog
+          </div>
+          <h3>mryhryki's blog</h3>
+          <p>Zennに書くほどでもない内容や、個人的な内容をメモ書き程度に書いているブログです。</p>
         </a>
       </div>
       <div class="card-layout">
+        <a class="card output-card" href="https://www.techpit.jp/courses/111" target="_blank" rel="noopener noreferrer">
+          <picture>
+            <source type="image/webp" srcset="/image/portfolio/output/techpit.webp">
+            <source type="image/png" srcset="/image/portfolio/output/techpit.png">
+            <img class="output-image" src="/image/portfolio/output/techpit.png" alt="Techpit" decoding="async"/>
+          </picture>
+          <h3>React教材</h3>
+          <p>Techpitさんで書いたReact&amp;TypeScriptの教材です。</p>
+        </a>
         <a class="card output-card" href="https://tech.connehito.com/search?q=mryhryki.com"
            target="_blank"
            rel="noopener noreferrer">
           <picture>
             <source type="image/webp" srcset="/image/portfolio/output/connehito_tech_blog.webp">
             <source type="image/png" srcset="/image/portfolio/output/connehito_tech_blog.png">
-            <img src="/image/portfolio/output/connehito_tech_blog.png" alt="Connehito Tech blog" decoding="async"/>
+            <img class="output-image" src="/image/portfolio/output/connehito_tech_blog.png" alt="Connehito Tech blog" decoding="async"/>
           </picture>
           <h3>コネヒト開発者ブログ</h3>
           <p>コネヒト社で書いているブログです。主にママリに関係する技術記事を書いています。</p>
-        </a>
-        <a class="card output-card" href="https://www.techpit.jp/courses/111" target="_blank" rel="noopener noreferrer">
-          <picture>
-            <source type="image/webp" srcset="/image/portfolio/output/techpit.webp">
-            <source type="image/png" srcset="/image/portfolio/output/techpit.png">
-            <img src="/image/portfolio/output/techpit.png" alt="Techpit" decoding="async"/>
-          </picture>
-          <h3>React教材</h3>
-          <p>Techpitさんで書いたReact,TypeScriptの教材です。</p>
         </a>
       </div>
     </section>
