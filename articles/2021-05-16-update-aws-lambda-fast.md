@@ -3,7 +3,7 @@ title: "esbuild を使って AWS Lambda (Node.js) を2秒でアップデート�
 emoji: "⚡"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["esbuild", "lambda"]
-published: false
+published: true
 ---
 
 # はじめに
