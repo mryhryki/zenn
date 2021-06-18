@@ -1,6 +1,6 @@
 ---
 title: "Actix Web (Rust) を App Runner で動かしたメモ"
-emoji: "😄"
+emoji: "📝"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Rust", "actixweb", "AWS", "AppRunner"]
 published: false
@@ -8,30 +8,30 @@ published: false
 
 # はじめに
 
-最近興味がある Rust を使って簡単な Web アプリを作ってみたいな、と思ってやってみたメモです。
-ついでに AWS App Runner を使うとコンテナイメージを簡単にWebに公開できると聞いたので、ついでに試してみました。
+最近興味がある Rust を使ってなにか動くものを作りたいな、と思ったので簡単な Web アプリを作ってみたメモです。
+ついでに AWS App Runner を使うとコンテナイメージを簡単にWebに公開できると聞いたので、試してみました。
 
 
 
 # 作った Web アプリの概要
 
 - エンドポイントは２つ
-  - `/` : ただメッセージを返すだけのエンドポイント（動作確認）
+  - `/` : ただメッセージを返すだけのエンドポイント（動作確認用）
   - `/listbuckets` : S3バケットの一覧をJSONで返すエンドポイント
     - [rusoto](https://github.com/rusoto/rusoto) ではなく[aws-sdk-rust](https://github.com/awslabs/aws-sdk-rust) を使ってます
-    - `v0.0.8-alpha` です。まだまだ生まれたてって感じです。
-    - [S3 サポートしたっていうのを発見した](https://twitter.com/mryhryki/status/1400548179829878784)ので使ってみようと思った次第です。
+    - `v0.0.8-alpha` です。まだこれからって感じです。
+    - [S3 サポートしたっていうのを発見した](https://twitter.com/mryhryki/status/1400548179829878784) ので使ってみようと思った次第です。
 - コンテナイメージを作成
-  - [Rust公式イメージ](https://hub.docker.com/_/rust/) を使ってます。
+  - [Rust公式イメージ](https://hub.docker.com/_/rust/) (`rust:latest`) を使ってます。
   - 執筆時点では `1.52.1` でした。
     - ```
-           docker run -it --rm rust:latest rustc --version
-           rustc 1.52.1 (9bc8c42bb 2021-05-09)
-           ```
-- 作成したイメージは ECS Public にプッシュ
+      $ docker run -it --rm rust:latest rustc --version
+      rustc 1.52.1 (9bc8c42bb 2021-05-09)
+      ```
+- ECS Public にプッシュ
 - App Runner で公開
 
-ソースコードはこちらに公開しています。
+作ったソースコードはこちらに公開しています。
 
 https://github.com/mryhryki/example-actix-web-on-app-runner
 
@@ -40,9 +40,11 @@ https://github.com/mryhryki/example-actix-web-on-app-runner
 ## ソースコード (Rust)
 
 [actix-web](https://github.com/actix/actix-web) を使って Web サーバーを立てています。
-どこかで速いというのを見て、とりあえず使ってみました。
+どこかで速いというのを以前見てたので、とりあえずこちらを使ってみました。
 
-[aws-sdk-rust](https://github.com/awslabs/aws-sdk-rust) と [tokio](https://github.com/tokio-rs/tokio) のバージョンを合わせる必要があるようで、仕方なくβ版（`v4.0.0-beta.6`）を使っています。
+なお [aws-sdk-rust](https://github.com/awslabs/aws-sdk-rust) と [tokio](https://github.com/tokio-rs/tokio) のバージョンを合わせる必要があるようで、仕方なくβ版（`v4.0.0-beta.6`）を使っています。
+
+ソースコードはこんな感じです。
 
 ```rust
 use actix_web::{get, middleware::Logger, web, App, HttpResponse, HttpServer, Responder};
@@ -55,7 +57,7 @@ async fn index(_path: web::Path<()>) -> impl Responder {
 }
 
 #[get("/listbuckets")]
-async fn listobjectsv2(_path: web::Path<()>) -> impl Responder {
+async fn list_buckets(_path: web::Path<()>) -> impl Responder {
     let config = Config::builder()
         .region(Region::new("us-east-1"))
         .credentials_provider(default_provider())
@@ -88,7 +90,7 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .wrap(Logger::default())
             .service(index)
-            .service(listobjectsv2)
+            .service(list_buckets)
     })
     .bind("0.0.0.0:8080")?
     .run()
@@ -96,26 +98,27 @@ async fn main() -> std::io::Result<()> {
 }
 ```
 
+（短いコードですが、なかなか所有権と型に悩まされ苦労しました・・・ ）
+
 
 
 ## Dockerfile
 
-ソースの変更のたびに Crate をインストールしないためにちょっと工程を分離していますが、基本はソースをコピーして `cargo build` するだけのシンプルな構成です。
+何の変哲もない、ソースコードをコピーして `cargo build` するだけのシンプルなやつです。
 
 ```dockerfile
 FROM rust:latest AS builder
-WORKDIR "/usr/local/"
+WORKDIR /usr/local/example-actix-web-on-app-runner/
 
-COPY "./docker/dummy_main.rs" "./src/main.rs"
-COPY "./Cargo.toml" "./Cargo.lock" ./
-RUN cargo install --path .
-
-COPY "./src" "./src"
+COPY ./ ./
 RUN cargo build --release
 
 EXPOSE 8080
-CMD "./target/release/example-actix-web-on-app-runner"
+CMD ./target/release/example-actix-web-on-app-runner
 ```
+
+（私のやり方が悪いのだと思いますが）Crate をキャッシュしようと思ったら、期待通り動かなかったのでシンプルにしてます。
+まぁ、ローカルで動かしてOKだったらビルドするので、一旦テストとしては許容範囲。
 
 
 
@@ -125,6 +128,10 @@ AWS Console から普通にポチポチやって作りました。
 最初にパブリックを選択して、リポジトリ名を入れれば後はデフォルトでOKという感じでした。
 
 ![ecr_public.png](https://i.gyazo.com/9dc2f3c281ecb4edd200f7c254eb0139.png)
+
+イメージのプッシュも「プッシュコマンドの表示」どおりやれば問題なくプッシュできました。
+
+![ecr_push.png](https://i.gyazo.com/186565ef4f25fae9984065c7502e81a3.png)
 
 
 
@@ -167,34 +174,36 @@ $ curl https://mfnimscavt.us-east-1.awsapprunner.com/listbuckets
 
 ## aws-sdk-rust の認証情報の取得
 
-※前提として `v0.0.8-alpha` なのでまだまだ足りないところがあって当然であります。
+:::message
+`v0.0.8-alpha` なのでまだまだ足りないところがあって当然、という前提で読んでください
+:::
 
 aws-sdk-rust から AppRunner に割り当てた IAM Role の認証情報を使うことが出来ないようでした。
-あまりこのあたり詳しくないですが、EC2のメタデータの取得の実装もこれからっぽいので、待つ必要がありそうなんですかね。
+あまりこのあたりの仕組みに詳しくないですが、EC2のメタデータの取得の実装もまだまだこれからっぽいので、待つ必要がありそうですかね。
 
 [Instance metadata credentials support · Issue #97 · awslabs/aws-sdk-rust](https://github.com/awslabs/aws-sdk-rust/issues/97)
 
-今回は環境変数にAWSアクセスキーを設定して動かしましたが、運用的にはあまり良くないのでまだまだこれからって感じですね。
-（専用のバケット一覧を見る権限のみをつけたIAMユーザーを作り、テストが終わったらユーザーごと消しました）
+今回は環境変数にAWSアクセスキーを設定して動かしましたが、運用・セキュリティ的にあまり良くないのでこれからに期待です。
+（安全のため、バケット一覧を見る権限のみをつけたテスト用のIAMユーザーを作り、テストが終わったらユーザーごと消しました）
 
 
 
 ## Dockerイメージでヘルスチェックできない場合に何もできない
 
-ヘルスチェックエンドポイントのところをミスして動作しないイメージを上げてデプロイしたら、30分ぐらい `Operation in progress` の状態が続来ました。
+ミス (typo) して正常に動作しないイメージを上げてデプロイしたら、30分ぐらい `Operation in progress` の状態が続来ました。
 特にログにもエラーなども出ておらず、ひたすらロールバックされるのを待っていました。
-もしかしたら私が気づいていないなにかがあったかもしれませんが、この辺改善されるといいな、と思います。
+もしかしたら私が気づいていない何かがあったかもしれませんが、この辺改善されるといいな、と思います。
 
 
 
 # おわりに
 
 Rust は学習が難しいと言われていますが、実際難しいというのを実感しました。
-ライブラリ関連もまだ成熟しないな、というのもあるかもしれません。（今回は alpha, beta 版を使っていたのも大きいかもしれません・・・）
+ライブラリ関連もまだ成熟してないな、というのもあるかもしれません。（更に今回は alpha, beta 版を使っていたのも大きいかもしれません・・・）
 ただコンパイラのチェックがかなり厳しいので、ビルドが通れば後は安心できる感じがします。
 もちろん、GCレス、高速、メモリ安全、というメリットも魅力的です。
 
-AWS App Runner は手軽に構築できて、こういったサクッと作ってみたいときには素晴らしく使いやすいサービスだな、と思いました。
+AWS App Runner は手軽に構築できて、こういったサクッと作ってみたいときには使いやすいサービスだな、と思いました。
 
-今回始めてのことばかりで、色々試行錯誤しましたが、こういう手を動かして未知のものを使ってみるというのはとても楽しかったです。
+今回初めてのことばかりで色々試行錯誤しましたが、こういう手を動かして知らないものを使ってみるというのはとても楽しかったです。
 最後に、私も Rust 初心者なので、ここはこう直したほうが良いよ、とかあればコメントなど頂けると嬉しいです。
