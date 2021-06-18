@@ -3,7 +3,7 @@ title: "Actix Web (Rust) を App Runner で動かしたメモ"
 emoji: "📝"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Rust", "actixweb", "AWS", "AppRunner"]
-published: false
+published: true
 ---
 
 # はじめに
