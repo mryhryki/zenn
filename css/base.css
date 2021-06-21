@@ -9,7 +9,12 @@ a {
 }
 
 button {
-    background-color: #999;
+    background-color: #07f;
+    color: #fff;
+}
+
+button:disabled {
+    opacity: 0.5;
 }
 
 
@@ -20,7 +25,7 @@ button {
 }
 
 .light-theme * {
-    border-color: #999;
+    border-color: #ccc;
 }
 
 .light-theme hr {
@@ -97,6 +102,11 @@ body, header, footer, div, span, p, a, button, hr, h1, h2, h3, h4, h5, h6, em, s
     word-break: break-word;
 }
 
+footer {
+    text-align: center;
+    margin: 48px 0 16px 0;
+}
+
 h1, h2, h3, h4, h5, h6, ul, ol {
     margin: 1rem 0.5rem;
     padding: 0 0.25rem;
@@ -119,7 +129,7 @@ h1 {
 }
 
 h2 {
-    border-bottom: 1px solid;
+    border-bottom-width: 1px;
     font-size: 1.5rem;
     font-weight: 700;
     line-height: 2rem;
@@ -278,9 +288,11 @@ input {
 }
 
 button {
-    font-size: 14px;
+    border-radius: 4px;
+    font-size: 16px;
     line-height: 20px;
-    padding: 2px 8px;
+    margin: 4px;
+    padding: 8px 16px;
 }
 
 /* Basic Layout */
@@ -288,6 +300,14 @@ button {
     max-width: 1280px;
     margin: 0 auto;
     padding: 16px;
+}
+
+.index-item {
+    margin-bottom: 16px;
+}
+
+.index-item > * {
+    display: block;
 }
 
 /* Tooltip Styles */
