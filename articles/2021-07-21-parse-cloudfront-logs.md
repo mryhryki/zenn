@@ -3,7 +3,7 @@ title: "CloudFront のログを JS (TS) で分析する"
 emoji: "🔍"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["JavaScript", "TypeScript", "AWS", "CloudFront"]
-published: false
+published: true
 ---
 
 
