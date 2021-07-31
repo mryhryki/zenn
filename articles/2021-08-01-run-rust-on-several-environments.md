@@ -3,7 +3,7 @@ title: "Rust のコードをいろいろな環境で動かしてみたメモ"
 emoji: "📝"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Rust","WebAssembly","AWSLambda"]
-published: false
+published: true
 ---
 
 # はじめに
@@ -59,9 +59,10 @@ rustc 1.54.0 (a178d0322 2021-07-26)
 ```
 
 
+
 # 1. CLI
 
-これはよくある使い方ですね。
+これはよく見るやつです。
 普通に `cargo build` すればOKです。
 
 ```bash
@@ -74,6 +75,8 @@ $ cargo build --release
 $ ./target/release/gen_rand 
 Random: QqdElRD0gD8pTH6hLuCqPeOchXEVxB
 ```
+
+
 
 # 2. WebAssembly
 
@@ -161,6 +164,7 @@ $ cd pkg
 $ npm pack
 ```
 
+
 ## JSビルドの環境構築
 
 `webpack` でJSをビルドする環境を作りました。
@@ -170,9 +174,7 @@ $ npm pack
 ```json
 {
   "scripts": {
-    "start": "webpack serve",
-    "build": "webpack",
-    "serve": "serve public/"
+    "start": "webpack serve"
   },
   "dependencies": {
     "@mryhryki/gen_rand": "file:../pkg/mryhryki-gen_rand-0.1.0.tgz",
@@ -192,7 +194,7 @@ $ npm i ../pkg/mryhryki-gen_rand-0.1.0.tgz
 ### webpack.config.js
 
 `webpack5` だと `experiments.asyncWebAssembly = true` をセットしないと wasm のビルドができないようです。
-（無しで実行するとエラーになったので追加しました）
+（無しで実行すると丁寧なエラーメッセージが出てくれて優しい）
 
 ```javascript
 const path = require('path')
@@ -239,7 +241,7 @@ module.exports = {
 ```
 
 ```javascript
-import {gen_rand as genRand} from '@mryhryki/gen_rand'
+import { gen_rand as genRand } from '@mryhryki/gen_rand'
 
 const generateButton = document.getElementById('$generate')
 const resultElement = document.getElementById('$result')
@@ -249,13 +251,16 @@ generateButton.addEventListener('click', () => {
 })
 ```
 
+（wasm って同期的に実行できるんですね）
+
+
 ### ブラウザでの実行
 
 `webpack-dev-server` を起動して、ブラウザで実行すると以下のように動作しました。
 
 ![capture.gif](https://i.gyazo.com/36ab0cbfbfd15450b16dbbfebf3c92dc.gif)
 
-`wasm-pack` や `wasm-bindgen` などのツールがちゃんと動いてくれるおかげで、思ってたいたよりずっと簡単にできました。
+`wasm-pack` や `wasm-bindgen` などのツールがちゃんと動いてくれるおかげで、思っていたよりずっと簡単にできました。
 あとMDNのドキュメントも丁寧で非常にわかりやすかったです。
 
 
@@ -281,8 +286,7 @@ https://docs.wasmer.io/ecosystem/wasmer/getting-started
 $ curl https://get.wasmer.io -sSfL | sh
 
 # パスを通す
-$ export WASMER_DIR="${HOME}/.wasmer"
-$ export PATH="${WASMER_DIR}/bin:${PATH}"
+$ export PATH="${HOME}/.wasmer/bin:${PATH}"
 ```
 
 バージョンは `2.0.0` です。
@@ -310,7 +314,7 @@ $ cargo build --release --target wasm32-wasi
 
 ## 実行
 
-出力されたwasm 用のバイナリを `wasmer` コマンドに渡せば実行できます
+出力された wasm 用のバイナリを `wasmer` コマンドに渡せば実行できます。
 
 ```bash
 $ wasmer run target/wasm32-wasi/release/gen_rand.wasm 
@@ -440,3 +444,19 @@ $ aws lambda invoke --function-name gen_rand --payload '{}' "output.json"
 $ cat output.json
 {"random":"iomW3yjQwtLZbbfdvvbr3eHjhCKBMq"}
 ```
+
+
+
+# おわりに
+
+書いてある文量の３倍ぐらいは試した気がします。
+それでも、思っていたよりは簡単にできた印象があります。
+ツールやドキュメントが充実している気がしますね。
+さすが[最も愛されている言語](https://www.publickey1.jp/blog/20/stack_overflow5javascriptrust.html)です。
+
+ブラウザ上での WebAssembly 実行は、当初 [Vite](https://vitejs.dev/) を使ってみたんですが、こちらはうまく行かなかったです。
+すぐ MDN に書いてあった Webpack に切り替えてうまくいったので深追いしていませんが、まだこの辺りは対応していないのかな？
+（プラグイン入れればすぐ動くとかあるのかもしれない。未検証）
+
+今回はとりあえず動くところまで試した感じなので、次はもうちょい中身を見ていきたい。
+`rustup target add` とか `cargo build --target XXX` とか中で何が起きてるかよくわからないので。
