@@ -1,6 +1,11 @@
 # portfolio
 
-[ポートフォリオサイト](https://mryhryki.com/) のソースコードです。<br>
+ポートフォリオサイトのソースコードです。<br>
+以下の２つのドメインで配信しています。
+
+- https://mryhryki.com/ (Primary, CloudFront + S3)
+- https://www.mryhryki.com/ (Secondary, GitHub Pages)
+
 また [Zenn](https://zenn.dev/mryhryki) の記事データも管理しています。
 
 ## ポートフォリオの更新
