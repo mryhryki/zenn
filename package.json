@@ -5,8 +5,8 @@
   "scripts": {
     "article:add": "zenn new:article --slug \"$(date +%Y-%m-%d)-$(openssl rand -hex 3)\"",
     "article:preview": "mkdir -p ./books && zenn preview",
-    "portfolio:update": "aws s3 sync docs/ s3://mryhryki-cdn/contents/",
-    "portfolio:preview": "serve docs/"
+    "site:update": "aws s3 sync docs/ s3://mryhryki-cdn/contents/ --exclude='.DS_Store' --size-only",
+    "site:preview": "serve docs/"
   },
   "dependencies": {
     "serve": "^12.0.0",

@@ -8,10 +8,19 @@
 
 また [Zenn](https://zenn.dev/mryhryki) の記事データも管理しています。
 
-## ポートフォリオの更新
+## ポートフォリオサイト
+
+### プレビュー
 
 ```bash
-$ npm run update
+$ npm run site:preview
+```
+
+
+### 更新
+
+```bash
+$ npm run site:update
 ```
 
 ## Zenn
