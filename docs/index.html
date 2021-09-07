@@ -68,7 +68,11 @@
       }
 
       header {
-          background: url('./assets/image/background_960x360.webp'), url('./assets/image/background_960x360.jpg') black no-repeat local center;
+          background-attachment: local;
+          background-color: black;
+          background-image: url('./assets/image/background_960x360.webp'), url('./assets/image/background_960x360.jpg');
+          background-position: center;
+          background-repeat: no-repeat;
           background-size: cover;
           color: #f7fafc;
           display: flex;
