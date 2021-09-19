@@ -3,7 +3,7 @@ title: "GitHub Actions のIDトークンを使ってAWSリソースにアクセ�
 emoji: "✨"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["AWS","GitHubActions"]
-published: false
+published: true
 ---
 
 :::message alert
