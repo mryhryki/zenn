@@ -268,3 +268,5 @@ GitHub が発行したIDトークンで、AWSの一時的な認証情報を取�
 - [GitHub ActionsでAWSの永続的なクレデンシャルを渡すことなくIAM Roleが利用できるようになったようです | DevelopersIO](https://dev.classmethod.jp/articles/github-actions-without-permanent-credential/)
 - [takanabe/github-actions-oidc-test](https://github.com/takanabe/github-actions-oidc-test)
   - [Tweet](https://twitter.com/takanabe_w/status/1438489617892732928?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1438804367134494720%7Ctwgr%5E%7Ctwcon%5Es1_&ref_url=https%3A%2F%2Fzenn.dev%2F)
+- [GitHub ActionsのOIDC id tokenでGCPにアクセスしてみた - ryotarai's blog](https://ryotarai.hatenablog.com/entry/github-acitons-id-token-gcp)
+  - AWS 専用とかではないので、同様なことは GCP でもできるようですね。（GCP はほとんど知らないので詳しくはわかりません）
