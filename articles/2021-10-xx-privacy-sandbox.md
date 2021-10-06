@@ -1,10 +1,12 @@
 ---
-title: "Google の提案しているプライバシーサンドボックスについて調べてみた"
+title: "Google のプライバシーサンドボックス関連の提案の概要と資料をまとめました"
 emoji: "🔒"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["privacy","google","web"]
 published: false
 ---
+
+# はじめに
 
 ## おことわり
 
@@ -54,99 +56,48 @@ Federated Learning of Cohorts の略で、[コホートの連合学習](https://
 ## 課題・疑問
 
 ブラウザのみで行い、閲覧履歴などの情報をどこにも渡さないという点は、サードパーティ Cookie よりも評価できると思っています。
-その一方で以下のような懸念があると私は思っています。
+散々各所で批判がありますが、私はが見たところでも以下のような懸念があると思いました。
 
-### 機械学習
-
-機械学習の精度や振り分けに課題ができるのではないか、という懸念があります。
-
-
-### プライバシー
-
-コホートを取得する [サンプルコード](https://github.com/WICG/floc#overview) ランプル値に "43A7" という値がありました。
-仮に16進数4桁だとすると65,536パターンあると思うので、ある程度ユーザーを識別しやすい情報になると考えられます。
-
-コホートの情報と別の情報を組み合わせることで、ブラウザフィンガープリントの精度を上げてしまう可能性があると思います。
-これは別の提案（FLEDGE, Privacy Budget, User-Agent Client Hints など）で緩和することも含めて考えられているとは思いますが、プライバシーの観点から考えればあまり良く無いと私は思っています。
-
+- 機械学習の精度や振り分けに課題があるのではないか。
+- このコホートを識別する情報が個人を特定するための情報として使われてしまう懸念があるのではないか。
+  - コホートを取得する [サンプルコード](https://github.com/WICG/floc#overview) サンプル値に "43A7" という値があり、仮に16進数4桁だとすると65,536パターンあります。
+  - 別の提案（FLEDGE, Privacy Budget, User-Agent Client Hints など）で緩和することも含めて考えられているとは思いますが、プライバシーの観点から考えればあまり良くないと私は思っています。
 
 ## 参考リンク
 
 - [WICG/floc: FLoC](https://github.com/WICG/floc)
     - Web Platform Incubator Community Group (WICG) に提出された提案
 - [FLoCとは何ですか？ | GIGAZINE.BIZ](https://gigazine.biz/2021/02/20/floc/)
+- [FLoCとはなにか - ぼちぼち日記](https://jovi0608.hatenablog.com/entry/2021/05/06/160046)
 - [Cookieと違う、Googleが開発するFLoCとは？](https://legalsearch.jp/portal/column/floc/)
 - [Googleが導入予定の「FLoC」は最悪なものだと電子フロンティア財団が指摘 - GIGAZINE](https://gigazine.net/news/20210305-googles-floc-terrible-idea/)
 - [マイクロソフトEdge、Googleの広告技術FloCを無効化。事実上の「NO」表明か - Engadget 日本版](https://japanese.engadget.com/ms-edge-google-floc-diabled-073050317.html)
 - [GoogleがCookieに代わる広告ターゲティング手段FLoCをChromeでテスト開始 | TechCrunch Japan](https://jp.techcrunch.com/2021/04/01/2021-03-30-google-starts-trialling-its-floc-cookie-alternative-in-chrome/)
 - [Googleに騙されてはいけない：FLoCは邪悪なアイデアである | P2Pとかその辺のお話R](https://p2ptk.org/privacy/3290)
 - [Googleが提案するサードパーティーCookieなしの新しい広告の仕組み「FLoC」とは？ - GIGAZINE](https://gigazine.net/news/20210126-google-chrome-privacy-sandbox-floc/)
+- [Googleの新しい広告システム「FLoC」はどのような仕組みで動作するのか？ | GIGAZINE.BIZ](https://gigazine.biz/2021/05/09/inside-floc/)
+- [Googleの「FLoC」によってどのようにプライバシー侵害が起こるのか？ | GIGAZINE.BIZ](https://gigazine.biz/2021/06/13/privacy-analysis-of-floc/)
 
 
 
 # FLEDGE
 
 ユーザーの関心に基づいて広告を配信できるが、ユーザーを特定することはできない、という仕様のようです。
+具体的には、あるサイトにアクセスすると特定の広告グループと呼ばれるに紐付けられ、**ブラウザ内で** オークションが行われて広告が決定されるようです。
+そのため、広告主はどのページを見たなどの情報はわからないが、適した広告を配信できるという仕組みのようです。
+
+広告の仕組みにあまり詳しくなく、理解できなかったので、具体的な流れなどは割愛します。
+いつか理解できたら書きたい。
 
 ## TURTLEDOVE
 
-FLEDGE は TURTLEDOVE という提案の最初の実験という位置づけのようです。
+FLEDGE は TURTLEDOVE という提案の最初の実験的な API という位置づけのようです。
 
 > Chrome expects to build and ship a first experiment in this direction during 2021. For details of the current design, see FLEDGE.
 https://github.com/WICG/turtledove/blob/main/README.md
 
 > First Experiment (FLEDGE)
 https://github.com/WICG/turtledove/blob/main/FLEDGE.md
-
-FLEDGE が出てくるのは、以下のように TURTLEDOVE の概念だと Google Chrome 依存があるため、それを改善した FLEDGE を前面に出したい意図があるのではないかと私は思っています。
-
-> FLEDGEはプライバシーサンドボックスで議論されてきたTURTLEDOVEという概念の初期のプロトタイプです。TURTLEDOVEはインターネットユーザーの興味・関心といった情報をブラウザに保存し、広告主がそれを利用可能にする仕組みですが、「Google Chromeへの依存が増す」と懸念されています。
-> 
-> そこでFLEDGEは、ブラウザに保存されたユーザー情報と、外部の「信頼されたサーバー」から送られるメタデータに基づいて、ブラウザ上で広告枠のオークションを行えるようにすることを検討しています。
-https://gigazine.biz/2021/02/21/fledge/
-
-## 実装例
-
-```javascript
-// https://github.com/WICG/turtledove/blob/main/FLEDGE.md#11-joining-interest-groups
-const myGroup = {
-  'owner': 'www.example-dsp.com',
-  'name': 'womens-running-shoes',
-  'biddingLogicUrl': ...,
-  'dailyUpdateUrl': ...,
-  'trustedBiddingSignalsUrl': ...,
-  'trustedBiddingSignalsKeys': ['key1', 'key2'],
-  'userBiddingSignals': {...},
-  'ads': [shoesAd1, shoesAd2, shoesAd3],
-  'adComponents': [runningShoes1, runningShoes2, gymShoes, gymTrainers1, gymTrainers2],
-};
-navigator.joinAdInterestGroup(myGroup, 30 * kSecsPerDay);
-```
-
-```javascript
-// https://github.com/WICG/turtledove/blob/main/FLEDGE.md#21-initiating-an-on-device-auction
-const myAuctionConfig = {
-  'seller': 'www.example-ssp.com',
-  'decisionLogicUrl': ...,
-  'trustedScoringSignalsUrl': ...,
-  'interestGroupBuyers': ['www.example-dsp.com', 'buyer2.com', ...],
-  'additionalBids': [otherSourceAd1, otherSourceAd2, ...],
-  'auctionSignals': {...},
-  'sellerSignals': {...},
-  'perBuyerSignals': {'www.example-dsp.com': {...},
-                        'www.another-buyer.com': {...},
-                        ...},
-};
-const auctionResultPromise = navigator.runAdAuction(myAuctionConfig);
-
-```
-
-## 課題・疑問
-
-### 実装のモチベーション
-
-Safari や FireFox などのブラウザベンダーは、このAPIを実装するモチベーションが無いのでは？
-Google Chrome とかの広告に積極的なブラウザベンダーだけしか実装されない可能性が高そう。
 
 ## 参考リンク
 
@@ -159,36 +110,38 @@ Google Chrome とかの広告に積極的なブラウザベンダーだけしか
 
 # アトリビューションレポート
 
-サードパーティ Cookie を使わず、ユーザーのコンバージョンを測定する仕様のようです。
+サードパーティ Cookie を使わず、ユーザーのコンバージョンを測定する仕様です。
+特定の広告要素をクリックした時に、キャンペーンなどを識別する情報だけを送ってどの程度コンバージョンしたかを測定できるようです。
+またレポートを遅延して送信したり、ノイズを含めることでよりプライバシーを高めるようです。
 
-## 課題・疑問
-
-### Safari の仕様
+## Safari の場合
 
 > Safari / Webkit ではサポートされておらず、Private Click Measurement (プライベート クリック測定)と呼ばれる広告コンバージョンを測定する別の API が提案されています。
 https://developer.chrome.com/ja/docs/privacy-sandbox/attribution-reporting-introduction/#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%AE%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88
 
+リンク先のこちらの動画がわかりやすかったです。
+
 https://developer.apple.com/videos/play/wwdc2021/10033/
 
-この仕様はそれぞれ別のものとして進んでいくのか、今後統合されていくのか。
+Google Chrome と Safari でそれぞれ違う方法で検証していく必要がありそうですね。
 
 ## 参考リンク
 
+- [WICG/conversion-measurement-api: Conversion Measurement API](https://github.com/WICG/conversion-measurement-api/)
+- [アトリビューション レポートの概要 (コンバージョン測定) - Chrome Developers](https://developer.chrome.com/ja/docs/privacy-sandbox/attribution-reporting-introduction/)
 
 
 # SameSite Cookieの変更
 
 ## 課題・疑問
 
-## 参考リンク
 
 
 
 # First-Party Sets
 
-## 課題・疑問
 
-### 何に対して有効なのか？
+## 何に対して有効なのか？
 
 - ファーストパーティとサードパーティの区別がURLから判別できない
 - 広告企業などをファーストパーティとして入れた場合、それは誰にとってメリットなのか。少なくともユーザーにとってのメリットはない
@@ -240,11 +193,20 @@ https://developer.apple.com/videos/play/wwdc2021/10033/
 
 # おわりに
 
+ブラウザに依存する部分が大きくなるので、Google Chrome 以外のブラウザがどこまで実装されるのか疑問です。
+それぞれのブラウザで広告配信のやり方が変わったりするような未来になるんですかね。
+
+私個人としての意見としては、ターゲティング広告は毎回同じような広告ばかり出てきてうんざりですし、そこから購入することもないし、どうせ出してくるなら全然知らないような広告を出してほしいな、とは思うんですが、やっぱりターゲティング広告は有効なんですね。これだけなんとかして維持しようとしているぐらいなので。
+
+色々疑問が多いプライバシーサンドボックスですが、それでもこれらの提案がオープンに誰でも閲覧・参加ができる形で議論されているのは Web の良さかな、と私は感じました。
 
 
 ## 参考リンク
 
 - [プライバシーサンドボックスについて調べる](https://zenn.dev/mryhryki/scraps/4b9e03d8788095)
 - [Google Japan Blog: サードパーティ Cookie 廃止に関するタイムラインの変更について](https://japan.googleblog.com/2021/06/cookie.html)
+- [GoogleがCookieレスな「プライバシー・サンドボックス」を実現させると何が起こるのか？ - GIGAZINE](https://gigazine.net/news/20210119-death-of-third-party-cookies/)
+- [Googleが「ユーザー情報を保護しつつ広告の関連性も損なわない」仕組みの開発を行うと宣言 - GIGAZINE](https://gigazine.net/news/20190823-google-privacy-sandbox/)
+- [Googleはどのような「Cookieなしの広告システム」を作ろうとしているのか？ | GIGAZINE.BIZ](https://gigazine.biz/2020/12/20/concerns-google-privacy-proposals/)
 - [どこで読めるの？今さらきけない仕様書の在り処！ | フロントエンドBlog | ミツエーリンクス](https://www.mitsue.co.jp/knowledge/blog/frontend/201809/20_1133.html)
 
