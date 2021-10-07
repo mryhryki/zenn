@@ -8,17 +8,16 @@ published: false
 
 # はじめに
 
+最近目にする FLoC や First-Party Sets について調べていると、Google がサードパーティ Cookie を廃止するための様々な提案をプライバシーサンドボックスという名前でまとめているということを知りました。
+Google の動向はやはり気になりますし、広告だけでなくプライバシーに関する提案もあるので、とりあえずどういうことをやろうとしているのかの概要まとめておきたいと思って、この記事を書きました。
+
 ## おことわり
 
 なるべく正確な情報をまとめることを心がけていますが、私はあまり広告の領域に詳しくはありません。
-また提案の段階なので、今後変わっていく可能性もあります。
+また、現在は提案の段階なので、今後変わっていく可能性もあります。
 最新の正確な情報は [The Privacy Sandbox: Technology for a More Private Web](https://privacysandbox.com/) や[プライバシーサンドボックス - Chrome Developers](https://developer.chrome.com/ja/docs/privacy-sandbox/)、各提案の内容をご参照ください。
 
-私はどちらかといえば、ターゲティング広告に対して否定的な感情を持っています。
-なるべく中立に書きたいと思っていますが、どうしてもそういった書き方になる場面もあると思いますので、ご了承いただければと思います。
-
 誤った情報などありましたら、コメントなどでご指摘いただけますと幸いです。
-
 
 
 # プライバシーサンドボックスとは
@@ -29,9 +28,9 @@ https://developer.chrome.com/ja/docs/privacy-sandbox/
 
 Google はサードパーティ Cookie を廃止することを目指しています。
 その代替として、サードパーティ Cookie に頼らないターゲティング広告の仕組みや、プライバシーを向上させるための提案をまとめて「プライバシーサンドボックス」と呼んでいるようです。
-そのため「プライバシーサンドボックス」という仕様などはなく、いくつかの提案をまとめて便宜上プライバシーサンドボックと呼んでいるようです。
+そのため「プライバシーサンドボックス」という仕様などはなく、いくつかの提案をまとめて便宜上プライバシーサンドボックスと呼んでいるようです。
 
-この記事では [Privacy Sandbox とは何ですか？ - Chrome Developers](https://developer.chrome.com/ja/docs/privacy-sandbox/overview/) に書かれている以下の提案の概要をまとめています。
+この記事では [Privacy Sandbox とは何ですか？ - Chrome Developers](https://developer.chrome.com/ja/docs/privacy-sandbox/overview/) に書かれている以下の提案の概要と資料をまとめています。
 
 - FLoC
 - FLEDGE
@@ -53,20 +52,16 @@ Google はサードパーティ Cookie を廃止することを目指してい�
 
 Federated Learning of Cohorts の略で、[コホートの連合学習](https://legalsearch.jp/portal/column/floc/) と訳されたりするようです。
 
-## 課題・疑問
+## 批判
 
-ブラウザのみで行い、閲覧履歴などの情報をどこにも渡さないという点は、サードパーティ Cookie よりも評価できると思っています。
-散々各所で批判がありますが、私はが見たところでも以下のような懸念があると思いました。
-
-- 機械学習の精度や振り分けに課題があるのではないか。
-- このコホートを識別する情報が個人を特定するための情報として使われてしまう懸念があるのではないか。
-  - コホートを取得する [サンプルコード](https://github.com/WICG/floc#overview) サンプル値に "43A7" という値があり、仮に16進数4桁だとすると65,536パターンあります。
-  - 別の提案（FLEDGE, Privacy Budget, User-Agent Client Hints など）で緩和することも含めて考えられているとは思いますが、プライバシーの観点から考えればあまり良くないと私は思っています。
+FLoC は、サードパーティ Cookie に変わる中心的な技術になりそうなようで、批判も多くあります。
+この記事では詳しくは書きませんので、参考リンクの記事をご参考にしてください。
 
 ## 参考リンク
 
 - [WICG/floc: FLoC](https://github.com/WICG/floc)
     - Web Platform Incubator Community Group (WICG) に提出された提案
+- [FLoC - Chrome Developers](https://developer.chrome.com/ja/docs/privacy-sandbox/floc/)
 - [FLoCとは何ですか？ | GIGAZINE.BIZ](https://gigazine.biz/2021/02/20/floc/)
 - [FLoCとはなにか - ぼちぼち日記](https://jovi0608.hatenablog.com/entry/2021/05/06/160046)
 - [Cookieと違う、Googleが開発するFLoCとは？](https://legalsearch.jp/portal/column/floc/)
@@ -82,12 +77,10 @@ Federated Learning of Cohorts の略で、[コホートの連合学習](https://
 
 # FLEDGE
 
-ユーザーの関心に基づいて広告を配信できるが、ユーザーを特定することはできない、という仕様のようです。
+ユーザーの関心に基づいて広告を配信できるが、ユーザーを特定させないための仕様のようです。
 具体的には、あるサイトにアクセスすると特定の広告グループと呼ばれるに紐付けられ、**ブラウザ内で** オークションが行われて広告が決定されるようです。
 そのため、広告主はどのページを見たなどの情報はわからないが、適した広告を配信できるという仕組みのようです。
-
-広告の仕組みにあまり詳しくなく、理解できなかったので、具体的な流れなどは割愛します。
-いつか理解できたら書きたい。
+（広告の仕組みにあまり詳しくなく、理解できなかったのでちょっと自信がないです・・・）
 
 ## TURTLEDOVE
 
@@ -102,7 +95,8 @@ https://github.com/WICG/turtledove/blob/main/FLEDGE.md
 ## 参考リンク
 
 - [WICG/turtledove: TURTLEDOVE](https://github.com/WICG/turtledove)
-- [turtledove/README.md at main · WICG/turtledove](https://github.com/WICG/turtledove/blob/main/README.md)
+- [turtledove/FLEDGE.md at main · WICG/turtledove](https://github.com/WICG/turtledove/blob/main/FLEDGE.md)
+- [FLEDGE - Chrome Developers](https://developer.chrome.com/ja/docs/privacy-sandbox/fledge/)
 - [TURTLEDOVEとは何ですか？ | GIGAZINE.BIZ](https://gigazine.biz/2021/02/21/turtledove/)
 - [FLEDGEとは何ですか？ | GIGAZINE.BIZ](https://gigazine.biz/2021/02/21/fledge/)
 
@@ -123,17 +117,19 @@ https://developer.chrome.com/ja/docs/privacy-sandbox/attribution-reporting-intro
 
 https://developer.apple.com/videos/play/wwdc2021/10033/
 
-Google Chrome と Safari でそれぞれ違う方法で検証していく必要がありそうですね。
+Google Chrome と Safari でそれぞれ違う方法で計測していく必要が出てきそうですね。
 
 ## 参考リンク
 
 - [WICG/conversion-measurement-api: Conversion Measurement API](https://github.com/WICG/conversion-measurement-api/)
+- [アトリビューションレポート - Chrome Developers](https://developer.chrome.com/ja/docs/privacy-sandbox/attribution-reporting/)
 - [アトリビューション レポートの概要 (コンバージョン測定) - Chrome Developers](https://developer.chrome.com/ja/docs/privacy-sandbox/attribution-reporting-introduction/)
+
 
 
 # SameSite Cookieの変更
 
-## 課題・疑問
+## 参考リンク
 
 
 
@@ -148,46 +144,64 @@ Google Chrome と Safari でそれぞれ違う方法で検証していく必要�
 
 ## 参考リンク
 
+- [First-Party Sets - Chrome Developers](https://developer.chrome.com/ja/docs/privacy-sandbox/first-party-sets/)
 
 
 # Trust Tokens
 
-## 課題・疑問
+アクセスしているのかが人間かボットなのかを、ユーザーを識別することなく判定できるようにする仕様のようです。
+どのように人間かボットかを判定するかは、仕様には含まれていないようです。
+`fetch` のオプションに `trustToken` というキーを与えてアクセスすることで Trust Token の発行・認証ができるようにするようです。
+（詳しくは [提案の Sample API Usage](https://github.com/WICG/trust-token-api#sample-api-usage) を参照すると良さそうでした）
 
 ## 参考リンク
 
+- [WICG/trust-token-api: Trust Token API](https://github.com/WICG/trust-token-api)
+- [Trust Tokens (トラストトークン) - Chrome Developers](https://developer.chrome.com/ja/docs/privacy-sandbox/trust-tokens/)
 
 
 # Privacy Budget
 
-## 課題・疑問
+Privacy Budget は Font, Canvas, User-Agent などブラウザの識別（ブラウザフィンガープリント）のために使える API に対して、一定の制限を設ける、という仕様のようです。
+ただし、現時点では実験段階で絶対的な基準はまだ存在しないようです。
 
 ## 参考リンク
 
+- [Introducing the Privacy Budget - YouTube](https://www.youtube.com/watch?v=0STgfjSA6T8)
+- [bslassey/privacy-budget](https://github.com/bslassey/privacy-budget)
 
 
 # User-Agent Client Hints
 
-## 課題・疑問
+`User-Agent` ヘッダーに含まれる情報量を減らすために `Sec-CH-UA*` というヘッダーを使って必要な情報を渡すことができるという仕様のようです。
+`User-Agent` ヘッダーは情報量が多く、ブラウザフィンガープリントとしても使われるため、プライバシーを守るため情報量を減らしていきたい、という背景があるようです。
 
 ## 参考リンク
+
+- [Improving user privacy and developer experience with User-Agent Client Hints](https://web.dev/i18n/ja/user-agent-client-hints/)
 
 
 
 # Gnatcatcher
 
-## 課題・疑問
 
 ## 参考リンク
+
+- [bslassey/ip-blindness](https://github.com/bslassey/ip-blindness)
 
 
 
 # WebID
 
 
-## 課題・疑問
-
 ## 参考リンク
+
+
+# 補足
+
+## ブラウザフィンガープリント
+
+[AmIUnique](https://amiunique.org/fp) でテストできる。
 
 
 
@@ -196,9 +210,7 @@ Google Chrome と Safari でそれぞれ違う方法で検証していく必要�
 ブラウザに依存する部分が大きくなるので、Google Chrome 以外のブラウザがどこまで実装されるのか疑問です。
 それぞれのブラウザで広告配信のやり方が変わったりするような未来になるんですかね。
 
-私個人としての意見としては、ターゲティング広告は毎回同じような広告ばかり出てきてうんざりですし、そこから購入することもないし、どうせ出してくるなら全然知らないような広告を出してほしいな、とは思うんですが、やっぱりターゲティング広告は有効なんですね。これだけなんとかして維持しようとしているぐらいなので。
-
-色々疑問が多いプライバシーサンドボックスですが、それでもこれらの提案がオープンに誰でも閲覧・参加ができる形で議論されているのは Web の良さかな、と私は感じました。
+プライバシーサンドボックス（特にFLoC）は批判も多いようですが、それでもこれらの提案がオープンに誰でも閲覧・参加ができる形で議論されているのは Web の良さかな、と私は感じました。
 
 
 ## 参考リンク
@@ -209,4 +221,5 @@ Google Chrome と Safari でそれぞれ違う方法で検証していく必要�
 - [Googleが「ユーザー情報を保護しつつ広告の関連性も損なわない」仕組みの開発を行うと宣言 - GIGAZINE](https://gigazine.net/news/20190823-google-privacy-sandbox/)
 - [Googleはどのような「Cookieなしの広告システム」を作ろうとしているのか？ | GIGAZINE.BIZ](https://gigazine.biz/2020/12/20/concerns-google-privacy-proposals/)
 - [どこで読めるの？今さらきけない仕様書の在り処！ | フロントエンドBlog | ミツエーリンクス](https://www.mitsue.co.jp/knowledge/blog/frontend/201809/20_1133.html)
+- [【一問一答】Googleの「 プライバシーサンドボックス 」とは？：Cookieの代わりとされる5つのAPI | DIGIDAY［日本版］](https://digiday.jp/platforms/wtf-googles-privacy-sandbox/)
 
