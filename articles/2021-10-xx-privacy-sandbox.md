@@ -8,13 +8,14 @@ published: false
 
 # はじめに
 
-最近目にする FLoC や First-Party Sets について調べていると、Google がサードパーティ Cookie を廃止するための様々な提案をプライバシーサンドボックスという名前でまとめているということを知りました。
-Google の動向はやはり気になりますし、広告だけでなくプライバシーに関する提案もあるので、とりあえずどういうことをやろうとしているのかの概要まとめておきたいと思って、この記事を書きました。
+最近目にする FLoC や First-Party Sets について調べていると、Google がサードパーティ Cookie を廃止するための様々な提案を「プライバシーサンドボックス」という名前でまとめているということを知りました。
+
+Google の動向はやはり気になりますし、広告だけでなくプライバシーに関する提案もあるので、とりあえずどういうことをやろうとしているのかの概要まとめておきたいと思いこの記事を書きました。
 
 ## おことわり
 
 なるべく正確な情報をまとめることを心がけていますが、私はあまり広告の領域に詳しくはありません。
-また、現在は提案の段階なので、今後変わっていく可能性もあります。
+また現在は提案の段階なので、今後変わっていく可能性もあります。
 最新の正確な情報は [The Privacy Sandbox: Technology for a More Private Web](https://privacysandbox.com/) や[プライバシーサンドボックス - Chrome Developers](https://developer.chrome.com/ja/docs/privacy-sandbox/)、各提案の内容をご参照ください。
 
 誤った情報などありましたら、コメントなどでご指摘いただけますと幸いです。
@@ -28,7 +29,6 @@ https://developer.chrome.com/ja/docs/privacy-sandbox/
 
 Google はサードパーティ Cookie を廃止することを目指しています。
 その代替として、サードパーティ Cookie に頼らないターゲティング広告の仕組みや、プライバシーを向上させるための提案をまとめて「プライバシーサンドボックス」と呼んでいるようです。
-そのため「プライバシーサンドボックス」という仕様などはなく、いくつかの提案をまとめて便宜上プライバシーサンドボックスと呼んでいるようです。
 
 この記事では [Privacy Sandbox とは何ですか？ - Chrome Developers](https://developer.chrome.com/ja/docs/privacy-sandbox/overview/) に書かれている以下の提案の概要と資料をまとめています。
 
@@ -48,13 +48,13 @@ Google はサードパーティ Cookie を廃止することを目指してい�
 # FLoC
 
 ブラウザ内で閲覧履歴など元に、機械学習によって閲覧者の興味のある領域を区分し、その情報をベースにターゲティング広告を行う、というもののようです。
-閲覧履歴ではなく、興味のある領域という大きな数千人単位でのグループに属させることで個人を特定できない、というロジックでプライバシーを守りつつターゲティング広告ができる、というのが趣旨のようです。
+閲覧者の興味のある領域という単位のグループに、数千人単位で属させることで個人を特定できない、というロジックでプライバシーを守りつつターゲティング広告ができる、という狙いのようです。
 
-Federated Learning of Cohorts の略で、[コホートの連合学習](https://legalsearch.jp/portal/column/floc/) と訳されたりするようです。
+FLoC は Federated Learning of Cohorts の略で、[コホートの連合学習](https://legalsearch.jp/portal/column/floc/) と訳されたりするようです。
 
 ## 批判
 
-FLoC は、サードパーティ Cookie に変わる中心的な技術になりそうなようで、批判も多くあります。
+FLoC は、サードパーティ Cookie に変わる中心的な技術になりそうで、批判も多くあります。
 この記事では詳しくは書きませんので、参考リンクの記事をご参考にしてください。
 
 ## 参考リンク
@@ -149,10 +149,10 @@ Google Chrome と Safari でそれぞれ違う方法で計測していく必要�
 
 # Trust Tokens
 
-アクセスしているのかが人間かボットなのかを、ユーザーを識別することなく判定できるようにする仕様のようです。
-どのように人間かボットかを判定するかは、仕様には含まれていないようです。
+アクセスしているのが人間かボットなのかを、ユーザーを識別することなく判定できるようにする仕様のようです。
+ただし、どのように人間かボットかを判定するかは、仕様には含まれていないようです。
 `fetch` のオプションに `trustToken` というキーを与えてアクセスすることで Trust Token の発行・認証ができるようにするようです。
-（詳しくは [提案の Sample API Usage](https://github.com/WICG/trust-token-api#sample-api-usage) を参照すると良さそうでした）
+（詳しくは [提案の Sample API Usage](https://github.com/WICG/trust-token-api#sample-api-usage) を参照してみてください）
 
 ## 参考リンク
 
@@ -184,6 +184,12 @@ Privacy Budget は Font, Canvas, User-Agent などブラウザの識別（ブラ
 
 # Gnatcatcher
 
+ユーザーをIPアドレスで識別させないための仕様のようです。
+以下の２つの要素で構成されているようです。
+
+- `Near-path NAT` は別のサーバーを介してアクセスすることでIPアドレスを隠すようです
+- `Willful IP Blindness` は Web サイトが IP アドレスをユーザーに関連付けしていないことをブラウザに通知できるようです
+    - （どういう風に実現するのかが私もまだ理解できていません。理解できたら書きたい）
 
 ## 参考リンク
 
@@ -195,6 +201,9 @@ Privacy Budget は Font, Canvas, User-Agent などブラウザの識別（ブラ
 
 
 ## 参考リンク
+
+- [WICG/WebID: A privacy preserving federated identity Web API](https://github.com/WICG/WebID)
+
 
 
 # 補足
