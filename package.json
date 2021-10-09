@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "article:add": "zenn new:article --slug \"$(date +%Y-%m-%d)-$(openssl rand -hex 3)\"",
-    "article:preview": "mkdir -p ./books && zenn preview",
+    "article:preview": "mkdir -p ./books && open http://localhost:8000/ && zenn preview",
     "site:update": "aws s3 sync docs/ s3://mryhryki-cdn/contents/ --exclude='.DS_Store' --size-only",
     "site:preview": "serve docs/"
   },
