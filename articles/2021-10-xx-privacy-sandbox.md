@@ -14,7 +14,7 @@ Google の動向はやはり気になりますし、広告だけでなくプラ�
 
 ## おことわり
 
-なるべく正確な情報をまとめることを心がけていますが、私はあまり広告の領域に詳しくはありません。
+なるべく正確な情報をまとめることを心がけていますが、私はあまり広告の領域に詳しくはありませんし、各提案を完全に理解しているわけではありません。
 また現在は提案の段階なので、今後変わっていく可能性もあります。
 最新の正確な情報は [The Privacy Sandbox: Technology for a More Private Web](https://privacysandbox.com/) や[プライバシーサンドボックス - Chrome Developers](https://developer.chrome.com/ja/docs/privacy-sandbox/)、各提案の内容をご参照ください。
 
@@ -48,19 +48,19 @@ Google はサードパーティ Cookie を廃止することを目指してい�
 # FLoC
 
 ブラウザ内で閲覧履歴など元に、機械学習によって閲覧者の興味のある領域を区分し、その情報をベースにターゲティング広告を行う、というもののようです。 
-サーバーではなくブラウザ内で閲覧履歴などを処理し、結果も閲覧者の興味のある領域という単位のグループに数千人単位で属させることで個人を特定できない、というロジックでプライバシーを守りつつターゲティング広告ができる、という狙いのようです。
+サーバーではなくブラウザ内で閲覧履歴などを処理し、興味のある領域という数千人単位のグループに振り分けるようです。
+数千人のグループであれば個人を特定できないので、プライバシーを守りつつターゲティング広告ができる、というロジックのようです。
 
 FLoC は Federated Learning of Cohorts の略で、[コホートの連合学習](https://legalsearch.jp/portal/column/floc/) と訳されたりするようです。
 
 ## 批判
 
-FLoC は、サードパーティ Cookie に変わる中心的な技術になりそうで、批判も多くあります。
-この記事では詳しくは書きませんので、参考リンクの記事をご参考にしてください。
+FLoC は、サードパーティ Cookie に代わるターゲティング広告の中心的な技術であり、批判も多くあります。
+詳しくは参考リンクの記事を参考にしてください。
 
 ## 参考リンク
 
 - [WICG/floc: FLoC](https://github.com/WICG/floc)
-    - Web Platform Incubator Community Group (WICG) に提出された提案
 - [FLoC - Chrome Developers](https://developer.chrome.com/ja/docs/privacy-sandbox/floc/)
 - [FLoCとは何ですか？ | GIGAZINE.BIZ](https://gigazine.biz/2021/02/20/floc/)
 - [FLoCとはなにか - ぼちぼち日記](https://jovi0608.hatenablog.com/entry/2021/05/06/160046)
@@ -78,9 +78,9 @@ FLoC は、サードパーティ Cookie に変わる中心的な技術になり�
 # FLEDGE
 
 ユーザーの関心に基づいて広告を配信できるが、ユーザーを特定させないための仕様のようです。
-具体的には、あるサイトにアクセスすると特定の広告グループと呼ばれるに紐付けられ、**ブラウザ内で** オークションが行われて広告が決定されるようです。
+
+具体的には、あるサイトにアクセスすると特定の広告グループに紐付けられ、**ブラウザ内で** オークションが行われて広告が決定されるようです。
 そのため、広告主はどのページを見たなどの情報はわからないが、適した広告を配信できるという仕組みのようです。
-（広告の仕組みにあまり詳しくなく、理解できなかったのでちょっと自信がないです・・・）
 
 ## TURTLEDOVE
 
@@ -99,6 +99,7 @@ https://github.com/WICG/turtledove/blob/main/FLEDGE.md
 - [FLEDGE - Chrome Developers](https://developer.chrome.com/ja/docs/privacy-sandbox/fledge/)
 - [TURTLEDOVEとは何ですか？ | GIGAZINE.BIZ](https://gigazine.biz/2021/02/21/turtledove/)
 - [FLEDGEとは何ですか？ | GIGAZINE.BIZ](https://gigazine.biz/2021/02/21/fledge/)
+- [PrivacySandboxにおけるWeb広告のEdgeComputing技術 | PLAID engineer blog](https://tech.plaid.co.jp/privacy-sandbox-edge-computing/)
 
 
 
@@ -213,10 +214,15 @@ Privacy Budget は Font, Canvas, User-Agent などブラウザの識別（ブラ
 
 # WebID
 
+IDフェデレーションを使った認証フローを、サードパーティCookieやリダイレクトを使わず、ブラウザで連携するための仕様のようです。
+
+この図がイメージを掴みやすいです。
+![Federated Credential Management API - 5. High Level Design](https://i.gyazo.com/e997e4b3955086259e0b7f7fb9b5c9dc.png)
 
 ## 参考リンク
 
 - [WICG/WebID: A privacy preserving federated identity Web API](https://github.com/WICG/WebID)
+- [Federated Credential Management API](https://wicg.github.io/WebID/#lifecycle)
 
 
 
@@ -242,13 +248,18 @@ Privacy Budget は Font, Canvas, User-Agent などブラウザの識別（ブラ
 
 # おわりに
 
-ブラウザに依存する部分が大きくなるので、Google Chrome 以外のブラウザがどこまで実装されるのか疑問です。
-それぞれのブラウザで広告配信のやり方が変わったりするような未来になるんですかね。
+ブラウザに依存する部分が大きくなるので、Google Chrome 以外のブラウザがどこまで実装されるのか疑問ですね。
+将来的にはそれぞれのブラウザで、広告配信のやり方が変わったりするのでしょうか。（現状を知らないので、既にそうなのかもしれませんが）
+広告に大きなメリットがないブラウザベンダーは、広告関連の提案を実装するモチベーションがあまりない気もしました。
 
-プライバシーサンドボックス（特にFLoC）は批判も多いようですが、それでもこれらの提案がオープンに誰でも閲覧・参加ができる形で議論されているのは Web の良さかな、と私は感じました。
+ただ、プライバシーサンドボックス（特にFLoC）は批判も多いようですが、それでもこれらの提案がオープンに誰でも閲覧・参加ができる形で議論されているのは Web の良さかな、と私は感じました。
 
+私は正直広告は好きではないですが、Web の発展を支える一部であることは確かだと思います。
+サードパーティ Cookie よりプライバシーが尊重された Web の未来が来ると良いな、と調べながら思いました。
 
 ## 参考リンク
+
+全体または複数の提案に関わる資料や、Privacy Sandbox 自体の資料などはこちらにおいておきます。
 
 - [プライバシーサンドボックスについて調べる](https://zenn.dev/mryhryki/scraps/4b9e03d8788095)
 - [Google Japan Blog: サードパーティ Cookie 廃止に関するタイムラインの変更について](https://japan.googleblog.com/2021/06/cookie.html)
@@ -257,4 +268,4 @@ Privacy Budget は Font, Canvas, User-Agent などブラウザの識別（ブラ
 - [Googleはどのような「Cookieなしの広告システム」を作ろうとしているのか？ | GIGAZINE.BIZ](https://gigazine.biz/2020/12/20/concerns-google-privacy-proposals/)
 - [どこで読めるの？今さらきけない仕様書の在り処！ | フロントエンドBlog | ミツエーリンクス](https://www.mitsue.co.jp/knowledge/blog/frontend/201809/20_1133.html)
 - [【一問一答】Googleの「 プライバシーサンドボックス 」とは？：Cookieの代わりとされる5つのAPI | DIGIDAY［日本版］](https://digiday.jp/platforms/wtf-googles-privacy-sandbox/)
-
+- [Privacy Sandboxとはなにか/Privacy Sandbox Explained - Speaker Deck](https://speakerdeck.com/shigeki/privacy-sandbox-explained)
