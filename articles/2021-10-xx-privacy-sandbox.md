@@ -10,7 +10,7 @@ published: false
 
 最近目にする FLoC や First-Party Sets について調べていると、Google がサードパーティ Cookie を廃止するための様々な提案を「プライバシーサンドボックス」という名前でまとめているということを知りました。
 
-Google の動向はやはり気になりますし、広告だけでなくプライバシーに関する提案もあるので、とりあえずどういうことをやろうとしているのかの概要まとめておきたいと思いこの記事を書きました。
+Google の動向はやはり気になりますし、広告だけでなくプライバシーに関する提案もあるので、とりあえずどういうことをやろうとしているのかの概要と資料をまとめておきたいと思い、この記事を書きました。
 
 ## おことわり
 
@@ -47,8 +47,8 @@ Google はサードパーティ Cookie を廃止することを目指してい�
 
 # FLoC
 
-ブラウザ内で閲覧履歴など元に、機械学習によって閲覧者の興味のある領域を区分し、その情報をベースにターゲティング広告を行う、というもののようです。
-閲覧者の興味のある領域という単位のグループに、数千人単位で属させることで個人を特定できない、というロジックでプライバシーを守りつつターゲティング広告ができる、という狙いのようです。
+ブラウザ内で閲覧履歴など元に、機械学習によって閲覧者の興味のある領域を区分し、その情報をベースにターゲティング広告を行う、というもののようです。 
+サーバーではなくブラウザ内で閲覧履歴などを処理し、結果も閲覧者の興味のある領域という単位のグループに数千人単位で属させることで個人を特定できない、というロジックでプライバシーを守りつつターゲティング広告ができる、という狙いのようです。
 
 FLoC は Federated Learning of Cohorts の略で、[コホートの連合学習](https://legalsearch.jp/portal/column/floc/) と訳されたりするようです。
 
@@ -114,10 +114,11 @@ https://github.com/WICG/turtledove/blob/main/FLEDGE.md
 https://developer.chrome.com/ja/docs/privacy-sandbox/attribution-reporting-introduction/#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%AE%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88
 
 リンク先のこちらの動画がわかりやすかったです。
+（日本語字幕あり）
 
 https://developer.apple.com/videos/play/wwdc2021/10033/
 
-Google Chrome と Safari でそれぞれ違う方法で計測していく必要が出てきそうですね。
+Google Chrome と Safari で違う方法で計測が必要になりそうです。
 
 ## 参考リンク
 
@@ -129,35 +130,48 @@ Google Chrome と Safari でそれぞれ違う方法で計測していく必要�
 
 # SameSite Cookieの変更
 
+Cookie の設定時に付与される `SameSite` 属性についての話のようです。
+すでにモダンブラウザの多くは実装済みですね。
+
+`SameSite` 属性はクロスオリジンへの Cookie の送信を制御するための属性で、適切に設定することで CSRF などの攻撃を防ぐことができます。
+詳しくは以下の MDN のサイトなどを参照してください。
+
 ## 参考リンク
 
+- [SameSite cookies - HTTP | MDN](https://developer.mozilla.org/ja/docs/Web/HTTP/Headers/Set-Cookie/SameSite)
+- [SameSite cookies explained](https://web.dev/samesite-cookies-explained/)
 
 
 
 # First-Party Sets
 
+First-Party Sets は、異なるオリジンをファーストパーティとして扱うための仕様です。
+例えば `site-a.example` にアクセスした時に、`site-b.example` がファーストーパーティのメンバーだと指定されていた場合、`site-b.example` は `site-a.example` （ファーストーパーティ）として扱われるようです。
 
-## 何に対して有効なのか？
-
-- ファーストパーティとサードパーティの区別がURLから判別できない
-- 広告企業などをファーストパーティとして入れた場合、それは誰にとってメリットなのか。少なくともユーザーにとってのメリットはない
+具体的には `.well-known/first-party-set` というファイルをそれぞれのドメインに設置することで、ファーストパーティであることを検証するようです。
 
 ## 参考リンク
 
+- [privacycg/first-party-sets](https://github.com/privacycg/first-party-sets)
 - [First-Party Sets - Chrome Developers](https://developer.chrome.com/ja/docs/privacy-sandbox/first-party-sets/)
+- [First-Party Setsについて](https://zenn.dev/tayusa/articles/efa8aa75ad5519)
+- [First-Party Setsでドメインを超えてCookieを共有する - Qiita](https://qiita.com/rana_kualu/items/13a77f76257767a23643)
+
 
 
 # Trust Tokens
 
 アクセスしているのが人間かボットなのかを、ユーザーを識別することなく判定できるようにする仕様のようです。
 ただし、どのように人間かボットかを判定するかは、仕様には含まれていないようです。
+
 `fetch` のオプションに `trustToken` というキーを与えてアクセスすることで Trust Token の発行・認証ができるようにするようです。
-（詳しくは [提案の Sample API Usage](https://github.com/WICG/trust-token-api#sample-api-usage) を参照してみてください）
+（[提案の Sample API Usage](https://github.com/WICG/trust-token-api#sample-api-usage) を参照）
 
 ## 参考リンク
 
 - [WICG/trust-token-api: Trust Token API](https://github.com/WICG/trust-token-api)
 - [Trust Tokens (トラストトークン) - Chrome Developers](https://developer.chrome.com/ja/docs/privacy-sandbox/trust-tokens/)
+
 
 
 # Privacy Budget
@@ -210,7 +224,19 @@ Privacy Budget は Font, Canvas, User-Agent などブラウザの識別（ブラ
 
 ## ブラウザフィンガープリント
 
-[AmIUnique](https://amiunique.org/fp) でテストできる。
+ブラウザフィンガープリントは、ブラウザから取得できる環境などの情報からブラウザを特定する手法です。
+
+ブラウザの識別なので、ブラウザフィンガープリント単体で複数の端末やブラウザを使っているユーザーを識別することはできません。
+ただし、Cookie などと併用すればできる可能性があります。
+
+ブラウザフィンガープリントでは、ブラウザバージョン、プラグイン、ハードウェア情報、履歴、フォント、Canvas(WebGL) などの情報を組み合わせてブラウザを特定するようです。
+[AmIUnique](https://amiunique.org/fp) のようにブラウザフィンガープリントのテストができるサイトもあります。
+
+### 参考リンク
+
+- [Device fingerprint - Wikipedia](https://en.wikipedia.org/wiki/Device_fingerprint)
+- [Fingerprint解説サイト](https://www.saitolab.org/fp_site/)
+- [Canvas Fingerprintingはクッキーより怖いのか技術的に調べてみた｜TechRacho by BPS株式会社](https://techracho.bpsinc.jp/morimorihoge/2014_07_29/18555)
 
 
 
