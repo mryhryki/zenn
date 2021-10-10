@@ -138,6 +138,10 @@
           text-align: right;
       }
 
+      footer > a {
+          color: #cbd5e0;
+      }
+
       section {
           margin: 32px auto;
           max-width: 48rem;
@@ -228,6 +232,29 @@
       .output-card > p {
           color: black;
           margin: 0 16px 16px 16px;
+      }
+
+      .career-card {
+          border: 1px solid #e2e8f0;
+          padding: 8px 16px 16px 16px;
+          border-radius: 4px;
+          margin: 16px 0;
+      }
+
+      .career-card > h3 {
+          text-align: left;
+          line-height: 1.2em;
+          padding: 8px 0;
+      }
+
+      .career-card > .description {
+          margin: 0;
+      }
+
+      .career-card > .term {
+          text-align: right;
+          margin: 8px 0 0 0;
+          font-size: 0.85rem;
       }
 
       @media (min-width: 40rem) {
@@ -379,6 +406,13 @@
                   <img src="./assets/image/portfolio/skill/nodejs.png" alt="Node.js" decoding="async"/>
                 </picture>
               </a>
+              <a href="https://deno.land/" target="_blank" rel="noopener noreferrer">
+                <picture>
+                  <source type="image/webp" srcset="./assets/image/portfolio/skill/deno.webp">
+                  <source type="image/png" srcset="./assets/image/portfolio/skill/deno.png">
+                  <img src="./assets/image/portfolio/skill/deno.png" alt="Deno" decoding="async"/>
+                </picture>
+              </a>
               <a href="https://www.ruby-lang.org/ja/" target="_blank" rel="noopener noreferrer">
                 <picture>
                   <source type="image/webp" srcset="./assets/image/portfolio/skill/ruby.webp">
@@ -400,11 +434,25 @@
                   <img src="./assets/image/portfolio/skill/css.png" alt="CSS" decoding="async"/>
                 </picture>
               </a>
+              <a href="https://www.rust-lang.org/ja/" target="_blank" rel="noopener noreferrer">
+                <picture>
+                  <source type="image/webp" srcset="./assets/image/portfolio/skill/rust.webp">
+                  <source type="image/png" srcset="./assets/image/portfolio/skill/rust.png">
+                  <img src="./assets/image/portfolio/skill/rust.png" alt="Rust" decoding="async"/>
+                </picture>
+              </a>
+              <a href="https://www.oracle.com/jp/java/" target="_blank" rel="noopener noreferrer">
+                <picture>
+                  <source type="image/webp" srcset="./assets/image/portfolio/skill/java.webp">
+                  <source type="image/png" srcset="./assets/image/portfolio/skill/java.png">
+                  <img src="./assets/image/portfolio/skill/java.png" alt="Java" decoding="async"/>
+                </picture>
+              </a>
             </div>
           </div>
 
           <div class="card skill-card">
-            <h3>Frontend / Mobile</h3>
+            <h3>Frontend</h3>
             <div class="skill-links-layout">
               <a href="https://reactjs.org/" target="_blank" rel="noopener noreferrer">
                 <picture>
@@ -427,11 +475,18 @@
                   <img src="./assets/image/portfolio/skill/webpack.png" alt="Webpack" decoding="async"/>
                 </picture>
               </a>
-              <a href="https://facebook.github.io/react-native/" target="_blank" rel="noopener noreferrer">
+              <a href="https://esbuild.github.io/" target="_blank" rel="noopener noreferrer">
                 <picture>
-                  <source type="image/webp" srcset="./assets/image/portfolio/skill/react_native.webp">
-                  <source type="image/png" srcset="./assets/image/portfolio/skill/react_native.png">
-                  <img src="./assets/image/portfolio/skill/react_native.png" alt="React Native" decoding="async"/>
+                  <source type="image/webp" srcset="./assets/image/portfolio/skill/esbuild.webp">
+                  <source type="image/png" srcset="./assets/image/portfolio/skill/esbuild.png">
+                  <img src="./assets/image/portfolio/skill/esbuild.png" alt="esbuild" decoding="async"/>
+                </picture>
+              </a>
+              <a href="https://vitejs.dev/" target="_blank" rel="noopener noreferrer">
+                <picture>
+                  <source type="image/webp" srcset="./assets/image/portfolio/skill/vite.webp">
+                  <source type="image/png" srcset="./assets/image/portfolio/skill/vite.png">
+                  <img src="./assets/image/portfolio/skill/vite.png" alt="vite" decoding="async"/>
                 </picture>
               </a>
             </div>
@@ -504,6 +559,13 @@
                   <img src="./assets/image/portfolio/skill/oauth2.png" alt="OAuth 2.0" decoding="async"/>
                 </picture>
               </a>
+              <a href="https://facebook.github.io/react-native/" target="_blank" rel="noopener noreferrer">
+                <picture>
+                  <source type="image/webp" srcset="./assets/image/portfolio/skill/react_native.webp">
+                  <source type="image/png" srcset="./assets/image/portfolio/skill/react_native.png">
+                  <img src="./assets/image/portfolio/skill/react_native.png" alt="React Native" decoding="async"/>
+                </picture>
+              </a>
               <a href="https://webrtc.org/" target="_blank" rel="noopener noreferrer">
                 <picture>
                   <source type="image/webp" srcset="./assets/image/portfolio/skill/webrtc.webp">
@@ -520,11 +582,13 @@
     <section id="output-section">
       <h2 id="output">Output</h2>
       <div class="card-layout">
-        <a class="card output-card" href="https://mryhryki.hateblo.jp/archive" target="_blank" rel="noopener noreferrer">
+        <a class="card output-card" href="https://mryhryki.hateblo.jp/archive" target="_blank"
+           rel="noopener noreferrer">
           <picture>
             <source type="image/webp" srcset="./assets/image/portfolio/output/hatena_blog.webp">
             <source type="image/png" srcset="./assets/image/portfolio/output/hatena_blog.png">
-            <img class="output-image" src="./assets/image/portfolio/output/hatena_blog.png" alt="zenn" decoding="async"/>
+            <img class="output-image" src="./assets/image/portfolio/output/hatena_blog.png" alt="zenn"
+                 decoding="async"/>
           </picture>
           <h3>mryhryki's blog</h3>
           <p>Web技術の記事や個人的な内容などを投稿しています。</p>
@@ -547,7 +611,7 @@
             <img class="output-image" src="./assets/image/portfolio/output/techpit.png" alt="Techpit" decoding="async"/>
           </picture>
           <h3>React教材</h3>
-          <p>Techpitさんで書いたReact&amp;TypeScriptの教材です。</p>
+          <p>Techpitという学習プラットフォーム向けに書いたReact&amp;TypeScriptの教材です。</p>
         </a>
         <a class="card output-card" href="https://tech.connehito.com/search?q=mryhryki.com"
            target="_blank"
@@ -555,7 +619,8 @@
           <picture>
             <source type="image/webp" srcset="./assets/image/portfolio/output/connehito_tech_blog.webp">
             <source type="image/png" srcset="./assets/image/portfolio/output/connehito_tech_blog.png">
-            <img class="output-image" src="./assets/image/portfolio/output/connehito_tech_blog.png" alt="Connehito Tech blog" decoding="async"/>
+            <img class="output-image" src="./assets/image/portfolio/output/connehito_tech_blog.png"
+                 alt="Connehito Tech blog" decoding="async"/>
           </picture>
           <h3>コネヒト開発者ブログ</h3>
           <p>コネヒト社で書いているブログです。主にママリに関係する技術記事を書いています。</p>
@@ -563,9 +628,38 @@
       </div>
     </section>
 
+    <section id="career-section">
+      <h2 id="career">Career</h2>
+      <div class="career-card">
+        <h3>コネヒト株式会社</h3>
+        <p class="description">Webエンジニアとして、ママの一歩を支える、女性向けQ&Aアプリ「ママリ」の開発及び運用をしています。</p>
+        <p class="term">2019年9月〜現在</p>
+      </div>
+      <div class="career-card">
+        <h3>株式会社インテグリティ・ヘルスケア</h3>
+        <p class="description">Webエンジニアとして、オンライン診療システム YaDoc の開発と運用をしていました。</p>
+        <p class="term">2017年4月〜2019年8月</p>
+      </div>
+      <div class="career-card">
+        <h3>株式会社アイティエスエス</h3>
+        <p class="description">SE (システムエンジニア) として、ユーザー企業に常駐し開発業務を行っていました。</p>
+        <p class="term">2014年4月〜2017年3月</p>
+      </div>
+      <div class="career-card">
+        <h3>航空自衛隊</h3>
+        <p class="description">一般隊員（曹士）の整備員として勤務しました。</p>
+        <div class="career-card">
+          <h3>サイバー大学</h3>
+          <p class="description">仕事とは別にプライベートでサイバー大学のIT総合学部でITの勉強を行っていました。</p>
+          <p class="term">2008年4月〜2012年3月</p>
+        </div>
+        <p class="term">2004年4月〜2014年3月</p>
+      </div>
+    </section>
+
     <section id="contact-section">
       <h2 id="contact">Contact</h2>
-      <section class="contact-wrapper">
+      <section>
         <p style="text-align: center;margin-bottom:16px;">
           <a href="mailto:mryhryki@gmail.com" target="_blank" rel="noopener noreferrer">mryhryki@gmail.com</a>
           までご連絡ください。
@@ -575,6 +669,7 @@
   </main>
   <footer>
     &copy 2018-2021 Moriya Hiroyuki
+    <a href="https://github.com/mryhryki/portfolio">(Source Code)</a>
   </footer>
 </body>
 </html>
