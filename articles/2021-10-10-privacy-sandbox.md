@@ -3,7 +3,7 @@ title: "Google のプライバシーサンドボックス関連の提案の概�
 emoji: "🔒"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["privacy","google","web"]
-published: false
+published: true
 ---
 
 # はじめに
