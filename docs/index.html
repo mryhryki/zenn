@@ -234,6 +234,29 @@
           margin: 0 16px 16px 16px;
       }
 
+      .career-card {
+          border: 1px solid #e2e8f0;
+          padding: 8px 16px 16px 16px;
+          border-radius: 4px;
+          margin: 16px 0;
+      }
+
+      .career-card > h3 {
+          text-align: left;
+          line-height: 1.2em;
+          padding: 8px 0;
+      }
+
+      .career-card > .description {
+          margin: 0;
+      }
+
+      .career-card > .term {
+          text-align: right;
+          margin: 8px 0 0 0;
+          font-size: 0.85rem;
+      }
+
       @media (min-width: 40rem) {
           .card-layout {
               align-items: stretch;
@@ -559,11 +582,13 @@
     <section id="output-section">
       <h2 id="output">Output</h2>
       <div class="card-layout">
-        <a class="card output-card" href="https://mryhryki.hateblo.jp/archive" target="_blank" rel="noopener noreferrer">
+        <a class="card output-card" href="https://mryhryki.hateblo.jp/archive" target="_blank"
+           rel="noopener noreferrer">
           <picture>
             <source type="image/webp" srcset="./assets/image/portfolio/output/hatena_blog.webp">
             <source type="image/png" srcset="./assets/image/portfolio/output/hatena_blog.png">
-            <img class="output-image" src="./assets/image/portfolio/output/hatena_blog.png" alt="zenn" decoding="async"/>
+            <img class="output-image" src="./assets/image/portfolio/output/hatena_blog.png" alt="zenn"
+                 decoding="async"/>
           </picture>
           <h3>mryhryki's blog</h3>
           <p>Web技術の記事や個人的な内容などを投稿しています。</p>
@@ -594,7 +619,8 @@
           <picture>
             <source type="image/webp" srcset="./assets/image/portfolio/output/connehito_tech_blog.webp">
             <source type="image/png" srcset="./assets/image/portfolio/output/connehito_tech_blog.png">
-            <img class="output-image" src="./assets/image/portfolio/output/connehito_tech_blog.png" alt="Connehito Tech blog" decoding="async"/>
+            <img class="output-image" src="./assets/image/portfolio/output/connehito_tech_blog.png"
+                 alt="Connehito Tech blog" decoding="async"/>
           </picture>
           <h3>コネヒト開発者ブログ</h3>
           <p>コネヒト社で書いているブログです。主にママリに関係する技術記事を書いています。</p>
@@ -602,9 +628,38 @@
       </div>
     </section>
 
+    <section id="career-section">
+      <h2 id="career">Career</h2>
+      <div class="career-card">
+        <h3>コネヒト株式会社</h3>
+        <p class="description">Webエンジニアとして、ママの一歩を支える、女性向けQ&Aアプリ「ママリ」の開発及び運用をしています。</p>
+        <p class="term">2019年9月〜現在</p>
+      </div>
+      <div class="career-card">
+        <h3>株式会社インテグリティ・ヘルスケア</h3>
+        <p class="description">Webエンジニアとして、オンライン診療システム YaDoc の開発と運用をしていました。</p>
+        <p class="term">2017年4月〜2019年8月</p>
+      </div>
+      <div class="career-card">
+        <h3>株式会社アイティエスエス</h3>
+        <p class="description">SE (システムエンジニア) として、ユーザー企業に常駐し開発業務を行っていました。</p>
+        <p class="term">2014年4月〜2017年3月</p>
+      </div>
+      <div class="career-card">
+        <h3>航空自衛隊</h3>
+        <p class="description">一般隊員（曹士）の整備員として勤務しました。</p>
+        <div class="career-card">
+          <h3>サイバー大学</h3>
+          <p class="description">仕事とは別にプライベートでサイバー大学のIT総合学部でITの勉強を行っていました。</p>
+          <p class="term">2008年4月〜2012年3月</p>
+        </div>
+        <p class="term">2004年4月〜2014年3月</p>
+      </div>
+    </section>
+
     <section id="contact-section">
       <h2 id="contact">Contact</h2>
-      <section class="contact-wrapper">
+      <section>
         <p style="text-align: center;margin-bottom:16px;">
           <a href="mailto:mryhryki@gmail.com" target="_blank" rel="noopener noreferrer">mryhryki@gmail.com</a>
           までご連絡ください。
