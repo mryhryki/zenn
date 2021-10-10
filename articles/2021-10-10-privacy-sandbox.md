@@ -147,7 +147,7 @@ Cookie の設定時に付与される `SameSite` 属性についての話のよ�
 # First-Party Sets
 
 First-Party Sets は、異なるオリジンをファーストパーティとして扱うための仕様です。
-例えば `site-a.example` にアクセスした時に、`site-b.example` がファーストーパーティのメンバーだと指定されていた場合、`site-b.example` は `site-a.example` （ファーストーパーティ）として扱われるようです。
+例えば `site-b.example` にアクセスした時に、`site-a.example` のファーストーパーティのメンバーだと指定されていた場合、`site-b.example` は `site-a.example` （ファーストーパーティ）と同等に扱われるようです。
 
 具体的には `.well-known/first-party-set` というファイルをそれぞれのドメインに設置することで、ファーストパーティであることを検証するようです。
 
@@ -165,7 +165,7 @@ First-Party Sets は、異なるオリジンをファーストパーティとし
 アクセスしているのが人間かボットなのかを、ユーザーを識別することなく判定できるようにする仕様のようです。
 ただし、どのように人間かボットかを判定するかは、仕様には含まれていないようです。
 
-`fetch` のオプションに `trustToken` というキーを与えてアクセスすることで Trust Token の発行・認証ができるようにするようです。
+`fetch` のオプションに `trustToken` という設定を与えてアクセスすることで Trust Token の発行・認証ができるようにするようです。
 （[提案の Sample API Usage](https://github.com/WICG/trust-token-api#sample-api-usage) を参照）
 
 ## 参考リンク
