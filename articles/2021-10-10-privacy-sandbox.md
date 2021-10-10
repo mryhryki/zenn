@@ -261,11 +261,11 @@ IDフェデレーションを使った認証フローを、サードパーティ
 
 全体または複数の提案に関わる資料や、Privacy Sandbox 自体の資料などはこちらにおいておきます。
 
-- [プライバシーサンドボックスについて調べる](https://zenn.dev/mryhryki/scraps/4b9e03d8788095)
 - [Google Japan Blog: サードパーティ Cookie 廃止に関するタイムラインの変更について](https://japan.googleblog.com/2021/06/cookie.html)
 - [GoogleがCookieレスな「プライバシー・サンドボックス」を実現させると何が起こるのか？ - GIGAZINE](https://gigazine.net/news/20210119-death-of-third-party-cookies/)
 - [Googleが「ユーザー情報を保護しつつ広告の関連性も損なわない」仕組みの開発を行うと宣言 - GIGAZINE](https://gigazine.net/news/20190823-google-privacy-sandbox/)
 - [Googleはどのような「Cookieなしの広告システム」を作ろうとしているのか？ | GIGAZINE.BIZ](https://gigazine.biz/2020/12/20/concerns-google-privacy-proposals/)
-- [どこで読めるの？今さらきけない仕様書の在り処！ | フロントエンドBlog | ミツエーリンクス](https://www.mitsue.co.jp/knowledge/blog/frontend/201809/20_1133.html)
-- [【一問一答】Googleの「 プライバシーサンドボックス 」とは？：Cookieの代わりとされる5つのAPI | DIGIDAY［日本版］](https://digiday.jp/platforms/wtf-googles-privacy-sandbox/)
 - [Privacy Sandboxとはなにか/Privacy Sandbox Explained - Speaker Deck](https://speakerdeck.com/shigeki/privacy-sandbox-explained)
+- [【一問一答】Googleの「 プライバシーサンドボックス 」とは？：Cookieの代わりとされる5つのAPI | DIGIDAY［日本版］](https://digiday.jp/platforms/wtf-googles-privacy-sandbox/)
+- [どこで読めるの？今さらきけない仕様書の在り処！ | フロントエンドBlog | ミツエーリンクス](https://www.mitsue.co.jp/knowledge/blog/frontend/201809/20_1133.html)
+- [プライバシーサンドボックスについて調べる](https://zenn.dev/mryhryki/scraps/4b9e03d8788095)
