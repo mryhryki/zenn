@@ -11,6 +11,16 @@ published: true
 今後変更されたり使えなくなるなどの可能性がありますのでご注意ください。
 :::
 
+# 追記（2021-10-13）
+
+Issuer が `https://vstoken.actions.githubusercontent.com` から `https://token.actions.githubusercontent.com` に変更になったようです。
+
+https://twitter.com/toricls/status/1445990439060836355
+
+まだ GitHub から何もアナウンスがされていない機能なのでしょうがないですね。
+逆に言えば、リリースに向けて動いているからなのかもしれないですね。
+
+
 # はじめに
 
 このツイートを見て、どういう風に認証を通しているのかが気になったので、実際に試してみた結果のメモをまとめた記事になります。
@@ -109,7 +119,8 @@ AWSコンソールで設定したので、キャプチャをベースで簡単�
 
 ![image.png](https://i.gyazo.com/ada1d05087b27a3c207cdd1d412ca7b4.png)
 
-- プロバイダの URL: `https://vstoken.actions.githubusercontent.com`
+- プロバイダの URL: ~~`https://vstoken.actions.githubusercontent.com`~~
+  - `https://token.actions.githubusercontent.com` に変わりました（2021-10-13 追記）
 - 対象者: `https://github.com/(OWNER)/(REPO_NAME)`
 
 ![image.png](https://i.gyazo.com/c8f2aadff329b7175914731ae8ecf51e.png)
