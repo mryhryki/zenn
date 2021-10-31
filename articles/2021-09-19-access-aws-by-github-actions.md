@@ -11,6 +11,12 @@ published: true
 今後変更されたり使えなくなるなどの可能性がありますのでご注意ください。
 :::
 
+# 追記（2021-11-01）
+
+正式にリリースされたようです！🎉🎉🎉
+
+https://www.publickey1.jp/blog/21/github_actionsopenid_connectgithub.html
+
 # 追記（2021-10-13）
 
 Issuer が `https://vstoken.actions.githubusercontent.com` から `https://token.actions.githubusercontent.com` に変更になったようです。
