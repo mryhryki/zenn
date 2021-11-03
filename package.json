@@ -4,12 +4,18 @@
   "private": true,
   "scripts": {
     "article:add": "zenn new:article --slug \"$(date +%Y-%m-%d)-$(openssl rand -hex 3)\"",
-    "article:preview": "open http://localhost:58125/ && zenn preview",
-    "site:update": "aws s3 sync docs/ s3://mryhryki-cdn/contents/ --exclude='.DS_Store' --size-only",
-    "site:preview": "open http://localhost:58125/ && serve -p 58125 docs/"
+    "article:preview": "open http://localhost:58125/ && zenn preview --port 58125",
+    "site:update": "aws s3 sync site/ s3://mryhryki-cdn/contents/ --exclude='.DS_Store' --size-only",
+    "site:preview": "open http://localhost:58125/ && serve -p 58125 site/",
+    "blog:build": "node ./script/blog/build.js"
   },
   "dependencies": {
+    "@mryhryki/markdown": "^0.1.2",
+    "ejs": "^3.1.6",
+    "js-yaml": "^4.1.0",
+    "rss": "^1.2.2",
     "serve": "^12.0.1",
+    "yaml": "^1.10.2",
     "zenn-cli": "^0.1.98"
   }
 }

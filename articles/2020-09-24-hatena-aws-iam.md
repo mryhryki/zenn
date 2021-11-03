@@ -213,7 +213,7 @@ JSONの指定はこんな感じです。
 
 そのままでも使えますが、私が設定している環境変数を紹介します。
 
-```bash:~/.bash_profile
+```bash
 # ログインKeyChainを使用するように変更
 # パスワードを求められる頻度が格段に減る
 # （これを設定しない場合、15分経過すると再度パスワードを求められる）
@@ -287,7 +287,7 @@ AWS_SESSION_TOKEN=FwoGxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 IAMロールに対してAssumeRoleする設定を行います。
 `~/.aws/config` に対して以下のように記述するとaws-vaultが自動的にAssumeRoleしてくれるようになります。
 
-```~/.aws/config
+```
 [profile admin]
 source_profile=myprofile
 role_arn=arn:aws:iam::123456789012:role/AdminRole
