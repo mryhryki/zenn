@@ -1,12 +1,18 @@
 # portfolio
 
-ポートフォリオサイトのソースコードです。<br>
-以下の２つのドメインで配信しています。
+[Moriya Hiroyuki (ID: mryhryki)](https://github.com/mryhryki) のポートフォリオ関連のソースコードです。
 
-- https://mryhryki.com/ (Primary, CloudFront + S3)
-- https://www.mryhryki.com/ (Secondary, GitHub Pages)
+主に以下のコードを管理しています。
 
-また [Zenn](https://zenn.dev/mryhryki) の記事データも管理しています。
+- [ポートフォリオサイト](https://mryhryki.com/)
+  - `docs/`
+- [ブログデータ](https://mryhryki.com/blog/)
+  - `blog/`
+- [Zenn](https://zenn.dev/mryhryki) の記事データ
+  - `articles/`, `books/`
+  - 関連: [GitHubリポジトリでZennのコンテンツを管理する](https://zenn.dev/zenn/articles/connect-to-github)
+- 過去のブログのバックアップデータ
+  - `backup/`
 
 ## ポートフォリオサイト
 
@@ -28,7 +34,6 @@ $ npm run site:update
 [article/](./article) ディレクトリは以下に記事データを管理しています。
 `main` ブランチと同期しています。
 
-詳しくはこちら: [GitHubリポジトリでZennのコンテンツを管理する](https://zenn.dev/zenn/articles/connect-to-github)
 
 ### ローカルでの執筆のCLIサンプル。
 
