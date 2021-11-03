@@ -1,6 +1,7 @@
 const {readdir, readFile, writeFile, mkdir, stat} = require('fs/promises')
-const path = require('path')
 const ejs = require('ejs')
+const path = require('path')
+const RSS = require('rss')
 const yaml = require('yaml');
 const {convert} = require('@mryhryki/markdown')
 
@@ -83,10 +84,26 @@ const main = async () => {
     await writeFile(path.resolve(OutputDir, fileName), postHtml)
     posts.push({title, path: `/blog/${fileName}`, date, canonical })
   }))
-
   posts.sort((p1, p2) => p2.path <= p1.path ? -1 : 1)
+
   const indexHtml = await renderIndex(posts)
   await writeFile(path.resolve(OutputDir, 'index.html'), indexHtml)
+
+  const feed = new RSS({
+    feed_url: `https://mryhryki.com/blog/feed.rss`,
+    language: "ja",
+    site_url: "https://mryhryki.com/blog/",
+    title: "mryhryki's blog",
+    ttl: 86400,
+  });
+  posts.forEach((post) => {
+    feed.item({
+      title: decodeURIComponent(post.title),
+      url: `https://mryhryki.com${post.path}`,
+      date: `${post.date}T00:00:00+09:00`,
+    });
+  })
+  await writeFile(path.resolve(OutputDir, 'feed.xml'), feed.xml({ indent: true }))
 }
 
 main()
