@@ -1,5 +1,7 @@
 # Rust非同期処理
 
+まだ全然分かってないので、資料とかを集めています。
+
 [A final proposal for await syntax - language design - Rust Internals](https://internals.rust-lang.org/t/a-final-proposal-for-await-syntax/10021/16)
 
 [Rustのasync/awaitの特徴4つ - Qiita](https://qiita.com/qnighy/items/05c38f73ef4b9e487ced)

@@ -1,8 +1,10 @@
 # April 2021 Security Releases (Node.js)
 
+## はじめに
+
 [April 2021 Security Releases | Node.js](https://nodejs.org/en/blog/vulnerability/april-2021-security-releases/)
 
-ざっくりと自分用に内容をチェックする。
+この内容をざっくりと自分用に内容をチェックする。
 （正確な情報は上記のリンクを参照してください。あくまでメモです）
 
 ## OpenSSL - CA certificate check bypass with X509_V_FLAG_X509_STRICT (High) (CVE-2021-3450)
@@ -31,7 +33,7 @@
 
 ---
 
-## OpenSSL に起因する静寂生の情報
+## OpenSSL に起因する脆弱性の情報
 
 https://www.openssl.org/news/secadv/20210325.txt
 

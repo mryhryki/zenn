@@ -1,6 +1,6 @@
 # [クラウドエンジニア(AWS)ロードマップ2021](https://qiita.com/KurokawaKouhei/items/4e9aa3b526f3f233bf85)
 
-分かりやすい。
+分かりやすいのでメモ。
 
 ![image.png](https://i.gyazo.com/ff2043a50880daac66b5382cf4e06fe2.png)
 
