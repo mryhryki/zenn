@@ -40,5 +40,5 @@ jobs:
         run: npm ci
       - name: Build blog
         run: npm run blog:build
-      - name: Update view
+      - name: Update site
         run: npm run site:update
