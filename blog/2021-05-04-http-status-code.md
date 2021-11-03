@@ -1,4 +1,4 @@
-HTTPステータスコード
+# HTTPステータスコード
 
 > "HTTP を使うアプリケーションは、最も適用可能なステータスコードを使うようにエラーを定義すべきで、 疑わしい場合は一般的なステータスコード (200, 400, 500) を惜しみなく使うべきです" https://httpwg.org/http-extensions/draft-ietf-httpbis-bcp56bis.html#section-4.6 わかるわ ........
 

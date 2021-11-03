@@ -27,7 +27,7 @@ DynamoDB に TTL が設定できることを知ったので、設定してみた
 
 私は Terraform で管理しているので、以下のように設定を追加して反映しました。
 
-```tf
+```terraform
 resource "aws_dynamodb_table" "example" {
   name           = "example-table"
   # ...
