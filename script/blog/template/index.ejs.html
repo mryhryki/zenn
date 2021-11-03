@@ -30,7 +30,7 @@
 </head>
 <body class="wrapper dark-theme">
   <h1>mryhryki's blog</h1>
-  <p style="text-align: center;">ブログという名のメモ置き場</p>
+  <p style="text-align: center;">Web技術の記事や個人的な内容などを投稿しています。</p>
   <% posts.forEach(({ path, title, date, canonical }, index) => { %>
     <% if (index === 0 || date.substr(0, 7) !== posts[index - 1].date.substr(0, 7)) { %>
       <h2><%= date.substr(0, 7) %></h2>
