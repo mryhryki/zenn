@@ -7,7 +7,7 @@
 
   <title>mryhryki's blog</title>
   <meta property="og:title" content="mryhryki's blog"/>
-  <meta property="og:description" content="ブログという名のメモ置き場"/>
+  <meta property="og:description" content="ブログという名のメモ置き場。"/>
   <meta property="og:image" content="https://mryhryki.com/image/icon_512x512.png"/>
   <meta property="og:url" content="https://mryhryki.com/"/>
   <meta property="og:site_name" content="mryhryki's blog"/>
@@ -15,7 +15,7 @@
   <meta property="og:type" content="website"/>
   <meta name="twitter:card" content="summary"/>
   <meta name="twitter:title" content="mryhryki's blog"/>
-  <meta name="twitter:description" content="ブログという名のメモ置き場"/>
+  <meta name="twitter:description" content="ブログという名のメモ置き場。"/>
   <meta name="twitter:image" content="https://mryhryki.com/image/icon_512x512.png"/>
   <meta name="twitter:site" content="@mryhryki"/>
 
@@ -30,7 +30,7 @@
 </head>
 <body class="wrapper dark-theme">
   <h1>mryhryki's blog</h1>
-  <p style="text-align: center;">Web技術の記事や個人的な内容などを投稿しています。</p>
+  <p style="text-align: center;">Web技術や個人的なメモなどを投稿しています。</p>
   <% posts.forEach(({ path, title, date, canonical }, index) => { %>
     <% if (index === 0 || date.substr(0, 7) !== posts[index - 1].date.substr(0, 7)) { %>
       <h2><%= date.substr(0, 7) %></h2>
