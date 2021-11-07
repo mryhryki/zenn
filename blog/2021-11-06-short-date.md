@@ -65,7 +65,8 @@ console.log(`${numToShortText(2021)}${numToShortText(11)}${numToShortText(6)}`)
 - Before: `https://example.com/file/20211106-RANDOM-CHARACTERS`
 - After: `https://example.com/file/bWB6-RANDOM-CHARACTERS`
 
-また、頑張れば見てちょっと考えれば日付も分かるようになってます。
+また、頑張れば見てちょっと考えれば月と日は分かるようになってます。
+（年はちょっと難しい・・・）
 
 ## おわりに
 
