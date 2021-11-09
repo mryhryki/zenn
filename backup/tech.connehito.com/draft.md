@@ -33,3 +33,19 @@ https://github.com/Connehito/mamari-q-app-webview/pull/2358
 - 一つ一つファイルを見て変えていくほうが、既存の定義をある程度生かして移行できるのでよいと判断
 - 具体的な数は記録していなかったのですが、個別対応しないと行けなささそうな箇所が数百ぐらいあり、それを一度に修正するのは現実的ではない。
 - かつ、一定数区切るのであれば機械的にやるよりも、手でやった方が作業的に流行りやすそう、という結論になった。
+
+## JS (Flow) と TS の共存
+
+https://github.com/Connehito/mamari-q-app-webview/pull/2103
+
+- スタブファイル: `TSFlowStub.js.flow`
+    - `import` で './module.ts' のように拡張子をつけるとスタブに飛ぶ
+- `webpack.config.js`
+    - `ts-loader` の追加
+    - ```diff
+      + {
+      +   test: /\.tsx?$/,
+      +   include: path.resolve(__dirname, 'assets'),
+      +   use: ['babel-loader', 'ts-loader']
+      + },
+      ```
