@@ -40,8 +40,8 @@ https://github.com/Connehito/mamari-q-app-webview/pull/2103
 
 - スタブファイル: `TSFlowStub.js.flow`
     - `import` で './module.ts' のように拡張子をつけるとスタブに飛ぶ
+- `ts-loader` と `typescript` パッケージの追加
 - `webpack.config.js`
-    - `ts-loader` の追加
     - ```diff
       + {
       +   test: /\.tsx?$/,
