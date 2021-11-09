@@ -25,3 +25,9 @@ Safari でもテストをしたく、TestCafe も使ってみたんですが、�
 ## ESLint の解消
 
 https://github.com/Connehito/mamari-q-app-webview/pull/2358
+
+## JS (Flow) → TS の移行
+
+- Flow の型定義と合わない部分もある
+- `// @flow` の定義漏れなどで、型定義があっていない場合もある
+- 一つ一つファイルを見て変えていくほうが、既存の定義をある程度生かして移行できるのでよいと判断
