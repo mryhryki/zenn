@@ -38,7 +38,7 @@ jobs:
           aws-region: ap-northeast-1
       - name: Prepare
         run: npm ci
-      - name: Build blog
-        run: npm run blog:build
+      - name: Build site
+        run: npm run site:build
       - name: Update site
         run: npm run site:update
