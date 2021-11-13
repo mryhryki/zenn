@@ -5,10 +5,13 @@ const RSS = require('rss')
 const yaml = require('yaml');
 const {convert} = require('@mryhryki/markdown')
 
+const BaseURL = "https://mryhryki.com"
+
 const RootDir = path.resolve(__dirname, '..', '..')
 const ArticlesDir = path.resolve(RootDir, 'articles')
 const BlogDir = path.resolve(RootDir, 'blog')
-const OutputDir = path.resolve(RootDir, 'site', 'blog')
+const SiteDir = path.resolve(RootDir, 'site')
+const OutputDir = path.resolve(SiteDir, 'blog')
 const TemplateDir = path.resolve(__dirname, 'template')
 
 const createDir = async (dirPath) => {
@@ -50,6 +53,7 @@ const renderIndex = (posts) => new Promise((resolve, reject) => {
 
 
 const main = async () => {
+  const siteMap = [`${BaseURL}/`, `${BaseURL}/blog/`]
   await createDir(OutputDir)
   const [articles, blogEntries] = await Promise.all([
     readdir(ArticlesDir).then((entries) => entries.filter(matchBlogFileFormat)),
@@ -64,25 +68,25 @@ const main = async () => {
     const date = blog.slice(0, 10)
     const fileName = `${blog.slice(0, -3)}.html`
     await writeFile(path.resolve(OutputDir, fileName), postHtml)
-    posts.push({title, path: `/blog/${fileName}`, date, canonical: null })
+    posts.push({title, path: `/blog/${fileName}`, date, canonical: null})
   }))
 
   await Promise.all(articles.map(async (article) => {
     const contents = (await readFile(path.resolve(ArticlesDir, article))).toString().split("\n")
     const boundaryLineNumber = contents.findIndex((line, index) => (index !== 0 && ArticleDelimiter.test(line.trim())))
-    const { title } = yaml.parse(contents.slice(1, boundaryLineNumber - 1).join("\n"))
+    const {title} = yaml.parse(contents.slice(1, boundaryLineNumber - 1).join("\n"))
     if (title == null || title.trim() === "") {
       throw new Error(`Title not found in article: ${article}`)
     }
     const markdown = contents.slice(boundaryLineNumber + 1).map((line) => line.trim().replace(/^#/, '##')).join("\n")
 
     const canonical = `https://zenn.dev/mryhryki/articles/${article.replace('.md', '')}`
-    const { html } = convert(`# ${title}\n\n※この記事は以下に投稿した記事のクロスポストです\n${canonical}\n\n${markdown}`)
+    const {html} = convert(`# ${title}\n\n※この記事は以下に投稿した記事のクロスポストです\n${canonical}\n\n${markdown}`)
     const postHtml = await renderPost(title, html, canonical)
     const date = article.slice(0, 10)
     const fileName = `${article.slice(0, -3)}.html`
     await writeFile(path.resolve(OutputDir, fileName), postHtml)
-    posts.push({title, path: `/blog/${fileName}`, date, canonical })
+    posts.push({title, path: `/blog/${fileName}`, date, canonical})
   }))
   posts.sort((p1, p2) => p2.path <= p1.path ? -1 : 1)
 
@@ -90,20 +94,24 @@ const main = async () => {
   await writeFile(path.resolve(OutputDir, 'index.html'), indexHtml)
 
   const feed = new RSS({
-    feed_url: `https://mryhryki.com/blog/feed.rss`,
+    feed_url: `${BaseURL}/blog/feed.rss`,
     language: "ja",
-    site_url: "https://mryhryki.com/blog/",
+    site_url: `${BaseURL}/blog/`,
     title: "mryhryki's blog",
     ttl: 86400,
   });
   posts.forEach((post) => {
+    const url = `${BaseURL}${post.path}`
+    siteMap.push(url)
     feed.item({
       title: decodeURIComponent(post.title),
-      url: `https://mryhryki.com${post.path}`,
       date: `${post.date}T00:00:00+09:00`,
+      url
     });
   })
-  await writeFile(path.resolve(OutputDir, 'feed.xml'), feed.xml({ indent: true }))
+  await writeFile(path.resolve(OutputDir, 'feed.xml'), feed.xml({indent: true}))
+
+  await writeFile(path.resolve(SiteDir, 'sitemap.txt'), siteMap.join("\n"))
 }
 
 main()
