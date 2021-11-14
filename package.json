@@ -5,6 +5,8 @@
   "scripts": {
     "article:add": "zenn new:article --slug \"$(date +%Y-%m-%d)-$(openssl rand -hex 3)\"",
     "article:preview": "open http://localhost:58125/ && zenn preview --port 58125",
+    "textlint": "textlint ./**/*.md",
+    "textlint:fix": "textlint --fix ./**/*.md",
     "site:build": "node ./script/site/build.js",
     "site:preview": "http-server site/ --port 58125 -o",
     "site:update": "aws s3 sync site/ s3://mryhryki-cdn/contents/ --exclude='.DS_Store' --size-only"
@@ -15,6 +17,9 @@
     "http-server": "^14.0.0",
     "js-yaml": "^4.1.0",
     "rss": "^1.2.2",
+    "textlint": "^12.0.2",
+    "textlint-rule-no-todo": "^2.0.1",
+    "textlint-rule-preset-ja-technical-writing": "^7.0.0",
     "yaml": "^1.10.2",
     "zenn-cli": "^0.1.98"
   }
