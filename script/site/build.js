@@ -4,12 +4,14 @@ const path = require('path')
 const RSS = require('rss')
 const yaml = require('yaml');
 const {convert} = require('@mryhryki/markdown')
+const backups = require('../../backup/publish.json')
 
 const BaseURL = "https://mryhryki.com"
 
 const RootDir = path.resolve(__dirname, '..', '..')
 const ArticlesDir = path.resolve(RootDir, 'articles')
 const BlogDir = path.resolve(RootDir, 'blog')
+const BackupDir = path.resolve(RootDir, 'backup')
 const SiteDir = path.resolve(RootDir, 'site')
 const OutputDir = path.resolve(SiteDir, 'blog')
 const TemplateDir = path.resolve(__dirname, 'template')
@@ -54,13 +56,14 @@ const renderIndex = (posts) => new Promise((resolve, reject) => {
 
 const main = async () => {
   const siteMap = [`${BaseURL}/`, `${BaseURL}/blog/`]
+  const posts = [];
   await createDir(OutputDir)
+
   const [articles, blogEntries] = await Promise.all([
     readdir(ArticlesDir).then((entries) => entries.filter(matchBlogFileFormat)),
     readdir(BlogDir).then((entries) => entries.filter(matchBlogFileFormat))
   ])
 
-  const posts = [];
   await Promise.all(blogEntries.map(async (blog) => {
     const markdown = (await readFile(path.resolve(BlogDir, blog))).toString()
     const {title, html} = convert(markdown)
@@ -79,15 +82,24 @@ const main = async () => {
       throw new Error(`Title not found in article: ${article}`)
     }
     const markdown = contents.slice(boundaryLineNumber + 1).map((line) => line.trim().replace(/^#/, '##')).join("\n")
-
     const canonical = `https://zenn.dev/mryhryki/articles/${article.replace('.md', '')}`
-    const {html} = convert(`# ${title}\n\n※この記事は以下に投稿した記事のクロスポストです\n${canonical}\n\n${markdown}`)
+    const {html} = convert(`# ${title}\n\n${markdown}`)
     const postHtml = await renderPost(title, html, canonical)
     const date = article.slice(0, 10)
     const fileName = `${article.slice(0, -3)}.html`
     await writeFile(path.resolve(OutputDir, fileName), postHtml)
     posts.push({title, path: `/blog/${fileName}`, date, canonical})
   }))
+
+  await Promise.all(backups.map(async ({ filePath, date, slug, canonical }) => {
+    const markdown = (await readFile(path.resolve(BackupDir, filePath))).toString()
+    const {title, html} = convert(markdown)
+    const postHtml = await renderPost(title, html, canonical)
+    const fileName = `${date}-${slug}.html`
+    await writeFile(path.resolve(OutputDir, fileName), postHtml)
+    posts.push({title, path: `/blog/${fileName}`, date, canonical})
+  }))
+
   posts.sort((p1, p2) => p2.path <= p1.path ? -1 : 1)
 
   const indexHtml = await renderIndex(posts)
@@ -109,8 +121,8 @@ const main = async () => {
       url
     });
   })
-  await writeFile(path.resolve(OutputDir, 'feed.xml'), feed.xml({indent: true}))
 
+  await writeFile(path.resolve(OutputDir, 'feed.xml'), feed.xml({indent: true}))
   await writeFile(path.resolve(SiteDir, 'sitemap.txt'), siteMap.join("\n"))
 }
 
