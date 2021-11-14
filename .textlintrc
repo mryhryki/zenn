@@ -1,7 +1,9 @@
 {
   "filters": {},
   "rules": {
-    "preset-ja-technical-writing": true,
-    "no-todo": true
+    "ja-technical-writing/max-kanji-continuous-len": false,
+    "ja-technical-writing/ja-no-weak-phrase": false,
+    "no-todo": true,
+    "preset-ja-technical-writing": true
   }
 }
