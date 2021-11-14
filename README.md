@@ -10,9 +10,8 @@
   - `articles/`
 - [ブログデータ](https://mryhryki.com/blog/)
   - `articles/` (Zenn の投稿をこちらでも公開）
+  - `backup/` (過去の投稿記事のバックアップをこちらでも公開）
   - `blog/`
-- 過去のブログのバックアップデータ
-  - `backup/`
 
 ## Setup
 
