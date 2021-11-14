@@ -199,7 +199,7 @@ $ lhci wizard
 後はコミット＆プッシュして、GitHub Actions が実行完了するのを待ちます。
 
 正常に実行完了したら、LHCI Server の画面を更新してみましょう。
-一つだけですが、結果が追加されているのが確認できると思います。
+1つだけですが、結果が追加されているのが確認できると思います。
 
 ![pacific-fortress-21791.herokuapp.com_app_projects_memo-6_dashboard.png](https://i.gyazo.com/d7ad07ba5f63dee9883e78454ea00a4a.png)
 
@@ -207,7 +207,7 @@ $ lhci wizard
 
 ![capture 1.png](https://i.gyazo.com/30fe9237817d78badcd1bfddf5fc4c38.png)
 
-スコアにあまり変動がないですが、スコアの変動などをグラフで確認することができたりします。
+スコアにあまり変動がないですが、スコアの変動などをグラフで確認できたりします。
 
 ![capture 2.png](https://i.gyazo.com/957daabddd8538a93795d48c7b19a6c0.png)
 

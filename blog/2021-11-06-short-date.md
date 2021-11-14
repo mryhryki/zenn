@@ -60,7 +60,7 @@ console.log(`${numToShortText(2021)}${numToShortText(11)}${numToShortText(6)}`)
 // => bWB6
 ```
 
-上記の例で出したURLも4文字短縮することができました。
+上記の例で出したURLも4文字短縮できました。
 
 - Before: `https://example.com/file/20211106-RANDOM-CHARACTERS`
 - After: `https://example.com/file/bWB6-RANDOM-CHARACTERS`

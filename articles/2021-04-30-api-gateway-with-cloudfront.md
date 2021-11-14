@@ -101,7 +101,7 @@ API Gateway average response time: 208.8 ms
 CloudFront average response time: 253.98 ms
 ```
 
-ただ、一つ一つの結果を見てみると平均値とは違う印象です。
+ただ、1つ一つの結果を見てみると平均値とは違う印象です。
 
 :::details 詳細な結果
 
@@ -345,7 +345,7 @@ CloudFront average response time: 40.45 ms
 ```
 
 ほとんど差がありませんでした。
-一つ一つの結果を見てみても大きな差はありませんでした。
+1つ一つの結果を見てみても大きな差はありませんでした。
 
 :::details 詳細な結果
 
