@@ -9,7 +9,7 @@
 - [Zenn](https://zenn.dev/mryhryki) の記事データ ([公式ドキュメント](https://zenn.dev/zenn/articles/connect-to-github))
   - `articles/`
 - [ブログデータ](https://mryhryki.com/blog/)
-  - `articles/` (Zennの投稿をこちらでも公開）
+  - `articles/` (Zenn の投稿をこちらでも公開）
   - `blog/`
 - 過去のブログのバックアップデータ
   - `backup/`
@@ -18,15 +18,15 @@
 
 ```bash
 # 依存パッケージのダウンロード
-$ npm i
+$ npm install
 ```
 
 ## ポートフォリオサイト
 
-### ブログデータのビルド
+### サイトデータのビルド
 
 ```bash
-$ npm run blog:build
+$ npm run site:build
 ```
 
 ### プレビュー
@@ -44,7 +44,7 @@ $ npm run site:update
 
 ## Zenn
 
-[article/](./article) ディレクトリは以下に記事データを管理しています。
+[article/](./articles) ディレクトリは以下に記事データを管理しています。
 `main` ブランチと同期しています。
 
 ### ローカルでの執筆のCLIサンプル。
