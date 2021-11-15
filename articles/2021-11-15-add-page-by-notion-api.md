@@ -38,9 +38,14 @@ https://www.notion.so/my-integrations
 
 以降 `NOTION_ACCESS_TOKEN` という名前の環境変数に、このトークンが設定されている前提で進めます。
 
-# プロジェクトを作る
+## 対象ページに招待する
+
+![](https://mryhryki.com/file/bWAFfVAgS3CBvVS6AqPPFmZ0CN)
+
+## プロジェクトを作る
 
 JavaScript API が用意されているので、こちらを使って進めていきます。
 
 https://github.com/makenotion/notion-sdk-js
+
 
