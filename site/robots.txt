@@ -1,5 +1,7 @@
 User-agent: *
 Disallow: /api/
 Disallow: /view/
-Allow: /assets/
+Disallow: /link.html
+Disallow: /bousai.html
+Allow: /assets/image/
 Allow: /blog/
