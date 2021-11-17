@@ -8,7 +8,7 @@
     "textlint": "textlint ./**/*.md",
     "textlint:fix": "textlint --fix ./**/*.md",
     "site:build": "node ./script/site/build.js",
-    "site:preview": "http-server site/ --port 58125 -o",
+    "site:preview": "npm run site:build && http-server site/ --port 58125 -o",
     "site:update": "aws s3 sync site/ s3://mryhryki-cdn/contents/ --exclude='.DS_Store' --size-only"
   },
   "dependencies": {
