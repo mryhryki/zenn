@@ -9,19 +9,19 @@
   <meta property="og:title" content="mryhryki's blog"/>
   <meta property="og:description" content="Web技術や個人的なメモなどを投稿しています。"/>
   <meta property="og:image" content="https://mryhryki.com/assets/image/share_image.jpg"/>
-  <meta property="og:url" content="https://mryhryki.com/"/>
+  <meta property="og:url" content="https://mryhryki.com/blog/"/>
   <meta property="og:site_name" content="mryhryki's blog"/>
   <meta property="og:locale" content="ja-JP"/>
   <meta property="og:type" content="website"/>
   <meta name="twitter:card" content="summary"/>
   <meta name="twitter:title" content="mryhryki's blog"/>
   <meta name="twitter:description" content="Web技術や個人的なメモなどを投稿しています。"/>
-  <meta name="twitter:image" content="https://mryhryki.com/assets/image/share_image.jpg"/>
+  <meta name="twitter:image" content="/assets/image/share_image.jpg"/>
   <meta name="twitter:site" content="@mryhryki"/>
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Roboto+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://mryhryki.com/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
   <link rel="icon" href="/favicon.ico">
   <link rel="apple-touch-icon" type="image/x-icon" href="/favicon.ico">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -31,22 +31,24 @@
 <body class="wrapper dark-theme">
   <h1>mryhryki's blog</h1>
   <p style="text-align: center;">Web技術や個人的なメモなどを投稿しています。</p>
-  <% posts.forEach(({ path, title, date, canonical }, index) => { %>
-    <% if (index === 0 || date.substr(0, 7) !== posts[index - 1].date.substr(0, 7)) { %>
-      <h2><%= date.substr(0, 7) %></h2>
-    <% } %>
-    <p>
-      <a href="<%= path %>"><%= title %></a>
-      <br />
-      <span style="font-size: 12px;">&#x1f4dd;<%= date %></span>
-      <% if (canonical != null) { %>
-        <span style="font-size: 12px;">
-          (View on <a href="<%= canonical %>" target="_blank" rel="noopener noreferrer"><%= new URL(canonical).host %></a>)
-        </span>
-      <% } %>
+
+<% posts.forEach(({ path, title, date, canonical }, index) => { %>
+  <% if (index === 0 || date.substr(0, 7) !== posts[index - 1].date.substr(0, 7)) { %>
+    <h2><%= date.substr(0, 7) %></h2>
+  <% } %>
+  <p>
+    <a href="<%= path %>"><%= title %></a>
+    <br />
+    <span style="font-size: 12px;">&#x1f4dd;<%= date %></span>
+    <% if (canonical != null) { %>
+      <span style="font-size: 12px;">
+        (View on <a href="<%= canonical %>" target="_blank" rel="noopener noreferrer"><%= new URL(canonical).host %></a>)
       </span>
-    </p>
-  <% }) %>
+    <% } %>
+    </span>
+  </p>
+<% }) %>
+
   <footer>
     <a href="/blog/feed.xml">RSS</a>
     <a href="https://github.com/mryhryki/portfolio">GitHub</a>

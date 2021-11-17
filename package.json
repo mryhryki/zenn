@@ -7,7 +7,7 @@
     "article:preview": "open http://localhost:58125/ && zenn preview --port 58125",
     "textlint": "textlint ./**/*.md",
     "textlint:fix": "textlint --fix ./**/*.md",
-    "site:build": "node ./script/site/build.js",
+    "site:build": "rm -rf ./site/blog/ ./site/sitemap.txt && node ./script/site/build.js",
     "site:preview": "npm run site:build && http-server site/ --port 58125 -o",
     "site:update": "aws s3 sync site/ s3://mryhryki-cdn/contents/ --exclude='.DS_Store' --size-only"
   },
