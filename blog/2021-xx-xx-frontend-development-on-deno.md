@@ -1,5 +1,10 @@
 # フロントエンド開発 on Deno
 
+## はじめに
+
+Node.js 互換モードというのも入ったようですが、今回はこれを使わないもので試してみます。
+[Deno v1.15で導入されたNode.js互換モードについて](https://zenn.dev/uki00a/articles/node-compat-mode-introduced-in-deno-v1-15)
+
 
 ## 参考リンク
 
