@@ -30,5 +30,6 @@ $ aleph dev
 
 ## 参考リンク
 
+- [DenoでReact Server Side Renderingした話 - Qiita](https://qiita.com/isihigameKoudai/items/40b5263b7296c79873a6)
 - [Denoのフロントエンド開発の動向【2021年秋】](https://zenn.dev/uki00a/articles/frontend-development-in-deno-2021-autumn)
 - [Denoのフロントエンド開発の動向【2021年春】](https://zenn.dev/uki00a/articles/frontend-development-in-deno-2021-spring)
