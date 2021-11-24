@@ -9,6 +9,14 @@ Node.js 互換モードというのも入ったようですが、今回はこれ
 
 [alephjs/aleph.js: The Full-stack Framework in Deno.](https://github.com/alephjs/aleph.js)
 
+### セットアップ
+
+[Get Started - Aleph.js](https://alephjs.org/docs/get-started)
+
+```shell
+deno run -A https://deno.land/x/aleph/install.ts
+```
+
 
 ## 参考リンク
 
