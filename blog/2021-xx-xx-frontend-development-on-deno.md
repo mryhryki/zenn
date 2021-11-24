@@ -9,6 +9,10 @@ Node.js 互換モードというのも入ったようですが、今回はこれ
 
 [alephjs/aleph.js: The Full-stack Framework in Deno.](https://github.com/alephjs/aleph.js)
 
+> The Full-stack Framework in Deno.
+
+なので、厳密に言えばフロントエンド開発ではないかと思いますが、こちらを試してみます。
+
 ### セットアップ
 
 [Get Started - Aleph.js](https://alephjs.org/docs/get-started)
