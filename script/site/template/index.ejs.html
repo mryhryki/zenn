@@ -2,10 +2,13 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
   <title>mryhryki's blog</title>
+  <meta content="Blog | Moriya Hiroyuki" name="title">
+  <meta content="Web技術や個人的なメモなどを投稿しています。" name="description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="/assets/image/icon_192x192.png" type="image/png">
+
   <meta property="og:title" content="mryhryki's blog"/>
   <meta property="og:description" content="Web技術や個人的なメモなどを投稿しています。"/>
   <meta property="og:image" content="https://mryhryki.com/assets/image/share_image.jpg"/>
@@ -13,6 +16,7 @@
   <meta property="og:site_name" content="mryhryki's blog"/>
   <meta property="og:locale" content="ja-JP"/>
   <meta property="og:type" content="website"/>
+
   <meta name="twitter:card" content="summary"/>
   <meta name="twitter:title" content="mryhryki's blog"/>
   <meta name="twitter:description" content="Web技術や個人的なメモなどを投稿しています。"/>
@@ -22,32 +26,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Roboto+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/base.css">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" type="image/x-icon" href="/favicon.ico">
+
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="mryhryki's app">
+  <link rel="apple-touch-icon" type="image/png" href="./assets/image/icon_180x180.png">
+
 </head>
 <body class="wrapper dark-theme">
   <h1>mryhryki's blog</h1>
   <p style="text-align: center;">Web技術や個人的なメモなどを投稿しています。</p>
 
-<% posts.forEach(({ path, title, date, canonical }, index) => { %>
-  <% if (index === 0 || date.substr(0, 7) !== posts[index - 1].date.substr(0, 7)) { %>
-    <h2><%= date.substr(0, 7) %></h2>
-  <% } %>
-  <p>
-    <a href="<%= path %>"><%= title %></a>
-    <br />
-    <span style="font-size: 12px;">&#x1f4dd;<%= date %></span>
-    <% if (canonical != null) { %>
-      <span style="font-size: 12px;">
-        (View on <a href="<%= canonical %>" target="_blank" rel="noopener noreferrer"><%= new URL(canonical).host %></a>)
-      </span>
+  <% posts.forEach(({ path, title, date, canonical }, index) => { %>
+    <% if (index === 0 || date.substr(0, 7) !== posts[index - 1].date.substr(0, 7)) { %>
+      <h2><%= date.substr(0, 7) %></h2>
     <% } %>
-    </span>
-  </p>
-<% }) %>
+    <p>
+      <a href="<%= path %>"><%= title %></a>
+      <br />
+      <span style="font-size: 12px;">&#x1f4dd;<%= date %></span>
+      <% if (canonical != null) { %>
+        <span style="font-size: 12px;">
+          (View on <a href="<%= canonical %>" target="_blank" rel="noopener noreferrer"><%= new URL(canonical).host %></a>)
+        </span>
+      <% } %>
+      </span>
+    </p>
+  <% }) %>
 
   <footer>
     <a href="/blog/feed.xml">RSS</a>
