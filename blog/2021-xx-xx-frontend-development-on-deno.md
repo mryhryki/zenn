@@ -21,6 +21,12 @@ Node.js 互換モードというのも入ったようですが、今回はこれ
 deno run -A https://deno.land/x/aleph/install.ts
 ```
 
+開発モードで立ち上げ
+
+```shell
+$ aleph dev
+```
+
 
 ## 参考リンク
 
