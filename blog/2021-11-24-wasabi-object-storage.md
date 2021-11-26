@@ -4,6 +4,11 @@
 
 [Wasabi – Cloud-based object storage service](https://wasabi.com/) という AWS S3 互換のオブジェクトストレージを使い始めて３ヶ月以上が経ったので、使ってみた感想とかをまとめます。
 
+## 2021-11-26追記
+
+インターネット転送料金については、AWS のアップデートでちょっと状況が変わりました。
+
+[AWSのデータ転送無料枠が拡張されます。リージョンからの転送は月100GBまで無料、CloudFrontからの転送は月1TBまで無料に。 | DevelopersIO](https://dev.classmethod.jp/articles/aws-free-tier-data-transfer-expansion/)
 
 ## 個人で AWS S3 を使った時の課題
 
