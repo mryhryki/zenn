@@ -107,13 +107,9 @@ footer {
     margin: 48px 0 16px 0;
 }
 
-h1, h2, h3, h4, h5, h6, ul, ol {
-    margin: 1rem 0.5rem;
-    padding: 0 0.25rem;
-}
-
 h1, h2, h3, h4, h5, h6 {
-    white-space: pre-wrap;
+    margin: 1.5rem 0 0 0;
+    padding: 0.25rem 0.5rem;
 }
 
 h1 *, h2 *, h3 *, h4 *, h5 *, h6 * {
@@ -124,7 +120,6 @@ h1 {
     font-size: 1.75rem;
     font-weight: 600;
     line-height: 2.25rem;
-    margin: 2rem 0.5rem;
     text-align: center;
 }
 
@@ -133,33 +128,25 @@ h2 {
     font-size: 1.5rem;
     font-weight: 700;
     line-height: 2rem;
-    margin: 2rem 0.5rem 1rem 0.5rem;
-    padding: 0.25rem;
 }
 
 h3 {
     border-left: 4px solid;
     font-size: 1.25rem;
     font-weight: 800;
-    line-height: 2rem;
-    margin: 2rem 0.5rem 1rem 0.5rem;
-    padding-left: 0.75rem;
+    line-height: 2.25rem;
+    margin: 1.5rem 0.5rem 0.5rem 0.5rem;
+    padding: 0 0 0 1rem;
 }
 
 h4 {
     font-weight: 800;
     font-size: 1.25rem;
-    margin: 2.5rem 0.5rem 1rem 0.5rem;
 }
 
-h5 {
+h5, h6 {
     font-weight: 800;
     font-size: 1rem;
-}
-
-h6 {
-    font-weight: 800;
-    font-size: 0.85rem;
 }
 
 p {
@@ -256,7 +243,8 @@ table th {
 }
 
 ul, ol {
-    padding-left: 1.5rem;
+    margin: 1rem 0.5rem;
+    padding: 0 0.25rem 0 1.5rem;
     width: 100%
 }
 
@@ -298,7 +286,7 @@ button {
 
 /* Basic Layout */
 .wrapper {
-    max-width: 1280px;
+    max-width: 1024px;
     margin: 0 auto;
     padding: 16px;
 }
