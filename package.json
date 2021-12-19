@@ -21,6 +21,6 @@
     "textlint-rule-no-todo": "^2.0.1",
     "textlint-rule-preset-ja-technical-writing": "^7.0.0",
     "yaml": "^1.10.2",
-    "zenn-cli": "^0.1.99"
+    "zenn-cli": "^0.1.100"
   }
 }
