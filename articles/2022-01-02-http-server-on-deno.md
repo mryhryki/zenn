@@ -8,23 +8,23 @@ published: true
 
 # はじめに
 
-開発している時に HTTP サーバーを https でインターネットに公開したい、そんなことがあります。
-例えば私の場合 [App Store Server Notifications](https://developer.apple.com/documentation/appstoreservernotifications) のテストをする際に、以下のような HTTP サーバーを用意しました。
+開発している時にテスト用の HTTP サーバーを https で一時的にインターネットに公開したい、そんなことってありませんか？
+例えば私の場合、[App Store Server Notifications](https://developer.apple.com/documentation/appstoreservernotifications) のテストをする際に、以下のようなテスト用の HTTP サーバーを用意しました。
 
 - インターネットに公開してリクエスト受け付ける
 - リクエストボディの中身（Apple からの送信データ）を全部ログに出して中身を見る
 - レスポンスを 200 にしたり 500 にしたりして挙動を確認する
 
-その時は [express](https://expressjs.com/) を使った適当なプロジェクトを作って、[ngrok](https://ngrok.com/) を使ってインターネットに公開してテストしました。
-しかし、この方法だとローカルPCを立ちっぱなしで上げておかねばならず、サーバーを落とさないように色々気を使わないといけないので、ちょっと面倒です。
+その時は [express](https://expressjs.com/) を使った適当なプロジェクトを作って、[ngrok](https://ngrok.com/) を使って一時的にインターネットに公開してテストしました。
+しかし、この方法はローカルPCで上げっぱなにしておかねばならず、うっかりスリープ状態になってちゃんとリクエストが受け付けられなかった、なんてことがあったりしてちょっと面倒でした。
 
-そこで、今回は Deno (+ Deno Deploy) を使って手軽に HTTP サーバーをインターネットへ公開する方法を試してみたいと思います。
+そこで、今回は Deno (+ Deno Deploy) を使って手軽にテスト用の HTTP サーバーをインターネットへ公開できないかを試してみたので、その記録をまとめます。
 
 
 
 # Deno を使って HTTP サーバーを作る
 
-Deno には [標準ライブラリに HTTP サーバー](https://deno.land/manual@v1.17.1/runtime/http_server_apis) があるので、それを使うと簡単に HTTP サーバーを構築できます。
+Deno には標準ライブラリに [HTTP Server APIs](https://deno.land/manual@v1.17.1/runtime/http_server_apis) というのがあるので、それを使うと簡単に HTTP サーバーを構築できます。
 今回は以下のようなソースコードを作成してみました。
 
 ```typescript
@@ -32,12 +32,7 @@ import { serve } from "https://deno.land/std@0.114.0/http/server.ts";
 
 const PORT = 8080;
 
-/**
- * HTTPリクエストのハンドラ
- *
- * @param request HTTPリクエスト
- */
-const handleHttpRequest = async (request: Request): Promise<Response> => {
+const handler = async (request: Request): Promise<Response> => {
   console.log("Request:", request.method, request.url);
   const { pathname, search } = new URL(request.url);
 
@@ -61,17 +56,19 @@ const handleHttpRequest = async (request: Request): Promise<Response> => {
 };
 
 console.log(`Listening on http://localhost:${PORT}/`);
-await serve(handleHttpRequest, { addr: `:${PORT}` });
+await serve(handler, { addr: `:${PORT}` });
 ```
 
-今回はリクエストの内容をログに出したい
+今回はシンプルに以下のような処理にしてみました。
 
 - リクエストされたメソッドとURLをログに出す
 - `GET` リクエストの場合は、リクエストされたパスとクエリパラメーターをログに出して、レスポンスにも JSON で返す
 - `POST` リクエストの場合は、リクエストされたパスとボディをログに出して、レスポンスにも JSON で返す
 - それ以外の場合は `404 Not Found` を返す
+ 
+ここは、テストしたい内容に合わせて適宜変えればOKです。
 
-ローカルで動作確認するには、以下のコマンドで実行します。
+実装した HTTP サーバーをローカルで動作確認するには、以下のコマンドで実行します。
 
 ```shell
 $ deno run --allow-net ./index.ts
@@ -93,13 +90,14 @@ Deno で HTTP サーバーを立てるための推奨される方法は色々変
 こちらの記事が詳しくまとまっていて、非常に助かりました。
 [Denoでサーバーを建てる方法 2021年11月版](https://zenn.dev/kawarimidoll/articles/8031c2618fedca#deno-native-http)
 
+実はこの記事を書いている途中に、現在は `serve` が推奨されていることを知りました。
+（それまでは `Deno.serveHttp` を使う方法でやっていました）
 まだメジャーバージョンが `0` なので、色々変わってくるのは仕方ないところではありますね。
 
 
 # Deno Deploy で公開
 
-Deno Deploy は Deno Land Inc. が提供している Web サービスで、サーバーレス関数を提供しているプラットフォームです。
-現在はベータ版です。
+Deno Deploy は Deno Land Inc. が提供している Web サービスで、サーバーレス関数を提供しているプラットフォームで、現在はベータ版です。
 詳しくは、こちらのスライドを参照していただけると把握しやすいと思います。
 [Deno Deploy の話 - toranoana.deno #0](https://talk-deploy-kt3k.deno.dev/#1)
 
@@ -167,8 +165,8 @@ Deno Deploy では、Web UI から簡単にログが確認できます。
 
 ## おまけ： Docker イメージにする
 
-Deno Deploy が使えない、って時のために、汎用的に使える Docker イメージも作ってみました。
-とはいっても、今回のような用途であれば５行程度の簡単な `Dockerfile` で作れます。
+Deno Deploy が使えない時のために、汎用的に使える Docker イメージも作ってみました。
+とはいっても、今回の用途であれば５行程度の簡単な `Dockerfile` で作れます。
 
 ```dockerfile
 FROM denoland/deno:1.17.1
@@ -188,7 +186,8 @@ CMD ["run", "--allow-net", "./index.ts"]
 
 # おわりに
 
-最近 Deno に慣れるために、簡単なスクリプトや使い捨てのコードを Deno でよく作っているんですが、非常に使い勝手が良いな〜、と思います。
+最近 Deno に慣れるために簡単なスクリプトや使い捨てのコードを Deno でよく作っているんですが、非常に使い勝手が良いな〜、と思います。
+
 Deno Deploy は現在ベータ版で、無料で使えるところも嬉しいですね。
 [正式リリース後もある程度の無料枠がある予定](https://talk-deploy-kt3k.deno.dev/#8) ということなので、こちらも期待したいところです。
 
@@ -197,6 +196,6 @@ Deno Deploy は現在ベータ版で、無料で使えるところも嬉しい�
 # 参考リンク
 
 - [Denoでサーバーを建てる方法 2021年11月版](https://zenn.dev/kawarimidoll/articles/8031c2618fedca#deno-native-http)
-  [Deno Deploy の話 - toranoana.deno #0](https://talk-deploy-kt3k.deno.dev/#1)
+- [Deno Deploy の話 - toranoana.deno #0](https://talk-deploy-kt3k.deno.dev/#1)
 - [Deno 1.13.0 がリリースされたので新機能や変更点の紹介](https://zenn.dev/magurotuna/articles/deno-release-note-1-13-0#1.-%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%96-http-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E5%AE%9F%E8%A3%85%E3%81%AE%E5%AE%89%E5%AE%9A%E5%8C%96)
 - [2021年のDenoの変更点やできごとのまとめ](https://zenn.dev/uki00a/articles/whats-new-for-deno-in-2021#%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%96http%E3%82%B5%E3%83%BC%E3%83%90)
