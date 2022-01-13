@@ -12,15 +12,15 @@
     "site:update": "aws s3 sync site/ s3://mryhryki-cdn/contents/ --exclude='.DS_Store' --size-only"
   },
   "dependencies": {
-    "@mryhryki/markdown": "^0.1.2",
+    "@mryhryki/markdown": "^0.2.2",
     "ejs": "^3.1.6",
-    "http-server": "^14.0.0",
+    "http-server": "^14.1.0",
     "js-yaml": "^4.1.0",
     "rss": "^1.2.2",
     "textlint": "^12.1.0",
     "textlint-rule-no-todo": "^2.0.1",
     "textlint-rule-preset-ja-technical-writing": "^7.0.0",
     "yaml": "^1.10.2",
-    "zenn-cli": "^0.1.100"
+    "zenn-cli": "^0.1.101"
   }
 }
