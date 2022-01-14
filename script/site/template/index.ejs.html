@@ -36,6 +36,7 @@
 <body class="wrapper dark-theme">
   <h1>mryhryki's blog</h1>
   <p style="text-align: center;">Web技術や個人的なメモなどを投稿しています。</p>
+  <p style="text-align: center;">※「View on XXX」とある記事は、他の媒体に投稿した内容のバックアップです。</p>
 
   <% posts.forEach(({ path, title, date, canonical }, index) => { %>
     <% if (index === 0 || date.substr(0, 7) !== posts[index - 1].date.substr(0, 7)) { %>
