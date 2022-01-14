@@ -53,10 +53,7 @@
           color: #1a202c;
           font-size: 24px;
           line-height: 40px;
-      }
-
-      h2 > a {
-          color: #1a202c;
+          margin-bottom: 16px;
       }
 
       h3 {
@@ -227,19 +224,13 @@
       }
 
       .output-card .output-image {
-          border-bottom: 1px solid #e2e8f0;
-          object-fit: cover;
-          width: 100%;
-          min-height: 12rem;
-          max-height: 12rem;
-      }
-
-      .output-card > .output-image {
           background-color: #333;
+          border-bottom: 1px solid #e2e8f0;
           color: #fff;
           font-size: 2rem;
-          line-height: 12rem;
+          object-fit: cover;
           text-align: center;
+          width: 100%;
       }
 
       .output-card > p {
@@ -386,7 +377,7 @@
     </section>
 
     <section>
-      <h2 id="skill"><a href="#skill">Skill</a></h2>
+      <a href="#skill"><h2 id="skill">Skill</h2></a>
       <article class="skill-wrapper">
         <div class="card-layout">
           <div class="card skill-card">
@@ -591,9 +582,8 @@
       <div class="card-layout">
         <a class="card output-card" href="/blog/" target="_blank" rel="noopener noreferrer">
           <picture>
-            <source type="image/webp" srcset="./assets/image/share_image.webp">
-            <source type="image/jpeg" srcset="./assets/image/share_image.jpg">
-            <img class="output-image" src="./assets/image/share_image.jpg" alt="mryhryki's blog"
+            <source type="image/webp" srcset="./assets/image/portfolio/output/mryhrykis_blog.webp">
+            <img class="output-image" src="./assets/image/portfolio/output/mryhrykis_blog.jpg" alt="mryhryki's blog"
                  decoding="async"/>
           </picture>
           <h3>mryhryki's blog</h3>
@@ -634,8 +624,54 @@
       </div>
     </section>
 
+    <section id="app-section">
+      <a href="#app"><h2 id="app">App</h2></a>
+      <div class="card-layout">
+        <div class="card output-card">
+          <a href="https://image-markup.vercel.app/" target="_blank" rel="noopener noreferrer">
+            <picture>
+              <source type="image/webp" srcset="./assets/image/portfolio/app/image_markup.webp">
+              <img class="output-image" src="./assets/image/portfolio/app/image_markup.jpeg" alt="Image Markup"
+                   decoding="async"/>
+            </picture>
+          </a>
+          <a href="https://image-markup.vercel.app/" target="_blank" rel="noopener noreferrer">
+            <h3>Image Markup</h3>
+          </a>
+          <p>
+            Webブラウザだけで動作する画像の簡易マークアップアプリです。
+            <a href="https://developer.mozilla.org/ja/docs/Web/HTML/Element/canvas" target="_blank"
+               rel="noopener noreferrer">Canvas</a>
+            を使用して作っています。
+            (<a href="https://github.com/mryhryki/image-markup" target="_blank"
+                rel="noopener noreferrer">GitHub</a>)
+          </p>
+        </div>
+        <div class="card output-card">
+          <a href="https://video-to-gif.vercel.app/" target="_blank" rel="noopener noreferrer">
+            <picture>
+              <source type="image/webp" srcset="./assets/image/portfolio/app/video_to_gif.webp">
+              <img class="output-image" src="./assets/image/portfolio/app/video_to_gif.jpeg" alt="Image Markup"
+                   decoding="async"/>
+            </picture>
+          </a>
+          <a href="https://video-to-gif.vercel.app/" target="_blank" rel="noopener noreferrer">
+            <h3>Video to GIF</h3>
+          </a>
+          <p>
+            Webブラウザだけで動作する動画からアプリです。
+            <a href="https://github.com/ffmpegwasm/ffmpeg.wasm" target="_blank"
+               rel="noopener noreferrer">ffmpeg.wasm</a>
+            を使用して作っています。
+            (<a href="https://github.com/mryhryki/video-to-gif" target="_blank"
+               rel="noopener noreferrer">GitHub</a>)
+          </p>
+        </div>
+      </div>
+    </section>
+
     <section id="career-section">
-      <h2 id="career"><a href="#career">Career</a></h2>
+      <a href="#career"><h2 id="career">Career</h2></a>
       <div class="career-card">
         <h3><a href="https://connehito.com/" target="_blank" rel="noopener noreferrer">コネヒト株式会社</a></h3>
         <p class="description">
@@ -681,7 +717,7 @@
     </section>
 
     <section id="contact-section">
-      <h2 id="contact"><a href="#contact">Contact</a></h2>
+      <a href="#contact"><h2 id="contact">Contact</h2></a>
       <section>
         <p style="text-align: center;margin-bottom:16px;">
           <a href="mailto:mryhryki@gmail.com" target="_blank" rel="noopener noreferrer">mryhryki@gmail.com</a>
