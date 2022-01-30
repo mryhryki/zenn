@@ -113,7 +113,7 @@ const creative = await response.json();
 > https://developer.chrome.com/docs/privacy-sandbox/topics/
 
 
-# Topics は何を解決するのか？
+# The Topics API は何を解決するのか？
 
 もともとの目的である Third-Party Cookie の廃止が実現されることで、よりユーザーのプライバシーが尊重されるようになります。
 また同様の提案であった FLoC と比較すると、大きく以下のような点が解決されるようになると思われます。
