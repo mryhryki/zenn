@@ -26,42 +26,68 @@ FLoC は、ユーザーを追跡することなく、ターゲティング広告
 しかしながら、これはいくつか問題がありました。
 
 1. 他のAPIなどの情報と組み合わせることで、従来よりも容易に個人を特定しやすくなる
-2. コホートから、どういった人物か（例：年代、性別、人種など）を特定することができる
+2. コホートから、どういった人物か（例：年代、性別、人種など）を特定しやすくなる
 3. 別の手段でユーザーを一意に識別することができる場合、ユーザーの関心の変化を知ることができる
 
 ※詳しくは [Googleに騙されてはいけない：FLoCは邪悪なアイデアである](https://p2ptk.org/privacy/3290) などが参考になります。
-（電子フロンティア財団の [Google’s FLoC Is a Terrible Idea](https://www.eff.org/deeplinks/2021/03/googles-floc-terrible-idea) という記事の翻訳記事です)）
+（電子フロンティア財団の [Google’s FLoC Is a Terrible Idea](https://www.eff.org/deeplinks/2021/03/googles-floc-terrible-idea) という記事の翻訳記事です）
 
-こういった課題があり、批判やブラウザベンダーなどの不参加表明が相次いだことから FLoC に代わる The Topics API を出したものと思われます。
+こういった課題があり、批判やベンダーなどの不参加表明が相次いだことから FLoC に代わる The Topics API を出したものと思われます。
 
 ちなみに Chrome は2022年中に Topics API の実験をする予定で、また FLoC の開発は停止しているとのことです。
 
 > Chrome intends to experiment with the Topics API in 2022 and is no longer developing FLoC.
-https://privacysandbox.com/timeline/
+https://www.privacysandbox.com/proposals/topics/
 
 
 # The Topics API の概要
-
-※このセクションは [The Topics API - Chrome Developers](https://developer.chrome.com/docs/privacy-sandbox/topics/) の情報をベースに書いています。
 
 The Topic API は、FLoC と同じくユーザーを追跡することなく、ターゲティング広告（ユーザーの興味に応じた広告）を配信するための仕組みを提供することを目的としています。
 
 大まかな流れとしては、以下のようになります。
 
-1. 閲覧したウェブサイトを記録する
-2. エポック(epoch)と呼ばれる期間の単位（現在の提案では１週間）の閲覧履歴をベースに、上位５つのトピックからランダムに決定される
-3. Topics API の呼び出すことで直近3エポックのトピックを取得できるので、それに適した広告をユーザーに表示する
+1. 閲覧したウェブサイトをブラウザが記録する
+2. ブラウザ上で、エポック(epoch)と呼ばれる期間の単位（現在の提案では１週間）で、ウェブサイトの閲覧履歴をベースに上位５つのトピックを選出し、その中からランダムに１つトピックを決定する
+3. Topics API の呼び出すことで直近3エポックのトピックを取得できる
 
 こちらの図もわかりやすいです。
 
 ![The Topic API flow](https://mryhryki.com/file/Wc1U8kERkLr6xp2isdPg8kuCl_xQC.png)
-https://developer.chrome.com/docs/privacy-sandbox/topics/
+[https://developer.chrome.com/docs/privacy-sandbox/topics/](https://developer.chrome.com/docs/privacy-sandbox/topics/)
+
+また [サンプルコード](https://github.com/jkarlin/topics/blob/d1a426640f7f9ec100e6bdfd6a37eb6179891f89/README.md#the-api-and-how-it-works) も用意されています。
+（※当然ですが、また提案段階でブラウザには実装されていないので動きません。あくまで実装イメージです）
+
+```javascript
+// document.browsingTopics() returns an array of up to three topic objects in random order.
+const topics = await document.browsingTopics();
+
+// The returned array looks like: [{'value': Number, 'taxonomyVersion': String, 'modelVersion': String}]
+
+// Get data for an ad creative.
+const response = await fetch('https://ads.example/get-creative', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(topics)
+});
+// Get the JSON from the response.
+const creative = await response.json();
+
+// Display ad.
+```
 
 
 ## ウェブサイトとトピックの紐付けについて
 
-ウェブサイトとトピックは、機械学習で「ホスト名」とトピックを紐付けるモデルを作るという計画のようです。
+ウェブサイトとトピックは、機械学習で「ホスト名」とトピックを紐付けるモデルを作ることが提案されているようです。
 モデルはブラウザとともに配布され、オープンに開発され、自由に使用することができるとのことでした。
+
+> The Topics API proposes using machine learning to infer topics from hostnames.
+> The classifier model for this would initially be trained by the browser vendor, or a trusted third party, using human-curated hostnames and topics.
+> The model would be distributed with the browser, so it would be openly developed and freely available.
+> https://developer.chrome.com/docs/privacy-sandbox/topics/
 
 ## トピック一覧の選定
 
@@ -69,6 +95,12 @@ https://developer.chrome.com/docs/privacy-sandbox/topics/
 最初はテスト用に Chrome によって分類するが、信頼できる貢献者によってトピックを維持することを目標としているようです。
 
 現状は [350 のトピック](https://github.com/jkarlin/topics/blob/main/taxonomy_v1.md) が提案されていて、将来的には数百から数千になる予定のようです。
+
+> These topics would initially be curated by Chrome for testing, but with the goal that the topic taxonomy becomes a resource maintained by trusted ecosystem contributors.
+> The taxonomy needs to provide a set of topics that is small enough in number (currently proposed to be around 350, though we expect the final number of topics to be between a few hundred and a few thousand) so that many browsers will be associated with each topic.
+> To avoid sensitive categories, these topics must be public, human-curated, and kept updated.
+> The initial taxonomy proposed for testing by Chrome has been human-curated to exclude categories generally considered sensitive, such as ethnicity or sexual orientation.
+> https://developer.chrome.com/docs/privacy-sandbox/topics/
 
 
 # Topics は何を解決するのか？
@@ -81,6 +113,7 @@ https://developer.chrome.com/docs/privacy-sandbox/topics/
 
 
 # おわりに
+
 
 
 # 参考リンク
