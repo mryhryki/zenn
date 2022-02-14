@@ -5,15 +5,19 @@
   "scripts": {
     "article:add": "zenn new:article --slug \"$(date +%Y-%m-%d)-$(openssl rand -hex 3)\"",
     "article:preview": "open http://localhost:58125/ && zenn preview --port 58125",
+    "lint": "mryhryki-lint",
+    "lint:fix": "mryhryki-lint-fix",
     "textlint": "textlint ./**/*.md",
     "textlint:fix": "textlint --fix ./**/*.md",
-    "site:build": "rm -rf ./site/blog/ ./site/sitemap.txt && node ./script/site/build.js",
+    "site:build": "rm -rf ./site/blog/ ./site/sitemap.txt && node -r esbuild-register ./script/site/build.ts",
     "site:preview": "npm run site:build && http-server site/ --port 58125 -o",
     "site:update": "aws s3 sync site/ s3://mryhryki-cdn/contents/ --exclude='.DS_Store' --size-only --dryrun"
   },
   "dependencies": {
+    "@mryhryki/lint": "^0.0.6",
     "@mryhryki/markdown": "^0.2.3",
     "ejs": "^3.1.6",
+    "esbuild-register": "^3.3.2",
     "http-server": "^14.1.0",
     "js-yaml": "^4.1.0",
     "rss": "^1.2.2",
