@@ -105,7 +105,7 @@ AWS Route53 での設定は以下のようになります。
 次にテンプレートエンジンに渡すので、テキストデータを受け取っておきます。
 
 ```javascript
-const fs = require('fs');
+const fs = require('fs.js');
 const marked = require('marked');
 const htmlText = marked(fs.readFileSync('Markdownファイルのパス'))
 ```

@@ -4,7 +4,7 @@ const path = require('path')
 const RSS = require('rss')
 const yaml = require('yaml');
 const {convert} = require('@mryhryki/markdown')
-const backups = require('../../backup/publish.json')
+const backups = require('../../posts/blog_backup/publish.json')
 
 const BaseURL = "https://mryhryki.com"
 
