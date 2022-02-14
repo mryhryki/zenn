@@ -1,4 +1,7 @@
-# iOS 14.5 から導入された App Tracking Transparency
+---
+title: iOS 14.5 から導入された App Tracking Transparency
+created_at: 2021-07-20T10:00:00+09:00
+---
 
 [大半のiPhoneユーザーが追跡拒否、Facebookや広告業界がパニック状態のうわさ - Engadget 日本版](https://japanese.engadget.com/facebook-advertisers-panicking-optout-tracking-020032249.html)
 

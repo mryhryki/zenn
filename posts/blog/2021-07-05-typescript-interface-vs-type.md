@@ -1,4 +1,7 @@
-# TypeScript: interface vs type
+---
+title: TypeScript: interface vs type
+created_at: 2021-07-05T10:00:00+09:00
+---
 
 よく出てきそうな話題なのでメモ。
 

@@ -1,4 +1,7 @@
-# Express の body-parser のデフォルト値
+---
+title: Express の body-parser のデフォルト値
+created_at: 2021-09-07T10:00:00+09:00
+---
 
 
 [Express](https://expressjs.com/) のAPIに大き目のJSONを渡そうとしたら [413 Payload Too Large](https://developer.mozilla.org/ja/docs/Web/HTTP/Status/413) が返ってきたので調べたら、[body-parser](https://www.npmjs.com/package/body-parser) の制限でデフォルト `100KB` になっているためだった。（JSON 以外も `100KB` がデフォルトっぽい）

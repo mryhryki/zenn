@@ -1,4 +1,7 @@
-# FireFox Tips
+---
+title: FireFox Tips
+created_at: 2021-08-10T10:00:00+09:00
+---
 
 ## はじめに
 

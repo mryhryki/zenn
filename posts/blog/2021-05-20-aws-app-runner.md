@@ -1,4 +1,7 @@
-# AWS App Runner
+---
+title: AWS App Runner
+created_at: 2021-05-20T10:00:00+09:00
+---
 
 > App Runner は Docker コンテナイメージまたはソースコード(Python、Node.js)から AWS にウェブアプリケーションをデプロイするためのサービスです。非常に強力に抽象化されており、開発者はインフラストラクチャーのことをほぼ意識せず Auto Scaling 可能なアーキテクチャをデプロイする事ができます。Cloud Run、Google App Engine、Heroku あたりと競合しそうなサービスです。
 

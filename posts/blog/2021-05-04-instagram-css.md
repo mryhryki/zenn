@@ -1,4 +1,7 @@
-# Instagramに使用されているCSSのテクニック を読んだ感想
+---
+title: Instagramに使用されているCSSのテクニック を読んだ感想
+created_at: 2021-05-04T10:00:00+09:00
+---
 
 [Web制作者は要チェック！Instagramに使用されているCSSのテクニック | コリス](https://coliss.com/articles/build-websites/operation/css/css-techniques-used-for-instagram.html) を読んだ感想。
 

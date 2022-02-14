@@ -1,4 +1,7 @@
-# Native File System API
+---
+title: Native File System API
+created_at: 2021-05-04T10:00:00+09:00
+---
 
 Native File System API を使うとこんなこともできるんだなー、と思った事例。
 
