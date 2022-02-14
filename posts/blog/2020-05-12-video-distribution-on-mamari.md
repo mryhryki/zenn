@@ -1,4 +1,8 @@
-# ママリでAWSを使った動画配信をはじめました。
+---
+title: ママリでAWSを使った動画配信をはじめました。
+created_at: 2020-05-12T10:00:00+09:00
+canonical: https://tech.connehito.com/entry/2020/05/12/143906
+---
 
 こんにちは！
 フロントエンドエンジニアの[もりや](https://mryhryki.com/)です。

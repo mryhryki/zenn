@@ -1,4 +1,8 @@
-# ママリの WebView を JavaScript + Flow から TypeScript に移行しました
+---
+title: ママリの WebView を JavaScript + Flow から TypeScript に移行しました
+created_at: 2021-12-11T10:00:00+09:00
+canonical: https://tech.connehito.com/entry/2021-12-11-flow-to-typescript
+---
 
 これは [コネヒト Advent Calendar 2021](https://qiita.com/advent-calendar/2021/connehito) 11日目の記事です。
 

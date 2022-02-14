@@ -1,4 +1,8 @@
-# バウンスメールと AWS SES
+---
+title: バウンスメールと AWS SES
+created_at: 2020-09-17T10:00:00+09:00
+canonical: https://tech.connehito.com/entry/2020/09/17/152126
+---
 
 こんにちは！
 フロントエンドエンジニアの[もりや](https://mryhryki.com/)です。

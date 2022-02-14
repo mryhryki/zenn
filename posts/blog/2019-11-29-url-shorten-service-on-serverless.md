@@ -1,4 +1,8 @@
-# サーバーレスでURL短縮サービスを40分で作ってリリースした話
+---
+title: サーバーレスでURL短縮サービスを40分で作ってリリースした話
+created_at: 2019-11-29T10:00:00+09:00
+canonical: https://qiita.com/mryhryki/items/3cba6397a960d00218c8
+---
 
 この記事は [コネヒト Advent Calendar 2019 2日目](https://qiita.com/advent-calendar/2019/connehito) の記事です。
 

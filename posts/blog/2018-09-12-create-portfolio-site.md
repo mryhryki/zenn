@@ -1,4 +1,8 @@
-# エンジニアなりにポートフォリオサイトを作ってみた話
+---
+title: エンジニアなりにポートフォリオサイトを作ってみた話
+created_at: 2018-09-12T10:00:00+09:00
+canonical: https://qiita.com/mryhryki/items/ba099c401b281d64d1e1
+---
 
 ## あらすじ
 
