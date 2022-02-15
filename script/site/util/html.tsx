@@ -21,6 +21,7 @@ const renderHeadTag = (args: HeadArgs): React.ReactElement => {
   return (
     <head>
       <meta charSet="UTF-8" />
+      <base target="_blank" />
       <title>{title}</title>
       <meta content={title} name="title" />
       <meta content={description} name="description" />
@@ -154,13 +155,19 @@ export const renderReadingLogIndex = (posts: Post[]): string => {
 
   const script = `
   document.addEventListener('DOMContentLoaded', () => {
-    const id = new URL(location.href).hash.substring(1)
-      if (id !== '') {
-        const element = document.getElementById(id)
-        if (element != null) {
-          element.open = true
-        }
+    const id = new URL(location.href).hash.substring(1);
+    if (id !== '') {
+      const element = document.getElementById(id);
+      if (element != null) {
+        element.open = true;
+      }
     }
+    document.addEventListener('click', (event) => {
+      const element = event.target;
+      if (element != null && element.tagName === "SUMMARY" && element.id.length === 15) {
+        history.replaceState(null, null, \`#\${element.id}\`)
+      }
+    });
   })`;
 
   return renderToHtml(
@@ -180,8 +187,8 @@ export const renderReadingLogIndex = (posts: Post[]): string => {
             {(index === 0 || createdAt.substring(0, 7) !== posts[index - 1].createdAt.substring(0, 7)) && (
               <h2>{createdAt.substring(0, 7)}</h2>
             )}
-            <details id={id}>
-              <summary>{title}</summary>
+            <details id={id} className="details-link">
+              <summary id={id}>{title}</summary>
               <div dangerouslySetInnerHTML={{ __html: convert(markdown).html }} />
             </details>
           </React.Fragment>
