@@ -3,7 +3,7 @@ import path from "path";
 import { ArticlesDir, PostsDir, SiteDir } from "./util/path";
 import { listFiles } from "./util/fs";
 import { parsePost, Post } from "./util/post";
-import { renderIndex } from "./util/html";
+import { renderBlogIndex } from "./util/html";
 import { writeFile } from "fs/promises";
 import { writePostToFile } from "./util/writer";
 
@@ -43,7 +43,7 @@ const main = async () => {
   // const readingLogPosts = posts.filter(({ type }) => type === "reading_log");
 
   await Promise.all(blogPosts.map(writePostToFile));
-  const indexHtml = await renderIndex(blogPosts);
+  const indexHtml = await renderBlogIndex(blogPosts);
   await writeFile(path.resolve(SiteDir, "blog", "index.html"), indexHtml);
 
   const siteMap = [`${BaseURL}/`, `${BaseURL}/blog/`];
