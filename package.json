@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "_clean": "rm -rf ./site/blog/ ./site/sitemap.txt",
-    "_script:site:build": "esbuild --platform=node --external:node:* --bundle --minify --outfile=.temp.js ./script/site/build.ts && node .temp.js",
+    "_script:site:build": "esbuild --platform=node --external:node:* --bundle --outfile=.temp.js ./script/site/build.ts && node .temp.js",
     "article:add": "zenn new:article --slug \"$(date +%Y-%m-%d)-$(openssl rand -hex 3)\"",
     "article:preview": "open http://localhost:58125/ && zenn preview --port 58125",
     "lint": "mryhryki-lint",

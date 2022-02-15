@@ -1,12 +1,7 @@
 import { mkdir, readdir, stat } from "fs/promises";
 
 export const createDir = async (dirPath: string): Promise<void> => {
-  const exists = await stat(dirPath)
-    .then(() => true)
-    .catch(() => false);
-  if (!exists) {
-    await mkdir(dirPath);
-  }
+  await mkdir(dirPath, { recursive: true });
 };
 
 export const listFiles = async (dirPath: string, recursive: boolean): Promise<string[]> => {
