@@ -19,4 +19,5 @@ echo "${READING_LOG_ID}"
 
 gh pr create \
   --title "Reading log: ${READING_LOG_ID}" \
+  --body "" \
   --reviewer "mryhryki"
