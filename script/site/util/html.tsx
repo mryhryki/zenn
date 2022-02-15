@@ -120,7 +120,7 @@ export const renderBlogIndex = (posts: Post[]): string =>
               <h2>{createdAt.substring(0, 7)}</h2>
             )}
             <p>
-              <a href={`/blog/{ id }.html`}>{title}</a>
+              <a href={`/blog/${id}.html`}>{title}</a>
               <br />
               <span style={{ fontSize: "12px" }}>&#x1f4dd;{createdAt.substring(0, 10)}</span>
               {canonical != null && (
