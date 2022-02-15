@@ -1,4 +1,4 @@
-name: Add reading log
+name: add_reading_log
 env:
   TZ: "Asia/Tokyo"
   ACTIONS_RUNNER_DEBUG: "true"
@@ -12,9 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      repository-projects: read
+      pull-requests: write
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Add reading log
         run: bash ./script/reading_log/add_reading_log.sh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
