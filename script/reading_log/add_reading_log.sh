@@ -10,7 +10,7 @@ URL="${LOG_URL:-"(TODO: URL)"}"
 PR_TITLE="[Reading Log] ${TITLE}"
 
 echo "LOG_ID: ${READING_LOG_ID}"
-git checkout -b "${LOG_TITLE:-"${BRANCH_NAME}"}"
+git checkout -b "${BRANCH_NAME}"
 
 cat << EOS > "${REPOSITORY_ROOT}/posts/reading_log/${READING_LOG_ID}.md"
 ---
