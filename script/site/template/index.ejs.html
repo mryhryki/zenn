@@ -38,14 +38,14 @@
   <p style="text-align: center;">Web技術や個人的なメモなどを投稿しています。</p>
   <p style="text-align: center;">※「View on XXX」とある記事は、他の媒体に投稿した内容のバックアップです。</p>
 
-  <% posts.forEach(({ path, title, date, canonical }, index) => { %>
-    <% if (index === 0 || date.substr(0, 7) !== posts[index - 1].date.substr(0, 7)) { %>
-      <h2><%= date.substr(0, 7) %></h2>
+  <% posts.forEach(({ id, title, createdAt, canonical }, index) => { %>
+    <% if (index === 0 || createdAt.substring(0, 7) !== posts[index - 1].createdAt.substring(0, 7)) { %>
+      <h2><%= createdAt.substring(0, 7) %></h2>
     <% } %>
     <p>
-      <a href="<%= path %>"><%= title %></a>
+      <a href="/blog/<%= id %>.html"><%= title %></a>
       <br />
-      <span style="font-size: 12px;">&#x1f4dd;<%= date %></span>
+      <span style="font-size: 12px;">&#x1f4dd;<%= createdAt.substring(0, 10) %></span>
       <% if (canonical != null) { %>
         <span style="font-size: 12px;">
           (View on <a href="<%= canonical %>" target="_blank" rel="noopener noreferrer"><%= new URL(canonical).host %></a>)

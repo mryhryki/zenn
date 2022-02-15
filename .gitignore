@@ -2,3 +2,4 @@
 node_modules/**
 site/blog/**
 site/sitemap.txt
+.temp.js

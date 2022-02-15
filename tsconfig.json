@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "lib": ["esnext", "DOM.Iterable", "dom"],
+    "noEmit": true,
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "strict": true
+  },
+  "include": [
+    "*.ts"
+  ],
+  "exclude": [
+    "**/node_modules/**",
+    "**/*.test.ts"
+  ]
+}
