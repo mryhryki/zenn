@@ -20,6 +20,7 @@ const DateTimeFormat = new RegExp(
 
 export interface Post {
   type: PostType;
+  url: string;
   id: string;
   title: string;
   markdown: string;
@@ -43,6 +44,9 @@ const getPostType = (filePath: string): PostType => {
 const checkPost = (post: Post, filePath: string) => {
   if (post.id.trim().length < 3) {
     throw new Error(`ID must be at least 10 characters long: ${filePath}`);
+  }
+  if (!post.url.trim().startsWith("https://mryhryki.com/")) {
+    throw new Error(`URL must be valid URL format[${post.url}]: ${filePath}`);
   }
   if (post.title.trim().length < 5) {
     throw new Error(`Title must be at least 10 characters long: ${filePath}`);
@@ -68,6 +72,7 @@ const getPost = (filePath: string, frontMatter: Record<string, string>, markdown
 
   const post: Post = {
     type,
+    url: "",
     id,
     title: (frontMatter.title ?? "").trim(),
     markdown,
@@ -78,6 +83,7 @@ const getPost = (filePath: string, frontMatter: Record<string, string>, markdown
 
   if (type === "blog" || type === "zenn") {
     post.createdAt = DateTime.parse(`${post.id.substring(0, 10)}T00:00:00+09:00`).toISO();
+    post.url = `https://mryhryki.com/blog/${post.id}.html`;
   } else if (type === "reading_log") {
     post.createdAt = DateTime.parse(
       [
@@ -95,6 +101,7 @@ const getPost = (filePath: string, frontMatter: Record<string, string>, markdown
         "+09:00",
       ].join("")
     ).toISO();
+    post.url = `https://mryhryki.com/reading_log/#${post.id}`;
   }
 
   return post;
