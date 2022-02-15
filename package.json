@@ -2,6 +2,9 @@
   "name": "portfolio",
   "author": "mryhryki",
   "private": true,
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "_clean": "rm -rf ./site/blog/ ./site/sitemap.txt",
     "_script:site:build": "esbuild --platform=node --external:node:* --bundle --outfile=.temp.js ./script/site/build.ts && node .temp.js",
