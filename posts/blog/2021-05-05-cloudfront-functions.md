@@ -1,6 +1,5 @@
 ---
 title: CloudFront Functions
-created_at: 2021-05-05T10:00:00+09:00
 ---
 
 CDNのエッジサーバーでコードを実行できるようになったらしい。

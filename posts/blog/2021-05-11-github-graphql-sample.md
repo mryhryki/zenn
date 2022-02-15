@@ -1,6 +1,5 @@
 ---
 title: GitHub の GraphQL を手軽に使う方法
-created_at: 2021-05-11T10:00:00+09:00
 ---
 
 よく使うのでメモ。

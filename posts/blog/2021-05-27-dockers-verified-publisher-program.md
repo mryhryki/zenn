@@ -1,6 +1,5 @@
 ---
 title: Docker’s Verified Publisher program
-created_at: 2021-05-27T10:00:00+09:00
 ---
 
 > Docker Hub の公式イメージたちがもうすぐ Amazon ECR Public からもダウンロードできるようになります！

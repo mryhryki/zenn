@@ -1,6 +1,5 @@
 ---
 title: JavaScript で Unicode 正規化
-created_at: 2021-07-20T10:00:00+09:00
 ---
 
 ## 発端

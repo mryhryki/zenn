@@ -1,6 +1,5 @@
 ---
 title: The State of WebAssembly 2021
-created_at: 2021-07-07T10:00:00+09:00
 ---
 
 [The State of WebAssembly 2021](https://blog.scottlogic.com/2021/06/21/state-of-wasm.html)

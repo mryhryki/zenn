@@ -1,6 +1,5 @@
 ---
 title: React.lazy を使うと初回表示時のパフォーマンスが落ちた事例の紹介
-created_at: 2021-03-23T10:00:00+09:00
 canonical: https://tech.connehito.com/entry/2021/03/23/082144
 ---
 

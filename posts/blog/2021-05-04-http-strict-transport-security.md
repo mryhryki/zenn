@@ -1,6 +1,5 @@
 ---
 title: HTTP Strict Transport Security（HSTS）
-created_at: 2021-05-04T10:00:00+09:00
 ---
 
 [HTTP Strict Transport Security（HSTS）とは？](https://zenn.dev/ak/articles/dfaa9e01b374a0)

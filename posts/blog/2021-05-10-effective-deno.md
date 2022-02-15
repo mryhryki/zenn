@@ -1,6 +1,5 @@
 ---
 title: Effective Deno
-created_at: 2021-05-10T10:00:00+09:00
 ---
 
 [Effective Deno](https://zenn.dev/uki00a/books/effective-deno)

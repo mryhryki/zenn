@@ -1,6 +1,5 @@
 ---
 title: Stack Overflow Developer Survey の2021年版
-created_at: 2021-08-03T10:00:00+09:00
 ---
 
 - リンク: [Stack Overflow Developer Survey 2021](https://insights.stackoverflow.com/survey/2021)

@@ -1,6 +1,5 @@
 ---
 title: WebAssembly (WASM) 関連
-created_at: 2021-06-07T10:00:00+09:00
 ---
 
 ## 2021-06-07

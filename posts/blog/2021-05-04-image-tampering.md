@@ -1,6 +1,5 @@
 ---
 title: 官房長官記者会見画像の改ざん
-created_at: 2021-05-04T10:00:00+09:00
 ---
 
 [改ざんされた官房長官記者会見画像のTwitter投稿についてまとめてみた - piyolog](https://piyolog.hatenadiary.jp/entry/2021/04/13/055442)

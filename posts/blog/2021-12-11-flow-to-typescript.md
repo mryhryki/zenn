@@ -1,6 +1,5 @@
 ---
 title: ママリの WebView を JavaScript + Flow から TypeScript に移行しました
-created_at: 2021-12-11T10:00:00+09:00
 canonical: https://tech.connehito.com/entry/2021-12-11-flow-to-typescript
 ---
 

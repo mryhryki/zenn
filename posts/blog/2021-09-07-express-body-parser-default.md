@@ -1,6 +1,5 @@
 ---
 title: Express の body-parser のデフォルト値
-created_at: 2021-09-07T10:00:00+09:00
 ---
 
 

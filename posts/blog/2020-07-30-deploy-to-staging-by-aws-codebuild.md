@@ -1,6 +1,5 @@
 ---
 title: AWS CodeBuild を使った検証環境へのデプロイ改善
-created_at: 2020-07-30T10:00:00+09:00
 canonical: https://tech.connehito.com/entry/2020/07/30/173600
 ---
 

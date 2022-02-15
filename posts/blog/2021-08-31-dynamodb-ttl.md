@@ -1,6 +1,5 @@
 ---
 title: DynamoDB の TTL 設定
-created_at: 2021-08-31T10:00:00+09:00
 ---
 
 ## はじめに

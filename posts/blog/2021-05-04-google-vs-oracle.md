@@ -1,6 +1,5 @@
 ---
 title: Google vs Oracle の訴訟の決着
-created_at: 2021-05-04T10:00:00+09:00
 ---
 
 [［速報］10年にわたる著作権訴訟でGoogleがオラクルに勝訴、米連邦最高裁判所で判決。Java SEのコードのコピーはフェアユースの範囲 － Publickey](https://www.publickey1.jp/blog/21/10googlejava_se.html)

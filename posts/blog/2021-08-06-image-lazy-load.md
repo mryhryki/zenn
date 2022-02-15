@@ -1,6 +1,5 @@
 ---
 title: 画像の遅延読み込みの注意点
-created_at: 2021-08-06T10:00:00+09:00
 ---
 
 [Googleデベロッパーが解説、Webページに画像の遅延読み込みを使いすぎるとパフォーマンスに悪影響を与える | コリス](https://coliss.com/articles/build-websites/operation/work/performance-effects-of-too-much-lazy-loading.html)
