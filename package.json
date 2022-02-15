@@ -13,7 +13,7 @@
     "textlint:fix": "textlint --fix ./**/*.md",
     "site:build": "run-s '_clean' '_script:site:build'",
     "site:preview": "npm run site:build && http-server site/ --port 58125 -o",
-    "site:update": "aws s3 sync site/ s3://mryhryki-cdn/contents/ --exclude='.DS_Store' --size-only --dryrun"
+    "site:update": "aws s3 sync site/ s3://mryhryki-cdn/contents/ --exclude='.DS_Store' --size-only"
   },
   "dependencies": {
     "@mryhryki/datetime": "^0.0.4",
