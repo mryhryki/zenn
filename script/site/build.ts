@@ -1,9 +1,9 @@
 import RSS from "rss";
 import path from "path";
 import { ArticlesDir, PostsDir, SiteDir } from "./util/path";
-import { listFiles } from "./util/fs";
+import { createDir, listFiles } from "./util/fs";
 import { parsePost, Post } from "./util/post";
-import { renderBlogIndex } from "./util/html";
+import { renderBlogIndex, renderReadingLogIndex } from "./util/html";
 import { writeFile } from "fs/promises";
 import { writePostToFile } from "./util/writer";
 
@@ -39,12 +39,21 @@ const main = async () => {
     return p1.id < p2.id ? 1 : -1;
   });
   const blogPosts = posts.filter(({ type }) => type !== "reading_log");
-  // TODO: Output reading logs
-  // const readingLogPosts = posts.filter(({ type }) => type === "reading_log");
+  const readingLogPosts = posts.filter(({ type }) => type === "reading_log");
 
   await Promise.all(blogPosts.map(writePostToFile));
-  const indexHtml = await renderBlogIndex(blogPosts);
-  await writeFile(path.resolve(SiteDir, "blog", "index.html"), indexHtml);
+  await writeFile(path.resolve(SiteDir, "blog", "index.html"), renderBlogIndex(blogPosts));
+  await writeFile(
+    path.resolve(path.resolve(SiteDir, "blog", "index.json")),
+    JSON.stringify({ posts: blogPosts }, null, 2)
+  );
+
+  await createDir(path.resolve(SiteDir, "reading_log"));
+  await writeFile(path.resolve(SiteDir, "reading_log", "index.html"), renderReadingLogIndex(readingLogPosts));
+  await writeFile(
+    path.resolve(path.resolve(SiteDir, "reading_log", "index.json")),
+    JSON.stringify({ reading_logs: readingLogPosts }, null, 2)
+  );
 
   const siteMap = [`${BaseURL}/`, `${BaseURL}/blog/`];
   const feed = new RSS({
