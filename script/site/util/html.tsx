@@ -122,7 +122,7 @@ export const renderBlogIndex = (posts: Post[]): string =>
             <p>
               <a href={`/blog/{ id }.html`}>{title}</a>
               <br />
-              <span style={{ fontSize: "12px;" }}>&#x1f4dd;{createdAt.substring(0, 10)}</span>
+              <span style={{ fontSize: "12px" }}>&#x1f4dd;{createdAt.substring(0, 10)}</span>
               {canonical != null && (
                 <span style={{ fontSize: "12px" }}>
                   {" (View on "}
@@ -147,3 +147,43 @@ export const renderBlogIndex = (posts: Post[]): string =>
       </body>
     </>
   );
+
+export const renderReadingLogIndex = (posts: Post[]): string => {
+  const title = "mryhryki's reading log";
+  const description = "読んだ記事や本などの記録です。";
+
+  return renderToHtml(
+    <>
+      {renderHeadTag({
+        url: "https://mryhryki.com/reading_log/",
+        siteName: title,
+        title,
+        description,
+      })}
+      <body className="wrapper dark-theme">
+        <h1>{title}</h1>
+        <p style={{ textAlign: "center" }}>{description}</p>
+
+        {posts.map(({ id, title, createdAt, markdown }, index) => (
+          <React.Fragment key={index}>
+            {(index === 0 || createdAt.substring(0, 7) !== posts[index - 1].createdAt.substring(0, 7)) && (
+              <h2>{createdAt.substring(0, 7)}</h2>
+            )}
+            <details id={id}>
+              <summary>{title}</summary>
+              <div dangerouslySetInnerHTML={{ __html: convert(markdown).html }} />
+            </details>
+          </React.Fragment>
+        ))}
+        <footer>
+          <span>
+            © 2021{" "}
+            <a style={{ color: "inherit" }} href="https://mryhryki.com/">
+              mryhryki
+            </a>
+          </span>
+        </footer>
+      </body>
+    </>
+  );
+};
