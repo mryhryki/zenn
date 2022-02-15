@@ -1,0 +1,20 @@
+name: Add reading log
+env:
+  TZ: "Asia/Tokyo"
+  ACTIONS_RUNNER_DEBUG: "true"
+  ACTIONS_STEP_DEBUG: "true"
+
+on:
+  workflow_dispatch
+
+jobs:
+  add_reading_log:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      repository-projects: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Add reading log
+        run: bash ./script/reading_log/add_reading_log.sh
