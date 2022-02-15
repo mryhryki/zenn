@@ -152,6 +152,17 @@ export const renderReadingLogIndex = (posts: Post[]): string => {
   const title = "mryhryki's reading log";
   const description = "読んだ記事や本などの記録です。";
 
+  const script = `
+  document.addEventListener('DOMContentLoaded', () => {
+    const id = new URL(location.href).hash.substring(1)
+      if (id !== '') {
+        const element = document.getElementById(id)
+        if (element != null) {
+          element.open = true
+        }
+    }
+  })`;
+
   return renderToHtml(
     <>
       {renderHeadTag({
@@ -183,6 +194,7 @@ export const renderReadingLogIndex = (posts: Post[]): string => {
             </a>
           </span>
         </footer>
+        <script dangerouslySetInnerHTML={{ __html: script }} />
       </body>
     </>
   );
