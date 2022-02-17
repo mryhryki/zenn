@@ -13,6 +13,9 @@ on:
       title:
         required: true
         description: Title
+      memo:
+        required: false
+        description: Memo (Optional)
 
 jobs:
   add_reading_log:
@@ -29,3 +32,4 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LOG_URL: ${{ github.event.inputs.url }}
           LOG_TITLE: ${{ github.event.inputs.title }}
+          LOG_MEMO: ${{ github.event.inputs.memo }}

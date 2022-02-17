@@ -7,6 +7,7 @@ BRANCH_NAME="reading_log/${READING_LOG_ID}"
 
 TITLE="${LOG_TITLE:-"${READING_LOG_ID}"}"
 URL="${LOG_URL:-"(TODO: URL)"}"
+MEMO="${LOG_MEMO:-"(TODO: MEMO)"}"
 PR_TITLE="[Reading Log] ${TITLE}"
 
 echo "LOG_ID: ${READING_LOG_ID}"
@@ -18,6 +19,8 @@ title: ${TITLE}
 ---
 
 ${URL}
+
+${MEMO}
 
 EOS
 
