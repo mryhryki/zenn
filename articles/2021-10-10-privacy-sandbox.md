@@ -53,6 +53,15 @@ Google はサードパーティ Cookie を廃止することを目指してい�
 
 FLoC は Federated Learning of Cohorts の略で、[コホートの連合学習](https://legalsearch.jp/portal/column/floc/) と訳されたりするようです。
 
+## 2022-02-18 追記
+
+Google は FLoC の提案をやめ、新たに The Topics API という提案をしました。
+以下の記事に The Topics API の概要をまとめています。
+
+https://zenn.dev/mryhryki/articles/2022-01-30-the-topics-api
+
+[Backup](https://mryhryki.com/blog/2022-01-30-the-topics-api.html)
+
 ## 批判
 
 FLoC は、サードパーティ Cookie に代わるターゲティング広告の中心的な技術であり、批判も多くあります。
