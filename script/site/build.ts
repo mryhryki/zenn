@@ -9,17 +9,6 @@ import { writePostToFile } from "./util/writer";
 
 const BaseURL = "https://mryhryki.com";
 
-const ArticleDelimiter = new RegExp("^-{3,}$");
-const BlogFileFormat = new RegExp("^20[0-9]{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])-[a-z0-9-]{1,50}.md$");
-
-const matchBlogFileFormat = (fileName: string): boolean => {
-  if (BlogFileFormat.test(fileName)) {
-    return true;
-  }
-  console.warn(`Unmatch format: ${fileName}`);
-  return false;
-};
-
 const main = async () => {
   const posts: Post[] = [];
 

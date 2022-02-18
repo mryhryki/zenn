@@ -190,6 +190,7 @@ export const renderReadingLogIndex = (posts: Post[]): string => {
             <details id={id} className="details-link">
               <summary id={id}>{title}</summary>
               <div dangerouslySetInnerHTML={{ __html: convert(markdown).html }} />
+              <p>記録日: {createdAt.substring(0, 10)}</p>
             </details>
           </React.Fragment>
         ))}
