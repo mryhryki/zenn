@@ -164,8 +164,11 @@ export const renderReadingLogIndex = (posts: Post[]): string => {
     }
     document.addEventListener('click', (event) => {
       const element = event.target;
-      if (element != null && element.tagName === "SUMMARY" && element.id.length === 15) {
-        history.replaceState(null, null, \`#\${element.id}\`)
+      if (element == null) return;
+      if (element.tagName === "SUMMARY" && element.id.length === 15) {
+        history.replaceState(null, null, \`#\${element.id}\`);
+      } else if (element.tagName === "BUTTON" && element.id === "open-all") {
+        Array.from(document.getElementsByTagName('details')).forEach((details) => details.open = true)
       }
     });
   })`;
@@ -181,6 +184,9 @@ export const renderReadingLogIndex = (posts: Post[]): string => {
       <body className="wrapper dark-theme">
         <h1>{title}</h1>
         <p style={{ textAlign: "center" }}>{description}</p>
+        <p style={{ textAlign: "center" }}>
+          <button id="open-all">全て開く</button>
+        </p>
 
         {posts.map(({ id, title, createdAt, markdown }, index) => (
           <React.Fragment key={index}>
