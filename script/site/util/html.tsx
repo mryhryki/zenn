@@ -72,10 +72,9 @@ export const renderPost = (post: Post): string =>
       })}
       <body className="wrapper dark-theme">
         <h1>{post.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: convert(post.markdown).html }} />
         {post.canonical != null && (
-          <p>
-            ※この記事は以下に投稿した記事のバックアップです。
+          <p style={{ textAlign: "center", fontSize: "12px" }}>
+            （※この記事は <a href={post.canonical}>別媒体に投稿した記事</a> のバックアップです。
             <a
               href="https://developer.mozilla.org/ja/docs/Web/HTML/Attributes/rel#attr-canonical"
               target="_blank"
@@ -83,11 +82,10 @@ export const renderPost = (post: Post): string =>
             >
               canonical
             </a>{" "}
-            も設定しています。
-            <br />
-            <a href={post.canonical}>{post.canonical}</a>
+            も設定しています）
           </p>
         )}
+        <div dangerouslySetInnerHTML={{ __html: convert(post.markdown).html }} />
         <footer>
           <a href="/blog/">一覧</a>
           <span>
