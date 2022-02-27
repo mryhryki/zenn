@@ -18,6 +18,18 @@
           break-inside: avoid;
       }
 
+      .back-to-top {
+          border-radius: 4px;
+          border: 1px solid gray;
+          bottom: 8px;
+          font-size: 32px;
+          line-height: 48px;
+          padding: 0 10px;
+          position: fixed;
+          right: 16px;
+          text-decoration: none;
+      }
+
       @media screen {
           .hide-on-screen {
               display: none;
@@ -41,10 +53,10 @@
   </style>
 </head>
 <body class="light-theme wrapper">
-  <h1>職務経歴書</h1>
+  <h1 id="resume-top">職務経歴書</h1>
 
   <section>
-    <h2>目次</h2>
+    <h2 id="table-of-contents">目次</h2>
     <ul>
       <li><a href="#basic-info">基本情報</a></li>
       <li>
@@ -76,10 +88,12 @@
           <li><a href="#skill-certification">資格</a></li>
         </ul>
       </li>
+      <li><a href="#strong-points">得意なこと</a></li>
+      <li><a href="#job-policy">転職活動の軸</a></li>
       <li><a href="#what-i-want-to">やりたいこと</a></li>
     </ul>
     <section>
-      <h2 id="basic-info">基本情報</h2>
+      <h2 id="basic-info"><a href="#basic-info">基本情報</a></h2>
       <ul>
         <li>氏名
           <ul>
@@ -120,9 +134,9 @@
   </section>
 
   <section>
-    <h1 id="work-experience">職務経歴</h1>
+    <h1 id="work-experience"><a href="#work-experience">職務経歴</a></h1>
     <section>
-      <h2 id="work-experience-summary">概要</h2>
+      <h2 id="work-experience-summary"><a href="#work-experience-summary">概要</a></h2>
       <p>
         10年勤めた航空自衛隊からSIerに異業種転職し、その後スタートアップ企業２社で開発業務を経験しました。
       </p>
@@ -152,12 +166,18 @@
       </ul>
       </p>
     </section>
+
     <section>
-      <h2 id="connehito">
-        <a href="https://connehito.com/" target="_blank">コネヒト株式会社</a>
-      </h2>
+      <h2 id="connehito"><a href="#connehito">コネヒト株式会社</a></h2>
       <section>
         <ul>
+          <li>ホームページ
+            <ul>
+              <li>
+                <a href="https://connehito.com/" target="_blank">https://connehito.com/</a>
+              </li>
+            </ul>
+          </li>
           <li>在籍期間
             <ul>
               <li>2019年9月〜</li>
@@ -305,11 +325,16 @@
     </section>
 
     <section>
-      <h2 id="integrity-healthcare">
-        <a href="https://www.integrity-healthcare.co.jp/" target="_blank">株式会社インテグリティ・ヘルスケア</a>
-      </h2>
+      <h2 id="integrity-healthcare"><a href="#integrity-healthcare">株式会社インテグリティ・ヘルスケア</a></h2>
       <section>
         <ul>
+          <li>ホームページ
+            <ul>
+              <a href="https://www.integrity-healthcare.co.jp/" target="_blank">
+                https://www.integrity-healthcare.co.jp/
+              </a>
+            </ul>
+          </li>
           <li>在籍期間
             <ul>
               <li>2017年4月〜2019年8月</li>
@@ -397,10 +422,8 @@
     </section>
 
     <section>
-      <h2 id="itss">
-        <a href="https://grow-e.com/" target="_blank">株式会社アイティエスエス</a>
-      </h2>
-      <p>※現在は「株式会社GrowEgg」に社名変更しています。</p>
+      <h2 id="itss"><a href="#itss">株式会社アイティエスエス</a></h2>
+      <p>※現在は「<a href="https://grow-e.com/" target="_blank">株式会社GrowEgg</a>」に社名変更しています。</p>
       <section>
         <ul>
           <li>在籍期間
@@ -537,7 +560,7 @@
     </section>
 
     <section>
-      <h2 id="jasdf">航空自衛隊</h2>
+      <h2 id="jasdf"><a href="#jasdf">航空自衛隊</a></h2>
       <ul>
         <li>在籍期間
           <ul>
@@ -551,10 +574,15 @@
   </section>
 
   <section>
-    <h1 id="educational-background">学歴</h1>
+    <h1 id="educational-background"><a href="#educational-background">学歴</a></h1>
     <section>
-      <h2 id="cyber-university"><a href="https://www.cyber-u.ac.jp/" target="_blank">サイバー大学</a></h2>
+      <h2 id="cyber-university"><a href="#cyber-university">サイバー大学</a></h2>
       <ul>
+        <li>ホームページ
+          <ul>
+            <li><a href="https://www.cyber-u.ac.jp/" target="_blank">https://www.cyber-u.ac.jp/</a></li>
+          </ul>
+        </li>
         <li>IT総合学部</li>
         <li>2008年〜2012年</li>
         <li>
@@ -566,8 +594,13 @@
       <p>※航空自衛隊在籍期間中に<strong>個人で業務時間外に</strong>学習していました。</p>
     </section>
     <section>
-      <h2 id="kagiko"><a href="https://hs.kagiko.ed.jp/" target="_blank">科学技術学園高等学校</a></h2>
+      <h2 id="kagiko"><a href="#kagiko">科学技術学園高等学校</a></h2>
       <ul>
+        <li>ホームページ
+          <ul>
+            <li><a href="https://hs.kagiko.ed.jp/" target="_blank">https://hs.kagiko.ed.jp/</a></li>
+          </ul>
+        </li>
         <li>普通科</li>
         <li>2004年〜2007年</li>
       </ul>
@@ -576,9 +609,9 @@
   </section>
 
   <section>
-    <h1 id="skill">主なスキル</h1>
+    <h1 id="skill"><a href="#skill">主なスキル</a></h1>
     <section>
-      <h2 id="skill-summary">概要</h2>
+      <h2 id="skill-summary"><a href="#skill-summary">概要</a></h2>
       <p>
         業務ではフロントエンド JavaScript、バックエンドでは PHP, Ruby, Java の経験があります。
         個人開発では TypeScript + Node.js をメインで使い、Deno や Rust などにも興味があります。
@@ -587,7 +620,7 @@
       </p>
     </section>
     <section>
-      <h2 id="skill-programming-language">プログラミング言語</h2>
+      <h2 id="skill-programming-language"><a href="#skill-programming-language">プログラミング言語</a></h2>
       <ul>
         <li>JavaScript</li>
         <li>TypeScript</li>
@@ -601,7 +634,7 @@
       </ul>
     </section>
     <section>
-      <h2 id="skill-frontend">フロントエンド</h2>
+      <h2 id="skill-frontend"><a href="#skill-frontend">フロントエンド</a></h2>
       <ul>
         <li>React</li>
         <li>Redux</li>
@@ -612,7 +645,7 @@
       </ul>
     </section>
     <section>
-      <h2 id="skill-backend">バックエンド</h2>
+      <h2 id="skill-backend"><a href="#skill-backend">バックエンド</a></h2>
       <ul>
         <li>Ruby on Rails</li>
         <li>CakePHP</li>
@@ -621,7 +654,7 @@
       </ul>
     </section>
     <section>
-      <h2 id="skill-infrastructure">インフラ</h2>
+      <h2 id="skill-infrastructure"><a href="#skill-infrastructure">インフラ</a></h2>
       <ul>
         <li>AWS
           <ul>
@@ -652,7 +685,7 @@
       </ul>
     </section>
     <section>
-      <h2 id="skill-other">その他</h2>
+      <h2 id="skill-other"><a href="#skill-other">その他</a></h2>
       <ul>
         <li>Intellij IDEA (IDE)</li>
         <li>React Native</li>
@@ -660,7 +693,7 @@
       </ul>
     </section>
     <section>
-      <h2 id="skill-certification">資格</h2>
+      <h2 id="skill-certification"><a href="#skill-certification">資格</a></h2>
       <ul>
         <li>
           <a href="https://mryhryki.com/file/cW06CKL5DMuMrsCdtYxFmft07rilZf.pdf" target="_blank">
@@ -677,34 +710,37 @@
   </section>
 
   <section>
-    <h2 id="strong-points">得意なこと</h2>
+    <h2 id="strong-points"><a href="#strong-points">得意なこと</a></h2>
     <ul>
-      <li>システム全体を俯瞰してみること</li>
-      <li></li>
+      <li>開発領域に限らないWeb開発全般</li>
+      <li>(相対的に)フロントエンド開発</li>
+      <li>ドキュメンテーション</li>
     </ul>
   </section>
 
   <section>
-    <h2 id="job-policy">転職活動の軸</h2>
-    <ul>
+    <h2 id="job-policy"><a href="#job-policy">転職活動で気にしている点</a></h2>
+    <ol>
       <li>
         会社と社会の関係
         <ul>
-          <li>社会に対してどういった価値が提供できるのか</li>
-          <li>その価値に自分が共感できるか</li>
+          <li>会社が社会に対してどういった価値が提供できるのか</li>
+          <li>会社はどの様に利益を生み出しているか（ビジネスモデル）</li>
+          <li>その価値や利益に自分が共感できるか</li>
         </ul>
       </li>
       <li>
         自分と会社の関係
         <ul>
+          <li>会社から自分に対してどういった役割を期待しているか</li>
           <li>自分が会社に対してどういった貢献ができるか</li>
         </ul>
       </li>
-    </ul>
+    </ol>
   </section>
 
   <section>
-    <h2 id="what-i-want-to">やりたいこと</h2>
+    <h2 id="what-i-want-to"><a href="#what-i-want-to">やりたいこと</a></h2>
     <section>
       <h3>Web技術全般への理解・スキルを広げて深める</h3>
       <p>
@@ -747,5 +783,7 @@
     <p>https://mryhryki.com/resume.html</p>
     <p><img alt="resume" src="https://mryhryki.com/file/bWASGJ-EfS0vloCl8s3H7aY91qDTl4.png"/></p>
   </section>
+
+  <a class="back-to-top" href="#resume-top">&#x1f51d;</a>
 </body>
 </html>
