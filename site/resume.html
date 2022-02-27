@@ -9,47 +9,47 @@
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Roboto+Mono&display=swap"
         rel="stylesheet">
   <style>
-      section {
-          page-break-after: always;
+    section {
+      page-break-after: always;
+    }
+
+    section section {
+      page-break-after: auto;
+      break-inside: avoid;
+    }
+
+    .back-to-top {
+      border-radius: 4px;
+      border: 1px solid gray;
+      bottom: 8px;
+      font-size: 32px;
+      line-height: 48px;
+      padding: 0 10px;
+      position: fixed;
+      right: 16px;
+      text-decoration: none;
+    }
+
+    @media screen {
+      .hide-on-screen {
+        display: none;
+      }
+    }
+
+    @media print {
+      a {
+        color: black;
+        text-decoration: none;
       }
 
-      section section {
-          page-break-after: auto;
-          break-inside: avoid;
+      .hide-on-paper {
+        display: none;
       }
+    }
 
-      .back-to-top {
-          border-radius: 4px;
-          border: 1px solid gray;
-          bottom: 8px;
-          font-size: 32px;
-          line-height: 48px;
-          padding: 0 10px;
-          position: fixed;
-          right: 16px;
-          text-decoration: none;
-      }
-
-      @media screen {
-          .hide-on-screen {
-              display: none;
-          }
-      }
-
-      @media print {
-          a {
-              color: black;
-              text-decoration: none;
-          }
-
-          .hide-on-paper {
-              display: none;
-          }
-      }
-
-      @page {
-          margin: 1.5cm 1cm;
-      }
+    @page {
+      margin: 1.5cm 1cm;
+    }
   </style>
 </head>
 <body class="light-theme wrapper">
@@ -88,8 +88,8 @@
           <li><a href="#skill-certification">資格</a></li>
         </ul>
       </li>
+      <li><a href="#job-policy">転職活動で気にしている点</a></li>
       <li><a href="#strong-points">得意なこと</a></li>
-      <li><a href="#job-policy">転職活動の軸</a></li>
       <li><a href="#what-i-want-to">やりたいこと</a></li>
     </ul>
     <section>
@@ -207,7 +207,7 @@
         <h4>2021年3月〜2021年6月</h4>
         <p>
           特定のユーザーにプレミアム機能を無料で長期間使えるプレミアムコード（<a
-            href="https://connehito.com/news/prefsaga-connehito2/">佐賀県×ママリの妊娠・出産・育児支援</a>などで使用）の仕様検討〜開発を行いました。
+          href="https://connehito.com/news/prefsaga-connehito2/">佐賀県×ママリの妊娠・出産・育児支援</a>などで使用）の仕様検討〜開発を行いました。
           また関連会社（KDDI）との技術的な仕様調整なども行いました。
         </p>
       </section>
@@ -228,7 +228,7 @@
         <p>
           Apple, Google のリアルタイム課金通知の調査と実装を担当しました。
           主に Apple の Server to Server Notification（現在は <a
-            href="https://developer.apple.com/documentation/appstoreservernotifications">App Store Server
+          href="https://developer.apple.com/documentation/appstoreservernotifications">App Store Server
           Notifications</a> に名前が変わったようです）部分を担当しました。
         </p>
       </section>
@@ -236,7 +236,7 @@
         <h4>2020年3月〜4月</h4>
         <p>
           <a href="https://connehito.com/news/mamari-video-content/" target="_blank">ママリのアプリ内で動画を配信</a>するために、<a
-            href="https://tech.connehito.com/entry/2020/05/12/143906" target="_blank">動画を配信するためのインフラ設計から実装</a>まで行いました。
+          href="https://tech.connehito.com/entry/2020/05/12/143906" target="_blank">動画を配信するためのインフラ設計から実装</a>まで行いました。
           インフラ管理を楽にするために、AWSサービスを最大限活用しサーバーレスな構成にしました。
         </p>
       </section>
@@ -710,52 +710,46 @@
   </section>
 
   <section>
-    <h2 id="strong-points"><a href="#strong-points">得意なこと</a></h2>
-    <ul>
-      <li>開発領域に限らないWeb開発全般</li>
-      <li>(相対的に)フロントエンド開発</li>
-      <li>ドキュメンテーション</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2 id="job-policy"><a href="#job-policy">転職活動で気にしている点</a></h2>
-    <ol>
-      <li>
-        会社と社会の関係
-        <ul>
-          <li>会社が社会に対してどういった価値が提供できるのか</li>
-          <li>会社はどの様に利益を生み出しているか（ビジネスモデル）</li>
-          <li>その価値や利益に自分が共感できるか</li>
-        </ul>
-      </li>
-      <li>
-        自分と会社の関係
-        <ul>
-          <li>会社から自分に対してどういった役割を期待しているか</li>
-          <li>自分が会社に対してどういった貢献ができるか</li>
-        </ul>
-      </li>
-    </ol>
-  </section>
-
-  <section>
-    <h2 id="what-i-want-to"><a href="#what-i-want-to">やりたいこと</a></h2>
     <section>
+      <h2 id="job-policy"><a href="#job-policy">転職活動で気にしている点</a></h2>
+      <ol>
+        <li>
+          会社と社会の関係
+          <ul>
+            <li>会社が社会に対してどういった価値が提供できるのか</li>
+            <li>会社はどの様に利益を生み出しているか（ビジネスモデル）</li>
+            <li>その価値や利益に自分が共感できるか</li>
+          </ul>
+        </li>
+        <li>
+          自分と会社の関係
+          <ul>
+            <li>会社から自分に対してどういった役割を期待しているか</li>
+            <li>自分が会社に対してどういった貢献ができるか</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+    <section>
+      <h2 id="strong-points"><a href="#strong-points">得意なこと</a></h2>
+      <ul>
+        <li>開発領域に限らないWeb開発全般</li>
+        <li>(相対的に)フロントエンド開発</li>
+        <li>ドキュメンテーション</li>
+      </ul>
+    </section>
+    <section>
+      <h2 id="what-i-want-to"><a href="#what-i-want-to">やりたいこと</a></h2>
       <h3>Web技術全般への理解・スキルを広げて深める</h3>
       <p>
         私はWeb技術全般が好きなので、そのスキルをより伸ばしていきたいと考えています。
         また、未知や新しい技術を使うなどの挑戦も好きなので、そういった挑戦ができる環境があると嬉しいです。
       </p>
-    </section>
-    <section>
       <h3>ユーザーの利益を考えた開発</h3>
       <p>
         私は技術を使って何を作り、ユーザーにどういった利益があるのかも重視しています。
         またユーザーへの継続的な利益提供を考えると、広告などではなく、事業そのもので収益が出るビジネスモデルであると良いと思っています。
       </p>
-    </section>
-    <section>
       <h3>Webエンジニアの育成</h3>
       <p>
         私は未経験のWebエンジニアの育成に携わった経験から、どうやったらWebエンジニアを育てられるかに関心があります。
@@ -763,8 +757,6 @@
         <a href="https://www.techpit.jp/courses/111" target="_blank">React&TypeScript</a>
         の教材を書いたりもしました。
       </p>
-    </section>
-    <section>
       <h3>バランスの取れた働き方</h3>
       <p>
         私は家族との時間も大切にしたいので、プライベートの時間も一定大事にしたいと思っています。
@@ -784,6 +776,6 @@
     <p><img alt="resume" src="https://mryhryki.com/file/bWASGJ-EfS0vloCl8s3H7aY91qDTl4.png"/></p>
   </section>
 
-  <a class="back-to-top" href="#resume-top">&#x1f51d;</a>
+  <a class="back-to-top hide-on-paper" href="#resume-top">&#x1f51d;</a>
 </body>
 </html>
