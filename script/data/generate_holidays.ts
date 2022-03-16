@@ -42,7 +42,7 @@ const main = async (): Promise<void> => {
   csv
     .split(/\r?\n/g)
     .slice(1 /* Skip header line */)
-    .filter((line) => line.startsWith("20"))
+    .filter((line) => new RegExp(/^(19|20)/).test(line))
     .forEach((line) => {
       const arr = line.split(",", 2);
       if (arr.length !== 2) throw new Error(`Invalid line format: "${line}"`);
