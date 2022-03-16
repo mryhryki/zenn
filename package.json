@@ -17,7 +17,7 @@
     "site:build": "run-s '_clean' '_script:site:build'",
     "site:preview": "npm run site:build && http-server site/ --port 58125 -o",
     "site:update": "aws s3 sync site/ s3://mryhryki-cdn/contents/ --exclude='.DS_Store' --size-only",
-    "data:holidays": "esbuild --platform=node --external:node:* --bundle ./script/data/generate_holidays.ts | node"
+    "generate:holidays": "esbuild --platform=node --external:node:* --bundle ./script/data/generate_holidays.ts | node"
   },
   "dependencies": {
     "@mryhryki/datetime": "^0.0.4",

@@ -1,4 +1,4 @@
-name: update_packages
+name: generate_holidays
 env:
   TZ: "Asia/Tokyo"
   ACTIONS_RUNNER_DEBUG: "true"
@@ -6,7 +6,8 @@ env:
 
 on:
   schedule:
-    - cron: "0 20 * * SUN" # UTC
+    - cron: "0 0 1 3 *" # UTC
+    - cron: "0 0 17 3 *" # TODO: Remove
 
 jobs:
   check_branch:
@@ -20,17 +21,16 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16
-      - name: Update packages
+      - name: Generate holidays
         run: |
           npm i -g npm
-          npm exec -- npm-check-updates -u
-          npm install
+          npm run generate:holidays
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          title: "Update package.json"
-          commit-message: "Update package.json"
-          branch: "update-packages"
+          title: "Generate holidays.json"
+          commit-message: "Generate holidays.json"
+          branch: "generate-holidays"
           delete-branch: true
           branch-suffix: timestamp
           reviewers: mryhryki
