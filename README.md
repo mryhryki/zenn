@@ -25,19 +25,19 @@ $ npm install
 ### サイトデータのビルド
 
 ```bash
-$ npm run site:build
+$ npm run build
 ```
 
 ### プレビュー
 
 ```bash
-$ npm run site:preview
+$ npm run preview
 ```
 
 ### 更新
 
 ```bash
-$ npm run site:update
+$ npm run update
 ```
 
 

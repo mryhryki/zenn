@@ -1,6 +1,7 @@
 **/.DS_Store
 node_modules/**
 site/blog/**
+site/slide/**
 site/reading_log/**
 site/sitemap.txt
 .temp.js

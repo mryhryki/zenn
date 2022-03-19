@@ -1,6 +1,6 @@
 import RSS from "rss";
 import path from "path";
-import { ArticlesDir, PostsDir, SiteDir } from "./util/path";
+import { ArticlesDir, BlogDir, PostsDir, ReadingLogDir, SiteDir } from "./util/path";
 import { createDir, listFiles } from "./util/fs";
 import { parsePost, Post } from "./util/post";
 import { renderBlogIndex, renderReadingLogIndex } from "./util/html";
@@ -10,25 +10,36 @@ import { writePostToFile } from "./util/writer";
 const BaseURL = "https://mryhryki.com";
 
 const main = async () => {
-  const posts: Post[] = [];
-
-  const postFilePaths = await listFiles(PostsDir, true);
+  const blogPosts: Post[] = [];
+  const blogFilePaths = await listFiles(BlogDir, true);
   const zennArticlePaths = await listFiles(ArticlesDir, true);
-
   await Promise.all(
-    [...postFilePaths, ...zennArticlePaths].map(async (postFilePath) => {
-      const post = await parsePost(postFilePath);
-      posts.push(post);
+    [...blogFilePaths, ...zennArticlePaths].map(async (blogFilePath) => {
+      const post = await parsePost(blogFilePath);
+      blogPosts.push(post);
     })
   );
-  posts.sort((p1, p2) => {
+  blogPosts.sort((p1, p2) => {
     if (p1.createdAt !== p2.createdAt) {
       return p1.createdAt < p2.createdAt ? 1 : -1;
     }
     return p1.id < p2.id ? 1 : -1;
   });
-  const blogPosts = posts.filter(({ type }) => type !== "reading_log");
-  const readingLogPosts = posts.filter(({ type }) => type === "reading_log");
+
+  const readingLogPosts: Post[] = [];
+  const readingLogFilePaths = await listFiles(ReadingLogDir, true);
+  await Promise.all(
+    readingLogFilePaths.map(async (readingLogFilePath) => {
+      const post = await parsePost(readingLogFilePath);
+      readingLogPosts.push(post);
+    })
+  );
+  readingLogPosts.sort((p1, p2) => {
+    if (p1.createdAt !== p2.createdAt) {
+      return p1.createdAt < p2.createdAt ? 1 : -1;
+    }
+    return p1.id < p2.id ? 1 : -1;
+  });
 
   await Promise.all(blogPosts.map(writePostToFile));
   await writeFile(path.resolve(SiteDir, "blog", "index.html"), renderBlogIndex(blogPosts));

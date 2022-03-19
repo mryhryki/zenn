@@ -108,7 +108,6 @@ const getPost = (filePath: string, frontMatter: Record<string, string>, markdown
 };
 
 export const parsePost = async (filePath: string): Promise<Post> => {
-  // TODO: Remove
   const isZenn = filePath.includes("/articles/");
 
   const content: string = (await readFile(path.resolve(PostsDir, filePath))).toString("utf-8");
