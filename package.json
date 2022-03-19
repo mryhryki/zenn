@@ -21,7 +21,6 @@
     "generate:holidays": "esbuild --platform=node --external:node:* --bundle ./script/data/generate_holidays.ts | node"
   },
   "dependencies": {
-    "@marp-team/marp-core": "^3.0.2",
     "@mryhryki/datetime": "^0.0.4",
     "@mryhryki/lint": "^0.0.6",
     "@mryhryki/markdown": "^0.3.0",
