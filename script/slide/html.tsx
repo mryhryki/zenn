@@ -27,6 +27,12 @@ export const renderSlide = (html: string, css: string): string => {
         window.location = \`#\${checkRange(currentSlideNumber + 1)}\`
       } else if ((shift && key === "Enter") || key === "p") {
         window.location = \`#\${checkRange(currentSlideNumber - 1)}\`
+      } else if (key === "f") {
+        if (document.fullscreenElement != null) {
+          document.exitFullscreen();
+        } else {
+          document.body.requestFullscreen();
+        }
       }
     })
   `;
@@ -56,13 +62,6 @@ export const renderSlide = (html: string, css: string): string => {
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content="https://mryhryki.com/assets/image/share_image.jpg" />
         <meta name="twitter:site" content="@mryhryki" />
-
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Roboto+Mono&display=swap"
-          rel="stylesheet"
-        />
-        <link rel="stylesheet" href="/assets/css/base.css" />
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
