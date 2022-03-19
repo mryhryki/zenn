@@ -6,36 +6,11 @@ const renderToHtml = (element: React.ReactElement): string => {
   return `<!doctype html>${html}`;
 };
 
-export const renderSlide = (html: string, css: string): string => {
+export const renderSlide = (markdown: string): string => {
   const title = "TITLE";
   const description = "DESCRIPTION";
   const url = "https://mryhryki.com/";
   const siteName = "SITE_NAME";
-
-  const script = `
-    const NumberPattern = new RegExp('[1-9][0-9]*$')
-    const HashPattern = new RegExp('^#[1-9][0-9]*$')
-    const MaxSlideNumber = Array.from(document.getElementsByTagName("section"))
-      .filter((section) => NumberPattern.test(section.id))
-      .map((section) => parseInt(section.id, 10))
-      .reduce((max, current) => Math.max(max, current), 1)
-    const checkRange = (slideNumber) => Math.min(Math.max(1, slideNumber), MaxSlideNumber)
-    document.addEventListener('keypress', (event) => {
-      const { shiftKey: shift, key } = event
-      const currentSlideNumber = HashPattern.test(location.hash) ? parseInt(location.hash.substring(1)) || 1 : 1
-      if ((!shift && key === "Enter") || key === "n") {
-        window.location = \`#\${checkRange(currentSlideNumber + 1)}\`
-      } else if ((shift && key === "Enter") || key === "p") {
-        window.location = \`#\${checkRange(currentSlideNumber - 1)}\`
-      } else if (key === "f") {
-        if (document.fullscreenElement != null) {
-          document.exitFullscreen();
-        } else {
-          document.body.requestFullscreen();
-        }
-      }
-    })
-  `;
 
   return renderToHtml(
     <html>
@@ -67,11 +42,12 @@ export const renderSlide = (html: string, css: string): string => {
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="apple-mobile-web-app-title" content={title} />
         <link rel="apple-touch-icon" type="image/png" href="./assets/image/icon_180x180.png" />
-
-        <style dangerouslySetInnerHTML={{ __html: css }} />
       </head>
-      <body dangerouslySetInnerHTML={{ __html: html }} />
-      <script dangerouslySetInnerHTML={{ __html: script }} />
+      <body>
+        <textarea id="source" value={markdown} readOnly style={{ display: "none" }} />
+        <script src="https://remarkjs.com/downloads/remark-latest.min.js" />
+        <script dangerouslySetInnerHTML={{ __html: "var slideshow = remark.create({ ratio: '16:9' });" }} />
+      </body>
     </html>
   );
 };
