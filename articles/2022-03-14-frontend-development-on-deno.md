@@ -6,27 +6,30 @@ topics: ["Deno"]
 published: false
 ---
 
-## はじめに
+# はじめに
 
 Deno を使ったフロントエンド開発は現状どうなっているのかを試したかった。
 
-## 試したこと
+# 試したこと
 
-- Aleph.js
+- Aleph.js :arrow_right: うまく動かず
   - https://github.com/alephjs/aleph.js
   - 自分の環境ではダメだった。
   - 開発が止まってる？
     - ![image](https://user-images.githubusercontent.com/12733897/153724600-49c5c77e-a1d7-4a81-8a93-8b141ea204a9.png)
-- `Deno.emit()` + `esbuild`
+- Rollup :arrow_right: うまく動かず
+- Deno.emit() + esbuild :arrow_right: それなりに動いた
   - `React` のビルドはうまくいった
   - CSS をいい感じに扱いにくい
     - `styled-components` を使うとエラーになった（あまり追求してはいない）
-- `packup`
+- `packup` :arrow_right: 試した中では一番いい感じに動いた
   - https://packup.deno.dev/
   - いい感じに動いた
   - `styled-components` も普通に使えた
   - 中では `esbuild-wasm` を使っているらしい
     - 時間がある時にソースを見たい
+
+## Aleph.js
 
 ## Rollup
 
@@ -41,7 +44,11 @@ error: TS2488 [ERROR]: Type 'Headers' must have a '[Symbol.iterator]()' method t
     at https://deno.land/x/cache@0.2.13/file_fetcher.ts:29:30
 ```
 
-## 参考リンク
+## Deno.emit() + esbuild
+
+## packup
+
+# 参考リンク
 
 - [Deno 用のフロントエンド開発ツール packup について](https://zenn.dev/kt3k/articles/1df2e54cd9d4f3)
 - [Deno.emit() - deno-ja](https://scrapbox.io/deno-ja/Deno.emit())
