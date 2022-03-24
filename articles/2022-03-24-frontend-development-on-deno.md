@@ -144,7 +144,7 @@ esbuild.stop();
 一応ビルドがとりあえずできました。
 ただし `--unstable` フラグが必要な機能なので、今後 API が変わり上記のコードで動作しなくなる可能性もあるので微妙かもしれません。
 
-補足として esbuild 単体で動かすこともできますが、残念ながら `import foo from https://example.com/package-name.ts` のように URL からのインポートに対応できないので、実戦ではまだ使えない感じでした。
+補足として esbuild 単体で動かすこともできますが、残念ながら `import React from "https://cdn.skypack.dev/react@17.0.2?dts";` のような URL からのインポートに対応できないので、実戦ではまだ使えない感じでした。
 
 
 ## Packup: 動いた
