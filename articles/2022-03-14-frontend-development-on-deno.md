@@ -8,10 +8,8 @@ published: false
 
 # はじめに
 
-最近興味のある Deno を使って、フロントエンド開発がどの程度可能なのかを試してみました。
-今回は自分のよく使う React をビルドできるかにターゲットを絞って調べてみました。
-
-開発体験の良さをもとめるというよりは、とりあえず React(JSX) を TypeScript で書いて、ブラウザで動かせるようにするという感じです。
+最近興味のある Deno を使って、フロントエンド開発がどの程度できるのか気になって試してみました。
+とはいえフロントエンド開発というと範囲が広すぎるので、今回は React をビルドすることにターゲットを絞ってやってみました。
 
 
 # 検証環境
@@ -28,17 +26,21 @@ v8 9.8.177.6
 typescript 4.5.2
 ```
 
+
 # 試したことと結果
 
 - Aleph.js: 動かず
 - Deno.emit() + esbuild: 動いた
 - Packup: 動いた
 
+
 ## Aleph.js: 動かず
+
+まず調べていく中で[良さげな雰囲気があった Aleph.js](https://zenn.dev/uki00a/articles/frontend-development-in-deno-2021-autumn#aleph.js-v0.3-beta%E3%81%8C%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9) を試してみました。
 
 https://github.com/alephjs/aleph.js
 
-[Get Started - Aleph.js](https://alephjs.org/docs/get-started) に従って進めてみましたが、どうもアクセスしても 404 が返ってきてしまいます。
+[Get Started - Aleph.js](https://alephjs.org/docs/get-started) に従って進めてみたのですが、アクセスしても 404 が返ってきてしまいます🤔
 
 ```shell
 $ deno run -A https://deno.land/x/aleph/install.ts
@@ -78,18 +80,19 @@ WARN http: response headers already sent
 
 ![aleph.js on local](https://mryhryki.com/file/Wc3KIaSZS0MTkKPDiG-9PPM2Qp_JR.png)
 
-色々試してみたのですが、どうしても 404 になってしまいます。
+他のページを作ってみたりして色々試してみたのですが、どうしても 404 になってしまいます。
 今回試したのが `v0.3.0-beta.19` でまだベータ版のためかもしれません。
 
 ただリリースが2021年9月で、コミットも2021年10月頃からほぼないので、開発が停滞しているのかもしれません。
-あまり深追いする感じでもないかな、と思ったのでここで試すのはやめました。
+今回はあまり深追いするつもりもなかったので、これ以上は試しませんでした。
 
 
 ## Deno.emit() + esbuild: 動いた
 
-[Deno.emit()](https://deno.land/manual/typescript/runtime#denoemit) は Deno に組み込まれている型チェック・トランスパイル・バンドルができる API です。
+[Deno.emit()](https://deno.land/manual/typescript/runtime#denoemit) は Deno に組み込まれている型チェック・トランスパイル・バンドルができる API のようです。
+たまたま調べていたときに見つけたので使ってみました。
 
-
+以下のような感じのコードでビルドすることができました。
 
 ```typescript
 const { files } = await Deno.emit("./src/app.tsx", {
@@ -109,7 +112,6 @@ console.log(files["deno:///bundle.js"]); // => [Bundled Code]
 ```
 
 また、esbuild をいれて minify してみました。
-
 
 ```typescript
 import * as esbuild from "https://deno.land/x/esbuild@v0.14.13/mod.js";
@@ -139,7 +141,10 @@ await Deno.writeFile("./dist/bundle.js.map", encoder.encode(map));
 esbuild.stop();
 ```
 
-これでビルドがいい感じにできました。
+一応ビルドがとりあえずできました。
+ただし `--unstable` フラグが必要な機能なので、今後 API が変わり上記のコードで動作しなくなる可能性もあります。
+
+補足として esbuild 単体で動かすこともできますが、残念ながら `import foo from https://example.com/package-name.ts` のように URL からのインポートに対応できないので、実戦ではまだ使えない感じでした。
 
 
 ## Packup: 動いた
@@ -147,7 +152,7 @@ esbuild.stop();
 > Packup is web application bundler for Deno, inspired by parcel.
 https://packup.deno.dev/
 
-Packup はバンドルツールで、parcel に影響を受けています。
+Packup はバンドルツールで、parcel に影響を受けているようです。
 作者の [@kt3k] さんは日本人で [Deno Land Inc. の中の人](https://engineer-lab.findy-code.io/deno-kt3k) です。
 
 使い方もシンプルで、parcel と同じように `index.html` のように HTML ファイルをエントリーポイントとして指定すれば動きます。
@@ -157,22 +162,29 @@ $ packup serve index.html
 $ packup build index.html
 ```
 
+`parkup serve` では(たぶん)ホットリロードにも対応しているようです。
 今回試した中では、これが開発体験的に一番良かったです。
 
 
-## Deno Deploy
+## おまけ: Deno Deploy で公開してみる
 
 Deno.emit() + esbuild でビルドしたWebアプリを Deno Deploy で公開してみました。
-
 https://example-react-with-deno.deno.dev/
 
-Deno Deploy 上で Deno.emit() は（たぶん安定化されておらず `--unstable` が必要なので）使用できないようでした。
-今回はビルドしたコードをコミットしてデプロイしています。
+ソースコードはこちらです。
+https://github.com/mryhryki/example-react-with-deno
+
+Deno Deploy 上で Deno.emit() は（たぶん安定化されておらず `--unstable` が必要なので）使用できないようなので、今回はビルド済みのコードをコミットしてデプロイしています。
+
+サーバー側のコードは、以下の記事で紹介したような感じで実装しています。
+https://zenn.dev/mryhryki/articles/2022-01-03-http-server-on-deno
 
 
 # おわりに
 
-いくつか試してみましたが、なかなかこれという感じのものはないですね。
+色々調べてみたのですが、なかなか Deno だとこれ！っていう感じのものがないような雰囲気を感じました。
+時々触る程度ですが、Deno は結構期待しているのでいい感じに開発ができるようになると良いな〜、と思います。
+
 
 # 参考リンク
 
