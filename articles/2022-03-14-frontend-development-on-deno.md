@@ -3,13 +3,13 @@ title: "DenoでReactをビルドする"
 emoji: "🦕"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Deno", "React"]
-published: false
+published: true
 ---
 
 # はじめに
 
-最近興味のある Deno を使って、フロントエンド開発がどの程度できるのか気になって試してみました。
-とはいえフロントエンド開発というと範囲が広すぎるので、今回は React をビルドすることにターゲットを絞ってやってみました。
+最近興味のある Deno でフロントエンド開発がどの程度できるのか気になって試してみました。
+とはいえフロントエンド開発というと範囲が広すぎるので、今回は React をビルドすることにターゲットを絞って調べてみました。
 
 
 # 検証環境
@@ -27,7 +27,7 @@ typescript 4.5.2
 ```
 
 
-# 試したことと結果
+# 試したこと
 
 - Aleph.js: 動かず
 - Deno.emit() + esbuild: 動いた
@@ -142,7 +142,7 @@ esbuild.stop();
 ```
 
 一応ビルドがとりあえずできました。
-ただし `--unstable` フラグが必要な機能なので、今後 API が変わり上記のコードで動作しなくなる可能性もあります。
+ただし `--unstable` フラグが必要な機能なので、今後 API が変わり上記のコードで動作しなくなる可能性もあるので微妙かもしれません。
 
 補足として esbuild 単体で動かすこともできますが、残念ながら `import foo from https://example.com/package-name.ts` のように URL からのインポートに対応できないので、実戦ではまだ使えない感じでした。
 
@@ -153,7 +153,7 @@ esbuild.stop();
 https://packup.deno.dev/
 
 Packup はバンドルツールで、parcel に影響を受けているようです。
-作者の [@kt3k] さんは日本人で [Deno Land Inc. の中の人](https://engineer-lab.findy-code.io/deno-kt3k) です。
+作者の [@kt3k](https://twitter.com/kt3k) さんは日本人で [Deno Land Inc. の中の人](https://engineer-lab.findy-code.io/deno-kt3k) です。
 
 使い方もシンプルで、parcel と同じように `index.html` のように HTML ファイルをエントリーポイントとして指定すれば動きます。
 
