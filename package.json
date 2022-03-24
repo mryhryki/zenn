@@ -7,7 +7,7 @@
   },
   "scripts": {
     "build": "run-s 'blog:build' 'slide:build' 'sitemap:build'",
-    "build:watch": "nodemon --watch src/ --ext md --exec 'npm run build'",
+    "build:watch": "nodemon --watch posts/ --ext md --exec 'npm run build'",
     "preview": "http-server site/ --port 58125 -o",
     "update": "aws s3 sync site/ s3://mryhryki-cdn/contents/ --exclude='.DS_Store' --size-only",
     "article:add": "zenn new:article --slug \"$(date +%Y-%m-%d)-$(openssl rand -hex 3)\"",
