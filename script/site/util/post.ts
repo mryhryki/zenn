@@ -1,6 +1,6 @@
 import path from "path";
 import { readFile } from "fs/promises";
-import { PostsDir } from "./path";
+import { PostsDir } from "./definition";
 import { DateTime } from "@mryhryki/datetime";
 
 const BreakCharacter = new RegExp("\r?\n");
@@ -29,12 +29,14 @@ export interface Post {
   canonical?: string | null;
 }
 
-type PostType = "blog" | "reading_log" | "zenn";
+type PostType = "blog" | "slide" | "reading_log" | "zenn";
 const getPostType = (filePath: string): PostType => {
   if (filePath.includes("/articles/")) {
     return "zenn";
   } else if (filePath.includes("/posts/blog/")) {
     return "blog";
+  } else if (filePath.includes("/posts/slide/")) {
+    return "slide";
   } else if (filePath.includes("/posts/reading_log/")) {
     return "reading_log";
   }
@@ -84,6 +86,9 @@ const getPost = (filePath: string, frontMatter: Record<string, string>, markdown
   if (type === "blog" || type === "zenn") {
     post.createdAt = DateTime.parse(`${post.id.substring(0, 10)}T00:00:00+09:00`).toISO();
     post.url = `https://mryhryki.com/blog/${post.id}.html`;
+  } else if (type === "slide") {
+    post.createdAt = DateTime.parse(`${post.id.substring(0, 10)}T00:00:00+09:00`).toISO();
+    post.url = `https://mryhryki.com/slide/${post.id}.html`;
   } else if (type === "reading_log") {
     post.createdAt = DateTime.parse(
       [

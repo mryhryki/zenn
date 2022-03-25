@@ -7,20 +7,17 @@
   },
   "scripts": {
     "writing": "run-p 'build:watch' 'preview'",
-    "build": "run-s 'blog:build' 'slide:build' 'sitemap:build'",
-    "build:watch": "nodemon --watch posts/ --ext md --exec 'npm run build'",
-    "preview": "http-server site/ --port 58125 -o",
-    "update": "aws s3 sync site/ s3://mryhryki-cdn/contents/ --exclude='.DS_Store' --size-only",
     "article:add": "zenn new:article --slug \"$(date +%Y-%m-%d)-$(openssl rand -hex 3)\"",
     "article:preview": "open http://localhost:58125/ && zenn preview --port 58125",
-    "blog:build": "rm -rf ./site/blog/ && (esbuild --platform=node --external:node:* --bundle script/blog/build.ts | node)",
+    "build": "esbuild --platform=node --external:node:* --bundle script/site/build.ts | node",
+    "build:watch": "nodemon --watch posts/ --watch script/ --ext md,ts,tsx --exec 'npm run build'",
     "generate:holidays": "esbuild --platform=node --external:node:* --bundle ./script/data/generate_holidays.ts | node",
     "lint": "mryhryki-lint",
     "lint:fix": "mryhryki-lint-fix",
-    "slide:build": "rm -rf ./site/slide/ && (esbuild --platform=node --external:node:* --bundle ./script/slide/build.ts | node)",
-    "sitemap:build": "rm -f ./site/sitemap.txt && (esbuild --platform=node --external:node:* --bundle ./script/sitemap/build.ts | node)",
+    "preview": "http-server site/ --port 58125 -o",
     "textlint": "textlint ./**/*.md",
-    "textlint:fix": "textlint --fix ./**/*.md"
+    "textlint:fix": "textlint --fix ./**/*.md",
+    "update": "aws s3 sync site/ s3://mryhryki-cdn/contents/ --exclude='.DS_Store' --size-only"
   },
   "dependencies": {
     "@mryhryki/datetime": "^0.0.4",

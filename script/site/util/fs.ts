@@ -1,7 +1,13 @@
 import { mkdir, readdir, stat } from "fs/promises";
+import { parsePost, Post } from "./post";
 
 export const createDir = async (dirPath: string): Promise<void> => {
   await mkdir(dirPath, { recursive: true });
+};
+
+export const readPosts = async (dirPath: string): Promise<Post[]> => {
+  const files = await listFiles(dirPath, false);
+  return await Promise.all(files.map(async (filePath): Promise<Post> => parsePost(filePath)));
 };
 
 export const listFiles = async (dirPath: string, recursive: boolean): Promise<string[]> => {
