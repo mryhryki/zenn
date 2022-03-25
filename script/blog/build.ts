@@ -1,6 +1,6 @@
 import RSS from "rss";
 import path from "path";
-import { ArticlesDir, BlogDir, PostsDir, ReadingLogDir, SiteDir } from "./util/path";
+import { ArticlesDir, BlogDir, ReadingLogDir, SiteDir } from "./util/path";
 import { createDir, listFiles } from "./util/fs";
 import { parsePost, Post } from "./util/post";
 import { renderBlogIndex, renderReadingLogIndex } from "./util/html";

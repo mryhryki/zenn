@@ -194,7 +194,10 @@ export const renderReadingLogIndex = (posts: Post[]): string => {
             <details id={id} className="details-link">
               <summary id={id}>{title}</summary>
               <div dangerouslySetInnerHTML={{ __html: convert(markdown).html }} />
-              <p>記録日: {createdAt.substring(0, 10)}</p>
+              <p>
+                記録日: {createdAt.substring(0, 10)}{" "}
+                <button data-copytext={`## ${title}\n\n${markdown}`}>Copy Markdown</button>
+              </p>
             </details>
           </React.Fragment>
         ))}
@@ -206,6 +209,7 @@ export const renderReadingLogIndex = (posts: Post[]): string => {
             </a>
           </span>
         </footer>
+        <script src="/assets/script/copy_to_clipboard.js" />
         <script dangerouslySetInnerHTML={{ __html: script }} />
       </body>
     </>
