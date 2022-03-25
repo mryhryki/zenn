@@ -48,6 +48,10 @@ export const renderSlide = (markdown: string): string => {
         <link rel="apple-touch-icon" type="image/png" href="./assets/image/icon_180x180.png" />
       </head>
       <body style={{ margin: 0 }}>
+        <div
+          style={{ maxHeight: "1px", overflow: "hidden" }}
+          dangerouslySetInnerHTML={{ __html: convert(markdown).html }}
+        />
         <textarea
           id="source"
           value={markdown}
