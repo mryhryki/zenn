@@ -6,6 +6,7 @@
     "node": "16.x"
   },
   "scripts": {
+    "writing": "run-p 'build:watch' 'preview'",
     "build": "run-s 'blog:build' 'slide:build' 'sitemap:build'",
     "build:watch": "nodemon --watch posts/ --ext md --exec 'npm run build'",
     "preview": "http-server site/ --port 58125 -o",

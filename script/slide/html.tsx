@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOMServer from "react-dom/server";
+import { convert } from "@mryhryki/markdown";
 
 const renderToHtml = (element: React.ReactElement): string => {
   const html = ReactDOMServer.renderToStaticMarkup(element);
@@ -7,10 +8,10 @@ const renderToHtml = (element: React.ReactElement): string => {
 };
 
 export const renderSlide = (markdown: string): string => {
-  const title = "TITLE";
+  const { title } = convert(markdown);
   const description = "DESCRIPTION";
   const url = "https://mryhryki.com/";
-  const siteName = "SITE_NAME";
+  const siteName = title;
 
   return renderToHtml(
     <html>
@@ -23,6 +24,7 @@ export const renderSlide = (markdown: string): string => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" href="/assets/image/icon_192x192.png" type="image/png" />
+        <link rel="stylesheet" href="/assets/css/slide.css" />
 
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
@@ -43,9 +45,14 @@ export const renderSlide = (markdown: string): string => {
         <meta name="apple-mobile-web-app-title" content={title} />
         <link rel="apple-touch-icon" type="image/png" href="./assets/image/icon_180x180.png" />
       </head>
-      <body>
-        <textarea id="source" value={markdown} readOnly style={{ display: "none" }} />
-        <script src="https://remarkjs.com/downloads/remark-latest.min.js" />
+      <body style={{ margin: 0 }}>
+        <textarea
+          id="source"
+          value={markdown}
+          readOnly
+          style={{ width: "calc(100vw - 16px)", height: "calc(100vh - 16px)", fontSize: "16px", padding: "8px" }}
+        />
+        <script src="/assets/script/remark-latest.min.js" />
         <script dangerouslySetInnerHTML={{ __html: "var slideshow = remark.create({ ratio: '16:9' });" }} />
       </body>
     </html>
