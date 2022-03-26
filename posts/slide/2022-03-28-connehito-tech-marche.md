@@ -1,19 +1,21 @@
 ---
-title: コネヒト技術目標マルシェ
+title: Deno入門
 ---
 
 class: middle, center 
-# コネヒト技術目標マルシェ
+
+# Deno入門
+
+コネヒト技術目標マルシェ（2022-03-28）
 
 ### もりやひろゆき
-
-2022-03-28
 
 ---
 
 ## はじめに
 
-今期は技術目標で Deno について調べたので、その概要を発表します！
+- 今期は技術目標で Deno について調べました。
+- そもそも Deno って何？という方もおられると思うので、概要を説明しつつアウトプットしたことも織り交ぜていければと思います。
 
 ---
 
@@ -79,7 +81,7 @@ JavaScript と **TypeScript** のモダンな実行環境です。
 
 ---
 
-## Deno の採用例
+## Deno の採用例（Slack SDK）
 
 > 新しい SDK は TypeScript を使って構築され、Deno ランタイムをターゲットにしています。
 >
@@ -93,9 +95,9 @@ https://deno.com/blog/slack
 
 ## Deno の課題
 
-まだライブラリとかが充実していない
+まだ周辺エコシステムが充実していない
 
-- Node.js の資産は直接の互換性がない
+- Node.js 標準のモジュールシステム（CommonJS）と互換性がないので、npm パッケージが使えない場合が多い
     - https://www.skypack.dev/ や https://esm.sh/ を経由することで使える場合もある
 - 現状はこのスライドとかが参考になりますね。
     - [Deno Node 両刀 - Speaker Deck](https://speakerdeck.com/mizchi/deno-node-liang-dao)
@@ -157,6 +159,20 @@ https://twitter.com/deno_land/status/1262517004159913985
   - [DenoでReactをビルドする](https://zenn.dev/mryhryki/articles/2022-03-24-frontend-development-on-deno)
 - まだ「Deno だとこれ！」というようなものはなさそうな雰囲気です。
 - これからに期待。
+
+---
+
+## Deno のこれから
+
+- [Deno v1 がリリース](https://deno.com/blog/v1)されたのが2020年5月。
+- それなりの年月が経過しても継続して開発されている点を見れば、今後も成長していくのでは、と個人的に思ってます。
+- 後発の環境なので、色々と開発体験は良いです。
+    - ビルトインコマンド、TypeScript のサポート、Deno Deploy など
+- Node.js と互換性がないのが辛いですが、今後解消されていくのではという気もしています。
+    - 他の skypack や esm を使えばある程度使えるものも多いです。
+    - [Node.js の互換モード](https://kt3k.github.io/talk_jsconfjp2021/#55) も開発され、2022年2Qリリース予定のようです。
+    - 最近は Node.js と Deno の両方をサポートしたライブラリなんかも出てきています。
+- 個人的には、フロントエンド開発で使いやすくなればもっと使っていきたいな〜、と思ってます。
 
 ---
 class: middle, center

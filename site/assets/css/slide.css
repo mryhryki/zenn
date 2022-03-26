@@ -14,6 +14,10 @@ blockquote, pre {
   padding:  16px;
 }
 
+li {
+  margin-top: 0.5rem;
+}
+
 code {
   background-color: #ddd;
   color: #330066;
