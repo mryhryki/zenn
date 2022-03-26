@@ -31,7 +31,7 @@ JavaScript と **TypeScript** のモダンな実行環境です。
 
 ## Deno の特徴 (1)
 
-[ライアン・ダール (Ryan Dahl）](https://ja.wikipedia.org/wiki/%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%BB%E3%83%80%E3%83%BC%E3%83%AB) 氏が Node.js の反省を元に作られている。
+[ライアン・ダール (Ryan Dahl）](https://ja.wikipedia.org/wiki/%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%BB%E3%83%80%E3%83%BC%E3%83%AB) 氏が Node.js の反省を元に作られています。
 
 > DenoはJSConf EU 2018でのライアン・ダールによる講演「Node.jsに関する10の反省点」で発表された。ライアン・ダールはこの講演において、後悔しているNode.jsの初期設計での決定について言及し、以下の点を挙げている。
 >
@@ -59,25 +59,48 @@ JavaScript と **TypeScript** のモダンな実行環境です。
 
 ## Deno の特徴 (3)
 
-1. Node.js と同じく [V8](https://ja.wikipedia.org/wiki/V8_(JavaScript%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3) エンジンを使っている
+TypeScript がサポートされている
 
-    - Chromium ベースのブラウザなどで採用されている JavaScript エンジン
+- 設定しなくても TypeScript がそのまま使えます
+    - Node.js のように `package.json` に `"typescript"` の依存を書く必要はありません
+- デフォルトの設定が入っているので `tsconfig.json` なども不要
+    - 必要に応じて別途設定を追加することもできます
 
---
-2. TypeScript がビルトイン
-    - 設定しなくても TypeScript がそのまま使えます
+---
 
---
-3. ブラウザ互換性
-    - 例えば `fetch` や `localStorage` とかが標準で使える
+## Deno の特徴 (4)
 
---
-4. セキュア
-    - コマンドライン引数で指定しないと、ファイルやネットワーク、環境変数へのアクセスはできない
+Node.js と同じく <a href="https://ja.wikipedia.org/wiki/V8_(JavaScript%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3)">V8</a> エンジンを使っている
+
+- Chromium ベースのブラウザなどで採用されている JavaScript エンジン
+- 高速で広く使われて安定しているので安心感があります
+- 余談: [Ignition や TurboFan など内部でエンジンの用語がよく使われています](https://html5experts.jp/furoshiki/23289/)
+
+---
+
+## Deno の特徴 (5)
+
+セキュアである
+
+- コマンドライン引数で指定しないと、ファイルやネットワーク、環境変数へのアクセスはできない
     - コマンド例: `deno run --allow-read --allow-env=VAR_NAME index.ts`
+- もともと [V8 は「信用できないコード」を動かす事を前提に設計されているため、サンドボックス化されて](https://kt3k.github.io/talk_devsumi_2022_deno/#53)います
+- 最近 Vue.js などで使われている [node-ipc](https://www.npmjs.com/package/node-ipc) というライブラリが話題になりました
+    - 『このコードはロシアあるいはベラルーシのIPを持つユーザーを対象として、ファイルの内容を消去してハートの絵文字に上書きしてしまうというものでした。』
+    - [オープンソースのnpmパッケージ「node-ipc」にロシア在住の開発者を標的にした悪意のあるコードがメンテナーによって追加される - GIGAZINE](https://gigazine.net/news/20220322-sabotage-code-to-node-ipc/)
 
---
-5. Rust で書かれている
+---
+
+## Deno の特徴 (6)
+
+ブラウザ互換のAPIが可能な限り使われている
+
+- 例えば `fetch` や `localStorage` などが標準で使える
+- Node.js ではブラウザ互換ではない API も存在している
+  - 例: [Buffer など](https://zenn.dev/qnighy/articles/f2b8b27c398fc2)
+- サーバーサイドなどでしか使われないようなAPI（例: ファイルシステムへのアクセス）は、割と `Deno` 配下に入っている印象。
+  - 例: `Deno.readTextFile()` など
+  - 全部を知っているわけではないので、あくまで自分が見た感じの印象です
 
 ---
 
