@@ -27,6 +27,8 @@ class: middle, center
 
 JavaScript と **TypeScript** のモダンな実行環境です。
 
+競合する環境としては [Node.js](https://nodejs.org/) があります。
+
 ---
 
 ## Deno の特徴 (1)
@@ -93,14 +95,13 @@ Node.js と同じく <a href="https://ja.wikipedia.org/wiki/V8_(JavaScript%E3%82
 
 ## Deno の特徴 (6)
 
-ブラウザ互換のAPIが可能な限り使われている
+ECMAScript 準拠やブラウザ互換API
 
-- 例えば `fetch` や `localStorage` などが標準で使える
-- Node.js ではブラウザ互換ではない API も存在している
-  - 例: [Buffer など](https://zenn.dev/qnighy/articles/f2b8b27c398fc2)
+- ECMAScript のモジュールシステムのみ対応している
+    - Node.js は [CommonJS](https://ja.wikipedia.org/wiki/CommonJS) のモジュールシステムがデフォルト（ECMAScript のモジュールシステムも使おうと思えば使える
+- [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) や [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) なども使え、ブラウザと互換性のあるコードが書きやすい
 - サーバーサイドなどでしか使われないようなAPI（例: ファイルシステムへのアクセス）は、割と `Deno` 配下に入っている印象。
-  - 例: `Deno.readTextFile()` など
-  - 全部を知っているわけではないので、あくまで自分が見た感じの印象です
+  - 例: [Deno.readTextFile()](https://deno.land/manual/examples/read_write_files) など
 
 ---
 
@@ -137,7 +138,7 @@ https://deno.com/blog/slack
 - [Deno - Wikipedia](https://ja.wikipedia.org/wiki/Deno)
     - 『発音はデノが近く一般的だが、ディーノと呼ばれることもある。』
 - [Node.jsに関する10の反省点 - Ryan Dahl - JSConf EU - YouTube](https://youtu.be/M3BM9TB-8yA?t=1001)
-    - 作者は「デノ」って言っているように聞こえるので、私は「デノ」と発音していきます。
+    - 作者は「デノ」って言っているように聞こえるので、私は「デノ」と呼んでます。
 
 ---
 
