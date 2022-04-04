@@ -5,18 +5,58 @@
   <title>Links</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/assets/css/base.css">
+  <style>
+    body {
+      background-color: #333;
+      padding: 16px;
+      color: #fff;
+      margin: 0 auto;
+      max-width: 960px;
+      width: calc(100vw - 32px);
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      line-height: 2.25rem;
+      text-align: center;
+    }
+
+    a {
+      color: #1e90ff;
+    }
+
+    li {
+      margin-top: 0.5rem;
+    }
+
+    input {
+      border-radius: 0.25rem;
+      border-width: 1px;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      max-width: 100%;
+      width: 24rem;
+      padding: 0.25rem 0.5rem;
+      vertical-align: middle;
+    }
+  </style>
 </head>
 <body class="dark-theme">
   <h1>mryhryki's links</h1>
-  <p>
-    <label for="keyword-input">Keyword:</label>
-    <input id="keyword-input" type="text" value="" autofocus/>
+  <p style="text-align: center;">
+    <input id="keyword-input" type="text" placeholder="Keyword" autofocus/>
   </p>
   <ul id="links-list">
   </ul>
   <script>
-    const NullChar = String.fromCharCode(0)
+    const createElement = (tagName, props = {}, children = []) => {
+      const element = document.createElement(tagName)
+      Object.entries(props).forEach(([key, val]) => element[key] = val)
+      children.forEach((child) => element.appendChild(child))
+      return element
+    }
+
     const normalize = (text) => text
       .normalize("NFKD")
       .toLowerCase()
@@ -27,48 +67,39 @@
       const List = document.getElementById("links-list")
       const KeywordInput = document.getElementById("keyword-input")
 
-      const refresh = (keyword) => {
-        const keywords = normalize(keyword).split(new RegExp("[\s]")).filter((text) => text !== "")
-        console.debug(keyword, keywords)
+      const refresh = () => {
+        const keyword = KeywordInput.value
+        const keywords = normalize(keyword).split(new RegExp("[ 　\t]+")).filter((text) => text !== "")
 
         List.innerHTML = ""
         const links = keywords.length === 0 ? Links : Links
           .map(({title, links}) => {
             const filteredLinks = links.filter(({title, url}) => {
-              const text = normalize(`${title}${NullChar}${url}`)
+              const text = (`${normalize(title)}\r\n${normalize(decodeURI(url))}`)
               return keywords.every((keyword) => text.includes(keyword))
             })
             return {title, links: filteredLinks}
           })
           .filter(({links}) => links.length > 0)
 
+        if (links.length === 0) {
+          List.appendChild(createElement("li", {innerHTML: "(No Link)"}))
+          return
+        }
+
         links.forEach(({title, links}) => {
-          const categoryItem = document.createElement("li")
-
-          const span = document.createElement("span")
-          span.innerText = title
-          categoryItem.appendChild(span)
-
-          const ul = document.createElement("ul")
-          links.map(({title, url}) => {
-            const a = document.createElement("a")
-            a.target = "_blank"
-            a.ref = "noopener noreferrer"
-            a.href = url
-            a.innerText = title
-
-            const li = document.createElement("li")
-            li.appendChild(a)
-            ul.appendChild(li)
-          })
-
-          categoryItem.appendChild(ul)
+          const ul = createElement("ul", {}, links.map(({title, url}) =>
+            createElement("li", {}, [
+              createElement("a", {href: url, innerText: title})
+            ])
+          ))
+          const categoryItem = createElement("li", {}, [createElement("span", {innerText: title}), ul])
           List.appendChild(categoryItem)
         })
       }
 
       refresh("")
-      KeywordInput.addEventListener("keydown", () => refresh(KeywordInput.value))
+      KeywordInput.addEventListener("keyup", refresh)
     });
   </script>
   <script id="links-data" type="application/json">
@@ -81,26 +112,22 @@
             "url": "https://mryhryki.com/api/daily_record"
           },
           {
-            "title": "New Issue",
-            "url": "https://github.com/mryhryki/HOME/issues/new/choose"
-          },
-          {
             "title": "Add Reading Log",
             "url": "https://github.com/mryhryki/portfolio/actions/workflows/add_reading_log.yml"
           },
           {
-            "title": "Portfolio",
-            "url": "https://mryhryki.com/"
-          },
-          {
-            "title": "Check Session",
-            "url": "https://mryhryki.com/sessions"
+            "title": "New Issue",
+            "url": "https://github.com/mryhryki/HOME/issues/new/choose"
           }
         ]
       },
       {
-        "title": "Tools",
+        "title": "App",
         "links": [
+          {
+            "title": "App Viewer",
+            "url": "https://mryhryki.com/view/"
+          },
           {
             "title": "URL Utility",
             "url": "https://mryhryki.com/view/?type=url"
@@ -122,16 +149,12 @@
             "url": "https://mryhryki.com/view/?type=counter"
           },
           {
-            "title": "Image Markup",
-            "url": "https://image-markup.vercel.app/"
-          },
-          {
-            "title": "Video to GIF",
-            "url": "https://video-to-gif.vercel.app/"
-          },
-          {
             "title": "API Health",
             "url": "https://api.mryhryki.com/api/health"
+          },
+          {
+            "title": "Check Session",
+            "url": "https://mryhryki.com/sessions"
           }
         ]
       },
@@ -169,32 +192,15 @@
         ]
       },
       {
-        "title": "App",
-        "links": [
-          {
-            "title": "Gmail",
-            "url": "https://mail.google.com/?authuser=mryhryki%40gmail.com"
-          },
-          {
-            "title": "Calendar",
-            "url": "https://calendar.google.com/?authuser=mryhryki%40gmail.com"
-          },
-          {
-            "title": "Notion",
-            "url": "https://www.notion.so/mryhryki"
-          },
-          {
-            "title": "Share Batake",
-            "url": "https://www.sharebatake.com/members"
-          }
-        ]
-      },
-      {
         "title": "Repository",
         "links": [
           {
             "title": "HOME",
             "url": "https://github.com/mryhryki/HOME"
+          },
+          {
+            "title": "HOME/docs",
+            "url": "https://github.com/mryhryki/HOME/tree/main/docs"
           },
           {
             "title": "portfolio",
@@ -215,18 +221,89 @@
         ]
       },
       {
+        "title": "App",
+        "links": [
+          {
+            "title": "Gmail",
+            "url": "https://mail.google.com/?authuser=mryhryki%40gmail.com"
+          },
+          {
+            "title": "Calendar",
+            "url": "https://calendar.google.com/?authuser=mryhryki%40gmail.com"
+          },
+          {
+            "title": "Notion",
+            "url": "https://www.notion.so/mryhryki"
+          },
+          {
+            "title": "Image Markup",
+            "url": "https://image-markup.vercel.app/"
+          },
+          {
+            "title": "Video to GIF",
+            "url": "https://video-to-gif.vercel.app/"
+          },
+          {
+            "title": "シェア畑",
+            "url": "https://www.sharebatake.com/members"
+          }
+        ]
+      },
+      {
+        "title": "App (Connehito)",
+        "links": [
+          {
+            "title": "Gmail (Connehito)",
+            "url": "https://mail.google.com/?authuser=hiroyuki.moriya%40connehito.com"
+          },
+          {
+            "title": "Calendar (Connehito)",
+            "url": "https://calendar.google.com/?authuser=hiroyuki.moriya%40connehito.com"
+          },
+          {
+            "title": "Notion (Connehito)",
+            "url": "https://www.notion.so/connehito/f917c31b69654012b9c71744859cf9e3"
+          }
+        ]
+      },
+      {
+        "title": "Portfolio",
+        "links": [
+          {
+            "title": "Portfolio Home",
+            "url": "https://mryhryki.com/"
+          },
+          {
+            "title": "Portfolio Blog",
+            "url": "https://mryhryki.com/blog/"
+          },
+          {
+            "title": "Portfolio Slide",
+            "url": "https://mryhryki.com/slide/"
+          },
+          {
+            "title": "Portfolio Reading Log",
+            "url": "https://mryhryki.com/reading_log/"
+          }
+        ]
+      },
+      {
         "title": "Slack",
         "links": [
           {
-            "title": "mryhryki",
+            "title": "Slack (Connehito)",
+            "url": "https://connehito.slack.com/"
+          },
+          {
+            "title": "Slack (mryhryki)",
             "url": "https://mryhryki.slack.com/"
           },
           {
-            "title": "rust-jp",
+            "title": "Slack (rust-jp)",
             "url": "https://rust-jp.slack.com/"
           },
           {
-            "title": "techpit",
+            "title": "Slack (techpit)",
             "url": "https://techpitmarket.slack.com/"
           }
         ]
