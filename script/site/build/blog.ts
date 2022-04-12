@@ -3,7 +3,6 @@ import path from "node:path";
 import { BaseURL, DestinationBlogDir } from "../util/definition";
 import { Post } from "../util/post";
 import { renderBlogIndex, renderBlogPost } from "../html/blog";
-import { renderSlide } from "../html/slide";
 import { writeFile } from "node:fs/promises";
 
 export const buildBlog = async (blogPosts: Post[]): Promise<void> => {

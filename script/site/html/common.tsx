@@ -46,7 +46,7 @@ export const renderHeadTag = (args: HeadArgs): React.ReactElement => {
         href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Roboto+Mono&display=swap"
         rel="stylesheet"
       />
-      <link rel="stylesheet" href="/assets/css/base.css" />
+      <link rel="stylesheet" href="/assets/css/article.css" />
 
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="black" />
