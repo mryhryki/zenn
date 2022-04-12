@@ -65,10 +65,13 @@
     document.addEventListener('DOMContentLoaded', () => {
       const Links = JSON.parse(document.getElementById("links-data").textContent)
       const List = document.getElementById("links-list")
+
       const KeywordInput = document.getElementById("keyword-input")
+      KeywordInput.value = sessionStorage.getItem("keyword") || ""
 
       const refresh = () => {
         const keyword = KeywordInput.value
+        sessionStorage.setItem("keyword", keyword)
         const keywords = normalize(keyword).split(new RegExp("[ 　\t]+")).filter((text) => text !== "")
 
         List.innerHTML = ""
