@@ -27,7 +27,8 @@
     }
 
     li {
-      margin-top: 0.5rem;
+      border-radius: 0.25rem;
+      padding: 4px 8px;
     }
 
     input {
@@ -36,9 +37,21 @@
       font-size: 1rem;
       line-height: 1.5rem;
       max-width: 100%;
-      width: 24rem;
       padding: 0.25rem 0.5rem;
       vertical-align: middle;
+      width: 24rem;
+    }
+
+    #links-list > li:first-child > ul > li:first-child {
+      background: #444;
+    }
+
+    #links-list > li:first-child > ul > li:first-child:after {
+      content: "⌘ + Enter";
+      font-size: 12px;
+      display: inline-block;
+      margin: 0 1rem;
+      color: #999;
     }
   </style>
 </head>
@@ -51,9 +64,9 @@
   </ul>
   <script>
     const createElement = (tagName, props = {}, children = []) => {
-      const element = document.createElement(tagName)
-      Object.entries(props).forEach(([key, val]) => element[key] = val)
-      children.forEach((child) => element.appendChild(child))
+      const element = document.createElement(tagName);
+      Object.entries(props).forEach(([key, val]) => element[key] = val);
+      children.forEach((child) => element.appendChild(child));
       return element
     }
 
@@ -63,31 +76,31 @@
       .replace(/[\u30A1-\u30FA]/g, (ch) => String.fromCharCode(ch.charCodeAt(0) - 0x60)); // カタカナ -> ひらがな
 
     document.addEventListener('DOMContentLoaded', () => {
-      const Links = JSON.parse(document.getElementById("links-data").textContent)
-      const List = document.getElementById("links-list")
+      const Links = JSON.parse(document.getElementById("links-data").textContent);
+      const List = document.getElementById("links-list");
 
-      const KeywordInput = document.getElementById("keyword-input")
-      KeywordInput.value = sessionStorage.getItem("keyword") || ""
+      const KeywordInput = document.getElementById("keyword-input");
+      KeywordInput.value = sessionStorage.getItem("keyword") || "";
 
       const refresh = () => {
-        const keyword = KeywordInput.value
-        sessionStorage.setItem("keyword", keyword)
-        const keywords = normalize(keyword).split(new RegExp("[ 　\t]+")).filter((text) => text !== "")
+        const keyword = KeywordInput.value;
+        sessionStorage.setItem("keyword", keyword);
+        const keywords = normalize(keyword).split(new RegExp("[ 　\t]+")).filter((text) => text !== "");
 
-        List.innerHTML = ""
+        List.innerHTML = "";
         const links = keywords.length === 0 ? Links : Links
           .map(({title, links}) => {
             const filteredLinks = links.filter(({title, url}) => {
-              const text = (`${normalize(title)}\r\n${normalize(decodeURI(url))}`)
-              return keywords.every((keyword) => text.includes(keyword))
+              const text = (`${normalize(title)}\r\n${normalize(decodeURI(url))}`);
+              return keywords.every((keyword) => text.includes(keyword));
             })
-            return {title, links: filteredLinks}
+            return {title, links: filteredLinks};
           })
-          .filter(({links}) => links.length > 0)
+          .filter(({links}) => links.length > 0);
 
         if (links.length === 0) {
-          List.appendChild(createElement("li", {innerHTML: "(No Link)"}))
-          return
+          List.appendChild(createElement("li", {innerHTML: "(No Link)"}));
+          return;
         }
 
         links.forEach(({title, links}) => {
@@ -95,15 +108,22 @@
             createElement("li", {}, [
               createElement("a", {href: url, innerText: title})
             ])
-          ))
-          const categoryItem = createElement("li", {}, [createElement("span", {innerText: title}), ul])
-          List.appendChild(categoryItem)
-        })
+          ));
+          const categoryItem = createElement("li", {}, [createElement("span", {innerText: title}), ul]);
+          List.appendChild(categoryItem);
+        });
       }
 
-      refresh("")
-      KeywordInput.addEventListener("keyup", refresh)
+      refresh("");
+      KeywordInput.addEventListener("keyup", refresh);
     });
+
+    window.addEventListener("keydown", (event) => {
+      if (!event.metaKey || event.key !== "Enter") return;
+      const firstAnchorElement = document.querySelector("#links-list > li > ul > li > a");
+      if (firstAnchorElement == null) return;
+      firstAnchorElement.click();
+    })
   </script>
   <script id="links-data" type="application/json">
     [
@@ -111,12 +131,12 @@
         "title": "Favorite",
         "links": [
           {
-            "title": "Gmail",
-            "url": "https://mail.google.com/?authuser=mryhryki%40gmail.com"
-          },
-          {
             "title": "Daily Record",
             "url": "https://mryhryki.com/api/daily_record/today?type=edit"
+          },
+          {
+            "title": "Gmail",
+            "url": "https://mail.google.com/?authuser=mryhryki%40gmail.com"
           },
           {
             "title": "New Memo",
