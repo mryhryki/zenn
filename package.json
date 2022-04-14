@@ -15,8 +15,6 @@
     "lint": "mryhryki-lint",
     "lint:fix": "mryhryki-lint-fix",
     "preview": "http-server site/ --port 58125 -o",
-    "textlint": "textlint ./**/*.md",
-    "textlint:fix": "textlint --fix ./**/*.md",
     "update": "aws s3 sync site/ s3://mryhryki-cdn/contents/ --exclude='.DS_Store' --size-only"
   },
   "dependencies": {
@@ -35,9 +33,6 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "rss": "^1.2.2",
-    "textlint": "^12.1.1",
-    "textlint-rule-no-todo": "^2.0.1",
-    "textlint-rule-preset-ja-technical-writing": "^7.0.0",
     "zenn-cli": "^0.1.108"
   }
 }
