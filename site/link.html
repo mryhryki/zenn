@@ -42,12 +42,12 @@
       width: 24rem;
     }
 
-    #links-list > li:first-child > ul > li:first-child {
+    #links-list.shortcut > li:first-child > ul > li:first-child {
       background: #444;
     }
 
-    #links-list > li:first-child > ul > li:first-child:after {
-      content: "⌘ + Enter";
+    #links-list.shortcut > li:first-child > ul > li:first-child:after {
+      content: 'Open when press "Enter"';
       font-size: 12px;
       display: inline-block;
       margin: 0 1rem;
@@ -58,7 +58,7 @@
 <body class="dark-theme">
   <h1>mryhryki's links</h1>
   <p style="text-align: center;">
-    <input id="keyword-input" type="text" placeholder="Keyword" autofocus/>
+    <input id="keyword-input" class="shortcut" type="text" placeholder="Keyword" />
   </p>
   <ul id="links-list">
   </ul>
@@ -81,6 +81,16 @@
 
       const KeywordInput = document.getElementById("keyword-input");
       KeywordInput.value = sessionStorage.getItem("keyword") || "";
+
+      KeywordInput.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter") return;
+        const firstAnchorElement = document.querySelector("#links-list > li > ul > li > a");
+        if (firstAnchorElement == null) return;
+        firstAnchorElement.click();
+      })
+      KeywordInput.addEventListener("blur", () => List.classList.remove("shortcut"));
+      KeywordInput.addEventListener("focus", () => List.classList.add("shortcut"));
+      KeywordInput.focus();
 
       const refresh = () => {
         const keyword = KeywordInput.value;
@@ -117,13 +127,6 @@
       refresh("");
       KeywordInput.addEventListener("keyup", refresh);
     });
-
-    window.addEventListener("keydown", (event) => {
-      if (!event.metaKey || event.key !== "Enter") return;
-      const firstAnchorElement = document.querySelector("#links-list > li > ul > li > a");
-      if (firstAnchorElement == null) return;
-      firstAnchorElement.click();
-    })
   </script>
   <script id="links-data" type="application/json">
     [
@@ -273,6 +276,10 @@
           {
             "title": "Notion",
             "url": "https://www.notion.so/mryhryki"
+          },
+          {
+            "title": "DeepL",
+            "url": "https://www.deepl.com/translator"
           },
           {
             "title": "tenki.jp (Weather)",
