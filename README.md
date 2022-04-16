@@ -8,10 +8,13 @@
   - `site/`
 - [Zenn](https://zenn.dev/mryhryki) の記事データ ([公式ドキュメント](https://zenn.dev/zenn/articles/connect-to-github))
   - `articles/`
-- [ブログデータ](https://mryhryki.com/blog/)
+- [ブログ](https://mryhryki.com/blog/)
   - `articles/` (Zenn の投稿をこちらでも公開）
-  - `backup/` (過去の投稿記事のバックアップをこちらでも公開）
-  - `blog/`
+  - `posts/blog/`
+- [スライド](https://mryhryki.com/slide/)
+  - `posts/slide/`
+- [読了記録](https://mryhryki.com/reading_log/)
+  - `posts/reading_log/`
 
 ## Setup
 
@@ -22,10 +25,20 @@ $ npm install
 
 ## ポートフォリオサイト
 
+### 開発・執筆
+
+```bash
+# `npm run build:watch` と `npm run preview` が同時に立ち上がる
+$ npm run dev
+```
+
 ### サイトデータのビルド
 
 ```bash
 $ npm run build
+
+# 変更監視
+$ npm run build:watch
 ```
 
 ### プレビュー
