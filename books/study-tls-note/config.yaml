@@ -1,0 +1,21 @@
+title: "TLS1.3学習ノート"
+summary: "TLS1.3を学習した時のノートです。個人用ですが誰かの役に立つかもと思って公開しているので無料にしています。"
+topics: ["TLS"]
+published: false
+price: 0 # 有料の場合200〜5000
+# 本に含めるチャプターを順番に並べましょう
+chapters:
+  - 010-introduction
+  - 050-what-is-tls
+  - 100-tls1_3-summary
+  - 150-before-tls1_2
+  - 200-tls-handshake
+  - 250-random-number
+  - 300-common-key-cryptosystem
+  - 350-public-key-cryptography
+  - 400-public-key-infrastructure
+  - 450-tls-with-http
+
+# [MEMO]
+# - ゼロからわかる SSL/TLS の解説を試みる - Qiita https://qiita.com/RyomaTaniyama/items/37d36a634a48516afc85#%E6%94%B9%E7%AB%84%E6%A4%9C%E7%9F%A5
+#
