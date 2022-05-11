@@ -9,15 +9,12 @@ on:
     types: [build]
   workflow_dispatch:
     inputs:
-      url:
-        required: true
-        description: URL
       title:
         required: true
         description: Title
-      memo:
-        required: false
-        description: Memo (Optional)
+      body:
+        required: true
+        description: Body
 
 jobs:
   add_reading_log:
