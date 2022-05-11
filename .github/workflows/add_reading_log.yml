@@ -5,6 +5,8 @@ env:
   ACTIONS_STEP_DEBUG: "true"
 
 on:
+  repository_dispatch:
+    types: [build]
   workflow_dispatch:
     inputs:
       url:
