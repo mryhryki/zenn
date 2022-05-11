@@ -5,16 +5,14 @@ env:
   ACTIONS_STEP_DEBUG: "true"
 
 on:
-  repository_dispatch:
-    types: [build]
   workflow_dispatch:
     inputs:
       title:
         required: true
         description: Title
-      body:
+      text:
         required: true
-        description: Body
+        description: Text
 
 jobs:
   add_reading_log:
@@ -29,6 +27,5 @@ jobs:
         run: bash ./script/reading_log/add_reading_log.sh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          LOG_URL: ${{ github.event.inputs.url }}
+          LOG_TEXT: ${{ github.event.inputs.text }}
           LOG_TITLE: ${{ github.event.inputs.title }}
-          LOG_MEMO: ${{ github.event.inputs.memo }}

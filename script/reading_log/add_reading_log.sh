@@ -6,8 +6,7 @@ READING_LOG_ID="$(date +"%Y%m%d-%H%M%S")"
 BRANCH_NAME="reading_log/${READING_LOG_ID}"
 
 TITLE="${LOG_TITLE:-"${READING_LOG_ID}"}"
-URL="${LOG_URL:-"(TODO: URL)"}"
-MEMO="${LOG_MEMO:-"(TODO: MEMO)"}"
+TEXT="$(printf "${LOG_TEXT:-"(TODO: TEXT)"}")"
 PR_TITLE="[Reading Log] ${TITLE}"
 
 echo "LOG_ID: ${READING_LOG_ID}"
@@ -18,9 +17,7 @@ cat << EOS > "${REPOSITORY_ROOT}/posts/reading_log/${READING_LOG_ID}.md"
 title: ${TITLE}
 ---
 
-${URL}
-
-${MEMO}
+${TEXT}
 
 EOS
 
