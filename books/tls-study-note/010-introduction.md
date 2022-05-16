@@ -8,5 +8,8 @@ title: "はじめに"
 
 個人の学習目的ですが、公開することで学習のモチベーションを高め、また誰かの役に立つかもと思い公開しています。
 
-「[徹底解剖 TLS 1.3](https://www.seshop.com/product/detail/24829)」(ISBN: 978-4-7981-7141-8) をベースに学習しています。
+以下の書籍をベースに学習しています。
+
+- [プロフェッショナルSSL/TLS](https://www.lambdanote.com/products/tls) (ISBN: 978-4-908686-00-9)
+- [徹底解剖 TLS 1.3](https://www.seshop.com/product/detail/24829) (ISBN: 978-4-7981-7141-8)
 
