@@ -6,7 +6,7 @@ READING_LOG_ID="$(date +"%Y%m%d-%H%M%S")"
 BRANCH_NAME="reading_log/${READING_LOG_ID}"
 
 TITLE="${LOG_TITLE:-"${READING_LOG_ID}"}"
-TEXT="$(printf "${LOG_TEXT:-"(TODO: TEXT)"}")"
+TEXT="$(printf '%s' "${LOG_TEXT:-"(TODO: TEXT)"}")"
 PR_TITLE="[Reading Log] ${TITLE}"
 
 echo "LOG_ID: ${READING_LOG_ID}"
