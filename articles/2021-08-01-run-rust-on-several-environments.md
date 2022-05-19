@@ -431,7 +431,7 @@ $ aws lambda create-function --function-name gen_rand \
 更新する場合はこちら。
 
 ```bash
-$aws lambda update-function-code --function-name gen_rand \
+$ aws lambda update-function-code --function-name gen_rand \
    --zip-file "fileb://./lambda.zip"
 ```
 

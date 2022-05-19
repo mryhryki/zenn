@@ -12,6 +12,7 @@ export const renderBlogPost = (post: Post): string =>
         title: post.title,
         description: "Web技術や個人的なメモなどを投稿しています。",
         canonical: post.canonical,
+        useSyntaxHighlight: true,
       })}
       <body className="wrapper dark-theme">
         <h1>{post.title}</h1>

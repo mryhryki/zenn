@@ -12,10 +12,11 @@ interface HeadArgs {
   title: string;
   description: string;
   canonical?: string | null;
+  useSyntaxHighlight?: boolean;
 }
 
 export const renderHeadTag = (args: HeadArgs): React.ReactElement => {
-  const { url, siteName, title, description, canonical } = args;
+  const { url, siteName, title, description, canonical, useSyntaxHighlight } = args;
   return (
     <head>
       <meta charSet="UTF-8" />
@@ -47,6 +48,7 @@ export const renderHeadTag = (args: HeadArgs): React.ReactElement => {
         rel="stylesheet"
       />
       <link rel="stylesheet" href="/assets/css/article.css" />
+      {useSyntaxHighlight && <link rel="stylesheet" href="/assets/css/highlightjs.css" />}
 
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="black" />
