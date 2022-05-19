@@ -42,11 +42,6 @@ export const renderHeadTag = (args: HeadArgs): React.ReactElement => {
       <meta name="twitter:image" content="https://mryhryki.com/assets/image/share_image.jpg" />
       <meta name="twitter:site" content="@mryhryki" />
 
-      <link rel="preconnect" href="https://fonts.gstatic.com" />
-      <link
-        href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Roboto+Mono&display=swap"
-        rel="stylesheet"
-      />
       <link rel="stylesheet" href="/assets/css/article.css" />
       {useSyntaxHighlight && <link rel="stylesheet" href="/assets/css/highlightjs.css" />}
 
