@@ -21,6 +21,7 @@ const DateTimeFormat = new RegExp(
 export interface Post {
   type: PostType;
   url: string;
+  relativeUrl: string;
   id: string;
   title: string;
   markdown: string;
@@ -29,12 +30,12 @@ export interface Post {
   canonical?: string | null;
 }
 
-type PostType = "blog" | "slide" | "reading_log" | "zenn";
+type PostType = "article" | "slide" | "reading_log" | "zenn";
 const getPostType = (filePath: string): PostType => {
   if (filePath.includes("/articles/")) {
     return "zenn";
-  } else if (filePath.includes("/posts/blog/")) {
-    return "blog";
+  } else if (filePath.includes("/posts/article/")) {
+    return "article";
   } else if (filePath.includes("/posts/slide/")) {
     return "slide";
   } else if (filePath.includes("/posts/reading_log/")) {
@@ -75,6 +76,7 @@ const getPost = (filePath: string, frontMatter: Record<string, string>, markdown
   const post: Post = {
     type,
     url: "",
+    relativeUrl: "",
     id,
     title: (frontMatter.title ?? "").trim(),
     markdown,
@@ -83,12 +85,14 @@ const getPost = (filePath: string, frontMatter: Record<string, string>, markdown
     canonical,
   };
 
-  if (type === "blog" || type === "zenn") {
+  if (type === "article" || type === "zenn") {
     post.createdAt = DateTime.parse(`${post.id.substring(0, 10)}T00:00:00+09:00`).toISO();
     post.url = `https://mryhryki.com/blog/${post.id}.html`;
+    post.relativeUrl = `/blog/${post.id}.html`;
   } else if (type === "slide") {
     post.createdAt = DateTime.parse(`${post.id.substring(0, 10)}T00:00:00+09:00`).toISO();
     post.url = `https://mryhryki.com/slide/${post.id}.html`;
+    post.relativeUrl = `/slide/${post.id}.html`;
   } else if (type === "reading_log") {
     post.createdAt = DateTime.parse(
       [
@@ -106,14 +110,15 @@ const getPost = (filePath: string, frontMatter: Record<string, string>, markdown
         "+09:00",
       ].join("")
     ).toISO();
-    post.url = `https://mryhryki.com/reading_log/#${post.id}`;
+    post.url = `https://mryhryki.com/reading_log/${post.id}.html`;
+    post.relativeUrl = `/reading_log/${post.id}.html`;
   }
 
   return post;
 };
 
 export const parsePost = async (filePath: string): Promise<Post> => {
-  const isZenn = filePath.includes("/articles/");
+  const isZenn = filePath.includes("/articles/") && !filePath.includes("/posts/");
 
   const content: string = (await readFile(path.resolve(PostsDir, filePath))).toString("utf-8");
   const lines: string[] = content.split(BreakCharacter);
@@ -143,7 +148,7 @@ export const parsePost = async (filePath: string): Promise<Post> => {
           frontMatter[key] = values.join(":").trim().replace(WrapDoubleQuote, "");
           break;
         default:
-          if (!filePath.includes("/articles/") /* do not error that zenn article */) {
+          if (!isZenn /* do not error that zenn article */) {
             throw new Error(`Unknown key: ${key}`);
           }
       }

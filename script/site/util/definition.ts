@@ -7,7 +7,7 @@ export const PostsDir = path.resolve(RootDir, "posts");
 export const SiteDir = path.resolve(RootDir, "site");
 
 export const SourceArticlesDir = path.resolve(RootDir, "articles");
-export const SourceBlogDir = path.resolve(PostsDir, "blog");
+export const SourceArticleDir = path.resolve(PostsDir, "article");
 export const SourceReadingLogDir = path.resolve(PostsDir, "reading_log");
 export const SourceSlideDir = path.resolve(PostsDir, "slide");
 
