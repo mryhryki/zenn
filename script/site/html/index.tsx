@@ -51,8 +51,8 @@ export const renderBlogIndex = (posts: Post[]): string => {
       <body className="wrapper dark-theme">
         <h1>mryhryki&apos;s blog</h1>
         <p style={{ textAlign: "center" }}>
-          Web技術に関する記事・スライド・読了記録、<a href="https://zenn.dev/mryhryki">Zenn</a>{" "}
-          (+バックアップ)、個人的なメモなど
+          Web技術に関する記事・スライド・<a href="/about/reading_log.html">読了記録</a>、
+          <a href="https://zenn.dev/mryhryki">Zenn</a> (+バックアップ)、個人的なメモなど
         </p>
         <form style={{ textAlign: "center" }}>
           <label style={{ marginRight: "1rem" }}>
