@@ -1,9 +1,3 @@
-// import React from "react";
-// import { Post } from "../util/post";
-// import { convert } from "@mryhryki/markdown";
-// import { renderHeadTag, renderToHtml } from "./common";
-//
-
 import { Post } from "../util/post";
 import { renderHeadTag, renderToHtml } from "./common";
 import { convert } from "@mryhryki/markdown";
