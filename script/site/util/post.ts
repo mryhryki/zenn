@@ -29,12 +29,12 @@ export interface Post {
   canonical?: string | null;
 }
 
-type PostType = "blog" | "slide" | "reading_log" | "zenn";
+type PostType = "article" | "slide" | "reading_log" | "zenn";
 const getPostType = (filePath: string): PostType => {
   if (filePath.includes("/articles/")) {
     return "zenn";
-  } else if (filePath.includes("/posts/blog/")) {
-    return "blog";
+  } else if (filePath.includes("/posts/article/")) {
+    return "article";
   } else if (filePath.includes("/posts/slide/")) {
     return "slide";
   } else if (filePath.includes("/posts/reading_log/")) {
@@ -83,7 +83,7 @@ const getPost = (filePath: string, frontMatter: Record<string, string>, markdown
     canonical,
   };
 
-  if (type === "blog" || type === "zenn") {
+  if (type === "article" || type === "zenn") {
     post.createdAt = DateTime.parse(`${post.id.substring(0, 10)}T00:00:00+09:00`).toISO();
     post.url = `https://mryhryki.com/blog/${post.id}.html`;
   } else if (type === "slide") {
