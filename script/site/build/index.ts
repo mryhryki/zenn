@@ -5,5 +5,8 @@ import { DestinationBlogDir } from "../util/definition";
 import { renderBlogIndex } from "../html/blog";
 
 export const buildIndex = async (posts: Post[]): Promise<void> => {
-  await writeFile(path.resolve(DestinationBlogDir, "index.html"), renderBlogIndex(posts));
+  await Promise.all([
+    writeFile(path.resolve(DestinationBlogDir, "index.html"), renderBlogIndex(posts)),
+    writeFile(path.resolve(DestinationBlogDir, "index.json"), JSON.stringify({ posts }, null, 2)),
+  ]);
 };

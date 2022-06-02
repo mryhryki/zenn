@@ -10,7 +10,7 @@ export const renderBlogPost = (post: Post): string =>
         url: post.url,
         siteName: "mryhryki's blog",
         title: post.title,
-        description: "Web技術や個人的なメモなどを投稿しています。",
+        description: "Web技術に関する記事・スライド・読了記録、個人的なメモなど",
         canonical: post.canonical,
         useSyntaxHighlight: true,
       })}
@@ -66,20 +66,19 @@ export const renderBlogIndex = (posts: Post[]): string =>
         url: "https://mryhryki.com/blog/",
         siteName: "mryhryki's blog",
         title: "mryhryki's blog",
-        description: "Web技術や個人的なメモなどを投稿しています。",
+        description: "Web技術に関する記事・スライド・読了記録、個人的なメモなど",
       })}
       <body className="wrapper dark-theme">
         <h1>mryhryki&apos;s blog</h1>
-        <p style={{ textAlign: "center" }}>Web技術や個人的なメモなどを投稿しています。</p>
-        <p style={{ textAlign: "center" }}>※「View on XXX」とある記事は、他の媒体に投稿した内容のバックアップです。</p>
+        <p style={{ textAlign: "center" }}>Web技術に関する記事・スライド・読了記録、個人的なメモなど</p>
 
-        {posts.map(({ id, title, createdAt, canonical }, index) => (
+        {posts.map(({ id, title, relativeUrl, createdAt, canonical }, index) => (
           <React.Fragment key={index}>
             {(index === 0 || createdAt.substring(0, 7) !== posts[index - 1].createdAt.substring(0, 7)) && (
               <h2>{createdAt.substring(0, 7)}</h2>
             )}
             <p>
-              <a href={`/blog/${id}.html`}>{title}</a>
+              <a href={relativeUrl}>{title}</a>
               <br />
               <span style={{ fontSize: "12px" }}>&#x1f4dd;{createdAt.substring(0, 10)}</span>
               {canonical != null && (
