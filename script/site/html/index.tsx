@@ -52,7 +52,7 @@ export const renderBlogIndex = (posts: Post[]): string => {
         <h1>mryhryki&apos;s blog</h1>
         <p style={{ textAlign: "center" }}>
           Web技術に関する記事・スライド・<a href="/about/reading_log.html">読了記録</a>、
-          <a href="https://zenn.dev/mryhryki">Zenn</a> (+バックアップ)、個人的なメモなど
+          <a href="https://zenn.dev/mryhryki">Zennのバックアップ</a>、個人的なメモなど
         </p>
         <form style={{ textAlign: "center" }}>
           <label style={{ marginRight: "1rem" }}>
