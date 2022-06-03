@@ -2,15 +2,16 @@ import { Post } from "../util/post";
 import { renderHeadTag, renderToHtml } from "./common";
 import React from "react";
 
-const getEmoji = (post: Post): string => {
+const getTitlePrefix = (post: Post): string => {
   switch (post.type) {
     case "article":
+      return "[📝 記事] ";
     case "zenn":
-      return "📝";
+      return "[📝 Zenn] ";
     case "slide":
-      return "🖥️";
+      return "[🖥️ スライド] ";
     case "reading_log":
-      return "📰";
+      return "[📰 読了記録] ";
     default:
       throw new Error(`Unknown type: ${post.type}`);
   }
@@ -51,7 +52,7 @@ export const renderBlogIndex = (posts: Post[]): string => {
       <body className="wrapper dark-theme">
         <h1>mryhryki&apos;s blog</h1>
         <p style={{ textAlign: "center" }}>
-          Web技術に関する記事・スライド・<a href="/about/reading_log.html">読了記録</a>、
+          Web技術に関する記事・スライド・<a href="/help/reading_log.html">読了記録</a>、
           <a href="https://zenn.dev/mryhryki">Zennのバックアップ</a>、個人的なメモなど
         </p>
         <form style={{ textAlign: "center" }}>
@@ -79,8 +80,8 @@ export const renderBlogIndex = (posts: Post[]): string => {
             <ul>
               {postsPerMonthly[month].map((post) => (
                 <li key={post.id} className={`post-${post.type}`}>
-                  {post.createdAt.substring(0, 10)} {getEmoji(post)}{" "}
-                  <a href={post.relativeUrl}>{post.title.substring(0, 80)}</a>
+                  {post.createdAt.substring(0, 10)} {getTitlePrefix(post)}
+                  <a href={post.relativeUrl}>{post.title}</a>
                 </li>
               ))}
             </ul>
