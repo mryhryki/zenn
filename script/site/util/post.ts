@@ -1,6 +1,13 @@
 import path from "path";
 import { readFile } from "fs/promises";
-import { PostsDir } from "./definition";
+import {
+  BaseURL,
+  PostsDir,
+  SourceArticleDir,
+  SourceScrapDir,
+  SourceSlideDir,
+  SourceZennArticlesDir,
+} from "./definition";
 import { DateTime } from "@mryhryki/datetime";
 
 const BreakCharacter = new RegExp("\r?\n");
@@ -21,7 +28,6 @@ const DateTimeFormat = new RegExp(
 export interface Post {
   type: PostType;
   url: string;
-  relativeUrl: string;
   id: string;
   title: string;
   markdown: string;
@@ -30,16 +36,16 @@ export interface Post {
   canonical?: string | null;
 }
 
-type PostType = "article" | "slide" | "reading_log" | "zenn";
+type PostType = "zenn" | "article" | "slide" | "scrap";
 const getPostType = (filePath: string): PostType => {
-  if (filePath.includes("/articles/")) {
+  if (filePath.startsWith(SourceZennArticlesDir)) {
     return "zenn";
-  } else if (filePath.includes("/posts/article/")) {
+  } else if (filePath.startsWith(SourceArticleDir)) {
     return "article";
-  } else if (filePath.includes("/posts/slide/")) {
+  } else if (filePath.startsWith(SourceSlideDir)) {
     return "slide";
-  } else if (filePath.includes("/posts/reading_log/")) {
-    return "reading_log";
+  } else if (filePath.startsWith(SourceScrapDir)) {
+    return "scrap";
   }
   throw new Error(`Unknown post type: ${filePath}`);
 };
@@ -48,7 +54,7 @@ const checkPost = (post: Post, filePath: string) => {
   if (post.id.trim().length < 3) {
     throw new Error(`ID must be at least 10 characters long: ${filePath}`);
   }
-  if (!post.url.trim().startsWith("https://mryhryki.com/")) {
+  if (!post.url.trim().startsWith(BaseURL)) {
     throw new Error(`URL must be valid URL format[${post.url}]: ${filePath}`);
   }
   if (post.title.trim().length < 5) {
@@ -76,7 +82,6 @@ const getPost = (filePath: string, frontMatter: Record<string, string>, markdown
   const post: Post = {
     type,
     url: "",
-    relativeUrl: "",
     id,
     title: (frontMatter.title ?? "").trim(),
     markdown,
@@ -87,13 +92,11 @@ const getPost = (filePath: string, frontMatter: Record<string, string>, markdown
 
   if (type === "article" || type === "zenn") {
     post.createdAt = DateTime.parse(`${post.id.substring(0, 10)}T00:00:00+09:00`).toISO();
-    post.url = `https://mryhryki.com/blog/${post.id}.html`;
-    post.relativeUrl = `/blog/${post.id}.html`;
+    post.url = `${BaseURL}/blog/${post.id}.html`;
   } else if (type === "slide") {
     post.createdAt = DateTime.parse(`${post.id.substring(0, 10)}T00:00:00+09:00`).toISO();
-    post.url = `https://mryhryki.com/slide/${post.id}.html`;
-    post.relativeUrl = `/slide/${post.id}.html`;
-  } else if (type === "reading_log") {
+    post.url = `${BaseURL}/slide/${post.id}.html`;
+  } else if (type === "scrap") {
     post.createdAt = DateTime.parse(
       [
         post.id.substring(0, 4),
@@ -110,8 +113,7 @@ const getPost = (filePath: string, frontMatter: Record<string, string>, markdown
         "+09:00",
       ].join("")
     ).toISO();
-    post.url = `https://mryhryki.com/reading_log/${post.id}.html`;
-    post.relativeUrl = `/reading_log/${post.id}.html`;
+    post.url = `${BaseURL}/scrap/${post.id}.html`;
   }
 
   return post;

@@ -1,4 +1,4 @@
-name: add_reading_log
+name: add_scrap
 env:
   TZ: "Asia/Tokyo"
   ACTIONS_RUNNER_DEBUG: "true"
@@ -15,7 +15,7 @@ on:
         description: Text
 
 jobs:
-  add_reading_log:
+  add_scrap:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -23,8 +23,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Add reading log
-        run: bash ./script/reading_log/add_reading_log.sh
+      - name: Add scrap
+        run: bash ./script/scrap/add_scrap.sh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LOG_TEXT: ${{ github.event.inputs.text }}
