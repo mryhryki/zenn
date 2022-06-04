@@ -2,17 +2,17 @@
 set -xe
 
 REPOSITORY_ROOT="$(git rev-parse --show-toplevel 2>/dev/null;)"
-READING_LOG_ID="$(date +"%Y%m%d-%H%M%S")"
-BRANCH_NAME="reading_log/${READING_LOG_ID}"
+SCRAP_ID="$(date +"%Y%m%d-%H%M%S")"
+BRANCH_NAME="scrap/${SCRAP_ID}"
 
-TITLE="${LOG_TITLE:-"${READING_LOG_ID}"}"
+TITLE="${LOG_TITLE:-"${SCRAP_ID}"}"
 TEXT="$(printf '%s' "${LOG_TEXT:-"(TODO: TEXT)"}")"
-PR_TITLE="[Reading Log] ${TITLE}"
+PR_TITLE="[SCRAP] ${TITLE}"
 
-echo "LOG_ID: ${READING_LOG_ID}"
+echo "LOG_ID: ${SCRAP_ID}"
 git checkout -b "${BRANCH_NAME}"
 
-cat << EOS > "${REPOSITORY_ROOT}/posts/reading_log/${READING_LOG_ID}.md"
+cat << EOS > "${REPOSITORY_ROOT}/posts/scrap/${SCRAP_ID}.md"
 ---
 title: ${TITLE}
 ---
