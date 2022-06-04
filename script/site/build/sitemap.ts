@@ -9,7 +9,7 @@ export const buildSiteMap = async () => {
   files.forEach((absoluteFilePath) => {
     const file = absoluteFilePath.substring(SiteDir.length);
     if (file.endsWith(".json")) return;
-    if (file.startsWith("/blog/") || file.startsWith("/reading_log/") || file.startsWith("/slide/")) {
+    if (file.startsWith("/blog/") || file.startsWith("/scrap/") || file.startsWith("/slide/")) {
       siteMap.push(`${BaseURL}${file}`.replace(/index.html$/, ""));
     }
   });

@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOMServer from "react-dom/server";
+import { BaseURL } from "../util/definition";
 
 export const renderToHtml = (element: React.ReactElement): string => {
   const html = ReactDOMServer.renderToStaticMarkup(element);
@@ -30,7 +31,7 @@ export const renderHeadTag = (args: HeadArgs): React.ReactElement => {
 
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content="https://mryhryki.com/assets/image/share_image.jpg" />
+      <meta property="og:image" content={`${BaseURL}/assets/image/share_image.jpg`} />
       <meta property="og:url" content={url} />
       <meta property="og:site_name" content={siteName} />
       <meta property="og:locale" content="ja-JP" />
@@ -39,7 +40,7 @@ export const renderHeadTag = (args: HeadArgs): React.ReactElement => {
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content="https://mryhryki.com/assets/image/share_image.jpg" />
+      <meta name="twitter:image" content={`${BaseURL}/assets/image/share_image.jpg`} />
       <meta name="twitter:site" content="@mryhryki" />
 
       <link rel="stylesheet" href="/assets/css/article.css" />

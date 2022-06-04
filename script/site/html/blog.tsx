@@ -2,6 +2,7 @@ import { Post } from "../util/post";
 import { convert } from "@mryhryki/markdown";
 import React from "react";
 import { renderHeadTag, renderToHtml } from "./common";
+import { BaseURL } from "../util/definition";
 
 export const renderBlogPost = (post: Post): string =>
   renderToHtml(
@@ -10,7 +11,7 @@ export const renderBlogPost = (post: Post): string =>
         url: post.url,
         siteName: "mryhryki's blog",
         title: post.title,
-        description: "Web技術に関する記事・スライド・読了記録、個人的なメモなど",
+        description: "Web技術に関する記事・スライド・スクラップ、個人的なメモなど",
         canonical: post.canonical,
         useSyntaxHighlight: true,
       })}
@@ -50,7 +51,7 @@ export const renderBlogPost = (post: Post): string =>
           <a href="/blog/">一覧</a>
           <span>
             © 2021{" "}
-            <a style={{ color: "inherit" }} href="https://mryhryki.com/">
+            <a style={{ color: "inherit" }} href={BaseURL}>
               mryhryki
             </a>
           </span>

@@ -1,17 +1,18 @@
 import { Post } from "../util/post";
 import { renderHeadTag, renderToHtml } from "./common";
 import React from "react";
+import { BaseURL } from "../util/definition";
 
 const getTitlePrefix = (post: Post): string => {
   switch (post.type) {
     case "article":
-      return "[📝 記事] ";
+      return "【記事】";
     case "zenn":
-      return "[📝 Zenn] ";
+      return "【Zenn】";
     case "slide":
-      return "[🖥️ スライド] ";
-    case "reading_log":
-      return "[📰 読了記録] ";
+      return "【スライド】";
+    case "scrap":
+      return "【スクラップ】";
     default:
       throw new Error(`Unknown type: ${post.type}`);
   }
@@ -44,33 +45,33 @@ export const renderBlogIndex = (posts: Post[]): string => {
   return renderToHtml(
     <>
       {renderHeadTag({
-        url: "https://mryhryki.com/blog/",
+        url: `${BaseURL}/blog/`,
         siteName: "mryhryki's blog",
         title: "mryhryki's blog",
-        description: "Web技術に関する記事・スライド・読了記録、Zennのバックアップ、個人的なメモなど",
+        description: "Web技術に関する記事・スライド・スクラップ、Zennのバックアップ、個人的なメモなど",
       })}
       <body className="wrapper dark-theme">
         <h1>mryhryki&apos;s blog</h1>
         <p style={{ textAlign: "center" }}>
-          Web技術に関する記事・スライド・<a href="/help/reading_log.html">読了記録</a>、
+          Web技術に関する記事・スライド・スクラップ（読んだ記事の記録）、
           <a href="https://zenn.dev/mryhryki">Zennのバックアップ</a>、個人的なメモなど
         </p>
         <form style={{ textAlign: "center" }}>
           <label style={{ marginRight: "1rem" }}>
-            <input type="checkbox" id="post-article" className="checkbox-shown" checked />
+            <input type="checkbox" id="post-article" className="checkbox-shown" defaultChecked />
             記事
           </label>
           <label style={{ marginRight: "1rem" }}>
-            <input type="checkbox" id="post-zenn" className="checkbox-shown" checked />
+            <input type="checkbox" id="post-zenn" className="checkbox-shown" defaultChecked />
             Zenn
           </label>
           <label style={{ marginRight: "1rem" }}>
-            <input type="checkbox" id="post-slide" className="checkbox-shown" checked />
+            <input type="checkbox" id="post-slide" className="checkbox-shown" defaultChecked />
             スライド
           </label>
           <label style={{ marginRight: "1rem" }}>
-            <input type="checkbox" id="post-reading_log" className="checkbox-shown" checked />
-            読了記録
+            <input type="checkbox" id="post-scrap" className="checkbox-shown" defaultChecked />
+            スクラップ
           </label>
         </form>
 
@@ -80,8 +81,11 @@ export const renderBlogIndex = (posts: Post[]): string => {
             <ul>
               {postsPerMonthly[month].map((post) => (
                 <li key={post.id} className={`post-${post.type}`}>
-                  {post.createdAt.substring(0, 10)} {getTitlePrefix(post)}
-                  <a href={post.relativeUrl}>{post.title}</a>
+                  {post.createdAt.substring(0, 10)}{" "}
+                  <a href={post.url.replace(BaseURL, "")}>
+                    {getTitlePrefix(post)}
+                    {post.title}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -92,7 +96,7 @@ export const renderBlogIndex = (posts: Post[]): string => {
           <a href="/blog/">一覧</a>
           <span>
             © 2021{" "}
-            <a style={{ color: "inherit" }} href="https://mryhryki.com/">
+            <a style={{ color: "inherit" }} href={BaseURL}>
               mryhryki
             </a>
           </span>
