@@ -6,15 +6,17 @@
     "node": "16.x"
   },
   "scripts": {
-    "dev": "run-p 'build:watch' 'preview'",
-    "zenn": "open http://localhost:58125/ && zenn preview --port 58125",
     "build": "esbuild --platform=node --external:node:* --bundle script/site/build.ts | node",
     "build:watch": "nodemon --watch posts/ --watch script/ --ext md,ts,tsx --exec 'npm run build'",
+    "setup": "npx playwright install",
+    "dev": "run-p 'build:watch' 'preview'",
     "generate:holidays": "esbuild --platform=node --external:node:* --bundle ./script/data/generate_holidays.ts | node",
     "lint": "mryhryki-lint",
     "lint:fix": "mryhryki-lint-fix",
-    "preview": "http-server site/ --port 58125 -o",
-    "update": "aws s3 sync site/ s3://mryhryki-cdn/contents/ --exclude='.DS_Store' --size-only"
+    "preview": "http-server site/ --port 58125",
+    "test": "npx playwright test --config test/playwright.config.ts",
+    "update": "aws s3 sync site/ s3://mryhryki-cdn/contents/ --exclude='.DS_Store' --size-only",
+    "zenn": "open http://localhost:58125/ && zenn preview --port 58125"
   },
   "dependencies": {
     "@mryhryki/datetime": "^0.0.6",

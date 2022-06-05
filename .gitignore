@@ -5,6 +5,4 @@ site/slide/**
 site/scrap/**
 site/sitemap.txt
 .temp.js
-/test-results/
-/playwright-report/
-/playwright/.cache/
+/test/output/**
