@@ -2,23 +2,19 @@
 
 [Moriya Hiroyuki (ID: mryhryki)](https://github.com/mryhryki) のポートフォリオ関連のソースコードです。
 
-主に以下のコードを管理しています。
+主に以下のデータを管理しています。
 
-- [ポートフォリオサイト](https://mryhryki.com/)
+- [ポートフォリオサイト](https://mryhryki.com/) の静的リソース
   - `site/`
-- [Zenn](https://zenn.dev/mryhryki) の記事データ ([公式ドキュメント](https://zenn.dev/zenn/articles/connect-to-github))
+- [ブログ](https://mryhryki.com/blog/) のデータ（記事・スライド・スクラップ）
+  - `posts/`
+- [Zenn](https://zenn.dev/mryhryki) のデータ ([公式ドキュメント](https://zenn.dev/zenn/articles/connect-to-github))
   - `articles/`
-- [ブログ](https://mryhryki.com/blog/)
-  - `articles/` (Zenn の投稿をこちらでも公開）
-  - `posts/blog/`
-- [スライド](https://mryhryki.com/slide/)
-  - `posts/slide/`
-- [読了記録](https://mryhryki.com/reading_log/)
-  - `posts/reading_log/`
+  - `books/`
 
 ## Setup
 
-```bash
+```shell
 # 依存パッケージのダウンロード
 $ npm install
 ```
@@ -27,14 +23,14 @@ $ npm install
 
 ### 開発・執筆
 
-```bash
+```shell
 # `npm run build:watch` と `npm run preview` が同時に立ち上がる
 $ npm run dev
 ```
 
 ### サイトデータのビルド
 
-```bash
+```shell
 $ npm run build
 
 # 変更監視
@@ -43,28 +39,20 @@ $ npm run build:watch
 
 ### プレビュー
 
-```bash
+```shell
 $ npm run preview
 ```
 
 ### 更新
 
-```bash
+```shell
 $ npm run update
 ```
 
-
 ## Zenn
 
-[article/](./articles) ディレクトリは以下に記事データを管理しています。
-`main` ブランチと同期しています。
+### ローカルでのプレビュー
 
-### ローカルでの執筆のCLIサンプル。
-
-```bash
-# 記事の追加
-$ npm run article:add
-
-# ブラウザでのプレビュー
+```shell
 $ npm run article:preview
 ```
