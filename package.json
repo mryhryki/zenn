@@ -7,8 +7,7 @@
   },
   "scripts": {
     "dev": "run-p 'build:watch' 'preview'",
-    "article:add": "zenn new:article --slug \"$(date +%Y-%m-%d)-$(openssl rand -hex 3)\"",
-    "article:preview": "open http://localhost:58125/ && zenn preview --port 58125",
+    "zenn": "open http://localhost:58125/ && zenn preview --port 58125",
     "build": "esbuild --platform=node --external:node:* --bundle script/site/build.ts | node",
     "build:watch": "nodemon --watch posts/ --watch script/ --ext md,ts,tsx --exec 'npm run build'",
     "generate:holidays": "esbuild --platform=node --external:node:* --bundle ./script/data/generate_holidays.ts | node",
