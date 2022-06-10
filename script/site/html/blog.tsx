@@ -1,7 +1,7 @@
 import { Post } from "../util/post";
 import { convert } from "@mryhryki/markdown";
 import React from "react";
-import { renderHeadTag, renderToHtml } from "./common";
+import { renderGiscus, renderHeadTag, renderToHtml } from "./common";
 import { BaseURL } from "../util/definition";
 
 export const renderBlogPost = (post: Post): string =>
@@ -31,22 +31,7 @@ export const renderBlogPost = (post: Post): string =>
           </p>
         )}
         <div dangerouslySetInnerHTML={{ __html: convert(post.markdown).html }} />
-        <script
-          src="https://giscus.app/client.js"
-          data-repo="mryhryki/portfolio"
-          data-repo-id="MDEwOlJlcG9zaXRvcnkxMTU5NzU1NjM="
-          data-category="Announcements"
-          data-category-id="DIC_kwDOBumli84COoZK"
-          data-mapping="pathname"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="bottom"
-          data-theme="dark_dimmed"
-          data-lang="ja"
-          data-loading="lazy"
-          crossOrigin="anonymous"
-          async
-        ></script>
+        {renderGiscus()}
         <footer>
           <a href="/blog/">一覧</a>
           <span>
