@@ -31,9 +31,8 @@ export const renderBlogPost = (post: Post): string =>
           </p>
         )}
         <div dangerouslySetInnerHTML={{ __html: convert(post.markdown).html }} />
-        {renderGiscus()}
         <footer>
-          <a href="/blog/">一覧</a>
+          <a href="/blog/">一覧</a>{" "}
           <span>
             © 2021{" "}
             <a style={{ color: "inherit" }} href={BaseURL}>
@@ -41,6 +40,7 @@ export const renderBlogPost = (post: Post): string =>
             </a>
           </span>
         </footer>
+        {renderGiscus()}
       </body>
     </>
   );

@@ -31,16 +31,20 @@ export const renderScrap = (post: Post): string =>
           </p>
         )}
         <div dangerouslySetInnerHTML={{ __html: convert(post.markdown).html }} />
-        {renderGiscus()}
         <footer>
           <a href="/blog/">一覧</a>
           <span>
-            © 2021{" "}
+            {" © 2021 "}
             <a style={{ color: "inherit" }} href={BaseURL}>
               mryhryki
             </a>
           </span>
         </footer>
+        <div style={{textAlign: "right"}}>
+          <button data-copytext={`### ${post.title}\n\n${post.markdown}`}>Copy Markdown</button>
+        </div>
+        <script src="/assets/script/copy_to_clipboard.js" />
+        {renderGiscus()}
       </body>
     </>
   );

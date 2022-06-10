@@ -102,7 +102,7 @@ body, header, footer, div, span, p, a, button, hr, h1, h2, h3, h4, h5, h6, em, s
 
 footer {
   text-align: center;
-  margin: 48px 0 16px 0;
+  margin: 48px 0 48px 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
