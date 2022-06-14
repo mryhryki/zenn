@@ -14,3 +14,18 @@ updates:
   - mryhryki
   labels:
   - dependencies
+
+- package-ecosystem: github-actions
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "10:00"
+    timezone: Asia/Tokyo
+  target-branch: main
+  reviewers:
+    - mryhryki
+  assignees:
+    - mryhryki
+  labels:
+    - dependencies
+
