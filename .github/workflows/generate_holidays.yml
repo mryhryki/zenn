@@ -25,7 +25,7 @@ jobs:
           npm i -g npm
           npm run generate:holidays
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v4
         with:
           title: "Generate holidays.json"
           commit-message: "Generate holidays.json"
