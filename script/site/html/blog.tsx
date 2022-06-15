@@ -1,20 +1,50 @@
 import { Post } from "../util/post";
 import { convert } from "@mryhryki/markdown";
 import React from "react";
-import { renderGiscus, renderHeadTag, renderToHtml } from "./common";
+import { renderGiscus, renderToHtml } from "./common";
 import { BaseURL } from "../util/definition";
 
-export const renderBlogPost = (post: Post): string =>
-  renderToHtml(
+export const renderBlogPost = (post: Post): string => {
+  const { title } = post;
+  const siteName = "mryhryki's blog";
+  const description = "web技術に関する記事・スライド・スクラップ、個人的なメモなど";
+
+  return renderToHtml(
     <>
-      {renderHeadTag({
-        url: post.url,
-        siteName: "mryhryki's blog",
-        title: post.title,
-        description: "Web技術に関する記事・スライド・スクラップ、個人的なメモなど",
-        canonical: post.canonical,
-        useSyntaxHighlight: true,
-      })}
+      <head>
+        <meta charSet="UTF-8" />
+        <base target="_blank" />
+        <title>{title}</title>
+        <meta content={title} name="title" />
+        <meta content={description} name="description" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/assets/image/icon_192x192.png" type="image/png" />
+
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={`${BaseURL}/assets/image/share_image.jpg`} />
+        <meta property="og:url" content={post.url} />
+        <meta property="og:site_name" content={siteName} />
+        <meta property="og:locale" content="ja-JP" />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={`${BaseURL}/assets/image/share_image.jpg`} />
+        <meta name="twitter:site" content="@mryhryki" />
+
+        <link rel="stylesheet" href="/assets/css/base.css" />
+        <link rel="stylesheet" href="/assets/css/highlightjs.css" />
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="apple-mobile-web-app-title" content={title} />
+        <link rel="apple-touch-icon" type="image/png" href="./assets/image/icon_180x180.png" />
+
+        {post.canonical != null && <link rel="canonical" href={post.canonical} />}
+      </head>
       <body className="wrapper dark-theme">
         <h1>{post.title}</h1>
         {post.canonical != null && (
@@ -44,3 +74,4 @@ export const renderBlogPost = (post: Post): string =>
       </body>
     </>
   );
+};

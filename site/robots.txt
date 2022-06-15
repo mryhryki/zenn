@@ -1,7 +1,6 @@
 User-agent: *
-Disallow: /api/
-Disallow: /view/
-Disallow: /link.html
-Disallow: /bousai.html
-Allow: /assets/image/
+Disallow: /
 Allow: /blog/
+Allow: /scrap/
+Allow: /slide/
+Sitemap: https://mryhryki.com/sitemap.txt

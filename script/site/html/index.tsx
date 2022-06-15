@@ -1,5 +1,5 @@
 import { Post } from "../util/post";
-import { renderHeadTag, renderToHtml } from "./common";
+import { renderToHtml } from "./common";
 import React from "react";
 import { BaseURL } from "../util/definition";
 
@@ -20,7 +20,6 @@ const getTitlePrefix = (post: Post): string => {
 
 export const renderBlogIndex = (posts: Post[]): string => {
   const postsPerMonthly: { [month: string]: Post[] } = {};
-
   posts.forEach((post) => {
     const yearMonth = post.createdAt.substring(0, 7);
     postsPerMonthly[yearMonth] = postsPerMonthly[yearMonth] ?? [];
@@ -42,16 +41,44 @@ export const renderBlogIndex = (posts: Post[]): string => {
     });
   `;
 
+  const title = "mryhryki's blog";
+  const description = "Web技術に関する記事・スライド・スクラップ、Zennのバックアップ、個人的なメモなど";
+
   return renderToHtml(
     <>
-      {renderHeadTag({
-        url: `${BaseURL}/blog/`,
-        siteName: "mryhryki's blog",
-        title: "mryhryki's blog",
-        description: "Web技術に関する記事・スライド・スクラップ、Zennのバックアップ、個人的なメモなど",
-      })}
+      <head>
+        <meta charSet="UTF-8" />
+        <base target="_blank" />
+        <title>{title}</title>
+        <meta content={title} name="title" />
+        <meta content={description} name="description" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/assets/image/icon_192x192.png" type="image/png" />
+
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={`${BaseURL}/assets/image/share_image.jpg`} />
+        <meta property="og:url" content={`${BaseURL}/blog/`} />
+        <meta property="og:site_name" content="mryhryki's blog" />
+        <meta property="og:locale" content="ja-JP" />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={`${BaseURL}/assets/image/share_image.jpg`} />
+        <meta name="twitter:site" content="@mryhryki" />
+
+        <link rel="stylesheet" href="/assets/css/base.css" />
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="apple-mobile-web-app-title" content={title} />
+        <link rel="apple-touch-icon" type="image/png" href="./assets/image/icon_180x180.png" />
+      </head>
       <body className="wrapper dark-theme">
-        <h1>mryhryki&apos;s blog</h1>
+        <h1>{title}</h1>
         <p style={{ textAlign: "center" }}>
           Web技術に関する記事・スライド・スクラップ（読んだ記事の記録）、
           <a href="https://zenn.dev/mryhryki">Zennのバックアップ</a>、個人的なメモなど

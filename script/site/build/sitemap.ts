@@ -8,10 +8,10 @@ export const buildSiteMap = async () => {
   const files = await listFiles(SiteDir, true);
   files.forEach((absoluteFilePath) => {
     const file = absoluteFilePath.substring(SiteDir.length);
-    if (file.endsWith(".json")) return;
+    if (file.endsWith(".json") || file.endsWith(".xml")) return;
     if (file.startsWith("/blog/") || file.startsWith("/scrap/") || file.startsWith("/slide/")) {
       siteMap.push(`${BaseURL}${file}`.replace(/index.html$/, ""));
     }
   });
-  await writeFile(path.resolve(SiteDir, "sitemap.txt"), siteMap.join("\n"));
+  await writeFile(path.resolve(SiteDir, "sitemap.txt"), siteMap.sort().join("\n"));
 };
