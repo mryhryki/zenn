@@ -33,7 +33,6 @@ export const renderBlogIndex = (posts: Post[]): string => {
         const element = event.target;
         if (element == null || element.className !== "checkbox-shown") return;
         const show = element.checked;
-        console.debug(show);
         Array.from(document.getElementsByClassName(element.id)).forEach((li) => {
           li.style.display = show ? "list-item" : "none";
         });
