@@ -1,5 +1,5 @@
 import { Post } from "../util/post";
-import { renderGiscus, renderToHtml } from "./common";
+import { renderToHtml } from "./common";
 import { convert } from "@mryhryki/markdown";
 import React from "react";
 import { BaseURL } from "../util/definition";
@@ -65,7 +65,6 @@ export const renderScrap = (post: Post): string => {
           </span>
         </footer>
         <script src="/assets/script/copy_to_clipboard.js" />
-        {renderGiscus()}
       </body>
     </>
   );

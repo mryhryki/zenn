@@ -1,7 +1,7 @@
 import { Post } from "../util/post";
 import { convert } from "@mryhryki/markdown";
 import React from "react";
-import { renderGiscus, renderToHtml } from "./common";
+import { renderToHtml } from "./common";
 import { BaseURL } from "../util/definition";
 
 export const renderBlogPost = (post: Post): string => {
@@ -70,7 +70,6 @@ export const renderBlogPost = (post: Post): string => {
             </a>
           </span>
         </footer>
-        {renderGiscus()}
       </body>
     </>
   );
