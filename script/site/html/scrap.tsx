@@ -1,5 +1,5 @@
 import { Post } from "../util/post";
-import { renderToHtml } from "./common";
+import { renderFooter, renderToHtml } from "./common";
 import { convert } from "@mryhryki/markdown";
 import React from "react";
 import { BaseURL } from "../util/definition";
@@ -53,15 +53,7 @@ export const renderScrap = (post: Post): string => {
         <div style={{ textAlign: "right" }}>
           <button data-copytext={`### ${post.title}\n\n${post.markdown}`}>Copy as Markdown</button>
         </div>
-        <footer>
-          <a href="/blog/">一覧</a>
-          <span>
-            {" © 2021 "}
-            <a style={{ color: "inherit" }} href={BaseURL}>
-              mryhryki
-            </a>
-          </span>
-        </footer>
+        {renderFooter()}
         <script src="/assets/script/copy_to_clipboard.js" />
       </body>
     </>

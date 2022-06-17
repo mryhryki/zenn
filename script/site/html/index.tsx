@@ -117,7 +117,12 @@ export const renderBlogIndex = (posts: Post[]): string => {
           </>
         ))}
 
-        {renderFooter()}
+        <footer>
+          <span>
+            {"©2021 "}
+            <a style={{ color: "inherit" }} href={BaseURL}>mryhryki</a>
+          </span>
+        </footer>
         <script dangerouslySetInnerHTML={{ __html: script }} />
       </body>
     </>
