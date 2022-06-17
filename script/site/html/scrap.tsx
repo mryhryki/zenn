@@ -5,7 +5,6 @@ import React from "react";
 import { BaseURL } from "../util/definition";
 
 export const renderScrap = (post: Post): string => {
-
   const url = post.url;
   const siteName = "mryhryki's scrap";
   const title = post.title;

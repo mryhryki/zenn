@@ -1,5 +1,5 @@
 import { Post } from "../util/post";
-import { renderToHtml } from "./common";
+import { renderFooter, renderToHtml } from "./common";
 import React from "react";
 import { BaseURL } from "../util/definition";
 
@@ -119,15 +119,7 @@ export const renderBlogIndex = (posts: Post[]): string => {
           </>
         ))}
 
-        <footer>
-          <a href="/blog/">一覧</a>
-          <span>
-            © 2021{" "}
-            <a style={{ color: "inherit" }} href={BaseURL}>
-              mryhryki
-            </a>
-          </span>
-        </footer>
+        {renderFooter()}
         <script dangerouslySetInnerHTML={{ __html: script }} />
       </body>
     </>
