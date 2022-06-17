@@ -47,7 +47,6 @@ export const renderBlogIndex = (posts: Post[]): string => {
     <>
       <head>
         <meta charSet="UTF-8" />
-        <base target="_blank" />
         <title>{title}</title>
         <meta content={title} name="title" />
         <meta content={description} name="description" />
