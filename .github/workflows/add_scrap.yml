@@ -6,10 +6,7 @@ env:
 
 on:
   workflow_dispatch:
-    inputs:
-      dummy:
-        required: false
-        description: Dummy Input (Ignore this)
+    inputs: {}
 
 jobs:
   add_scrap:
