@@ -6,13 +6,7 @@ env:
 
 on:
   workflow_dispatch:
-    inputs:
-      title:
-        required: true
-        description: Title
-      text:
-        required: true
-        description: Text
+    inputs: {}
 
 jobs:
   add_scrap:
