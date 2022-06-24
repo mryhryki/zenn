@@ -25,6 +25,7 @@ jobs:
           npm i -g npm
           npm exec -- npm-check-updates -u
           npm install
+          npm audit fix || true
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
