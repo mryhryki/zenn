@@ -1,5 +1,5 @@
 ---
-title: "TLS1.2以前"
+title: "TLS1.2 以前"
 ---
 
 TODO

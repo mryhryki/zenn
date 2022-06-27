@@ -7,6 +7,7 @@ price: 0 # 有料の場合200〜5000
 chapters:
   - 0100-introduction
   - 0200-what-is-tls
+  - 0250-tls-vs-ssl
   - 0300-tls-history
   - 0400-tls1_3-summary
   - 0500-before-tls1_2
