@@ -5,16 +5,17 @@ published: false
 price: 0 # 有料の場合200〜5000
 # 本に含めるチャプターを順番に並べましょう
 chapters:
-  - 010-introduction
-  - 050-what-is-tls
-  - 100-tls1_3-summary
-  - 150-before-tls1_2
-  - 200-tls-handshake
-  - 250-random-number
-  - 300-common-key-cryptosystem
-  - 350-public-key-cryptography
-  - 400-public-key-infrastructure
-  - 450-tls-with-http
+  - 0100-introduction
+  - 0200-what-is-tls
+  - 0300-tls-history
+  - 0400-tls1_3-summary
+  - 0500-before-tls1_2
+  - 0600-tls-handshake
+  - 0700-random-number
+  - 0800-common-key-cryptosystem
+  - 0900-public-key-cryptography
+  - 1000-public-key-infrastructure
+  - 1100-tls-with-http
 
 # [MEMO]
 # - ゼロからわかる SSL/TLS の解説を試みる - Qiita https://qiita.com/RyomaTaniyama/items/37d36a634a48516afc85#%E6%94%B9%E7%AB%84%E6%A4%9C%E7%9F%A5
