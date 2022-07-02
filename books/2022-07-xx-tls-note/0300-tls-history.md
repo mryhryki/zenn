@@ -7,6 +7,11 @@ title: "TLS/SSL の歴史"
 TLS の前身となった SSL は、当時高いシェアを誇る Netscape Navigator を提供していた Netscape 社で開発されました。
 その後、IETF に移管されました。
 
+## SSL と TLS
+
+SSL (Secure Socket Layer) は TLS の前身となるプロトコルで、合わせて SSL/TLS などと表記されることもあります。
+以下で説明していますが、Netscape 社から IETF に移管された後、Microsoft の移行により名称が TLS に変更されました。
+
 ## SSL 1.0
 
 1994年に Netscape 社によって開発されたが、公開前に問題が発覚したため、実装されることなく破棄された。
