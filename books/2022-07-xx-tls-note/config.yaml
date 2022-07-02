@@ -13,10 +13,11 @@ chapters:
   - 0500-before-tls1_2
   - 0600-tls-handshake
   - 0700-random-number
-  - 0800-common-key-crypto-system
-  - 0900-public-key-cryptography
-  - 1000-public-key-infrastructure
-  - 1100-tls-with-http
+  - 0800-hash-function
+  - 0900-common-key-crypto-system
+  - 1000-public-key-cryptography
+  - 1100-public-key-infrastructure
+  - 1200-tls-with-http
 
 # [MEMO]
 # - ゼロからわかる SSL/TLS の解説を試みる - Qiita https://qiita.com/RyomaTaniyama/items/37d36a634a48516afc85#%E6%94%B9%E7%AB%84%E6%A4%9C%E7%9F%A5
