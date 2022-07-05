@@ -10,8 +10,7 @@ export const renderToHtml = (element: React.ReactElement): string => {
 export const renderFooter = (): React.ReactNode => {
   return (
     <footer>
-      <a style={{ marginRight: "1rem" }} href="/blog/">一覧</a>
-      <a style={{ marginRight: "1rem" }} href="/doc/comment.html">コメント</a>
+      <a style={{ marginRight: "0.5rem" }} href="/blog/">一覧</a>
       <span>
         {"©2021 "}
         <a style={{ color: "inherit" }} href={BaseURL}>mryhryki</a>
