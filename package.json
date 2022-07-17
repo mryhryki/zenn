@@ -20,7 +20,7 @@
     "@mryhryki/datetime": "^0.0.6",
     "@mryhryki/lint": "^0.0.10",
     "@mryhryki/markdown": "^0.3.1",
-    "@types/node": "^18.0.3",
+    "@types/node": "^18.0.5",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@types/rss": "^0.0.29",
@@ -32,6 +32,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rss": "^1.2.2",
-    "zenn-cli": "^0.1.114"
+    "zenn-cli": "^0.1.115"
   }
 }
