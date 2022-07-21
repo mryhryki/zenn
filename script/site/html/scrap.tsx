@@ -50,11 +50,7 @@ export const renderScrap = (post: Post): string => {
       <body className="wrapper dark-theme">
         <h1>{post.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: convert(post.markdown).html }} />
-        <div style={{ textAlign: "right" }}>
-          <button data-copytext={`### ${post.title}\n\n${post.markdown}`}>Copy as Markdown</button>
-        </div>
-        {renderFooter()}
-        <script src="/assets/script/copy_to_clipboard.js" />
+        {renderFooter(post)}
       </body>
     </>
   );

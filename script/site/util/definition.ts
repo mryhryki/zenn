@@ -2,7 +2,7 @@ import path from "path";
 
 export const BaseURL = "https://mryhryki.com";
 
-export const RootDir = __dirname;
+export const RootDir = path.resolve(__dirname);
 export const PostsDir = path.resolve(RootDir, "posts");
 export const SiteDir = path.resolve(RootDir, "site");
 

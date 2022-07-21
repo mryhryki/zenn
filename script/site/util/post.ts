@@ -2,11 +2,11 @@ import path from "path";
 import { readFile } from "fs/promises";
 import {
   BaseURL,
-  PostsDir,
+  PostsDir, RootDir,
   SourceArticleDir,
   SourceScrapDir,
   SourceSlideDir,
-  SourceZennArticlesDir,
+  SourceZennArticlesDir
 } from "./definition";
 import { DateTime } from "@mryhryki/datetime";
 
@@ -32,6 +32,7 @@ export interface Post {
   title: string;
   markdown: string;
   createdAt: string;
+  filePath: string;
   updatedAt?: string | null;
   canonical?: string | null;
 }
@@ -74,9 +75,9 @@ const checkPost = (post: Post, filePath: string) => {
   }
 };
 
-const getPost = (filePath: string, frontMatter: Record<string, string>, markdown: string): Post => {
-  const id = path.basename(filePath).replace(".md", "").trim();
-  const type = getPostType(filePath);
+const getPost = (absoluteFilePath: string, frontMatter: Record<string, string>, markdown: string): Post => {
+  const id = path.basename(absoluteFilePath).replace(".md", "").trim();
+  const type = getPostType(absoluteFilePath);
   const canonical = type === "zenn" ? `https://zenn.dev/mryhryki/articles/${id}` : frontMatter.canonical ?? null;
 
   const post: Post = {
@@ -85,6 +86,7 @@ const getPost = (filePath: string, frontMatter: Record<string, string>, markdown
     id,
     title: (frontMatter.title ?? "").trim(),
     markdown,
+    filePath: absoluteFilePath.replace(RootDir, ''),
     createdAt: "",
     updatedAt: frontMatter.updatedAt ?? null,
     canonical,

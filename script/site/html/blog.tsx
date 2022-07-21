@@ -60,7 +60,7 @@ export const renderBlogPost = (post: Post): string => {
           </p>
         )}
         <div dangerouslySetInnerHTML={{ __html: convert(post.markdown).html }} />
-        {renderFooter()}
+        {renderFooter(post)}
       </body>
     </>
   );
