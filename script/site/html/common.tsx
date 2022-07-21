@@ -27,7 +27,7 @@ export const renderFooter = (post: Post): React.ReactNode => {
       </a>
       <a
         style={{ marginRight: "0.75rem", display: "inline-block" }}
-        data-copytext={`### ${post.title}\n\n${post.markdown}`}
+        data-copytext={`# ${post.title}\n\n${post.markdown}`}
       >
         マークダウンをコピー
       </a>
