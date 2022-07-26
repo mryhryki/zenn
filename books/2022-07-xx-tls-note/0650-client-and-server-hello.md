@@ -1,8 +1,8 @@
 ---
-title: "Client Hello と Server Hello の中身を考察する"
+title: "Client Hello と Server Hello の中身を見てみる"
 ---
 
-https://www.google.co.jp/ に Google Chrome 103 でアクセスした際のパケットを [Wireshark](https://www.wireshark.org/) でキャプチャしてみた結果を考察してみました。
+https://www.google.co.jp/ に Google Chrome 103 でアクセスした際のパケットを [Wireshark](https://www.wireshark.org/) でキャプチャしてみた結果を見てみました。
 
 # Client Hello
 
