@@ -55,3 +55,4 @@ SSL 3.0 との違いはわずかだが、互換性はない。
 
 - [Transport Layer Security - Wikipedia](https://ja.wikipedia.org/wiki/Transport_Layer_Security)
 - [SSL/TLS 20年の歩みと動向～ - JPNIC](https://www.nic.ad.jp/ja/newsletter/No59/0800.html)
+- [SSLとTLSで何が違うの？ - wolfSSL](https://www.wolfssl.jp/wolfblog/2020/12/04/difference-ssl-tls/)

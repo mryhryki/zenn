@@ -2,6 +2,9 @@
 title: "ハンドシェイク"
 ---
 
+ハンドシェイクは、暗号化された通信を行うための情報を交換し、暗号化通信を確立するための一連の処理です。
+TLS 1.3 では、フルハンドシェイクと事前共有鍵(PSK: Pre-Shared Key)接続の２種類があります。
+
 ハンドシェイクでは、以下の４つを達成する必要があります。
 
 > 達成すべきことは4つあります。
@@ -12,3 +15,22 @@ title: "ハンドシェイク"
 > 4. ハンドシェイクメッセージが能動的ネットワーク攻撃者によって書き換えられていないことを検証する
 >
 > プロフェッショナルSSL/TLS 特別版PDF P495
+
+# フルハンドシェイクの流れ
+
+1. `[Client --> Server]` Client Hello
+2. `[Client <-- Server]` Server Hello
+3. `[Client <-- Server]` Encrypted Extensions
+4. `[Client <-- Server]` Certificate
+5. `[Client <-- Server]` Certificate Verify
+6. `[Client <-- Server]` Finished
+7. `[Client <-- Server]` Finished
+8. `[Client <-> Server]` Application Data
+  - 双方向にアプリケーションデータをやり取りする
+
+- [TLS 1.3の性能 その2 – フルハンドシェイク - wolfSSL](https://www.wolfssl.jp/wolfblog/2018/06/01/tls-1-3performance2/)
+
+# 事前共有鍵接続の流れ
+
+- (TODO)
+- [TLS 1.3の性能 その3 - 事前共有鍵（Pre-Shared Key: PSK） - wolfSSL](https://www.wolfssl.jp/wolfblog/2018/06/04/tls-1-3performance3/)
