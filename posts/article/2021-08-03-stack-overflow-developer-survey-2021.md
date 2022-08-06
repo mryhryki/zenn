@@ -37,7 +37,7 @@ title: Stack Overflow Developer Survey の2021年版
 ![capture.png](https://i.gyazo.com/3598238424958c80af7190a639af8f41.png)
 
 
-性別は男性が圧倒的に多い :thinking:
+性別は男性が圧倒的に多い 🤔
 
 ![capture 1.png](https://i.gyazo.com/56c8c811e72f83d7943b6a2170e49e92.png)
 
