@@ -17,14 +17,14 @@
     "update": "aws s3 sync site/ s3://mryhryki-cdn/contents/ --exclude='.DS_Store' --size-only"
   },
   "dependencies": {
-    "@mryhryki/datetime": "^0.0.6",
+    "@mryhryki/datetime": "^0.0.7",
     "@mryhryki/lint": "^0.0.10",
     "@mryhryki/markdown": "^0.3.1",
-    "@types/node": "^18.6.3",
-    "@types/react": "^18.0.15",
+    "@types/node": "^18.6.4",
+    "@types/react": "^18.0.16",
     "@types/react-dom": "^18.0.6",
     "@types/rss": "^0.0.29",
-    "esbuild": "^0.14.49",
+    "esbuild": "^0.14.53",
     "http-server": "^14.1.1",
     "iconv-lite": "^0.6.3",
     "nodemon": "^2.0.19",
@@ -32,6 +32,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rss": "^1.2.2",
-    "zenn-cli": "^0.1.115"
+    "zenn-cli": "^0.1.116"
   }
 }
