@@ -3,7 +3,7 @@
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "lib": ["esnext", "DOM.Iterable", "dom"],
     "noEmit": true,
     "noImplicitAny": true,
