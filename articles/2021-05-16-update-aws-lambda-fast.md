@@ -242,10 +242,10 @@ Lambda にアップロードするための Zip 化する処理も合わせて�
   "scripts": {
     "build": "esbuild src/index.ts --outfile=dist/index.js --bundle --minify --platform=node --target=node14",
     "deploy": "run-s build zip update",
-    "update": "node scripts/update_lambda.js",
+    "deploy:aws": "node scripts/update_lambda.js",
     "zip": "zip scripts/lambda.zip dist/index.js",
-  ...
-}
+    ...
+  }
 ```
 
 実行してみます。

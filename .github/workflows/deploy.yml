@@ -1,4 +1,4 @@
-name: deploy_to_pages
+name: deploy
 env:
   TZ: "Asia/Tokyo"
   ACTIONS_RUNNER_DEBUG: "true"
@@ -39,9 +39,20 @@ jobs:
         run: npm ci
       - name: Build site
         run: npm run build
-      - name: Archive
-        run: npm run archive
-      - name: Upload artifact
+
+      # Deploy to AWS S3
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@master
+        with:
+          role-to-assume: arn:aws:iam::644989259572:role/ci-portfolio-role
+          aws-region: ap-northeast-1
+      - name: Deploy to AWS S3
+        run: npm run deploy:aws
+
+      # Deploy to GitHub Pages
+      - name: Archive for GitHub Pages
+        run: npm run pages:archive
+      - name: Upload artifact for GitHub Pages
         uses: actions/upload-artifact@main
         with:
           name: github-pages
