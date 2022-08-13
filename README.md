@@ -28,7 +28,7 @@
 ### Zenn
 
 - https://zenn.dev/mryhryki
-- https://mryhryki.com/blog/ (BACKUP)
+- https://mryhryki.com/blog/?check=zenn (BACKUP)
 
 ## Setup
 
