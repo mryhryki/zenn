@@ -28,14 +28,30 @@ export const renderBlogIndex = (posts: Post[]): string => {
   const months = Object.keys(postsPerMonthly).sort().reverse();
 
   const script = `
+    const checkBoxClassName = "checkbox-shown";
+    const checks = { article: false, zenn: false, slide: false, scrap: false };
+
     document.addEventListener('DOMContentLoaded', () => {
+      const checkQueryParamText = new URL(window.location.href).searchParams.get("check") || ""
+      const checkByQueryParams = checkQueryParamText === "" ? Object.keys(checks) : checkQueryParamText.split(",");
+      checkByQueryParams.forEach((name) => checks[name] = true);
+
+      const update = () => {
+        window.history.replaceState({}, null, \`.?check=\${Object.keys(checks).filter((key) => checks[key]).join(",")}\`);
+        Array.from(document.querySelectorAll(\`input.\${checkBoxClassName}\`)).forEach((checkbox) => {
+          checkbox.checked = checks[checkbox.name] ? "checked" : "";
+        });
+        Array.from(document.querySelectorAll("li.post-item")).forEach((li) => {
+          li.style.display = checks[li.dataset.type] ? "list-item" : "none";
+        });
+      }
+      update();
+
       document.addEventListener('click', (event) => {
         const element = event.target;
-        if (element == null || element.className !== "checkbox-shown") return;
-        const show = element.checked;
-        Array.from(document.getElementsByClassName(element.id)).forEach((li) => {
-          li.style.display = show ? "list-item" : "none";
-        });
+        if (element == null || !element.classList.contains(checkBoxClassName)) return;
+        checks[element.name] = element.checked;
+        update();
       });
     });
   `;
@@ -79,23 +95,23 @@ export const renderBlogIndex = (posts: Post[]): string => {
         <h1>{title}</h1>
         <p style={{ textAlign: "center" }}>
           Web技術に関する記事・スライド・スクラップ（読んだ記事の記録）、
-          <a href="https://zenn.dev/mryhryki">Zennのバックアップ</a>、個人的なメモなど
+          <a href="https://zenn.dev/mryhryki">Zenn</a>のバックアップ、個人的なメモなど
         </p>
         <form style={{ textAlign: "center" }}>
           <label style={{ marginRight: "1rem" }}>
-            <input type="checkbox" id="post-article" className="checkbox-shown" defaultChecked />
+            <input type="checkbox" name="article" className="checkbox-shown" defaultChecked />
             記事
           </label>
           <label style={{ marginRight: "1rem" }}>
-            <input type="checkbox" id="post-zenn" className="checkbox-shown" defaultChecked />
+            <input type="checkbox" name="zenn" className="checkbox-shown" defaultChecked />
             Zenn
           </label>
           <label style={{ marginRight: "1rem" }}>
-            <input type="checkbox" id="post-slide" className="checkbox-shown" defaultChecked />
+            <input type="checkbox" name="slide" className="checkbox-shown" defaultChecked />
             スライド
           </label>
           <label style={{ marginRight: "1rem" }}>
-            <input type="checkbox" id="post-scrap" className="checkbox-shown" defaultChecked />
+            <input type="checkbox" name="scrap" className="checkbox-shown" defaultChecked />
             スクラップ
           </label>
         </form>
@@ -105,7 +121,7 @@ export const renderBlogIndex = (posts: Post[]): string => {
             <h2>{month}</h2>
             <ul>
               {postsPerMonthly[month].map((post) => (
-                <li key={post.id} className={`post-${post.type}`}>
+                <li key={post.id} className='post-item' data-type={post.type}>
                   {post.createdAt.substring(0, 10)}{" "}
                   <a href={post.url.replace(BaseURL, "")}>
                     {getTitlePrefix(post)}
