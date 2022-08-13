@@ -4,13 +4,31 @@
 
 主に以下のデータを管理しています。
 
-- [ポートフォリオサイト](https://mryhryki.com/) の静的リソース
+- ポートフォリオサイトの静的リソース
   - `site/`
-- [ブログ](https://mryhryki.com/blog/) のデータ（記事・スライド・スクラップ）
+- ブログのデータ（記事・スライド・スクラップ）
   - `posts/`
-- [Zenn](https://zenn.dev/mryhryki) のデータ ([公式ドキュメント](https://zenn.dev/zenn/articles/connect-to-github))
+- Zenn のデータ ([公式ドキュメント](https://zenn.dev/zenn/articles/connect-to-github))
   - `articles/`
   - `books/`
+
+## URLs
+
+### ポートフォリオサイト
+
+複数のURLからアクセスできます。
+
+- https://mryhryki.com/ (PRIMARY1, CloudFront + S3)
+- https://github-pages.mryhryki.com/ (PRIMARY2, GitHub Pages)
+- https://mryhryki.deno.dev/ (SECONDARY1, Deno Deploy)
+- https://app.mryhryki.workers.dev/ (SECONDARY2, Cloudflare Workers)
+
+※SECONDARY は最大1時間の遅延あり。
+
+### Zenn
+
+- https://zenn.dev/mryhryki
+- https://mryhryki.com/blog/ (BACKUP)
 
 ## Setup
 
