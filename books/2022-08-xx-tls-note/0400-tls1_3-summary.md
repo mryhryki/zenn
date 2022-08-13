@@ -17,6 +17,10 @@ TLS 1.3 は2018年にリリースされた比較的新しい暗号プロトコ�
 
 ### 鍵交換
 
+- DH系の鍵交換方式 (ECDHE, DHE) に統一された。
+  - DH系鍵交換は、公開鍵暗号を利用し、秘密鍵を直接やり取りせずに交換できる。
+  - 静的な秘密鍵と公開鍵を使用する方法は `(TODO)` により廃止された。
+
 プロフェッショナルSSL/TLS PDF版 付録A P497
 https://mryhryki.com/api/s3/download/mryhryki-data/Ym9vay_jg5fjg63jg5Xjgqfjg4Pjgrfjg6fjg4rjg6tTU0xUTFMt54m55Yil54mI77yIVExTMTPop6Poqqzku5jvvIkucGRm
 
@@ -31,6 +35,7 @@ https://mryhryki.com/api/s3/download/mryhryki-data/Ym9vay_jg5fjg63jg5Xjgqfjg4Pjg
 
 ### 暗号スイートの削減
 
+TLS 1.2 であった数百の暗号スイートが大幅に削減された。特に、古く安全でない暗号が削減されたので、安全性が高まった。
 TLS 1.3 では５つの暗号スイートが定義されています。
 
 ```
@@ -53,6 +58,14 @@ This specification defines the following cipher suites for use with TLS 1.3.
 
 https://datatracker.ietf.org/doc/html/rfc8446#appendix-B.4
 
+### 認証付きの共通鍵暗号アルゴリズムに統一
+
+- MAC による真正性検証が不要になった
+- 認証付きの共通鍵暗号アルゴリズムは、改ざん防止の (H)MAC がついているようなモード。
+  - これにより、なりすましや改ざんを防ぐことができる
+  - AES-GCM など
+
+
 ### PFS（Perfect Forward Security）
 
 - [PFS（Perfect Forward Secrecy） | Program Is Made At Night](https://kimh.github.io/blog/jp/security/understanding-pfs-jp/)
@@ -66,6 +79,6 @@ https://datatracker.ietf.org/doc/html/rfc8446#appendix-B.4
   - TLS 1.3 では５つのみ
 - ハンドシェイクの内容が暗号化されない
   - TLS 1.3 では、最初の Client Hello と Server Hello メッセージ以外はすべて暗号化される
-
+- 前方秘匿性がなくなるが、Early Data を使用することで 0-RTT も実現可能
 
 
