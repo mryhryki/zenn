@@ -19,7 +19,7 @@
 複数のURLからアクセスできます。
 
 - https://mryhryki.com/ (PRIMARY1, CloudFront + S3)
-- https://github-pages.mryhryki.com/ (PRIMARY2, GitHub Pages)
+- https://www.mryhryki.com/ (PRIMARY2, GitHub Pages)
 - https://mryhryki.deno.dev/ (SECONDARY1, Deno Deploy)
 - https://app.mryhryki.workers.dev/ (SECONDARY2, Cloudflare Workers)
 
