@@ -1,7 +1,8 @@
 **/.DS_Store
+.temp.js
+archive.tar
 node_modules/**
 site/blog/**
-site/slide/**
 site/scrap/**
 site/sitemap.txt
-.temp.js
+site/slide/**

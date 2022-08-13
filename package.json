@@ -9,6 +9,7 @@
     "dev": "run-p 'build:watch' 'preview'",
     "zenn": "open http://localhost:58125/ && zenn preview --port 58125",
     "build": "esbuild --platform=node --external:node:* --bundle script/site/build.ts | node",
+    "archive": "tar --verbose --create --file=./archive.tar --directory=site/ .",
     "build:watch": "nodemon --watch posts/ --watch script/ --ext md,ts,tsx --exec 'npm run build'",
     "generate:holidays": "esbuild --platform=node --external:node:* --bundle ./script/data/generate_holidays.ts | node",
     "lint": "mryhryki-lint",
