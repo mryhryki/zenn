@@ -37,7 +37,9 @@ export const renderBlogIndex = (posts: Post[]): string => {
       checkByQueryParams.forEach((name) => checks[name] = true);
 
       const update = () => {
-        window.history.replaceState({}, null, \`.?check=\${Object.keys(checks).filter((key) => checks[key]).join(",")}\`);
+        const url = new URL(window.location.href);
+        url.searchParams.set("check", Object.keys(checks).filter((key) => checks[key]).join(","));
+        window.history.replaceState({}, null, url.toString());
         Array.from(document.querySelectorAll(\`input.\${checkBoxClassName}\`)).forEach((checkbox) => {
           checkbox.checked = checks[checkbox.name] ? "checked" : "";
         });
@@ -118,10 +120,10 @@ export const renderBlogIndex = (posts: Post[]): string => {
 
         {months.map((month) => (
           <>
-            <h2>{month}</h2>
+            <h2 id={month}><a href={`#${month}`}>{month}</a></h2>
             <ul>
               {postsPerMonthly[month].map((post) => (
-                <li key={post.id} className='post-item' data-type={post.type}>
+                <li key={post.id} className="post-item" data-type={post.type}>
                   {post.createdAt.substring(0, 10)}{" "}
                   <a href={post.url.replace(BaseURL, "")}>
                     {getTitlePrefix(post)}
