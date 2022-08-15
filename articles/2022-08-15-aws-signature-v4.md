@@ -1,6 +1,6 @@
 ---
-title: "AWS Signature v4 を TypeScript でスクラッチ実装してみた"
-emoji: "🔑"
+title: "AWS Signature V4 を TypeScript でスクラッチ実装してみた"
+emoji: "✍️"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["AWS"]
 published: false
@@ -18,7 +18,7 @@ https://docs.aws.amazon.com/ja_jp/general/latest/gr/sigv4_signing.html
 コード全体を見たい場合は、こちらの Gist を見てもらうと良いと思います。
 https://gist.github.com/mryhryki/58a1ad77a5e3f3ff14c23324c7b346af
 
-いくつか動作確認はしていますが、すべての場合において正しく動作するかは不明です。
+いくつかの API でリクエスト可能であることは確認しましたが、すべての場合において正しく動作するかは不明です。
 この記事内および上記の Gist のコードは自由に使っていただいて構いませんが、自己責任でご使用ください。
 プロダクション環境で使う時は [AWS SDK for JavaScript](https://www.npmjs.com/package/aws-sdk) を使うことを強くおすすめします
 
@@ -45,7 +45,7 @@ https://deno.land/manual/getting_started/installation
 
 ### `node:crypto` モジュールの中身をグローバルにセットしておく
 
-Node.js には crypto がグローバルに存在しないので。
+Node.js には crypto がグローバルに存在しないので、以下のようにセットしておけば動くはずです。
 
 ```diff
 + import crypto from "node:crypto";
@@ -65,7 +65,8 @@ https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Ui
 ## テキスト -> バイナリ (Uint8Array) 変換
 
 ```typescript
-const textToBin = (text: string): Uint8Array => new TextEncoder().encode(text);
+const textToBin = (text: string): Uint8Array =>
+  new TextEncoder().encode(text);
 ```
 
 ## バイナリ (Uint8Array) -> テキスト (Hex) 変換
@@ -97,15 +98,15 @@ https://stackoverflow.com/a/56416039 を参考にしました。
 
 # AWS Signature v4 の実装
 
-既に書いたとおり、コードの全体像は Gist に置いています。
+既に書いたとおり、コードは Gist に置いています。
 https://gist.github.com/mryhryki/58a1ad77a5e3f3ff14c23324c7b346af
 
-以下はこのコードの部分部分を解説しているものになります。
+以下はこのコードのポイントを解説しています。
+コード全体を見ながら見たほうが、人によっては理解しやすいかもしれません。
 
 ## インターフェース
 
 今回は [Request](https://developer.mozilla.org/ja/docs/Web/API/Request) オブジェクトを受け取り、生成した署名を設定した [Request](https://developer.mozilla.org/ja/docs/Web/API/Request) オブジェクトを返すような関数で実装します。
-
 
 ```typescript
 const signRequest = async (request: Request, params: AwsParams): Promise<Request> => {
@@ -115,7 +116,7 @@ const signRequest = async (request: Request, params: AwsParams): Promise<Request
 ```
 
 また、第２引数に AWS のパラメーターを設定するようにしています。
-これは単にテストがしやすいからという理由です。
+これは単にテストがしやすいからというだけの理由です。 
 
 ## 日時データの取得
 
@@ -137,7 +138,7 @@ HTTP リクエストの情報から SHA-256 文字列を生成します。
 
 https://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html
 
-まず、URL に含まれるクエリパラメーターをキー名の昇順で並べ替えた文字列を生成します。
+まず、URL に含まれるクエリパラメーターをキー名の昇順で並べ替えて `&` で結合した文字列を生成します。
 
 ```typescript
 const canonicalQueryString = Array.from(url.searchParams.entries())
@@ -146,8 +147,8 @@ const canonicalQueryString = Array.from(url.searchParams.entries())
   .join("&");
 ```
 
-ヘッダーの小文字に変換した名前と値を整形し、 `:` で結合し、名前の昇順に並び替えた文字列を生成します。
-すべてのヘッダーの内容を入れる必要はないですが、最低 `Host` ヘッダーを含める必要があるようです。
+ヘッダーの小文字に変換した名前と値を整形し、 `:` で結合し、名前の昇順に並び替えて改行文字で結合した文字列を生成します。
+全てのヘッダーの内容を入れる必要はないですが、最低 `Host` ヘッダーを含める必要があるようです。
 
 ```typescript
 const canonicalHeaders: string = Array.from(signedHeaders.entries())
@@ -156,7 +157,7 @@ const canonicalHeaders: string = Array.from(signedHeaders.entries())
   .join("");
 ```
 
-ヘッダーの名前を小文字に変換し、名前の昇順に並び替えた文字列を生成します。
+ヘッダーの名前のみを小文字に変換し、名前の昇順に並び替えて `;` で結合した文字列を生成します。
 
 ```typescript
 const signedHeadersText: string = Array.from(signedHeaders.entries())
@@ -171,7 +172,7 @@ const signedHeadersText: string = Array.from(signedHeaders.entries())
   const hashedPayload: string = binToHexText(await digestSha256(new Uint8Array(await request.clone().arrayBuffer())));
 ```
 
-リクエストメソッドやパスとここまでで算出した内容を、改行文字で結合します。
+リクエストメソッドとパス、ここまでで算出した内容を改行文字で結合します。
 
 ```typescript
   const canonicalRequest: string = [
@@ -214,7 +215,6 @@ HMACとシークレットアクセスキーを使って、リクエストデー�
 https://docs.aws.amazon.com/ja_jp/general/latest/gr/sigv4-calculate-signature.html
 
 AWSシークレットアクセスキー、日付、リージョン、サービスの情報を使って、HMAC-SHA256 を計算します。
-文字列をまとめて計算するのではなく、何度も計算結果に対して HMAC-SHA256 を計算するのは、AWSシークレットアクセスキーをなるべく特定困難にしたいとかなんですかね。（単なる推測です）
 
 ```typescript
 const kDate = await hmacSha256(textToBin(`AWS4${awsSecretAccessKey}`), textToBin(dateText));
@@ -224,35 +224,37 @@ const kSigning = await hmacSha256(kService, textToBin("aws4_request"));
 const signature = binToHexText(await hmacSha256(kSigning, textToBin(stringToSign)));
 ```
 
-最終的に署名文字列が生成されます。
+これで署名文字列が生成されます。
+
+文字列をまとめて計算するのではなく、何度も計算結果に対して HMAC-SHA256 を計算するのは、AWSシークレットアクセスキーをなるべく特定困難にしたいとかなんですかね。（単なる推測です）
 
 ## Step4: リクエストに署名を追加
 
-リクエストヘッダーに署名データを追加します。
+リクエストヘッダーに署名文字列などを追加します。
 （クエリパラメーターに設定することも可能ですが、本記事では対象外とします）
 
 https://docs.aws.amazon.com/ja_jp/general/latest/gr/sigv4-add-signature-to-request.html
 
-認証情報の範囲などを定義した文字列を生成します。
+認証情報の範囲など、いくつかの文字列を `/` で結合します。
 
 ```typescript
 const credential = [awsAccessKeyId, dateText, awsRegion, awsService, "aws4_request"].join("/");
 ```
 
-最後に生成した署名などの情報を `Authorization` ヘッダーにセットすれば署名の完了です。
+生成した署名などの情報を、指定のフォーマットで `Authorization` ヘッダーにセットすれば署名の完了です。
 
 ```typescript
-const signedRequest = request.clone();
 const authorization = `${AwsSignatureAlgorithm} Credential=${credential}, SignedHeaders=${signedHeadersText}, Signature=${signature}`;
 signedRequest.headers.set("Authorization", authorization);
 ```
 
 ## APIリクエストを試す
 
-実装ができたら、実際に API リクエストを試したいですね。
-今回は [STS](https://docs.aws.amazon.com/ja_jp/STS/latest/APIReference/welcome.html) の [GetCallerIdentity](https://docs.aws.amazon.com/STS/latest/APIReference/API_GetCallerIdentity.html) へリクエストしてみました。
+実装ができたら、実際に API リクエストを試してみます。
+今回は STS の GetCallerIdentity へリクエストしてみました。
+https://docs.aws.amazon.com/ja_jp/STS/latest/APIReference/API_GetCallerIdentity.html
 
-こんな感じでリクエストを組み立てて、実装した署名関数 (`signRequest`) にわたすと署名ができます。
+ドキュメントに従ってリクエストを組み立てて、実装した署名関数 (`signRequest`) にわたすと署名ができます。
 
 ```typescript
 const awsRegion = "ap-northeast-1";
