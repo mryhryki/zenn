@@ -2,6 +2,11 @@
 title: "ハンドシェイク"
 ---
 
+# TODO
+- [ ] 最終チェック
+
+---
+
 ハンドシェイクは、暗号化された通信を行うための情報を交換し、暗号化通信を確立するための一連の処理です。
 TLS 1.3 では、フルハンドシェイクと事前共有鍵(PSK: Pre-Shared Key)接続の２種類があります。
 
@@ -19,19 +24,19 @@ TLS 1.3 では、フルハンドシェイクと事前共有鍵(PSK: Pre-Shared K
 # フルハンドシェイクの流れ
 
 1. `[Client --> Server]` Client Hello
-  - TLS 接続の要求
-    - 接続したい TLS のバージョン
-    - クライアントが使用できる暗号スイート一覧
-    - (TLS 1.3 のみ) 鍵合意のパラメーター一式
+    - TLS 接続の要求
+        - 接続したい TLS のバージョン
+        - クライアントが使用できる暗号スイート一覧
+        - (TLS 1.3 のみ) 鍵合意のパラメーター一式
 2. `[Client <-- Server]` Server Hello
-  - サーバー側が選択した暗号スイート
+    - サーバー側が選択した暗号スイート
 3. `[Client <-- Server]` Encrypted Extensions
 4. `[Client <-- Server]` Certificate
 5. `[Client <-- Server]` Certificate Verify
 6. `[Client <-- Server]` Finished
 7. `[Client <-- Server]` Finished (ハンドシェイク完了)
 8. `[Client <-> Server]` Application Data
-  - 双方向にアプリケーションデータをやり取りする
+    - 双方向にアプリケーションデータをやり取りする
 9. `[Client <-- Server]` Alert (Close Notify)
 10. `[Client --> Server]` Alert (Close Notify) (接続終了)
 

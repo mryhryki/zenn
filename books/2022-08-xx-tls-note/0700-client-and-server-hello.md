@@ -2,8 +2,8 @@
 title: "Client Hello と Server Hello の中身を見てみる"
 ---
 
-https://www.google.co.jp/ に Google Chrome 103 でアクセスした際のパケットを [Wireshark](https://www.wireshark.org/) でキャプチャしてみた結果を見てみました。
-TLS 1.3 ではほとんどの通信が暗号化されて見れないので、Client Hello と Server Hello のみです。
+https://www.google.co.jp/ に Google Chrome 103 でアクセスした際のパケットを [Wireshark](https://www.wireshark.org/) でキャプチャしてみた結果を簡単に見てみた。
+TLS 1.3 ではほとんどの通信が暗号化されて見れないので、Client Hello と Server Hello のみ。
 
 # Client Hello
 

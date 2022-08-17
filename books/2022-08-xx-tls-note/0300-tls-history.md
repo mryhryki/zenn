@@ -4,17 +4,18 @@ title: "TLS/SSL の歴史"
 
 ## 概要
 
-TLS の前身となった SSL は、当時高いシェアを誇る Netscape Navigator を提供していた Netscape 社で開発されました。
-その後、IETF に移管されました。
+TLS の前身となった SSL は、当時高いシェアを誇る Netscape Navigator を提供していた Netscape 社で開発された。
+その後、IETF に移管され TLS に名称が変更された。
 
 ## SSL と TLS
 
-SSL (Secure Socket Layer) は TLS の前身となるプロトコルで、合わせて SSL/TLS などと表記されることもあります。
-以下で説明していますが、Netscape 社から IETF に移管された後、Microsoft の移行により名称が TLS に変更されました。
+SSL (Secure Socket Layer) は TLS の前身となるプロトコルで、合わせて SSL/TLS などと表記されることもある。
+以下の通り Netscape 社から IETF に移管され、Microsoft の意向により名称が TLS に変更された。
 
 ## SSL 1.0
 
-1994年に Netscape 社によって開発されたが、公開前に問題が発覚したため、実装されることなく破棄された。
+1994年に Netscape 社によって開発された。
+しかし公開前に問題が発覚したため、実装されることなく破棄された。
 
 ## SSL 2.0
 
@@ -24,7 +25,7 @@ SSL 1.0 と同じく1994年に Netscape 社によって開発された。
 ## SSL 3.0
 
 1995年に SSL 2.0 のいくつかの重大な脆弱性に対応した。
-根本から設計し直し、 現在の TLS プロトコルの基本設計になっている。
+根本から設計し直し、現在の TLS プロトコルの基本設計になっている。
 [RFC 7568](https://tools.ietf.org/html/rfc7568) により廃止された。
 
 ## TLS 1.0 ([RFC 2246](https://tools.ietf.org/html/rfc2246))
@@ -49,7 +50,7 @@ SSL 3.0 との違いはわずかだが、互換性はない。
 ## TLS 1.3 ([RFC 8446](https://tools.ietf.org/html/rfc8446))
 
 2018年にリリースされた。
-詳細は、このノートで学習するのでここでは省略。
+詳細は、このノートで学習するのでここでは省略する。
 
 ## 参考リンク
 
