@@ -20,7 +20,7 @@
 
 - https://mryhryki.com/ (PRIMARY1, CloudFront + S3)
 - https://www.mryhryki.com/ (PRIMARY2, GitHub Pages)
-- https://mryhryki.deno.dev/ (SECONDARY1, Deno Deploy)
+- https://deno.mryhryki.com (SECONDARY1, Deno Deploy)
 - https://app.mryhryki.workers.dev/ (SECONDARY2, Cloudflare Workers)
 
 ※SECONDARY は最大1時間の遅延あり。
