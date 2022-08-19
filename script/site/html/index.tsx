@@ -1,5 +1,5 @@
 import { Post } from "../util/post";
-import { renderFooter, renderToHtml } from "./common";
+import { renderToHtml } from "./common";
 import React from "react";
 import { BaseURL } from "../util/definition";
 
@@ -26,37 +26,6 @@ export const renderBlogIndex = (posts: Post[]): string => {
     postsPerMonthly[yearMonth].push(post);
   });
   const months = Object.keys(postsPerMonthly).sort().reverse();
-
-  const script = `
-    const checkBoxClassName = "checkbox-shown";
-    const checks = { article: false, zenn: false, slide: false, scrap: false };
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const checkQueryParamText = new URL(window.location.href).searchParams.get("check") || ""
-      const checkByQueryParams = checkQueryParamText === "" ? Object.keys(checks) : checkQueryParamText.split(",");
-      checkByQueryParams.forEach((name) => checks[name] = true);
-
-      const update = () => {
-        const url = new URL(window.location.href);
-        url.searchParams.set("check", Object.keys(checks).filter((key) => checks[key]).join(","));
-        window.history.replaceState({}, null, url.toString());
-        Array.from(document.querySelectorAll(\`input.\${checkBoxClassName}\`)).forEach((checkbox) => {
-          checkbox.checked = checks[checkbox.name] ? "checked" : "";
-        });
-        Array.from(document.querySelectorAll("li.post-item")).forEach((li) => {
-          li.style.display = checks[li.dataset.type] ? "list-item" : "none";
-        });
-      }
-      update();
-
-      document.addEventListener('click', (event) => {
-        const element = event.target;
-        if (element == null || !element.classList.contains(checkBoxClassName)) return;
-        checks[element.name] = element.checked;
-        update();
-      });
-    });
-  `;
 
   const title = "mryhryki's blog";
   const description = "Web技術に関する記事・スライド・スクラップ、Zennのバックアップ、個人的なメモなど";
@@ -87,6 +56,31 @@ export const renderBlogIndex = (posts: Post[]): string => {
         <meta name="twitter:site" content="@mryhryki" />
 
         <link rel="stylesheet" href="/assets/css/base.css" />
+        <style dangerouslySetInnerHTML={{
+          __html: `
+          li.post-item {
+            display: none;
+          }
+
+          input#article-checkbox:checked ~ div > ul.posts > li.post-item.article,
+          input#zenn-checkbox:checked ~ div > ul.posts > li.post-item.zenn,
+          input#slide-checkbox:checked ~ div > ul.posts > li.post-item.slide,
+          input#scrap-checkbox:checked ~ div > ul.posts > li.post-item.scrap {
+            display: list-item;
+          }
+
+          h2.month {
+            display: none;
+          }
+
+          input#article-checkbox:checked ~ div > h2.month.article,
+          input#zenn-checkbox:checked ~ div > h2.month.zenn,
+          input#slide-checkbox:checked ~ div > h2.month.slide,
+          input#scrap-checkbox:checked ~ div > h2.month.scrap {
+            display: block;
+          }
+        `
+        }} />
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -99,41 +93,40 @@ export const renderBlogIndex = (posts: Post[]): string => {
           Web技術に関する記事・スライド・スクラップ（読んだ記事の記録）、
           <a href="https://zenn.dev/mryhryki">Zenn</a>のバックアップ、個人的なメモなど
         </p>
-        <form style={{ textAlign: "center" }}>
-          <label style={{ marginRight: "1rem" }}>
-            <input type="checkbox" name="article" className="checkbox-shown" defaultChecked />
-            記事
-          </label>
-          <label style={{ marginRight: "1rem" }}>
-            <input type="checkbox" name="zenn" className="checkbox-shown" defaultChecked />
-            Zenn
-          </label>
-          <label style={{ marginRight: "1rem" }}>
-            <input type="checkbox" name="slide" className="checkbox-shown" defaultChecked />
-            スライド
-          </label>
-          <label style={{ marginRight: "1rem" }}>
-            <input type="checkbox" name="scrap" className="checkbox-shown" defaultChecked />
-            スクラップ
-          </label>
-        </form>
 
-        {months.map((month) => (
-          <>
-            <h2 id={month}><a href={`#${month}`}>{month}</a></h2>
-            <ul>
-              {postsPerMonthly[month].map((post) => (
-                <li key={post.id} className="post-item" data-type={post.type}>
-                  {post.createdAt.substring(0, 10)}{" "}
-                  <a href={post.url.replace(BaseURL, "")}>
-                    {getTitlePrefix(post)}
-                    {post.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </>
-        ))}
+        <div style={{ textAlign: "center" }}>
+          <input id="article-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
+          <label htmlFor="article-checkbox" style={{ marginRight: "1rem" }}>記事</label>
+          <input id="zenn-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
+          <label htmlFor="zenn-checkbox" style={{ marginRight: "1rem" }}>Zenn</label>
+          <input id="slide-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
+          <label htmlFor="slide-checkbox" style={{ marginRight: "1rem" }}>スライド</label>
+          <input id="scrap-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
+          <label htmlFor="scrap-checkbox" style={{ marginRight: "1rem" }}>スクラップ</label>
+
+          <div style={{ textAlign: "left" }}>
+            {months.map((month) => {
+              const posts = postsPerMonthly[month];
+              const types = Array.from(new Set(posts.map(({ type }) => type))).sort();
+              return (
+                <>
+                  <h2 id={month} className={`month ${types.join(" ")}`}><a href={`#${month}`}>{month}</a></h2>
+                  <ul className="posts">
+                    {postsPerMonthly[month].map((post) => (
+                      <li key={post.id} className={`post-item ${post.type}`}>
+                        {post.createdAt.substring(0, 10)}{" "}
+                        <a href={post.url.replace(BaseURL, "")}>
+                          {getTitlePrefix(post)}
+                          {post.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              );
+            })}
+          </div>
+        </div>
 
         <footer>
           <span>
@@ -141,7 +134,38 @@ export const renderBlogIndex = (posts: Post[]): string => {
             <a style={{ color: "inherit" }} href={BaseURL}>mryhryki</a>
           </span>
         </footer>
-        <script dangerouslySetInnerHTML={{ __html: script }} />
+        <script dangerouslySetInnerHTML={{
+          __html: `
+          const CheckBoxSuffix = "-checkbox";
+          const BreakChar = ".";
+
+          document.addEventListener('DOMContentLoaded', () => {
+            const getCheckBoxes = () => Array.from(document.querySelectorAll("input.post-type-checkbox"))
+            const getCheckedKeys = () => getCheckBoxes().filter((input) => input.checked).map((input) => input.id.replace(CheckBoxSuffix, ""));
+
+            const checkQueryParamText = new URL(window.location.href).searchParams.get("check") || ""
+            const checkedNames = checkQueryParamText !== "" ? checkQueryParamText.split(BreakChar) : getCheckBoxes().map((input) => input.id.replace(CheckBoxSuffix, ""));
+            getCheckBoxes().forEach((checkBox) => {
+              const name = checkBox.id.replace(CheckBoxSuffix, "");
+              checkBox.checked = checkedNames.includes(name) ? "checked" : "";
+            });
+
+            getCheckBoxes().forEach((checkBox) => {
+              checkBox.addEventListener('click', (event) => {
+                const url = new URL(window.location.href);
+                const elementCount = getCheckBoxes().length;
+                const checkedKeys = getCheckedKeys();
+                if (elementCount === checkedKeys.length || checkedKeys.length === 0) {
+                  url.searchParams.delete("check");
+                } else {
+                  url.searchParams.set("check", getCheckedKeys().join(BreakChar));
+                }
+                window.history.replaceState({}, null, url.toString());
+              });
+            });
+          });
+        `
+        }} />
       </body>
     </>
   );
