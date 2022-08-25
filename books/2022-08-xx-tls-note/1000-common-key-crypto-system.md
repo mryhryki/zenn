@@ -38,6 +38,10 @@ title: "共通鍵暗号"
 
 現在、世界で最も利用されている共通暗号化方式。
 
+### 暗号利用モード
+
+https://mryhryki.com/view/?type=memo&id=2022-08-17_d262
+
 #### AES-CBC
 
 

@@ -68,6 +68,8 @@ AES-GCM などの認証付きの共通鍵暗号アルゴリズムを使うよう
 
 ### PFS（Perfect Forward Security）
 
+https://mryhryki.com/view/?type=memo&id=2022-08-17_8e5e
+
 - [PFS（Perfect Forward Secrecy） | Program Is Made At Night](https://kimh.github.io/blog/jp/security/understanding-pfs-jp/)
 - [フロントエンジニアがTLSで学ぶ暗号技術 - Qiita](https://qiita.com/shun_takagi/items/eb46e0c1f0bb512fa04d)
 
