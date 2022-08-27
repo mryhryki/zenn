@@ -2,14 +2,6 @@
 title: "TLS1.3 の概要"
 ---
 
-# TODO
-- [ ] https://mryhryki.com/view/?type=memo&id=pBhexyj52AN0symMZlgq-Md0U_IynOL-_nlZwV_QoJP
-- [ ] https://mryhryki.com/view/?type=memo&id=2022-08-17_b7fe
-- [ ] https://mryhryki.com/view/?type=memo&id=2022-08-17_8e5e
-- [ ] 最終チェック
-
----
-
 TLS 1.3 は2018年にリリースされた比較的新しい暗号プロトコルである。
 番号はマイナーバージョンアップだが、事実上新しいプロトコルと言えるほどの変更がある。
 
@@ -23,14 +15,7 @@ TLS 1.3 は2018年にリリースされた比較的新しい暗号プロトコ�
 逆に言うと、TLS 1.2 では合意前のハンドシェイクの内容は全て平文でやりとりしていた。
 
 これは、鍵交換を DH (ディフィー・ヘルマン) 系に統一されたことによる改善である。
-
-### 鍵交換
-
-先述の通り、DH系の鍵交換方式 (ECDHE, DHE) に統一された。
-DH系鍵交換は、公開鍵暗号を利用し、秘密鍵を直接やり取りせずに交換できる方式である。
-`(TODO: DH鍵交換の説明)`
-
-静的な秘密鍵と公開鍵を使用する方法は `(TODO)` により廃止された
+（DH鍵交換については「公開鍵暗号」の章を参照）
 
 ### 暗号スイートの削減
 
@@ -68,8 +53,9 @@ AES-GCM などの認証付きの共通鍵暗号アルゴリズムを使うよう
 
 ### PFS（Perfect Forward Security）
 
-https://mryhryki.com/view/?type=memo&id=2022-08-17_8e5e
+TODO
 
+- [PFS（Perfect Forward Security）についてまとめる](https://mryhryki.com/view/?type=memo&id=2022-08-17_8e5e)
 - [PFS（Perfect Forward Secrecy） | Program Is Made At Night](https://kimh.github.io/blog/jp/security/understanding-pfs-jp/)
 - [フロントエンジニアがTLSで学ぶ暗号技術 - Qiita](https://qiita.com/shun_takagi/items/eb46e0c1f0bb512fa04d)
 

@@ -37,7 +37,7 @@ title: "共通鍵暗号"
 
 ## 暗号利用モード
 
-https://mryhryki.com/view/?type=memo&id=2022-08-17_d262
+- [暗号利用モードについてまとめる](https://mryhryki.com/view/?type=memo&id=2022-08-17_d262)
 
 ### ECB (Electronic Codebook Mode)
 
