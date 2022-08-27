@@ -50,21 +50,29 @@ AES-GCM などの認証付きの共通鍵暗号アルゴリズムを使うよう
 認証付きの共通鍵暗号アルゴリズムは、改ざん防止の (H)MAC がついているようなモード。
 
 これにより、なりすましや改ざんを防ぎつつ MAC による真正性検証が不要になった
+(MAC については「ハッシュ関数」の章を参照)
 
 ### PFS（Perfect Forward Security）
 
-TODO
+> PFS (Perfect Forward Secrecy)とは暗号化された通信と暗号化するための秘密鍵が両方漏洩しても複合化できません、という鍵交換に関する概念です。
+> 
+> https://kimh.github.io/blog/jp/security/understanding-pfs-jp/
 
-- [PFS（Perfect Forward Security）についてまとめる](https://mryhryki.com/view/?type=memo&id=2022-08-17_8e5e)
-- [PFS（Perfect Forward Secrecy） | Program Is Made At Night](https://kimh.github.io/blog/jp/security/understanding-pfs-jp/)
-- [フロントエンジニアがTLSで学ぶ暗号技術 - Qiita](https://qiita.com/shun_takagi/items/eb46e0c1f0bb512fa04d)
+静的な秘密鍵を暗号通信に使っても、その時点では復号されない。
+しかし将来的に何らかの方法で秘密鍵が漏洩し、暗号化された通信内容が保存されていた場合、その内容が容易に複合できてしまう。
+
+これは、スノーデン氏によるNSAの諜報活動のリークで話題になった。
+通信内容が暗号化されていても、暗号化されたデータそのものをとにかく保管しておき、後から鍵を入手したら解読するという手法をとっているらしい。
+
+このことから、固定された秘密鍵を使うよりも、PFS をサポートした方式を使うようにしている。
+TLS 1.3 では、ディフィー・ヘルマン鍵共有を使い、通信のたびに別の秘密鍵を使うことで、それぞれの通信を独立して守る（鍵が手に入ったとしても、一部の通信のみしか復号できない）ことができる。
 
 ## RTT (Round Trip Time) の改善
 
 TLS 1.3 は 1-RTT で合意ができ、データのやり取りまでの時間が短縮された。
 TLS 1.2 は 2-RTT が必要だった。
 
-これは、鍵交換が DH 系のみになったことによる。
+これは、鍵交換がディフィー・ヘルマン系のみになったことによる。
 
 ### 0-RTT
 
