@@ -6,14 +6,12 @@ price: 0
 chapters:
   - 0100-introduction
   - 0200-what-is-tls
-  - 0250-tls-vs-ssl
   - 0300-tls-history
   - 0400-tls1_3-summary
-  - 0500-before-tls1_2
-  - 0600-tls-handshake
-  - 0700-client-and-server-hello
-  - 0800-random-number
-  - 0900-hash-function
-  - 1000-common-key-crypto-system
-  - 1100-public-key-cryptography
-  - 1200-public-key-infrastructure
+  - 0500-tls-handshake
+  - 0600-client-and-server-hello
+  - 0700-random-number
+  - 0800-hash-function
+  - 0900-common-key-crypto-system
+  - 1000-public-key-cryptography
+  - 1100-public-key-infrastructure
