@@ -14,4 +14,11 @@ title: "はじめに"
 > 本サイトにてユーザ登録のうえ購入いただくと、原著改訂第2版に収録されるTLS 1.3の解説章を付録として含んだ特別版PDFがお読みいただけます
 > https://www.lambdanote.com/products/tls
 
+また学習にあたってよく参照したウェブサイトは以下になります。
+
+- [うるふブログ | wolfSSL](https://www.wolfssl.jp/blog/)
+- [Wikipedia](https://ja.wikipedia.org/)
+- [IT用語辞典 e-Words](https://e-words.jp/)
+
 その他参考にしたウェブサイトなどは、引用の末尾や各章の最後にリンクを置いています。
+
