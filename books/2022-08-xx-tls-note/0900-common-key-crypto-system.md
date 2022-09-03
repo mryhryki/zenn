@@ -82,7 +82,7 @@ https://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E5%88%A9%E7%94%A8%E3%83%A2%E3%8
 
 CBC は IV (Initial Vector) と前のブロックの暗号化の結果を使用して、同じ内容のブロックを暗号した場合でも別の暗号データを出力できるようにしたモードである。
 
-![CBCモードでの暗号化 (Wikipedia)](https://mryhryki.com/file/UhM4Wpm049YoDZkybeE-ZVhvxqHO9Dh18OIdztNur2vkrpic.png)  
+![CBCモードでの暗号化 (Wikipedia より)](https://mryhryki.com/file/UhM4Wpm049YoDZkybeE-ZVhvxqHO9Dh18OIdztNur2vkrpic.png)  
 
 https://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E5%88%A9%E7%94%A8%E3%83%A2%E3%83%BC%E3%83%89
 
@@ -97,17 +97,19 @@ https://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E5%88%A9%E7%94%A8%E3%83%A2%E3%8
 各ブロックと単調増加するカウンターを組み合わせて暗号化する方式。
 前後に関連がないため、暗号化・復号ともに並列化することが可能。
 
-![CTRモードでの暗号化 (Wikipedia)](https://mryhryki.com/file/UhKaAFLqm4TXsbWTbZfClyLGPWMSV8XYG_C_TpHp9p7aVSoI.png)
+![CTRモードでの暗号化 (Wikipedia より)](https://mryhryki.com/file/UhKaAFLqm4TXsbWTbZfClyLGPWMSV8XYG_C_TpHp9p7aVSoI.png)
 
 https://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E5%88%A9%E7%94%A8%E3%83%A2%E3%83%BC%E3%83%89
 
 ### CBC-MAC (Cipher Block Chaining Message Authentication Code)
 
 CBCモードを使い、MACを生成する方式。
-暗号化を行うものではないので注意。
 (MAC については「ハッシュ関数」の章を参照)
 
-![CBC-MACモードでの暗号化 (Wikipedia)](https://mryhryki.com/file/UhKJRbIgDG33k4CzQxe4XDUi3YERxZGpf_etq8YY4lJh9Byg.png)
+暗号化を行うものではないので注意。
+また CBC を使うため、並列計算はできない。
+
+![CBC-MACモードでの暗号化 (Wikipedia より)](https://mryhryki.com/file/UhKJRbIgDG33k4CzQxe4XDUi3YERxZGpf_etq8YY4lJh9Byg.png)
 
 https://ja.wikipedia.org/wiki/CBC-MAC
 
@@ -116,10 +118,21 @@ https://ja.wikipedia.org/wiki/CBC-MAC
 CTR (Counter) と CBC-MAC を組み合わせた方式。
 CTR を使い暗号化を行いつつ、CBC-MAC を使い認証を行う。
 
-### GCM
+### GCM (Galois/Counter Mode)
 
-- 通常の暗号に加え、認証タグというものが追加される
-  - この認証タグによって MAC の役割を果たすことができる
+> 名称が示すように、GCMは暗号化としてCTRモードを、認証として新しいGalois modeを組み合わせたものである。
+> https://ja.wikipedia.org/wiki/Galois/Counter_Mode
+
+CCM に似て CTR (Counter) モードを利用した暗号化と、と認証 (Galois) を組み合わせた方式。
+認証タグと呼ばれるハッシュ値のような値により、暗号化された内容を検証することが可能になる。
+CTR (Counter) モードを使用するため、並列計算が可能。
+
+![GCMモードでの暗号化 (Wikipedia より)](https://mryhryki.com/file/Uf1wREF4qqirjdHHDpD_x3E3FWOoELT0p73PciFztE_pE_ig.jpeg)
+
+https://ja.wikipedia.org/wiki/Galois/Counter_Mode
+
+(筆者感想)
+並列計算が可能でパフォーマンスが良く、[特許による妨げもない](https://ja.wikipedia.org/wiki/Galois/Counter_Mode#%E7%89%B9%E8%A8%B1) ため、現状では GCM が最も使うべき暗号モードのように思えた。
 
 ## 参考リンク
 
