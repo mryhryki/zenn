@@ -82,7 +82,7 @@ https://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E5%88%A9%E7%94%A8%E3%83%A2%E3%8
 
 CBC は IV (Initial Vector) と前のブロックの暗号化の結果を使用して、同じ内容のブロックを暗号した場合でも別の暗号データを出力できるようにしたモードである。
 
-![CBCモードでの暗号化 (Wikipedia より)](https://mryhryki.com/file/UhM4Wpm049YoDZkybeE-ZVhvxqHO9Dh18OIdztNur2vkrpic.png)  
+![CBCモードでの暗号化 (Wikipedia より)](https://mryhryki.com/file/Uf1loMP4IzUSErmkU_WkwxlNMHeKCGhPE8u7pwKP-6dymg00.jpeg)
 
 https://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E5%88%A9%E7%94%A8%E3%83%A2%E3%83%BC%E3%83%89
 
@@ -97,7 +97,7 @@ https://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E5%88%A9%E7%94%A8%E3%83%A2%E3%8
 各ブロックと単調増加するカウンターを組み合わせて暗号化する方式。
 前後に関連がないため、暗号化・復号ともに並列化することが可能。
 
-![CTRモードでの暗号化 (Wikipedia より)](https://mryhryki.com/file/UhKaAFLqm4TXsbWTbZfClyLGPWMSV8XYG_C_TpHp9p7aVSoI.png)
+![CTRモードでの暗号化 (Wikipedia より)](https://mryhryki.com/file/Uf1mS3binlkKo45oczVtmCNRt_pkFSip_1mmLZWa4a6xNxRs.jpeg)
 
 https://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E5%88%A9%E7%94%A8%E3%83%A2%E3%83%BC%E3%83%89
 
@@ -109,7 +109,7 @@ CBCモードを使い、MACを生成する方式。
 暗号化を行うものではないので注意。
 また CBC を使うため、並列計算はできない。
 
-![CBC-MACモードでの暗号化 (Wikipedia より)](https://mryhryki.com/file/UhKJRbIgDG33k4CzQxe4XDUi3YERxZGpf_etq8YY4lJh9Byg.png)
+![CBC-MACモードでの暗号化 (Wikipedia より)](https://mryhryki.com/file/Uf1oElWT7YiTqYb6AqsihU8oAlfPatPWAvcwlBlHLPeepUFg.jpeg)
 
 https://ja.wikipedia.org/wiki/CBC-MAC
 
