@@ -25,13 +25,23 @@ title: "共通鍵暗号"
 ## RC4
 
 高速で仕組みがシンプルなストリーム暗号化方式。
-しかし、現在では既に安全ではないとされ、[RFC7465](https://datatracker.ietf.org/doc/html/rfc7465) により禁止された。
+しかし、現在では既に安全ではないとされ、[RFC 7465](https://datatracker.ietf.org/doc/html/rfc7465) により禁止された。
 
-## TLS_CHACHA20_POLY1305_SHA256 (TODO)
+## ChaCha20
 
-TODO
+[RFC 7539](https://www.rfc-editor.org/rfc/rfc7539) で定義されている。
+Salsa20 というストリーム暗号の変種らしい。
 
+[Salsa20 - Wikipedia](https://ja.wikipedia.org/wiki/Salsa20#ChaCha)
 
+TLS 1.3 で唯一定義されているストリーム暗号であり、暗号としてもある程度普及しているよう。
+
+> 現在実用的に広く使えるTLSの対称暗号が実質AESの一択しかない。
+> (略)
+> こんな状況でもし今、AESに重大な問題が見つかったらとしたらどうなるか？ TLSの運用者は非常に厳しい選択に迫られます。対称暗号以外ではTLS1.2において、認証は RSA/ECDSA, 鍵交換は DHE/ECDHEと2つ以上の仕組みが存在します。リスク管理の観点から、現実的に代用できるAESのバックアップを持つことが今のTLSに必要です。
+> https://jovi0608.hatenablog.com/entry/20160404/1459748671
+
+この意味合いも大きそう。
 
 # ブロック暗号化方式
 
@@ -138,3 +148,4 @@ https://ja.wikipedia.org/wiki/Galois/Counter_Mode
 - [共通鍵暗号（秘密鍵暗号 / 共有鍵暗号）とは - 意味をわかりやすく - IT用語辞典 e-Words](https://e-words.jp/w/%E5%85%B1%E9%80%9A%E9%8D%B5%E6%9A%97%E5%8F%B7.html)
 - [RC4 - Wikipedia](https://ja.wikipedia.org/wiki/RC4)
 - [【暗号化】ブロック暗号のモードまとめ (比較表付き) - Qiita](https://qiita.com/omiso/items/6082b765c1257b71985b)
+- [新しいTLSの暗号方式ChaCha20-Poly1305 - ぼちぼち日記](https://jovi0608.hatenablog.com/entry/20160404/1459748671)
