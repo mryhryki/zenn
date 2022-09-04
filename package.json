@@ -19,13 +19,13 @@
   },
   "dependencies": {
     "@mryhryki/datetime": "^0.0.7",
-    "@mryhryki/lint": "^0.0.10",
+    "@mryhryki/lint": "^0.0.12",
     "@mryhryki/markdown": "^0.3.1",
-    "@types/node": "^18.7.13",
-    "@types/react": "^18.0.17",
+    "@types/node": "^18.7.14",
+    "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
     "@types/rss": "^0.0.29",
-    "esbuild": "^0.15.5",
+    "esbuild": "^0.15.7",
     "http-server": "^14.1.1",
     "iconv-lite": "^0.6.3",
     "nodemon": "^2.0.19",
@@ -33,6 +33,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rss": "^1.2.2",
-    "zenn-cli": "^0.1.118"
+    "zenn-cli": "^0.1.121"
   }
 }
