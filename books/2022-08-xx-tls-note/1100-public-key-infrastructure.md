@@ -62,16 +62,14 @@ CAは、証明書を発行する機関である。
 
 CAが侵略された場合、公開鍵基盤全体のセキュリティが失われてしまう。
 そのため、認証局は特に高いセキュリティを求められる。
+証明書の発行・管理に関する基本要件をまとめた [Baseline Requirement](https://cabforum.org/baseline-requirements-documents/) というものが存在する。
 
-TODO: Baseline Requirement
-
-有料で証明書を発行するケースが多かったが、現在は [Let's Encrypt](https://letsencrypt.org/) などの無料で DV 証明書が発行できる CA も存在する。
-
+証明書は、有料で発行するケースが多かったが、現在は [Let's Encrypt](https://letsencrypt.org/) などの無料で(DV)証明書が発行できる CA も存在する。
 
 
 ### フィールド
 
-(プロフェッショナルSSL/TLS P65)
+(TODO: プロフェッショナルSSL/TLS P65)
 
 - Version (バージョン)
 - Serial Number (シリアル番号)
@@ -80,8 +78,6 @@ TODO: Baseline Requirement
 - Validity (有効性)
 - Subject (主体者)
 - Public key (公開鍵)
-
-TODO: 実際の証明書の中身を見たい
 
 
 ## 証明書の失効
@@ -111,6 +107,10 @@ TODO: 実際の証明書の中身を見たい
 証明書でよく使われるフォーマット。
 メールで送ったり、コピーペーストしやすい。
 
+
+## PKI の弱点
+
+(TODO)
 
 ## 余談
 
