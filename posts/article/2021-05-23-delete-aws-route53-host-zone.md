@@ -6,7 +6,7 @@ title: AWS Route53 のホストゾーンを削除する
 
 ## バックアップ
 
-まずは何か合ったときのために CLI でデータをバックアップしておく。
+まずは何かあったときのために CLI でデータをバックアップしておく。
 
 ```bash
 $ export ZONE_ID="HOSTED ZONE ID"
