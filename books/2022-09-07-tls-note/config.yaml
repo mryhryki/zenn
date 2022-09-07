@@ -1,0 +1,17 @@
+title: "TLS 1.3 学習ノート"
+summary: "TLS 1.3 を個人で学習した時のノートです。自分の学習記録ですが、誰かに参考になるかもと思い公開しています。無料で公開しており、有料化の予定はありません。"
+topics: ["TLS"]
+published: false
+price: 0
+chapters:
+  - 0100-introduction
+  - 0200-what-is-tls
+  - 0300-tls-history
+  - 0400-tls1_3-summary
+  - 0500-tls-handshake
+  - 0600-random-number
+  - 0700-hash-function
+  - 0800-common-key-crypto-system
+  - 0900-public-key-cryptography
+  - 1000-public-key-infrastructure
+#  - 1100-view-packets
