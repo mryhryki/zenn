@@ -12,6 +12,8 @@ title: "乱数"
 > 
 > https://www.wolfssl.jp/wolfblog/2021/08/16/true-random-vs-pseudorandom-number-generation/
 
+真性乱数発生器の例: [量子理論を基にした真性乱数発生器 AR-QUANTIS IDQ | 乱数発生器 | 株式会社アルゴ](https://www.argocorp.com/compo/IDQ/IDQ.html)
+
 真正乱数生成器は理想ではあるがコストや品質の課題があるため、実際には疑似乱数生成器 (PRNG) を組み合わせて使う場合が多いよう。
 真正乱数生成器から得られる少量のデータ (シード) から疑似乱数を生成している。
 暗号学的な疑似乱数生正規 ([CSPRNG](https://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E8%AB%96%E7%9A%84%E6%93%AC%E4%BC%BC%E4%B9%B1%E6%95%B0%E7%94%9F%E6%88%90%E5%99%A8)) には予測不可能であることも必要になる。

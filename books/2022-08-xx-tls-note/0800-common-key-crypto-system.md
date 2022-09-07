@@ -4,7 +4,7 @@ title: "共通鍵暗号"
 
 共通鍵暗号（または秘密鍵暗号、対象鍵暗号とも）方式とは、通信相手と **事前に共有した** 秘密鍵を用いて暗号化・複合を行う暗号方式。
 公開鍵暗号に比べて高速に暗号化・複合が行えるが、秘密鍵の交換を安全に行う方法が課題である。
-共通鍵暗号の秘密鍵を公開鍵暗号で交換し、その秘密鍵を使用して共通鍵暗号を使うケースも多い。
+そのため共通鍵暗号で使う秘密鍵を公開鍵暗号方式で交換し、実際のデータはその秘密鍵を使用して暗号化するというように、両方を組み合わせて使う場合もある。
 
 暗号化には、ストリーム暗号化方式とブロック暗号化方式の２種類がある。
 
@@ -29,7 +29,7 @@ title: "共通鍵暗号"
 
 ## ChaCha20
 
-[RFC 7539](https://www.rfc-editor.org/rfc/rfc7539) で定義されている。
+[RFC 7539](https://datatracker.ietf.org/doc/html/rfc7539) で定義されている。
 Salsa20 というストリーム暗号の変種らしい。
 
 [Salsa20 - Wikipedia](https://ja.wikipedia.org/wiki/Salsa20#ChaCha)
@@ -65,16 +65,16 @@ TLS 1.3 で唯一定義されているストリーム暗号であり、暗号と
 
 現在、世界で最も広く利用されているブロック暗号。
 
-## 暗号利用モード
+# 暗号利用モード
 
 > 暗号利用モード（あんごうりようモード、Block cipher modes of operation）とは、ブロック暗号を利用して、ブロック長よりも長いメッセージを暗号化するメカニズムのことである。
 > 
 > https://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E5%88%A9%E7%94%A8%E3%83%A2%E3%83%BC%E3%83%89
 
-暗号化したいデータが鍵長よりも長い場合、繰り返し暗号を適用する必要がある。
+ブロック暗号方式で、暗号化したいデータが鍵長よりも長い場合、繰り返し暗号を適用する必要がある。
 最初に紹介する ECB モードのように単純な繰り返しだと問題が生じる場合があるため、他のモードが作られた。
 
-### ECB (Electronic Codebook Mode)
+## ECB (Electronic Codebook Mode)
 
 単純にブロックごとに同じ秘密鍵で暗号化する方式。
 同じ内容のブロックを暗号した場合、同じ暗号データが出力されるためパターンを隠すことができず推奨されない。
@@ -84,32 +84,32 @@ TLS 1.3 で唯一定義されているストリーム暗号であり、暗号と
 
 ![ECBモードで画像を暗号化した場合の例 (Wikipedia より)](https://mryhryki.com/file/UhMCISC8X5rtuQtZ4uNY3FjCTHN0lVASg2pZy1Hq7470dUxw.png)
 
-https://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E5%88%A9%E7%94%A8%E3%83%A2%E3%83%BC%E3%83%89
+https://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E5%88%A9%E7%94%A8%E3%83%A2%E3%83%BC%E3%83%89#Electronic_Codebook_(ECB)
 
-### CBC (Cipher Block Chaining)
+## CBC (Cipher Block Chaining)
 
 CBC は IV (Initial Vector) と前のブロックの暗号化の結果を使用して、同じ内容のブロックを暗号した場合でも別の暗号データを出力できるようにしたモードである。
 
 ![CBCモードでの暗号化 (Wikipedia より)](https://mryhryki.com/file/Uf1loMP4IzUSErmkU_WkwxlNMHeKCGhPE8u7pwKP-6dymg00.jpeg)
 
-https://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E5%88%A9%E7%94%A8%E3%83%A2%E3%83%BC%E3%83%89
+https://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E5%88%A9%E7%94%A8%E3%83%A2%E3%83%BC%E3%83%89#Cipher_Block_Chaining_(CBC)
 
 欠点としては、前のブロックの暗号化の結果がないと次のブロックが暗号化できないので、暗号化処理を並列化することができない。
 
-### CTR (Counter)
+## CTR (Counter)
 
 > CTRモード (Counter Mode) は、ブロック暗号を同期型のストリーム暗号として扱うものである。integer counter mode (ICM) あるいは segmented integer counter mode (SIC) とも呼ばれる。
 > 
-> https://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E5%88%A9%E7%94%A8%E3%83%A2%E3%83%BC%E3%83%89
+> https://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E5%88%A9%E7%94%A8%E3%83%A2%E3%83%BC%E3%83%89#Counter_(CTR)
 
 各ブロックと単調増加するカウンターを組み合わせて暗号化する方式。
 前後に関連がないため、暗号化・復号ともに並列化することが可能。
 
 ![CTRモードでの暗号化 (Wikipedia より)](https://mryhryki.com/file/Uf1mS3binlkKo45oczVtmCNRt_pkFSip_1mmLZWa4a6xNxRs.jpeg)
 
-https://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E5%88%A9%E7%94%A8%E3%83%A2%E3%83%BC%E3%83%89
+https://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E5%88%A9%E7%94%A8%E3%83%A2%E3%83%BC%E3%83%89#Counter_(CTR)
 
-### CBC-MAC (Cipher Block Chaining Message Authentication Code)
+## CBC-MAC (Cipher Block Chaining Message Authentication Code)
 
 CBCモードを使い、MACを生成する方式。
 (MAC については「ハッシュ関数」の章を参照)
@@ -121,12 +121,12 @@ CBCモードを使い、MACを生成する方式。
 
 https://ja.wikipedia.org/wiki/CBC-MAC
 
-### CCM (Counter with CBC-MAC)
+## CCM (Counter with CBC-MAC)
 
 CTR (Counter) と CBC-MAC を組み合わせた方式。
 CTR を使い暗号化を行いつつ、CBC-MAC を使い認証を行う。
 
-### GCM (Galois/Counter Mode)
+## GCM (Galois/Counter Mode)
 
 > 名称が示すように、GCMは暗号化としてCTRモードを、認証として新しいGalois modeを組み合わせたものである。
 > https://ja.wikipedia.org/wiki/Galois/Counter_Mode
@@ -139,10 +139,10 @@ CTR (Counter) モードを使用するため、並列計算が可能。
 
 https://ja.wikipedia.org/wiki/Galois/Counter_Mode
 
-(筆者感想)
+[筆者感想]
 並列計算が可能でパフォーマンスが良く、[特許による妨げもない](https://ja.wikipedia.org/wiki/Galois/Counter_Mode#%E7%89%B9%E8%A8%B1) ため、現状では GCM が最も使うべき暗号モードのように思えた。
 
-## 参考リンク
+# 参考リンク
 
 - [共通鍵暗号 - Wikipedia](https://ja.wikipedia.org/wiki/%E5%85%B1%E9%80%9A%E9%8D%B5%E6%9A%97%E5%8F%B7)
 - [共通鍵暗号（秘密鍵暗号 / 共有鍵暗号）とは - 意味をわかりやすく - IT用語辞典 e-Words](https://e-words.jp/w/%E5%85%B1%E9%80%9A%E9%8D%B5%E6%9A%97%E5%8F%B7.html)

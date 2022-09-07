@@ -26,16 +26,23 @@ TLS 1.3 では、フルハンドシェイクと事前共有鍵 (PSK: Pre-Shared 
 2. `[Client <-- Server]` Server Hello
     - サーバー側が選択した暗号スイート
 3. `[Client <-- Server]` Encrypted Extensions
+    - 補足情報（※実際にどう使われているのかはまだ分かってない）
 4. `[Client <-- Server]` Certificate
+    - サーバー証明書
 5. `[Client <-- Server]` Certificate Verify
+    - ハンドシェイク内容の署名情報など
 6. `[Client <-- Server]` Finished
-7. `[Client <-- Server]` Finished (ハンドシェイク完了)
+    - ハンドシェイク完了のメッセージ
+7. `[Client <-- Server]` Finished (この時点でハンドシェイク完了)
+    - ハンドシェイク完了のメッセージ
 8. `[Client <-> Server]` Application Data
     - 双方向にアプリケーションデータをやり取りする
 9. `[Client <-- Server]` Alert (Close Notify)
-10. `[Client --> Server]` Alert (Close Notify) (接続終了)
+    - TLS の接続終了メッセージ
+10. `[Client --> Server]` Alert (Close Notify) (この時点で TLS の接続が終了)
+    - TLS の接続終了メッセージ
 
-- [TLS 1.3の性能 その2 – フルハンドシェイク - wolfSSL](https://www.wolfssl.jp/wolfblog/2018/06/01/tls-1-3performance2/)
+参考: [TLS 1.3の性能 その2 – フルハンドシェイク - wolfSSL](https://www.wolfssl.jp/wolfblog/2018/06/01/tls-1-3performance2/)
 
 # 事前共有鍵 (PSK: Pre-Shared Key) 接続の流れ
 
@@ -44,7 +51,7 @@ TLS 1.3 では、フルハンドシェイクと事前共有鍵 (PSK: Pre-Shared 
 PSK をそのまま使用することも可能。
 しかし前方秘匿性 (PFS) がなくなるため、PSK を使ってさらにディフィー・ヘルマン鍵交換を実行することが推奨されている。
 
-(筆者感想)
+[筆者感想]
 PSK を使ってもディフィー・ヘルマン鍵交換を行うのであれば、フルハンドシェイクと近い流れになるので、事前共有鍵のメンテナンスコストに対するメリットが低そうに思えた。
 
 ## セッション再開
