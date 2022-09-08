@@ -181,7 +181,7 @@ export const resizeImage = async (imageData: Blob, width: number): Promise<Blob 
 
 上記のコードを使って、簡単に試せるページを用意してみましたので、興味がある方はお試しください。
 
-https://mryhryki.com/experiemt/resize-on-canvas.html
+https://mryhryki.com/experiment/resize-on-canvas.html
 
 [![preview](https://user-images.githubusercontent.com/12733897/158285134-47c8a6b0-681f-44c1-a357-c5255da399ed.gif)](https://mryhryki.com/file/Wc3F9uV6jDPp6UsWkj7PPSCsSGZYS.gif)
 
