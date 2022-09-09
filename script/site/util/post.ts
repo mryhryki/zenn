@@ -9,10 +9,11 @@ import {
   SourceZennArticlesDir
 } from "./definition";
 import { DateTime } from "@mryhryki/datetime";
+import { digestSha256 } from "./digest";
 
 const BreakCharacter = new RegExp("\r?\n");
 const FrontMatterSplitter = new RegExp("^[-]{3,}$");
-const WrapDoubleQuote = new RegExp('(^"|"$)', "g");
+const WrapDoubleQuote = new RegExp("(^\"|\"$)", "g");
 const DateTimeFormat = new RegExp(
   [
     "^20[0-9]{2}-",
@@ -21,7 +22,7 @@ const DateTimeFormat = new RegExp(
     "([01][0-9]|2[0-3]):",
     "([0-5][0-9]):",
     "([0-5][0-9])",
-    "\\+09:00$",
+    "\\+09:00$"
   ].join("")
 );
 
@@ -33,6 +34,7 @@ export interface Post {
   markdown: string;
   createdAt: string;
   filePath: string;
+  digest: string;
   updatedAt?: string | null;
   canonical?: string | null;
 }
@@ -75,21 +77,23 @@ const checkPost = (post: Post, filePath: string) => {
   }
 };
 
-const getPost = (absoluteFilePath: string, frontMatter: Record<string, string>, markdown: string): Post => {
+const getPost = async (absoluteFilePath: string, frontMatter: Record<string, string>, markdown: string): Promise<Post> => {
   const id = path.basename(absoluteFilePath).replace(".md", "").trim();
   const type = getPostType(absoluteFilePath);
   const canonical = type === "zenn" ? `https://zenn.dev/mryhryki/articles/${id}` : frontMatter.canonical ?? null;
+  const title = (frontMatter.title ?? "").trim();
 
   const post: Post = {
     type,
     url: "",
     id,
-    title: (frontMatter.title ?? "").trim(),
+    title,
     markdown,
-    filePath: absoluteFilePath.replace(RootDir, ''),
+    filePath: absoluteFilePath.replace(RootDir, ""),
     createdAt: "",
     updatedAt: frontMatter.updatedAt ?? null,
     canonical,
+    digest: await digestSha256(`${title}\n\n${markdown}`)
   };
 
   if (type === "article" || type === "zenn") {
@@ -112,7 +116,7 @@ const getPost = (absoluteFilePath: string, frontMatter: Record<string, string>, 
         post.id.substring(11, 13),
         ":",
         post.id.substring(13, 15),
-        "+09:00",
+        "+09:00"
       ].join("")
     ).toISO();
     post.url = `${BaseURL}/scrap/${post.id}.html`;
@@ -159,7 +163,7 @@ export const parsePost = async (filePath: string): Promise<Post> => {
     }
   });
 
-  const post = getPost(filePath, frontMatter, markdownLines.join("\n").trim());
+  const post = await getPost(filePath, frontMatter, markdownLines.join("\n").trim());
   checkPost(post, filePath);
   return post;
 };
