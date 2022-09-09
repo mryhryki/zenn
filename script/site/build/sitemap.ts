@@ -1,7 +1,7 @@
 import path from "node:path";
 import { writeFile } from "node:fs/promises";
-import { listFiles } from "../util/fs";
-import { BaseURL, SiteDir } from "../util/definition";
+import { listFiles } from "../../common/fs";
+import { BaseURL, SiteDir } from "../../common/definition";
 
 export const buildSiteMap = async () => {
   const siteMap = [`${BaseURL}/`];

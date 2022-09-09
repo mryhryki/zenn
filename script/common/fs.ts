@@ -1,5 +1,5 @@
 import { readdir, stat } from "fs/promises";
-import { parsePost, Post } from "./post";
+import { parsePost, Post } from "./post/parse";
 
 export const readPosts = async (dirPath: string): Promise<Post[]> => {
   const files = await listFiles(dirPath, false);

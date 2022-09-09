@@ -6,7 +6,7 @@
     "node": "16.x"
   },
   "scripts": {
-    "build": "esbuild --platform=node --external:node:* --bundle script/site/build.ts | node",
+    "build": "esbuild --platform=node --external:node:* --bundle script/site/index.ts | node",
     "build:watch": "nodemon --watch posts/ --watch script/ --ext md,ts,tsx --exec 'npm run build'",
     "deploy:aws": "aws s3 sync site/ s3://mryhryki-cdn/contents/ --exclude='.DS_Store' --size-only",
     "dev": "run-p 'build:watch' 'preview'",
@@ -15,6 +15,8 @@
     "lint:fix": "mryhryki-lint-fix",
     "pages:archive": "tar --verbose --create --file=./archive.tar --directory=site/ .",
     "preview": "http-server site/ --port 58125 -o",
+    "type": "tsc",
+    "type:watch": "tsc --watch",
     "zenn": "open http://localhost:58125/ && zenn preview --port 58125"
   },
   "dependencies": {
@@ -33,6 +35,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rss": "^1.2.2",
+    "typescript": "^4.8.3",
     "zenn-cli": "^0.1.121"
   }
 }

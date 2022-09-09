@@ -1,7 +1,7 @@
-import { Post } from "../util/post";
+import { Post } from "../../common/post/parse";
 import { renderToHtml } from "./common";
 import React from "react";
-import { BaseURL } from "../util/definition";
+import { BaseURL } from "../../common/definition";
 
 const getTitlePrefix = (post: Post): string => {
   switch (post.type) {

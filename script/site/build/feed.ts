@@ -1,6 +1,6 @@
-import { Post } from "../util/post";
+import { Post } from "../../common/post/parse";
 import RSS from "rss";
-import { BaseURL, DestinationBlogDir } from "../util/definition";
+import { BaseURL, DestinationBlogDir } from "../../common/definition";
 import { writeFile } from "node:fs/promises";
 import path from "node:path";
 
@@ -15,7 +15,7 @@ export const buildFeed = async (posts: Post[]): Promise<void> => {
   posts.forEach((post) => {
     const url = `${BaseURL}/blog/${post.id}.html`;
     feed.item({
-      title: decodeURIComponent(post.title),
+      title: post.title,
       date: post.createdAt,
       description: "",
       url,

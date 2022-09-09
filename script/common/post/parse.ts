@@ -7,9 +7,9 @@ import {
   SourceScrapDir,
   SourceSlideDir,
   SourceZennArticlesDir
-} from "./definition";
+} from "../definition";
 import { DateTime } from "@mryhryki/datetime";
-import { digestSha256 } from "./digest";
+import { digestSha256 } from "../digest";
 
 const BreakCharacter = new RegExp("\r?\n");
 const FrontMatterSplitter = new RegExp("^[-]{3,}$");

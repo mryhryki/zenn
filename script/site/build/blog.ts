@@ -1,6 +1,6 @@
 import path from "node:path";
-import { DestinationBlogDir } from "../util/definition";
-import { Post } from "../util/post";
+import { DestinationBlogDir } from "../../common/definition";
+import { Post } from "../../common/post/parse";
 import { renderBlogPost } from "../html/blog";
 import { writeFile } from "node:fs/promises";
 

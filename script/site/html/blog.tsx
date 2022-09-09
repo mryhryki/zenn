@@ -1,8 +1,8 @@
-import { Post } from "../util/post";
+import { Post } from "../../common/post/parse";
 import { convert } from "@mryhryki/markdown";
 import React from "react";
 import { renderFooter, renderToHtml } from "./common";
-import { BaseURL } from "../util/definition";
+import { BaseURL } from "../../common/definition";
 
 export const renderBlogPost = (post: Post): string => {
   const { title } = post;

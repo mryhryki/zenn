@@ -1,6 +1,6 @@
 import path from "path";
-import { DestinationScrapDir } from "../util/definition";
-import { Post } from "../util/post";
+import { DestinationScrapDir } from "../../common/definition";
+import { Post } from "../../common/post/parse";
 import { writeFile } from "node:fs/promises";
 import { renderScrap } from "../html/scrap";
 

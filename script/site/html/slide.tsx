@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOMServer from "react-dom/server";
 import { convert } from "@mryhryki/markdown";
-import { BaseURL } from "../util/definition";
+import { BaseURL } from "../../common/definition";
 
 const renderToHtml = (element: React.ReactElement): string => {
   const html = ReactDOMServer.renderToStaticMarkup(element);

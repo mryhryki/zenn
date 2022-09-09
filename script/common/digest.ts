@@ -1,3 +1,5 @@
+import { webcrypto as crypto } from "node:crypto";
+
 const HexCharacters = "0123456789abcdef";
 
 export const digestSha256 = async (text: string): Promise<string> => {

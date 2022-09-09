@@ -1,8 +1,8 @@
-import { Post } from "../util/post";
+import { Post } from "../../common/post/parse";
 import { renderFooter, renderToHtml } from "./common";
 import { convert } from "@mryhryki/markdown";
 import React from "react";
-import { BaseURL } from "../util/definition";
+import { BaseURL } from "../../common/definition";
 
 export const renderScrap = (post: Post): string => {
   const url = post.url;

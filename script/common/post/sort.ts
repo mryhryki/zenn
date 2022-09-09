@@ -1,4 +1,4 @@
-import { Post } from "./post";
+import { Post } from "./parse";
 
 export const sortPosts = (posts: Post[]): Post[] => {
   const sortedPosts = [...posts];

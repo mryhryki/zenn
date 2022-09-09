@@ -1,7 +1,7 @@
-import { Post } from "../util/post";
+import { Post } from "../../common/post/parse";
 import { writeFile } from "node:fs/promises";
 import path from "node:path";
-import { DestinationBlogDir } from "../util/definition";
+import { DestinationBlogDir } from "../../common/definition";
 import { renderBlogIndex } from "../html";
 
 export const buildIndex = async (posts: Post[]): Promise<void> => {
