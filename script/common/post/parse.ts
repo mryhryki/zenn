@@ -2,8 +2,10 @@ import path from "path";
 import { readFile } from "fs/promises";
 import {
   BaseURL,
-  PostsDir, RootDir,
-  SourceArticleDir,
+  PostsDir,
+  RootDir,
+  SourceBackupDir,
+  SourceMemoDir,
   SourceScrapDir,
   SourceSlideDir,
   SourceZennArticlesDir
@@ -39,12 +41,14 @@ export interface Post {
   canonical?: string | null;
 }
 
-type PostType = "zenn" | "article" | "slide" | "scrap";
+type PostType = "zenn" | "memo" | "backup" | "slide" | "scrap";
 const getPostType = (filePath: string): PostType => {
   if (filePath.startsWith(SourceZennArticlesDir)) {
     return "zenn";
-  } else if (filePath.startsWith(SourceArticleDir)) {
-    return "article";
+  } else if (filePath.startsWith(SourceMemoDir)) {
+    return "memo";
+  } else if (filePath.startsWith(SourceBackupDir)) {
+    return "backup";
   } else if (filePath.startsWith(SourceSlideDir)) {
     return "slide";
   } else if (filePath.startsWith(SourceScrapDir)) {
@@ -96,7 +100,7 @@ const getPost = async (absoluteFilePath: string, frontMatter: Record<string, str
     digest: await digestSha256(`${title}\n\n${markdown}`)
   };
 
-  if (type === "article" || type === "zenn") {
+  if (type === "memo" || type === "backup" || type === "zenn") {
     post.createdAt = DateTime.parse(`${post.id.substring(0, 10)}T00:00:00+09:00`).toISO();
     post.url = `${BaseURL}/blog/${post.id}.html`;
   } else if (type === "slide") {
@@ -151,7 +155,6 @@ export const parsePost = async (filePath: string): Promise<Post> => {
       const [key, ...values] = line.split(":");
       switch (key) {
         case "title":
-        case "updated_at":
         case "canonical":
           frontMatter[key] = values.join(":").trim().replace(WrapDoubleQuote, "");
           break;

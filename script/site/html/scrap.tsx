@@ -8,7 +8,7 @@ export const renderScrap = (post: Post): string => {
   const url = post.url;
   const siteName = "mryhryki's scrap";
   const title = post.title;
-  const description = "Web関連の記事を読んだ記録です";
+  const description = "主にWeb関連の記事のスクラップです。";
   const canonical = post.canonical;
   const useSyntaxHighlight = true;
 

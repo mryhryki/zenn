@@ -5,14 +5,16 @@ import { BaseURL } from "../../common/definition";
 
 const getTitlePrefix = (post: Post): string => {
   switch (post.type) {
-    case "article":
-      return "【記事】";
-    case "zenn":
-      return "【Zenn】";
-    case "slide":
-      return "【スライド】";
+    case "backup":
+      return "【バックアップ】";
+    case "memo":
+      return "【メモ】";
     case "scrap":
       return "【スクラップ】";
+    case "slide":
+      return "【スライド】";
+    case "zenn":
+      return "【Zenn】";
     default:
       throw new Error(`Unknown type: ${post.type}`);
   }
@@ -28,7 +30,7 @@ export const renderBlogIndex = (posts: Post[]): string => {
   const months = Object.keys(postsPerMonthly).sort().reverse();
 
   const title = "mryhryki's blog";
-  const description = "Web技術に関する記事・スライド・スクラップ、Zennのバックアップ、個人的なメモなど";
+  const description = "個人的なメモ・スライド・スクラップ、Zennや他媒体のバックアップなど";
 
   return renderToHtml(
     <>
@@ -62,10 +64,11 @@ export const renderBlogIndex = (posts: Post[]): string => {
             display: none;
           }
 
-          input#article-checkbox:checked ~ div > ul.posts > li.post-item.article,
-          input#zenn-checkbox:checked ~ div > ul.posts > li.post-item.zenn,
+          input#backup-checkbox:checked ~ div > ul.posts > li.post-item.backup,
+          input#memo-checkbox:checked ~ div > ul.posts > li.post-item.memo,
+          input#scrap-checkbox:checked ~ div > ul.posts > li.post-item.scrap,
           input#slide-checkbox:checked ~ div > ul.posts > li.post-item.slide,
-          input#scrap-checkbox:checked ~ div > ul.posts > li.post-item.scrap {
+          input#zenn-checkbox:checked ~ div > ul.posts > li.post-item.zenn {
             display: list-item;
           }
 
@@ -73,10 +76,11 @@ export const renderBlogIndex = (posts: Post[]): string => {
             display: none;
           }
 
-          input#article-checkbox:checked ~ div > h2.month.article,
-          input#zenn-checkbox:checked ~ div > h2.month.zenn,
+          input#backup-checkbox:checked ~ div > h2.month.backup,
+          input#memo-checkbox:checked ~ div > h2.month.memo,
+          input#scrap-checkbox:checked ~ div > h2.month.scrap,
           input#slide-checkbox:checked ~ div > h2.month.slide,
-          input#scrap-checkbox:checked ~ div > h2.month.scrap {
+          input#zenn-checkbox:checked ~ div > h2.month.zenn {
             display: block;
           }
         `
@@ -90,26 +94,27 @@ export const renderBlogIndex = (posts: Post[]): string => {
       <body className="wrapper dark-theme">
         <h1>{title}</h1>
         <p style={{ textAlign: "center" }}>
-          Web技術に関する記事・スライド・スクラップ（読んだ記事の記録）、
-          <a href="https://zenn.dev/mryhryki">Zenn</a>のバックアップ、個人的なメモなど
+          個人的なメモ、スライド、スクラップ、<a href="https://zenn.dev/mryhryki">Zenn</a>や他媒体のバックアップなど
         </p>
 
         <div style={{ textAlign: "center" }}>
-          <input id="article-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
-          <label htmlFor="article-checkbox" style={{ marginRight: "1rem" }}>記事</label>
-          <input id="zenn-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
-          <label htmlFor="zenn-checkbox" style={{ marginRight: "1rem" }}>Zenn</label>
+          <input id="memo-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
+          <label htmlFor="memo-checkbox" style={{ marginRight: "1rem" }}>メモ</label>
           <input id="slide-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
           <label htmlFor="slide-checkbox" style={{ marginRight: "1rem" }}>スライド</label>
           <input id="scrap-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
           <label htmlFor="scrap-checkbox" style={{ marginRight: "1rem" }}>スクラップ</label>
+          <input id="zenn-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
+          <label htmlFor="zenn-checkbox" style={{ marginRight: "1rem" }}>Zenn</label>
+          <input id="backup-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
+          <label htmlFor="backup-checkbox" style={{ marginRight: "1rem" }}>バックアップ</label>
 
           <div style={{ textAlign: "left" }}>
             {months.map((month) => {
               const posts = postsPerMonthly[month];
               const types = Array.from(new Set(posts.map(({ type }) => type))).sort();
               return (
-                <>
+                <React.Fragment key={month}>
                   <h2 id={month} className={`month ${types.join(" ")}`}><a href={`#${month}`}>{month}</a></h2>
                   <ul className="posts">
                     {postsPerMonthly[month].map((post) => (
@@ -122,7 +127,7 @@ export const renderBlogIndex = (posts: Post[]): string => {
                       </li>
                     ))}
                   </ul>
-                </>
+                </React.Fragment>
               );
             })}
           </div>

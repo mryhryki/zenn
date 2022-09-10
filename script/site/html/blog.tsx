@@ -7,7 +7,7 @@ import { BaseURL } from "../../common/definition";
 export const renderBlogPost = (post: Post): string => {
   const { title } = post;
   const siteName = "mryhryki's blog";
-  const description = "web技術に関する記事・スライド・スクラップ、個人的なメモなど";
+  const description = "個人的なメモです";
 
   return renderToHtml(
     <>
