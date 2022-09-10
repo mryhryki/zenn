@@ -10,9 +10,7 @@ const renderToHtml = (element: React.ReactElement): string => {
 
 export const renderSlide = (markdown: string): string => {
   const { title } = convert(markdown);
-  const description = "DESCRIPTION";
-  const url = BaseURL;
-  const siteName = title;
+  const description = "発表用スライドです。";
 
   return renderToHtml(
     <html>
@@ -30,8 +28,8 @@ export const renderSlide = (markdown: string): string => {
         <meta property="og:description" content={description} />
 
         <meta property="og:image" content={`${BaseURL}/assets/image/share_image.jpg`} />
-        <meta property="og:url" content={url} />
-        <meta property="og:site_name" content={siteName} />
+        <meta property="og:url" content={BaseURL} />
+        <meta property="og:site_name" content={title} />
         <meta property="og:locale" content="ja-JP" />
         <meta property="og:type" content="website" />
 
