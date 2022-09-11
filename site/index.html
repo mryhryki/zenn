@@ -29,250 +29,254 @@
   <link rel="apple-touch-icon" type="image/png" href="./assets/image/icon_180x180.png">
 
   <style>
-      body {
-          box-sizing: border-box;
-          color: #4a5568;
-          font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-          margin: 0;
-          padding: 0;
-      }
+    html {
+      scroll-behavior: smooth;
+    }
 
-      h1, h2, h3 {
-          font-weight: bold;
-          margin: 0;
-          padding: 0;
-          text-align: center;
-      }
+    body {
+      box-sizing: border-box;
+      color: #4a5568;
+      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
 
-      h1 {
-          font-size: 30px;
-          line-height: 48px;
-      }
+    h1, h2, h3 {
+      font-weight: bold;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
 
-      h2 {
-          color: #1a202c;
-          font-size: 24px;
-          line-height: 40px;
-          margin-bottom: 16px;
-      }
+    h1 {
+      font-size: 30px;
+      line-height: 48px;
+    }
 
-      h3 {
-          color: #1a202c;
-          font-size: 20px;
-          line-height: 48px;
-      }
+    h2 {
+      color: #1a202c;
+      font-size: 24px;
+      line-height: 40px;
+      margin-bottom: 16px;
+    }
 
-      p {
-          padding: 0;
-          margin: 8px;
-          line-height: 1.3;
-      }
+    h3 {
+      color: #1a202c;
+      font-size: 20px;
+      line-height: 48px;
+    }
 
-      header {
-          background-attachment: local;
-          background-color: black;
-          background-image: url('./assets/image/background_960x360.webp'), url('./assets/image/background_960x360.jpg');
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
-          color: #f7fafc;
-          display: flex;
-          flex-direction: column;
-          height: 80vh;
-          margin-bottom: 16px;
-          padding: 0 24px 16px 24px;
-      }
+    p {
+      padding: 0;
+      margin: 8px;
+      line-height: 1.3;
+    }
 
-      header img {
-          background-color: #fff;
-      }
+    header {
+      background-attachment: local;
+      background-color: black;
+      background-image: url('./assets/image/background_960x360.webp'), url('./assets/image/background_960x360.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      color: #f7fafc;
+      display: flex;
+      flex-direction: column;
+      height: 80vh;
+      margin-bottom: 16px;
+      padding: 0 24px 16px 24px;
+    }
 
-      header .profile-icon {
-          height: 64px;
-          width: 64px;
-          border-radius: 50%;
-          border: 1px solid gray;
-          object-fit: cover;
-      }
+    header img {
+      background-color: #fff;
+    }
 
-      nav {
-          font-size: 20px;
-          color: #f7fafc;
-          line-height: 2;
-          text-align: right;
-          margin-top: 16px;
-      }
+    header .profile-icon {
+      height: 64px;
+      width: 64px;
+      border-radius: 50%;
+      border: 1px solid gray;
+      object-fit: cover;
+    }
 
-      nav > a {
-          color: #f7fafc;
-          text-decoration: none;
-          margin: 0 8px;
-      }
+    nav {
+      font-size: 20px;
+      color: #f7fafc;
+      line-height: 2;
+      text-align: right;
+      margin-top: 16px;
+    }
 
-      .my-id {
-          line-height: 1.1;
-      }
+    nav > a {
+      color: #f7fafc;
+      text-decoration: none;
+      margin: 0 8px;
+    }
 
-      .my-name {
-          font-size: 16px;
-          line-height: 20px;
-      }
+    .my-id {
+      line-height: 1.1;
+    }
 
-      .social-links {
-          text-align: center;
-      }
+    .my-name {
+      font-size: 16px;
+      line-height: 20px;
+    }
 
-      .social-links a {
-          display: inline-block;
-          margin: 4px;
-          max-height: 48px;
-          max-width: 48px;
-          min-height: 48px;
-          min-width: 48px;
-      }
+    .social-links {
+      text-align: center;
+    }
 
-      .social-links img {
-          border-radius: 8px;
-          max-height: 48px;
-          max-width: 48px;
-          min-height: 48px;
-          min-width: 48px;
-          object-fit: contain;
-      }
+    .social-links a {
+      display: inline-block;
+      margin: 4px;
+      max-height: 48px;
+      max-width: 48px;
+      min-height: 48px;
+      min-width: 48px;
+    }
 
-      footer {
-          background-color: #2d3748;
-          color: #cbd5e0;
-          font-size: 14px;
-          padding: 8px 16px;
-          text-align: right;
-      }
+    .social-links img {
+      border-radius: 8px;
+      max-height: 48px;
+      max-width: 48px;
+      min-height: 48px;
+      min-width: 48px;
+      object-fit: contain;
+    }
 
-      footer > a {
-          color: #cbd5e0;
-      }
+    footer {
+      background-color: #2d3748;
+      color: #cbd5e0;
+      font-size: 14px;
+      padding: 8px 16px;
+      text-align: right;
+    }
 
-      section {
-          margin: 32px auto;
-          max-width: 48rem;
-          padding: 0 16px;
-      }
+    footer > a {
+      color: #cbd5e0;
+    }
 
-      section img {
-          background-color: #ccc;
-      }
+    section {
+      margin: 32px auto;
+      max-width: 48rem;
+      padding: 0 16px;
+    }
 
+    section img {
+      background-color: #ccc;
+    }
+
+    .card-layout {
+      margin: 0 auto;
+    }
+
+    .card-layout > .card {
+      display: block;
+      flex: 1 1 0;
+      margin: 8px 8px 24px 8px;
+      max-width: calc(100% - 16px);
+    }
+
+    .about-card {
+      text-align: center;
+    }
+
+    .about-card img {
+      border-radius: 16px;
+      display: inline-block;
+      border: 1px solid #999;
+      height: 238px;
+      max-width: 238px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .about-card > p {
+      text-align: left;
+    }
+
+    .skill-card {
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      padding: 16px;
+    }
+
+    .skill-links-layout {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .skill-links-layout img {
+      border-radius: 4px;
+      height: 64px;
+      margin: 4px;
+      object-fit: contain;
+      width: 64px;
+    }
+
+    #output-section, #contact-section {
+      content-visibility: auto;
+    }
+
+    .output-card {
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+      text-decoration: none;
+    }
+
+    .output-card .output-image {
+      background-color: #333;
+      border-bottom: 1px solid #e2e8f0;
+      color: #fff;
+      font-size: 2rem;
+      object-fit: cover;
+      text-align: center;
+      width: 100%;
+    }
+
+    .output-card > p {
+      color: black;
+      margin: 0 16px 16px 16px;
+    }
+
+    .career-card {
+      border: 1px solid #e2e8f0;
+      padding: 8px 16px 16px 16px;
+      border-radius: 4px;
+      margin: 16px 0;
+    }
+
+    .career-card > h3 {
+      text-align: left;
+      line-height: 1.2em;
+      padding: 8px 0;
+    }
+
+    .career-card > .description {
+      margin: 0;
+    }
+
+    .career-card > .term {
+      text-align: right;
+      margin: 8px 0 0 0;
+      font-size: 0.85rem;
+    }
+
+    @media (min-width: 40rem) {
       .card-layout {
-          margin: 0 auto;
+        align-items: stretch;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
       }
 
       .card-layout > .card {
-          display: block;
-          flex: 1 1 0;
-          margin: 8px 8px 24px 8px;
-          max-width: calc(100% - 16px);
+        max-width: calc(50% - 16px);
       }
-
-      .about-card {
-          text-align: center;
-      }
-
-      .about-card img {
-          border-radius: 16px;
-          display: inline-block;
-          border: 1px solid #999;
-          height: 238px;
-          max-width: 238px;
-          object-fit: cover;
-          width: 100%;
-      }
-
-      .about-card > p {
-          text-align: left;
-      }
-
-      .skill-card {
-          border-radius: 8px;
-          border: 1px solid #e2e8f0;
-          padding: 16px;
-      }
-
-      .skill-links-layout {
-          display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          justify-content: center;
-      }
-
-      .skill-links-layout img {
-          border-radius: 4px;
-          height: 64px;
-          margin: 4px;
-          object-fit: contain;
-          width: 64px;
-      }
-
-      #output-section, #contact-section {
-          content-visibility: auto;
-      }
-
-      .output-card {
-          border-radius: 8px;
-          border: 1px solid #e2e8f0;
-          overflow: hidden;
-          text-decoration: none;
-      }
-
-      .output-card .output-image {
-          background-color: #333;
-          border-bottom: 1px solid #e2e8f0;
-          color: #fff;
-          font-size: 2rem;
-          object-fit: cover;
-          text-align: center;
-          width: 100%;
-      }
-
-      .output-card > p {
-          color: black;
-          margin: 0 16px 16px 16px;
-      }
-
-      .career-card {
-          border: 1px solid #e2e8f0;
-          padding: 8px 16px 16px 16px;
-          border-radius: 4px;
-          margin: 16px 0;
-      }
-
-      .career-card > h3 {
-          text-align: left;
-          line-height: 1.2em;
-          padding: 8px 0;
-      }
-
-      .career-card > .description {
-          margin: 0;
-      }
-
-      .career-card > .term {
-          text-align: right;
-          margin: 8px 0 0 0;
-          font-size: 0.85rem;
-      }
-
-      @media (min-width: 40rem) {
-          .card-layout {
-              align-items: stretch;
-              display: flex;
-              flex-direction: row;
-              justify-content: center;
-          }
-
-          .card-layout > .card {
-              max-width: calc(50% - 16px);
-          }
-      }
+    }
   </style>
 </head>
 <body>
