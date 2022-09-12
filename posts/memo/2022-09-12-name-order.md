@@ -21,11 +21,11 @@ title: 名前の表記についての自分のルールを決める
 > 
 > https://www.kantei.go.jp/jp/singi/seimei_romaji/pdf/moshiawase.pdf
 
-首相の名前もその様になっています。
+参考までに、首相官邸HPでもその様になっているようです。
 
 [KISHIDA Fumio (The Cabinet) | Prime Minister of Japan and His Cabinet](https://japan.kantei.go.jp/101_kishida/meibo/daijin/kishida_e.html)
 
-ただし、別の慣行がある場合は従わなくても良いとも書かれています。
+ただし、別の慣行がある場合は従わなくても良いとも書かれているので、強い強制力があるわけではなさそうです。
 
 > なお，国際機関等により指定された様式があるなど，特段の慣行がある場合は，これによらなくてもよい。
 >
