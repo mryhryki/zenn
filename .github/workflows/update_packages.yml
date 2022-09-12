@@ -1,8 +1,6 @@
 name: update_packages
 env:
   TZ: "Asia/Tokyo"
-  ACTIONS_RUNNER_DEBUG: "true"
-  ACTIONS_STEP_DEBUG: "true"
 
 on:
   schedule:

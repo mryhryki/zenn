@@ -1,12 +1,11 @@
 name: generate_holidays
 env:
   TZ: "Asia/Tokyo"
-  ACTIONS_RUNNER_DEBUG: "true"
-  ACTIONS_STEP_DEBUG: "true"
 
 on:
   schedule:
     - cron: "0 0 1 3 *" # UTC
+  workflow_dispatch:
 
 jobs:
   check_branch:

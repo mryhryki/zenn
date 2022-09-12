@@ -1,8 +1,6 @@
 name: deploy
 env:
   TZ: "Asia/Tokyo"
-  ACTIONS_RUNNER_DEBUG: "true"
-  ACTIONS_STEP_DEBUG: "true"
 
 on:
   push:
