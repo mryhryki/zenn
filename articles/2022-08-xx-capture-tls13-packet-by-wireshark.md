@@ -142,10 +142,12 @@ Wireshak でパケットのキャプチャを開始し、任意のWebサイト�
 
 # おまけ: TLS 1.3 の通信内容を見てみる
 
+TLS 1.3 の内容を見るのが目的だったので、見てみた結果も載せておきます。
+
 ## Client Hello (Client -> Server)
 
 ## Client Hello (Client <- Server)
 
-## Certicficate (Client <- Server)
+## Certificate (Client <- Server)
 
-## Certicficate Verify (Client <- Server)
+## Certificate Verify (Client <- Server)
