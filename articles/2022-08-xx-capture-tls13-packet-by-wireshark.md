@@ -138,17 +138,3 @@ Wireshak でパケットのキャプチャを開始し、任意のWebサイト�
 無事 TLS 1.3 では暗号化されている Certificate などのメッセージが復号されてみることができました。
 
 ![TLS 1.3 package capture result](https://mryhryki.com/file/Ugt4EQnWw8Lr8fGldjTEJU7OU_UUJ4B7s8pBNE4VM9LYR9P0.png)
-
-
-# おまけ: TLS 1.3 の通信内容を見てみる
-
-TLS 1.3 の内容を見るのが目的だったので、見てみた結果も載せておきます。
-今回は https://www.yahoo.co.jp にアクセスした時のパケットを見てみました。
-
-## Client Hello (Client -> Server)
-
-## Client Hello (Client <- Server)
-
-## Certificate (Client <- Server)
-
-## Certificate Verify (Client <- Server)
