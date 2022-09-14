@@ -84,39 +84,6 @@ $ "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --user-data-dir
 だいたい名前の通りユーザーデータを保存するためのディレクトリを指定する引数のようです。
 おそらく、通常しようしている場合にデフォルトからの設定変更や履歴などによる影響を抑えるためなのかな、と思います。
 
-ちなみに起動後に指定したディレクトリの中を見ると、こんな感じになっていました。
-
-```shell
-$ ls -1 /tmp/cr/
-AutofillStates
-CertificateRevocation
-ClientSidePhishing
-Crowd Deny
-Default
-DesktopSharingHub
-FileTypePolicies
-First Run
-FirstPartySetsPreloaded
-Last Version
-Local State
-MEIPreload
-NativeMessagingHosts
-OnDeviceHeadSuggestModel
-OptimizationHints
-OriginTrials
-PKIMetadata
-RecoveryImproved
-SSLErrorAssistant
-Safe Browsing
-SafetyTips
-Subresource Filter
-UrlParamClassifications
-Variations
-WidevineCdm
-ZxcvbnData
-persisted_first_party_sets.json
-```
-
 - [起動オプション - Google Chrome まとめWiki](http://chrome.half-moon.org/43.html#xd80acae)
 - [技術/Chrome/初期設定で起動する(--user-data-dir) & リモートデバッグ可能にする(--remote-debugging-port) - Glamenv-Septzen.net](https://www.glamenv-septzen.net/view/1392)
 
