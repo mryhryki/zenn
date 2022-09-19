@@ -158,6 +158,9 @@ export const parsePost = async (filePath: string): Promise<Post> => {
         case "canonical":
           frontMatter[key] = values.join(":").trim().replace(WrapDoubleQuote, "");
           break;
+        case "backup":
+          // Ignore keys
+          break;
         default:
           if (!isZenn /* do not error that zenn article */) {
             throw new Error(`Unknown key: ${key}`);
