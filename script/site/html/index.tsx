@@ -94,16 +94,16 @@ export const renderBlogIndex = (posts: Post[]): string => {
       <body className="wrapper dark-theme">
         <h1>{title}</h1>
         <p style={{ textAlign: "center" }}>
-          個人的なメモ、スライド、スクラップ、<a href="https://zenn.dev/mryhryki">Zenn</a>や他媒体のバックアップなど
+          スクラップ、スライド、個人的なメモ、<a href="https://zenn.dev/mryhryki">Zenn</a>や他媒体のバックアップなど。
         </p>
 
         <div style={{ textAlign: "center" }}>
-          <input id="memo-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
-          <label htmlFor="memo-checkbox" style={{ marginRight: "1rem" }}>メモ</label>
-          <input id="slide-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
-          <label htmlFor="slide-checkbox" style={{ marginRight: "1rem" }}>スライド</label>
           <input id="scrap-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
           <label htmlFor="scrap-checkbox" style={{ marginRight: "1rem" }}>スクラップ</label>
+          <input id="slide-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
+          <label htmlFor="slide-checkbox" style={{ marginRight: "1rem" }}>スライド</label>
+          <input id="memo-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
+          <label htmlFor="memo-checkbox" style={{ marginRight: "1rem" }}>メモ</label>
           <input id="zenn-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
           <label htmlFor="zenn-checkbox" style={{ marginRight: "1rem" }}>Zenn</label>
           <input id="backup-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
