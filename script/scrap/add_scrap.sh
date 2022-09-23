@@ -35,5 +35,5 @@ git push --set-upstream origin "${BRANCH_NAME}"
 
 gh pr create \
   --title "${PR_TITLE}" \
-  --body " " \
+  --body "${TEXT}" \
   --reviewer "mryhryki"
