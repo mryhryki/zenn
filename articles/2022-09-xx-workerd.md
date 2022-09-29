@@ -98,6 +98,15 @@ README では `bazel` コマンドを使うように書かれていますが、�
 $ export PATH="$(pwd)/bazel-bin/src/workerd/server/:${PATH}"
 ```
 
+## 6. 動作確認
+
+バージョンを確認するコマンドで、動作するかをチェックします。
+
+```shell
+$ workerd --version
+workerd 2022-09-26
+```
+
 以上で、準備は完了です。
 
 # 動かしてみる
@@ -160,11 +169,11 @@ http://localhost:8080/ にアクセスすると動作確認できます。
 ディレクトリ名に入っているように [Durable Objects](https://blog.cloudflare.com/ja-jp/durable-objects-ga-ja-jp/) という機能を使っているようです。
 今回はじめて聞いたのでよく分かっていませんが、任意の状態を保存しておく機能のようです。
 
-上記のチャットのキャプチャでも、一度退室した後に戻ってくるとこれまでの履歴が出ているのも、多分その機能なのかな、と思っています。
-また、ローカルで動かした場合はどこに保存されているのかもよく分かっていません。
-詳しく知らないので、ただの推測です。分かる方いれば、コメントいただけると嬉しいです。
+> Durable Objects are currently supported only in a mode that uses in-memory storage
 
-# 考察
+README に書かれていましたが、現時点ではメモリに保存図するので永続化する事はできないようです。
+
+# その他のメモ
 
 ## hello world の中身
 
@@ -192,6 +201,80 @@ export default {
 };
 ```
 
+## workerd のコマンド
+
+`workerd --help` を見てみると、`compile` と `serve` の２種類のコマンドのみが用意されているようです。
+
+```shell
+$ workerd --help
+Usage: workerd [<option>...] <command> [<arg>...]
+
+Runs the Workers JavaScript/Wasm runtime.
+
+Commands:
+  compile  create a self-contained binary
+  serve    run the server
+
+See 'workerd help <command>' for more information on a specific command.
+
+Options:
+    --verbose
+        Log informational messages to stderr; useful for debugging.
+    --version
+        Print version information and exit.
+    --help
+        Display this help text and exit.
+```
+
+それぞれのコマンドの説明も見てみます。
+
+```shell
+$ workerd help serve
+Usage: workerd serve [<option>...] <config-file> [<const-name>]
+
+Serve requests based on a config.
+
+...
+
+$ workerd help compile
+Usage: workerd compile [<option>...] <config-file> [<const-name>]
+
+Builds a self-contained binary from a config.
+
+...
+```
+
+`serve` の方は、これまで動作確認をしてきたようにサーバーを立ち上げるために使うようです。
+
+`compile` の方は、ランタイムを含むバイナリとして出力してくれるもののようです。
+実際に Hello world のサンプルコードでコンパイルしてみました。
+
+```shell
+$ workerd compile samples/helloworld/config.capnp > helloworld
+$ ./helloworld 
+```
+
+http://localhost:8080/ にアクセスするとレスポンスが返ってきました。
+
+```shell
+$ curl http://localhost:8080/
+Hello World
+```
+
+容量的にもランタイムが含まれていそうですね。
+
+```shell
+$ wc -c ./helloworld 
+ 81258168 ./helloworld
+ 
+$ wc -c ./bazel-bin/src/workerd/server/workerd
+ 81257684 ./bazel-bin/src/workerd/server/workerd
+```
+
+[deno compile](https://deno.land/manual@v1.26.0/tools/compiler) に似ているな、と思いました。
+
 # おわりに
 
-
+また誰でも使える JavaScript ランタイムが増えて、盛り上がってきている感じがしてWeb開発者として非常に嬉しいですね。
+特に標準APIをベースにして、ロックインしないことを宣言したランタイムが出てきたことで、よりブラウザ外でのAPI互換性が高まってくれることを期待しています。
+まだベータ版なので、色々不足しているところが多いですが、今後も動向を見守って行きたいと思います。
