@@ -20,7 +20,7 @@ https://developer.mozilla.org/ja/docs/Web/API/Element
 # 検証に使ったHTML
 
 簡単に動作を確認できるページを、以下のURLに用意して検証しました。
-疑問点があれば、こちらを見て試すとわかりやすいかと思います。
+疑問点があれば、こちらを試すとわかりやすいかと思います。
 
 https://mryhryki.com/experiment/mouse-events.html
 
