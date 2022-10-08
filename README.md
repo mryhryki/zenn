@@ -18,8 +18,8 @@
 
 複数のURLからアクセスできます。
 
-- https://mryhryki.com/ (PRIMARY1, CloudFront + S3)
-- https://www.mryhryki.com/ (PRIMARY2, GitHub Pages)
+- https://mryhryki.com/ (PRIMARY, CloudFront + S3)
+- https://www.mryhryki.com/ (SECONDARY, GitHub Pages)
 
 ### Zenn
 
