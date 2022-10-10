@@ -12,6 +12,10 @@ on:
         required: true
         description: Text
 
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
 jobs:
   add_scrap:
     runs-on: ubuntu-latest
