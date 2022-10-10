@@ -15,13 +15,13 @@ jobs:
     steps:
       - uses: actions/stale@v6
         with:
-          days-before-stale: 13
+          days-before-stale: 7
           days-before-close: 1
           exempt-issue-labels: "IceBox"
           stale-issue-label: "Stale"
           stale-pr-label: "Stale"
-          stale-issue-message: "This issue is stale because it has been open for 14 days with no activity."
-          close-issue-message: "This issue was closed because it has been inactive for 7 days since being marked as stale."
-          stale-pr-message: "This Pull Request is stale because it has been open for 14 days with no activity."
-          close-pr-message: "This Pull Request was closed because it has been inactive for 7 days since being marked as stale."
+          stale-issue-message: "This issue is stale because it has been open for 7 days with no activity."
+          close-issue-message: "This issue was closed because it has been inactive for 1 days since being marked as stale."
+          stale-pr-message: "This Pull Request is stale because it has been open for 7 days with no activity."
+          close-pr-message: "This Pull Request was closed because it has been inactive for 1 days since being marked as stale."
           repo-token: ${{ secrets.GITHUB_TOKEN }}
