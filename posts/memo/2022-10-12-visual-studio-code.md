@@ -20,7 +20,7 @@ https://code.visualstudio.com/docs/getstarted/keybindings#_keyboard-shortcuts-re
 
 ## Auto fix by ESlint on saved
 
-`settings.json` にこれを入いたらできた。
+`settings.json` にこれを入れたらできた。
 
 ```javascript
 {
