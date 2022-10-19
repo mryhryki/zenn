@@ -20,11 +20,11 @@ povo2.0 のデータ使い放題（24時間）は、いざという時に固定�
 | 時間帯 | スマホ単体 |               PC (Wi-Fi接続) |
 |:----|:------|---------------------------:|
 | 6時台 | 77.2Mbps / 4.69Mbps / 25ms | 11.8Mbps / 1.79Mbps / 30ms |
-| x時台 | Mbps / Mbps / 25ms | Mbps / Mbps / ms |
-| x時台 | Mbps / Mbps / 25ms | Mbps / Mbps / ms |
-| x時台 | Mbps / Mbps / 25ms | Mbps / Mbps / ms |
-| x時台 | Mbps / Mbps / 25ms | Mbps / Mbps / ms |
-| x時台 | Mbps / Mbps / 25ms | Mbps / Mbps / ms |
+| 7時台 | 2.46Mbps / 0.82Mbps / (-)ms | 5.73Mbps / 0.9Mbps / 29ms |
+| x時台 | Mbps / Mbps / ms | Mbps / Mbps / ms |
+| x時台 | Mbps / Mbps / ms | Mbps / Mbps / ms |
+| x時台 | Mbps / Mbps / ms | Mbps / Mbps / ms |
+| x時台 | Mbps / Mbps / ms | Mbps / Mbps / ms |
 
 ### MEMO: MacではUSBデザイリングができない
 
