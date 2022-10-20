@@ -2,7 +2,7 @@
 title: "OpenID Connect についてと OAuth2.0 との違いを調べてみた"
 emoji: "🔐"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["OIDC", "OpenIDConnect"]
+topics: ["OAuth", "OAuth2", "OIDC", "OpenIDConnect"]
 published: true
 ---
 
