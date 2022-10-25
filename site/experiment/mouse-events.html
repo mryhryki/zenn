@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Mouse Events</title>
+  <style>
+      body {
+          margin: 0 auto;
+          max-width: 960px;
+      }
+
+      h1 {
+          text-align: center;
+      }
+
+      section {
+          border-top: 1px solid gray;
+          margin-top: 2rem;
+      }
+
+      .outer {
+          background-color: gray;
+          box-sizing: border-box;
+          margin: 1rem 0;
+          padding: 2rem 0;
+          text-align: center;
+          width: 100%;
+      }
+
+      .inner {
+          background-color: white;
+          border: 1px solid gray;
+          padding: 2rem;
+      }
+  </style>
+</head>
+<body>
+  <h1>Mouse Events</h1>
+
+  <section>
+    <h2>Mouse Down Event</h2>
+    <div id="mousedown" class="outer">
+      <div class="inner">-</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Mouse Enter Event</h2>
+    <div id="mouseenter" class="outer">
+      <div class="inner">-</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Mouse Leave Event</h2>
+    <div id="mouseleave" class="outer">
+      <div class="inner">-</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Mouse Move Event</h2>
+    <div id="mousemove" class="outer">
+      <div class="inner">-</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Mouse Out Event</h2>
+    <div id="mouseout" class="outer">
+      <div class="inner">-</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Mouse Over Event</h2>
+    <div id="mouseover" class="outer">
+      <div class="inner">-</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Mouse Up Event</h2>
+    <div id="mouseup" class="outer">
+      <div class="inner">-</div>
+    </div>
+  </section>
+
+  <script>
+    const handleMouseEvent = (eventName) => {
+      const outerElement = document.getElementById(eventName);
+      if (outerElement == null) {
+        alert(`"${id}" element is not exists.`);
+        return;
+      }
+      const innerElement = outerElement.querySelector(".inner");
+      outerElement.addEventListener(eventName, ({pageX: x, pageY: y}) => {
+        innerElement.innerText = JSON.stringify({x, y});
+      });
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      handleMouseEvent("mousedown");
+      handleMouseEvent("mouseenter");
+      handleMouseEvent("mouseleave");
+      handleMouseEvent("mousemove");
+      handleMouseEvent("mouseout");
+      handleMouseEvent("mouseover");
+      handleMouseEvent("mouseup");
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="https://mryhryki.com/assets/css/base.css" />
+  <title>HTML Capture Attribute Sample</title>
+  <style>
+      video, img, audio {
+          max-width: 100%;
+          margin-bottom: 1rem;
+      }
+  </style>
+</head>
+<body class="wrapper dark-theme">
+  <h1>HTML Capture Attribute Sample</h1>
+
+  <h2>Video</h2>
+  <p>
+    <input type="file" id="video_file" capture="user" accept="video/*" />
+  </p>
+  <div id="video_preview"></div>
+
+  <h2>Image</h2>
+  <p>
+    <input type="file" id="image_file" capture="user" accept="image/*" />
+  </p>
+  <div id="image_preview"></div>
+
+  <h2>Audio</h2>
+  <p>
+    <input type="file" id="audio_file" capture="user" accept="audio/*" />
+  </p>
+  <div id="audio_preview"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("video_file").addEventListener("change", (event) => {
+        const video = event.target.files[0];
+        if (video == null) return;
+        const videoElement = document.createElement("video");
+        videoElement.src = URL.createObjectURL(video);
+        videoElement.controls = true
+        document.getElementById("video_preview").appendChild(videoElement)
+      });
+
+      document.getElementById("image_file").addEventListener("change", (event) => {
+        const image = event.target.files[0];
+        if (image == null) return;
+        const imageElement = document.createElement("img");
+        imageElement.src = URL.createObjectURL(image);
+        document.getElementById("image_preview").appendChild(imageElement)
+      });
+
+      document.getElementById("audio_file").addEventListener("change", (event) => {
+        const audio = event.target.files[0];
+        if (audio == null) return;
+        const audioElement = document.createElement("audio");
+        audioElement.src = URL.createObjectURL(audio);
+        audioElement.controls = true
+        document.getElementById("audio_preview").appendChild(audioElement)
+      });
+    });
+  </script>
+</body>
+</html>
