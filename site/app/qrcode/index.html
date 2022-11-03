@@ -8,54 +8,67 @@
   <h1 style="text-align: center;">QR Code Generator</h1>
   <label style="display: block; margin: 1rem 0;">
     <span style="display: block;">Text</span>
-    <input id="qrcode-text" type="text" style="width: 100%; padding: 0.5rem;" />
+    <input id="qrcode-input" type="text" style="width: 100%; padding: 0.5rem;" />
   </label>
   <div style="display: block; margin: 1rem 0; text-align: center;">
-    <img id="qrcode-image" alt="Generated QR Code image" style="object-fit: contain; max-width: 100%;" />
+    <canvas id="qrcode-canvas" style="object-fit: contain; max-width: 100%;"></canvas>
   </div>
+  <div id="error-message" style="color: red; text-align: center;"></div>
+
+  <script src="./qrcode.js"></script>
 
   <script type="text/javascript" id="main">
     document.addEventListener("DOMContentLoaded", () => {
-      const inputElement = document.getElementById("qrcode-text");
-      const imageElement = document.getElementById("qrcode-image");
-      connectQueryParam(inputElement);
-      connectInputAndImage(inputElement, imageElement);
+      const queryParamKey = "text";
+      const inputElement = document.getElementById("qrcode-input");
+      const canvasElement = document.getElementById("qrcode-canvas");
+
+      const errorMessageElement = document.getElementById("error-message");
+      const onError = (err) => errorMessageElement.innerText = err;
+
+      const initialValue = getQueryParam();
+      inputElement.value = initialValue;
+      applyCanvas(initialValue, canvasElement, onError);
+
+      inputElement.addEventListener("input", () => {
+        const text = inputElement.value;
+        applyQueryParam(queryParamKey, text);
+        applyCanvas(text, canvasElement, onError);
+      });
     });
   </script>
 
   <script type="text/javascript">
-    const connectQueryParam = (input) => {
-      const queryParamKey = "text";
-      input.value = new URL(window.location.href).searchParams.get(queryParamKey) ?? "";
-      input.addEventListener("input", () => {
-        const text = input.value;
-        const url = new URL(window.location.href);
-        if (text.trim().length > 0) {
-          url.searchParams.set(queryParamKey, text);
-        } else {
-          url.searchParams.delete(queryParamKey);
-        }
-        window.history.replaceState(null, "", url.toString());
-      });
+    const getQueryParam = (key) => new URL(window.location.href).searchParams.get(key) ?? "https://example.com/";
+  </script>
+
+  <script type="text/javascript">
+    const applyQueryParam = (key, text) => {
+      const url = new URL(window.location.href);
+      if (text.trim().length > 0) {
+        url.searchParams.set(key, text);
+      } else {
+        url.searchParams.delete(key);
+      }
+      window.history.replaceState(null, "", url.toString());
     };
   </script>
 
   <script type="text/javascript">
-    let latestText = "";
-    const connectInputAndImage = (input, image) => {
-      input.addEventListener("input", () => {
-        const text = input.value;
+    const applyCanvas = (() => {
+      let latestText = "";
+      return (text, canvas, onError) => {
         latestText = text;
         setTimeout(() => {
-          if (latestText !== text) {
+          if (latestText !== text || text.trim().length === 0) {
             return;
-          } else if (text.trim().length === 0) {
-            return image.src = "";
           }
-          image.src = text; // TODO: Generate QR Code
+          QRCode.toCanvas(canvas, text, (error) => {
+            if (error) onError(error);
+          });
         }, 500);
-      });
-    };
+      };
+    })();
   </script>
 </body>
 </html>
