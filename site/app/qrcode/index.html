@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>QR Code Generator</title>
+</head>
+<body style="box-sizing: border-box; width: 100%; max-width: 48rem; margin: 1rem auto;">
+  <h1 style="text-align: center;">QR Code Generator</h1>
+  <label style="display: block; margin: 1rem 0;">
+    <span style="display: block;">Text</span>
+    <input id="qrcode-text" type="text" style="width: 100%; padding: 0.5rem;" />
+  </label>
+  <div style="display: block; margin: 1rem 0; text-align: center;">
+    <img id="qrcode-image" alt="Generated QR Code image" style="object-fit: contain; max-width: 100%;" />
+  </div>
+
+  <script type="text/javascript" id="main">
+    document.addEventListener("DOMContentLoaded", () => {
+      const inputElement = document.getElementById("qrcode-text");
+      const imageElement = document.getElementById("qrcode-image");
+      connectQueryParam(inputElement);
+      connectInputAndImage(inputElement, imageElement);
+    });
+  </script>
+
+  <script type="text/javascript">
+    const connectQueryParam = (input) => {
+      const queryParamKey = "text";
+      input.value = new URL(window.location.href).searchParams.get(queryParamKey) ?? "";
+      input.addEventListener("input", () => {
+        const text = input.value;
+        const url = new URL(window.location.href);
+        if (text.trim().length > 0) {
+          url.searchParams.set(queryParamKey, text);
+        } else {
+          url.searchParams.delete(queryParamKey);
+        }
+        window.history.replaceState(null, "", url.toString());
+      });
+    };
+  </script>
+
+  <script type="text/javascript">
+    let latestText = "";
+    const connectInputAndImage = (input, image) => {
+      input.addEventListener("input", () => {
+        const text = input.value;
+        latestText = text;
+        setTimeout(() => {
+          if (latestText !== text) {
+            return;
+          } else if (text.trim().length === 0) {
+            return image.src = "";
+          }
+          image.src = text; // TODO: Generate QR Code
+        }, 500);
+      });
+    };
+  </script>
+</body>
+</html>
