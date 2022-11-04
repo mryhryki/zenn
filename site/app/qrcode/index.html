@@ -19,21 +19,21 @@
 
   <script type="text/javascript" id="main">
     document.addEventListener("DOMContentLoaded", () => {
-      const queryParamKey = "text";
-      const inputElement = document.getElementById("qrcode-input");
-      const canvasElement = document.getElementById("qrcode-canvas");
+      const QueryParamKey = "text";
+      const InputElement = document.getElementById("qrcode-input");
+      const CanvasElement = document.getElementById("qrcode-canvas");
 
       const errorMessageElement = document.getElementById("error-message");
       const onError = (err) => errorMessageElement.innerText = err;
 
       const initialValue = getQueryParam();
-      inputElement.value = initialValue;
-      applyCanvas(initialValue, canvasElement, onError);
+      InputElement.value = initialValue;
+      applyCanvas(initialValue, CanvasElement, onError);
 
-      inputElement.addEventListener("input", () => {
-        const text = inputElement.value;
-        applyQueryParam(queryParamKey, text);
-        applyCanvas(text, canvasElement, onError);
+      InputElement.addEventListener("input", () => {
+        const text = InputElement.value;
+        applyQueryParam(QueryParamKey, text);
+        applyCanvas(text, CanvasElement, onError);
       });
     });
   </script>
