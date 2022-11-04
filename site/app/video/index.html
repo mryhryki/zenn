@@ -5,12 +5,21 @@
   <title>Simple Video Player</title>
 </head>
 <body style="position: relative; width: 100vw; height: 100vh; overflow: hidden; margin: 0; background-color: #333;">
+  <input
+    id="video-file-selector"
+    type="file"
+    accept="video/*"
+    style="position: fixed; bottom: -1px; left: -1px; max-width: 1px; max-height: 1px; overflow: hidden;"
+  >
   <div
     id="file-drop-area"
     style="position: absolute; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center;"
   >
     <div style="color: #fff;">
-      Drop video file here.
+      Drop video file here or
+      <button id="select-video-file" style="font-size: 1rem; color: #fff; background: none; border: none; padding: 0; margin: 0; text-decoration: underline; cursor: pointer;">
+        select video file.
+      </button>
     </div>
   </div>
   <div
@@ -27,21 +36,31 @@
     ></video>
   </div>
 
-  <script type="text/javascript" id="main">
+  <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", () => {
+      const videoFileSelectorElement = document.getElementById("video-file-selector");
+      const selectVideoFileElement = document.getElementById("select-video-file");
+      selectVideoFileElement.addEventListener("click", () => videoFileSelectorElement.click());
+
       const fileDropAreaElement = document.getElementById("file-drop-area");
       const videoAreaElement = document.getElementById("video-area");
       const videoPlayerElement = document.getElementById("video-player");
-
-      setDropVideoFileHandling(fileDropAreaElement, videoAreaElement, videoPlayerElement);
-      loadVideoUrlByQueryParam(videoAreaElement, videoPlayerElement);
-      setKeyboardShortcut(videoAreaElement, videoPlayerElement);
       videoPlayerElement.addEventListener("focus", () => videoPlayerElement.blur());
+
+      loadVideoUrlByQueryParam(videoAreaElement, videoPlayerElement);
+      setVideoFileHandling(videoFileSelectorElement, fileDropAreaElement, videoAreaElement, videoPlayerElement);
+      setKeyboardShortcut(videoAreaElement, videoPlayerElement);
     });
   </script>
 
   <script type="text/javascript">
-    const setDropVideoFileHandling = (fileDropAreaElement, videoAreaElement, videoPlayerElement) => {
+    const setVideoFileHandling = (videoFileSelectorElement, fileDropAreaElement, videoAreaElement, videoPlayerElement) => {
+      const onVideoFileSelected = (videoFile) => {
+        if (videoFile != null && videoFile.type.startsWith("video/")) {
+          const videoUrl = URL.createObjectURL(videoFile);
+          showVideo(videoAreaElement, videoPlayerElement, videoUrl);
+        }
+      };
       fileDropAreaElement.addEventListener("dragover", (event) => {
         event.stopPropagation();
         event.preventDefault();
@@ -49,11 +68,12 @@
       fileDropAreaElement.addEventListener("drop", (event) => {
         event.preventDefault();
         event.stopPropagation();
-        const videoFile = event.dataTransfer.files[0];
-        if (videoFile != null && videoFile.type.startsWith("video/")) {
-          const videoUrl = URL.createObjectURL(videoFile);
-          showVideo(videoAreaElement, videoPlayerElement, videoUrl);
-        }
+        onVideoFileSelected(event.dataTransfer.files[0]);
+      });
+      videoFileSelectorElement.addEventListener("change", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        onVideoFileSelected(videoFileSelectorElement.files[0]);
       });
     };
   </script>
