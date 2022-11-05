@@ -25,22 +25,9 @@
       width: 100%;
     }
 
-    .footer-area {
-      border-top: 1px solid #999;
-      box-sizing: border-box;
-      display: flex;
-      height: var(--footer-height);
-      justify-content: center;
-      overflow-x: scroll;
-      overflow-y: hidden;
-    }
-
-    .footer {
-      align-items: center;
-      color: #fff;
-      display: flex;
-      height: 40px;
-      padding: 4px;
+    #images-wrapper {
+      height: 100%;
+      width: 100%;
     }
 
     .image-wrapper {
@@ -72,6 +59,24 @@
       max-width: 50%;
     }
 
+    .footer-area {
+      border-top: 1px solid #999;
+      box-sizing: border-box;
+      display: flex;
+      height: var(--footer-height);
+      justify-content: center;
+      overflow-x: scroll;
+      overflow-y: hidden;
+    }
+
+    .footer {
+      align-items: center;
+      color: #fff;
+      display: flex;
+      height: 40px;
+      padding: 4px;
+    }
+
     @media (orientation: portrait) {
       #left-image-wrapper {
         max-width: 0;
@@ -82,6 +87,10 @@
         max-width: 100%;
         right: 0;
         text-align: center;
+      }
+
+      #next-one-button {
+        display: none;
       }
     }
   </style>
@@ -109,11 +118,13 @@
   </div>
   <div id="viewer-area">
     <div class="content-wrapper">
-      <div id="left-image-wrapper" class="image-wrapper">
-        <img id="left-image" class="image" src="" alt="Left image">
-      </div>
-      <div id="right-image-wrapper" class="image-wrapper">
-        <img id="right-image" class="image" src="" alt="Right image">
+      <div id="images-wrapper">
+        <div id="left-image-wrapper" class="image-wrapper">
+          <img id="left-image" class="image" src="" alt="Left image">
+        </div>
+        <div id="right-image-wrapper" class="image-wrapper">
+          <img id="right-image" class="image" src="" alt="Right image">
+        </div>
       </div>
     </div>
     <div class="footer-area">
@@ -125,6 +136,12 @@
           Next
         </button>
         <div id="current-page-number">1</div>
+        <button
+          id="next-one-button"
+          style="height: 40px; box-sizing: border-box; padding: 0 8px; line-height: 40px; background: none; border: none; color: #fff; text-decoration: underline;"
+        >
+          +1
+        </button>
         <div style="margin: 0 8px;">/</div>
         <div id="max-page-number">1</div>
         <button
@@ -156,22 +173,18 @@
         this.maxPageNumberElement = document.getElementById("max-page-number");
         this.currentPageNumberElement = document.getElementById("current-page-number");
 
+        const imagesWrapperElement = document.getElementById("images-wrapper");
         const leftImageElement = document.getElementById("left-image");
-        const leftImageWrapperElement = document.getElementById("left-image-wrapper");
         const rightImageElement = document.getElementById("right-image");
-        // const rightImageWrapperElement = document.getElementById("right-image-wrapper");
 
         const nextButtonElement = document.getElementById("next-button");
+        const nextOneButtonElement = document.getElementById("next-one-button");
         const prevButtonElement = document.getElementById("prev-button");
 
         this.currentImageIndex = 0;
         this.imageUrls = [];
-        this.leftImageType = null;
-        this.rightImageType = null;
 
         this.addCurrentImageIndex = (add) => {
-          this.leftImageType = null;
-          this.rightImageType = null;
           this.currentImageIndex = Util.getNumInRange(0, this.currentImageIndex + add, this.imageUrls.length - 1);
           this.currentPageNumberElement.innerText = this.currentImageIndex + 1;
           if (rightImageElement.src !== this.imageUrls[this.currentImageIndex]) {
@@ -182,18 +195,41 @@
           }
         };
 
-        const onLoadImage = (position, imageElement) => {
-          if (position === "left") {
-            this.leftImageType = Util.getImageType(imageElement);
-          } else if (position === "right") {
-            this.rightImageType = Util.getImageType(imageElement);
-          }
-        };
-        leftImageElement.addEventListener("load", () => onLoadImage("left", leftImageElement));
-        rightImageElement.addEventListener("load", () => onLoadImage("right", rightImageElement));
+        const isPortrait = () => matchMedia("(orientation: portrait)").matches;
+        nextOneButtonElement.addEventListener("click", () => this.addCurrentImageIndex(1));
+        nextButtonElement.addEventListener("click", () => this.addCurrentImageIndex(isPortrait() ? 1 : 2));
+        prevButtonElement.addEventListener("click", () => this.addCurrentImageIndex(isPortrait() ? -1 : -2));
 
-        nextButtonElement.addEventListener("click", () => this.addCurrentImageIndex(2));
-        prevButtonElement.addEventListener("click", () => this.addCurrentImageIndex(-2));
+        window.addEventListener("keydown", (event) => {
+          const { key } = event;
+          switch (key) {
+            case "f":
+              event.preventDefault();
+              console.debug()
+              if (document.fullscreenElement == null) {
+                imagesWrapperElement.requestFullscreen().catch(console.error);
+              } else {
+                document.exitFullscreen().catch(console.error);
+              }
+              break;
+            case "ArrowLeft":
+              event.preventDefault();
+              this.addCurrentImageIndex(isPortrait() ? 1 : 2);
+              break;
+            case "ArrowRight":
+              event.preventDefault();
+              this.addCurrentImageIndex(isPortrait() ? -1 : -2);
+              break;
+            case "ArrowUp":
+              event.preventDefault();
+              this.addCurrentImageIndex(-1);
+              break;
+            case "ArrowDown":
+              event.preventDefault();
+              this.addCurrentImageIndex(1);
+              break;
+          }
+        });
       }
 
       addImageUrl(imageUrl) {
@@ -291,15 +327,6 @@
 
   <script type="text/javascript">
     const Util = {
-      getImageType: (imageElement) => {
-        const { naturalHeight: height, naturalWidth: width } = imageElement;
-        if (height === width) {
-          return "square";
-        } else if (height > width) {
-          return "portrait";
-        }
-        return "landscape";
-      },
       getNumInRange: (min, target, max) => Math.min(Math.max(min, target), max)
     };
   </script>

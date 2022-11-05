@@ -112,10 +112,10 @@
             }
           } else if (key === "f") {
             event.preventDefault();
-            if (document.fullscreenElement != null) {
-              document.exitFullscreen().catch(console.error);
-            } else {
+            if (document.fullscreenElement == null) {
               videoAreaElement.requestFullscreen().catch(console.error);
+            } else {
+              document.exitFullscreen().catch(console.error);
             }
           } else if (key === "ArrowUp" || key === "ArrowDown") {
             const cv = videoPlayerElement.muted ? 0 : videoPlayerElement.volume * 100;
