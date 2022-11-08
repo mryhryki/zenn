@@ -162,6 +162,10 @@
       </div>
     </div>
   </div>
+  <div id="loading"
+       style="display: none; background-color: #000; color: #fff; height: 100vh; position: absolute; width: 100vw; align-items: center; justify-content: center;">
+    <div style="font-size: 2rem; font-weight: bold;">LOADING...</div>
+  </div>
 
   <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", () => {
@@ -295,7 +299,9 @@
 
   <script type="text/javascript">
     const loadByQueryParams = async (callback) => {
+      const showLoading = (loading) => document.getElementById("loading").style.display = loading ? "flex" : "none";
       try {
+        showLoading(true)
         const { searchParams } = new URL(window.location.href);
         const zipUrl = searchParams.get("zip_url");
         const listUrl = searchParams.get("list_url");
@@ -308,6 +314,8 @@
         }
       } catch (err) {
         alert(`ERROR: ${err}`);
+      } finally {
+        showLoading(false)
       }
     };
   </script>
