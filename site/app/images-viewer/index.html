@@ -11,7 +11,6 @@
 
     #viewer-area {
       background-color: #000;
-      display: none;
       height: 100vh;
       position: absolute;
       width: 100vw;
@@ -77,21 +76,23 @@
       padding: 4px;
     }
 
-    @media (orientation: portrait) {
-      #left-image-wrapper {
-        max-width: 0;
-      }
+    .show-0-images {
+      display: none;
+    }
 
-      #right-image-wrapper {
-        left: 0;
-        max-width: 100%;
-        right: 0;
-        text-align: center;
-      }
+    .show-1-images #left-image-wrapper {
+      max-width: 0;
+    }
 
-      #next-one-button {
-        display: none;
-      }
+    .show-1-images #right-image-wrapper {
+      left: 0;
+      max-width: 100%;
+      right: 0;
+      text-align: center;
+    }
+
+    .show-1-images #next-one-button {
+      display: none;
     }
   </style>
 </head>
@@ -116,7 +117,7 @@
       </button>
     </div>
   </div>
-  <div id="viewer-area">
+  <div id="viewer-area" class="show-0-images">
     <div class="content-wrapper">
       <div id="images-wrapper">
         <div id="left-image-wrapper" class="image-wrapper">
@@ -130,20 +131,28 @@
     <div class="footer-area">
       <div class="footer">
         <button
-          id="next-button"
-          style="height: 40px; box-sizing: border-box; padding: 0 16px; line-height: 40px; margin-right: 16px;"
-        >
-          Next
-        </button>
-        <div id="current-page-number">1</div>
-        <button
           id="next-one-button"
           style="height: 40px; box-sizing: border-box; padding: 0 8px; line-height: 40px; background: none; border: none; color: #fff; text-decoration: underline;"
         >
           +1
         </button>
+        <button
+          id="next-button"
+          style="height: 40px; box-sizing: border-box; padding: 0 16px; line-height: 40px; margin-right: 16px;"
+        >
+          Next
+        </button>
+        [&nbsp;
+        <div id="current-page-number">1</div>
         <div style="margin: 0 8px;">/</div>
         <div id="max-page-number">1</div>
+        &nbsp;]
+        <button
+          id="toggle-page-num-button"
+          style="height: 40px; box-sizing: border-box; padding: 0 8px; line-height: 40px; background: none; border: none; color: #fff; text-decoration: underline;"
+        >
+          1P
+        </button>
         <button
           id="prev-button"
           style="height: 40px; box-sizing: border-box; padding: 0 16px; line-height: 40px; margin-left: 16px;"
@@ -169,7 +178,22 @@
   <script type="text/javascript">
     class Images {
       constructor() {
-        this.viewerAreaElement = document.getElementById("viewer-area");
+        const nextButtonElement = document.getElementById("next-button");
+        const nextOneButtonElement = document.getElementById("next-one-button");
+        const togglePageNumButtonElement = document.getElementById("toggle-page-num-button");
+        const prevButtonElement = document.getElementById("prev-button");
+
+        const viewerAreaElement = document.getElementById("viewer-area");
+        this.showViewerArea = (num) => {
+          viewerAreaElement.classList.remove(Array.from(viewerAreaElement.classList.entries()).map(([_, e]) => e));
+          viewerAreaElement.classList.add(`show-${Util.getNumInRange(0, num, 2)}-images`);
+          togglePageNumButtonElement.innerText = `${num}P`;
+          const url = new URL(window.location.href);
+          url.searchParams.set("page", num);
+          window.history.replaceState(null, "", url.toString());
+        };
+        this.showPageNum = parseInt(new URL(window.location.href).searchParams.get("page"), 10) || matchMedia("(orientation: portrait)").matches ? 1 : 2;
+
         this.maxPageNumberElement = document.getElementById("max-page-number");
         this.currentPageNumberElement = document.getElementById("current-page-number");
 
@@ -177,35 +201,33 @@
         const leftImageElement = document.getElementById("left-image");
         const rightImageElement = document.getElementById("right-image");
 
-        const nextButtonElement = document.getElementById("next-button");
-        const nextOneButtonElement = document.getElementById("next-one-button");
-        const prevButtonElement = document.getElementById("prev-button");
-
         this.currentImageIndex = 0;
         this.imageUrls = [];
 
         this.addCurrentImageIndex = (add) => {
-          this.currentImageIndex = Util.getNumInRange(0, this.currentImageIndex + add, this.imageUrls.length - 1);
+          this.currentImageIndex = Util.getNumInRange(0, this.currentImageIndex + add, this.imageUrls.length - this.showPageNum);
           this.currentPageNumberElement.innerText = this.currentImageIndex + 1;
           if (rightImageElement.src !== this.imageUrls[this.currentImageIndex]) {
-            rightImageElement.src = this.imageUrls[this.currentImageIndex] || ""``;
+            rightImageElement.src = this.imageUrls[this.currentImageIndex] || "";
           }
           if (leftImageElement.src !== this.imageUrls[this.currentImageIndex + 1]) {
             leftImageElement.src = this.imageUrls[this.currentImageIndex + 1] || "";
           }
         };
 
-        const isPortrait = () => matchMedia("(orientation: portrait)").matches;
         nextOneButtonElement.addEventListener("click", () => this.addCurrentImageIndex(1));
-        nextButtonElement.addEventListener("click", () => this.addCurrentImageIndex(isPortrait() ? 1 : 2));
-        prevButtonElement.addEventListener("click", () => this.addCurrentImageIndex(isPortrait() ? -1 : -2));
+        togglePageNumButtonElement.addEventListener("click", () => {
+          this.showPageNum = this.showPageNum === 2 ? 1 : 2;
+          this.showViewerArea(this.showPageNum);
+        });
+        nextButtonElement.addEventListener("click", () => this.addCurrentImageIndex(this.showPageNum));
+        prevButtonElement.addEventListener("click", () => this.addCurrentImageIndex(this.showPageNum * -1));
 
         window.addEventListener("keydown", (event) => {
           const { key } = event;
           switch (key) {
             case "f":
               event.preventDefault();
-              console.debug()
               if (document.fullscreenElement == null) {
                 imagesWrapperElement.requestFullscreen().catch(console.error);
               } else {
@@ -214,11 +236,11 @@
               break;
             case "ArrowLeft":
               event.preventDefault();
-              this.addCurrentImageIndex(isPortrait() ? 1 : 2);
+              this.addCurrentImageIndex(this.showPageNum);
               break;
             case "ArrowRight":
               event.preventDefault();
-              this.addCurrentImageIndex(isPortrait() ? -1 : -2);
+              this.addCurrentImageIndex(this.showPageNum * -1);
               break;
             case "ArrowUp":
               event.preventDefault();
@@ -236,7 +258,7 @@
         this.imageUrls.push(imageUrl);
         this.maxPageNumberElement.innerText = this.imageUrls.length;
         if (imageUrl.length > 0) {
-          this.viewerAreaElement.style.display = "block";
+          this.showViewerArea(this.showPageNum);
         }
         this.addCurrentImageIndex(0);
       };
@@ -327,6 +349,7 @@
 
   <script type="text/javascript">
     const Util = {
+      isPortrait: () => matchMedia("(orientation: portrait)").matches,
       getNumInRange: (min, target, max) => Math.min(Math.max(min, target), max)
     };
   </script>
