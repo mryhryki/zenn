@@ -189,6 +189,7 @@
 
         const viewerAreaElement = document.getElementById("viewer-area");
         this.showViewerArea = (num) => {
+          this.showPageNum = num;
           viewerAreaElement.classList.remove(Array.from(viewerAreaElement.classList.entries()).map(([_, e]) => e));
           viewerAreaElement.classList.add(`show-${Util.getNumInRange(0, num, 2)}-images`);
           togglePageNumButtonElement.innerText = `${num}P`;
@@ -240,8 +241,8 @@
               break;
             case " ":
               event.preventDefault();
-              this.showPageNum = this.showPageNum === 2 ? 1 : 2;
-              break
+              this.showViewerArea(this.showPageNum === 2 ? 1 : 2);
+              break;
             case "ArrowLeft":
               event.preventDefault();
               this.addCurrentImageIndex(this.showPageNum);
@@ -305,7 +306,7 @@
     const loadByQueryParams = async (callback) => {
       const showLoading = (loading) => document.getElementById("loading").style.display = loading ? "flex" : "none";
       try {
-        showLoading(true)
+        showLoading(true);
         const { searchParams } = new URL(window.location.href);
         const zipUrl = searchParams.get("zip_url");
         const listUrl = searchParams.get("list_url");
@@ -319,7 +320,7 @@
       } catch (err) {
         alert(`ERROR: ${err}`);
       } finally {
-        showLoading(false)
+        showLoading(false);
       }
     };
   </script>
