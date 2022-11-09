@@ -103,7 +103,7 @@
         }
         keyboardHandler = (event) => {
           const { key, metaKey, shiftKey } = event;
-          if (key === " ") {
+          if (key === "Space") {
             event.preventDefault();
             if (videoPlayerElement.paused) {
               videoPlayerElement.play().catch(console.error);

@@ -238,6 +238,10 @@
                 document.exitFullscreen().catch(console.error);
               }
               break;
+            case " ":
+              event.preventDefault();
+              this.showPageNum = this.showPageNum === 2 ? 1 : 2;
+              break
             case "ArrowLeft":
               event.preventDefault();
               this.addCurrentImageIndex(this.showPageNum);
