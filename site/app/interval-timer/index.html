@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interval Timer</title>
+</head>
+<body style="box-sizing: border-box; padding: 1rem; max-width: 1024px; margin: 0 auto;">
+  <h1 style="text-align: center">Interval Timer</h1>
+  <p>
+    25min > 5min > 25min > 5min > ...
+  </p>
+  <p id="interval-name" style="font-size: 2rem; text-align: center;"></p>
+  <p id="remaining-time" style="font-size: 4rem; text-align: center;"></p>
+  <p>
+    <button id="start-button" style="width: 100%; padding: 1rem; font-size: 2rem;">START</button>
+  </p>
+
+  <script>
+    const Interval = [
+      {
+        title: "Work",
+        sec: 25 * 60
+      },
+      {
+        title: "Rest",
+        sec: 5 * 60
+      }];
+    document.addEventListener("DOMContentLoaded", () => {
+      const intervalNameElement = document.getElementById("interval-name");
+      const remainingTimeElement = document.getElementById("remaining-time");
+      const startButtonElement = document.getElementById("start-button");
+
+      let intervalId = null;
+      const stop = () => {
+        if (intervalId != null) {
+          clearInterval(intervalId);
+        }
+      };
+
+      const startInterval = (intervalCount) => {
+        startButtonElement.disabled = "disabled";
+        const interval = Interval[intervalCount % Interval.length];
+        intervalNameElement.innerText = interval.title;
+        let endTime = Util.getNowUnix() + interval.sec;
+        intervalId = setInterval(() => {
+          const remainingTime = endTime - Util.getNowUnix();
+          remainingTimeElement.innerText = Util.displayTime(Math.max(remainingTime, 0));
+          if (remainingTime < 0) {
+            stop();
+            if (confirm("STOP")) {
+              startInterval(intervalCount + 1);
+            } else {
+              console.debug(startButtonElement);
+              delete startButtonElement.disabled;
+            }
+          }
+        }, 1000 / 60);
+      };
+
+      startButtonElement.addEventListener("click", () => startInterval(0));
+    });
+  </script>
+
+  <script>
+    const Util = {
+      getNowUnix: () => new Date().getTime() / 1000,
+      displayTime: (timeSec) => {
+        const min = Math.floor(timeSec / 60);
+        const sec = Math.floor(timeSec % 60);
+        return `${min}:${String(sec).padStart(2, "0")}`;
+      }
+    };
+  </script>
+</body>
+</html>
