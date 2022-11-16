@@ -170,6 +170,7 @@
   <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", () => {
       const fileSelectorElement = document.getElementById("file-selector");
+      document.getElementById("select-video-file").onclick = () => fileSelectorElement.click();
       const fileDropAreaElement = document.getElementById("file-drop-area");
 
       const images = new Images();
@@ -219,6 +220,8 @@
             leftImageElement.src = this.imageUrls[this.currentImageIndex + 1] || "";
           }
         };
+        leftImageElement.addEventListener("click", () => this.addCurrentImageIndex(this.showPageNum));
+        rightImageElement.addEventListener("click", () => this.addCurrentImageIndex(this.showPageNum === 2 ? -2 : 1));
 
         nextOneButtonElement.addEventListener("click", () => this.addCurrentImageIndex(1));
         togglePageNumButtonElement.addEventListener("click", () => {
