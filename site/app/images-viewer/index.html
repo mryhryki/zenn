@@ -210,8 +210,8 @@
         this.currentImageIndex = 0;
         this.imageUrls = [];
 
-        this.addCurrentImageIndex = (add) => {
-          this.currentImageIndex = Util.getNumInRange(0, this.currentImageIndex + add, this.imageUrls.length - this.showPageNum);
+        this.setCurrentImageIndex = (index) => {
+          this.currentImageIndex = Util.getNumInRange(0, index, this.imageUrls.length - this.showPageNum);
           this.currentPageNumberElement.innerText = this.currentImageIndex + 1;
           if (rightImageElement.src !== this.imageUrls[this.currentImageIndex]) {
             rightImageElement.src = this.imageUrls[this.currentImageIndex] || "";
@@ -219,6 +219,9 @@
           if (leftImageElement.src !== this.imageUrls[this.currentImageIndex + 1]) {
             leftImageElement.src = this.imageUrls[this.currentImageIndex + 1] || "";
           }
+        };
+        this.addCurrentImageIndex = (add) => {
+          this.setCurrentImageIndex(this.currentImageIndex + add);
         };
         leftImageElement.addEventListener("click", () => this.addCurrentImageIndex(this.showPageNum));
         rightImageElement.addEventListener("click", () => this.addCurrentImageIndex(this.showPageNum === 2 ? -2 : 1));
@@ -262,6 +265,19 @@
               event.preventDefault();
               this.addCurrentImageIndex(1);
               break;
+            case "0":
+            case "1":
+            case "2":
+            case "3":
+            case "4":
+            case "5":
+            case "6":
+            case "7":
+            case "8":
+            case "9":
+              event.preventDefault();
+              this.setCurrentImageIndex(Math.round(this.imageUrls.length * parseInt(key, 10) * 0.1));
+              return;
           }
         });
       }
