@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Reverse Color</title>
+  <style>
+    body {
+      margin: 1rem auto;
+      max-width: 48rem;
+      width: 100%;
+    }
+
+    h1, div {
+      text-align: center;
+      position: relative;
+    }
+
+    #thank-you-message {
+      /*display: none;*/
+      position: absolute;
+    }
+
+    #like-button {
+      margin: 8rem 0 0 0;
+      background-color: #fff;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      font-size: 3rem;
+      height: 8rem;
+      padding: 1rem;
+      text-align: center;
+      width: 8rem;
+    }
+
+    #like-button:hover {
+      background-color: #fee;
+    }
+  </style>
+</head>
+<body>
+  <h1>Example Like Animation</h1>
+  <div id="thank-you-message">Thank You!</div>
+  <div>
+    <button id="like-button">
+      &#x1f44d;
+    </button>
+  </div>
+  <div>
+    Like Count: <span id="like-count">0</span>
+  </div>
+
+  <script type="text/javascript">
+    window.addEventListener("DOMContentLoaded", () => {
+      let likeCount = 0;
+      const likeButtonElement = document.getElementById("like-button");
+      const likeCountElement = document.getElementById("like-count");
+      likeButtonElement.addEventListener("click", () => {
+        likeCountElement.innerText = String(likeCount++);
+      });
+    });
+  </script>
+</body>
+</html>
