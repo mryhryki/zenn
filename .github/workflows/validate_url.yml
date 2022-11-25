@@ -1,4 +1,4 @@
-name: update_packages
+name: validate_url
 env:
   TZ: "Asia/Tokyo"
 
