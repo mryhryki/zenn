@@ -1,4 +1,5 @@
 import { listAllPosts } from "../common/post";
+import { Post } from "../common/post/parse";
 
 interface UrlInfo {
   url: URL;
@@ -7,7 +8,7 @@ interface UrlInfo {
 }
 
 const main = async () => {
-  const posts = (await listAllPosts()).filter(({ filePath }) => filePath.includes("ukraine"));
+  const posts = (await listAllPosts()).filter(({ filePath }: Post) => filePath.includes("ukraine"));
   const existsUrls = new Set<string>([]);
   const urlInfoList: UrlInfo[] = [];
 
@@ -27,7 +28,7 @@ const main = async () => {
   }
 
   const MaxParallelRequest = 5;
-  const WaitMs = 200;
+  const WaitMs = 100;
   let parallelRequestCount = 0;
   const nextRequest: Record<string, number | null> = {};
 
@@ -42,7 +43,7 @@ const main = async () => {
     nextRequest[url.origin] = getNow() + WaitMs;
     parallelRequestCount++;
     try {
-      const { status } = await validateUrl(url.toString());
+      const { status } = await validateUrl(url);
       console.log(`Validate[${count++}]: ${url.toString()} => ${status}`);
       urlInfo.status = status;
     } catch (err) {
@@ -63,15 +64,23 @@ const main = async () => {
 
 const UrlMatcher = new RegExp("(^|[^`])https?://[^ )]+", "g");
 const getNow = (): number => new Date().getTime();
-const validateUrl = async (url: string): Promise<{ status: number }> => {
+
+const UnsupportedHeadRequestOrigins = new Set(["https://www.recordchina.co.jp", "https://jp.yna.co.kr"]);
+const validateUrl = async (url: URL): Promise<{ status: number }> => {
   const abortController = new AbortController();
   const timeoutId = setTimeout(() => abortController.abort(), 5000);
-  const response = await fetch(url, { method: "HEAD", signal: abortController.signal });
+  const response = await fetch(url, {
+    method: UnsupportedHeadRequestOrigins.has(url.origin) ? "GET" : "HEAD",
+    headers: {
+      "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"
+    },
+    signal: abortController.signal
+  });
   clearTimeout(timeoutId);
   return { status: response.status };
 };
 
-const startTime = getNow()
+const startTime = getNow();
 main()
   .then(() => {
     console.log("VALIDATE URL COMPLETED");
@@ -79,8 +88,8 @@ main()
   .catch((err) => {
     console.error("VALIDATE URL FAILED");
     console.error(err);
-    throw err
+    throw err;
   })
   .finally(() => {
-    console.log(`Time: ${getNow() - startTime} ms`)
+    console.log(`Time: ${getNow() - startTime} ms`);
   });

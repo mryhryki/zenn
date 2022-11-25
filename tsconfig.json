@@ -5,10 +5,12 @@
     "esModuleInterop": true,
     "jsx": "react",
     "lib": ["esnext", "DOM.Iterable", "dom"],
+    "moduleResolution": "Node16",
     "noEmit": true,
     "noImplicitAny": true,
     "skipLibCheck": true,
-    "strict": true
+    "strict": true,
+    "target": "es2015"
   },
   "include": [
     "script/**/*.ts",
