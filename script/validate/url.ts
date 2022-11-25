@@ -65,7 +65,7 @@ const UrlMatcher = new RegExp("(^|[^`])https?://[^ )]+", "g");
 const getNow = (): number => new Date().getTime();
 const validateUrl = async (url: string): Promise<{ status: number }> => {
   const abortController = new AbortController();
-  const timeoutId = setTimeout(() => abortController.abort(), 3000);
+  const timeoutId = setTimeout(() => abortController.abort(), 5000);
   const response = await fetch(url, { method: "HEAD", signal: abortController.signal });
   clearTimeout(timeoutId);
   return { status: response.status };
