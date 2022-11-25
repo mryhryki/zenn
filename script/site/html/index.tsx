@@ -89,7 +89,7 @@ export const renderBlogIndex = (posts: Post[]): string => {
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="apple-mobile-web-app-title" content={title} />
-        <link rel="apple-touch-icon" type="image/png" href="./assets/image/icon_180x180.png" />
+        <link rel="apple-touch-icon" type="image/png" href="https://mryhryki.com/assets/image/icon_180x180.png" />
       </head>
       <body className="wrapper dark-theme">
         <h1>{title}</h1>

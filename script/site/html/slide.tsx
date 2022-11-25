@@ -36,13 +36,13 @@ export const renderSlide = (markdown: string): string => {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={`${BaseURL}/assets/image/share_image.jpg`} />
+        <meta name="twitter:image" content="https://mryhryki.com/assets/image/share_image.jpg" />
         <meta name="twitter:site" content="@mryhryki" />
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="apple-mobile-web-app-title" content={title} />
-        <link rel="apple-touch-icon" type="image/png" href="./assets/image/icon_180x180.png" />
+        <link rel="apple-touch-icon" type="image/png" href="https://mryhryki.com/assets/image/icon_180x180.png" />
       </head>
       <body style={{ margin: 0 }}>
         <div

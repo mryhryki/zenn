@@ -26,7 +26,7 @@ https://github.com/GoogleChrome/lighthouse-ci
 [コネヒトマルシェオンライン](https://connehito.connpass.com/event/193896/) のLTで話しました。
 その際の資料も添付しておきます。
 
-@[speakerdeck](cca8404ec15149c69e98f281067e184d)
+[speakerdeck](https://speakerdeck.com/mryhryki/lighthouse-ci)
 
 
 
