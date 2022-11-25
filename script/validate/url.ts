@@ -59,6 +59,7 @@ const main = async () => {
     urlInfoList.filter(({ status }) => status !== 200).forEach((urlInfo) => {
       console.log(urlInfo.status, urlInfo.url.toString(), urlInfo.file);
     });
+    throw new Error("Exists invalid URLs")
   }
 };
 
@@ -84,12 +85,10 @@ const startTime = getNow();
 main()
   .then(() => {
     console.log("VALIDATE URL COMPLETED");
+    console.log(`Time: ${getNow() - startTime} ms`);
   })
   .catch((err) => {
     console.error("VALIDATE URL FAILED");
     console.error(err);
-    throw err;
+    process.exit(1)
   })
-  .finally(() => {
-    console.log(`Time: ${getNow() - startTime} ms`);
-  });
