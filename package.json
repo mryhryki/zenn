@@ -3,7 +3,8 @@
   "author": "mryhryki",
   "private": true,
   "engines": {
-    "node": "16.x"
+    "node": "16.x",
+    "npm": "9.x"
   },
   "scripts": {
     "build": "esbuild --platform=node --external:node:* --bundle script/site/index.ts | node",
@@ -15,6 +16,8 @@
     "lint:fix": "mryhryki-lint-fix",
     "pages:archive": "tar --verbose --create --file=./archive.tar --directory=site/ .",
     "preview": "http-server site/ --port 58125 -o",
+    "validate:url": "esbuild --platform=node --external:node:* --bundle script/validate/url.ts | node",
+    "validate:url:watch": "nodemon --watch posts/ --watch script/ --ext md,ts,tsx --exec 'npm run validate:url'",
     "check:links": "check-html-links site",
     "type": "tsc",
     "type:watch": "tsc --watch",
