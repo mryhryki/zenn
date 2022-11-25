@@ -6,6 +6,9 @@ on:
   schedule:
     - cron: "0 40 * * SUN" # UTC
   workflow_dispatch:
+  push:
+    branches:
+      - "main"
 
 jobs:
   check_branch:
