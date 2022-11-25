@@ -1,0 +1,28 @@
+name: update_packages
+env:
+  TZ: "Asia/Tokyo"
+
+on:
+  schedule:
+    - cron: "0 40 * * SUN" # UTC
+  workflow_dispatch:
+
+jobs:
+  check_branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Update packages
+        run: |
+          npm i -g npm
+          npm install
+      - name: Validate URLs
+        run: |
+          npm run validate:url
