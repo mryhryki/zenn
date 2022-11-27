@@ -19,6 +19,8 @@ AWS 初期からあるのも納得の便利サービスで、AWSでよく使う�
 
 S3 は便利ですが、S3 で5GB以上の大容量ファイルを扱うには、マルチパートアップロードについて理解しておく必要があります。
 
+
+
 # 想定読者
 
 この記事は以下のような方を想定して書いています。
@@ -45,6 +47,46 @@ $ aws s3 cp s3://source-bucket/path/to/file s3://destination-bucket/path/to/file
 $ aws s3 sync s3://source-bucket/prefix/ s3://destination-bucket/prefix/
 ```
 
+## 参考: S3 サービスの使い分け
+
+私は S3 サービスを以下のように使い分けています。
+なので、AWS S3 と Wasabi の間で大容量データをコピー（移動）したいケースが出てきます。
+
+## AWS
+
+ストレージ階層によって特徴があるので使い分けています。
+
+### STANDARD
+
+最低保管期間がない完全な従量課金なので、頻繁に作成・削除するようなケースで使っています。
+また CloudFront と連携しやすいので、[小容量のリソースを配信](https://mryhryki.com/) するために使用しています。
+
+### GLACIER DEEP ARCHIVE
+
+保管料金が特に安いので、ほぼ取り出す可能性のない定期バックアップデータとかを入れています。
+
+## Wasabi
+
+AWS S3 の STANDARD よりも保管料金が安く、インターネット転送量も無料なので、一定期間以上保管し、ある程度取り出しが発生する（しそう）なデータを保管しています。
+
+最低1TB/月の保管料金（ap-northeast-1 なら $6.99）がかかる点と、最低オブジェクト保存期間が90日である点に注意してください。
+
+
+
+# マルチパートアップロードを中断した場合の注意点
+
+マルチパートアップロード中に中断してしまった場合（CompleteMultipartUpload が完了しなかった場合）、アップロードしたデータが残ってしまいます。
+その残ってしまったデータに対しても保管料がかかるので注意してください。
+
+消す方法としては、以下の方法があります。
+
+1. [AbortMultipart](https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html) をリクエストする
+2. S3 のライフサイクルルールで自動削除する設定をする
+- 参考: [不完全なマルチパートアップロードをクリーンアップするための Amazon S3 ライフサイクル設定ルールを検証する](https://aws.amazon.com/jp/premiumsupport/knowledge-center/s3-multipart-cleanup-lifecycle-rule/)
+- 指定した日数が経過し削除されるまでは料金が発生する点に注意してください
+
+`2.` を設定して気づかず残ってしまった場合に備えつつ、`1.` で削除しておく、というのが良いかと思います。
+
 # マルチパートアップロードとは
 
 ５GBを超えるファイルをアップロードするために使用できるアップロードの方法です。
@@ -60,12 +102,12 @@ $ aws s3 sync s3://source-bucket/prefix/ s3://destination-bucket/prefix/
 ![How does MultipartUpload work?](https://mryhryki.com/file/UBq6NkABktw0eQBVd7g3VRSgWpgN9BNjFa5M3N6UhzzZbPUw.webp)
 
 1. CreateMultipart でマルチパートアップロードを開始します
-  - アップロードする領域を用意するようなイメージかな、と思います。
+    - アップロードする領域を用意するようなイメージかな、と思います。
 2. 以下のどちらかの方法で、オブジェクトを分割しながらコピーします
-  - UploadPartCopy を使う（同一サービス内の場合）
-  - GetObject と UploadPart を使う（別サービス間でコピーする場合）
+    - UploadPartCopy を使う（同一サービス内の場合）
+    - GetObject と UploadPart を使う（別サービス間でコピーする場合）
 3. すべてのコピーが完了したら CompleteMultipartUpload で完了する
-  - CompleteMultipartUpload が正常に終了して始めて単一オブジェクトとしてアクセスできます
+    - CompleteMultipartUpload が正常に終了して始めて単一オブジェクトとしてアクセスできます
 
 
 # S3 のコピーの方法
@@ -121,42 +163,6 @@ PutObject は 5GB までのアップロードしか対応できません。
 そのため、マルチパートアップロードだけでは全てのケースに対応できない、というのは若干のデメリットかもしれません。
 
 
-# 参考: S3 サービスの使い分け
-
-私は S3 サービスを以下のように使い分けています。
-
-## AWS
-
-ストレージ階層によって特徴があるので使い分けています。
-
-### STANDARD
-
-最低保管期間がない完全な従量課金なので、頻繁に作成・削除するようなケースで使っています。
-また CloudFront と連携しやすいので、[小容量のリソースを配信](https://mryhryki.com/) するために使用しています。
-
-### GLACIER DEEP ARCHIVE
-
-保管料金が特に安いので、ほぼ取り出す可能性のない定期バックアップデータとかを入れています。
-
-## Wasabi
-
-AWS S3 の STANDARD よりも保管料金が安く、インターネット転送量も無料なので、一定期間以上保管し、ある程度取り出しが発生する（しそう）なデータを保管しています。
-
-最低1TB/月の保管料金（ap-northeast-1 なら $6.99）がかかる点と、最低オブジェクト保存期間が90日である点に注意してください。
-
-# マルチパートアップロードを中断した場合の注意点
-
-マルチパートアップロード中に中断してしまった場合（CompleteMultipartUpload が完了しなかった場合）、アップロードしたデータが残ってしまいます。
-その残ってしまったデータに対しても保管料がかかるので注意してください。
-
-消す方法としては、以下の方法があります。
-
-1. [AbortMultipart](https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html) をリクエストする
-2. S3 のライフサイクルルールで自動削除する設定をする
-  - 参考: [不完全なマルチパートアップロードをクリーンアップするための Amazon S3 ライフサイクル設定ルールを検証する](https://aws.amazon.com/jp/premiumsupport/knowledge-center/s3-multipart-cleanup-lifecycle-rule/)
-  - 指定した日数が経過し削除されるまでは料金が発生する点に注意してください
-
-`2.` を設定して気づかず残ってしまった場合に備えつつ、`1.` で削除しておく、というのが良いかと思います。
 
 # AWS SDK for JavaScript を使用したマルチパートアップロードの実装
 
