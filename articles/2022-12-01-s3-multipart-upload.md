@@ -251,6 +251,17 @@ $ npm run GetObjectAndUploadPart
 #### END #####
 ```
 
+
+
+# おわりに
+
+AWS CLI を使っている場合、あまりマルチパートアップロードを意識したことはありませんでした。
+
+しかし、AWS SDK を使いプログラムから大容量のファイルを扱えるようになると非常に便利になりました。
+例えば、一定の条件（容量や作成日など）を満たした場合にバケットを移動するなどを、容易に意図的にできるようになりました。
+
+
+
 # 参考リンク
 
 - [別の AWS アカウントから Amazon S3 オブジェクトをコピーする](https://aws.amazon.com/jp/premiumsupport/knowledge-center/copy-s3-objects-account/)
