@@ -69,7 +69,7 @@ const getNow = (): number => new Date().getTime();
 const UnsupportedHeadRequestOrigins = new Set(["https://www.recordchina.co.jp", "https://jp.yna.co.kr"]);
 const validateUrl = async (url: URL): Promise<{ status: number }> => {
   const abortController = new AbortController();
-  const timeoutId = setTimeout(() => abortController.abort(), 5000);
+  const timeoutId = setTimeout(() => abortController.abort(), 10000);
   const response = await fetch(url, {
     method: UnsupportedHeadRequestOrigins.has(url.origin) ? "GET" : "HEAD",
     headers: {

@@ -18,7 +18,6 @@
     "preview": "http-server site/ --port 58125 -o",
     "validate:url": "esbuild --platform=node --external:node:* --bundle script/validate/url.ts | node",
     "validate:url:watch": "nodemon --watch posts/ --watch script/ --ext md,ts,tsx --exec 'npm run validate:url'",
-    "check:links": "check-html-links site",
     "type": "tsc",
     "type:watch": "tsc --watch",
     "zenn": "open http://localhost:58125/ && zenn preview --port 58125"
