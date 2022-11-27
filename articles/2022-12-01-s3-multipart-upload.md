@@ -166,7 +166,7 @@ PutObject は 5GB までのアップロードしか対応できません。
 
 
 
-# AWS SDK for JavaScript を使用したマルチパートアップロードの実装
+# AWS SDK for JavaScript を使用した実装
 
 「S3 のコピーの方法」で紹介した４パターン全てを実装して Gist にしています。
 JavaScript (TypeScript) での実装例を見たい場合は、こちらも参照してみてください。
