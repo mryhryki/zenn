@@ -6,12 +6,9 @@ on:
   schedule:
     - cron: "0 20 * * SUN" # UTC
   workflow_dispatch:
-  push:
-    branches:
-      - "main"
 
 jobs:
-  check_branch:
+  validate_url:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  check_branch:
+  generate_holidays:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
