@@ -18,7 +18,7 @@ const main = async () => {
 
   const posts = await listAllPosts();
   await Promise.all([
-    buildBlog(posts.filter(({ type }) => type === "backup" || type === "memo" || type === "zenn")),
+    buildBlog(posts.filter(({ type }) => type === "article" || type === "memo" || type === "zenn")),
     buildSlide(posts.filter(({ type }) => type === "slide")),
     buildScrap(posts.filter(({ type }) => type === "scrap")),
     buildFeed(posts),

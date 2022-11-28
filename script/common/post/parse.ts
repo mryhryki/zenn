@@ -4,11 +4,11 @@ import {
   BaseURL,
   PostsDir,
   RootDir,
-  SourceBackupDir,
+  SourceArticleDir,
   SourceMemoDir,
   SourceScrapDir,
   SourceSlideDir,
-  SourceZennArticlesDir
+  SourceZennDir
 } from "../definition";
 import { DateTime } from "@mryhryki/datetime";
 import { digestSha256 } from "../digest";
@@ -41,14 +41,12 @@ export interface Post {
   canonical?: string | null;
 }
 
-type PostType = "zenn" | "memo" | "backup" | "slide" | "scrap";
+type PostType = "zenn"|"article" | "memo" | "slide" | "scrap";
 const getPostType = (filePath: string): PostType => {
-  if (filePath.startsWith(SourceZennArticlesDir)) {
-    return "zenn";
+  if (filePath.startsWith(SourceZennDir) || filePath.startsWith(SourceArticleDir)) {
+    return "article";
   } else if (filePath.startsWith(SourceMemoDir)) {
     return "memo";
-  } else if (filePath.startsWith(SourceBackupDir)) {
-    return "backup";
   } else if (filePath.startsWith(SourceSlideDir)) {
     return "slide";
   } else if (filePath.startsWith(SourceScrapDir)) {
@@ -100,7 +98,7 @@ const getPost = async (absoluteFilePath: string, frontMatter: Record<string, str
     digest: await digestSha256(`${title}\n\n${markdown}`)
   };
 
-  if (type === "memo" || type === "backup" || type === "zenn") {
+  if (type === "memo" || type === "article" || type === "zenn") {
     post.createdAt = DateTime.parse(`${post.id.substring(0, 10)}T00:00:00+09:00`).toISO();
     post.url = `${BaseURL}/blog/${post.id}.html`;
   } else if (type === "slide") {
