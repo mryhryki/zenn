@@ -55,7 +55,7 @@ const main = async (): Promise<void> => {
     });
 
   await writeFile(
-    path.resolve(process.cwd(), "site", "assets", "data", "holidays.json"),
+    path.resolve(process.cwd(), ".site", "assets", "data", "holidays.json"),
     JSON.stringify(holiday, null, 2)
   );
 };

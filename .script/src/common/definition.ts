@@ -4,7 +4,7 @@ export const BaseURL = "https://mryhryki.com";
 
 export const RootDir = path.resolve(__dirname);
 export const PostsDir = path.resolve(RootDir, "posts");
-export const SiteDir = path.resolve(RootDir, "site");
+export const SiteDir = path.resolve(RootDir, ".site");
 
 export const SourceArticleDir = path.resolve(PostsDir, "article");
 export const SourceMemoDir = path.resolve(PostsDir, "memo");
