@@ -19,10 +19,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      - name: Install packages
-        run: |
-          npm i -g npm
-          npm install
+      - name: Update npm
+        run: npm install -g npm
       - name: Validate URLs
         run: |
+          cd ./.github/script/
+          npm ci
           npm run validate:url

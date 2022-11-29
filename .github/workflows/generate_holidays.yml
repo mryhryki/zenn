@@ -19,9 +19,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+      - name: Update npm
+        run: npm install -g npm
       - name: Generate holidays
         run: |
-          npm i -g npm
+          cd ./.github/script/
           npm run generate:holidays
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
