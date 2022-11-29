@@ -1,6 +1,6 @@
-**/.DS_Store
-.github/script/node_modules/**
+.DS_Store
 archive.tar
+**/node_modules/**
 site/blog/**
 site/scrap/**
 site/sitemap.txt
