@@ -2,20 +2,19 @@ import path from "path";
 import { readFile } from "fs/promises";
 import {
   BaseURL,
-  PostsDir,
   RootDir,
-  SourceArticleDir,
+  SourceBackupDir,
   SourceMemoDir,
   SourceScrapDir,
   SourceSlideDir,
-  SourceZennDir
+  SourceArticlesDir,
 } from "../definition";
 import { DateTime } from "@mryhryki/datetime";
 import { digestSha256 } from "../digest";
 
 const BreakCharacter = new RegExp("\r?\n");
 const FrontMatterSplitter = new RegExp("^[-]{3,}$");
-const WrapDoubleQuote = new RegExp("(^\"|\"$)", "g");
+const WrapDoubleQuote = new RegExp('(^"|"$)', "g");
 const DateTimeFormat = new RegExp(
   [
     "^20[0-9]{2}-",
@@ -24,7 +23,7 @@ const DateTimeFormat = new RegExp(
     "([01][0-9]|2[0-3]):",
     "([0-5][0-9]):",
     "([0-5][0-9])",
-    "\\+09:00$"
+    "\\+09:00$",
   ].join("")
 );
 
@@ -41,9 +40,9 @@ export interface Post {
   canonical?: string | null;
 }
 
-type PostType = "zenn"|"article" | "memo" | "slide" | "scrap";
+type PostType = "zenn" | "article" | "memo" | "slide" | "scrap";
 const getPostType = (filePath: string): PostType => {
-  if (filePath.startsWith(SourceZennDir) || filePath.startsWith(SourceArticleDir)) {
+  if (filePath.startsWith(SourceArticlesDir) || filePath.startsWith(SourceBackupDir)) {
     return "article";
   } else if (filePath.startsWith(SourceMemoDir)) {
     return "memo";
@@ -79,7 +78,11 @@ const checkPost = (post: Post, filePath: string) => {
   }
 };
 
-const getPost = async (absoluteFilePath: string, frontMatter: Record<string, string>, markdown: string): Promise<Post> => {
+const getPost = async (
+  absoluteFilePath: string,
+  frontMatter: Record<string, string>,
+  markdown: string
+): Promise<Post> => {
   const id = path.basename(absoluteFilePath).replace(".md", "").trim();
   const type = getPostType(absoluteFilePath);
   const canonical = type === "zenn" ? `https://zenn.dev/mryhryki/articles/${id}` : frontMatter.canonical ?? null;
@@ -95,7 +98,7 @@ const getPost = async (absoluteFilePath: string, frontMatter: Record<string, str
     createdAt: "",
     updatedAt: frontMatter.updatedAt ?? null,
     canonical,
-    digest: await digestSha256(`${title}\n\n${markdown}`)
+    digest: await digestSha256(`${title}\n\n${markdown}`),
   };
 
   if (type === "memo" || type === "article" || type === "zenn") {
@@ -118,7 +121,7 @@ const getPost = async (absoluteFilePath: string, frontMatter: Record<string, str
         post.id.substring(11, 13),
         ":",
         post.id.substring(13, 15),
-        "+09:00"
+        "+09:00",
       ].join("")
     ).toISO();
     post.url = `${BaseURL}/scrap/${post.id}.html`;
@@ -130,7 +133,7 @@ const getPost = async (absoluteFilePath: string, frontMatter: Record<string, str
 export const parsePost = async (filePath: string): Promise<Post> => {
   const isZenn = filePath.includes("/articles/") && !filePath.includes("/posts/");
 
-  const content: string = (await readFile(path.resolve(PostsDir, filePath))).toString("utf-8");
+  const content: string = (await readFile(path.resolve(RootDir, filePath))).toString("utf-8");
   const lines: string[] = content.split(BreakCharacter);
 
   const frontMatter: Record<string, string> = {};

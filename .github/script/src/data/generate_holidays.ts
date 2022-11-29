@@ -3,6 +3,7 @@ import { IncomingMessage } from "node:http";
 import path from "node:path";
 import { writeFile } from "node:fs/promises";
 import iconv from "iconv-lite";
+import { RootDir } from "../common/definition";
 
 const requestGet = (url: string | URL, options: RequestOptions = {}): Promise<IncomingMessage> =>
   new Promise((resolve, reject) => {
@@ -54,10 +55,7 @@ const main = async (): Promise<void> => {
       holiday[date] = { name };
     });
 
-  await writeFile(
-    path.resolve(process.cwd(), "site", "assets", "data", "holidays.json"),
-    JSON.stringify(holiday, null, 2)
-  );
+  await writeFile(path.resolve(RootDir, "site", "assets", "data", "holidays.json"), JSON.stringify(holiday, null, 2));
 };
 
 main()

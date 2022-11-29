@@ -22,7 +22,7 @@ const main = async () => {
     buildSlide(posts.filter(({ type }) => type === "slide")),
     buildScrap(posts.filter(({ type }) => type === "scrap")),
     buildFeed(posts),
-    buildIndex(posts)
+    buildIndex(posts),
   ]);
   await buildSiteMap();
 };

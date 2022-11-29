@@ -56,8 +56,9 @@ export const renderBlogIndex = (posts: Post[]): string => {
         <meta name="twitter:site" content="@mryhryki" />
 
         <link rel="stylesheet" href="/assets/css/base.css" />
-        <style dangerouslySetInnerHTML={{
-          __html: `
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
           li.post-item {
             display: none;
           }
@@ -79,8 +80,9 @@ export const renderBlogIndex = (posts: Post[]): string => {
           input#slide-checkbox:checked ~ div > h2.month.slide {
             display: block;
           }
-        `
-        }} />
+        `,
+          }}
+        />
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -92,13 +94,21 @@ export const renderBlogIndex = (posts: Post[]): string => {
 
         <div style={{ textAlign: "center" }}>
           <input id="article-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
-          <label htmlFor="article-checkbox" style={{ marginRight: "1rem" }}>記事</label>
+          <label htmlFor="article-checkbox" style={{ marginRight: "1rem" }}>
+            記事
+          </label>
           <input id="memo-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
-          <label htmlFor="memo-checkbox" style={{ marginRight: "1rem" }}>メモ</label>
+          <label htmlFor="memo-checkbox" style={{ marginRight: "1rem" }}>
+            メモ
+          </label>
           <input id="scrap-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
-          <label htmlFor="scrap-checkbox" style={{ marginRight: "1rem" }}>スクラップ</label>
+          <label htmlFor="scrap-checkbox" style={{ marginRight: "1rem" }}>
+            スクラップ
+          </label>
           <input id="slide-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
-          <label htmlFor="slide-checkbox" style={{ marginRight: "1rem" }}>スライド</label>
+          <label htmlFor="slide-checkbox" style={{ marginRight: "1rem" }}>
+            スライド
+          </label>
 
           <div style={{ textAlign: "left" }}>
             {months.map((month) => {
@@ -106,7 +116,9 @@ export const renderBlogIndex = (posts: Post[]): string => {
               const types = Array.from(new Set(posts.map(({ type }) => type))).sort();
               return (
                 <React.Fragment key={month}>
-                  <h2 id={month} className={`month ${types.join(" ")}`}><a href={`#${month}`}>{month}</a></h2>
+                  <h2 id={month} className={`month ${types.join(" ")}`}>
+                    <a href={`#${month}`}>{month}</a>
+                  </h2>
                   <ul className="posts">
                     {postsPerMonthly[month].map((post) => (
                       <li key={post.id} className={`post-item ${post.type}`}>
@@ -127,41 +139,45 @@ export const renderBlogIndex = (posts: Post[]): string => {
         <footer>
           <span>
             {"©2021 "}
-            <a style={{ color: "inherit" }} href={BaseURL}>mryhryki</a>
+            <a style={{ color: "inherit" }} href={BaseURL}>
+              mryhryki
+            </a>
           </span>
         </footer>
-        <script dangerouslySetInnerHTML={{
-          __html: `
-          const CheckBoxSuffix = "-checkbox";
-          const BreakChar = ".";
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              const CheckBoxSuffix = "-checkbox";
+              const BreakChar = ".";
 
-          document.addEventListener('DOMContentLoaded', () => {
-            const getCheckBoxes = () => Array.from(document.querySelectorAll("input.post-type-checkbox"))
-            const getCheckedKeys = () => getCheckBoxes().filter((input) => input.checked).map((input) => input.id.replace(CheckBoxSuffix, ""));
+              document.addEventListener('DOMContentLoaded', () => {
+                const getCheckBoxes = () => Array.from(document.querySelectorAll("input.post-type-checkbox"))
+                const getCheckedKeys = () => getCheckBoxes().filter((input) => input.checked).map((input) => input.id.replace(CheckBoxSuffix, ""));
 
-            const checkQueryParamText = new URL(window.location.href).searchParams.get("check") || ""
-            const checkedNames = checkQueryParamText !== "" ? checkQueryParamText.split(BreakChar) : getCheckBoxes().map((input) => input.id.replace(CheckBoxSuffix, ""));
-            getCheckBoxes().forEach((checkBox) => {
-              const name = checkBox.id.replace(CheckBoxSuffix, "");
-              checkBox.checked = checkedNames.includes(name) ? "checked" : "";
-            });
+                const checkQueryParamText = new URL(window.location.href).searchParams.get("check") || ""
+                const checkedNames = checkQueryParamText !== "" ? checkQueryParamText.split(BreakChar) : getCheckBoxes().map((input) => input.id.replace(CheckBoxSuffix, ""));
+                getCheckBoxes().forEach((checkBox) => {
+                  const name = checkBox.id.replace(CheckBoxSuffix, "");
+                  checkBox.checked = checkedNames.includes(name) ? "checked" : "";
+                });
 
-            getCheckBoxes().forEach((checkBox) => {
-              checkBox.addEventListener('click', (event) => {
-                const url = new URL(window.location.href);
-                const elementCount = getCheckBoxes().length;
-                const checkedKeys = getCheckedKeys();
-                if (elementCount === checkedKeys.length || checkedKeys.length === 0) {
-                  url.searchParams.delete("check");
-                } else {
-                  url.searchParams.set("check", getCheckedKeys().join(BreakChar));
-                }
-                window.history.replaceState({}, null, url.toString());
+                getCheckBoxes().forEach((checkBox) => {
+                  checkBox.addEventListener('click', (event) => {
+                    const url = new URL(window.location.href);
+                    const elementCount = getCheckBoxes().length;
+                    const checkedKeys = getCheckedKeys();
+                    if (elementCount === checkedKeys.length || checkedKeys.length === 0) {
+                      url.searchParams.delete("check");
+                    } else {
+                      url.searchParams.set("check", getCheckedKeys().join(BreakChar));
+                    }
+                    window.history.replaceState({}, null, url.toString());
+                  });
+                });
               });
-            });
-          });
-        `
-        }} />
+            `,
+          }}
+        />
       </body>
     </>
   );

@@ -33,7 +33,9 @@ export const renderFooter = (post: Post): React.ReactNode => {
       </a>
       <span>
         {"©2021 "}
-        <a style={{ color: "inherit" }} href={BaseURL}>mryhryki</a>
+        <a style={{ color: "inherit" }} href={BaseURL}>
+          mryhryki
+        </a>
       </span>
       <script src="/assets/script/copy_to_clipboard.js" />
     </footer>

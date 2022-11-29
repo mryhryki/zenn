@@ -3,24 +3,22 @@
   "author": "mryhryki",
   "private": true,
   "engines": {
-    "node": "16.x",
+    "node": "18.x",
     "npm": "9.x"
   },
   "scripts": {
-    "build": "esbuild --platform=node --external:node:* --bundle script/site/index.ts | node",
-    "build:watch": "nodemon --watch ../posts --watch script/ --ext md,ts,tsx --exec 'npm run build'",
-    "deploy:aws": "aws s3 sync ../../site s3://mryhryki-cdn/contents/ --exclude='.DS_Store' --size-only",
-    "dev": "run-p 'build:watch' 'preview'",
-    "generate:holidays": "esbuild --platform=node --external:node:* --bundle ./script/data/generate_holidays.ts | node",
-    "lint": "mryhryki-lint",
-    "lint:fix": "mryhryki-lint-fix",
-    "pages:archive": "tar --verbose --create --file=./archive.tar --directory=site/ .",
-    "preview": "http-server ../../site --port 58125 -o",
-    "validate:url": "esbuild --platform=node --external:node:* --bundle script/validate/url.ts | node",
-    "validate:url:watch": "nodemon --watch ../posts --watch script/ --ext md,ts,tsx --exec 'npm run validate:url'",
-    "type": "tsc",
-    "type:watch": "tsc --watch",
-    "zenn": "open http://localhost:58125/ && zenn preview --port 58125"
+    "build": "esbuild --platform=node --external:node:* --bundle ./src/site/index.ts | node",
+    "_build:watch": "nodemon --watch '../../articles/' --watch '../../backup/' --watch '../../memo/' --watch '../../scrap/' --watch '../../slide/' --watch './src/' --ext md,ts,tsx --exec 'npm run build'",
+    "_type": "tsc",
+    "_lint": "mryhryki-lint",
+    "_preview": "http-server ../../site/ --port 58125 -o",
+    "check": "run-p '_lint' '_type'",
+    "deploy": "aws s3 sync ../../site/ s3://mryhryki-cdn/contents/ --exclude='.DS_Store' --size-only",
+    "generate:holidays": "esbuild --platform=node --external:node:* --bundle ./src/data/generate_holidays.ts | node",
+    "pages:archive": "tar --verbose --create --file='../../archive.tar' --directory='../../site/' .",
+    "validate:url": "esbuild --platform=node --external:node:* --bundle ./src/validate/url.ts | node",
+    "writing": "run-p '_build:watch' '_preview'",
+    "zenn": "cd ../../ && open http://localhost:58125/ && zenn preview --port 58125"
   },
   "dependencies": {
     "@mryhryki/datetime": "^0.0.7",

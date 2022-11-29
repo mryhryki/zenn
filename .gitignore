@@ -1,7 +1,6 @@
 **/.DS_Store
-.temp.js
+.github/script/node_modules/**
 archive.tar
-node_modules/@esbuild
 site/blog/**
 site/scrap/**
 site/sitemap.txt
