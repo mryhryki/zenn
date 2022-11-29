@@ -26,7 +26,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Add scrap
-        run: bash ./script/scrap/add_scrap.sh
+        run: bash ./.github/script/src/scrap/add_scrap.sh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LOG_TEXT: ${{ github.event.inputs.text }}

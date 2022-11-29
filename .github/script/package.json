@@ -1,0 +1,43 @@
+{
+  "name": "portfolio",
+  "author": "mryhryki",
+  "private": true,
+  "engines": {
+    "node": "18.x",
+    "npm": "9.x"
+  },
+  "scripts": {
+    "build": "esbuild --platform=node --external:node:* --bundle ./src/site/index.ts | node",
+    "_build:watch": "nodemon --watch '../../articles/' --watch '../../backup/' --watch '../../memo/' --watch '../../scrap/' --watch '../../slide/' --watch './src/' --ext md,ts,tsx --exec 'npm run build'",
+    "_type": "tsc",
+    "_lint": "mryhryki-lint",
+    "_preview": "http-server ../../site/ --port 58125 -o",
+    "check": "run-p '_lint' '_type'",
+    "deploy": "aws s3 sync ../../site/ s3://mryhryki-cdn/contents/ --exclude='.DS_Store' --size-only",
+    "generate:holidays": "esbuild --platform=node --external:node:* --bundle ./src/data/generate_holidays.ts | node",
+    "pages:archive": "tar --verbose --create --file='../../archive.tar' --directory='../../site/' .",
+    "validate:url": "esbuild --platform=node --external:node:* --bundle ./src/validate/url.ts | node",
+    "writing": "run-p '_build:watch' '_preview'",
+    "zenn": "cd ../../ && open http://localhost:58125/ && zenn preview --port 58125"
+  },
+  "dependencies": {
+    "@mryhryki/datetime": "^0.0.7",
+    "@mryhryki/lint": "^0.0.12",
+    "@mryhryki/markdown": "^0.3.1",
+    "@types/node": "^18.11.9",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.9",
+    "@types/rss": "^0.0.29",
+    "check-html-links": "^0.2.4",
+    "esbuild": "^0.15.16",
+    "http-server": "^14.1.1",
+    "iconv-lite": "^0.6.3",
+    "nodemon": "^2.0.20",
+    "npm-run-all": "^4.1.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rss": "^1.2.2",
+    "typescript": "^4.9.3",
+    "zenn-cli": "^0.1.132"
+  }
+}

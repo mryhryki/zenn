@@ -12,7 +12,7 @@ PR_TITLE="[SCRAP] ${TITLE}"
 echo "LOG_ID: ${SCRAP_ID}"
 git checkout -b "${BRANCH_NAME}"
 
-cat << EOS > "${REPOSITORY_ROOT}/posts/scrap/${SCRAP_ID}.md"
+cat << EOS > "${REPOSITORY_ROOT}/scrap/${SCRAP_ID}.md"
 ---
 title: ${TITLE}
 ---

@@ -13,8 +13,8 @@
     "target": "es2015"
   },
   "include": [
-    "script/**/*.ts",
-    "script/**/*.tsx"
+    "src/**/*.ts",
+    "src/**/*.tsx"
   ],
   "exclude": [
     "**/node_modules/**",

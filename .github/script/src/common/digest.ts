@@ -9,9 +9,8 @@ export const digestSha256 = async (text: string): Promise<string> => {
     .map((n: number): string =>
       [
         HexCharacters.at(Math.floor(n / HexCharacters.length)), //
-        HexCharacters.at(n % HexCharacters.length)
+        HexCharacters.at(n % HexCharacters.length),
       ].join("")
     )
     .join("");
 };
-

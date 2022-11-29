@@ -19,9 +19,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+      - name: Update npm
+        run: npm install -g npm
       - name: Update packages
         run: |
-          npm i -g npm
+          cd ./.github/script/
           npm exec -- npm-check-updates -u
           npm install
           npm audit fix || true

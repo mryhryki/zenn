@@ -35,26 +35,30 @@ const main = async () => {
   console.log(`TOTAL: ${urlInfoList.length}`);
   let count = 0;
 
-  await Promise.all(urlInfoList.sort((info1, info2) => info1.file < info2.file ? -1 : 1).map(async (urlInfo) => {
-    const { url } = urlInfo;
-    while (parallelRequestCount >= MaxParallelRequest || ((nextRequest[url.origin] ?? 0) > getNow())) {
-      await new Promise((resolve) => setTimeout(resolve, WaitMs));
-    }
-    nextRequest[url.origin] = getNow() + WaitMs;
-    parallelRequestCount++;
-    try {
-      const { status } = await validateUrl(url);
-      console.log(`Validate[${count++}]: ${url.toString()} => ${status}`);
-      urlInfo.status = status;
-    } catch (err) {
-      urlInfo.status = 999;
-      console.error(err);
-    } finally {
-      parallelRequestCount--;
-    }
-  }));
+  await Promise.all(
+    urlInfoList
+      .sort((info1, info2) => (info1.file < info2.file ? -1 : 1))
+      .map(async (urlInfo) => {
+        const { url } = urlInfo;
+        while (parallelRequestCount >= MaxParallelRequest || (nextRequest[url.origin] ?? 0) > getNow()) {
+          await new Promise((resolve) => setTimeout(resolve, WaitMs));
+        }
+        nextRequest[url.origin] = getNow() + WaitMs;
+        parallelRequestCount++;
+        try {
+          const { status } = await validateUrl(url);
+          console.log(`Validate[${count++}]: ${url.toString()} => ${status}`);
+          urlInfo.status = status;
+        } catch (err) {
+          urlInfo.status = 999;
+          console.error(err);
+        } finally {
+          parallelRequestCount--;
+        }
+      })
+  );
 
-  const invalidUrls = urlInfoList.filter(({ status }) => status !== 200)
+  const invalidUrls = urlInfoList.filter(({ status }) => status !== 200);
   if (invalidUrls.length > 0) {
     console.log("[Invalid URLs]");
     invalidUrls.forEach((urlInfo) => {
@@ -71,15 +75,15 @@ const UnsupportedHeadRequestOrigins = new Set(["https://www.recordchina.co.jp", 
 const validateUrl = async (url: URL): Promise<{ status: number }> => {
   for (let i = 0; i < 3; i++) {
     try {
-
       const abortController = new AbortController();
       const timeoutId = setTimeout(() => abortController.abort(), 10000);
       const response = await fetch(url, {
         method: UnsupportedHeadRequestOrigins.has(url.origin) ? "GET" : "HEAD",
         headers: {
-          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"
+          "User-Agent":
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36",
         },
-        signal: abortController.signal
+        signal: abortController.signal,
       });
       clearTimeout(timeoutId);
       return { status: response.status };
