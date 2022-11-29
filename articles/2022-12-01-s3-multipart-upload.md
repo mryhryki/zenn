@@ -57,7 +57,7 @@ $ aws s3 sync s3://source-bucket/prefix/ s3://destination-bucket/prefix/
 
 ### STANDARD
 
-最低保管期間がない完全な従量課金なので、頻繁に作成・削除するようなケースで使っています。
+最低保管期間がない完全な従量課金なので、頻繁にファイル作成・削除するようなケースで使っています。
 また CloudFront と連携しやすいので、[小容量のリソースを配信](https://mryhryki.com/) するために使用しています。
 
 ### GLACIER DEEP ARCHIVE
