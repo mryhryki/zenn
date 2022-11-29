@@ -13,7 +13,7 @@ export const renderFooter = (post: Post): React.ReactNode => {
     <footer>
       <a
         style={{ marginRight: "0.75rem" }}
-        href="/Users/mryhryki/projects/personal/portfolio/.script/src/site/html/common"
+        href="/Users/mryhryki/projects/personal/portfolio/.github/script/src/site/html/common"
       >
         ブログ一覧
       </a>

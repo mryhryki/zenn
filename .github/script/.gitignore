@@ -1,7 +1,7 @@
 **/.DS_Store
 .temp.js
 archive.tar
-node_modules/**
+node_modules/@esbuild
 site/blog/**
 site/scrap/**
 site/sitemap.txt
