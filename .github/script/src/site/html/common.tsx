@@ -11,10 +11,7 @@ export const renderToHtml = (element: React.ReactElement): string => {
 export const renderFooter = (post: Post): React.ReactNode => {
   return (
     <footer>
-      <a
-        style={{ marginRight: "0.75rem" }}
-        href="/Users/mryhryki/projects/personal/portfolio/.github/script/src/site/html/common"
-      >
+      <a style={{ marginRight: "0.75rem" }} href="/blog/">
         ブログ一覧
       </a>
       <a
