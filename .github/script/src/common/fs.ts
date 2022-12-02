@@ -13,7 +13,9 @@ export const listFiles = async (dirPath: string, recursive: boolean): Promise<st
     const path = `${dirPath}/${p}`;
     const statInfo = await stat(path);
     if (statInfo.isFile()) {
-      filePaths.push(path);
+      if (FileNameChecker.test(p)) {
+        filePaths.push(path);
+      }
     } else if (recursive && statInfo.isDirectory()) {
       const filePathsInChildDirectory = await listFiles(path, recursive);
       filePathsInChildDirectory.forEach((f) => filePaths.push(f));
@@ -21,3 +23,5 @@ export const listFiles = async (dirPath: string, recursive: boolean): Promise<st
   }
   return filePaths;
 };
+
+const FileNameChecker = new RegExp("^20dd-dd-dd-[a-z0-9-]{3,}.md$");
