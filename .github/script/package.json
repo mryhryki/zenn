@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "esbuild --platform=node --external:node:* --bundle ./src/site/index.ts | node",
-    "_build:watch": "nodemon --watch '../../articles/' --watch '../../backup/' --watch '../../memo/' --watch '../../scrap/' --watch '../../slide/' --watch './src/' --ext md,ts,tsx --exec 'npm run build'",
+    "_build:watch": "nodemon --watch '../../articles/' --watch '../../articles/backup/' --watch '../../memo/' --watch '../../scrap/' --watch '../../slide/' --watch './src/' --ext md,ts,tsx --exec 'npm run build'",
     "_type": "tsc",
     "_lint": "mryhryki-lint",
     "_preview": "http-server ../../site/ --port 58125 -o",
