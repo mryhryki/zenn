@@ -1,7 +1,7 @@
 import { readdir, stat } from "fs/promises";
 import { parsePost, Post } from "./post/parse";
 
-const FileNameChecker = new RegExp("^20dd-dd-dd-[a-z0-9-]{3,}.md$");
+const FileNameChecker = new RegExp("^(20[0-9]{2}-[0-9]{2}-[0-9]{2}-[a-z0-9-]{3,}|20[0-9]{6}-[0-9]{6}).md$");
 
 export const readPosts = async (dirPath: string): Promise<Post[]> => {
   const files = await listFiles(dirPath, false);
