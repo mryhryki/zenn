@@ -235,7 +235,8 @@
         prevButtonElement.addEventListener("click", () => this.addCurrentImageIndex(this.showPageNum * -1));
 
         window.addEventListener("keydown", (event) => {
-          const { key } = event;
+          const { key, metaKey } = event;
+          if (metaKey) return
           switch (key) {
             case "f":
               event.preventDefault();
