@@ -5,11 +5,11 @@ REPOSITORY_ROOT="$(git rev-parse --show-toplevel 2>/dev/null;)"
 SCRAP_ID="$(date +"%Y%m%d-%H%M%S")"
 BRANCH_NAME="scrap/${SCRAP_ID}"
 
-TITLE="${LOG_TITLE:-"${SCRAP_ID}"}"
-TEXT="$(printf '%s' "${LOG_TEXT:-"(TODO: TEXT)"}")"
+TITLE="${SCRAP_TITLE:-"${SCRAP_ID}"}"
+TEXT="$(printf '%s' "${SCRAP_TEXT:-"(TODO: TEXT)"}")"
 PR_TITLE="[SCRAP] ${TITLE}"
 
-echo "LOG_ID: ${SCRAP_ID}"
+echo "SCRAP_ID: ${SCRAP_ID}"
 git checkout -b "${BRANCH_NAME}"
 
 cat << EOS > "${REPOSITORY_ROOT}/scrap/${SCRAP_ID}.md"
