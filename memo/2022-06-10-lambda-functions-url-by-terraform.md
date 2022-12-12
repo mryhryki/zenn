@@ -19,7 +19,7 @@ Lambda Function URLs については、以下のリンクを参照いただけ�
 
 ちなみに今までは Docker イメージで使ってみていたのですが、M1 Mac (Arm64) と Intel (x86_64) で開発環境とCI環境の整合を取ろうとすると色々面倒になってきたので、Zip に戻しました。
 
-```hcl
+```
 resource "aws_lambda_function" "app" {
   architectures = ["arm64"]
   filename      = "./files/lambda/lambda.zip"
