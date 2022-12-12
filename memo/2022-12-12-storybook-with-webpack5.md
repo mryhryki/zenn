@@ -20,6 +20,16 @@ Error: error:0308010C:digital envelope routines::unsupported
 
 https://github.com/storybookjs/storybook/issues/18230#issuecomment-1239859295
 
+補足として、Node.js 17 から OpenSSL3 に変更されました。
+
+> Node.js now includes OpenSSL 3.0,...
+> 
+> https://nodejs.org/en/blog/release/v17.0.0/#openssl-3-0
+
+> Node.jsのHTTPSなどのAPIで使われるOpenSSLのバージョンが1.1.0から3.0.0にアップデートされました。
+> 
+> https://shisama.hatenablog.com/entry/2021/10/20/114721
+
 また、Storybook はデフォルトで Webpack4 を使うようなので、それも関連しているかもしれません。
 
 ![Storybook has Webpack4 by default](https://mryhryki.com/file/U4sq8VEA9Z7e3Ll2KXSnEp8qm13Jl7u-Xi9pd-15eoMWl_4Q.webp)
