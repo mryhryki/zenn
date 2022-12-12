@@ -17,11 +17,18 @@ const main = async () => {
   );
 
   const posts = await listAllPosts();
+  const articlePosts = posts.filter(({ type }) => type === "article" || type === "zenn");
+  const memoPosts = posts.filter(({ type }) => type === "memo");
+  const slidePosts = posts.filter(({ type }) => type === "slide");
+  const scrapPosts = posts.filter(({ type }) => type === "scrap");
+
   await Promise.all([
-    buildBlog(posts.filter(({ type }) => type === "article" || type === "memo" || type === "zenn")),
-    buildSlide(posts.filter(({ type }) => type === "slide")),
-    buildScrap(posts.filter(({ type }) => type === "scrap")),
-    buildFeed(posts),
+    buildBlog([...articlePosts, ...memoPosts]),
+    buildSlide(slidePosts),
+    buildScrap(scrapPosts),
+    buildFeed(articlePosts, "article"),
+    buildFeed(memoPosts, "memo"),
+    buildFeed(scrapPosts, "scrap"),
     buildIndex(posts),
   ]);
   await buildSiteMap();

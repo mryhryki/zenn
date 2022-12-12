@@ -4,9 +4,9 @@ import { BaseURL, DestinationBlogDir } from "../../common/definition";
 import { writeFile } from "node:fs/promises";
 import path from "node:path";
 
-export const buildFeed = async (posts: Post[]): Promise<void> => {
+export const buildFeed = async (posts: Post[], name: string): Promise<void> => {
   const feed = new RSS({
-    feed_url: `${BaseURL}/blog/feed.rss`,
+    feed_url: `${BaseURL}/blog/${name}.rss`,
     language: "ja",
     site_url: `${BaseURL}/blog/`,
     title: "mryhryki's blog",
@@ -21,5 +21,5 @@ export const buildFeed = async (posts: Post[]): Promise<void> => {
       url,
     });
   });
-  await writeFile(path.resolve(DestinationBlogDir, "feed.xml"), feed.xml({ indent: true }));
+  await writeFile(path.resolve(DestinationBlogDir, `feed_${name}.xml`), feed.xml({ indent: true }));
 };
