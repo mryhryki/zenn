@@ -29,5 +29,5 @@ jobs:
         run: bash ./.github/script/src/scrap/add_scrap.sh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          LOG_TEXT: ${{ github.event.inputs.text }}
-          LOG_TITLE: ${{ github.event.inputs.title }}
+          SCRAP_TITLE: ${{ github.event.inputs.title }}
+          SCRAP_TEXT: ${{ github.event.inputs.text }}
