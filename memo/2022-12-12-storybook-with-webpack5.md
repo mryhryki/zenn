@@ -53,3 +53,10 @@ $ npm i -D @storybook/manager-webpack5 @storybook/builder-webpack5
 
 最後に `build-storybook` を実行してエラーが出なければOKです。
 
+## 追記
+
+解消後に見つけてしまったのですが、Node 17 でエラーになるよ、というドンピシャの Issue を発見しました。
+
+[Error when running build-storybook with Node 17 · Issue #16555 · storybookjs/storybook](https://github.com/storybookjs/storybook/issues/16555)
+
+
