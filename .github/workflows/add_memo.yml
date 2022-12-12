@@ -26,7 +26,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Add scrap
-        run: bash ./.github/script/src/scrap/add_memo.sh
+        run: bash ./.github/script/shell/add_memo.sh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MEMO_TITLE: ${{ github.event.inputs.title }}
