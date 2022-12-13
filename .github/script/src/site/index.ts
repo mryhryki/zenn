@@ -4,7 +4,7 @@ import { mkdir, rm } from "node:fs/promises";
 import { buildBlog } from "./build/blog";
 import { buildScrap } from "./build/scrap";
 import { buildSiteMap } from "./build/sitemap";
-import { buildFeed } from "./build/feed";
+import { buildFeed } from "./build/rss";
 import { buildIndex } from "./build";
 import { listAllPosts } from "../common/post";
 
