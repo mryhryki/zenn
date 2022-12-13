@@ -4,7 +4,7 @@ import { mkdir, rm } from "node:fs/promises";
 import { buildBlog } from "./build/blog";
 import { buildScrap } from "./build/scrap";
 import { buildSiteMap } from "./build/sitemap";
-import { buildFeed } from "./build/rss";
+import { buildRss } from "./build/rss";
 import { buildIndex } from "./build";
 import { listAllPosts } from "../common/post";
 
@@ -26,9 +26,9 @@ const main = async () => {
     buildBlog([...articlePosts, ...memoPosts]),
     buildSlide(slidePosts),
     buildScrap(scrapPosts),
-    buildFeed(articlePosts, "article"),
-    buildFeed(memoPosts, "memo"),
-    buildFeed(scrapPosts, "scrap"),
+    buildRss(articlePosts, "article"),
+    buildRss(memoPosts, "memo"),
+    buildRss(scrapPosts, "scrap"),
     buildIndex(posts),
   ]);
   await buildSiteMap();
