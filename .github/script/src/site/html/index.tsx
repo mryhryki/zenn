@@ -138,10 +138,11 @@ export const renderBlogIndex = (posts: Post[]): string => {
 
         <footer>
           <span>
-            {"©2021 "}
-            <a style={{ color: "inherit" }} href={BaseURL}>
-              mryhryki
-            </a>
+            {"RSS: "}
+            <a href="/blog/rss_article.xml">Article</a> <a href="/blog/rss_memo.xml">Memo</a>{" "}
+            <a href="/blog/rss_scrap.xml">Scrap</a>
+            {" ©2021 "}
+            <a href={BaseURL}>mryhryki</a>
           </span>
         </footer>
         <script
