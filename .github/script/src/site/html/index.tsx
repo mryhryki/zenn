@@ -2,6 +2,7 @@ import { Post } from "../../common/post/parse";
 import { renderToHtml } from "./common";
 import React from "react";
 import { BaseURL } from "../../common/definition";
+import { CharacterRegExpValue } from "../../common/character";
 
 const getTitlePrefix = (post: Post): string => {
   switch (post.type) {
@@ -121,7 +122,11 @@ export const renderBlogIndex = (posts: Post[]): string => {
                   </h2>
                   <ul className="posts">
                     {postsPerMonthly[month].map((post) => (
-                      <li key={post.id} className={`post-item ${post.type}`}>
+                      <li
+                        key={post.id}
+                        className={`post-item ${post.type}`}
+                        data-search={post.markdown.replace(new RegExp(`[^${CharacterRegExpValue}]+`, "g"), " ")}
+                      >
                         {post.createdAt.substring(0, 10)}{" "}
                         <a href={post.url.replace(BaseURL, "")}>
                           {getTitlePrefix(post)}
