@@ -60,28 +60,8 @@ export const renderBlogIndex = (posts: Post[]): string => {
         <style
           dangerouslySetInnerHTML={{
             __html: `
-          li.post-item {
-            display: none;
-          }
-
-          input#article-checkbox:checked ~ div > ul.posts > li.post-item.article,
-          input#memo-checkbox:checked ~ div > ul.posts > li.post-item.memo,
-          input#scrap-checkbox:checked ~ div > ul.posts > li.post-item.scrap,
-          input#slide-checkbox:checked ~ div > ul.posts > li.post-item.slide {
-            display: list-item;
-          }
-
-          h2.month {
-            display: none;
-          }
-
-          input#article-checkbox:checked ~ div > h2.month.article,
-          input#memo-checkbox:checked ~ div > h2.month.memo,
-          input#scrap-checkbox:checked ~ div > h2.month.scrap,
-          input#slide-checkbox:checked ~ div > h2.month.slide {
-            display: block;
-          }
-        `,
+              /* TODO */
+            `,
           }}
         />
 
@@ -92,8 +72,14 @@ export const renderBlogIndex = (posts: Post[]): string => {
       </head>
       <body className="wrapper dark-theme">
         <h1>{title}</h1>
+        <div style={{ textAlign: "center", margin: "0.5rem 0" }}>
+          <label>
+            {"キーワード "}
+            <input id="keyword" type="text" />
+          </label>
+        </div>
 
-        <div style={{ textAlign: "center" }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
           <input id="article-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
           <label htmlFor="article-checkbox" style={{ marginRight: "1rem" }}>
             記事
@@ -110,35 +96,39 @@ export const renderBlogIndex = (posts: Post[]): string => {
           <label htmlFor="slide-checkbox" style={{ marginRight: "1rem" }}>
             スライド
           </label>
+        </div>
 
-          <div style={{ textAlign: "left" }}>
-            {months.map((month) => {
-              const posts = postsPerMonthly[month];
-              const types = Array.from(new Set(posts.map(({ type }) => type))).sort();
-              return (
-                <React.Fragment key={month}>
-                  <h2 id={month} className={`month ${types.join(" ")}`}>
-                    <a href={`#${month}`}>{month}</a>
-                  </h2>
-                  <ul className="posts">
-                    {postsPerMonthly[month].map((post) => (
-                      <li
-                        key={post.id}
-                        className={`post-item ${post.type}`}
-                        data-search={post.markdown.replace(new RegExp(`[^${CharacterRegExpValue}]+`, "g"), " ").trim()}
-                      >
-                        {post.createdAt.substring(0, 10)}{" "}
-                        <a href={post.url.replace(BaseURL, "")}>
-                          {getTitlePrefix(post)}
-                          {post.title}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </React.Fragment>
-              );
-            })}
-          </div>
+        <div style={{ textAlign: "left" }}>
+          {months.map((month) => {
+            const posts = postsPerMonthly[month];
+            return (
+              <React.Fragment key={month}>
+                <h2 id={month}>
+                  <a href={`#${month}`}>{month}</a>
+                </h2>
+                <ul className="posts">
+                  {posts.map((post) => (
+                    <li
+                      key={post.id}
+                      className={`post-item ${post.type}`}
+                      data-posttype={post.type}
+                      data-search={
+                        post.markdown
+                          .replace(new RegExp(`[^${CharacterRegExpValue}]+`, "g"), " ")
+                          .trim()
+                          .normalize("NFKD")
+                          .toLowerCase()
+                          .replace(/[\u30A1-\u30FA]/g, (ch) => String.fromCharCode(ch.charCodeAt(0) - 0x60)) // カタカナ -> ひらがな
+                      }
+                    >
+                      {`${post.createdAt.substring(0, 10)} ${getTitlePrefix(post)} `}
+                      <a href={post.url.replace(BaseURL, "")}>{post.title}</a>
+                    </li>
+                  ))}
+                </ul>
+              </React.Fragment>
+            );
+          })}
         </div>
 
         <footer>
@@ -153,33 +143,70 @@ export const renderBlogIndex = (posts: Post[]): string => {
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              const CheckBoxSuffix = "-checkbox";
-              const BreakChar = ".";
+              const normalizeText = (text) => text
+                .normalize("NFKD")
+                .toLowerCase()
+                .replace(/[\u30A1-\u30FA]/g, (ch) => String.fromCharCode(ch.charCodeAt(0) - 0x60)); // カタカナ -> ひらがな
 
-              document.addEventListener('DOMContentLoaded', () => {
-                const getCheckBoxes = () => Array.from(document.querySelectorAll("input.post-type-checkbox"))
-                const getCheckedKeys = () => getCheckBoxes().filter((input) => input.checked).map((input) => input.id.replace(CheckBoxSuffix, ""));
+              const init = () => {
+                const url = new URL(window.location.href);
+                const checks = (url.searchParams.get("check") ?? "").split(".").map((check) => check.trim()).filter((check) => check !== "");
+                document.getElementById("keyword").value = url.searchParams.get("keyword") ?? "";
+                document.getElementById("article-checkbox").checked = checks.length === 0 || checks.includes("article");
+                document.getElementById("memo-checkbox").checked = checks.length === 0 || checks.includes("memo");
+                document.getElementById("scrap-checkbox").checked = checks.length === 0 || checks.includes("scrap");
+                document.getElementById("slide-checkbox").checked = checks.length === 0 || checks.includes("slide");
+              };
 
-                const checkQueryParamText = new URL(window.location.href).searchParams.get("check") || ""
-                const checkedNames = checkQueryParamText !== "" ? checkQueryParamText.split(BreakChar) : getCheckBoxes().map((input) => input.id.replace(CheckBoxSuffix, ""));
-                getCheckBoxes().forEach((checkBox) => {
-                  const name = checkBox.id.replace(CheckBoxSuffix, "");
-                  checkBox.checked = checkedNames.includes(name) ? "checked" : "";
-                });
+              const getCurrentState = () => ({
+                keyword: document.getElementById("keyword").value,
+                checks: [
+                  document.getElementById("article-checkbox").checked ? "article" : null,
+                  document.getElementById("memo-checkbox").checked ? "memo" : null,
+                  document.getElementById("scrap-checkbox").checked ? "scrap" : null,
+                  document.getElementById("slide-checkbox").checked ? "slide" : null,
+                ].filter((check) => check != null),
+              });
 
-                getCheckBoxes().forEach((checkBox) => {
-                  checkBox.addEventListener('click', (event) => {
-                    const url = new URL(window.location.href);
-                    const elementCount = getCheckBoxes().length;
-                    const checkedKeys = getCheckedKeys();
-                    if (elementCount === checkedKeys.length || checkedKeys.length === 0) {
-                      url.searchParams.delete("check");
-                    } else {
-                      url.searchParams.set("check", getCheckedKeys().join(BreakChar));
-                    }
-                    window.history.replaceState({}, null, url.toString());
+              const setStateToUrl = (state) => {
+                const { keyword, checks } = state;
+                const url = new URL(window.location.pathname, window.location.href);
+                if (keyword.trim() !== "") url.searchParams.set("keyword", keyword);
+                if (0 < checks.length && checks.length < 4) url.searchParams.set("check", checks.join("."));
+                window.history.replaceState({}, null, url.toString());
+              };
+
+              document.addEventListener("DOMContentLoaded", () => {
+                const onChange = () => {
+                  const state = getCurrentState();
+                  const { checks } = state;
+                  const keywords = normalizeText(state.keyword).split(" ").map((keyword) => keyword.trim()).filter((keyword) => keyword !== "");
+                  setStateToUrl(state);
+                  Array.from(document.getElementsByClassName("post-item")).forEach((element) => {
+                    const { posttype: type, search } = element.dataset;
+                    const show = checks.includes(type) && keywords.every((keyword) => search.includes(keyword));
+                    element.style.display = show ? "list-item" : "none";
                   });
+                };
+
+                let currentKeyword = null;
+                document.getElementById("keyword").addEventListener("keyup", () => {
+                  currentKeyword = document.getElementById("keyword").value;
+                  console.debug(currentKeyword);
+                  setTimeout(() => {
+                    if (currentKeyword === document.getElementById("keyword").value) {
+                      onChange();
+                    }
+                  }, 200);
                 });
+
+                document.getElementById("article-checkbox").addEventListener("change", onChange);
+                document.getElementById("memo-checkbox").addEventListener("change", onChange);
+                document.getElementById("scrap-checkbox").addEventListener("change", onChange);
+                document.getElementById("slide-checkbox").addEventListener("change", onChange);
+
+                init();
+                onChange();
               });
             `,
           }}
