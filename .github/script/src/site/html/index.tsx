@@ -125,7 +125,7 @@ export const renderBlogIndex = (posts: Post[]): string => {
                       <li
                         key={post.id}
                         className={`post-item ${post.type}`}
-                        data-search={post.markdown.replace(new RegExp(`[^${CharacterRegExpValue}]+`, "g"), " ")}
+                        data-search={post.markdown.replace(new RegExp(`[^${CharacterRegExpValue}]+`, "g"), " ").trim()}
                       >
                         {post.createdAt.substring(0, 10)}{" "}
                         <a href={post.url.replace(BaseURL, "")}>
