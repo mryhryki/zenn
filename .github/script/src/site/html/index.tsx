@@ -103,7 +103,7 @@ export const renderBlogIndex = (posts: Post[]): string => {
             const posts = postsPerMonthly[month];
             return (
               <React.Fragment key={month}>
-                <h2 id={month}>
+                <h2 id={month} className="month-title">
                   <a href={`#${month}`}>{month}</a>
                 </h2>
                 <ul className="posts">
@@ -111,6 +111,7 @@ export const renderBlogIndex = (posts: Post[]): string => {
                     <li
                       key={post.id}
                       className={`post-item ${post.type}`}
+                      data-month={month}
                       data-posttype={post.type}
                       data-search={
                         post.markdown
@@ -170,29 +171,33 @@ export const renderBlogIndex = (posts: Post[]): string => {
 
               const setStateToUrl = (state) => {
                 const { keyword, checks } = state;
-                const url = new URL(window.location.pathname, window.location.href);
-                if (keyword.trim() !== "") url.searchParams.set("keyword", keyword);
-                if (0 < checks.length && checks.length < 4) url.searchParams.set("check", checks.join("."));
+                const url = new URL(window.location.href);
+                const setSearchParams = (key, val) => val === "" ? url.searchParams.delete(key) : url.searchParams.set(key, val);
+                setSearchParams("keyword", keyword.trim());
+                setSearchParams("check", 0 < checks.length && checks.length < 4 ? checks.join(".") : "");
                 window.history.replaceState({}, null, url.toString());
               };
 
               document.addEventListener("DOMContentLoaded", () => {
                 const onChange = () => {
+                  const months = new Set([]);
                   const state = getCurrentState();
-                  const { checks } = state;
                   const keywords = normalizeText(state.keyword).split(" ").map((keyword) => keyword.trim()).filter((keyword) => keyword !== "");
                   setStateToUrl(state);
                   Array.from(document.getElementsByClassName("post-item")).forEach((element) => {
-                    const { posttype: type, search } = element.dataset;
-                    const show = checks.includes(type) && keywords.every((keyword) => search.includes(keyword));
+                    const { posttype: type, search, month } = element.dataset;
+                    const show = state.checks.includes(type) && keywords.every((keyword) => search.includes(keyword));
                     element.style.display = show ? "list-item" : "none";
+                    if (show) months.add(month);
+                  });
+                  Array.from(document.getElementsByClassName("month-title")).forEach((element) => {
+                    element.style.display = months.has(element.id) ? "block" : "none";
                   });
                 };
 
                 let currentKeyword = null;
                 document.getElementById("keyword").addEventListener("keyup", () => {
                   currentKeyword = document.getElementById("keyword").value;
-                  console.debug(currentKeyword);
                   setTimeout(() => {
                     if (currentKeyword === document.getElementById("keyword").value) {
                       onChange();
