@@ -51,3 +51,9 @@ SBI証券で以下の条件で検索
 - 買付手数料「無料」
 - 信託報酬「0.55%以下」
 - 純資産「10億円以上」
+
+## 運用成績
+
+![運用成績グラフ](https://mryhryki.com/file/U3gZ0LL-QQ3PJkTO0FOgFBmbqe_1PMXS-KOBy-cObG_NesTI.webp)
+
+https://www.gpif.go.jp/operation/the-latest-results.html
