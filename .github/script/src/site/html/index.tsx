@@ -114,7 +114,7 @@ export const renderBlogIndex = (posts: Post[]): string => {
                       data-month={month}
                       data-posttype={post.type}
                       data-search={
-                        post.markdown
+                        `${post.id} ${post.title} ${post.markdown}`
                           .replace(new RegExp(`[^${CharacterRegExpValue}]+`, "g"), " ")
                           .trim()
                           .normalize("NFKD")
