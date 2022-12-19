@@ -2,6 +2,7 @@
 set -xe
 
 REPOSITORY_ROOT="$(git rev-parse --show-toplevel 2>/dev/null;)"
+SCRAP_DIR="$(date +"%Y-%m")"
 SCRAP_ID="$(date +"%Y%m%d-%H%M%S")"
 BRANCH_NAME="scrap/${SCRAP_ID}"
 
@@ -12,7 +13,8 @@ PR_TITLE="[SCRAP] ${TITLE}"
 echo "SCRAP_ID: ${SCRAP_ID}"
 git checkout -b "${BRANCH_NAME}"
 
-cat << EOS > "${REPOSITORY_ROOT}/scrap/${SCRAP_ID}.md"
+mkdir "${REPOSITORY_ROOT}/scrap/${SCRAP_DIR}"
+cat << EOS > "${REPOSITORY_ROOT}/scrap/${SCRAP_DIR}/${SCRAP_ID}.md"
 ---
 title: ${TITLE}
 ---
