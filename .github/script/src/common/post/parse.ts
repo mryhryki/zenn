@@ -36,7 +36,6 @@ export interface Post {
   createdAt: string;
   filePath: string;
   digest: string;
-  updatedAt?: string | null;
   canonical?: string | null;
 }
 
@@ -70,9 +69,6 @@ const checkPost = (post: Post, filePath: string) => {
   if (!DateTimeFormat.test(post.createdAt)) {
     throw new Error(`CreatedAt must be valid DateTime format[${post.createdAt}]: ${filePath}`);
   }
-  if (post.updatedAt != null && !DateTimeFormat.test(post.createdAt)) {
-    throw new Error(`UpdatedAt must be valid DateTime format[${post.updatedAt}]: ${filePath}`);
-  }
   if (post.canonical != null && !post.canonical.startsWith("https://")) {
     throw new Error(`Canonical must be valid URL format[${post.canonical}]: ${filePath}`);
   }
@@ -96,7 +92,6 @@ const getPost = async (
     markdown,
     filePath: absoluteFilePath.replace(RootDir, ""),
     createdAt: "",
-    updatedAt: frontMatter.updatedAt ?? null,
     canonical,
     digest: await digestSha256(`${title}\n\n${markdown}`),
   };
