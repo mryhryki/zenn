@@ -131,7 +131,7 @@ const getPost = async (
 };
 
 export const parsePost = async (filePath: string): Promise<Post> => {
-  const isZenn = filePath.includes("/articles/") && !filePath.includes("/posts/");
+  const isZenn = filePath.includes("/articles/");
 
   const content: string = (await readFile(path.resolve(RootDir, filePath))).toString("utf-8");
   const lines: string[] = content.split(BreakCharacter);
