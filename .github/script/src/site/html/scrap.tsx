@@ -49,6 +49,7 @@ export const renderScrap = (post: Post): string => {
       </head>
       <body className="wrapper dark-theme">
         <h1>{post.title}</h1>
+        <p style={{ textAlign: "right" }}>{post.createdAt.substring(0, 10)}</p>
         <div dangerouslySetInnerHTML={{ __html: convert(post.markdown).html }} />
         {renderFooter(post)}
       </body>
