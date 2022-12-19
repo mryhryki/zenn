@@ -13,7 +13,7 @@ PR_TITLE="[SCRAP] ${TITLE}"
 echo "SCRAP_ID: ${SCRAP_ID}"
 git checkout -b "${BRANCH_NAME}"
 
-mkdir "${REPOSITORY_ROOT}/scrap/${SCRAP_DIR}"
+mkdir -p "${REPOSITORY_ROOT}/scrap/${SCRAP_DIR}"
 cat << EOS > "${REPOSITORY_ROOT}/scrap/${SCRAP_DIR}/${SCRAP_ID}.md"
 ---
 title: ${TITLE}
