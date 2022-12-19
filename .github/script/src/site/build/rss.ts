@@ -13,7 +13,7 @@ export const buildRss = async (posts: Post[], name: string): Promise<void> => {
     ttl: 3600,
   });
   posts.forEach((post) => {
-    const url = `${BaseURL}/blog/${post.id}.html`;
+    const url = `${BaseURL}/${name === "scrap" ? "scrap" : "blog"}/${post.id}.html`;
     feed.item({
       title: post.title,
       date: post.createdAt,
