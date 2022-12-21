@@ -7,7 +7,7 @@ import { BaseURL } from "../../common/definition";
 export const renderBlogPost = (post: Post): string => {
   const { title } = post;
   const siteName = "mryhryki's blog";
-  const description = "個人的なメモです";
+  const description = post.markdown.replace(new RegExp("\r?\n", "g"), " ").substring(0, 400);
 
   return renderToHtml(
     <>
