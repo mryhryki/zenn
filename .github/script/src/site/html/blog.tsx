@@ -7,7 +7,7 @@ import { BaseURL } from "../../common/definition";
 export const renderBlogPost = (post: Post): string => {
   const { title } = post;
   const siteName = "mryhryki's blog";
-  const description = post.markdown.replace(new RegExp("\r?\n", "g"), " ").substring(0, 400);
+  // const description = '';
 
   return renderToHtml(
     <>
@@ -15,13 +15,13 @@ export const renderBlogPost = (post: Post): string => {
         <meta charSet="UTF-8" />
         <title>{title}</title>
         <meta content={title} name="title" />
-        <meta content={description} name="description" />
+        {/*<meta content={description} name="description" />*/}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" href="/assets/image/icon_192x192.png" type="image/png" />
 
         <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
+        {/*<meta property="og:description" content={description} />*/}
         <meta property="og:image" content={`${BaseURL}/assets/image/share_image.jpg`} />
         <meta property="og:url" content={post.url} />
         <meta property="og:site_name" content={siteName} />
@@ -30,7 +30,7 @@ export const renderBlogPost = (post: Post): string => {
 
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
+        {/*<meta name="twitter:description" content={description} />*/}
         <meta name="twitter:image" content={`${BaseURL}/assets/image/share_image.jpg`} />
         <meta name="twitter:site" content="@mryhryki" />
 

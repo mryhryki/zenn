@@ -8,7 +8,7 @@ export const renderScrap = (post: Post): string => {
   const url = post.url;
   const siteName = "mryhryki's scrap";
   const title = post.title;
-  const description = post.markdown.replace(new RegExp("\r?\n", "g"), " ").substring(0, 400);
+  const description = `『${post.title}』を読んだ記録です。`;
   const canonical = post.canonical;
   const useSyntaxHighlight = true;
 
