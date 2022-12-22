@@ -32,7 +32,7 @@ jobs:
       - name: Update npm
         run: npm install -g npm
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v1-node16
         with:
           role-to-assume: arn:aws:iam::644989259572:role/ci-portfolio-role
           aws-region: ap-northeast-1
