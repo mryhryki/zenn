@@ -8,7 +8,7 @@ export const renderScrap = (post: Post): string => {
   const url = post.url;
   const siteName = "mryhryki's scrap";
   const title = post.title;
-  const description = `『${post.title}』を読んだ記録です。`;
+  // const description = `『${post.title}』を読んだ記録です。`;
   const canonical = post.canonical;
   const useSyntaxHighlight = true;
 
@@ -18,13 +18,13 @@ export const renderScrap = (post: Post): string => {
         <meta charSet="UTF-8" />
         <title>{title}</title>
         <meta content={title} name="title" />
-        <meta content={description} name="description" />
+        {/*<meta content={description} name="description" />*/}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" href="/assets/image/icon_192x192.png" type="image/png" />
 
         <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
+        {/*<meta property="og:description" content={description} />*/}
         <meta property="og:image" content={`${BaseURL}/assets/image/share_image.jpg`} />
         <meta property="og:url" content={url} />
         <meta property="og:site_name" content={siteName} />
@@ -33,7 +33,7 @@ export const renderScrap = (post: Post): string => {
 
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
+        {/*<meta name="twitter:description" content={description} />*/}
         <meta name="twitter:image" content={`${BaseURL}/assets/image/share_image.jpg`} />
         <meta name="twitter:site" content="@mryhryki" />
 
