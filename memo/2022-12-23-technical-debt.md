@@ -17,3 +17,11 @@ title: 技術的負債に関連する記事まとめ
 - `2021-09-15` [「0→1」フェーズにおける技術的負債との向き合い方 - jmblog.jp](https://jmblog.jp/posts/2021-09-15/how-to-deal-with-technical-debt-in-start-up-companies)
 - `2021-07-21` [「スタディサプリ」が React Native から卒業するまで、あるいは技術的負債への感謝と敬意 - スタディサプリ Product Team Blog](https://blog.studysapuri.jp/entry/2021/07/21/080000)
 - `2021-06-21` [組織の技術的負債の返済はなぜ進まないのか？　“工数確保の合意”に関わる意思決定層と現場視点の違い - ログミーTech](https://logmi.jp/tech/articles/324486)
+- `2021-03-21` [技術的負債の生態 - maru source](https://blog.h13i32maru.jp/entry/2021/03/21/185345)
+- `2021-03-12` [技術的負債とステークホルダと説明責任と / The Debt - Speaker Deck](https://speakerdeck.com/toricls/the-debt)
+- `2020-12-10` [お前も技術的負債にしてやろうか！ もしくは技術的負債と和田卓人さんをめぐるシンクロニシティ - YAMDAS現更新履歴](https://yamdas.hatenablog.com/entry/20201210/technical-debt)
+- `2019-07-06` [大規模フロントエンドの技術的負債と向き合う。 - Speaker Deck](https://speakerdeck.com/10shi10ma/da-gui-mo-hurontoendofalseji-shu-de-fu-zhai-toxiang-kihe-u)
+- `2019-03-22` [「技術的負債とはどういうものなのか？」をテトリスに例えるとこうなる - GIGAZINE](https://gigazine.net/news/20190322-technical-debt-tetris/)
+- `2019-03-22` [CSSの技術的負債との向き合い方 / How to Deal with Technical Debt of CSS (ja) - Speaker Deck](https://speakerdeck.com/upinetree/how-to-deal-with-technical-debt-of-css-ja)
+- `2018-04-22` [機械学習システムにおける「技術的負債」とその回避策 - Qiita](https://qiita.com/fujit33/items/f58055667493ae79e2dd)
+
