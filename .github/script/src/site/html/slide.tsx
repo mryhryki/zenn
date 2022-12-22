@@ -10,7 +10,7 @@ const renderToHtml = (element: React.ReactElement): string => {
 
 export const renderSlide = (markdown: string): string => {
   const { title } = convert(markdown);
-  const description = "発表用スライドです。";
+  const description = "発表用スライド";
 
   return renderToHtml(
     <html>
