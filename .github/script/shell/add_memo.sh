@@ -22,12 +22,7 @@ ${TEXT}
 EOS
 
 # for GitHub Actions
-if [[ "$(git config --global user.email)" == "" ]]; then
-  git config --global user.email "mryhryki@gmail.com"
-fi
-if [[ "$(git config --global user.name)" == "" ]]; then
-  git config --global user.name "Moriya Hiroyuki"
-fi
+source "${REPOSITORY_ROOT}/.github/script/shell/common/setup_git.sh"
 
 git add -A
 git commit -m "${PR_TITLE}"
