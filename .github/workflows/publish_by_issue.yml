@@ -1,0 +1,28 @@
+name: publish_by_issue
+env:
+  TZ: "Asia/Tokyo"
+
+on:
+  issues:
+    types:
+      - closed
+  workflow_dispatch:
+    inputs:
+      issue_url:
+        required: true
+        description: Issue URL
+
+jobs:
+  publish_by_issue:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Add scrap
+        run: bash ./.github/script/shell/add_scrap.sh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_URL: ${{ github.event.issue.html_url || github.event.inputs.issue_url }}
