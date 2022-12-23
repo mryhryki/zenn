@@ -1,16 +1,6 @@
 # portfolio
 
-[Moriya Hiroyuki (ID: mryhryki)](https://github.com/mryhryki) のポートフォリオ関連のソースコードです。
-
-主に以下のデータを管理しています。
-
-- ポートフォリオサイトの静的リソース
-  - `site/`
-- ブログのデータ（記事・スライド・スクラップ）
-  - `posts/`
-- Zenn のデータ ([公式ドキュメント](https://zenn.dev/zenn/articles/connect-to-github))
-  - `articles/`
-  - `books/`
+[Moriya Hiroyuki (ID: mryhryki)](https://github.com/mryhryki) のポートフォリオ関連のリソースです。
 
 ## URLs
 
