@@ -8,8 +8,7 @@ REPOSITORY_ROOT="$(git rev-parse --show-toplevel 2>/dev/null;)"
 BRANCH_NAME="memo/${MEMO_ID}"
 
 TITLE="${MEMO_TITLE:-"${BRANCH_NAME}"}"
-#TEXT="$(printf '%s' "${MEMO_TEXT:-"(TODO)"}")"
-TEXT=""
+TEXT="$(printf '%s' "${MEMO_TEXT:-"(TODO)"}")"
 PR_TITLE="[MEMO] ${TITLE}"
 
 git checkout -b "${BRANCH_NAME}"
