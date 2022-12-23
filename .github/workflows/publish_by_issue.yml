@@ -17,11 +17,12 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      issues: write
       pull-requests: write
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Add scrap
+      - name: Publish by Issue
         run: bash ./.github/script/shell/on_close_issue.sh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
