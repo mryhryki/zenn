@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -xe
 
 REPOSITORY_ROOT="$(git rev-parse --show-toplevel 2>/dev/null;)"
 SCRAP_DIR="$(date +"%Y-%m")"
