@@ -10,7 +10,7 @@ ISSUE_DATA_JSON="$(gh issue view "${ISSUE_URL}" --json 'body,labels,title,closed
 TITLE="$(echo "${ISSUE_DATA_JSON}" | jq -r '.title')"
 BODY="$(echo "${ISSUE_DATA_JSON}" | jq -r '.body')"
 CLOSED_AT="$(echo "${ISSUE_DATA_JSON}" | jq -r '.closedAt')"
-FIRST_PUBLISH_LABEL="$(echo "${ISSUE_DATA_JSON}" | jq -r '.labels[] | .name' | grep -Ei '^Publish:(Memo|Scrap)$' | head -n 1)"
+FIRST_PUBLISH_LABEL="$(echo "${ISSUE_DATA_JSON}" | jq -r '.labels[] | .name' | grep -Ei '^(Memo|Scrap)$' | head -n 1)"
 
 cat << EOS
 CLOSED_AT: ${CLOSED_AT}
