@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -e
 REPOSITORY_ROOT="$(git rev-parse --show-toplevel 2>/dev/null;)"
+
 source "${REPOSITORY_ROOT}/.github/script/shell/common/setup_git.sh"
+source "${REPOSITORY_ROOT}/.github/script/shell/common/create_pull_request.sh"
 
 GITHUB_TOKEN="${GH_TOKEN}"
 ISSUE_URL="${ISSUE_URL}"
@@ -27,7 +29,7 @@ fi
 
 REPOSITORY_ROOT="$(git rev-parse --show-toplevel 2>/dev/null;)"
 
-if [[ "${FIRST_PUBLISH_LABEL}" == "Publish:Scrap" ]]; then
+if [[ "${FIRST_PUBLISH_LABEL}" == "Scrap" ]]; then
   SCRAP_DIR="$(date +"%Y-%m")"
   SCRAP_ID="$(date +"%Y%m%d-%H%M%S")"
   echo "SCRAP_ID: ${SCRAP_ID}"
@@ -40,19 +42,10 @@ title: ${TITLE}
 ${BODY}
 
 EOS
-  git add -A
-  git commit -m "Add scrap: ${TITLE}"
-  git push
-  gh issue comment "${ISSUE_URL}" --body "Create commit: $(git rev-parse HEAD)"
+  create_pull_request "scrap/${SCRAP_ID}" "[SCRAP] ${TITLE}" "- ${ISSUE_URL}"
 
-elif [[ "${FIRST_PUBLISH_LABEL}" == "Publish:Memo" ]]; then
-  MEMO_SLUG=$(echo $(echo "${BODY}" | grep -E "^MEMO_SLUG: " | head -n 1 | sed -E "s/MEMO_SLUG: //"))
-  if [[ ${MEMO_SLUG} == "" ]]; then
-    echo "MEMO_SLUG not found"
-    exit 1
-  fi
-  MEMO_ID="$(date +"%Y-%m-%d-")${MEMO_SLUG}"
-  echo "MEMO_ID: ${MEMO_ID}"
+elif [[ "${FIRST_PUBLISH_LABEL}" == "Memo" ]]; then
+  MEMO_ID="$(date +"%Y-%m-%d-")$(openssl rand -hex 4)"
 cat << EOS > "${REPOSITORY_ROOT}/memo/${MEMO_ID}.md"
 ---
 title: ${TITLE}
@@ -61,10 +54,7 @@ title: ${TITLE}
 ${BODY}
 
 EOS
-  git add -A
-  git commit -m "Add memo: ${TITLE}"
-  git push
-  gh issue comment "${ISSUE_URL}" --body "Create commit: $(git rev-parse HEAD)"
+  create_pull_request "memo/${MEMO_ID}" "[MEMO] ${TITLE}" "- ${ISSUE_URL}"
 
 fi
 
