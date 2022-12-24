@@ -1,4 +1,4 @@
-name: publish_by_issue
+name: on_close_issue
 env:
   TZ: "Asia/Tokyo"
 
@@ -13,7 +13,7 @@ on:
         description: Issue URL
 
 jobs:
-  publish_by_issue:
+  on_close_issue:
     runs-on: ubuntu-latest
     permissions:
       contents: write
