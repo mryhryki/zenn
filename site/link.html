@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Home | mryhryki</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="prefetch" href="/api/session">
+  <style>
+      body {
+          background-color: #333;
+          padding: 16px;
+          color: #fff;
+          margin: 0 auto;
+          max-width: 960px;
+          width: calc(100vw - 32px);
+      }
+
+      h1 {
+          font-size: 1.75rem;
+          font-weight: 600;
+          line-height: 2.25rem;
+          text-align: center;
+      }
+
+      a {
+          color: #1e90ff;
+      }
+
+      li {
+          border-radius: 0.25rem;
+          padding: 4px 8px;
+      }
+
+      input {
+          border-radius: 0.25rem;
+          border-width: 1px;
+          font-size: 1rem;
+          line-height: 1.5rem;
+          max-width: 100%;
+          padding: 0.25rem 0.5rem;
+          vertical-align: middle;
+          width: 24rem;
+      }
+
+      #links-list.shortcut > li:first-child > ul > li:first-child {
+          background: #444;
+      }
+
+      #links-list.shortcut > li:first-child > ul > li:first-child:after {
+          content: 'Open "⌘ + Enter"';
+          font-size: 12px;
+          display: inline-block;
+          margin: 0 1rem;
+          color: #999;
+      }
+  </style>
+</head>
+<body>
+  <h1>links</h1>
+  <p style="text-align: center;">
+    <input id="keyword-input" class="shortcut" type="text" placeholder="Keyword" autofocus/>
+  </p>
+  <ul id="links-list">
+  </ul>
+  <script>
+    const createElement = (tagName, props = {}, children = []) => {
+      const element = document.createElement(tagName);
+      Object.entries(props).forEach(([key, val]) => element[key] = val);
+      children.forEach((child) => element.appendChild(child));
+      return element;
+    };
+    const UrlMatcher = new RegExp("^(https?://)?([a-z0-9-]+\\.)+[a-z0-9]+(/[A-Za-z0-9-/_%?=+\\.#]*)?$");
+    const getUrlOrNull = (text) => UrlMatcher.test(text) ? (text.startsWith("http") ? text : `https://${text}`) : null;
+    const normalize = (text) => text
+      .normalize("NFKD")
+      .toLowerCase()
+      .replace(/[\u30A1-\u30FA]/g, (ch) => String.fromCharCode(ch.charCodeAt(0) - 0x60)); // カタカナ -> ひらがな
+
+    const getLinksData = () => {
+      const GroupLinePattern = new RegExp("^[^ ]");
+      const UrlLinePattern = new RegExp("^[ ]{2}(.+)[ ]+(https?://.+)$");
+      const links = [];
+      document.getElementById("links-data").textContent.trim().split("\n").forEach((line, i) => {
+        if (line.trim() === "") return;
+        if (GroupLinePattern.test(line)) {
+          links.push({ title: line.trim(), links: [] });
+        } else if (UrlLinePattern.test(line)) {
+          const [, title, url] = line.match(UrlLinePattern, 2);
+          links[links.length - 1].links.push({ title: title.trim(), url: url.trim() });
+        } else {
+          alert(`Unknown row[${i + 1}]: ${line}`);
+        }
+      });
+      return links;
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const Links = getLinksData();
+      const List = document.getElementById("links-list");
+
+      const KeywordInput = document.getElementById("keyword-input");
+      KeywordInput.value = KeywordInput.value.trim() || sessionStorage.getItem("keyword") || "";
+      let beforeKey = "";
+      KeywordInput.addEventListener("keydown", (event) => {
+        if (event.metaKey && event.key === "Enter") {
+          const firstAnchorElement = document.querySelector("#links-list > li > ul > li > a");
+          if (firstAnchorElement != null) {
+            firstAnchorElement.click();
+          }
+        }
+        beforeKey = event.key;
+      });
+      KeywordInput.addEventListener("blur", () => List.classList.remove("shortcut"));
+      KeywordInput.addEventListener("focus", () => List.classList.add("shortcut"));
+      KeywordInput.focus();
+
+      let prevKeyword = "";
+      const refresh = () => {
+        prevKeyword = KeywordInput.value;
+        sessionStorage.setItem("keyword", prevKeyword);
+        const keyword = KeywordInput.value;
+        if (prevKeyword !== keyword) return;
+        const keywords = normalize(keyword).split(new RegExp("[ 　\t]+")).filter((text) => text !== "");
+
+        List.innerHTML = "";
+        const links = Links
+          .map(({ title, links }) => {
+            const filteredLinks = links.filter((link) => {
+              const text = (`${normalize(title)}\r\n${normalize(link.title)}\r\n${normalize(decodeURI(link.url))}`);
+              return keywords.every((keyword) => text.includes(keyword));
+            });
+            return { title, links: filteredLinks };
+          })
+          .filter(({ links }) => links.length > 0);
+
+        const rawUrl = getUrlOrNull(keyword);
+        links.push({
+          title: "Search",
+          links: [
+            rawUrl != null ? {
+              title: `Open "${rawUrl}"`,
+              url: rawUrl,
+            } : null,
+            {
+              title: `Search "${keyword}" by DuckDucGo`,
+              url: `https://duckduckgo.com/?q=${encodeURIComponent(keyword)}`,
+            },
+          ].filter((link) => link != null),
+        });
+
+        links.forEach(({ title, links }) => {
+          const ul = createElement("ul", {}, links.map(({ title, url }) =>
+            createElement("li", {}, [
+              createElement("a", { href: url, innerText: title }),
+            ]),
+          ));
+          const categoryItem = createElement("li", {}, [createElement("span", { innerText: title }), ul]);
+          List.appendChild(categoryItem);
+        });
+      };
+
+      refresh();
+      KeywordInput.addEventListener("keyup", refresh);
+    });
+  </script>
+  <script id="links-data" type="text/plain">
+Favorite
+  My Memo                                            https://mryhryki.com/view/?type=memo
+  Home Repo                                          https://github.com/mryhryki/home
+  Portfolio Repo                                     https://github.com/mryhryki/portfolio
+  Gmail                                              https://mail.google.com/?authuser=mryhryki%40gmail.com
+  ShareBatake                                        https://www.sharebatake.com/members/stamps
+  Check Session                                      https://mryhryki.com/session
+  Instagram (DM)                                     https://www.instagram.com/direct/t/340282366841710300949128242447559951609/
+  Slack (Connehito)                                  https://app.slack.com/client/T024PE1BG/CRWJPE6HG/activity
+  Notion (Connehito)                                 https://www.notion.so/connehito
+
+GitHub
+  Issues: Assigned                                   https://github.com/issues?q=is%3Aopen+is%3Aissue+assignee%3Amryhryki+sort%3Aupdated-desc
+  Issues: Backlog                                    https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Amryhryki+-label%3AIceBox+-label%3ASubTask+sort%3Aupdated-desc
+  Issues: IceBox                                     https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Amryhryki+label%3AIceBox+sort%3Aupdated-desc
+  Pull Requests: In Progress                         https://github.com/pulls?q=is%3Aopen+is%3Apr+archived%3Afalse+sort%3Acreated-asc+author%3Amryhryki
+  Pull Requests: Review Requests                     https://github.com/pulls?q=is%3Aopen+is%3Apr+review-requested%3Amryhryki+archived%3Afalse+-label%3Adependencies+sort%3Acreated-asc
+  Notifications                                      https://github.com/notifications?query=is%3Aunread
+
+My Sites
+  API Health                                         https://mryhryki.com/api/health
+  Blog                                               https://mryhryki.com/blog/
+  Eye Stretching                                     https://mryhryki.com/personal/eye_stretching.html
+  Image Markup                                       https://mryhryki.com/app/image-markup/
+  Images Viewer (Comic)                              https://mryhryki.com/app/images-viewer/
+  My Images                                          https://mryhryki.com/assets/image/
+  QR Code Generator                                  https://mryhryki.com/app/qrcode/
+  Video Player                                       https://mryhryki.com/app/video/
+  Video to GIF                                       https://mryhryki.com/app/video-to-gif/
+  View (Music)                                       https://mryhryki.com/view/?type=music
+  View (S3)                                          https://mryhryki.com/view/?type=s3
+
+GitHub Repository
+  app                                                https://github.com/mryhryki/app
+  environment-aws                                    https://github.com/mryhryki/environment-aws
+  environment-mac                                    https://github.com/mryhryki/environment-mac
+  js-lib                                             https://github.com/mryhryki/js-lib
+  markdown-editor                                    https://github.com/mryhryki/markdown-editor
+  markdown-preview                                   https://github.com/mryhryki/markdown-preview
+  my-browser-extension                               https://github.com/mryhryki/my-browser-extension
+  techpit-curriculum                                 https://github.com/mryhryki/techpit-curriculum
+  video-to-gif                                       https://github.com/mryhryki/video-to-gif
+
+Development
+  AWS Console                                        https://console.aws.amazon.com/
+  Can I Use                                          https://caniuse.com/
+  Gist                                               https://gist.github.com/mryhryki
+  GitHub API v4 (GraphQL)                            https://docs.github.com/en/graphql/overview/explorer
+  SendGrid                                           https://sendgrid.kke.co.jp/
+  Wasabi                                             https://console.wasabisys.com/#/login
+  Zenn                                               https://zenn.dev/
+  npm                                                https://npmjs.org/
+
+App
+  Amazon.co.jp                                       https://www.amazon.co.jp/
+  Calendar                                           https://calendar.google.com/?authuser=mryhryki%40gmail.com
+  ChatGPT                                            https://chat.openai.com/chat
+  DeepL                                              https://www.deepl.com/translator
+  Discord                                            https://discord.com/login
+  Financial Teacher System 8 (Life plan)             https://financial-teacher.net/login.htm
+  Google Drive                                       https://drive.google.com/?authuser=mryhryki%40gmail.com
+  Google Keep                                        https://keep.google.com/?authuser=mryhryki%40gmail.com
+  Google Map                                         https://www.google.com/maps?authuser=mryhryki%40gmail.com
+  Google Photo                                       https://photos.google.com/?authuser=moriya.shared%40gmail.com
+  HIS Mobile                                         https://his.mvno.ne.jp/checkout/status
+  Hatena Blog                                        https://blog.hatena.ne.jp/
+  MoneyForward                                       https://moneyforward.com/
+  Notion                                             https://www.notion.so/mryhryki
+  SBI Benefit Systems (iDeCo)                        https://www.benefit401k.com/
+  SBI Net Bank                                       https://www.netbk.co.jp/contents/pages/wpl010101/i010101CT/DI01010210
+  SBI Securities                                     https://www.sbisec.co.jp/
+  Slack (mryhryki)                                   https://mryhryki.slack.com/
+  Slack (rust-jp)                                    https://rust-jp.slack.com/
+  Slack (techpit)                                    https://techpitmarket.slack.com/
+  ToolsOcean                                         https://toolsocean.com/
+  Twitter                                            https://twitter.com/
+  Weblio Dictionary                                  https://ejje.weblio.jp/
+  YouTube                                            https://www.youtube.com/feed/subscriptions
+  tenki.jp (Weather)                                 https://tenki.jp/forecast/3/17/4610/14100/1hour.html
+
+CADDi
+  DocBase (CADDi)                                    https://caddi-all.docbase.io/
+  Gmail (CADDi)                                      https://mail.google.com/?authuser=hiroyuki_moriya%40caddi.jp
+  Slack (CADDi)                                      https://caddijp.slack.com/
+  TOKIUM (CADDi)                                     https://secure.keihi.com/
+
+Connehito
+  1on1 w/ @katsutomu (Connehito)                      https://www.notion.so/connehito/e08f418e43984f2ebf8bb558d4c7f92d
+  1on1 w/ @yanamura (Connehito)                       https://docs.google.com/document/d/1woTqqpzATbi6qIoR3y7fSemG0_j4kTl0Da5S1gOupFw/edit?usp=sharing&authuser=hiroyuki.moriya@connehito.com
+  Calendar (Connehito)                                https://calendar.google.com/?authuser=hiroyuki.moriya%40connehito.com
+  Figma (Connehito)                                   https://www.figma.com/file/Yij6zvMBTUnySDeLWhlk7k
+  Freee (Connehito)                                   https://accounts.secure.freee.co.jp/login/accounting
+  Gmail (Connehito)                                   https://mail.google.com/?authuser=hiroyuki.moriya%40connehito.com
+  Google Drive (Connehito)                            https://drive.google.com/?authuser=hiroyuki.moriya%40connehito.com
+  Jobcan (Connehito)                                  https://id.jobcan.jp/users/sign_in?app_key=atd
+  Mixpanel (Connehito)                                https://mixpanel.com/
+  Redash (Connehito)                                  https://redash.mamari.jp/queries/new
+  Sentry (Connehito)                                  https://sentry.io/auth/login/
+  Tech Blog Admin (Connehito)                         https://blog.hatena.ne.jp/connehito/connehito.hatenablog.com/entries
+  ZenHub (Connehito)                                  https://github.com/Connehito/mamari-spec#board
+
+  </script>
+</body>
+</html>
