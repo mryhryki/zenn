@@ -44,7 +44,7 @@ export const renderBlogIndex = (posts: Post[]): string => {
 
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content={`${BaseURL}/assets/image/share_image.jpg`} />
+        <meta property="og:image" content={`${BaseURL}/assets/image/share_image.jpeg`} />
         <meta property="og:url" content={`${BaseURL}/blog/`} />
         <meta property="og:site_name" content="mryhryki's blog" />
         <meta property="og:locale" content="ja-JP" />
@@ -53,7 +53,7 @@ export const renderBlogIndex = (posts: Post[]): string => {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={`${BaseURL}/assets/image/share_image.jpg`} />
+        <meta name="twitter:image" content={`${BaseURL}/assets/image/share_image.jpeg`} />
         <meta name="twitter:site" content="@mryhryki" />
 
         <link rel="stylesheet" href="/assets/css/base.css" />

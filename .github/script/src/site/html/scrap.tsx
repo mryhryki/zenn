@@ -25,7 +25,7 @@ export const renderScrap = (post: Post): string => {
 
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content={`${BaseURL}/assets/image/share_image.jpg`} />
+        <meta property="og:image" content={`${BaseURL}/assets/image/share_image.jpeg`} />
         <meta property="og:url" content={url} />
         <meta property="og:site_name" content={siteName} />
         <meta property="og:locale" content="ja-JP" />
@@ -34,7 +34,7 @@ export const renderScrap = (post: Post): string => {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={`${BaseURL}/assets/image/share_image.jpg`} />
+        <meta name="twitter:image" content={`${BaseURL}/assets/image/share_image.jpeg`} />
         <meta name="twitter:site" content="@mryhryki" />
 
         <link rel="stylesheet" href="https://mryhryki.com/assets/css/base.css" />

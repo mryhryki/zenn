@@ -27,7 +27,7 @@ export const renderSlide = (markdown: string): string => {
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
 
-        <meta property="og:image" content={`${BaseURL}/assets/image/share_image.jpg`} />
+        <meta property="og:image" content={`${BaseURL}/assets/image/share_image.jpeg`} />
         <meta property="og:url" content={BaseURL} />
         <meta property="og:site_name" content={title} />
         <meta property="og:locale" content="ja-JP" />
@@ -36,7 +36,7 @@ export const renderSlide = (markdown: string): string => {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content="https://mryhryki.com/assets/image/share_image.jpg" />
+        <meta name="twitter:image" content="https://mryhryki.com/assets/image/share_image.jpeg" />
         <meta name="twitter:site" content="@mryhryki" />
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
