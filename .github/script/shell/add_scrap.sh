@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
-
 REPOSITORY_ROOT="$(git rev-parse --show-toplevel 2>/dev/null;)"
+
 SCRAP_DIR="$(date +"%Y-%m")"
 SCRAP_ID="$(date +"%Y%m%d-%H%M%S")"
+echo "SCRAP_ID: ${SCRAP_ID}"
 BRANCH_NAME="scrap/${SCRAP_ID}"
 
 TITLE="${SCRAP_TITLE:-"${SCRAP_ID}"}"
-TEXT="$(printf '%s' "${SCRAP_TEXT:-"(TODO: TEXT)"}")"
+TEXT="$(printf '%s' "${SCRAP_TEXT:-"(No Body)"}")"
 PR_TITLE="[SCRAP] ${TITLE}"
 
 echo "SCRAP_ID: ${SCRAP_ID}"
