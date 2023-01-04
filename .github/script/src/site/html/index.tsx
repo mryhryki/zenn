@@ -58,6 +58,17 @@ export const renderBlogIndex = (posts: Post[]): string => {
         <meta name="twitter:site" content="@mryhryki" />
 
         <link rel="stylesheet" href="/assets/css/base.css" />
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              .post-type-checkbox-label {
+                align-items: center;
+                display: flex;
+                padding: 0.5rem;
+              }
+            `,
+          }}
+        ></style>
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -87,26 +98,26 @@ export const renderBlogIndex = (posts: Post[]): string => {
         </details>
         <div style={{ textAlign: "center", margin: "0.5rem 0" }}>
           <label>
-            {"キーワード "}
+            {"キーワード検索 "}
             <input id="keyword" type="text" />
           </label>
         </div>
 
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <input id="article-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
-          <label htmlFor="article-checkbox" style={{ marginRight: "1rem" }}>
+          <label htmlFor="article-checkbox" className="post-type-checkbox-label">
+            <input id="article-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
             記事
           </label>
-          <input id="memo-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
-          <label htmlFor="memo-checkbox" style={{ marginRight: "1rem" }}>
+          <label htmlFor="memo-checkbox" className="post-type-checkbox-label">
+            <input id="memo-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
             メモ
           </label>
-          <input id="scrap-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
-          <label htmlFor="scrap-checkbox" style={{ marginRight: "1rem" }}>
+          <label htmlFor="scrap-checkbox" className="post-type-checkbox-label">
+            <input id="scrap-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
             スクラップ
           </label>
-          <input id="slide-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
-          <label htmlFor="slide-checkbox" style={{ marginRight: "1rem" }}>
+          <label htmlFor="slide-checkbox" className="post-type-checkbox-label">
+            <input id="slide-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
             スライド
           </label>
         </div>
