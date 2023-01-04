@@ -4,6 +4,7 @@ emoji: "🔒"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["privacy","google","web"]
 published: true
+canonical: https://zenn.dev/mryhryki/articles/2022-01-30-the-topics-api
 ---
 
 

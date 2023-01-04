@@ -4,6 +4,7 @@ emoji: "✨"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["AWS","GitHubActions"]
 published: true
+canonical: https://zenn.dev/mryhryki/articles/2021-09-19-access-aws-by-github-actions
 ---
 
 :::message alert

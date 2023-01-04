@@ -16,6 +16,7 @@
     "deploy": "aws s3 sync ../../site/ s3://mryhryki-cdn/contents/ --exclude='.DS_Store' --size-only",
     "generate:holidays": "esbuild --platform=node --external:node:* --bundle ./src/data/generate_holidays.ts | node",
     "pages:archive": "tar --verbose --create --file='../../archive.tar' --directory='../../site/' .",
+    "type:watch": "tsc --watch",
     "validate:url": "esbuild --platform=node --external:node:* --bundle ./src/validate/url.ts | node",
     "writing": "run-p '_build:watch' '_preview'",
     "zenn": "cd ../../ && open http://localhost:58125/ && zenn preview --port 58125"

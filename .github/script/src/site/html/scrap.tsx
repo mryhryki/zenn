@@ -9,7 +9,6 @@ export const renderScrap = (post: Post): string => {
   const siteName = "mryhryki's scrap";
   const title = post.title;
   const description = "(No Description)";
-  const canonical = post.canonical;
   const useSyntaxHighlight = true;
 
   return renderToHtml(
@@ -44,8 +43,6 @@ export const renderScrap = (post: Post): string => {
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="apple-mobile-web-app-title" content={title} />
         <link rel="apple-touch-icon" type="image/png" href="https://mryhryki.com/assets/image/icon_180x180.png" />
-
-        {canonical != null && <link rel="canonical" href={canonical} />}
       </head>
       <body className="wrapper dark-theme">
         <h1>{post.title}</h1>

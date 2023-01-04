@@ -4,6 +4,7 @@ emoji: "🚚"
 type: "tech"
 topics: ["HTTP","HTTP2"]
 published: true
+canonical: https://zenn.dev/mryhryki/articles/2019-12-30-hatena-http2
 ---
 
 ※この記事は[はてなブログ](https://hyiromori.hateblo.jp/entry/2019/12/30/205023)、[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/hatena-20191230-205023)から引っ越しました

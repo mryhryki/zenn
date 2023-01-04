@@ -4,6 +4,7 @@ emoji: "🔍"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["TLS", "Wireshark"]
 published: true
+canonical: https://zenn.dev/mryhryki/articles/2022-09-14-capture-tls13-packet-by-wireshark
 ---
 
 # はじめに

@@ -4,6 +4,7 @@ emoji: "✨️"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["AWS", "IAM"]
 published: true
+canonical: https://zenn.dev/mryhryki/articles/2021-04-08-aws-iam-policy
 ---
 
 # はじめに

@@ -1,14 +1,6 @@
 import path from "path";
 import { readFile } from "fs/promises";
-import {
-  BaseURL,
-  RootDir,
-  SourceBackupDir,
-  SourceMemoDir,
-  SourceScrapDir,
-  SourceSlideDir,
-  SourceArticlesDir,
-} from "../definition";
+import { BaseURL, RootDir, SourceMemoDir, SourceScrapDir, SourceSlideDir, SourceArticlesDir } from "../definition";
 import { DateTime } from "@mryhryki/datetime";
 import { digestSha256 } from "../digest";
 
@@ -39,10 +31,10 @@ export interface Post {
   canonical?: string | null;
 }
 
-type PostType = "zenn" | "article" | "memo" | "slide" | "scrap";
+type PostType = "articles" | "memo" | "slide" | "scrap";
 const getPostType = (filePath: string): PostType => {
-  if (filePath.startsWith(SourceArticlesDir) || filePath.startsWith(SourceBackupDir)) {
-    return "article";
+  if (filePath.startsWith(SourceArticlesDir)) {
+    return "articles";
   } else if (filePath.startsWith(SourceMemoDir)) {
     return "memo";
   } else if (filePath.startsWith(SourceSlideDir)) {
@@ -54,7 +46,7 @@ const getPostType = (filePath: string): PostType => {
 };
 
 const checkPost = (post: Post, filePath: string) => {
-  if (post.id.trim().length < 3) {
+  if (post.id.trim().length < 12) {
     throw new Error(`ID must be at least 10 characters long: ${filePath}`);
   }
   if (!post.url.trim().startsWith(BaseURL)) {
@@ -69,8 +61,16 @@ const checkPost = (post: Post, filePath: string) => {
   if (!DateTimeFormat.test(post.createdAt)) {
     throw new Error(`CreatedAt must be valid DateTime format[${post.createdAt}]: ${filePath}`);
   }
-  if (post.canonical != null && !post.canonical.startsWith("https://")) {
-    throw new Error(`Canonical must be valid URL format[${post.canonical}]: ${filePath}`);
+  if (post.type === "articles") {
+    if (post.canonical == null) {
+      throw new Error(`Canonical not exists: ${filePath}`);
+    } else if (!post.canonical.startsWith("https://")) {
+      throw new Error(`Canonical must be valid URL format[${post.canonical}]: ${filePath}`);
+    }
+  } else {
+    if (post.canonical != null) {
+      throw new Error(`Canonical exists: ${filePath}`);
+    }
   }
 };
 
@@ -81,7 +81,7 @@ const getPost = async (
 ): Promise<Post> => {
   const id = path.basename(absoluteFilePath).replace(".md", "").trim();
   const type = getPostType(absoluteFilePath);
-  const canonical = type === "zenn" ? `https://zenn.dev/mryhryki/articles/${id}` : frontMatter.canonical ?? null;
+  const canonical = type === "articles" ? `https://zenn.dev/mryhryki/articles/${id}` : frontMatter.canonical ?? null;
   const title = (frontMatter.title ?? "").trim();
 
   const post: Post = {
@@ -96,7 +96,7 @@ const getPost = async (
     digest: await digestSha256(`${title}\n\n${markdown}`),
   };
 
-  if (type === "memo" || type === "article" || type === "zenn") {
+  if (type === "articles" || type === "memo") {
     post.createdAt = DateTime.parse(`${post.id.substring(0, 10)}T00:00:00+09:00`).toISO();
     post.url = `${BaseURL}/blog/${post.id}.html`;
   } else if (type === "slide") {

@@ -17,10 +17,18 @@ const main = async () => {
   );
 
   const posts = await listAllPosts();
-  const articlePosts = posts.filter(({ type }) => type === "article" || type === "zenn");
+  const articlePosts = posts.filter(({ type }) => type === "articles");
   const memoPosts = posts.filter(({ type }) => type === "memo");
-  const slidePosts = posts.filter(({ type }) => type === "slide");
   const scrapPosts = posts.filter(({ type }) => type === "scrap");
+  const slidePosts = posts.filter(({ type }) => type === "slide");
+  console.log(
+    [
+      `Found ${posts.length} files: Article: ${articlePosts.length}`,
+      `Memo: ${memoPosts.length}`,
+      `Scrap: ${scrapPosts.length}`,
+      `Slide: ${slidePosts.length}`,
+    ].join(", ")
+  );
 
   await Promise.all([
     buildBlog([...articlePosts, ...memoPosts]),

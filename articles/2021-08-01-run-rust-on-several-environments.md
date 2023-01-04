@@ -4,6 +4,7 @@ emoji: "📝"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Rust","WebAssembly","AWSLambda"]
 published: true
+canonical: https://zenn.dev/mryhryki/articles/2021-08-01-run-rust-on-several-environments
 ---
 
 # はじめに

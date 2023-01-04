@@ -4,6 +4,7 @@ emoji: "🚚"
 type: "tech"
 topics: ["CSS"]
 published: true
+canonical: https://zenn.dev/mryhryki/articles/
 ---
 
 ※この記事は[はてなブログ](https://hyiromori.hateblo.jp/entry/2019/12/31/210920)、[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/hatena-20191231-210920)から引っ越しました

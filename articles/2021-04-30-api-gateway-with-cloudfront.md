@@ -4,6 +4,7 @@ emoji: "🔍"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["AWS", "APIGateway", "CloudFront"]
 published: true
+canonical: https://zenn.dev/mryhryki/articles/2021-04-30-api-gateway-with-cloudfront
 ---
 
 # はじめに
