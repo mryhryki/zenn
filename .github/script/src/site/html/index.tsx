@@ -7,7 +7,6 @@ import { CharacterRegExpValue } from "../../common/character";
 const getTitlePrefix = (post: Post): string => {
   switch (post.type) {
     case "articles":
-    case "article_backup":
       return "【記事】";
     case "memo":
       return "【メモ】";
@@ -104,8 +103,8 @@ export const renderBlogIndex = (posts: Post[]): string => {
         </div>
 
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <label htmlFor="article-checkbox" className="post-type-checkbox-label">
-            <input id="article-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
+          <label htmlFor="articles-checkbox" className="post-type-checkbox-label">
+            <input id="articles-checkbox" className="post-type-checkbox" type="checkbox" defaultChecked />
             記事
           </label>
           <label htmlFor="memo-checkbox" className="post-type-checkbox-label">
@@ -177,7 +176,7 @@ export const renderBlogIndex = (posts: Post[]): string => {
                 const url = new URL(window.location.href);
                 const checks = (url.searchParams.get("check") ?? "").split(".").map((check) => check.trim()).filter((check) => check !== "");
                 document.getElementById("keyword").value = url.searchParams.get("keyword") ?? "";
-                document.getElementById("article-checkbox").checked = checks.length === 0 || checks.includes("article");
+                document.getElementById("articles-checkbox").checked = checks.length === 0 || checks.includes("articles");
                 document.getElementById("memo-checkbox").checked = checks.length === 0 || checks.includes("memo");
                 document.getElementById("scrap-checkbox").checked = checks.length === 0 || checks.includes("scrap");
                 document.getElementById("slide-checkbox").checked = checks.length === 0 || checks.includes("slide");
@@ -186,7 +185,7 @@ export const renderBlogIndex = (posts: Post[]): string => {
               const getCurrentState = () => ({
                 keyword: document.getElementById("keyword").value,
                 checks: [
-                  document.getElementById("article-checkbox").checked ? "article" : null,
+                  document.getElementById("articles-checkbox").checked ? "articles" : null,
                   document.getElementById("memo-checkbox").checked ? "memo" : null,
                   document.getElementById("scrap-checkbox").checked ? "scrap" : null,
                   document.getElementById("slide-checkbox").checked ? "slide" : null,
@@ -229,7 +228,7 @@ export const renderBlogIndex = (posts: Post[]): string => {
                   }, 200);
                 });
 
-                document.getElementById("article-checkbox").addEventListener("change", onChange);
+                document.getElementById("articles-checkbox").addEventListener("change", onChange);
                 document.getElementById("memo-checkbox").addEventListener("change", onChange);
                 document.getElementById("scrap-checkbox").addEventListener("change", onChange);
                 document.getElementById("slide-checkbox").addEventListener("change", onChange);
