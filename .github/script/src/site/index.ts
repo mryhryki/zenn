@@ -17,7 +17,8 @@ const main = async () => {
   );
 
   const posts = await listAllPosts();
-  const articlePosts = posts.filter(({ type }) => type === "article" || type === "zenn");
+  console.log(`Found ${posts.length} files.`);
+  const articlePosts = posts.filter(({ type }) => type === "articles" || type === "article_backup");
   const memoPosts = posts.filter(({ type }) => type === "memo");
   const slidePosts = posts.filter(({ type }) => type === "slide");
   const scrapPosts = posts.filter(({ type }) => type === "scrap");

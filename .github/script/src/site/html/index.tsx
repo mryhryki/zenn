@@ -6,8 +6,8 @@ import { CharacterRegExpValue } from "../../common/character";
 
 const getTitlePrefix = (post: Post): string => {
   switch (post.type) {
-    case "article":
-    case "zenn":
+    case "articles":
+    case "article_backup":
       return "【記事】";
     case "memo":
       return "【メモ】";

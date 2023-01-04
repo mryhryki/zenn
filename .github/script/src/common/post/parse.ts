@@ -3,7 +3,7 @@ import { readFile } from "fs/promises";
 import {
   BaseURL,
   RootDir,
-  SourceBackupDir,
+  SourceArticleBackupDir,
   SourceMemoDir,
   SourceScrapDir,
   SourceSlideDir,
@@ -39,12 +39,12 @@ export interface Post {
   canonical?: string | null;
 }
 
-type PostType = "zenn" | "article" | "memo" | "slide" | "scrap";
+type PostType = "articles" | "article_backup" | "memo" | "slide" | "scrap";
 const getPostType = (filePath: string): PostType => {
-  if (filePath.startsWith(SourceBackupDir)) {
-    return "article";
+  if (filePath.startsWith(SourceArticleBackupDir)) {
+    return "article_backup";
   } else if (filePath.startsWith(SourceArticlesDir)) {
-    return "zenn";
+    return "articles";
   } else if (filePath.startsWith(SourceMemoDir)) {
     return "memo";
   } else if (filePath.startsWith(SourceSlideDir)) {
@@ -83,7 +83,7 @@ const getPost = async (
 ): Promise<Post> => {
   const id = path.basename(absoluteFilePath).replace(".md", "").trim();
   const type = getPostType(absoluteFilePath);
-  const canonical = type === "zenn" ? `https://zenn.dev/mryhryki/articles/${id}` : frontMatter.canonical ?? null;
+  const canonical = type === "articles" ? `https://zenn.dev/mryhryki/articles/${id}` : frontMatter.canonical ?? null;
   const title = (frontMatter.title ?? "").trim();
 
   const post: Post = {
@@ -98,7 +98,7 @@ const getPost = async (
     digest: await digestSha256(`${title}\n\n${markdown}`),
   };
 
-  if (type === "memo" || type === "article" || type === "zenn") {
+  if (type === "articles" || type === "article_backup" || type === "memo") {
     post.createdAt = DateTime.parse(`${post.id.substring(0, 10)}T00:00:00+09:00`).toISO();
     post.url = `${BaseURL}/blog/${post.id}.html`;
   } else if (type === "slide") {
