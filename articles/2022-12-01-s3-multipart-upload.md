@@ -4,6 +4,7 @@ emoji: "🆙"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["AWS", "S3"]
 published: true
+canonical: https://zenn.dev/mryhryki/articles/2022-12-01-s3-multipart-upload
 ---
 
 この記事は [コネヒトアドベントカレンダー](https://qiita.com/advent-calendar/2022/connehito) 1日目の記事です。

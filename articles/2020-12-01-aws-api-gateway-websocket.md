@@ -4,6 +4,7 @@ emoji: "⚡️"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["AWS", "APIGateway", "WebSocket"]
 published: true
+canonical: https://zenn.dev/mryhryki/articles/2020-12-01-aws-api-gateway-websocket
 ---
 
 ※この記事は[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/96ebdcd5e8171bcd388f)から引っ越しました

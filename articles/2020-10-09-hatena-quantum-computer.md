@@ -4,6 +4,7 @@ emoji: "🚚"
 type: "tech"
 topics: ["量子コンピューター"]
 published: true
+canonical: https://zenn.dev/mryhryki/articles/2020-10-09-hatena-quantum-computer
 ---
 
 ※この記事は[はてなブログ](https://hyiromori.hateblo.jp/entry/2020/10/09/181022)、[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/hatena-20201009-181022)から引っ越しました

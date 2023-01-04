@@ -4,6 +4,7 @@ emoji: "📝"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Rust", "actixweb", "AWS", "AppRunner"]
 published: true
+canonical: https://zenn.dev/mryhryki/articles/2021-06-18-actix-web-on-app-runner
 ---
 
 # はじめに

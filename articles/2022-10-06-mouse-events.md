@@ -4,6 +4,7 @@ emoji: "🖱"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["JavaScript"]
 published: true
+canonical: https://zenn.dev/mryhryki/articles/2022-10-06-mouse-events
 ---
 
 # はじめに

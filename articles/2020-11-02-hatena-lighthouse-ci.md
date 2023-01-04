@@ -4,6 +4,7 @@ emoji: "🚚"
 type: "tech"
 topics: ["Web","Lighthouse","CI","Heroku"]
 published: true
+canonical: https://zenn.dev/mryhryki/articles/2020-11-02-hatena-lighthouse-ci
 ---
 
 ※この記事は[はてなブログ](https://hyiromori.hateblo.jp/entry/2020/11/02/LHCI)、[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/hatena-20201102-124230)から引っ越しました

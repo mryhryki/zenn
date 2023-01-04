@@ -4,6 +4,7 @@ emoji: "✍️"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["AWS"]
 published: true
+canonical: https://zenn.dev/mryhryki/articles/2022-08-15-aws-signature-v4
 ---
 
 # はじめに

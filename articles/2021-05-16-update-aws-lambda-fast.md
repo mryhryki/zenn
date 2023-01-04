@@ -4,6 +4,7 @@ emoji: "⚡"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["esbuild", "lambda"]
 published: true
+canonical: https://zenn.dev/mryhryki/articles/2021-05-16-update-aws-lambda-fast
 ---
 
 # はじめに

@@ -4,6 +4,7 @@ emoji: "📹"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["FFmpeg", "WebAssembly", "WASM"]
 published: true
+canonical: https://zenn.dev/mryhryki/articles/2020-12-18-ffmepg-wasm
 ---
 
 ※この記事は[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/ca4bbf1f67ae04652398)から引っ越しました

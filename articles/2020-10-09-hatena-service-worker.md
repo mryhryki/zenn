@@ -4,6 +4,7 @@ emoji: "🚚"
 type: "tech"
 topics: ["Web","Service Worker"]
 published: true
+canonical: https://zenn.dev/mryhryki/articles/2020-10-09-hatena-service-worker
 ---
 
 ※この記事は[はてなブログ](https://hyiromori.hateblo.jp/entry/2020/10/09/181120)、[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/hatena-20201009-181120)から引っ越しました

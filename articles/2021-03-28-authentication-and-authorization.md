@@ -4,6 +4,7 @@ emoji: "🔐"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Authorization", "Authentication"]
 published: true
+canonical: https://zenn.dev/mryhryki/articles/2021-03-28-authentication-and-authorization
 ---
 
 ※この記事は[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/2021-03-28-auth)から引っ越しました

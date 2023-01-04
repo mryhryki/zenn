@@ -4,6 +4,7 @@ emoji: "🌎"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Lighthouse"]
 published: true
+canonical: https://zenn.dev/mryhryki/articles/2020-12-23-distance-affects-lighthouse-score
 ---
 
 ※この記事は[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/a80361ae13f26ccabfaf)から引っ越しました
