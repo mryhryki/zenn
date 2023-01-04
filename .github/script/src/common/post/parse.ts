@@ -41,8 +41,10 @@ export interface Post {
 
 type PostType = "zenn" | "article" | "memo" | "slide" | "scrap";
 const getPostType = (filePath: string): PostType => {
-  if (filePath.startsWith(SourceArticlesDir) || filePath.startsWith(SourceBackupDir)) {
+  if (filePath.startsWith(SourceBackupDir)) {
     return "article";
+  } else if (filePath.startsWith(SourceArticlesDir)) {
+    return "zenn";
   } else if (filePath.startsWith(SourceMemoDir)) {
     return "memo";
   } else if (filePath.startsWith(SourceSlideDir)) {

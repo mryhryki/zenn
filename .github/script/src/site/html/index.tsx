@@ -7,6 +7,7 @@ import { CharacterRegExpValue } from "../../common/character";
 const getTitlePrefix = (post: Post): string => {
   switch (post.type) {
     case "article":
+    case "zenn":
       return "【記事】";
     case "memo":
       return "【メモ】";
@@ -29,7 +30,7 @@ export const renderBlogIndex = (posts: Post[]): string => {
   const months = Object.keys(postsPerMonthly).sort().reverse();
 
   const title = "mryhryki's blog";
-  const description = "記事・メモ・スライド・スクラップのインデックス";
+  const description = "ブログ一覧";
 
   return renderToHtml(
     <>
@@ -57,13 +58,6 @@ export const renderBlogIndex = (posts: Post[]): string => {
         <meta name="twitter:site" content="@mryhryki" />
 
         <link rel="stylesheet" href="/assets/css/base.css" />
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `
-              /* TODO */
-            `,
-          }}
-        />
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
