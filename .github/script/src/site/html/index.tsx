@@ -72,6 +72,25 @@ export const renderBlogIndex = (posts: Post[]): string => {
       </head>
       <body className="wrapper dark-theme">
         <h1>{title}</h1>
+        <details style={{ margin: "0 0 1rem 0" }}>
+          <summary style={{ textAlign: "center", textDecoration: "underline" }}>このブログについて</summary>
+          <div>
+            <p>このブログは以下の4種類の投稿種別があります。</p>
+            <ol>
+              <li>記事: 公開することを前提として書いたもの。他媒体のバックアップもあります。</li>
+              <li>メモ: 主に自分用のメモ。ただ誰かの役に立つかもしれないと思って公開しています。</li>
+              <li>スクラップ: 自分が読んだ記事などを書き留めておくものです。</li>
+              <li>スライド: 発表用資料です。</li>
+            </ol>
+            <p>
+              メモ、スクラップは他人に読まれることをあまり意識していない点にご注意ください。
+              <br />
+              間違いや感想などありましたら{" "}
+              <a href="https://github.com/mryhryki/portfolio/issues/new">GitHub の Issue</a> か{" "}
+              <a href="mailto:mryhryki@gmail.com">メール</a> でお伝えいただけますと幸いです。
+            </p>
+          </div>
+        </details>
         <div style={{ textAlign: "center", margin: "0.5rem 0" }}>
           <label>
             {"キーワード "}
