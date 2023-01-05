@@ -1,3 +1,16 @@
+/* Font */
+@font-face {
+  font-family: 'Migu1m';
+  src: url('/assets/font/migu/migu-1m-regular.woff') format('woff');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Migu1m';
+  src: url('/assets/font/migu/migu-1m-bold.woff') format('woff');
+  font-weight: bold;
+}
+
 /* Colors */
 a {
   color: #1e90ff;
@@ -70,11 +83,11 @@ button:disabled {
 
 /* Font */
 body, input, textarea, button {
-  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  font-family: "Migu1m", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
 }
 
 code, code * {
-  font-family: 'Roboto Mono', Consolas, "Courier New", Courier, Monaco, 'Noto Serif JP', monospace;
+  font-family: "Migu1m", Consolas, "Courier New", Courier, Monaco, monospace;
 }
 
 /* Tag Styles */
