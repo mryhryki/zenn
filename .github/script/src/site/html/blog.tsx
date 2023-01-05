@@ -34,8 +34,8 @@ export const renderBlogPost = (post: Post): string => {
         <meta name="twitter:image" content={`${BaseURL}/assets/image/share_image.jpeg`} />
         <meta name="twitter:site" content="@mryhryki" />
 
-        <link rel="stylesheet" href="https://mryhryki.com/assets/css/base.css" />
-        <link rel="stylesheet" href="https://mryhryki.com/assets/css/highlightjs.css" />
+        <link rel="stylesheet" href="/assets/css/base.css" />
+        <link rel="stylesheet" href="/assets/css/highlightjs.css" />
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
