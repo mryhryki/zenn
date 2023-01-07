@@ -8,7 +8,7 @@ export const renderScrap = (post: Post): string => {
   const url = post.url;
   const siteName = "mryhryki's scrap";
   const title = post.title;
-  const description = "(No Description)";
+  const description = "-";
   const useSyntaxHighlight = true;
 
   return renderToHtml(
