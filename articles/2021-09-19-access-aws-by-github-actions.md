@@ -7,11 +7,6 @@ published: true
 canonical: https://zenn.dev/mryhryki/articles/2021-09-19-access-aws-by-github-actions
 ---
 
-:::message alert
-この記事は GitHub から公式にアナウンスされていない機能を使っています。
-今後変更されたり使えなくなるなどの可能性がありますのでご注意ください。
-:::
-
 # 追記（2021-11-01）
 
 正式にリリースされたようです！🎉🎉🎉
@@ -39,6 +34,10 @@ https://twitter.com/toricls/status/1438120050167189510
 
 https://zenn.dev/mryhryki/scraps/81d85c8e28af88
 
+:::message alert
+この記事は GitHub から公式にアナウンスされていない機能を使っています。
+今後変更されたり使えなくなるなどの可能性がありますのでご注意ください。
+:::
 
 # 調査した内容の概要
 

@@ -3,11 +3,13 @@ import { convert } from "@mryhryki/markdown";
 import React from "react";
 import { renderFooter, renderToHtml } from "./common";
 import { BaseURL } from "../../common/definition";
+import { extractDescription } from "../../common/description";
 
 export const renderBlogPost = (post: Post): string => {
   const { title } = post;
   const siteName = "mryhryki's blog";
-  const description = "-";
+  const description = extractDescription(post.id, post.markdown);
+  console.debug(post.id.padEnd(60, " "), description);
 
   return renderToHtml(
     <>
