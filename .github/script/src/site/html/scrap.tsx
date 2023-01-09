@@ -3,12 +3,13 @@ import { renderFooter, renderToHtml } from "./common";
 import { convert } from "@mryhryki/markdown";
 import React from "react";
 import { BaseURL } from "../../common/definition";
+import { extractDescription } from "../../common/description";
 
 export const renderScrap = (post: Post): string => {
   const url = post.url;
   const siteName = "mryhryki's scrap";
   const title = post.title;
-  const description = "-";
+  const description = extractDescription(post.id, post.markdown);
   const useSyntaxHighlight = true;
 
   return renderToHtml(
