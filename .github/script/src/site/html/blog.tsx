@@ -9,7 +9,6 @@ export const renderBlogPost = (post: Post): string => {
   const { title } = post;
   const siteName = "mryhryki's blog";
   const description = extractDescription(post.id, post.markdown);
-  console.debug(post.id.padEnd(60, " "), description);
 
   return renderToHtml(
     <>

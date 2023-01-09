@@ -10,7 +10,6 @@ export const renderScrap = (post: Post): string => {
   const siteName = "mryhryki's scrap";
   const title = post.title;
   const description = extractDescription(post.id, post.markdown);
-  console.debug(post.id.padEnd(60, " "), description);
   const useSyntaxHighlight = true;
 
   return renderToHtml(
