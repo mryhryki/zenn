@@ -36,7 +36,7 @@ export const renderSlide = (markdown: string): string => {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content="https://mryhryki.com/assets/image/share_image.jpeg" />
+        <meta name="twitter:image" content={`${BaseURL}/assets/image/share_image.jpeg`} />
         <meta name="twitter:site" content="@mryhryki" />
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
