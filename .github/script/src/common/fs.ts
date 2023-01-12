@@ -7,7 +7,11 @@ const FileNameChecker = new RegExp(
 
 export const readPosts = async (dirPath: string): Promise<Post[]> => {
   const files = await listFiles(dirPath, true);
-  return await Promise.all(files.map(async (filePath): Promise<Post> => parsePost(filePath)));
+  return await Promise.all(
+    files
+      .filter((filePath) => !FileNameChecker.test(filePath))
+      .map(async (filePath): Promise<Post> => parsePost(filePath))
+  );
 };
 
 export const listFiles = async (dirPath: string, recursive: boolean): Promise<string[]> => {
@@ -17,9 +21,7 @@ export const listFiles = async (dirPath: string, recursive: boolean): Promise<st
     const path = `${dirPath}/${p}`;
     const statInfo = await stat(path);
     if (statInfo.isFile()) {
-      if (FileNameChecker.test(p)) {
-        filePaths.push(path);
-      }
+      filePaths.push(path);
     } else if (recursive && statInfo.isDirectory()) {
       const filePathsInChildDirectory = await listFiles(path, recursive);
       filePathsInChildDirectory.forEach((f) => filePaths.push(f));
