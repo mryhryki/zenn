@@ -176,7 +176,7 @@
       static StorageKey = "video:volume";
 
       static get() {
-        const storageValue = localStorage.getItem(Volume.StorageKey);
+        const storageValue = sessionStorage.getItem(Volume.StorageKey);
         if (typeof (storageValue) === "string") {
           const value = parseFloat(storageValue);
           if (!isNaN(value) && 0 <= value && value <= 1) {
@@ -188,7 +188,7 @@
 
       static set(rawVolume) {
         const volume = (!isNaN(rawVolume) && 0 <= rawVolume && rawVolume <= 1) ? rawVolume : 0;
-        localStorage.setItem(Volume.StorageKey, String(volume));
+        sessionStorage.setItem(Volume.StorageKey, String(volume));
         return volume;
       }
     }
