@@ -29,13 +29,12 @@
   >
     <div
       id="video-title"
-      style="position: absolute; top: 0; right: 0; background-color: #0005; border-radius: 4px; font-size: 12px; line-height: 1.5; color: #fff; padding: 4px 8px;"
+      style="display: none; position: absolute; top: 0; right: 0; background-color: #0005; border-radius: 4px; font-size: 12px; line-height: 1.5; color: #fff; padding: 4px 8px;"
     ></div>
     <video
       id="video-player"
       style="height: 100%; max-width: 100%; object-fit: contain;"
       autoplay
-      muted
       controls
       loop
     ></video>
@@ -64,6 +63,7 @@
         if (videoFile != null && videoFile.type.startsWith("video/")) {
           const videoUrl = URL.createObjectURL(videoFile);
           showVideo(videoAreaElement, videoPlayerElement, videoUrl);
+          showTitle(true, videoFile.name);
         }
       };
       fileDropAreaElement.addEventListener("dragover", (event) => {
@@ -91,7 +91,7 @@
       }
       const videoTitle = new URL(window.location.href).searchParams.get("title");
       if (videoTitle != null) {
-        document.getElementById("video-title").innerText = videoTitle;
+        showTitle(true, videoTitle);
       }
     };
   </script>
@@ -99,7 +99,16 @@
   <script type="text/javascript">
     const showVideo = (videoAreaElement, videoPlayerElement, videoUrl) => {
       videoAreaElement.style.display = "flex";
+      videoPlayerElement.volume = Volume.get();
       videoPlayerElement.src = videoUrl;
+    };
+  </script>
+
+  <script type="text/javascript">
+    const showTitle = (show, title = null) => {
+      const element = document.getElementById("video-title");
+      if (title != null) element.innerText = title;
+      element.style.display = show ? "block" : "none";
     };
   </script>
 
@@ -133,7 +142,7 @@
             }
             const vec = key === "ArrowUp" ? 1 : -1;
             const nextVolume = Math.min(Math.max(cv + (vec * (cv < 1 ? 0.1 : cv < 20 ? 1 : 5)), 0), 100);
-            videoPlayerElement.volume = Math.round(nextVolume * 10) * 0.001;
+            videoPlayerElement.volume = Volume.set(Math.round(nextVolume * 10) * 0.001);
           } else if (key === "ArrowLeft" || key === "ArrowRight") {
             event.preventDefault();
             const vec = key === "ArrowRight" ? 1 : -1;
@@ -145,7 +154,9 @@
             videoPlayerElement.currentTime = Math.round(videoPlayerElement.duration * (parseInt(key, 10) || 0) * 0.1);
           } else if (key === "c") {
             event.preventDefault();
-            videoPlayerElement.controls = !videoPlayerElement.controls;
+            const show = videoPlayerElement.controls;
+            videoPlayerElement.controls = !show;
+            showTitle(!show);
           } else if (key === "<" || key === ">") {
             event.preventDefault();
             const vec = key === ">" ? 1 : -1;
@@ -159,6 +170,28 @@
         window.addEventListener("keydown", keyboardHandler);
       };
     })();
+  </script>
+  <script>
+    class Volume {
+      static StorageKey = "video:volume";
+
+      static get() {
+        const storageValue = localStorage.getItem(Volume.StorageKey);
+        if (typeof (storageValue) === "string") {
+          const value = parseFloat(storageValue);
+          if (!isNaN(value) && 0 <= value && value <= 1) {
+            return value;
+          }
+        }
+        return 0;
+      }
+
+      static set(rawVolume) {
+        const volume = (!isNaN(rawVolume) && 0 <= rawVolume && rawVolume <= 1) ? rawVolume : 0;
+        localStorage.setItem(Volume.StorageKey, String(volume));
+        return volume;
+      }
+    }
   </script>
 </body>
 </html>
