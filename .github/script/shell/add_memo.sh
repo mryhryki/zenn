@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 REPOSITORY_ROOT="$(git rev-parse --show-toplevel 2>/dev/null;)"
 
-MEMO_ID="$(date +"%Y-%m-%d-")$(openssl rand -hex 8)"
+MEMO_ID="$(date +"%Y-%m-%d-")$(openssl rand -hex 2)"
 echo "MEMO_ID: ${SCRAP_ID}"
 BRANCH_NAME="memo/${MEMO_ID}"
 
