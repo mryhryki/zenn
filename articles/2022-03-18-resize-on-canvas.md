@@ -191,7 +191,7 @@ https://pixabay.com/ja/photos/%e7%8c%ab-%e8%8a%b1-%e5%ad%90%e7%8c%ab-%e7%9f%b3-%
 ## おわりに
 
 ブラウザの機能だけをつかって、シンプルに画像のリサイズ処理を実装することができました。
-実は、個人的に [Skitch の代替として使っている Web App](https://image-markup.vercel.app/) を作った経験が生きた感じで、割とすんなりと実装ができました。
+実は、個人的に [Skitch の代替として使っている Web App](https://mryhryki.com/app/image-markup/) を作った経験が生きた感じで、割とすんなりと実装ができました。
 なんでも色々やって見るものですね。
 
 

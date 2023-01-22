@@ -12,9 +12,10 @@ title: Canvas を使って画像に矢印やテキストを書き込む Web ア�
 
 ## 作ったもの
 
-![image-markup.vercel.app](https://i.gyazo.com/07a603ad53276dff4adb709ea71207b3.gif)
+![image-markup](https://i.gyazo.com/07a603ad53276dff4adb709ea71207b3.gif)
 
-- https://image-markup.vercel.app/
+- ~~https://image-markup.vercel.app/~~
+- https://mryhryki.com/app/image-markup/
 - [mryhryki/image-markup](https://github.com/mryhryki/image-markup/tree/41f95599e668888b245d9b53552e9b3c3ed88c46)
     - `41f95599` のコミットが執筆時点のもの
 
