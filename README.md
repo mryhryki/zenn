@@ -1,61 +1,38 @@
 # portfolio
 
-[Moriya Hiroyuki (ID: mryhryki)](https://github.com/mryhryki) のポートフォリオ関連のリソースです。
+This repository is resources of [my portfolio](https://mryhryki.com/).
 
-## URLs
+- URL1: https://mryhryki.com/ (PRIMARY, CloudFront + S3)
+- URL2: https://www.mryhryki.com/ (SECONDARY, GitHub Pages)
 
-### ポートフォリオサイト
+## Portfolio
 
-複数のURLからアクセスできます。
-
-- https://mryhryki.com/ (PRIMARY, CloudFront + S3)
-- https://www.mryhryki.com/ (SECONDARY, GitHub Pages)
-
-### Zenn
-
-- https://zenn.dev/mryhryki
-
-## Setup
+### Writing
 
 ```shell
-# 依存パッケージのダウンロード
-$ npm install
+$ make
+# or
+$ make writing
 ```
 
-## ポートフォリオサイト
-
-### 開発・執筆
+### Build
 
 ```shell
-# `npm run build:watch` と `npm run preview` が同時に立ち上がる
-$ npm run dev
+$ make build
 ```
 
-### サイトデータのビルド
+### check
 
 ```shell
-$ npm run build
-
-# 変更監視
-$ npm run build:watch
-```
-
-### プレビュー
-
-```shell
-$ npm run preview
-```
-
-### 更新
-
-```shell
-$ npm run update
+$ make check
 ```
 
 ## Zenn
 
-### ローカルでのプレビュー
+https://zenn.dev/mryhryki
+
+### Preview
 
 ```shell
-$ npm run article:preview
+$ make zenn
 ```
