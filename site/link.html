@@ -261,5 +261,13 @@ Others
   tenki.jp (Weather)                     https://tenki.jp/forecast/3/17/4610/14100/1hour.html
 
   </script>
+  <script type="text/javascript">
+    if (navigator.serviceWorker) {
+      navigator.serviceWorker
+        .register("./sw.js", {scope: "/api/"})
+        .then((registration) => console.log(`SW Registration. scope: ${registration.scope}`))
+        .catch((err) => console.log("SW Failed: ", err));
+    }
+  </script>
 </body>
 </html>
