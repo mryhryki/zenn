@@ -4,6 +4,9 @@ const CacheName = "v1";
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     (async () => {
+      if (event.request.method !== "GET") {
+        return fetch(event.request)
+      }
       const cache = await caches.open(CacheName);
       const cachedResponse = await cache.match(event.request);
       const networkResponsePromise = fetch(event.request);
