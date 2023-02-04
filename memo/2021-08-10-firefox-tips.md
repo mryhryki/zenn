@@ -29,3 +29,11 @@ FireFox を使ったりして見ているけど、ちょいちょい面倒な部
 ![capture.png](https://i.gyazo.com/12bb670721d07519d381c045a21e2377.png)
 
 Link: https://stackoverflow.com/questions/2848287/using-in-url-basic-authentication-in-firefox
+
+## Picture in Picture
+
+拡張機能なしでも、デフォルトのショートカットキーでできた。
+（YouTube　で確認）
+
+> キーボードからアクセスするには、command + Shift + option + ] の組み合わせを押します。
+> https://support.mozilla.org/ja/kb/about-picture-picture-firefox#w_kibodoshiyotokatsuto
