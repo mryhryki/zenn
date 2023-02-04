@@ -1,22 +1,22 @@
 const CacheName = "v1";
 
-// https://jakearchibald.com/2014/offline-cookbook/#stale-while-revalidate
+// https://jakearchibald.com/2014/offline-cookbook/#network-falling-back-to-cache
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     (async () => {
       if (event.request.method !== "GET") {
-        return fetch(event.request)
+        return fetch(event.request);
       }
       const cache = await caches.open(CacheName);
-      const cachedResponse = await cache.match(event.request);
-      const networkResponsePromise = fetch(event.request);
-      event.waitUntil(
-        (async () => {
-          const networkResponse = await networkResponsePromise;
-          await cache.put(event.request, networkResponse.clone());
-        })()
-      );
-      return cachedResponse || networkResponsePromise;
-    })()
+      try {
+        const response = await fetch(event.request);
+        if (response.ok) {
+          cache.put(event.request, response.clone());
+        }
+        return response;
+      } catch (err) {
+        return caches.match(event.request);
+      }
+    })(),
   );
 });
