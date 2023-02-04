@@ -127,7 +127,7 @@
         const links = Links
           .map(({ title, links }) => {
             const filteredLinks = links.filter((link) => {
-              const text = (`${normalize(title)}\r\n${normalize(home.title)}\r\n${normalize(decodeURI(home.url))}`);
+              const text = (`${normalize(title)}\r\n${normalize(link.title)}\r\n${normalize(decodeURI(link.url))}`);
               return keywords.every((keyword) => text.includes(keyword));
             });
             return { title, links: filteredLinks };
@@ -146,7 +146,7 @@
               title: `Search "${keyword}" by DuckDucGo`,
               url: `https://duckduckgo.com/?q=${encodeURIComponent(keyword)}`,
             },
-          ].filter((link) => home != null),
+          ].filter((link) => link != null),
         });
 
         links.forEach(({ title, links }) => {
@@ -197,10 +197,11 @@ App
   ShareBatake                            https://www.sharebatake.com/members/stamps
 
 Development
-  AWS Console                            https://console.aws.amazon.com/
+  Amazon Web Service (AWS)               https://console.aws.amazon.com/
   Can I Use                              https://caniuse.com/
   Gist                                   https://gist.github.com/mryhryki
   GitHub API v4 (GraphQL)                https://docs.github.com/en/graphql/overview/explorer
+  Google loud Platform (GCP)             https://console.cloud.google.com/
   SendGrid                               https://sendgrid.kke.co.jp/
   Wasabi                                 https://console.wasabisys.com/#/login
   Zenn                                   https://zenn.dev/
