@@ -127,7 +127,7 @@
         const links = Links
           .map(({ title, links }) => {
             const filteredLinks = links.filter((link) => {
-              const text = (`${normalize(title)}\r\n${normalize(link.title)}\r\n${normalize(decodeURI(link.url))}`);
+              const text = (`${normalize(title)}\r\n${normalize(home.title)}\r\n${normalize(decodeURI(home.url))}`);
               return keywords.every((keyword) => text.includes(keyword));
             });
             return { title, links: filteredLinks };
@@ -146,7 +146,7 @@
               title: `Search "${keyword}" by DuckDucGo`,
               url: `https://duckduckgo.com/?q=${encodeURIComponent(keyword)}`,
             },
-          ].filter((link) => link != null),
+          ].filter((link) => home != null),
         });
 
         links.forEach(({ title, links }) => {
