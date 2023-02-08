@@ -7,6 +7,7 @@ import { buildSiteMap } from "./build/sitemap";
 import { buildSlide } from "./build/slide";
 import { listAllPosts } from "../common/post";
 import { mkdir, rm } from "node:fs/promises";
+import { buildMemo } from "./build/memo";
 
 const main = async () => {
   await Promise.all(
