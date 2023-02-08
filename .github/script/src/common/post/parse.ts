@@ -47,13 +47,13 @@ const getPostType = (filePath: string): PostType => {
 
 const checkPost = (post: Post, filePath: string) => {
   if (post.id.trim().length < 12) {
-    throw new Error(`ID must be at least 10 characters long: ${filePath}`);
+    throw new Error(`ID must be at least 12 characters long: ${filePath}`);
   }
   if (!post.url.trim().startsWith(BaseURL)) {
     throw new Error(`URL must be valid URL format[${post.url}]: ${filePath}`);
   }
   if (post.title.trim().length < 5) {
-    throw new Error(`Title must be at least 10 characters long: ${filePath}`);
+    throw new Error(`Title must be at least 5 characters long: ${filePath}`);
   }
   if (post.markdown.trim().length < 10) {
     throw new Error(`Markdown must be at least 10 characters long: ${filePath}`);
@@ -97,10 +97,10 @@ const getPost = async (
   };
 
   if (type === "articles" || type === "memo") {
-    post.createdAt = DateTime.parse(`${post.id.substring(0, 10)}T00:00:00+09:00`).toISO();
+    post.createdAt = DateTime.parse(`${post.id.substring(0, 10)}T00:00:00+09:00`).toISO("Asia/Tokyo");
     post.url = `${BaseURL}/blog/${post.id}.html`;
   } else if (type === "slide") {
-    post.createdAt = DateTime.parse(`${post.id.substring(0, 10)}T00:00:00+09:00`).toISO();
+    post.createdAt = DateTime.parse(`${post.id.substring(0, 10)}T00:00:00+09:00`).toISO("Asia/Tokyo");
     post.url = `${BaseURL}/slide/${post.id}.html`;
   } else if (type === "scrap") {
     post.createdAt = DateTime.parse(
@@ -118,7 +118,7 @@ const getPost = async (
         post.id.substring(13, 15),
         "+09:00",
       ].join("")
-    ).toISO();
+    ).toISO("Asia/Tokyo");
     post.url = `${BaseURL}/scrap/${post.id}.html`;
   }
 
