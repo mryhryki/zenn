@@ -11,5 +11,7 @@ export const SourceScrapDir = path.resolve(RootDir, "scrap");
 export const SourceSlideDir = path.resolve(RootDir, "slide");
 
 export const DestinationBlogDir = path.resolve(SiteDir, "blog");
-export const DestinationSlideDir = path.resolve(SiteDir, "slide");
-export const DestinationScrapDir = path.resolve(SiteDir, "scrap");
+export const DestinationArticleDir = path.resolve(DestinationBlogDir, "article");
+export const DestinationMemoDir = path.resolve(DestinationBlogDir, "memo");
+export const DestinationSlideDir = path.resolve(DestinationBlogDir, "slide");
+export const DestinationScrapDir = path.resolve(DestinationBlogDir, "scrap");
