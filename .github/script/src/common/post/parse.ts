@@ -96,12 +96,15 @@ const getPost = async (
     digest: await digestSha256(`${title}\n\n${markdown}`),
   };
 
-  if (type === "articles" || type === "memo") {
+  if (type === "articles") {
     post.createdAt = DateTime.parse(`${post.id.substring(0, 10)}T00:00:00+09:00`).toISO("Asia/Tokyo");
-    post.url = `${BaseURL}/blog/${post.id}.html`;
+    post.url = `${BaseURL}/blog/article/${post.id}.html`;
+  } else if (type === "memo") {
+    post.createdAt = DateTime.parse(`${post.id.substring(0, 10)}T00:00:00+09:00`).toISO("Asia/Tokyo");
+    post.url = `${BaseURL}/blog/memo/${post.id}.html`;
   } else if (type === "slide") {
     post.createdAt = DateTime.parse(`${post.id.substring(0, 10)}T00:00:00+09:00`).toISO("Asia/Tokyo");
-    post.url = `${BaseURL}/slide/${post.id}.html`;
+    post.url = `${BaseURL}/blog/slide/${post.id}.html`;
   } else if (type === "scrap") {
     post.createdAt = DateTime.parse(
       [
@@ -119,7 +122,7 @@ const getPost = async (
         "+09:00",
       ].join("")
     ).toISO("Asia/Tokyo");
-    post.url = `${BaseURL}/scrap/${post.id}.html`;
+    post.url = `${BaseURL}/blog/scrap/${post.id}.html`;
   }
 
   return post;
