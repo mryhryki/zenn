@@ -1,19 +1,28 @@
-import { DestinationBlogDir, DestinationScrapDir, DestinationSlideDir } from "../common/definition";
-import { buildSlide } from "./build/slide";
-import { mkdir, rm } from "node:fs/promises";
-import { buildBlog } from "./build/blog";
+import {
+  DestinationArticleDir,
+  DestinationBlogDir,
+  DestinationMemoDir,
+  DestinationScrapDir,
+  DestinationSlideDir,
+} from "../common/definition";
+import { buildArticle } from "./build/article";
+import { buildIndex } from "./build";
+import { buildRss } from "./build/rss";
 import { buildScrap } from "./build/scrap";
 import { buildSiteMap } from "./build/sitemap";
-import { buildRss } from "./build/rss";
-import { buildIndex } from "./build";
+import { buildSlide } from "./build/slide";
 import { listAllPosts } from "../common/post";
+import { mkdir, rm } from "node:fs/promises";
+import { buildMemo } from "./build/memo";
 
 const main = async () => {
   await Promise.all(
-    [DestinationBlogDir, DestinationSlideDir, DestinationScrapDir].map(async (dirPath: string): Promise<void> => {
-      await rm(dirPath, { recursive: true }).catch(() => undefined);
-      await mkdir(dirPath, { recursive: true });
-    })
+    [DestinationArticleDir, DestinationMemoDir, DestinationSlideDir, DestinationScrapDir].map(
+      async (dirPath: string): Promise<void> => {
+        await rm(dirPath, { recursive: true }).catch(() => undefined);
+        await mkdir(dirPath, { recursive: true });
+      }
+    )
   );
 
   const posts = await listAllPosts();
@@ -23,7 +32,7 @@ const main = async () => {
   const slidePosts = posts.filter(({ type }) => type === "slide");
   console.log(
     [
-      `Found ${posts.length} files: Article: ${articlePosts.length}`,
+      `Found ${posts.length} files => Article: ${articlePosts.length}`,
       `Memo: ${memoPosts.length}`,
       `Scrap: ${scrapPosts.length}`,
       `Slide: ${slidePosts.length}`,
@@ -31,7 +40,8 @@ const main = async () => {
   );
 
   await Promise.all([
-    buildBlog([...articlePosts, ...memoPosts]),
+    buildArticle(articlePosts),
+    buildMemo(memoPosts),
     buildSlide(slidePosts),
     buildScrap(scrapPosts),
     buildRss(articlePosts, "article"),
