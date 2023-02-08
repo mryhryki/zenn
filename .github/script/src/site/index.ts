@@ -1,4 +1,10 @@
-import { DestinationBlogDir, DestinationScrapDir, DestinationSlideDir } from "../common/definition";
+import {
+  DestinationArticleDir,
+  DestinationBlogDir,
+  DestinationMemoDir,
+  DestinationScrapDir,
+  DestinationSlideDir,
+} from "../common/definition";
 import { buildArticle } from "./build/article";
 import { buildIndex } from "./build";
 import { buildRss } from "./build/rss";
@@ -11,10 +17,12 @@ import { buildMemo } from "./build/memo";
 
 const main = async () => {
   await Promise.all(
-    [DestinationBlogDir, DestinationSlideDir, DestinationScrapDir].map(async (dirPath: string): Promise<void> => {
-      await rm(dirPath, { recursive: true }).catch(() => undefined);
-      await mkdir(dirPath, { recursive: true });
-    })
+    [DestinationArticleDir, DestinationMemoDir, DestinationSlideDir, DestinationScrapDir].map(
+      async (dirPath: string): Promise<void> => {
+        await rm(dirPath, { recursive: true }).catch(() => undefined);
+        await mkdir(dirPath, { recursive: true });
+      }
+    )
   );
 
   const posts = await listAllPosts();
@@ -24,7 +32,7 @@ const main = async () => {
   const slidePosts = posts.filter(({ type }) => type === "slide");
   console.log(
     [
-      `Found ${posts.length} files: Article: ${articlePosts.length}`,
+      `Found ${posts.length} files => Article: ${articlePosts.length}`,
       `Memo: ${memoPosts.length}`,
       `Scrap: ${scrapPosts.length}`,
       `Slide: ${slidePosts.length}`,
