@@ -3,7 +3,7 @@
 This repository is resources of [my portfolio](https://mryhryki.com/).
 
 - URL1: https://mryhryki.com/ (PRIMARY, CloudFront + S3)
-- URL2: https://www.mryhryki.com/ (SECONDARY, GitHub Pages)
+- URL2: https://mryhryki.github.io/portfolio/ (SECONDARY, GitHub Pages)
 
 ## Portfolio
 
