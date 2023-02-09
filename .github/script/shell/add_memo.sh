@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 REPOSITORY_ROOT="$(git rev-parse --show-toplevel 2>/dev/null;)"
 
-MEMO_ID="$(date +"%Y-%m-%d-")$(openssl rand -hex 2)"
+MEMO_DIR="$(date +"%Y-%m")"
+MEMO_ID="$(date +"%Y%m%d-%H%M%S")"
 echo "MEMO_ID: ${SCRAP_ID}"
 BRANCH_NAME="memo/${MEMO_ID}"
 
@@ -11,7 +12,8 @@ PR_TITLE="[MEMO] ${TITLE}"
 
 git checkout -b "${BRANCH_NAME}"
 
-cat << EOS > "${REPOSITORY_ROOT}/memo/${MEMO_ID}.md"
+mkdir -p "${REPOSITORY_ROOT}/memo/${MEMO_DIR}"
+cat << EOS > "${REPOSITORY_ROOT}/memo/${MEMO_DIR}/${MEMO_ID}.md"
 ---
 title: ${TITLE}
 ---
