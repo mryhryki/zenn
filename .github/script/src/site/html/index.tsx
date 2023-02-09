@@ -158,8 +158,8 @@ export const renderBlogIndex = (posts: Post[]): string => {
         <footer>
           <span>
             {"RSS: "}
-            <a href="/blog/rss_article.xml">Article</a> <a href="/blog/rss_memo.xml">Memo</a>{" "}
-            <a href="/blog/rss_scrap.xml">Scrap</a>
+            <a href="/blog/article/rss.xml">Article</a> <a href="/blog/memo/rss.xml">Memo</a>{" "}
+            <a href="/blog/scrap/rss.xml">Scrap</a> <a href="/blog/slide/rss.xml">Slide</a>
             {" ©2021 "}
             <a href={BaseURL}>mryhryki</a>
           </span>
