@@ -1,9 +1,8 @@
 # portfolio
 
-This repository is resources of [my portfolio](https://mryhryki.com/).
+This repository is resources of my portfolio (https://mryhryki.com/).
 
-- URL1: https://mryhryki.com/ (PRIMARY, CloudFront + S3)
-- URL2: https://mryhryki.github.io/portfolio/ (SECONDARY, GitHub Pages)
+URL: https://mryhryki.com/
 
 ## Portfolio
 
