@@ -46,7 +46,7 @@ const main = async () => {
     buildRss(articlePosts, DestinationArticleDir),
     buildRss(memoPosts, DestinationMemoDir),
     buildRss(scrapPosts, DestinationScrapDir),
-    buildRss(articlePosts, DestinationSlideDir),
+    buildRss(slidePosts, DestinationSlideDir),
     buildIndex(posts),
   ]);
   await buildSiteMap();
