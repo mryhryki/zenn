@@ -10,7 +10,7 @@ export const buildRss = async (posts: Post[], dirPath: string): Promise<void> =>
     feed_url: `${BaseURL}/blog/${type}/rss.xml`,
     language: "ja",
     site_url: `${BaseURL}/blog/`,
-    title: "mryhryki's blog",
+    title: `mryhryki's blog - ${type}`,
     ttl: 3600,
   });
   posts.forEach((post) => {
