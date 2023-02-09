@@ -90,7 +90,7 @@ export const renderBlogIndex = (posts: Post[]): string => {
               メモ、スクラップは他人に読まれることをあまり意識していない点にご注意ください。
               <br />
               間違いや感想などありましたら{" "}
-              <a href="https://github.com/mryhryki/portfolio/issues/new">GitHub の Issue</a> か{" "}
+              <a href="https://github.com/mryhryki/portfolio/issues/new?assignees=mryhryki">GitHub の Issue</a> か{" "}
               <a href="mailto:mryhryki@gmail.com">メール</a> でお伝えいただけますと幸いです。
             </p>
           </div>
