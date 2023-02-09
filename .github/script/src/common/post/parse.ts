@@ -99,13 +99,13 @@ const getPost = async (
   if (type === "articles") {
     post.createdAt = DateTime.parse(`${post.id.substring(0, 10)}T00:00:00+09:00`).toISO("Asia/Tokyo");
     post.url = `${BaseURL}/blog/article/${post.id}.html`;
-  } else if (type === "memo") {
-    post.createdAt = DateTime.parse(`${post.id.substring(0, 10)}T00:00:00+09:00`).toISO("Asia/Tokyo");
-    post.url = `${BaseURL}/blog/memo/${post.id}.html`;
   } else if (type === "slide") {
     post.createdAt = DateTime.parse(`${post.id.substring(0, 10)}T00:00:00+09:00`).toISO("Asia/Tokyo");
     post.url = `${BaseURL}/blog/slide/${post.id}.html`;
-  } else if (type === "scrap") {
+  } else if (type === "memo" && post.id.substring(4, 5) === "-") {
+    post.createdAt = DateTime.parse(`${post.id.substring(0, 10)}T00:00:00+09:00`).toISO("Asia/Tokyo");
+    post.url = `${BaseURL}/blog/memo/${post.id}.html`;
+  } else if (type === "memo" || type === "scrap") {
     post.createdAt = DateTime.parse(
       [
         post.id.substring(0, 4),
