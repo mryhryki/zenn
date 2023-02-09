@@ -1,6 +1,5 @@
 import {
   DestinationArticleDir,
-  DestinationBlogDir,
   DestinationMemoDir,
   DestinationScrapDir,
   DestinationSlideDir,
@@ -44,9 +43,10 @@ const main = async () => {
     buildMemo(memoPosts),
     buildSlide(slidePosts),
     buildScrap(scrapPosts),
-    buildRss(articlePosts, "article"),
-    buildRss(memoPosts, "memo"),
-    buildRss(scrapPosts, "scrap"),
+    buildRss(articlePosts, DestinationArticleDir),
+    buildRss(memoPosts, DestinationMemoDir),
+    buildRss(scrapPosts, DestinationScrapDir),
+    buildRss(articlePosts, DestinationSlideDir),
     buildIndex(posts),
   ]);
   await buildSiteMap();
