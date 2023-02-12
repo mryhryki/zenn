@@ -122,7 +122,7 @@ const getPost = async (
         "+09:00",
       ].join("")
     ).toISO("Asia/Tokyo");
-    post.url = `${BaseURL}/blog/scrap/${post.id}.html`;
+    post.url = `${BaseURL}/blog/${type}/${post.id}.html`;
   }
 
   return post;
