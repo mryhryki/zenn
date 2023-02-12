@@ -1,13 +1,13 @@
 /* Font */
 @font-face {
   font-family: 'Migu1m';
-  src: url('/assets/font/migu/migu-1m-regular.woff') format('woff');
+  src: url('/assets/font/migu/migu-1m-regular-subset.woff2') format('woff2');
   font-weight: normal;
 }
 
 @font-face {
   font-family: 'Migu1m';
-  src: url('/assets/font/migu/migu-1m-bold.woff') format('woff');
+  src: url('/assets/font/migu/migu-1m-bold-subset.woff2') format('woff2');
   font-weight: bold;
 }
 
