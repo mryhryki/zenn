@@ -1,6 +1,6 @@
 # portfolio
 
-This repository is resources of my portfoli.
+This repository is resources of my portfolio.
 
 URL: https://mryhryki.com/
 
