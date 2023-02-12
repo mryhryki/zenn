@@ -1,170 +1,173 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>Home | mryhryki</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex,nofollow">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="prefetch" href="/api/session">
-  <style>
-      body {
-          background-color: #333;
-          padding: 16px;
-          color: #fff;
-          margin: 0 auto;
-          max-width: 960px;
-          width: calc(100vw - 32px);
-      }
+    <meta charset="UTF-8">
+    <title>Home | mryhryki</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="prefetch" href="/api/session">
+    <style>
+        body {
+            background-color: #F0EEEC;
+            color: #260600;
+            font-family: "Migu 1M", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            margin: 0 auto;
+            max-width: 960px;
+            padding: 16px;
+            width: calc(100vw - 32px);
+        }
 
-      h1 {
-          font-size: 1.75rem;
-          font-weight: 600;
-          line-height: 2.25rem;
-          text-align: center;
-      }
 
-      a {
-          color: #1e90ff;
-      }
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            line-height: 2.25rem;
+            text-align: center;
+        }
 
-      li {
-          border-radius: 0.25rem;
-          padding: 4px 8px;
-      }
+        a {
+            color: #5C1500;
+        }
 
-      input {
-          border-radius: 0.25rem;
-          border-width: 1px;
-          font-size: 1rem;
-          line-height: 1.5rem;
-          max-width: 100%;
-          padding: 0.25rem 0.5rem;
-          vertical-align: middle;
-          width: 24rem;
-      }
+        li {
+            border-radius: 0.25rem;
+            padding: 4px 8px;
+        }
 
-      #links-list.shortcut > li:first-child > ul > li:first-child {
-          background: #444;
-      }
+        input {
+            border-radius: 0.25rem;
+            border-width: 1px;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            max-width: 100%;
+            padding: 0.25rem 0.5rem;
+            vertical-align: middle;
+            width: 24rem;
+        }
 
-      #links-list.shortcut > li:first-child > ul > li:first-child:after {
-          content: 'Open "⌘ + Enter"';
-          font-size: 12px;
-          display: inline-block;
-          margin: 0 1rem;
-          color: #999;
-      }
-  </style>
+        #links-list.shortcut > li:first-child > ul > li:first-child {
+            background: #FFBE79;
+        }
+
+        #links-list.shortcut > li:first-child > ul > li:first-child:after {
+            content: 'Open "⌘ + Enter"';
+            font-size: 12px;
+            display: inline-block;
+            margin: 0 1rem;
+            color: #5C1500;
+        }
+    </style>
 </head>
 <body>
-  <h1>Home</h1>
-  <p style="text-align: center;">
+<h1>Home</h1>
+<p style="text-align: center;">
     <input id="keyword-input" class="shortcut" type="text" placeholder="Keyword" autofocus/>
-  </p>
-  <ul id="links-list"></ul>
-  <script>
+</p>
+<ul id="links-list"></ul>
+<script>
     const createElement = (tagName, props = {}, children = []) => {
-      const element = document.createElement(tagName);
-      Object.entries(props).forEach(([key, val]) => element[key] = val);
-      children.forEach((child) => element.appendChild(child));
-      return element;
+        const element = document.createElement(tagName);
+        Object.entries(props).forEach(([key, val]) => element[key] = val);
+        children.forEach((child) => element.appendChild(child));
+        return element;
     };
     const UrlMatcher = new RegExp("^(https?://)?([a-z0-9-]+\\.)+[a-z0-9]+(/[A-Za-z0-9-/_%?=+\\.#]*)?$");
     const getUrlOrNull = (text) => UrlMatcher.test(text) ? (text.startsWith("http") ? text : `https://${text}`) : null;
     const normalize = (text) => text
-      .normalize("NFKD")
-      .toLowerCase()
-      .replace(/[\u30A1-\u30FA]/g, (ch) => String.fromCharCode(ch.charCodeAt(0) - 0x60)); // カタカナ -> ひらがな
+        .normalize("NFKD")
+        .toLowerCase()
+        .replace(/[\u30A1-\u30FA]/g, (ch) => String.fromCharCode(ch.charCodeAt(0) - 0x60)); // カタカナ -> ひらがな
 
     const getLinksData = () => {
-      const GroupLinePattern = new RegExp("^[^ ]");
-      const UrlLinePattern = new RegExp("^[ ]{2}(.+)[ ]+(https?://.+)$");
-      const links = [];
-      document.getElementById("links-data").textContent.trim().split("\n").forEach((line, i) => {
-        if (line.trim() === "") return;
-        if (GroupLinePattern.test(line)) {
-          links.push({ title: line.trim(), links: [] });
-        } else if (UrlLinePattern.test(line)) {
-          const [, title, url] = line.match(UrlLinePattern, 2);
-          links[links.length - 1].links.push({ title: title.trim(), url: url.trim() });
-        } else {
-          alert(`Unknown row[${i + 1}]: ${line}`);
-        }
-      });
-      return links;
+        const GroupLinePattern = new RegExp("^[^ ]");
+        const UrlLinePattern = new RegExp("^[ ]{2}(.+)[ ]+(https?://.+)$");
+        const links = [];
+        document.getElementById("links-data").textContent.trim().split("\n").forEach((line, i) => {
+            if (line.trim() === "") return;
+            if (GroupLinePattern.test(line)) {
+                links.push({title: line.trim(), links: []});
+            } else if (UrlLinePattern.test(line)) {
+                const [, title, url] = line.match(UrlLinePattern, 2);
+                links[links.length - 1].links.push({title: title.trim(), url: url.trim()});
+            } else {
+                alert(`Unknown row[${i + 1}]: ${line}`);
+            }
+        });
+        return links;
     };
 
     document.addEventListener("DOMContentLoaded", () => {
-      const Links = getLinksData();
-      const List = document.getElementById("links-list");
+        const Links = getLinksData();
+        const List = document.getElementById("links-list");
 
-      const KeywordInput = document.getElementById("keyword-input");
-      KeywordInput.value = KeywordInput.value.trim() || sessionStorage.getItem("keyword") || "";
-      let beforeKey = "";
-      KeywordInput.addEventListener("keydown", (event) => {
-        if (event.metaKey && event.key === "Enter") {
-          const firstAnchorElement = document.querySelector("#links-list > li > ul > li > a");
-          if (firstAnchorElement != null) {
-            firstAnchorElement.click();
-          }
-        }
-        beforeKey = event.key;
-      });
-      KeywordInput.addEventListener("blur", () => List.classList.remove("shortcut"));
-      KeywordInput.addEventListener("focus", () => List.classList.add("shortcut"));
-      KeywordInput.focus();
+        const KeywordInput = document.getElementById("keyword-input");
+        KeywordInput.value = KeywordInput.value.trim() || sessionStorage.getItem("keyword") || "";
+        let beforeKey = "";
+        KeywordInput.addEventListener("keydown", (event) => {
+            if (event.metaKey && event.key === "Enter") {
+                const firstAnchorElement = document.querySelector("#links-list > li > ul > li > a");
+                if (firstAnchorElement != null) {
+                    firstAnchorElement.click();
+                }
+            }
+            beforeKey = event.key;
+        });
+        KeywordInput.addEventListener("blur", () => List.classList.remove("shortcut"));
+        KeywordInput.addEventListener("focus", () => List.classList.add("shortcut"));
+        KeywordInput.blur();
+        KeywordInput.focus();
 
-      let prevKeyword = "";
-      const refresh = () => {
-        prevKeyword = KeywordInput.value;
-        sessionStorage.setItem("keyword", prevKeyword);
-        const keyword = KeywordInput.value;
-        if (prevKeyword !== keyword) return;
-        const keywords = normalize(keyword).split(new RegExp("[ 　\t]+")).filter((text) => text !== "");
+        let prevKeyword = "";
+        const refresh = () => {
+            prevKeyword = KeywordInput.value;
+            sessionStorage.setItem("keyword", prevKeyword);
+            const keyword = KeywordInput.value;
+            if (prevKeyword !== keyword) return;
+            const keywords = normalize(keyword).split(new RegExp("[ 　\t]+")).filter((text) => text !== "");
 
-        List.innerHTML = "";
-        const links = Links
-          .map(({ title, links }) => {
-            const filteredLinks = links.filter((link) => {
-              const text = (`${normalize(title)}\r\n${normalize(link.title)}\r\n${normalize(decodeURI(link.url))}`);
-              return keywords.every((keyword) => text.includes(keyword));
+            List.innerHTML = "";
+            const links = Links
+                .map(({title, links}) => {
+                    const filteredLinks = links.filter((link) => {
+                        const text = (`${normalize(title)}\r\n${normalize(link.title)}\r\n${normalize(decodeURI(link.url))}`);
+                        return keywords.every((keyword) => text.includes(keyword));
+                    });
+                    return {title, links: filteredLinks};
+                })
+                .filter(({links}) => links.length > 0);
+
+            const rawUrl = getUrlOrNull(keyword);
+            links.push({
+                title: "Search",
+                links: [
+                    rawUrl != null ? {
+                        title: `Open "${rawUrl}"`,
+                        url: rawUrl,
+                    } : null,
+                    {
+                        title: `Search "${keyword}" by DuckDucGo`,
+                        url: `https://duckduckgo.com/?q=${encodeURIComponent(keyword)}`,
+                    },
+                ].filter((link) => link != null),
             });
-            return { title, links: filteredLinks };
-          })
-          .filter(({ links }) => links.length > 0);
 
-        const rawUrl = getUrlOrNull(keyword);
-        links.push({
-          title: "Search",
-          links: [
-            rawUrl != null ? {
-              title: `Open "${rawUrl}"`,
-              url: rawUrl,
-            } : null,
-            {
-              title: `Search "${keyword}" by DuckDucGo`,
-              url: `https://duckduckgo.com/?q=${encodeURIComponent(keyword)}`,
-            },
-          ].filter((link) => link != null),
-        });
+            links.forEach(({title, links}) => {
+                const ul = createElement("ul", {}, links.map(({title, url}) =>
+                    createElement("li", {}, [
+                        createElement("a", {href: url, innerText: title}),
+                    ]),
+                ));
+                const categoryItem = createElement("li", {}, [createElement("span", {innerText: title}), ul]);
+                List.appendChild(categoryItem);
+            });
+        };
 
-        links.forEach(({ title, links }) => {
-          const ul = createElement("ul", {}, links.map(({ title, url }) =>
-            createElement("li", {}, [
-              createElement("a", { href: url, innerText: title }),
-            ]),
-          ));
-          const categoryItem = createElement("li", {}, [createElement("span", { innerText: title }), ul]);
-          List.appendChild(categoryItem);
-        });
-      };
-
-      refresh();
-      KeywordInput.addEventListener("keyup", refresh);
+        refresh();
+        KeywordInput.addEventListener("keyup", refresh);
     });
-  </script>
-  <script id="links-data" type="text/plain">
+</script>
+<script id="links-data" type="text/plain">
 Memos
   Daily Record                           https://mryhryki.com/view/?type=memo
   Paper Clip                             https://mryhryki.com/view/?type=memo&id=paper_clip
@@ -258,15 +261,17 @@ Others
   YouTube                                https://www.youtube.com/feed/subscriptions
   tenki.jp (Weather)                     https://tenki.jp/forecast/3/17/4610/14100/1hour.html
 
-  </script>
-  <script type="text/javascript">
+
+
+</script>
+<script type="text/javascript">
     if (navigator.serviceWorker) {
-      navigator.serviceWorker
-        .register("./sw.js", {scope: "/api/"})
-        .then((registration) => console.log(`SW Registration. scope: ${registration.scope}`))
-        .catch((err) => console.log("SW Failed: ", err));
+        navigator.serviceWorker
+            .register("./sw.js", {scope: "/api/"})
+            .then((registration) => console.log(`SW Registration. scope: ${registration.scope}`))
+            .catch((err) => console.log("SW Failed: ", err));
     }
-  </script>
+</script>
 </body>
 </html>
 <!-- -->
