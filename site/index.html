@@ -31,7 +31,6 @@
     <style>
         :root {
             /* https://goodpalette.io/ff6600-1123bf-c9c5c1 */
-            --anchor-color: #5C1500;
             --background-base: #F0EEEC;
             --background-card: #FCFCFA;
             --background-footer: #5C1500;
@@ -40,6 +39,7 @@
             --border-color: #E3E1DD;
             --card-radius-px: 8px;
             --header-color: #5C1500;
+            --link-color-base: #5C1500;
             --link-color-on-footer: #FFE0B6;
             --text-color-base: #260600;
             --text-color-on-footer: #FFFAF2;
@@ -112,7 +112,7 @@
         }
 
         a {
-            color: var(--anchor-color);
+            color: var(--link-color-base);
         }
 
         img {
@@ -176,7 +176,7 @@
         }
 
         .social-links img {
-            border-radius: var(--card-radius-px);
+            border-radius: 8px;
             max-height: 48px;
             max-width: 48px;
             min-height: 48px;
@@ -215,15 +215,15 @@
         }
 
         .about-card {
-            border-radius: var(--card-radius-px);
-            border: 1px solid var(--border-color);
             background-color: #fff;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            overflow:hidden;
             text-align: center;
         }
 
         .about-card img {
             border-bottom: 1px solid var(--border-color);
-            border-radius: var(--card-radius-px) var(--card-radius-px) 0 0;
             display: inline-block;
             height: 238px;
             max-width: 238px;
@@ -238,7 +238,7 @@
 
         .skill-card {
             background-color: #fff;
-            border-radius: var(--card-radius-px);
+            border-radius: 8px;
             border: 1px solid var(--border-color);
             padding: 16px;
         }
@@ -255,6 +255,7 @@
             height: 64px;
             margin: 4px;
             object-fit: contain;
+            border: 1px solid var(--border-color);
             width: 64px;
         }
 
@@ -263,7 +264,7 @@
         }
 
         .output-card {
-            border-radius: var(--card-radius-px);
+            border-radius: 8px;
             border: 1px solid var(--border-color);
             overflow: hidden;
             text-decoration: none;
@@ -285,7 +286,7 @@
             background-color: var(--background-card);
             border: 1px solid var(--border-color);
             padding: 8px 16px 16px 16px;
-            border-radius: var(--card-radius-px);
+            border-radius: 8px;
             margin: 16px 0;
         }
 
@@ -759,7 +760,7 @@
     </section>
 </main>
 <footer>
-    &copy 2018-2023 <a href="https://github.com/mryhryki/portfolio">Moriya Hiroyuki</a>
+    &copy 2018 <a href="https://github.com/mryhryki/portfolio">Moriya Hiroyuki</a>
 </footer>
 </body>
 </html>
