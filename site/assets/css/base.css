@@ -11,74 +11,46 @@
   font-weight: bold;
 }
 
-/* Colors */
+:root {
+  /* https://goodpalette.io/ff6600-1123bf-c9c5c1 */
+  --background-base: #F0EEEC;
+  --background-block: #FFE0B6;
+  --background-code: #272822; /* highlightjs */
+  --background-image: #FFBE79;
+  --border-color: #E3E1DD;
+  --link-color-base: #5C1500;
+  --link-color-on-footer: #FFE0B6;
+  --text-color-base: #260600;
+  --text-color-on-code: #FFFAF2;
+}
+
 a {
-  color: #1e90ff;
+  color: var(--link-color-base);
 }
 
-button {
-  background-color: #07f;
-  color: #fff;
+* {
+  border-color: var(--border-color);
 }
 
-button:disabled {
-  opacity: 0.5;
+hr {
+  background-color: var(--border-color);
 }
 
-/* Light Theme */
-.light-theme {
-  background-color: #f6f6f6;
-  color: #000;
+blockquote, pre, code {
+  border-radius: 4px;
 }
 
-.light-theme * {
-  border-color: #000;
+blockquote {
+  background-color: var(--background-block);
 }
 
-.light-theme hr {
-  background-color: #aaa;
+code, pre {
+  background-color: var(--background-code);
+  color: var(--text-color-on-code);
 }
 
-.light-theme blockquote, .light-theme pre {
-  background-color: #ccc;
-  color: #000;
-}
-
-.light-theme thead, .light-theme tfoot {
-  background-color: #eee;
-}
-
-.light-theme code {
-  background-color: #ccc;
-  color: #660000;
-}
-
-/* Dark Theme */
-.dark-theme {
-  background-color: #333;
-  color: #fff;
-}
-
-.dark-theme * {
-  border-color: #ccc;
-}
-
-.dark-theme hr {
-  background-color: #ccc;
-}
-
-.dark-theme blockquote, .dark-theme pre {
-  background-color: #000;
-  color: #ccc;
-}
-
-.dark-theme thead, .dark-theme tfoot {
-  background-color: #222;
-}
-
-.dark-theme code {
-  background-color: #000;
-  color: #fff;
+thead, tfoot {
+  background-color: var(--background-block);
 }
 
 /* Font */
@@ -330,41 +302,4 @@ button {
 
 .index-item > * {
   display: block;
-}
-
-/* Tooltip Styles */
-@media (pointer: fine) {
-  /* Example: <div class="tooltip" data-tooltip="Tooltip-Text">TEXT</div> */
-  .tooltip {
-    position: relative
-  }
-
-  .tooltip:hover::before {
-    background-color: white;
-    border: 2px solid #999;
-    color: black;
-    content: attr(data-tooltip);
-    display: block;
-    font-size: 1rem;
-    left: 50%;
-    padding: 0 0.5rem;
-    position: absolute;
-    top: -10px;
-    transform: translate(-50%, -100%);
-    white-space: nowrap;
-    z-index: 100;
-  }
-
-  .tooltip:hover::after {
-    border-color: #999 transparent transparent transparent;
-    border-style: solid;
-    border-width: 4px;
-    content: " ";
-    left: 50%;
-    position: absolute;
-    top: -10px;
-    transform: translate(-50%);
-    width: 0;
-    z-index: 100;
-  }
 }
