@@ -14,13 +14,16 @@
 :root {
   /* https://goodpalette.io/ff6600-1123bf-c9c5c1 */
   --background-base: #F0EEEC;
-  --background-block: #FFE0B6;
+  --background-block: #26060095;
   --background-code: #272822; /* highlightjs */
   --background-image: #FFBE79;
   --border-color: #E3E1DD;
+  --border-accent: #FF6600;
   --link-color-base: #5C1500;
+  --link-color-on-block: #FFE0B6;
   --link-color-on-footer: #FFE0B6;
   --text-color-base: #260600;
+  --text-color-on-block: #FFFAF2;
   --text-color-on-code: #FFFAF2;
 }
 
@@ -37,11 +40,18 @@ hr {
 }
 
 blockquote, pre, code {
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
 blockquote {
   background-color: var(--background-block);
+  color: var(--text-color-on-code);
+  border-left: 2px solid var(--border-accent);
+  padding: 0.5rem 0.5rem 0.5rem calc(0.5rem + 2px);
+}
+
+blockquote a {
+  color: var(--link-color-on-block);
 }
 
 code, pre {
@@ -51,6 +61,7 @@ code, pre {
 
 thead, tfoot {
   background-color: var(--background-block);
+  color: var(--text-color-on-block);
 }
 
 /* Font */
