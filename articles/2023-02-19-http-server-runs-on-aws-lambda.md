@@ -139,6 +139,7 @@ Execute the following command to build the container image.
 # Login to Amazon ECR Public
 $ aws ecr-public get-login-password --region us-east-1 |
     docker login --username AWS --password-stdin public.ecr.aws
+
 # Build container image
 $ export DOCKER_TAG="IMAGE_NAME:latest"
 $ docker build --tag "${DOCKER_TAG}" .
@@ -151,6 +152,7 @@ Execute the following command to push to the your ECR repository.
 ```shell
 $ export DOCKER_TAG="IMAGE_NAME:latest"
 $ export ECR_URI="${YOUR_AWS_ACCOUNT_ID}.dkr.ecr.ap-northeast-1.amazonaws.com/IMAGE_NAME:latest"
+
 $ aws ecr get-login-password --region ap-northeast-1 |
     docker login --username AWS --password-stdin "${ECR_URI}"
 $ docker tag "${DOCKER_TAG}" "${ECR_URI}"
