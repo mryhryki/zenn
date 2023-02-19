@@ -81,7 +81,7 @@ const getPost = async (
 ): Promise<Post> => {
   const id = path.basename(absoluteFilePath).replace(".md", "").trim();
   const type = getPostType(absoluteFilePath);
-  const canonical = type === "articles" ? `https://zenn.dev/mryhryki/articles/${id}` : frontMatter.canonical ?? null;
+  const canonical = frontMatter.canonical ?? (type === "articles" ? `https://zenn.dev/mryhryki/articles/${id}` : null);
   const title = (frontMatter.title ?? "").trim();
 
   const post: Post = {
