@@ -7,7 +7,7 @@ zenn: .github/script/node_modules
 	cd .github/script/ && npm run zenn
 
 deploy: build
-	cd .github/script/ && npm run pages:archive && npm run deploy
+	cd .github/script/ && npm run deploy
 
 build: .github/script/node_modules
 	cd .github/script/ && npm run build
