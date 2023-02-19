@@ -47,7 +47,6 @@ export const renderBlogPost = (post: Post): string => {
       </head>
       <body className="wrapper dark-theme">
         <h1>{post.title}</h1>
-        <p style={{ textAlign: "right" }}>{post.createdAt.substring(0, 10)}</p>
         {post.canonical != null && (
           <p style={{ textAlign: "center", fontSize: "12px" }}>
             （※この記事は <a href={post.canonical}>別媒体に投稿した記事</a> のバックアップです。
@@ -61,6 +60,7 @@ export const renderBlogPost = (post: Post): string => {
             も設定しています）
           </p>
         )}
+        <p style={{ textAlign: "right" }}>{post.createdAt.substring(0, 10)}</p>
         <div dangerouslySetInnerHTML={{ __html: convert(post.markdown).html }} />
         {renderFooter(post)}
       </body>
