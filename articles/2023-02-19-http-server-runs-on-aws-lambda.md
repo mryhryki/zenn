@@ -8,6 +8,7 @@ canonical: https://mryhryki.medium.com/2023-02-19-http-server-runs-on-aws-lambda
 With aws-lambda-adapter, you can easily run an HTTP server on a container image on AWS Lambda.
 
 ```diff
+# Dockerfile
   ...
 + COPY --from=public.ecr.aws/awsguru/aws-lambda-adapter:0.6.1 /lambda-adapter /opt/extensions/lambda-adapter
   ...
