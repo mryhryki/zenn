@@ -8,9 +8,9 @@ on:
       title:
         required: true
         description: Title
-      # text:
-      #   required: true
-      #   description: Text
+      text:
+        required: false
+        description: Text
 
 concurrency:
   group: ${{ github.workflow }}
@@ -30,4 +30,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MEMO_TITLE: ${{ github.event.inputs.title }}
-          # MEMO_TEXT: ${{ github.event.inputs.text }}
+          MEMO_TEXT: ${{ github.event.inputs.text }}
