@@ -37,6 +37,7 @@ use axum::{
 };
 use serde::{Deserialize, Serialize};
 use std::net::SocketAddr;
+
 #[tokio::main]
 async fn main() {
     // initialize tracing
@@ -56,10 +57,12 @@ async fn main() {
         .await
         .unwrap();
 }
+
 // basic handler that responds with a static string
 async fn root() -> &'static str {
     "Hello, World!"
 }
+
 async fn create_user(
     // this argument tells axum to parse the request body
     // as JSON into a `CreateUser` type
@@ -74,11 +77,13 @@ async fn create_user(
     // with a status code of `201 Created`
     (StatusCode::CREATED, Json(user))
 }
+
 // the input to our `create_user` handler
 #[derive(Deserialize)]
 struct CreateUser {
     username: String,
 }
+
 // the output to our `create_user` handler
 #[derive(Serialize)]
 struct User {
@@ -100,6 +105,7 @@ WORKDIR /app
 COPY ./Cargo.toml /app/Cargo.toml
 COPY ./Cargo.lock /app/Cargo.lock
 COPY ./src /app/src
+
 RUN cargo build --release
 FROM debian:buster-slim
 WORKDIR /app
@@ -113,7 +119,7 @@ ENTRYPOINT ["/app/example-rust-server-on-lambda"]
 Add a step to the Dockerfile to copy aws-lambda-adapter. Just added this step, and the container image will be able to run on AWS Lambda.
 
 ```diff
-...
+  ...
   FROM debian:buster-slim
 + COPY --from=public.ecr.aws/awsguru/aws-lambda-adapter:0.6.1 /lambda-adapter /opt/extensions/lambda-adapter
   WORKDIR /app
@@ -135,9 +141,13 @@ $ aws ecr-public get-login-password --region us-east-1 |
 # Build container image
 $ export DOCKER_TAG="IMAGE_NAME:latest"
 $ docker build --tag "${DOCKER_TAG}" .
-Push to Amazon ECR
+```
+
+### Push to Amazon ECR
+
 Execute the following command to push to the your ECR repository.
 
+```shell
 $ export DOCKER_TAG="IMAGE_NAME:latest"
 $ export ECR_URI="${YOUR_AWS_ACCOUNT_ID}.dkr.ecr.ap-northeast-1.amazonaws.com/IMAGE_NAME:latest"
 $ aws ecr get-login-password --region ap-northeast-1 |
@@ -154,6 +164,7 @@ I wrote the following TypeScript code, but I’m a Pulumi beginner, so this code
 
 ```typescript
 import * as aws from "@pulumi/aws";
+
 const lambdaRole = new aws.iam.Role("example-rust-server-on-lambda-role", {
   assumeRolePolicy: {
     Version: "2012-10-17",
@@ -167,6 +178,7 @@ const lambdaRole = new aws.iam.Role("example-rust-server-on-lambda-role", {
     }],
   },
 });
+
 new aws.iam.RolePolicyAttachment(
   "example-rust-server-on-lambda-policy-attachment",
   {
@@ -174,6 +186,7 @@ new aws.iam.RolePolicyAttachment(
     policyArn: aws.iam.ManagedPolicies.AWSLambdaExecute,
   },
 );
+
 const lambdaFunction = new aws.lambda.Function(
   "example-rust-server-on-lambda",
   {
@@ -182,15 +195,19 @@ const lambdaFunction = new aws.lambda.Function(
     role: lambdaRole.arn,
   },
 );
+
 new aws.lambda.FunctionUrl("example-rust-server-on-lambda", {
   functionName: lambdaFunction.name,
   authorizationType: "NONE",
 }).functionUrl.apply(console.log);
-Using Lambda function URLs
-In this example, I use the Lambda function URLs. It provides an HTTP endpoint without using other services such as API Gateway.
 ```
 
-Result
+### Using Lambda function URLs
+
+In this example, I use the Lambda function URLs. It provides an HTTP endpoint without using other services such as API Gateway.
+
+## Result
+
 Accessing HTTP endpoints via cURL and returns 200 Success.
 
 ```shell
