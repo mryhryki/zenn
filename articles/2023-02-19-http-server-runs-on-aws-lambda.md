@@ -17,6 +17,7 @@ With aws-lambda-adapter, you can easily run an HTTP server on a container image 
 ## Introduction
 
 I read a Japanese article about how to convert a web app to serverless.
+
 https://aws.amazon.com/jp/builders-flash/202301/lambda-web-adapter/
 
 I‘m interested in Rust, I tried to run an HTTP server using Rust web framework on AWS Lambda.
