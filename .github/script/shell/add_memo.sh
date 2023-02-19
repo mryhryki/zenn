@@ -7,7 +7,7 @@ echo "MEMO_ID: ${SCRAP_ID}"
 BRANCH_NAME="memo/${MEMO_ID}"
 
 TITLE="${MEMO_TITLE:-"${MEMO_ID}"}"
-TEXT="$(printf '%s' "${MEMO_TEXT:-"(No Body)"}")"
+TEXT="$(printf '%s' "${MEMO_TEXT:-"(No Text)"}")"
 PR_TITLE="[MEMO] ${TITLE}"
 
 git checkout -b "${BRANCH_NAME}"
