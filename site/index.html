@@ -42,6 +42,7 @@
             --link-color-base: #5C1500;
             --link-color-on-footer: #FFE0B6;
             --text-color-base: #260600;
+            --text-color-accent: #FFBE79;
             --text-color-on-footer: #FFFAF2;
             --text-color-on-header: #FFFAF2;
         }
@@ -160,6 +161,10 @@
         .my-name {
             font-size: 16px;
             line-height: 20px;
+        }
+
+        .my-id > b, .my-name > b {
+            color: var(--text-color-accent);
         }
 
         .social-links {
@@ -334,8 +339,8 @@
                 <source type="image/png" srcset="./assets/image/icon_192x192.jpeg">
                 <img class="profile-icon" src="./assets/image/icon_192x192.jpeg" alt="profile icon">
             </picture>
-            <div class="my-id">mryhryki</div>
-            <div class="my-name">(Moriya Hiroyuki)</div>
+            <div class="my-id"><b>mryhryki</b></div>
+            <div class="my-name">(<b>M</b>o<b>r</b>i<b>y</b>a <b>H</b>i<b>r</b>o<b>y</b>u<b>ki</b>)</div>
         </h1>
         <div style="flex:1;"></div>
         <div class="social-links">
