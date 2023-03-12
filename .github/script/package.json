@@ -25,7 +25,7 @@
     "@mryhryki/datetime": "^0.1.1",
     "@mryhryki/lint": "^0.0.12",
     "@mryhryki/markdown": "^0.3.1",
-    "@types/node": "^18.14.6",
+    "@types/node": "^18.15.0",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@types/rss": "^0.0.30",
