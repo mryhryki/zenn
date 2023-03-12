@@ -1,5 +1,5 @@
-import { listAllPosts } from "../common/post";
-import { Post } from "../common/post/parse";
+import {listAllPosts} from "../common/post";
+import {Post} from "../common/post/parse";
 
 interface UrlInfo {
   url: URL;
@@ -8,19 +8,19 @@ interface UrlInfo {
 }
 
 const main = async () => {
-  const posts = (await listAllPosts()).filter(({ filePath }: Post) => filePath.includes("ukraine"));
+  const posts = (await listAllPosts()).filter(({filePath}: Post) => filePath.includes("ukraine"));
   const existsUrls = new Set<string>([]);
   const urlInfoList: UrlInfo[] = [];
 
   for (const post of posts) {
-    const { filePath, markdown } = post;
+    const {filePath, markdown} = post;
     let row = 1;
     for (const line of markdown.split("\n")) {
       for (const match of line.matchAll(UrlMatcher)) {
         const url = new URL(match[0].startsWith("http") ? match[0] : match[0].slice(1));
         if (!existsUrls.has(url.toString())) {
           existsUrls.add(url.toString());
-          urlInfoList.push({ url, file: `${filePath}#${row}`, status: 0 });
+          urlInfoList.push({url, file: `${filePath}#${row}`, status: 0});
         }
       }
       row++;
@@ -39,14 +39,14 @@ const main = async () => {
     urlInfoList
       .sort((info1, info2) => (info1.file < info2.file ? -1 : 1))
       .map(async (urlInfo) => {
-        const { url } = urlInfo;
+        const {url} = urlInfo;
         while (parallelRequestCount >= MaxParallelRequest || (nextRequest[url.origin] ?? 0) > getNow()) {
           await new Promise((resolve) => setTimeout(resolve, WaitMs));
         }
         nextRequest[url.origin] = getNow() + WaitMs;
         parallelRequestCount++;
         try {
-          const { status } = await validateUrl(url);
+          const {status} = await validateUrl(url);
           console.log(`Validate[${count++}]: ${url.toString()} => ${status}`);
           urlInfo.status = status;
         } catch (err) {
@@ -58,7 +58,7 @@ const main = async () => {
       })
   );
 
-  const invalidUrls = urlInfoList.filter(({ status }) => status !== 200);
+  const invalidUrls = urlInfoList.filter(({status}) => status !== 200);
   if (invalidUrls.length > 0) {
     console.log("[Invalid URLs]");
     invalidUrls.forEach((urlInfo) => {
@@ -73,6 +73,10 @@ const getNow = (): number => new Date().getTime();
 
 const UnsupportedHeadRequestOrigins = new Set(["https://www.recordchina.co.jp", "https://jp.yna.co.kr"]);
 const validateUrl = async (url: URL): Promise<{ status: number }> => {
+  if (url.host === "www.jiji.com") {
+    // １年程度立つとURLが404になるケースが多発したので使用しない
+    return ({status: 997});
+  }
   for (let i = 0; i < 3; i++) {
     try {
       const abortController = new AbortController();
@@ -86,12 +90,12 @@ const validateUrl = async (url: URL): Promise<{ status: number }> => {
         signal: abortController.signal,
       });
       clearTimeout(timeoutId);
-      return { status: response.status };
+      return {status: response.status};
     } catch (err) {
       console.warn("WARN:", url, err);
     }
   }
-  return { status: 998 };
+  return {status: 998};
 };
 
 const startTime = getNow();
