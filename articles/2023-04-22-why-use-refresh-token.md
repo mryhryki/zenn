@@ -1,5 +1,10 @@
 ---
 title: なぜリフレッシュトークンを使うのか？
+emoji: "✨"
+type: "tech" # tech: 技術記事 / idea: アイデア
+topics: ["OAuth2", "OAuth"]
+published: true
+canonical: https://zenn.dev/mryhryki/articles/2023-04-22-why-use-refresh-token
 ---
 
 # はじめに
