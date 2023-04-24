@@ -1,5 +1,5 @@
 ---
-title: なぜリフレッシュトークンを使うのか？
+title: なぜ OAuth でリフレッシュトークンを使うのか？
 emoji: "✨"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["OAuth2", "OAuth"]
