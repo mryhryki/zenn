@@ -28,5 +28,6 @@ jobs:
       - name: Add article
         run: bash ./.github/script/shell/add_article.sh
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ARTICLE_TITLE: ${{ github.event.inputs.title }}
           ARTICLE_TEXT: ${{ github.event.inputs.text }}
