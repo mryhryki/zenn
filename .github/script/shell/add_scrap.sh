@@ -13,8 +13,8 @@ TITLE="${SCRAP_TITLE:-"${SCRAP_ID}"}"
 TEXT="$(printf '%s' "${SCRAP_TEXT:-"(No Body)"}")"
 PR_TITLE="[SCRAP] ${TITLE}"
 
-echo "SCRAP_ID: ${SCRAP_ID}"
-git checkout -b "${BRANCH_NAME}"
+setup_git
+git switch -c "${BRANCH_NAME}" "origin/main"
 
 mkdir -p "${REPOSITORY_ROOT}/scrap/${SCRAP_DIR}"
 cat << EOS > "${REPOSITORY_ROOT}/scrap/${SCRAP_DIR}/${SCRAP_ID}.md"
@@ -26,7 +26,6 @@ ${TEXT}
 
 EOS
 
-setup_git
 git add -A
 git commit -m "${PR_TITLE}"
 git push --set-upstream origin "${BRANCH_NAME}"
