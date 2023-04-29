@@ -32,4 +32,4 @@ git push --set-upstream origin "${BRANCH_NAME}"
 gh pr create \
   --title "${PR_TITLE}" \
   --body "${TEXT}" \
-  --reviewer "mryhryki"
+  --assignee "mryhryki"
