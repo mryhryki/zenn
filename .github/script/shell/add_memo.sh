@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -e
+
 REPOSITORY_ROOT="$(git rev-parse --show-toplevel 2>/dev/null;)"
 source "${REPOSITORY_ROOT}/.github/script/shell/common/setup_git.sh"
 
@@ -27,7 +28,7 @@ EOS
 
 git add -A
 git commit -m "${PR_TITLE}"
-git push --set-upstream origin "${BRANCH_NAME}"
+git push origin "${BRANCH_NAME}"
 
 gh pr create \
   --title "${PR_TITLE}" \

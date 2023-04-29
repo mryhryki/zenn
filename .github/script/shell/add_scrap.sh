@@ -28,7 +28,7 @@ EOS
 
 git add -A
 git commit -m "${PR_TITLE}"
-git push --set-upstream origin "${BRANCH_NAME}"
+git push origin "${BRANCH_NAME}"
 
 gh pr create \
   --title "${PR_TITLE}" \
