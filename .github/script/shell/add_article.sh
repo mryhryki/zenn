@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
+set -e
 REPOSITORY_ROOT="$(git rev-parse --show-toplevel 2>/dev/null;)"
+source "${REPOSITORY_ROOT}/.github/script/shell/common/setup_git.sh"
 
 ARTICLE_ID="$(date +"%Y-%m-%d")-$(openssl rand -hex 2)"
 echo "ARTICLE_ID: ${ARTICLE_ID}"
@@ -20,7 +22,7 @@ ${TEXT}
 
 EOS
 
-source "${REPOSITORY_ROOT}/.github/script/shell/common/setup_git.sh"
+setup_git
 git add -A
 git commit -m "${PR_TITLE}"
 git push origin "${BRANCH_NAME}"

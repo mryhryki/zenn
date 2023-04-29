@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
+set -e
+
 REPOSITORY_ROOT="$(git rev-parse --show-toplevel 2>/dev/null;)"
+source "${REPOSITORY_ROOT}/.github/script/shell/common/setup_git.sh"
 
 SCRAP_DIR="$(date +"%Y-%m")"
 SCRAP_ID="$(date +"%Y%m%d-%H%M%S")"
@@ -23,7 +26,7 @@ ${TEXT}
 
 EOS
 
-source "${REPOSITORY_ROOT}/.github/script/shell/common/setup_git.sh"
+setup_git
 git add -A
 git commit -m "${PR_TITLE}"
 git push --set-upstream origin "${BRANCH_NAME}"

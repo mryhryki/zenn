@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
-REPOSITORY_ROOT="$(git rev-parse --show-toplevel 2>/dev/null;)"
 
+REPOSITORY_ROOT="$(git rev-parse --show-toplevel 2>/dev/null;)"
 source "${REPOSITORY_ROOT}/.github/script/shell/common/setup_git.sh"
 source "${REPOSITORY_ROOT}/.github/script/shell/common/create_pull_request.sh"
 
