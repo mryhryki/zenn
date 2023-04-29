@@ -11,7 +11,7 @@ PR_TITLE="[ARTICLE] ${TITLE}"
 
 git switch -c "${BRANCH_NAME}" "origin/main"
 
-cat << EOS > "${REPOSITORY_ROOT}/article//${ARTICLE_ID}.md"
+cat << EOS > "${REPOSITORY_ROOT}/article/${ARTICLE_ID}.md"
 ---
 title: ${TITLE}
 ---
