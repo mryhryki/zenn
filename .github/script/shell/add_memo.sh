@@ -12,7 +12,8 @@ TITLE="${MEMO_TITLE:-"${MEMO_ID}"}"
 TEXT="$(printf '%s' "${MEMO_TEXT:-"(No Text)"}")"
 PR_TITLE="[MEMO] ${TITLE}"
 
-git checkout -b "${BRANCH_NAME}"
+setup_git
+git switch -c "${BRANCH_NAME}" "origin/main"
 
 mkdir -p "${REPOSITORY_ROOT}/memo/${MEMO_DIR}"
 cat << EOS > "${REPOSITORY_ROOT}/memo/${MEMO_DIR}/${MEMO_ID}.md"
@@ -24,7 +25,6 @@ ${TEXT}
 
 EOS
 
-setup_git
 git add -A
 git commit -m "${PR_TITLE}"
 git push --set-upstream origin "${BRANCH_NAME}"
