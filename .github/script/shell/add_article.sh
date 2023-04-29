@@ -11,6 +11,7 @@ TITLE="${ARTICLE_TITLE:-"${ARTICLE_ID}"}"
 TEXT="${ARTICLE_TEXT:-" "}"
 PR_TITLE="[ARTICLE] ${TITLE}"
 
+setup_git
 git switch -c "${BRANCH_NAME}" "origin/main"
 
 cat << EOS > "${REPOSITORY_ROOT}/articles/${ARTICLE_ID}.md"
@@ -22,7 +23,6 @@ ${TEXT}
 
 EOS
 
-setup_git
 git add -A
 git commit -m "${PR_TITLE}"
 git push origin "${BRANCH_NAME}"
