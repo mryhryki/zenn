@@ -81,6 +81,9 @@ const validateUrl = async (url: URL): Promise<{ status: number }> => {
   if (url.host === "www.jiji.com") {
     // １年程度立つとURLが404になるケースが多発したので使用しない
     return { status: 997 };
+  } else if (url.host === "twitter.com") {
+    // 動作が不安定なのと消えるケースが多いので除外
+    return { status: 200 };
   }
   for (let i = 0; i < 3; i++) {
     try {
