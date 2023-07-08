@@ -72,7 +72,7 @@ await serve(handler, { addr: `:${PORT}` });
 実装した HTTP サーバーをローカルで動作確認するには、以下のコマンドで実行します。
 
 ```shell
-$ deno run --allow-net ./index.ts
+$ deno run --allow-net ./get_secret.ts
 ```
 
 あとは `curl` を実行して、以下のようなレスポンスが返ってくれば確認OKです。
