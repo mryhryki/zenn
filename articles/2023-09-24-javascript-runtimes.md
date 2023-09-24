@@ -23,7 +23,7 @@ JavaScript を実行する環境全般を指します。
 - [Deno](https://deno.com/)
 - [Bun](https://bun.sh/)
 
-## シェア
+## JavaScript Runtime のシェア
 
 State of JavaScript 2022 の調査結果によると、Node.js が圧倒的なシェアを持っているようです。
 
@@ -63,13 +63,9 @@ GitHub の調査によると、JavaScript は1位を直近8年間キープして
 
 ざっくり言うと、2007年頃の [C10K問題](https://atmarkit.itmedia.co.jp/news/analysis/200701/09/c10k.html) に対する解決策として [イベントループ](https://developer.mozilla.org/ja/docs/Web/JavaScript/Event_loop) を採用した Node.js が誕生したようです。
 
-[こちらのスライド](https://speakerdeck.com/yosuke_furukawa/dousitekounatuta-node-dot-jstoio-dot-jsfalsefen-lie-totong-he-falsexing-fang-korekaradoujin-hua-siteikufalseka?slide=27) によれば、EventLoop を実現するためのライブラリのもととなった [libebb](https://github.com/taf2/libebb) は（C10K という直接の記載こそないですが）その辺りを意識されて作られていたように見えます。
+[こちらのスライド](https://speakerdeck.com/yosuke_furukawa/dousitekounatuta-node-dot-jstoio-dot-jsfalsefen-lie-totong-he-falsexing-fang-korekaradoujin-hua-siteikufalseka?slide=27) によれば、EventLoop を実現するためのライブラリのもととなった [libebb](https://github.com/taf2/libebb) は（C10K という直接の記載こそないですが）その辺りを意識されて作られていたように見えます。EventLoop については [JavaScriptランタイム事情 2022冬 - Techtouch Developers Blog](https://tech.techtouch.jp/entry/state-of-js-runtime-2022-winter) という記事の解説がわかりやすかったです。
 
-イベントループなどに関して [JavaScriptランタイム事情 2022冬 - Techtouch Developers Blog](https://tech.techtouch.jp/entry/state-of-js-runtime-2022-winter) という記事もわかりやすいです。
-
-そういう背景で作られているので当然Webサーバーの用途として使えますが、それ以外でも JavaScript (TypeScript) のトランスパイルやバンドル、テストランナーなど、様々な用途で使われています。
-
-
+当然Webサーバーの用途として使えますが、それ以外でもトランスパイルやバンドル、テストランナーなど、様々な用途で使われています。
 
 ## Node.js v4 までの歴史
 
@@ -83,7 +79,7 @@ Node.js は当初 v0 系としてリリースされていましたが、色々�
 簡単に概要をまとめると、以下のような感じのようです。
 
 - 以下の３つのフェーズがある
-  - Current: `main` ブランチから破壊的変更 **ではない** 変更を積極的に取りいれる
+  - Current: `main` ブランチから破壊的変更ではない変更を積極的に取りいれる
   - Active LTS: LTS チームによって、適切かつ安定していると判断された変更を取り入れる
   - Maintenance: 基本的に重要なバグ修正とセキュリティ更新のみを取り入れる
 - メジャーバージョンが偶数のもののみ LTS に昇格する（奇数のものはならない）
@@ -94,17 +90,17 @@ Node.js は当初 v0 系としてリリースされていましたが、色々�
 余談ですが、[Node.js 16 の LTS サポートが 2024-04 から 2023-09-11 に変更される](https://nodejs.org/en/blog/announcements/nodejs16-eol) ということがありました。
 理由として、Node.js 16 は（本当は OpenSSL3 にしたかったがリリース日の関係で）OpenSSL1.1.1 に依存しており、そのサポートが 2023-09-11 までであるためでした。他の選択肢も検討されたようですが、LTS 終了日の変更（短縮）が最もリスクが低いと判断されたようです。
 
-こういう依存によって LTS のサポート期間が変わることもあるようです。逆に、こういう事態にも適切に議論をして対応を決めているんだなぁ、と感心しました。
+こういう事態にも適切に議論をして対応を決めているんだなぁ、と感心しました。
 
 
 
 # Deno
 
-Deno は Node.js の作者でもある Ryan Dahl 氏が Node.js に関する10の反省点から新たに作られた JavaScript ランタイムです。
+Deno は Node.js の作者でもある Ryan Dahl 氏が作られた JavaScript Runtime です。
 
 > Deno (/ˈdiːnoʊ/, pronounced dee-no) is a JavaScript, TypeScript, and WebAssembly runtime with secure defaults and a great developer experience. It's built on V8, Rust, and Tokio.
 >
-> https://docs.deno.com/runtime/manual
+> [Deno Runtime Quick Start | Deno Docs](https://docs.deno.com/runtime/manual)
 
 > Deno は JavaScript、TypeScript、WebAssembly ランタイムであり、セキュアなデフォルト設定と優れた開発者エクスペリエンスを備えている。V8、Rust、Tokioをベースに構築されている。
 >
@@ -148,6 +144,14 @@ Deno はデフォルトで様々なアクセスを禁止しており、[実行�
 $ deno run --allow-read="./sample.file" index.ts 
 ```
 
+また開発時など安全なコンテキストで実行できる場合は、`--allow-all` または `-A` というフラグを付けることで、すべての権限を許可することもできます。
+
+```bash
+$ deno run --allow-all index.ts 
+# ot
+$ deno run -A index.ts 
+```
+
 一時期 Vue.js などで使われている node-ipc というライブラリが話題になったりもしました。
 
 > 『このコードはロシアあるいはベラルーシのIPを持つユーザーを対象として、ファイルの内容を消去してハートの絵文字に上書きしてしまうというものでした。』
@@ -162,7 +166,7 @@ Deno は TypeScript, JSX を外部ライブラリ（`tsc`, `ts-node` など）�
 
 ## ツール内蔵
 
-Deno はフォーマッターやテストランナーなどのツールが含まれており、最初からコマンドで簡単に実行できるようになっています。
+Deno は [フォーマッターやテストランナーなどのツールが含まれており](https://fig.io/manual/deno)、コマンドで簡単に実行できるようになっています。
 
 ```bash
 $ deno fmt  # フォーマッター (例: prettier)
@@ -179,8 +183,6 @@ $ deno check # 型チェック (例: `tsx --noEmit`)
 
 Deno は、ECMAScript にのみ準拠しています。Node.js などで使われている CommonJS のモジュールシステムは使用できません。
 
-最近では ECMAScript Modules (ESModules) が主流で CommonJS は避けられる傾向にあると思いますが、それでも CommonJS で作られた過去の資産が使えないというのはデメリットにもなりえます。Deno のブログで [CommonJS is hurting JavaScript](https://deno.com/blog/commonjs-is-hurting-javascript) という投稿があり、2009年当時は CommonJS の必要性があり使われてきたが、今日では CommonJS には核心的な課題や ESModules との相互運用に課題があり、ESModules を使うことを勧めています。
-
 Web互換API もサポートしており `fetch` `crypto` `localStorage` などの API を使用できます。 [こちらのページ](https://deno.com/blog/every-web-api-in-deno) でサポートしている API を見ることができるようです。
 
 ## 独自のモジュールシステム
@@ -189,7 +191,14 @@ Deno は npm ではない独自のモジュールシステムを採用してい�
 
 ただし2022年8月に [大きな方針転換](https://deno.com/blog/changes) があり（[2019年](https://github.com/denoland/deno/pull/3319)頃から議論は始まっていたようです）、 [Node.js API](https://docs.deno.com/runtime/manual/node/compatibility) や [npm](https://docs.deno.com/runtime/manual/node/)、更に [package.json](https://docs.deno.com/runtime/manual/node/package_json) もサポートし、これまでの方法でも使うことができるようになってきています。（ただし前述の通り CommonJS は使えないというデメリットがあり、その場合は [esm.sh](http://esm.sh) などを経由するなどの工夫が必要になります）
 
-実際に Node.js のプロジェクトで deno で起動できるか試してみましたが、以下のように CommonJS に起因するエラーが発生しました。
+### 補足: CommonJS について
+
+最近では ECMAScript Modules (ESModules) が主流で、CommonJS が積極的に使われるケースは少ないと筆者は感じています。
+それでも CommonJS で作られた過去の資産は多く、それらが使えないというのはデメリットにもなりえます。
+
+Deno は、[CommonJS is hurting JavaScript](https://deno.com/blog/commonjs-is-hurting-javascript) というブログの投稿があり、2009年当時は CommonJS の必要性があり使われてきたが、今日では CommonJS には核心的な課題や ESModules との相互運用に課題があり、ESModules を使うことを推進しているようです。
+
+ちなみに、私が実際に使っている Node.js のプロジェクトで deno で起動できるか試してみましたが、以下のように CommonJS に起因するエラーが発生しました。
 
 ```shell
 $ deno --version
@@ -204,13 +213,16 @@ error: Uncaught (in promise) ReferenceError: require is not defined
 
 ## npm サポート
 
-Deno で npm ライブラリを import する時には、以下のように書きます。
+Deno は npm をサポートしており、npm ライブラリを使用することができます。
+以下のように記述するだけで、npm ライブラリを import できます。
 
 ```tsx
 import express from "npm:express@4";
 ```
 
-とある Issue を見て、Deno の npm サポートは考えられているなぁ、と思ったのでメモ。
+### 補足: npm のインポート方法
+
+Issue を見て、Deno の npm サポートは考えられているなぁ、と思ったのでメモ。
 
 > …
 > The `npm:` specifiers are simply another URL. This does not violate any standard.
@@ -224,10 +236,12 @@ const url = new URL('npm:express@4');
 console.log(url.protocol); // => npm:
 ```
 
+なので npm を特別扱いするのではなく、これまで通り URL によるインポートに `npm:` というスキーマを追加した、という位置づけになっているようです。
+
 ## Deno KV
 
 Deno KV は Deno に組み込まれた Key-Value Database です。
-現時点ではベータなので `--unstable` フラグが必要です。
+現時点ではベータ版なので `--unstable` フラグが必要です。
 
 [Deno KV Quick Start | Deno Docs](https://docs.deno.com/kv/manual) を参考に簡単なコードを作ってみました。
 
@@ -258,7 +272,7 @@ key-2: {
 [set()](https://deno.land/api@v1.37.0?s=Deno.Kv&unstable=&p=prototype.set) 時に有効期限を設定することも可能なようです。
 性能次第ですが、キャッシュやセッションなどでも使いやすいかもしれませんね。
 
-次で説明する Deno Deploy でも（まだ Open Beta ですが）同じコードで実行できるらしく、非常に魅力的だなと感じました。
+次で説明する Deno Deploy でも（まだベータ版ですが）同じコードで実行できるらしく、非常に魅力的だなと感じました。
 
 ## Deno Deploy
 
@@ -266,7 +280,7 @@ Deno Deploy は、グローバルに展開するサーバーレスな JavaScript
 
 有料プランもありますが、個人開発レベルであれば[無料で使うことができます](https://deno.com/deploy/pricing)。
 
-[npm サポートも（まだ Open Beta ですが）追加されました](https://deno.com/blog/npm-on-deno-deploy)ので、npm パッケージを使ってサービスを提供することもできるようになります。
+[npm サポートも（まだベータ版ですが）追加されました](https://deno.com/blog/npm-on-deno-deploy)ので、npm パッケージを使ってサービスを提供することもできるようになります。
 ただし `package.json` はおそらく対応していないようなので、Node.js などのプロジェクトをちょっと手直しして動かす、などというのは現時点では難しそうです。
 
 
@@ -280,9 +294,10 @@ Deno Deploy は、グローバルに展開するサーバーレスな JavaScript
 
 Deno Deploy のようなサービスを提供できるのも会社化されているためとも言えるかもしれませんね。
 
-## 外部サービスとの連携
+## 他ツールとの連携
 
-最近では、Jupyter notebook とのインテグレーションが v1.37 で入るようです。他のエコシステムとの連携にも重視しているのかもしれませんね。
+最近では、Jupyter notebook とのインテグレーションが v1.37 で入るようです。
+他のエコシステムとの連携による差別化も重視しているのかもしれないな、と私は思いました。
 
 Jupyter notebook がインストールされていれば、以下のコマンドを実行するだけでインストールされます。
 
@@ -319,7 +334,7 @@ Deno が Jupyter notebook でも使えるようになります。
 
 Bun は Node.js との互換性を重視しており、多くの Node.js のアプリケーションをそのまま動かすことができます。
 
-当然 package.json をサポートしており、npm ライブラリも使用できます。Node.js との互換性の状況は [こちらのページ](https://bun.sh/docs/runtime/nodejs-apis) にあります。
+package.json もサポートしており、npm ライブラリも使用できます。Node.js との互換性の状況は [こちらのページ](https://bun.sh/docs/runtime/nodejs-apis) にあります。
 
 また CommonJS と ESModules の両方にも対応しています。
 
@@ -364,7 +379,7 @@ Deno と同じく、Bun は [Oven](https://oven.sh/) という会社で開発さ
 
 ## Deno から Node.js への影響
 
-私の調べた限りだと、以下のような影響を与えているようです。
+私の調べた中で影響を与えていそうだなと感じるものをピックアップします。
 
 - パーミッションモデルの採用（Experimental）
   - [node/doc/changelogs/CHANGELOG_V20.md at main · nodejs/node](https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V20.md#permission-model)
@@ -377,26 +392,27 @@ Deno と同じく、Bun は [Oven](https://oven.sh/) という会社で開発さ
 
 Deno が Node.js の R&D (Deno で実装した機能を Node.js が取り込んで行くようなイメージ）になることを Ryan Dahl は恐れているらしいです。
 
-[TechFeed Experts Night#8 〜 JavaScriptランタイム戦争最前線 - TechFeed](https://techfeed.io/events/techfeed-experts-night-8) のアフタートークで聞きました。
+（[TechFeed Experts Night#8 〜 JavaScriptランタイム戦争最前線 - TechFeed](https://techfeed.io/events/techfeed-experts-night-8) のアフタートークで聞きました）
 
 <!-- Memo: https://www.notion.so/mryhryki/2022-11-16-Daily-Record-2022-11-16-e7cd467fdc364c019ea80ac27f9c40d8?pvs=4#991e85a9d11743ccb139c10174335a90 -->
 
 ## Bun から Deno への影響
 
-私の調べた限りだと、以下のような影響を与えているようです。
+こちらも、私の調べた中で影響を与えていそうだなと感じるものをピックアップします。
 
 ### 実行速度 
 
 Deno は元々意識されていたが、更に高まった感じがします。
 
-[進化するDeno in 2022 - npm互換性、パフォーマンス、開発者体験の向上など - TechFeed](https://techfeed.io/entries/638d553d9317356b43b0c428) でも出ていましたし、[同イベント](https://techfeed.io/events/techfeed-experts-night-8) のアフタートークで裏話として [Unsafe Rust](https://doc.rust-jp.rs/book-ja/ch19-01-unsafe-rust.html) を使って更に高速化おｓしているという話を聞けました。
+[進化するDeno in 2022 - npm互換性、パフォーマンス、開発者体験の向上など - TechFeed](https://techfeed.io/entries/638d553d9317356b43b0c428) でも出ていました。
+また [同イベント](https://techfeed.io/events/techfeed-experts-night-8) のアフタートークで裏話として [Unsafe Rust](https://doc.rust-jp.rs/book-ja/ch19-01-unsafe-rust.html) を使って更に高速化をしている部分もあるという話を聞きました。
 
 ### npm サポートなど
 
-Bun という Node.js との互換性を重視したランタイムが出てきたことで、Deno も npm サポートなどの互換性を強化しているように感じました。
+Bun という Node.js との互換性を重視した JavaScript Runtime が出てきたことで、Deno も npm サポートなどの互換性を強化しているように感じました。
 [Big Changes Ahead for Deno](https://deno.com/blog/changes)
 
-## 各ランタイムで使われている技術の違い
+## 各 JavaScript Runtime で使われている技術の違い
 
 - Node.js: C++, V8
 - Deno: Rust, V8
@@ -452,7 +468,7 @@ Bun は [JavaScriptCore](https://developer.apple.com/documentation/javascriptcor
 
 ## API互換性 (WinterCG)
 
-WinterCG (Web-interoperable Runtimes Community Group) は、非Webブラウザを中心としたJavaScriptランタイムにおける相互運用性の改善を目指したコミュニティグループです。
+WinterCG (Web-interoperable Runtimes Community Group) は、非Webブラウザを中心とした JavaScript Runtime における相互運用性の改善を目指したコミュニティグループです。
 これにより、非Webブラウザ環境でのJavaScriptの実行環境の互換性が向上することが期待されます。
 
 - https://wintercg.org/
@@ -489,7 +505,7 @@ Deno しかできない点としては、パーミッションを使った実行
 
 デメリットとしては、最近は Node.js や npm との互換性が高まってきてはいますが、過去との互換性で問題が発生する可能性はあると思います。
 
-またランタイムそのものではないですが、Deno Deploy が使えるというのも大きな魅力だと思います。GitHub リポジトリと連携した時のリリース体験はとても良いです。npm サポートや Deno KV を使える（ただし執筆時点でオープンベータな点に注意）ので、良い選択肢になるのではないかと思います。
+またランタイムそのものではないですが、Deno Deploy が使えるというのも大きな魅力だと思います。GitHub リポジトリと連携した時のリリース体験はとても良いです。npm サポートや Deno KV を使える（ただし執筆時点でベータ版であることに注意）ので、良い選択肢になるのではないかと思います。
 
 ## Bun
 
@@ -511,7 +527,7 @@ Node.js を追う Deno, Bun も Node.js API や npm サポートなど、でき�
 
 ### Workerd
 
-Cloudflare Workers で使用されている JavaScript ランタイムが GitHub で公開されています。
+Cloudflare Workers で使用されている JavaScript Runtime が GitHub で公開されています。
 JavaScript エンジンは V8 を使用しているようです。
 
 https://github.com/cloudflare/workerd
