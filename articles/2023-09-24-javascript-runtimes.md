@@ -350,7 +350,7 @@ Deno 同様に TypeScript, JSX をサポートしています。
 
 ## Oven
 
-Deno と同じく、Bun は [Oven](https://oven.sh/) という会社で開発されています。Oven で Bun を焼く、というちょっと洒落た感じになっていますね。
+Deno と同じく、Bun は [Oven](https://oven.sh/) という会社を設立し開発されています。Oven で Bun を焼く、というちょっと洒落た感じになっていますね。
 
 ちなみに [Bun の発表後に Oven 社ができた](https://www.publickey1.jp/blog/22/javascriptbun9ovenci.html) ので、最初は Bun が Oven を作るみたいな構図でした。（個人的にちょっとおもしろいと感じてました）
 
@@ -361,19 +361,20 @@ Deno と同じく、Bun は [Oven](https://oven.sh/) という会社で開発さ
 ## 比較表
 
 ある程度特徴として比較できるものを表でまとめます。
+全機能を網羅することを目的としているのではなく、比較しやすい点をピックアップしている点にご注意ください。
 
-|                  | Node.js                                                                           | Deno                  | Bun                        |
-|------------------|-----------------------------------------------------------------------------------|-----------------------|----------------------------|
-| CommonJS         | Support                                                                           | -                     | Support                    |
-| ECMAScript       | Support                                                                           | Support               | Support                    |
-| Initial Release  | 2015-10-08 ([v4.0](https://nodejs.org/en/blog/release/v4.0.0))                    | 2020-05-14 (v1.0)     | 2023-09-08 (v1.0)          |
-| TypeScript & JSX | -                                                                                 | Support               | Support                    |
-| Test Runner      | ◯ [v20~](https://nodejs.dev/en/api/v20/test/)                                     | ◯                     | ◯                          |
-| Linter           | -                                                                                 | ◯                     | -                          |
-| Formatter        | -                                                                                 | ◯                     | -                          |
-| Permission       | [Experimental](https://nodejs.org/api/permissions.html#process-based-permissions) | Support               | -                          |
-| Managed Service  | -                                                                                 | Deno Deploy           | -                          |
-| OS               | macOS, Linux, Windows                                                             | macOS, Linux, Windows | macOS, Linux (Windows `*`) |
+|                  | Node.js                                                                           | Deno                  | Bun                         |
+|------------------|-----------------------------------------------------------------------------------|-----------------------|-----------------------------|
+| CommonJS         | Support                                                                           | -                     | Support                     |
+| ECMAScript       | Support                                                                           | Support               | Support                     |
+| Initial Release  | 2015-10-08 ([v4.0](https://nodejs.org/en/blog/release/v4.0.0))                    | 2020-05-14 (v1.0)     | 2023-09-08 (v1.0)           |
+| TypeScript & JSX | -                                                                                 | Support               | Support                     |
+| Test Runner      | ◯ [v20~](https://nodejs.dev/en/api/v20/test/)                                     | ◯                     | ◯                           |
+| Linter           | -                                                                                 | ◯                     | -                           |
+| Formatter        | -                                                                                 | ◯                     | -                           |
+| Permission       | [Experimental](https://nodejs.org/api/permissions.html#process-based-permissions) | Support               | -                           |
+| Managed Service  | -                                                                                 | Deno Deploy           | -                           |
+| OS               | macOS, Linux, Windows                                                             | macOS, Linux, Windows | macOS, Linux (Windows `*1`) |
 
 `*1` Bun 1.0 リリース時に Windows が近々サポートされるとアナウンスされていました。現在は Experimental です。
 
@@ -409,8 +410,7 @@ Deno は元々意識されていたが、更に高まった感じがします。
 
 ### npm サポートなど
 
-Bun という Node.js との互換性を重視した JavaScript Runtime が出てきたことで、Deno も npm サポートなどの互換性を強化しているように感じました。
-[Big Changes Ahead for Deno](https://deno.com/blog/changes)
+Bun という Node.js との互換性を重視した JavaScript Runtime が出てきたことで、[Deno も npm サポートなどの互換性を強化している](https://deno.com/blog/changes) と私は感じました。
 
 ## 各 JavaScript Runtime で使われている技術の違い
 
