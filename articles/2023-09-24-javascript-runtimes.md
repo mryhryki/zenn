@@ -476,7 +476,7 @@ WinterCG (Web-interoperable Runtimes Community Group) は、非Webブラウザ�
 - [Web相互運用性JavaScriptランタイムコミュニティグループ](https://blog.cloudflare.com/ja-jp/introducing-the-wintercg-ja-jp/)
 - [Deno、Node.js、Cloudflare Workersなど、非Webブラウザ系JavaScriptランタイムのコード互換を目指す「Web-interoperable Runtimes Community Group」（WinterCG）が発足 － Publickey](https://www.publickey1.jp/blog/22/denonodejscloudflare_workerswebjavascriptweb-interoperable_runtimes_community_groupwintercg.html)
 
-Node.js API への互換性が高まっているので、Node.js API をベースに互換性を高めていくように鳴なかもしれません。
+ただ最近は Node.js API への互換性が高まっているので、Node.js API をベースに互換性を高めていくように鳴なかもしれません。
 
 - [Cloudflare WorkersがNode.js API互換の提供を発表。Bun、Denoなどに続く対応により、Node.js APIはサーバサイドJavaScriptの事実上の標準になるか － Publickey](https://www.publickey1.jp/blog/23/cloudflare_workersnodejs_apibundenonodejs_apijavascript.html)
 
@@ -485,15 +485,15 @@ Node.js API への互換性が高まっているので、Node.js API をベー�
 あくまで個人的な意見ですので、参考程度にご覧ください。
 一言で表すと、以下のような感じになるかと思います。
 
-- `Node.js`: 信頼と実績を重視する。過去の資産を問題なく使いたい。
-- `Deno`: セキュリティ・開発体験を重視する。あるいは Deno Deploy を使いたい。
-- `Bun`: 実行速度を重視する。`Deno` よりもより `Node.js` との互換性を重視したい。
+- `Node.js`: 実績重視。過去の資産を問題なく使いたい。
+- `Deno`: セキュリティ・開発体験を重視。Deno Deploy を使いたい。
+- `Bun`: パフォーマンス重視。
 
 ## Node.js
 
 まだまだ主流の環境であり実績も豊富なので、Production 環境で使う第一選択肢ではないかと思います。
 
-また、Deno, Bun も Node.js との互換性を高めているとはいえ、使えないケースが出てきた時はやはり Node.js を使うことになるのではないかと思います。
+また、Deno, Bun も Node.js との互換性を高めているとはいえ、ライブラリが使えないケースが出てきた時など互換性に問題が生じた場合はやはり Node.js を使うことになるのではないかと思います。
 
 現時点では最も普及し実績もある JavaScript Runtime であり、Node.js をベースに考え、使える場合は Deno や Bun を使うという感じになるのではないかと思います。
 
@@ -503,9 +503,9 @@ Deno はセキュリティを最初から導入したり、ESModules のみ対�
 
 Deno しかできない点としては、パーミッションを使った実行時の高いセキュリティが必要な場合は第一選択肢になるのではないかと思います。また、開発体験を重視しており、例えば開発に使われるツール（テスト、フォーマッターなど）が含まれているので、特に新規に開発する場合には有力な選択肢の一つとなるかもしれません。
 
-デメリットとしては、最近は Node.js や npm との互換性が高まってきてはいますが、過去との互換性で問題が発生する可能性はあると思います。
+またランタイムそのものではないですが、Deno Deploy が使えるというのも大きな魅力だと思います。GitHub リポジトリと連携した時のリリース体験はとても良いです。npm サポートや Deno KV を使える（ただし執筆時点でベータ版であることに注意）なども含め、良い選択肢になるのではないかと思います。
 
-またランタイムそのものではないですが、Deno Deploy が使えるというのも大きな魅力だと思います。GitHub リポジトリと連携した時のリリース体験はとても良いです。npm サポートや Deno KV を使える（ただし執筆時点でベータ版であることに注意）ので、良い選択肢になるのではないかと思います。
+デメリットとしては、最近は Node.js や npm との互換性が高まってきてはいるものの、互換性に関する問題が発生する可能性はあると思います。Bun と比較してもこの領域で問題が発生する可能性は高いのではないかと思います。
 
 ## Bun
 
@@ -517,9 +517,9 @@ Bun は現状の JavaScript (+TypeScript) の環境をまるっとサポート�
 
 # おわりに
 
-主要な JavaScript Runtime が３つあると、それぞれが影響を与えて改善されている感じがしますね。JavaScript を使う開発者としては、とても嬉しいです。
+主要な JavaScript Runtime が３つもあると、それぞれが影響を与えて改善されている感じがしますね。JavaScript を使う開発者としては、とても嬉しいです。
 
-Node.js を追う Deno, Bun も Node.js API や npm サポートなど、できることが似通ってきている印象を受けます。今後は、実行スピードやエコシステムが競争のポイントとなってくるのではないかな、と思います。
+Node.js を追う Deno, Bun も Node.js API や npm サポートなど、できることが似通ってきている印象を受けます。今後は、実行スピードや他のエコシステムとの連携なども競争のポイントとなってくるのではないかな、と思います。
 
 王者 Node.js に対し、Deno はセキュリティや開発体験、Bun は互換性や実行速度を武器に追いかける形がしばらく続くのではないかと思います。１年後とかにどうなっているのか楽しみですね。
 
@@ -527,17 +527,15 @@ Node.js を追う Deno, Bun も Node.js API や npm サポートなど、でき�
 
 ### Workerd
 
-Cloudflare Workers で使用されている JavaScript Runtime が GitHub で公開されています。
+Cloudflare Workers で使用されている workerd という JavaScript Runtime が [GitHub で公開されています](https://github.com/cloudflare/workerd)。
 JavaScript エンジンは V8 を使用しているようです。
 
-https://github.com/cloudflare/workerd
-
 - [Cloudflare WorkersのJavaScript/WASMランタイム「workerd」がオープンソースで公開。NanoservicesやHomogeneous deploymentなど新技術を実装 － Publickey](https://www.publickey1.jp/blog/22/cloudflare_workersjavascriptwasmworkerdnanoserviceshomogeneous_deployment.html)
-- [Cloudflare の JavaScript ランタイム「workerd」を動かしてみる](https://mryhryki.com/blog/article/2022-09-29-workerd.html) (私が書いた記事)
+- [Cloudflare の JavaScript ランタイム「workerd」を動かしてみる](https://zenn.dev/mryhryki/articles/2022-09-29-workerd) (私が書いた記事)
 
 ### "JavaScript" は Oracle の商標
 
-Sun を買収した Oracle が "JavaScript" の商標を持っているらしい。
+Sun を買収した Oracle が "JavaScript" の商標を持っているらしいです。
 たぶん手放さないと思うけど、手放したら個人的には Oracle にちょっと好感持てそう。
 
 - [Denoのライアン・ダール氏「親愛なるオラクル殿、どうかJavaScriptの商標を手放して」と呼びかけ － Publickey](https://www.publickey1.jp/blog/22/denojavascript.html)
