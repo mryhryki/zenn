@@ -63,7 +63,7 @@ GitHub の調査によると、JavaScript は1位を直近8年間キープして
 
 ざっくり言うと、2007年頃の [C10K問題](https://atmarkit.itmedia.co.jp/news/analysis/200701/09/c10k.html) に対する解決策として [イベントループ](https://developer.mozilla.org/ja/docs/Web/JavaScript/Event_loop) を採用した Node.js が誕生したようです。
 
-[こちらのスライド](https://speakerdeck.com/yosuke_furukawa/dousitekounatuta-node-dot-jstoio-dot-jsfalsefen-lie-totong-he-falsexing-fang-korekaradoujin-hua-siteikufalseka?slide=27) によれば、EventLoop を実現するためのライブラリのもととなった [libebb](https://github.com/taf2/libebb) は（C10K という直接の記載こそないですが）その辺りを意識されて作られていたように見えます。EventLoop については [JavaScriptランタイム事情 2022冬 - Techtouch Developers Blog](https://tech.techtouch.jp/entry/state-of-js-runtime-2022-winter) という記事の解説がわかりやすかったです。
+[こちらのスライド](https://speakerdeck.com/yosuke_furukawa/dousitekounatuta-node-dot-jstoio-dot-jsfalsefen-lie-totong-he-falsexing-fang-korekaradoujin-hua-siteikufalseka?slide=27) によれば、EventLoop を実現するためのライブラリのもととなった [libebb](https://github.com/taf2/libebb) は（C10K という直接の記載こそないですが）その辺りを意識されて作られていたように見えます。EventLoop については [JavaScriptランタイム事情 2022冬 - Techtouch Developers Blog](https://tech.techtouch.jp/entry/state-of-js-runtime-2022-winter) や [動画で分かる！ブラウザと Node.js の Event Loop 解説](https://zenn.dev/yuhua_shi/articles/331569ef2fe886) などの解説がわかりやすかったです。
 
 当然Webサーバーの用途として使えますが、それ以外でもトランスパイルやバンドル、テストランナーなど、様々な用途で使われています。
 
