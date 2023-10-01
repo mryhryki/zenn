@@ -378,6 +378,10 @@ Deno と同じく、Bun は [Oven](https://oven.sh/) という会社を設立し
 
 `*1` Bun 1.0 リリース時に Windows が近々サポートされるとアナウンスされていました。現在は Experimental です。
 
+### 2023-10-01 追記
+
+[Deno vs. Bun vs. Node.js: A Feature Comparison](https://hexagon.56k.guru/posts/deno-vs-bun-vs-node/) という記事によくまとまっている比較表がありましたので追記します。
+
 ## Deno から Node.js への影響
 
 私の調べた中で影響を与えていそうだなと感じるものをピックアップします。
