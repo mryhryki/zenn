@@ -1,5 +1,5 @@
 ---
-title: JavaScript Runtime (Node.js, Deno, Bun)
+title: JavaScript Runtimes (Node.js, Deno, Bun)
 emoji: "🏃"
 type: "tech"
 topics: ["JavaScript", "Node.js", "Deno", "Bun"]
