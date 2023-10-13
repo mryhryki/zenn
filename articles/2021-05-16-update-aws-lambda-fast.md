@@ -182,7 +182,7 @@ esbuild でのビルド設定を `package.json` にこんな感じで追記し�
 {
   ...
   "scripts": {
-    "build": "esbuild src/index.ts --outfile=dist/index.js --bundle --minify --platform=node --target=node14",
+    "build": "esbuild src/datetime.ts --outfile=dist/index.js --bundle --minify --platform=node --target=node14",
   ...
 }
 ```
@@ -193,7 +193,7 @@ esbuild でのビルド設定を `package.json` にこんな感じで追記し�
 $ time npm run build
 
 > build
-> esbuild src/index.ts --outfile=dist/index.js --bundle --minify --platform=node --target=node14
+> esbuild src/datetime.ts --outfile=dist/index.js --bundle --minify --platform=node --target=node14
 
 
   dist/index.js  5.4mb ⚠️
@@ -241,7 +241,7 @@ Lambda にアップロードするための Zip 化する処理も合わせて�
 {
   ...
   "scripts": {
-    "build": "esbuild src/index.ts --outfile=dist/index.js --bundle --minify --platform=node --target=node14",
+    "build": "esbuild src/datetime.ts --outfile=dist/index.js --bundle --minify --platform=node --target=node14",
     "deploy": "run-s build zip update",
     "deploy:aws": "node scripts/update_lambda.js",
     "zip": "zip scripts/lambda.zip dist/index.js",
@@ -259,7 +259,7 @@ $ time npm run deploy
 
 
 > build
-> esbuild src/index.ts --outfile=dist/index.js --bundle --minify --platform=node --target=node14
+> esbuild src/datetime.ts --outfile=dist/index.js --bundle --minify --platform=node --target=node14
 
 
   dist/index.js  5.4mb ⚠️
@@ -333,7 +333,7 @@ esbuild は型チェックを飛ばしているので、IDE でチェックし�
 {
   ...
   "scripts": {
-    "typecheck": "tsc src/index.ts --noEmit",
+    "typecheck": "tsc src/datetime.ts --noEmit",
     ...
 }
 ```

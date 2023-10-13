@@ -141,15 +141,15 @@ Deno はデフォルトで様々なアクセスを禁止しており、[実行�
 一部分のみ許可することも可能です。（例: `./sample.file` というファイルのみ読み取りアクセスを許可する場合）
 
 ```bash
-$ deno run --allow-read="./sample.file" index.ts 
+$ deno run --allow-read="./sample.file" datetime.ts 
 ```
 
 また開発時など安全なコンテキストで実行できる場合は、`--allow-all` または `-A` というフラグを付けることで、すべての権限を許可することもできます。
 
 ```bash
-$ deno run --allow-all index.ts 
+$ deno run --allow-all datetime.ts 
 # ot
-$ deno run -A index.ts 
+$ deno run -A datetime.ts 
 ```
 
 一時期 Vue.js などで使われている node-ipc というライブラリが話題になったりもしました。
@@ -256,7 +256,7 @@ console.log('key-2:', await kv.get(["key", 2]));
 ```
 
 ```shell
-$ deno run --unstable index.ts 
+$ deno run --unstable datetime.ts 
 key-1: {
   key: [ "key", 1 ],
   value: { data: "2618a3e8-bb5a-41d9-b4d9-40adaf8cc397" },

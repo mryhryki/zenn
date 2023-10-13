@@ -72,7 +72,7 @@ await serve(handler, { addr: `:${PORT}` });
 実装した HTTP サーバーをローカルで動作確認するには、以下のコマンドで実行します。
 
 ```shell
-$ deno run --allow-net ./index.ts
+$ deno run --allow-net ./datetime.ts
 ```
 
 あとは `curl` を実行して、以下のようなレスポンスが返ってくれば確認OKです。
@@ -171,11 +171,11 @@ Deno Deploy が使えない時のために、汎用的に使える Docker イメ
 
 ```dockerfile
 FROM denoland/deno:1.17.1
-COPY ./index.ts ./index.ts
+COPY ./datetime.ts ./datetime.ts
 
 EXPOSE 8080
-RUN deno cache ./index.ts
-CMD ["run", "--allow-net", "./index.ts"]
+RUN deno cache ./datetime.ts
+CMD ["run", "--allow-net", "./datetime.ts"]
 ```
 
 あとはビルドして、イメージを適当なサービスで走らせればOKです。

@@ -109,7 +109,7 @@ CloudFront average response time: 253.98 ms
 ※フォーマットは `[実行回数] Res: [レスポンスコード] ([レスポンス時間] ms) [Lambda: [関数インスタンスを表す乱数], Random: [リクエストごとに変わる乱数]]` になっています。
 
 ```
-$  deno run --allow-net --allow-read ./measure/index.ts
+$  deno run --allow-net --allow-read ./measure/datetime.ts
 
 URL[https://r3hh44vkbc.execute-api.us-east-1.amazonaws.com/dev/example]
 001 Res: 200 (280 ms) [Lambda: 26583923, Random: 14358241]
@@ -353,7 +353,7 @@ CloudFront average response time: 40.45 ms
 ※フォーマットは `[実行回数] Res: [レスポンスコード] ([レスポンス時間] ms) [Lambda: [関数インスタンスを表す乱数], Random: [リクエストごとに変わる乱数]]` になっています。
 
 ```
-$  deno run --allow-net --allow-read ./measure/index.ts
+$  deno run --allow-net --allow-read ./measure/datetime.ts
 
 URL[https://qrv2oo3r2f.execute-api.ap-northeast-1.amazonaws.com/dev/example]
 001 Res: 200 (35 ms) [Lambda: 49586345, Random: 46328809]
