@@ -36,7 +36,7 @@ https://github.com/mryhryki/markdown-preview/blob/043830d7b9a6a43696e8f921554b37
 
 ## actions/checkout
 
-[actions/checkout](https://github.com/actions/checkout) に `with.token` で、リポジトリに設定している Personal Access Token を使用しています。
+[actions/checkout](https://github.com/actions/checkout) の `with.token` を使い、リポジトリに設定している Personal Access Token を使用しています。
 何も指定しない場合は、実行毎に付与される `GITHUB_TOKEN` が使われるようです。
 
 ```yaml
@@ -50,7 +50,7 @@ https://github.com/mryhryki/markdown-preview/blob/043830d7b9a6a43696e8f921554b37
 
 この辺の事情は、リポジトリの設定によって異なります。`with.token` を指定しなくても問題ない場合もあるかもしれません。
 
-[actions/checkout](https://github.com/actions/checkout) が Git の設定をやってくれているの `git` コマンドでいろいろな設定をしなくて良いので楽です。
+[actions/checkout](https://github.com/actions/checkout) が Git の設定をやってくれているので、`git` コマンドを使った設定をしなくて良いので楽です。
 
 ## package.json のアップデート
 
@@ -79,6 +79,10 @@ $ git push --tags
 ```shell
 gh release create "${VERSION}" --generate-notes
 ```
+
+このような感じで、リリースノートが自動的に作成されます。
+
+https://github.com/mryhryki/markdown-preview/releases/tag/v0.5.9
 
 ちなみに、GitHub 上にある `Generate release notes` というボタンと同じ内容です。
 
