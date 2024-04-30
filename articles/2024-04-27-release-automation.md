@@ -50,7 +50,7 @@ https://github.com/mryhryki/markdown-preview/blob/043830d7b9a6a43696e8f921554b37
 
 この辺の事情は、リポジトリの設定によって異なります。`with.token` を指定しなくても問題ない場合もあるかもしれません。
 
-[actions/checkout](https://github.com/actions/checkout) が Git の設定をやってくれているので、`git` コマンドを使った設定をしなくて良いので楽です。
+[actions/checkout](https://github.com/actions/checkout) が Git の設定をやってくれるため、自分で `git` コマンドを使った設定をしなくて良くなり楽です。
 
 ## package.json のアップデート
 
@@ -59,7 +59,7 @@ https://github.com/mryhryki/markdown-preview/blob/043830d7b9a6a43696e8f921554b37
 
 現在のバージョンを確認する必要がなく、GitHub Actions を起動する際にバージョンアップの種類を選択するだけで良くなります。
 
-![Select udpate type](https://mryhryki.com/file/20240425223405-1bBiT5otb8c4XS-mhcbKUqj9P1X1Ey6SrwHHGOXRLwI.webp)
+![Select update type](https://mryhryki.com/file/20240425223405-1bBiT5otb8c4XS-mhcbKUqj9P1X1Ey6SrwHHGOXRLwI.webp)
 
 ## Git へのプッシュ
 
