@@ -4,7 +4,7 @@ emoji: "🎉"
 type: "tech"
 topics: ["GitHub Actions", "npm", "gh"]
 published: true
-canonical: https://zenn.dev/mryhryki/articles/2024-04-xx-auth0-organizations
+canonical: https://zenn.dev/mryhryki/articles/2024-04-27-release-automation
 ---
 
 # はじめに
