@@ -9,8 +9,10 @@ canonical: "https://zenn.dev/mryhryki/articles/2025-03-26-url-pattern-api"
 
 # はじめに
 
-Node Weekly というメールマガジンで URLPattern という API が Node.js 23.8.0 でリリースされたようです。
-この記事は URLPattern API を試したメモです。
+Node Weekly というメールマガジンで、URLPattern という API が Node.js 23.8.0 でリリースされたことを知りました。
+個人的に待ち望んでいたものだったので色々試してみました。
+この記事は、その結果をまとめたメモです。
+
 API の詳細は以下の参考記事を参照してください。
 
 ## 参照記事
@@ -314,6 +316,9 @@ Deno.serve(async (req) => {
 
 ```shell
 $ curl http://localhost:8000/article/1324
+[Sample] Article: 1324
+
+$ curl -XPOST http://localhost:8000/article/1324
 [Sample] Article: 1324
 
 $ curl http://localhost:8000/user/5678
