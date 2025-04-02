@@ -26,9 +26,7 @@ https://gigazine.net/news/20201109-ffmpeg-wasm/
 
 # 作ったWebアプリ
 
-~~https://video-to-gif.vercel.app/~~
-
-https://mryhryki.com/app/video-to-gif/index.html
+https://mryhryki-video-to-gif.vercel.app/
 
 ソースコードはこちら。
 
