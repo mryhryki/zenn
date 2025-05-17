@@ -6,7 +6,6 @@ topics: ["JavaScript", "Node.js", "Deno", "Bun"]
 published: true
 canonical: https://zenn.dev/mryhryki/articles/2023-09-24-javascript-runtimes
 ---
-<!-- https://www.notion.so/mryhryki/fc2886cb306c46e4a6478ab48b03dacd -->
 
 # はじめに
 
@@ -398,8 +397,6 @@ Deno と同じく、Bun は [Oven](https://oven.sh/) という会社を設立し
 Deno が Node.js の R&D (Deno で実装した機能を Node.js が取り込んで行くようなイメージ）になることを Ryan Dahl は恐れているらしいです。
 
 （[TechFeed Experts Night#8 〜 JavaScriptランタイム戦争最前線 - TechFeed](https://techfeed.io/events/techfeed-experts-night-8) のアフタートークで聞きました）
-
-<!-- Memo: https://www.notion.so/mryhryki/2022-11-16-Daily-Record-2022-11-16-e7cd467fdc364c019ea80ac27f9c40d8?pvs=4#991e85a9d11743ccb139c10174335a90 -->
 
 ## Bun から Deno への影響
 
