@@ -1,10 +1,13 @@
 ---
-title: "CloudFront 経由で API Gateway を呼び出した場合のレスポンス時間の変化を調査する"
+title: "\"CloudFront 経由で API Gateway を呼び出した場合のレスポンス時間の変化を調査する\""
 emoji: "🔍"
-type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["AWS", "APIGateway", "CloudFront"]
+type: "tech"
+topics:
+  - "AWS"
+  - "APIGateway"
+  - "CloudFront"
 published: true
-canonical: https://zenn.dev/mryhryki/articles/2021-04-30-api-gateway-with-cloudfront
+canonical: "https://zenn.dev/mryhryki/articles/2021-04-30-api-gateway-with-cloudfront"
 ---
 
 # はじめに

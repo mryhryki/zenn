@@ -1,10 +1,11 @@
 ---
-title: "AWS Signature V4 を TypeScript でスクラッチ実装してみた"
+title: "\"AWS Signature V4 を TypeScript でスクラッチ実装してみた\""
 emoji: "✍️"
-type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["AWS"]
+type: "tech"
+topics:
+  - "AWS"
 published: true
-canonical: https://zenn.dev/mryhryki/articles/2022-08-15-aws-signature-v4
+canonical: "https://zenn.dev/mryhryki/articles/2022-08-15-aws-signature-v4"
 ---
 
 # はじめに

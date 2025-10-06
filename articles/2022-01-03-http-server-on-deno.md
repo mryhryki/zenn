@@ -1,10 +1,12 @@
 ---
-title: "Deno で HTTP サーバーを手軽にインターネットへ公開する"
+title: "\"Deno で HTTP サーバーを手軽にインターネットへ公開する\""
 emoji: "🦕"
-type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["Deno", "DenoDeploy"]
+type: "tech"
+topics:
+  - "Deno"
+  - "DenoDeploy"
 published: true
-canonical: https://zenn.dev/mryhryki/articles/2022-01-03-http-server-on-deno
+canonical: "https://zenn.dev/mryhryki/articles/2022-01-03-http-server-on-deno"
 ---
 
 # はじめに

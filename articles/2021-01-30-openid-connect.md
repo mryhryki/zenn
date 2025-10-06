@@ -1,10 +1,14 @@
 ---
-title: "OpenID Connect についてと OAuth2.0 との違いを調べてみた"
+title: "\"OpenID Connect についてと OAuth2.0 との違いを調べてみた\""
 emoji: "🔐"
-type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["OAuth", "OAuth2", "OIDC", "OpenIDConnect"]
+type: "tech"
+topics:
+  - "OAuth"
+  - "OAuth2"
+  - "OIDC"
+  - "OpenIDConnect"
 published: true
-canonical: https://zenn.dev/mryhryki/articles/2021-01-30-openid-connect
+canonical: "https://zenn.dev/mryhryki/articles/2021-01-30-openid-connect"
 ---
 
 ※この記事は[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/2021-01-30-oidc)から引っ越しました

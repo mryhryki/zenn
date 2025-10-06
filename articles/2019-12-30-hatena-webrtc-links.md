@@ -1,10 +1,11 @@
 ---
-title: "WebRTC の資料リンク集"
+title: "\"WebRTC の資料リンク集\""
 emoji: "🚚"
 type: "tech"
-topics: ["WebRTC"]
+topics:
+  - "WebRTC"
 published: true
-canonical: https://zenn.dev/mryhryki/articles/2019-12-30-hatena-webrtc-links
+canonical: "https://zenn.dev/mryhryki/articles/2019-12-30-hatena-webrtc-links"
 ---
 
 ※この記事は[はてなブログ](https://hyiromori.hateblo.jp/entry/2019/12/30/231855)、[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/hatena-20191230-231855)から引っ越しました

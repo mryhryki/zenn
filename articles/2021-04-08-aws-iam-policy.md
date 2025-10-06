@@ -1,10 +1,12 @@
 ---
-title: "AWS CloudTrail の履歴から最小限の IAM Policy が作れる機能ができたようなので試してみた"
+title: "\"AWS CloudTrail の履歴から最小限の IAM Policy が作れる機能ができたようなので試してみた\""
 emoji: "✨️"
-type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["AWS", "IAM"]
+type: "tech"
+topics:
+  - "AWS"
+  - "IAM"
 published: true
-canonical: https://zenn.dev/mryhryki/articles/2021-04-08-aws-iam-policy
+canonical: "https://zenn.dev/mryhryki/articles/2021-04-08-aws-iam-policy"
 ---
 
 # はじめに

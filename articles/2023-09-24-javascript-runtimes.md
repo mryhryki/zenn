@@ -1,10 +1,14 @@
 ---
-title: JavaScript Runtimes (Node.js, Deno, Bun)
+title: "JavaScript Runtimes (Node.js, Deno, Bun)"
 emoji: "🏃"
 type: "tech"
-topics: ["JavaScript", "Node.js", "Deno", "Bun"]
+topics:
+  - "JavaScript"
+  - "Node.js"
+  - "Deno"
+  - "Bun"
 published: true
-canonical: https://zenn.dev/mryhryki/articles/2023-09-24-javascript-runtimes
+canonical: "https://zenn.dev/mryhryki/articles/2023-09-24-javascript-runtimes"
 ---
 
 # はじめに

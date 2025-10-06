@@ -1,10 +1,12 @@
 ---
-title: "GitHub Actions のIDトークンを使ってAWSリソースにアクセスする"
+title: "\"GitHub Actions のIDトークンを使ってAWSリソースにアクセスする\""
 emoji: "✨"
-type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["AWS","GitHubActions"]
+type: "tech"
+topics:
+  - "AWS"
+  - "GitHubActions"
 published: true
-canonical: https://zenn.dev/mryhryki/articles/2021-09-19-access-aws-by-github-actions
+canonical: "https://zenn.dev/mryhryki/articles/2021-09-19-access-aws-by-github-actions"
 ---
 
 # 追記（2021-11-01）

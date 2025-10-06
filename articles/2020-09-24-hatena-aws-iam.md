@@ -1,10 +1,12 @@
 ---
-title: "個人でやっている AWS IAM の運用"
+title: "\"個人でやっている AWS IAM の運用\""
 emoji: "🚚"
 type: "tech"
-topics: ["AWS","IAM"]
+topics:
+  - "AWS"
+  - "IAM"
 published: true
-canonical: https://zenn.dev/mryhryki/articles/2020-09-24-hatena-aws-iam
+canonical: "https://zenn.dev/mryhryki/articles/2020-09-24-hatena-aws-iam"
 ---
 
 ※この記事は[Qiita](https://qiita.com/mryhryki/items/668c3fbe1312b8909264)、[はてなブログ](https://hyiromori.hateblo.jp/entry/2020/09/24/083751)、[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/hatena-20200924-083751)から引っ越しました

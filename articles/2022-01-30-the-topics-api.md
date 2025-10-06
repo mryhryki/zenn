@@ -1,10 +1,13 @@
 ---
-title: "Google のターゲティング広告関連の新しい提案「The Topics API」について調べた"
+title: "\"Google のターゲティング広告関連の新しい提案「The Topics API」について調べた\""
 emoji: "🔒"
-type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["privacy","google","web"]
+type: "tech"
+topics:
+  - "privacy"
+  - "google"
+  - "web"
 published: true
-canonical: https://zenn.dev/mryhryki/articles/2022-01-30-the-topics-api
+canonical: "https://zenn.dev/mryhryki/articles/2022-01-30-the-topics-api"
 ---
 
 

@@ -1,8 +1,11 @@
 ---
-title: URLPattern API を試す（コード例付き）
+title: "URLPattern API を試す（コード例付き）"
 emoji: "⚗️"
 type: "tech"
-topics: ["JavaScript","Node.js", "Web API"]
+topics:
+  - "JavaScript"
+  - "Node.js"
+  - "Web API"
 published: true
 canonical: "https://zenn.dev/mryhryki/articles/2025-03-26-url-pattern-api"
 ---

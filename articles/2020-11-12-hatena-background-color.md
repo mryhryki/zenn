@@ -1,10 +1,11 @@
 ---
-title: "JavaScriptで背景色から文字色を導出する"
+title: "\"JavaScriptで背景色から文字色を導出する\""
 emoji: "🚚"
 type: "tech"
-topics: ["JavaScript"]
+topics:
+  - "JavaScript"
 published: true
-canonical: https://zenn.dev/mryhryki/articles/2020-11-12-hatena-background-color
+canonical: "https://zenn.dev/mryhryki/articles/2020-11-12-hatena-background-color"
 ---
 
 ※この記事は[はてなブログ](https://hyiromori.hateblo.jp/entry/2020/11/12/182643)、[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/hatena-20201112-182643)から引っ越しました

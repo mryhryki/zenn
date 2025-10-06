@@ -1,10 +1,12 @@
 ---
-title: "AWS S3 の料金をざっくり10GB単位で見る"
+title: "\"AWS S3 の料金をざっくり10GB単位で見る\""
 emoji: "🚚"
 type: "tech"
-topics: ["AWS","S3"]
+topics:
+  - "AWS"
+  - "S3"
 published: true
-canonical: https://zenn.dev/mryhryki/articles/2020-10-09-hatena-aws-s3-pricing
+canonical: "https://zenn.dev/mryhryki/articles/2020-10-09-hatena-aws-s3-pricing"
 ---
 
 ※この記事は[はてなブログ](https://hyiromori.hateblo.jp/entry/2020/10/09/180407)、[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/hatena-20201009-180407)から引っ越しました

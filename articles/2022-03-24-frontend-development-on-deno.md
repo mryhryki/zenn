@@ -1,10 +1,12 @@
 ---
-title: "DenoでReactをビルドする"
+title: "\"DenoでReactをビルドする\""
 emoji: "🦕"
-type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["Deno", "React"]
+type: "tech"
+topics:
+  - "Deno"
+  - "React"
 published: true
-canonical: https://zenn.dev/mryhryki/articles/2022-03-24-frontend-development-on-deno
+canonical: "https://zenn.dev/mryhryki/articles/2022-03-24-frontend-development-on-deno"
 ---
 
 # はじめに

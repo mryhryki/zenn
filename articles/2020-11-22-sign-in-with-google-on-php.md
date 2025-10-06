@@ -1,10 +1,12 @@
 ---
-title: "(Cake)PHP で Sign in with Google を実装した時のメモ"
+title: "\"(Cake)PHP で Sign in with Google を実装した時のメモ\""
 emoji: "🔐"
-type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["OAuth","PHP"]
+type: "tech"
+topics:
+  - "OAuth"
+  - "PHP"
 published: true
-canonical: https://zenn.dev/mryhryki/articles/2020-11-22-sign-in-with-google-on-php
+canonical: "https://zenn.dev/mryhryki/articles/2020-11-22-sign-in-with-google-on-php"
 ---
 
 ※この記事は[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/b8ba9445f1e4c7282c89)から引っ越しました

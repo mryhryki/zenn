@@ -1,10 +1,13 @@
 ---
-title: GitHub Actions でリリースを完全に自動化した話
+title: "GitHub Actions でリリースを完全に自動化した話"
 emoji: "🎉"
 type: "tech"
-topics: ["GitHub Actions", "npm", "gh"]
+topics:
+  - "GitHub Actions"
+  - "npm"
+  - "gh"
 published: true
-canonical: https://zenn.dev/mryhryki/articles/2024-04-27-release-automation
+canonical: "https://zenn.dev/mryhryki/articles/2024-04-27-release-automation"
 ---
 
 # はじめに

@@ -1,10 +1,11 @@
 ---
-title: Auth0 Organizations  メモ
+title: "Auth0 Organizations  メモ"
 emoji: "0️⃣"
 type: "tech"
-topics: ["Auth0"]
-published: true 
-canonical: https://zenn.dev/mryhryki/articles/2024-01-21-auth0-organizations
+topics:
+  - "Auth0"
+published: true
+canonical: "https://zenn.dev/mryhryki/articles/2024-01-21-auth0-organizations"
 ---
 
 ## はじめに

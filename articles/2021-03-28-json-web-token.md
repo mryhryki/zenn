@@ -1,10 +1,12 @@
 ---
-title: "JWTについてまとめてみる"
+title: "\"JWTについてまとめてみる\""
 emoji: "🔐"
-type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["JWT", "Authorization"]
+type: "tech"
+topics:
+  - "JWT"
+  - "Authorization"
 published: true
-canonical: https://zenn.dev/mryhryki/articles/2021-03-28-json-web-token
+canonical: "https://zenn.dev/mryhryki/articles/2021-03-28-json-web-token"
 ---
 
 ※この記事は[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/2021-03-28-jwt)から引っ越しました

@@ -1,10 +1,12 @@
 ---
-title: "esbuild を使って AWS Lambda (Node.js) を2秒でアップデートする"
+title: "\"esbuild を使って AWS Lambda (Node.js) を2秒でアップデートする\""
 emoji: "⚡"
-type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["esbuild", "lambda"]
+type: "tech"
+topics:
+  - "esbuild"
+  - "lambda"
 published: true
-canonical: https://zenn.dev/mryhryki/articles/2021-05-16-update-aws-lambda-fast
+canonical: "https://zenn.dev/mryhryki/articles/2021-05-16-update-aws-lambda-fast"
 ---
 
 # はじめに

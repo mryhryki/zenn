@@ -1,10 +1,14 @@
 ---
-title: "CloudFront のログを JS (TS) で分析する"
+title: "\"CloudFront のログを JS (TS) で分析する\""
 emoji: "🔍"
-type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["JavaScript", "TypeScript", "AWS", "CloudFront"]
+type: "tech"
+topics:
+  - "JavaScript"
+  - "TypeScript"
+  - "AWS"
+  - "CloudFront"
 published: true
-canonical: https://zenn.dev/mryhryki/articles/2021-07-21-parse-cloudfront-logs
+canonical: "https://zenn.dev/mryhryki/articles/2021-07-21-parse-cloudfront-logs"
 ---
 
 

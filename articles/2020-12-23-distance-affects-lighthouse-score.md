@@ -1,10 +1,11 @@
 ---
-title: "サーバーとの物理的な距離による Lighthouse のパフォーマンススコアの差を調べてみた"
+title: "\"サーバーとの物理的な距離による Lighthouse のパフォーマンススコアの差を調べてみた\""
 emoji: "🌎"
-type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["Lighthouse"]
+type: "tech"
+topics:
+  - "Lighthouse"
 published: true
-canonical: https://zenn.dev/mryhryki/articles/2020-12-23-distance-affects-lighthouse-score
+canonical: "https://zenn.dev/mryhryki/articles/2020-12-23-distance-affects-lighthouse-score"
 ---
 
 ※この記事は[別アカウント(hyiromori)](https://zenn.dev/hyiromori/articles/a80361ae13f26ccabfaf)から引っ越しました

@@ -1,10 +1,13 @@
 ---
-title: "Google のプライバシーサンドボックス関連の提案の概要と資料をまとめました"
+title: "\"Google のプライバシーサンドボックス関連の提案の概要と資料をまとめました\""
 emoji: "🔒"
-type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["privacy","google","web"]
+type: "tech"
+topics:
+  - "privacy"
+  - "google"
+  - "web"
 published: true
-canonical: https://zenn.dev/mryhryki/articles/2021-10-10-privacy-sandbox
+canonical: "https://zenn.dev/mryhryki/articles/2021-10-10-privacy-sandbox"
 ---
 
 # はじめに
