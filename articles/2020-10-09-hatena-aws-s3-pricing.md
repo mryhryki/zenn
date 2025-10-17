@@ -1,5 +1,5 @@
 ---
-title: "\"AWS S3 の料金をざっくり10GB単位で見る\""
+title: "AWS S3 の料金をざっくり10GB単位で見る"
 emoji: "🚚"
 type: "tech"
 topics:

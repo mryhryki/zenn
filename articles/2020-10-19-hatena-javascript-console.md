@@ -1,5 +1,5 @@
 ---
-title: "\"Console についてまとめる\""
+title: "Console についてまとめる"
 emoji: "🚚"
 type: "tech"
 topics:

@@ -1,5 +1,5 @@
 ---
-title: "\"AWS API Gateway の WebSocket API をちゃんと理解する\""
+title: "AWS API Gateway の WebSocket API をちゃんと理解する"
 emoji: "⚡️"
 type: "tech"
 topics:

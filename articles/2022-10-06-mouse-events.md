@@ -1,5 +1,5 @@
 ---
-title: "\"JavaScriptで検知できるマウスのイベントについて調べた\""
+title: "JavaScriptで検知できるマウスのイベントについて調べた"
 emoji: "🖱"
 type: "tech"
 topics:

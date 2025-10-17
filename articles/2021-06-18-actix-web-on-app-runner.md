@@ -1,5 +1,5 @@
 ---
-title: "\"Actix Web (Rust) を App Runner で動かしたメモ\""
+title: "Actix Web (Rust) を App Runner で動かしたメモ"
 emoji: "📝"
 type: "tech"
 topics:

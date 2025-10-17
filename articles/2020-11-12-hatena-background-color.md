@@ -1,5 +1,5 @@
 ---
-title: "\"JavaScriptで背景色から文字色を導出する\""
+title: "JavaScriptで背景色から文字色を導出する"
 emoji: "🚚"
 type: "tech"
 topics:

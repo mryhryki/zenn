@@ -1,5 +1,5 @@
 ---
-title: "\"WebRTC の資料リンク集\""
+title: "WebRTC の資料リンク集"
 emoji: "🚚"
 type: "tech"
 topics:

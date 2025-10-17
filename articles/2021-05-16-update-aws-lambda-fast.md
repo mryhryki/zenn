@@ -1,5 +1,5 @@
 ---
-title: "\"esbuild を使って AWS Lambda (Node.js) を2秒でアップデートする\""
+title: "esbuild を使って AWS Lambda (Node.js) を2秒でアップデートする"
 emoji: "⚡"
 type: "tech"
 topics:

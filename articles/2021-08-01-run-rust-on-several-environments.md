@@ -1,5 +1,5 @@
 ---
-title: "\"Rust のコードをいろいろな環境で動かしてみたメモ\""
+title: "Rust のコードをいろいろな環境で動かしてみたメモ"
 emoji: "📝"
 type: "tech"
 topics:

@@ -1,5 +1,5 @@
 ---
-title: "\"今更ながら HTTP/2 について調べてまとめてみた\""
+title: "今更ながら HTTP/2 について調べてまとめてみた"
 emoji: "🚚"
 type: "tech"
 topics:

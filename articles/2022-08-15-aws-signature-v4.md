@@ -1,5 +1,5 @@
 ---
-title: "\"AWS Signature V4 を TypeScript でスクラッチ実装してみた\""
+title: "AWS Signature V4 を TypeScript でスクラッチ実装してみた"
 emoji: "✍️"
 type: "tech"
 topics:

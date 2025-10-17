@@ -1,5 +1,5 @@
 ---
-title: "\"DenoでReactをビルドする\""
+title: "DenoでReactをビルドする"
 emoji: "🦕"
 type: "tech"
 topics:

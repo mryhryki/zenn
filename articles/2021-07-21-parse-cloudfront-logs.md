@@ -1,5 +1,5 @@
 ---
-title: "\"CloudFront のログを JS (TS) で分析する\""
+title: "CloudFront のログを JS (TS) で分析する"
 emoji: "🔍"
 type: "tech"
 topics:

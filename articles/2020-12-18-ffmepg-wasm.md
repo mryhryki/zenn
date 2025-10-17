@@ -1,5 +1,5 @@
 ---
-title: "\"ffmpeg.wasm を使ってGIF動画を作れるWebアプリを作って遊んでみた\""
+title: "ffmpeg.wasm を使ってGIF動画を作れるWebアプリを作って遊んでみた"
 emoji: "📹"
 type: "tech"
 topics:

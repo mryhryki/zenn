@@ -1,5 +1,5 @@
 ---
-title: "\"Wireshark で TLS 1.3 のパケットを見てみる\""
+title: "Wireshark で TLS 1.3 のパケットを見てみる"
 emoji: "🔍"
 type: "tech"
 topics:

@@ -1,5 +1,5 @@
 ---
-title: "\"Deno で HTTP サーバーを手軽にインターネットへ公開する\""
+title: "Deno で HTTP サーバーを手軽にインターネットへ公開する"
 emoji: "🦕"
 type: "tech"
 topics:

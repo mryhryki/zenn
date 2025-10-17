@@ -1,5 +1,5 @@
 ---
-title: "\"GitHub Actions のIDトークンを使ってAWSリソースにアクセスする\""
+title: "GitHub Actions のIDトークンを使ってAWSリソースにアクセスする"
 emoji: "✨"
 type: "tech"
 topics:

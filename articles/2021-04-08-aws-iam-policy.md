@@ -1,5 +1,5 @@
 ---
-title: "\"AWS CloudTrail の履歴から最小限の IAM Policy が作れる機能ができたようなので試してみた\""
+title: "AWS CloudTrail の履歴から最小限の IAM Policy が作れる機能ができたようなので試してみた"
 emoji: "✨️"
 type: "tech"
 topics:

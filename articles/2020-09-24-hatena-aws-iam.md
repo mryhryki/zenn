@@ -1,5 +1,5 @@
 ---
-title: "\"個人でやっている AWS IAM の運用\""
+title: "個人でやっている AWS IAM の運用"
 emoji: "🚚"
 type: "tech"
 topics:

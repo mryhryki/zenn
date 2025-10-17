@@ -1,5 +1,5 @@
 ---
-title: "\"Service Worker メモ\""
+title: "Service Worker メモ"
 emoji: "🚚"
 type: "tech"
 topics:

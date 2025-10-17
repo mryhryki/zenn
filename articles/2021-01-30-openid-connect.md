@@ -1,5 +1,5 @@
 ---
-title: "\"OpenID Connect についてと OAuth2.0 との違いを調べてみた\""
+title: "OpenID Connect についてと OAuth2.0 との違いを調べてみた"
 emoji: "🔐"
 type: "tech"
 topics:

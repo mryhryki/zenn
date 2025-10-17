@@ -1,5 +1,5 @@
 ---
-title: "\"(Cake)PHP で Sign in with Google を実装した時のメモ\""
+title: "(Cake)PHP で Sign in with Google を実装した時のメモ"
 emoji: "🔐"
 type: "tech"
 topics:

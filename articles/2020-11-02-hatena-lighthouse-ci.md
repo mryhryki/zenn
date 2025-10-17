@@ -1,5 +1,5 @@
 ---
-title: "\"Lighthouse CI と Heroku でウェブページのスコアを継続的に測定して推移を見る\""
+title: "Lighthouse CI と Heroku でウェブページのスコアを継続的に測定して推移を見る"
 emoji: "🚚"
 type: "tech"
 topics:
