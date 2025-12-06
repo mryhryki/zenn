@@ -29,7 +29,13 @@ https://gigazine.net/news/20201109-ffmpeg-wasm/
 
 # 作ったWebアプリ
 
-https://mryhryki-video-to-gif.vercel.app/
+~~https://mryhryki-video-to-gif.vercel.app/~~
+
+
+[2025-12-07 追記]
+React の脆弱性で Next.js をアップデートする必要がありましたが、維持管理をするモチベーションがないのでクローズしました。
+
+https://vercel.com/blog/resources-for-protecting-against-react2shell
 
 ソースコードはこちら。
 
